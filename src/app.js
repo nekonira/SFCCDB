@@ -1282,7 +1282,7 @@ function App() {
         return prev.filter(p => p.id !== player.id);
       } else {
         if (prev.length >= 5) {
-          alert('比較に追加できるのは最大5人までです');
+          alert('比較枠(最大5人)がいっぱいです。下部バーの「全クリア」か選手アイコンの[✕]で枠を空けてから選択してください。');
           return prev;
         }
         return [...prev, player];
@@ -2893,7 +2893,8 @@ function PlayerDetailModal({
 function PlayerCompareModal({
   compareList,
   onClose,
-  onRemove
+  onRemove,
+  onClearAll
 }) {
   if (compareList.length === 0) return null;
 
@@ -2911,6 +2912,12 @@ function PlayerCompareModal({
     });
     return map;
   });
+
+  useEffect(() => {
+    if (compareList.length === 0) {
+      onClose();
+    }
+  }, [compareList, onClose]);
 
   // 個別選択レアリティ＆強化モード反映後のリスト
   const adjustedCompareList = useMemo(() => {
@@ -3052,11 +3059,9 @@ function PlayerCompareModal({
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "max-w-[1750px] w-full mx-auto flex justify-between items-start px-2 lg:px-4 my-auto"
-  }, /*#__PURE__*/React.createElement(SideAdBanner, {
-    position: "left"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel max-w-6xl w-full mx-auto rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0 flex-shrink-0"
+    className: "max-w-6xl w-full mx-auto my-auto px-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
@@ -3073,8 +3078,12 @@ function PlayerCompareModal({
   }, "2位 2ND"), /*#__PURE__*/React.createElement("span", {
     className: "text-[#00E5FF] font-bold"
   }, "3位 3RD"))), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-3"
-  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap items-center gap-2"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: onClearAll,
+    className: "px-3 py-1 rounded-lg text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
+    title: "比較対象をすべて解除"
+  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsGlobalMaxEnhanced(false),
@@ -3329,7 +3338,5 @@ function PlayerCompareModal({
     }, /*#__PURE__*/React.createElement("span", {
       className: `px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
-  }))))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
-    position: "right"
-  })));
+  })))))))))));
 }

@@ -1135,7 +1135,7 @@ function App() {
         return prev.filter(p => p.id !== player.id);
       } else {
         if (prev.length >= 5) {
-          alert('比較に追加できるのは最大5人までです');
+          alert('比較枠(最大5人)がいっぱいです。下部バーの「全クリア」か選手アイコンの[✕]で枠を空けてから選択してください。');
           return prev;
         }
         return [...prev, player];
@@ -1333,9 +1333,21 @@ function App() {
 
       {/* フローティング比較バー */}
       {compareList.length > 0 && (
-        <div className="fixed bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#0e1522]/95 border border-[#00FF66]/50 rounded-2xl p-3 shadow-2xl shadow-[#00FF66]/20 backdrop-blur-xl flex items-center gap-4 max-w-xl w-[92%]">
-          <div className="flex items-center gap-2 flex-1 overflow-x-auto py-1">
-            <span className="text-xs font-bold text-[#00FF66] whitespace-nowrap pl-1">比較 ({compareList.length}/5)</span>
+        <div className="fixed bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#0e1522]/95 border border-[#00FF66]/50 rounded-2xl p-3 shadow-2xl shadow-[#00FF66]/20 backdrop-blur-xl flex items-center gap-3 max-w-xl w-[92%]">
+          <div className="flex items-center gap-2.5 flex-1 overflow-x-auto py-1">
+            <div className="flex flex-col flex-shrink-0">
+              <span className="text-xs font-bold text-[#00FF66] whitespace-nowrap pl-1">比較 ({compareList.length}/5)</span>
+              <button
+                onClick={() => {
+                  setCompareList([]);
+                  setIsCompareModalOpen(false);
+                }}
+                className="text-[10px] text-red-400 hover:text-red-300 font-bold underline cursor-pointer text-left pl-1"
+                title="比較リストを全消去"
+              >
+                全クリア
+              </button>
+            </div>
             <div className="flex gap-2">
               {compareList.map(p => {
                 const avatar = getPlayerAvatarUrl(p);
@@ -1344,7 +1356,7 @@ function App() {
                     <PlayerAvatar player={p} className="w-10 h-14 rounded-lg object-contain bg-slate-950/90 border border-slate-700 shadow-md group-hover:border-[#00FF66] transition-colors" />
                     <button
                       onClick={() => toggleCompare(p)}
-                      className="absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full p-0.5 shadow-md hover:scale-110 transition-transform"
+                      className="absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full p-0.5 shadow-md hover:scale-110 transition-transform cursor-pointer"
                       title="比較から外す"
                     >
                       <Icon name="x" className="w-3 h-3" />
@@ -1356,7 +1368,7 @@ function App() {
           </div>
           <button
             onClick={() => setIsCompareModalOpen(true)}
-            className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs rounded-xl shadow-md hover:brightness-110 whitespace-nowrap"
+            className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs rounded-xl shadow-md hover:brightness-110 whitespace-nowrap cursor-pointer"
           >
             <Icon name="compare" className="w-4 h-4" />
             比較表
@@ -1378,6 +1390,10 @@ function App() {
           compareList={compareList}
           onClose={() => setIsCompareModalOpen(false)}
           onRemove={(p) => toggleCompare(p)}
+          onClearAll={() => {
+            setCompareList([]);
+            setIsCompareModalOpen(false);
+          }}
         />
       )}
     </div>
@@ -2829,7 +2845,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
 // ─────────────────────────────────────────────────────────────
 // MODAL: 選手比較表 MODAL
 // ─────────────────────────────────────────────────────────────
-function PlayerCompareModal({ compareList, onClose, onRemove }) {
+function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
   if (compareList.length === 0) return null;
 
   // 比較表全体での一括最大強化モード state
@@ -2846,6 +2862,12 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
     });
     return map;
   });
+
+  useEffect(() => {
+    if (compareList.length === 0) {
+      onClose();
+    }
+  }, [compareList, onClose]);
 
   // 個別選択レアリティ＆強化モード反映後のリスト
   const adjustedCompareList = useMemo(() => {
@@ -2972,9 +2994,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
-      <div className="max-w-[1750px] w-full mx-auto flex justify-between items-start px-2 lg:px-4 my-auto">
-        <SideAdBanner position="left" />
-        <div className="glass-panel max-w-6xl w-full mx-auto rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0 flex-shrink-0">
+      <div className="max-w-6xl w-full mx-auto my-auto px-2">
+        <div className="glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3">
             <div>
               <h2 className="text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white flex items-center gap-2">
@@ -2988,7 +3009,15 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={onClearAll}
+                className="px-3 py-1 rounded-lg text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer"
+                title="比較対象をすべて解除"
+              >
+                🗑️ 全クリア
+              </button>
+
               {/* 一括最大強化モード切替 */}
               <div className="flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40">
                 <button
@@ -2998,7 +3027,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                     : 'text-slate-400 hover:text-slate-200'
                     }`}
                 >
-                  🌱 全員初期値
+                  🌱 初期値
                 </button>
                 <button
                   onClick={() => setIsGlobalMaxEnhanced(true)}
@@ -3007,7 +3036,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                     : 'text-slate-400 hover:text-slate-200'
                     }`}
                 >
-                  ⚡ 全員最大強化 (★5+完凸)
+                  ⚡ 最大強化
                 </button>
               </div>
 
@@ -3319,11 +3348,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
             ))}
           </div>
         </div>
-
-            </div>
-          </div>
-
-      <SideAdBanner position="right" />
+      </div>
     </div>
   </div>
 );
