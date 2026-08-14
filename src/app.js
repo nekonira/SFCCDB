@@ -1635,7 +1635,7 @@ function PlayerDBTab({
   const [nationalityFilter, setNationalityFilter] = useState('ALL');
   const [rarityFilter, setRarityFilter] = useState('ALL');
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(false);
-  const [viewMode, setViewMode] = useState('table');
+  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 768) ? 'grid' : 'table');
 
   // テーブルソート設定 state ({ key, direction: 'asc' | 'desc' })
   const [sortConfig, setSortConfig] = useState({
