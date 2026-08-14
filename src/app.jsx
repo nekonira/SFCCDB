@@ -2964,6 +2964,12 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
           adjustedCompareList.length === 4 ? 'grid-cols-4 divide-x divide-slate-800/80' :
             'grid-cols-5 divide-x divide-slate-800/80';
 
+  const minCompareWidth =
+    adjustedCompareList.length <= 2 ? 'w-full' :
+      adjustedCompareList.length === 3 ? 'min-w-[620px] sm:min-w-0 w-full' :
+        adjustedCompareList.length === 4 ? 'min-w-[820px] sm:min-w-0 w-full' :
+          'min-w-[1020px] sm:min-w-0 w-full';
+
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
       <div className="max-w-[1750px] w-full mx-auto flex justify-between items-start px-2 lg:px-4 my-auto">
@@ -3017,7 +3023,13 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
 
           {/* 比較カードヘッダー */}
           <div className="space-y-4">
-            <div className={`grid gap-3 ${colCountClass}`}>
+            {adjustedCompareList.length >= 3 && (
+              <div className="sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center">
+                ← 左右スワイプで全選手を並べて比較できます →
+              </div>
+            )}
+            <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700">
+              <div className={`grid gap-3 ${colCountClass} ${minCompareWidth}`}>
               {adjustedCompareList.map(p => {
                 const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
                 const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
@@ -3160,6 +3172,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
               })}
             </div>
           </div>
+        </div>
 
           {/* 主要能力 + 直下の18種詳細能力 グラフ表示 */}
         <div className="space-y-6">
@@ -3177,7 +3190,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                   </div>
 
                   {/* 主要能力バーグラフ */}
-                  <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800 overflow-hidden ${colCountClass}`}>
+                  <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700">
+                    <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800 overflow-hidden ${colCountClass} ${minCompareWidth}`}>
                     {adjustedCompareList.map(p => {
                       const catTot = getCategoryTotal(p, grp.key);
                       const pct = Math.min(100, Math.round((catTot / grp.maxPossTotal) * 100));
@@ -3207,6 +3221,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                     })}
                   </div>
                 </div>
+              </div>
 
                 {/* 18種詳細能力 グラフ */}
                 <div className="pt-3 border-t border-slate-800/80 space-y-3">
@@ -3235,7 +3250,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                         <div className="text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5">
                           <span className="text-[#00FF66]">▶</span> {displayLabel}
                         </div>
-                        <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`}>
+                        <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700">
+                          <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass} ${minCompareWidth}`}>
                           {adjustedCompareList.map((p, idx) => {
                             const val = detailVals[idx];
                             const pct = Math.min(100, Math.round((val / grp.maxPossSub) * 100));
@@ -3261,6 +3277,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                           })}
                         </div>
                       </div>
+                    </div>
                     );
                   })}
                 </div>
@@ -3291,7 +3308,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                 <div className="text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5">
                   <span className="text-amber-400">🧠</span> {item.label}
                 </div>
-                <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`}>
+                <div className="overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700">
+                  <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass} ${minCompareWidth}`}>
                   {adjustedCompareList.map(p => {
                     const val = getPlayerPlayTendency(p, item.key);
 
@@ -3305,6 +3323,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                     );
                   })}
                 </div>
+              </div>
               </div>
             ))}
           </div>

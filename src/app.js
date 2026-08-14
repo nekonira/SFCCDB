@@ -3048,6 +3048,7 @@ function PlayerCompareModal({
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
   const colCountClass = adjustedCompareList.length === 1 ? 'grid-cols-1' : adjustedCompareList.length === 2 ? 'grid-cols-2 divide-x divide-slate-800/80' : adjustedCompareList.length === 3 ? 'grid-cols-3 divide-x divide-slate-800/80' : adjustedCompareList.length === 4 ? 'grid-cols-4 divide-x divide-slate-800/80' : 'grid-cols-5 divide-x divide-slate-800/80';
+  const minCompareWidth = adjustedCompareList.length <= 2 ? 'w-full' : adjustedCompareList.length === 3 ? 'min-w-[620px] sm:min-w-0 w-full' : adjustedCompareList.length === 4 ? 'min-w-[820px] sm:min-w-0 w-full' : 'min-w-[1020px] sm:min-w-0 w-full';
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3088,10 +3089,14 @@ function PlayerCompareModal({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-5 h-5"
-  })))), /*#__PURE__*/React.createElement("div", {
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "space-y-4"
+  }, adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
+  }, "← 左右スワイプで全選手を並べて比較できます →"), /*#__PURE__*/React.createElement("div", {
+    className: "overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700"
   }, /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-3 ${colCountClass}`
+    className: `grid gap-3 ${colCountClass} ${minCompareWidth}`
   }, adjustedCompareList.map(p => {
     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
     const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
