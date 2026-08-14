@@ -1,12 +1,11 @@
-$indexPath = "c:\Users\nekon\SFCCdeta\index.html"
 $dataDir = "c:\Users\nekon\SFCCdeta\src\data"
-$utf8 = New-Object System.Text.UTF8Encoding($false)
+$indexPath = "c:\Users\nekon\SFCCdeta\index.html"
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
-# Get all Image.js files in src/data
-$imageFiles = Get-ChildItem -Path $dataDir -Filter "*Image.js" | Sort-Object Name
-$imageScriptTags = ($imageFiles | ForEach-Object { "  <script src=""./src/data/$($_.Name)""></script>" }) -join "`n"
+$files = Get-ChildItem -Path $dataDir -Filter "*Image.js" | Sort-Object Name
+$scriptTags = ($files | ForEach-Object { "  <script src=""./src/data/$($_.Name)""></script>" }) -join "`n"
 
-$html = @"
+$template = @"
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -33,8 +32,8 @@ $html = @"
 <body class="bg-[#070a10] text-slate-100 min-h-screen">
   <div id="root"></div>
 
-  <!-- 1. Player Photos ($($imageFiles.Count) Image Files) -->
-$imageScriptTags
+  <!-- 1. Player Photos ($($files.Count) Image Files) -->
+$scriptTags
 
   <!-- 2. Full Player Database -->
   <script src="./src/data/mockData.js"></script>
@@ -46,5 +45,5 @@ $imageScriptTags
 </html>
 "@
 
-[System.IO.File]::WriteAllText($indexPath, $html, $utf8)
-Write-Host "Successfully rebuilt index.html with $($imageFiles.Count) image scripts, mockData.js, and app.jsx!"
+[System.IO.File]::WriteAllText($indexPath, $template, $utf8NoBom)
+Write-Host "Index.html generated in pure UTF-8 with $($files.Count) script tags!"

@@ -1378,7 +1378,70 @@ function App() {
     setCombos: setCombos
   })), /*#__PURE__*/React.createElement(SideAdBanner, {
     position: "right"
-  })), compareList.length > 0 && /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("nav", {
+    className: "md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070a10]/95 border-t border-slate-800/80 backdrop-blur-xl px-1 py-1.5 flex items-center justify-around shadow-2xl"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('home'),
+    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'home' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-5 h-5"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]"
+  }, "ホーム")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('players'),
+    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'players' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "users",
+    className: "w-5 h-5"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]"
+  }, "選手DB")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('managers'),
+    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'managers' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "award",
+    className: "w-5 h-5"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]"
+  }, "監督・コンボ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('builder'),
+    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'builder' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "layout",
+    className: "w-5 h-5"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]"
+  }, "ビルダー")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('data'),
+    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'data' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "database",
+    className: "w-5 h-5"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px]"
+  }, "データ"))), /*#__PURE__*/React.createElement("footer", {
+    className: "w-full border-t border-slate-800/80 bg-slate-950/90 py-6 px-4 text-center text-xs text-slate-400 space-y-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-4xl mx-auto space-y-1.5 leading-relaxed"
+  }, /*#__PURE__*/React.createElement("p", null, "プロサッカークラブをつくろう！・サカつく・サカつく2026は", /*#__PURE__*/React.createElement("a", {
+    href: "https://segafcchampions.sega.com/ja/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "text-emerald-400 hover:underline"
+  }, "SEGA"), "の登録商標です。"), /*#__PURE__*/React.createElement("p", null, "当サイトは個人ファンサイトであり、", /*#__PURE__*/React.createElement("a", {
+    href: "https://segafcchampions.sega.com/ja/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "text-emerald-400 hover:underline"
+  }, "SEGA"), "様とは一切関係ありません。下記はサイト独自の内容に関する著作権を示すものです。"), /*#__PURE__*/React.createElement("p", {
+    className: "pt-1 text-slate-300 font-medium"
+  }, "© 2026 ", /*#__PURE__*/React.createElement("a", {
+    href: "https://nekonira.github.io/SFCCDB/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    className: "text-emerald-400 hover:underline font-bold"
+  }, "NEKONIRA")))), compareList.length > 0 && /*#__PURE__*/React.createElement("div", {
     className: "fixed bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#0e1522]/95 border border-[#00FF66]/50 rounded-2xl p-3 shadow-2xl shadow-[#00FF66]/20 backdrop-blur-xl flex items-center gap-4 max-w-xl w-[92%]"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2 flex-1 overflow-x-auto py-1"
@@ -2509,9 +2572,13 @@ function PlayerDetailModal({
     }]
   }];
   return /*#__PURE__*/React.createElement("div", {
-    className: "fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+    className: "fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel max-w-2xl w-full rounded-3xl border border-slate-700 p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn"
+    className: "max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto"
+  }, /*#__PURE__*/React.createElement(SideAdBanner, {
+    position: "left"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel max-w-2xl w-full mx-auto rounded-3xl border border-slate-700 p-4 md:p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-start justify-between"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2760,7 +2827,9 @@ function PlayerDetailModal({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "compare",
     className: "w-4 h-4"
-  }), isCompared ? '比較リストから外す' : `比較表に追加 (${selectedRarity} 状態)`))));
+  }), isCompared ? '比較リストから外す' : `比較表に追加 (${selectedRarity} 状態)`))), /*#__PURE__*/React.createElement(SideAdBanner, {
+    position: "right"
+  })));
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -2927,11 +2996,11 @@ function PlayerCompareModal({
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "max-w-[1750px] w-full mx-auto flex justify-center items-start my-auto"
+    className: "max-w-[1750px] w-full mx-auto flex justify-between items-start px-2 lg:px-4 my-auto"
   }, /*#__PURE__*/React.createElement(SideAdBanner, {
     position: "left"
   }), /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel max-w-6xl w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0"
+    className: "glass-panel max-w-6xl w-full mx-auto rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0 flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {

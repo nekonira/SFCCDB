@@ -12,6 +12,9 @@ try {
 }
 
 $root = $PSScriptRoot
+if ([string]::IsNullOrEmpty($root)) {
+    $root = "c:\Users\nekon\SFCCdeta"
+}
 
 while ($listener.IsListening) {
     try {

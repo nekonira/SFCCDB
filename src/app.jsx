@@ -1169,7 +1169,7 @@ function App() {
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-1 bg-[#0e1522]/90 p-1.5 rounded-xl border border-slate-800">
+          <nav className="flex items-center gap-1 bg-[#0e1522]/90 p-1.5 rounded-xl border border-slate-800 overflow-x-auto max-w-full scrollbar-none">
             <button
               onClick={() => setActiveTab('home')}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'home'
@@ -1272,6 +1272,64 @@ function App() {
 
         <SideAdBanner position="right" />
       </div>
+
+      {/* スマホ専用 固定ボトムナビゲーションバー (< md で表示) */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070a10]/95 border-t border-slate-800/80 backdrop-blur-xl px-1 py-1.5 flex items-center justify-around shadow-2xl">
+        <button
+          onClick={() => setActiveTab('home')}
+          className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'home' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`}
+        >
+          <Icon name="sparkles" className="w-5 h-5" />
+          <span className="text-[10px]">ホーム</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('players')}
+          className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'players' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`}
+        >
+          <Icon name="users" className="w-5 h-5" />
+          <span className="text-[10px]">選手DB</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('managers')}
+          className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'managers' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`}
+        >
+          <Icon name="award" className="w-5 h-5" />
+          <span className="text-[10px]">監督・コンボ</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('builder')}
+          className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'builder' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`}
+        >
+          <Icon name="layout" className="w-5 h-5" />
+          <span className="text-[10px]">ビルダー</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('data')}
+          className={`flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'data' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`}
+        >
+          <Icon name="database" className="w-5 h-5" />
+          <span className="text-[10px]">データ</span>
+        </button>
+      </nav>
+
+      {/* サイト最下部 フッター免責事項 & 著作権 */}
+      <footer className="w-full border-t border-slate-800/80 bg-slate-950/90 py-6 px-4 text-center text-xs text-slate-400 space-y-2">
+        <div className="max-w-4xl mx-auto space-y-1.5 leading-relaxed">
+          <p>
+            プロサッカークラブをつくろう！・サカつく・サカつく2026は<a href="https://segafcchampions.sega.com/ja/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">SEGA</a>の登録商標です。
+          </p>
+          <p>
+            当サイトは個人ファンサイトであり、<a href="https://segafcchampions.sega.com/ja/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">SEGA</a>様とは一切関係ありません。下記はサイト独自の内容に関する著作権を示すものです。
+          </p>
+          <p className="pt-1 text-slate-300 font-medium">
+            © 2026 <a href="https://nekonira.github.io/SFCCDB/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline font-bold">NEKONIRA</a>
+          </p>
+        </div>
+      </footer>
 
       {/* フローティング比較バー */}
       {compareList.length > 0 && (
@@ -2380,8 +2438,11 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-      <div className="glass-panel max-w-2xl w-full rounded-3xl border border-slate-700 p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
+      <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto">
+        <SideAdBanner position="left" />
+
+        <div className="glass-panel max-w-2xl w-full mx-auto rounded-3xl border border-slate-700 p-4 md:p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn flex-shrink-0">
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
             <PlayerAvatar player={adjustedPlayer} className="w-24 h-32 md:w-28 md:h-36 rounded-2xl object-contain bg-slate-950/90 border-2 border-[#00FF66] shadow-2xl" />
@@ -2678,16 +2739,18 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
         <div className="flex items-center gap-3 pt-2">
           <button
             onClick={() => onCompareToggle(adjustedPlayer)}
-            className={`flex-1 py-3 rounded-xl font-extrabold text-xs transition-all flex items-center justify-center gap-2 ${isCompared ? 'bg-[#00FF66] text-slate-950 shadow-lg shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-200 border border-slate-700'
-              }`}
+            className={`flex-1 py-3 rounded-xl font-extrabold text-xs transition-all flex items-center justify-center gap-2 ${isCompared ? 'bg-[#00FF66] text-slate-950 shadow-lg shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-200 border border-slate-700'}`}
           >
             <Icon name="compare" className="w-4 h-4" />
             {isCompared ? '比較リストから外す' : `比較表に追加 (${selectedRarity} 状態)`}
           </button>
         </div>
       </div>
+
+      <SideAdBanner position="right" />
     </div>
-  );
+  </div>
+);
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -2830,9 +2893,9 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
-      <div className="max-w-[1750px] w-full mx-auto flex justify-center items-start my-auto">
+      <div className="max-w-[1750px] w-full mx-auto flex justify-between items-start px-2 lg:px-4 my-auto">
         <SideAdBanner position="left" />
-        <div className="glass-panel max-w-6xl w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0">
+        <div className="glass-panel max-w-6xl w-full mx-auto rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn min-w-0 flex-shrink-0">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3">
             <div>
               <h2 className="text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white flex items-center gap-2">
@@ -3026,33 +3089,6 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
           </div>
 
           {/* 主要能力 + 直下の18種詳細能力 グラフ表示 */}
-          <div className="space-y-6">
-            {statGroups.map(grp => {
-              const allCatTotals = adjustedCompareList.map(p => getCategoryTotal(p, grp.key));
-
-              return (
-                                </span>
-                              </div>
-                              {ab.description && (
-                                <div className="text-[9px] text-slate-300 leading-relaxed">
-                                  {ab.description}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <div className="text-[10px] text-slate-500 italic">なし</div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* 主要能力 + 直下の18種詳細能力 グラフ表示 */}
         <div className="space-y-6">
           {statGroups.map(grp => {
             const allCatTotals = adjustedCompareList.map(p => getCategoryTotal(p, grp.key));
@@ -3200,8 +3236,10 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
             ))}
           </div>
         </div>
-        <SideAdBanner position="right" />
       </div>
+
+      <SideAdBanner position="right" />
     </div>
-  );
+  </div>
+);
 }
