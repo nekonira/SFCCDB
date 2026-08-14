@@ -3048,7 +3048,7 @@ function PlayerCompareModal({
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
   const colCountClass = adjustedCompareList.length === 1 ? 'grid-cols-1' : adjustedCompareList.length === 2 ? 'grid-cols-2 divide-x divide-slate-800/80' : adjustedCompareList.length === 3 ? 'grid-cols-3 divide-x divide-slate-800/80' : adjustedCompareList.length === 4 ? 'grid-cols-4 divide-x divide-slate-800/80' : 'grid-cols-5 divide-x divide-slate-800/80';
-  const minCompareWidth = adjustedCompareList.length <= 2 ? 'w-full' : adjustedCompareList.length === 3 ? 'min-w-[620px] sm:min-w-0 w-full' : adjustedCompareList.length === 4 ? 'min-w-[820px] sm:min-w-0 w-full' : 'min-w-[1020px] sm:min-w-0 w-full';
+  const minCompareWidth = adjustedCompareList.length <= 2 ? 'w-full' : adjustedCompareList.length === 3 ? 'min-w-[580px] w-full' : adjustedCompareList.length === 4 ? 'min-w-[760px] w-full' : 'min-w-[950px] w-full';
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3274,17 +3274,13 @@ function PlayerCompareModal({
         const pct = Math.min(100, Math.round(val / grp.maxPossSub * 100));
         return /*#__PURE__*/React.createElement("div", {
           key: p.id,
-          className: "p-2.5 space-y-1.5"
+          className: "p-2 space-y-1 text-center"
         }, /*#__PURE__*/React.createElement("div", {
-          className: "flex items-center justify-between"
+          className: "flex items-center justify-center gap-1"
         }, /*#__PURE__*/React.createElement("span", {
-          className: "text-xs md:text-sm text-slate-200 font-bold truncate"
-        }, p.name.split(' ')[0]), /*#__PURE__*/React.createElement("div", {
-          className: "flex items-center gap-1.5"
-        }, /*#__PURE__*/React.createElement("span", {
-          className: "font-num font-black text-white text-base md:text-lg"
-        }, val), renderRankBadge(val, detailVals))), /*#__PURE__*/React.createElement("div", {
-          className: "w-full bg-[#070a10] rounded-full h-2.5 md:h-3 overflow-hidden relative border border-slate-800"
+          className: "font-num font-black text-white text-sm md:text-base"
+        }, val), renderRankBadge(val, detailVals)), /*#__PURE__*/React.createElement("div", {
+          className: "w-full bg-[#070a10] rounded-full h-2 md:h-2.5 overflow-hidden relative border border-slate-800"
         }, /*#__PURE__*/React.createElement("div", {
           className: `h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`,
           style: {
@@ -3329,11 +3325,9 @@ function PlayerCompareModal({
     const val = getPlayerPlayTendency(p, item.key);
     return /*#__PURE__*/React.createElement("div", {
       key: p.id,
-      className: "p-2.5 flex items-center justify-between"
+      className: "p-2 flex items-center justify-center"
     }, /*#__PURE__*/React.createElement("span", {
-      className: "text-xs md:text-sm text-slate-200 font-bold truncate"
-    }, p.name.split(' ')[0]), /*#__PURE__*/React.createElement("span", {
-      className: `px-3 py-1 rounded-lg text-sm md:text-base font-num font-black ${getTendencyBadgeStyle(val)}`
+      className: `px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
   }))))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
     position: "right"

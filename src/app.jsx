@@ -2966,9 +2966,9 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
 
   const minCompareWidth =
     adjustedCompareList.length <= 2 ? 'w-full' :
-      adjustedCompareList.length === 3 ? 'min-w-[620px] sm:min-w-0 w-full' :
-        adjustedCompareList.length === 4 ? 'min-w-[820px] sm:min-w-0 w-full' :
-          'min-w-[1020px] sm:min-w-0 w-full';
+      adjustedCompareList.length === 3 ? 'min-w-[580px] w-full' :
+        adjustedCompareList.length === 4 ? 'min-w-[760px] w-full' :
+          'min-w-[950px] w-full';
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
@@ -3255,16 +3255,13 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                             const pct = Math.min(100, Math.round((val / grp.maxPossSub) * 100));
 
                             return (
-                              <div key={p.id} className="p-2.5 space-y-1.5">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-xs md:text-sm text-slate-200 font-bold truncate">{p.name.split(' ')[0]}</span>
-                                  <div className="flex items-center gap-1.5">
-                                    <span className="font-num font-black text-white text-base md:text-lg">{val}</span>
-                                    {renderRankBadge(val, detailVals)}
-                                  </div>
+                              <div key={p.id} className="p-2 space-y-1 text-center">
+                                <div className="flex items-center justify-center gap-1">
+                                  <span className="font-num font-black text-white text-sm md:text-base">{val}</span>
+                                  {renderRankBadge(val, detailVals)}
                                 </div>
 
-                                <div className="w-full bg-[#070a10] rounded-full h-2.5 md:h-3 overflow-hidden relative border border-slate-800">
+                                <div className="w-full bg-[#070a10] rounded-full h-2 md:h-2.5 overflow-hidden relative border border-slate-800">
                                   <div
                                     className={`h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`}
                                     style={{ width: `${pct}%` }}
@@ -3310,9 +3307,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                     const val = getPlayerPlayTendency(p, item.key);
 
                     return (
-                      <div key={p.id} className="p-2.5 flex items-center justify-between">
-                        <span className="text-xs md:text-sm text-slate-200 font-bold truncate">{p.name.split(' ')[0]}</span>
-                        <span className={`px-3 py-1 rounded-lg text-sm md:text-base font-num font-black ${getTendencyBadgeStyle(val)}`}>
+                      <div key={p.id} className="p-2 flex items-center justify-center">
+                        <span className={`px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`}>
                           {formatTendencyVal(val)}
                         </span>
                       </div>
