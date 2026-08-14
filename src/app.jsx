@@ -3275,7 +3275,6 @@ function PlayerCompareModal({ compareList, onClose, onRemove }) {
                           })}
                         </div>
                       </div>
-                    </div>
                     );
                   })}
                 </div>
