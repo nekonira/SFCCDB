@@ -2997,22 +2997,26 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
       <div className="max-w-6xl w-full mx-auto my-auto px-2">
         <div className="glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3">
-            <div>
-              <h2 className="text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white flex items-center gap-2">
-                <Icon name="compare" className="w-6 h-6 text-[#00FF66]" />
-                選手能力値 & プレー意識 比較表
-              </h2>
-              <p className="text-xs text-slate-400 mt-0.5 flex items-center gap-3">
-                <span className="text-red-500 font-bold">1位 ★BEST</span>
-                <span className="text-amber-400 font-bold">2位 2ND</span>
-                <span className="text-[#00E5FF] font-bold">3位 3RD</span>
-              </p>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40 flex-shrink-0">
+                  <Icon name="compare" className="w-5 h-5 text-[#00FF66]" />
+                </div>
+                <h2 className="text-base sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white leading-tight">
+                  選手能力値 ＆ プレー意識 比較表
+                </h2>
+              </div>
+              <div className="flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 pl-0.5 flex-wrap">
+                <span className="text-red-400 font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span>1位 ★BEST</span>
+                <span className="text-amber-400 font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-400"></span>2位 2ND</span>
+                <span className="text-[#00E5FF] font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#00E5FF]"></span>3位 3RD</span>
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={onClearAll}
-                className="px-3 py-1 rounded-lg text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer"
+                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer"
                 title="比較対象をすべて解除"
               >
                 🗑️ 全クリア
