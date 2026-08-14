@@ -3202,10 +3202,9 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                 );
               })}
             </div>
-          </div>
 
           {/* 主要能力 + 直下の18種詳細能力 グラフ表示 */}
-        <div className="space-y-6">
+          <div className="space-y-6">
           {statGroups.map(grp => {
             const allCatTotals = adjustedCompareList.map(p => getCategoryTotal(p, grp.key));
 
