@@ -2105,8 +2105,63 @@ function PlayerDBTab({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-3.5 h-3.5"
-  }), "フィルターリセット")), viewMode === 'table' ? /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full"
+  }), "フィルターリセット")), viewMode === 'table' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "md:hidden space-y-2.5"
+  }, filteredPlayers.map((p, idx) => {
+    const isCompared = compareList.some(item => item.id === p.id);
+    const totalStats = getPlayerTotalStats18(p);
+    return /*#__PURE__*/React.createElement("div", {
+      key: `${p.id}_mb_${idx}`,
+      onClick: () => setSelectedPlayer(p),
+      className: `glass-panel p-3 rounded-2xl border transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-[0.99] ${isCompared ? 'border-[#00FF66] bg-[#00FF66]/10 shadow-lg shadow-[#00FF66]/10' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700'}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2.5 min-w-0 flex-1"
+    }, /*#__PURE__*/React.createElement(PlayerAvatar, {
+      player: p,
+      className: "w-12 h-16 rounded-xl object-contain bg-slate-950 border border-slate-700 flex-shrink-0 shadow-md"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "min-w-0 flex-1"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5 flex-wrap"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "px-1.5 py-0.5 rounded text-[10px] font-num font-black bg-slate-900 text-[#00FF66] border border-[#00FF66]/30"
+    }, p.mainPosition), /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] font-num font-extrabold text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/30"
+    }, p.rarity), p.nationality && /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] text-slate-400 font-semibold truncate"
+    }, "🌐 ", p.nationality)), /*#__PURE__*/React.createElement("div", {
+      className: "font-black text-sm text-white truncate mt-1"
+    }, p.name), /*#__PURE__*/React.createElement("div", {
+      className: "text-[10px] text-purple-300 font-bold truncate mt-0.5"
+    }, p.playStyle || 'スタイル未設定', " ", /*#__PURE__*/React.createElement("span", {
+      className: "text-[#00FF66]"
+    }, "LV.", p.playStyleLevel)))), /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2 flex-shrink-0"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-center bg-slate-950/90 px-2 py-1 rounded-xl border border-slate-800"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-[8px] text-slate-400 font-extrabold uppercase tracking-tight"
+    }, "カタログ"), /*#__PURE__*/React.createElement("div", {
+      className: "text-sm font-black font-num text-[#00FF66]"
+    }, p.overall)), /*#__PURE__*/React.createElement("div", {
+      className: "text-center bg-slate-950/90 px-2 py-1 rounded-xl border border-slate-800"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-[8px] text-slate-400 font-extrabold uppercase tracking-tight"
+    }, "合計実数値"), /*#__PURE__*/React.createElement("div", {
+      className: "text-sm font-black font-num text-[#00E5FF]"
+    }, totalStats)), /*#__PURE__*/React.createElement("button", {
+      onClick: e => {
+        e.stopPropagation();
+        toggleCompare(p);
+      },
+      className: `p-2 rounded-xl text-xs font-bold transition-all ${isCompared ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-400 hover:text-white border border-slate-700'}`,
+      title: "比較表に追加"
+    }, /*#__PURE__*/React.createElement(Icon, {
+      name: "compare",
+      className: "w-4 h-4"
+    }))));
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "hidden md:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full"
   }, /*#__PURE__*/React.createElement("table", {
     className: "w-full text-left text-xs"
   }, /*#__PURE__*/React.createElement("thead", {
@@ -2229,7 +2284,7 @@ function PlayerDBTab({
       onClick: () => setSelectedPlayer(p),
       className: "px-2.5 py-1.5 rounded text-xs font-bold bg-[#00E5FF]/20 text-[#00E5FF] hover:bg-[#00E5FF]/30 border border-[#00E5FF]/30"
     }, "詳細")));
-  })))) : /*#__PURE__*/React.createElement("div", {
+  }))))) : /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
   }, filteredPlayers.map((player, idx) => /*#__PURE__*/React.createElement(PlayerCard, {
     key: `${player.id}_${idx}`,
