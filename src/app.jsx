@@ -2979,23 +2979,10 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
 
-  const colCountClass =
-    adjustedCompareList.length === 1 ? 'grid-cols-1' :
-      adjustedCompareList.length === 2 ? 'grid-cols-2 divide-x divide-slate-800/80' :
-        adjustedCompareList.length === 3 ? 'grid-cols-3 divide-x divide-slate-800/80' :
-          adjustedCompareList.length === 4 ? 'grid-cols-4 divide-x divide-slate-800/80' :
-            'grid-cols-5 divide-x divide-slate-800/80';
-
-  const minCompareWidth =
-    adjustedCompareList.length <= 2 ? 'w-full' :
-      adjustedCompareList.length === 3 ? 'min-w-[580px] w-full' :
-        adjustedCompareList.length === 4 ? 'min-w-[760px] w-full' :
-          'min-w-[950px] w-full';
-
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
       <div className="max-w-6xl w-full mx-auto my-auto px-2">
-        <div className="glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl">
+        <div className="glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-5 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl">
           {/* モーダルヘッダー（左右対称・完全中央配置デザイン） */}
           <div className="border-b border-slate-800 pb-4 space-y-3">
             <div className="flex items-center justify-between gap-2">
@@ -3060,307 +3047,193 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
             </div>
           </div>
 
-          {/* 比較コンテンツ全体の統一横スクロールコンテナ */}
+          {/* 横スクロール案内（モバイル） */}
           {adjustedCompareList.length >= 3 && (
-            <div className="sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center mb-2">
+            <div className="sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center">
               ← 左右スワイプで全選手を並べて比較できます →
             </div>
           )}
 
-          <div className="overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700">
-            <div className={`space-y-6 ${minCompareWidth}`}>
-              {/* 1. 比較カードヘッダー */}
-              <div className={`grid gap-3 ${colCountClass}`}>
-              {adjustedCompareList.map(p => {
-                const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
-                const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
-                const mainStyle = p.style || p.playStyle || "スタイル未設定";
-                const abilities = getPlayerAbilities(p);
-
-                return (
-                  <div key={p.id} className="glass-panel p-3 rounded-2xl border border-slate-800 space-y-3 relative group">
-                    <button
-                      onClick={() => onRemove(p)}
-                      className="absolute top-2 right-2 z-10 p-1.5 rounded-full bg-slate-900/90 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
-                      title="この選手を比較から外す"
-                    >
-                      <Icon name="x" className="w-3.5 h-3.5" />
-                    </button>
-
-                    <div className="flex flex-col items-center text-center space-y-2 pt-1">
-                      <div className="relative">
-                        <PlayerAvatar player={p} className="w-16 h-22 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-xl" />
-                        <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-black ${getRarityBadgeStyle(currentRarity)}`}>
-                          {currentRarity}
-                        </span>
-                      </div>
-
-                      <div className="pt-2 w-full">
-                        <div className="text-sm font-black text-white truncate">{p.name}</div>
-                        <div className="text-[11px] text-[#00FF66] font-bold mt-0.5">{p.position} | {mainStyle}</div>
-                      </div>
-
-                      {/* 総合値 & 18種能力合計 */}
-                      <div className="grid grid-cols-2 gap-1.5 w-full pt-1">
-                        <div className="bg-slate-950/80 p-1.5 rounded-lg border border-slate-800/80 text-center">
-                          <div className="text-[9px] text-slate-400 font-extrabold uppercase">総合値</div>
-                          <div className="text-base font-black font-num text-[#00FF66] flex items-center justify-center gap-1">
-                            {p.overall}
-                            {renderRankBadge(p.overall, allCatalogOveralls)}
-                          </div>
-                        </div>
-                        <div className="bg-slate-950/80 p-1.5 rounded-lg border border-slate-800/80 text-center">
-                          <div className="text-[9px] text-slate-400 font-extrabold uppercase">18種合計</div>
-                          <div className="text-base font-black font-num text-[#00E5FF] flex items-center justify-center gap-1">
-                            {getPlayerTotalStats18(p)}
-                            {renderRankBadge(getPlayerTotalStats18(p), allTotalStats18)}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* レアリティ＆個別強化シミュレーション操作バー */}
-                      <div className="w-full space-y-1.5 pt-1 border-t border-slate-800/80 mt-1">
-                        <div className="flex items-center justify-between gap-1">
-                          <span className="text-[9px] text-slate-400 font-bold">レア指定:</span>
-                          <div className="flex gap-0.5">
-                            {['☆3', '☆4', '☆5'].map(r => (
-                              <button
-                                key={r}
-                                onClick={() => {
-                                  setPlayerRarityMap(prev => ({ ...prev, [p.id]: r }));
-                                }}
-                                disabled={isEnhanced}
-                                className={`px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r
-                                  ? 'bg-[#00FF66] text-slate-950 shadow'
-                                  : 'bg-slate-800 text-slate-400 hover:text-white'
-                                  } ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
-                              >
-                                {r}
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-
-                        <button
-                          onClick={() => {
-                            setPlayerEnhancedMap(prev => ({
-                              ...prev,
-                              [p.id]: !isEnhanced
-                            }));
-                          }}
-                          className={`w-full py-1 rounded-lg text-[10px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced
-                            ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow'
-                            : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
-                            }`}
-                        >
-                          {isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示'}
-                        </button>
-                      </div>
-
-                      {/* 特徴 & スキル一覧 */}
-                      <div className="w-full text-left space-y-2 pt-2 border-t border-slate-800/80">
-                        {/* 所持スキル */}
-                        <div className="space-y-1 bg-slate-900/60 p-2 rounded-lg border border-slate-800/80">
-                          <div className="text-[9px] text-slate-400 font-bold flex items-center gap-1">
-                            <span>⚽ 所持スキル</span>
-                          </div>
-                          {p.skills && p.skills.length > 0 ? (
-                            <div className="space-y-1">
-                              {p.skills.map((s, i) => (
-                                <div key={i} className="text-[10px] bg-slate-950/80 p-1 rounded border border-slate-800 text-slate-200 font-semibold flex items-center justify-between">
-                                  <span>{s.name || s}</span>
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <div className="text-[10px] text-slate-500 italic">なし</div>
-                          )}
-                        </div>
-
-                        {/* 所持アビリティ */}
-                        <div className="space-y-1.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800/80">
-                          <div className="text-[9px] text-slate-400 font-bold flex items-center gap-1">
-                            <span>✨ 所持アビリティ ({abilities.length})</span>
-                          </div>
-                          {abilities && abilities.length > 0 ? (
-                            <div className="space-y-2">
-                              {abilities.map((ab, i) => (
-                                <div key={i} className="space-y-1 bg-slate-950/60 p-1.5 rounded border border-slate-800/50">
-                                  <div className="flex items-center gap-1.5 flex-wrap">
-                                    <span className={`px-1.5 py-0.2 rounded text-[9px] ${getRankBadgeStyle(ab.rank)}`}>
-                                      {ab.rank}
-                                    </span>
-                                    <span className={`text-[11px] font-bold ${getRankTextStyle(ab.rank)}`}>
-                                      {ab.name}
-                                    </span>
-                                  </div>
-                                  {ab.description && (
-                                    <div className="text-[9px] text-slate-300 leading-relaxed">
-                                      {ab.description}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          ) : (
-                            <div className="text-[10px] text-slate-500 italic">なし</div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-          {/* 主要能力 + 直下の18種詳細能力 グラフ表示 */}
-          <div className="space-y-6">
-          {statGroups.map(grp => {
-            const allCatTotals = adjustedCompareList.map(p => getCategoryTotal(p, grp.key));
-
-            return (
-              <div key={grp.key} className="glass-panel p-4 rounded-2xl border border-slate-800 space-y-4 shadow-lg">
-                <div className="space-y-2.5">
-                  <div className="text-sm md:text-base font-black text-[#00FF66] uppercase tracking-wider flex items-center justify-between border-b border-slate-800/80 pb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-[#00FF66] shadow-sm shadow-[#00FF66]/50"></span>
-                      {grp.label}
-                    </div>
-                  </div>
-
-                  {/* 主要能力バーグラフ */}
-                  <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800 overflow-hidden ${colCountClass}`}>
-                    {adjustedCompareList.map(p => {
-                      const catTot = getCategoryTotal(p, grp.key);
-                      const pct = Math.min(100, Math.round((catTot / grp.maxPossTotal) * 100));
-
-                      return (
-                        <div key={p.id} className="p-3 space-y-2 relative">
-                          <div className="flex justify-between items-center">
-                            <span className="text-xs md:text-sm font-black text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/30">
-                              {grp.catName}合計
-                            </span>
-                            <div className="flex items-center gap-1.5">
-                              <span className="text-white font-num font-black text-lg md:text-xl">{catTot}</span>
-                              {renderRankBadge(catTot, allCatTotals)}
-                            </div>
-                          </div>
-
-                          {/* グラフメーター本体 */}
-                          <div className="w-full bg-[#070a10] rounded-full h-3 md:h-3.5 overflow-hidden relative border border-slate-800">
-                            <div className="absolute inset-0 grid grid-cols-4 divide-x divide-slate-800/60 pointer-events-none"><div></div><div></div><div></div></div>
-                            <div
-                              className={`h-full rounded-full transition-all ${getRankBarStyle(catTot, allCatTotals)}`}
-                              style={{ width: `${pct}%` }}
-                            ></div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* 18種詳細能力 グラフ */}
-                <div className="pt-3 border-t border-slate-800/80 space-y-3">
-                  {grp.details.map(dt => {
-                    const detailVals = adjustedCompareList.map(p => {
-                      if (p.detailStats && p.detailStats[grp.key]) {
-                        return p.detailStats[grp.key][dt.subKey] || 0;
-                      }
-                      return 0;
-                    });
-
-                    const hasGKInList = adjustedCompareList.some(p => p.mainPosition === 'GK' || p.category === 'GK');
-                    const allGKInList = adjustedCompareList.every(p => p.mainPosition === 'GK' || p.category === 'GK');
-
-                    let displayLabel = dt.label;
-                    if (grp.key === 'defense' && dt.gkLabel) {
-                      if (allGKInList) {
-                        displayLabel = dt.gkLabel;
-                      } else if (hasGKInList) {
-                        displayLabel = `${dt.label} / ${dt.gkLabel}`;
-                      }
-                    }
+          {/* PC・スマホ共通 統一サイドバイサイド比較テーブル */}
+          <div className="overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800">
+            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+              <thead>
+                <tr className="border-b border-slate-800 bg-slate-900/90">
+                  <th className="p-3 w-40 min-w-[140px] bg-slate-900 text-xs font-black text-slate-400 uppercase tracking-wider sticky left-0 z-20 backdrop-blur-md border-r border-slate-800 shadow-md">
+                    比較項目
+                  </th>
+                  {adjustedCompareList.map(p => {
+                    const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
+                    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+                    const mainStyle = p.style || p.playStyle || "スタイル未設定";
 
                     return (
-                      <div key={dt.subKey} className="space-y-1.5 bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800/80">
-                        <div className="text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5">
-                          <span className="text-[#00FF66]">▶</span> {displayLabel}
+                      <th key={p.id} className="p-3 min-w-[170px] bg-slate-900/60 text-center align-top border-r border-slate-800/80 last:border-r-0">
+                        <div className="flex flex-col items-center space-y-2 relative group">
+                          <button
+                            onClick={() => onRemove(p)}
+                            className="absolute -top-1 -right-1 z-10 p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
+                            title="比較から外す"
+                          >
+                            <Icon name="x" className="w-3.5 h-3.5" />
+                          </button>
+
+                          <div className="relative">
+                            <PlayerAvatar player={p} className="w-14 h-20 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md" />
+                            <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`}>
+                              {currentRarity}
+                            </span>
+                          </div>
+
+                          <div className="pt-2.5 w-full">
+                            <div className="text-sm font-black text-white truncate max-w-[160px] mx-auto">{p.name}</div>
+                            <div className="text-[10px] text-[#00FF66] font-bold mt-0.5">{p.mainPosition} | {mainStyle}</div>
+                          </div>
+
+                          {/* レア度＆強化シミュレーションボタン */}
+                          <div className="w-full space-y-1 pt-1.5 border-t border-slate-800/80">
+                            <div className="flex items-center justify-center gap-1">
+                              {['☆3', '☆4', '☆5'].map(r => (
+                                <button
+                                  key={r}
+                                  onClick={() => setPlayerRarityMap(prev => ({ ...prev, [p.id]: r }))}
+                                  disabled={isEnhanced}
+                                  className={`px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r
+                                    ? 'bg-[#00FF66] text-slate-950 shadow'
+                                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                                    } ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+                                >
+                                  {r}
+                                </button>
+                              ))}
+                            </div>
+                            <button
+                              onClick={() => setPlayerEnhancedMap(prev => ({ ...prev, [p.id]: !isEnhanced }))}
+                              className={`w-full py-0.5 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced
+                                ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow'
+                                : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
+                                }`}
+                            >
+                              {isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示'}
+                            </button>
+                          </div>
                         </div>
-                        <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`}>
+                      </th>
+                    );
+                  })}
+                </tr>
+              </thead>
+              <tbody>
+                {/* 1. 総合値 ＆ 能力合計 */}
+                <tr className="border-b border-slate-800 bg-slate-900/40">
+                  <td className="p-3 font-black text-[#00FF66] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                    カタログ総合力
+                  </td>
+                  {adjustedCompareList.map(p => (
+                    <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00FF66]">
+                      {p.overall} {renderRankBadge(p.overall, allCatalogOveralls)}
+                    </td>
+                  ))}
+                </tr>
+                <tr className="border-b border-slate-800 bg-slate-900/40">
+                  <td className="p-3 font-black text-[#00E5FF] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                    18項目 能力合計
+                  </td>
+                  {adjustedCompareList.map((p, idx) => (
+                    <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00E5FF]">
+                      {allTotalStats18[idx].toLocaleString()} {renderRankBadge(allTotalStats18[idx], allTotalStats18)}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* 2. 各能力カテゴリ ＆ 18詳細能力 */}
+                {statGroups.map(grp => (
+                  <React.Fragment key={grp.key}>
+                    {/* カテゴリ合計行 */}
+                    <tr className="bg-slate-900/90 border-t-2 border-b border-slate-800">
+                      <td className="p-3 font-black text-amber-300 text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66]"></span>
+                        {grp.label}
+                      </td>
+                      {adjustedCompareList.map(p => {
+                        const catTot = getCategoryTotal(p, grp.key);
+                        const allCatTotals = adjustedCompareList.map(item => getCategoryTotal(item, grp.key));
+                        return (
+                          <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black text-base text-amber-300">
+                            {catTot} {renderRankBadge(catTot, allCatTotals)}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* 18詳細能力行 */}
+                    {grp.details.map(dt => {
+                      const isGkRow = (grp.key === 'defense');
+                      const detailVals = adjustedCompareList.map(p => {
+                        if (p.detailStats && p.detailStats[grp.key]) {
+                          return p.detailStats[grp.key][dt.subKey] || 0;
+                        }
+                        return 0;
+                      });
+
+                      return (
+                        <tr key={dt.subKey} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
+                          <td className="p-2.5 text-xs font-bold text-slate-300 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
+                            ▶ {dt.label}
+                          </td>
                           {adjustedCompareList.map((p, idx) => {
                             const val = detailVals[idx];
                             const pct = Math.min(100, Math.round((val / grp.maxPossSub) * 100));
 
                             return (
-                              <div key={p.id} className="p-2 space-y-1 text-center">
-                                <div className="flex items-center justify-center gap-1">
+                              <td key={p.id} className="p-2.5 text-center border-r border-slate-800/40">
+                                <div className="flex items-center justify-center gap-1.5">
                                   <span className="font-num font-black text-white text-sm md:text-base">{val}</span>
                                   {renderRankBadge(val, detailVals)}
                                 </div>
-
-                                <div className="w-full bg-[#070a10] rounded-full h-2 md:h-2.5 overflow-hidden relative border border-slate-800">
-                                  <div
-                                    className={`h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`}
-                                    style={{ width: `${pct}%` }}
-                                  ></div>
+                                <div className="w-full bg-[#070a10] rounded-full h-2 mt-1 overflow-hidden border border-slate-800">
+                                  <div className={`h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`} style={{ width: `${pct}%` }}></div>
                                 </div>
-                              </div>
+                              </td>
                             );
                           })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                        </tr>
+                      );
+                    })}
+                  </React.Fragment>
+                ))}
 
-        {/* 🧠 プレー意識 (14項目) 対比セクション */}
-        <div className="glass-panel p-4 rounded-2xl border border-amber-500/40 space-y-4 shadow-xl">
-          <div className="text-xs font-extrabold text-amber-400 uppercase tracking-wider flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2">
-            <div className="flex items-center gap-2">
-              <Icon name="brain" className="w-5 h-5 text-amber-400" />
-              🧠 プレー意識 14項目 対比 (-2 〜 +2)
-            </div>
-            <div className="flex items-center gap-1.5 text-[10px] font-num font-extrabold flex-wrap">
-              <span className="text-red-400 bg-red-500/20 px-1.5 py-0.5 rounded border border-red-500/40">+2:赤</span>
-              <span className="text-orange-400 bg-orange-500/20 px-1.5 py-0.5 rounded border border-orange-500/40">+1:橙</span>
-              <span className="text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">0:灰</span>
-              <span className="text-cyan-300 bg-cyan-500/20 px-1.5 py-0.5 rounded border border-cyan-500/40">-1:水</span>
-              <span className="text-blue-400 bg-blue-500/20 px-1.5 py-0.5 rounded border border-blue-500/40">-2:青</span>
-            </div>
-          </div>
-
-          <div className="space-y-3">
-            {PLAY_TENDENCY_ITEMS.map(item => (
-              <div key={item.key} className="space-y-1.5 bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800/80">
-                <div className="text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5">
-                  <span className="text-amber-400">🧠</span> {item.label}
-                </div>
-                <div className={`grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`}>
-                  {adjustedCompareList.map(p => {
-                    const val = getPlayerPlayTendency(p, item.key);
-
-                    return (
-                      <div key={p.id} className="p-2 flex items-center justify-center">
-                        <span className={`px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`}>
-                          {formatTendencyVal(val)}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
+                {/* 3. プレー意識 14項目 */}
+                <tr className="bg-amber-500/10 border-t-2 border-b border-amber-500/30">
+                  <td colSpan={adjustedCompareList.length + 1} className="p-2.5 font-extrabold text-amber-400 text-xs tracking-wider uppercase">
+                    🧠 プレー意識 14項目 対比 (-2 〜 +2)
+                  </td>
+                </tr>
+                {PLAY_TENDENCY_ITEMS.map(item => {
+                  const vals = adjustedCompareList.map(p => getPlayerPlayTendency(p, item.key));
+                  return (
+                    <tr key={item.key} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
+                      <td className="p-2.5 text-xs font-bold text-amber-200 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
+                        🧠 {item.label}
+                      </td>
+                      {adjustedCompareList.map((p, idx) => {
+                        const val = vals[idx];
+                        return (
+                          <td key={p.id} className="p-2 text-center border-r border-slate-800/40">
+                            <span className={`px-2.5 py-0.5 rounded-lg text-xs font-num font-black ${getTendencyBadgeStyle(val)}`}>
+                              {formatTendencyVal(val)}
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
-);
+  );
 }

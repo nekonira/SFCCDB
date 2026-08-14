@@ -3054,29 +3054,50 @@ function PlayerCompareModal({
   };
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
-  const colCountClass = adjustedCompareList.length === 1 ? 'grid-cols-1' : adjustedCompareList.length === 2 ? 'grid-cols-2 divide-x divide-slate-800/80' : adjustedCompareList.length === 3 ? 'grid-cols-3 divide-x divide-slate-800/80' : adjustedCompareList.length === 4 ? 'grid-cols-4 divide-x divide-slate-800/80' : 'grid-cols-5 divide-x divide-slate-800/80';
-  const minCompareWidth = adjustedCompareList.length <= 2 ? 'w-full' : adjustedCompareList.length === 3 ? 'min-w-[580px] w-full' : adjustedCompareList.length === 4 ? 'min-w-[760px] w-full' : 'min-w-[950px] w-full';
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl w-full mx-auto my-auto px-2"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-6 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl"
+    className: "glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-5 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-3"
+    className: "border-b border-slate-800 pb-4 space-y-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "space-y-1"
+    className: "flex items-center justify-between gap-2"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2"
+    className: "flex items-center gap-2 flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "p-1.5 rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40 flex-shrink-0"
+    className: "p-1.5 rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "compare",
     className: "w-5 h-5 text-[#00FF66]"
-  })), /*#__PURE__*/React.createElement("h2", {
-    className: "text-base sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white leading-tight"
-  }, "選手能力値 ＆ プレー意識 比較表")), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 pl-0.5 flex-wrap"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-bold text-[#00FF66] tracking-wider uppercase hidden sm:inline-block"
+  }, "比較表")), /*#__PURE__*/React.createElement("h2", {
+    className: "text-base sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white text-center leading-tight flex-1"
+  }, "選手能力値 ＆ プレー意識 比較表"), /*#__PURE__*/React.createElement("button", {
+    onClick: onClose,
+    className: "p-2 rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0",
+    title: "閉じる"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    className: "w-5 h-5"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap items-center justify-center gap-2.5 pt-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsGlobalMaxEnhanced(false),
+    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
+  }, "🌱 初期値"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsGlobalMaxEnhanced(true),
+    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
+  }, "⚡ 最大強化")), /*#__PURE__*/React.createElement("button", {
+    onClick: onClearAll,
+    className: "px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
+    title: "比較対象をすべて解除"
+  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-slate-800"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-red-400 font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
@@ -3089,106 +3110,57 @@ function PlayerCompareModal({
     className: "text-[#00E5FF] font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-[#00E5FF]"
-  }), "3位 3RD"))), /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-wrap items-center gap-2"
-  }, /*#__PURE__*/React.createElement("button", {
-    onClick: onClearAll,
-    className: "px-3 py-1 rounded-lg text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
-    title: "比較対象をすべて解除"
-  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40"
-  }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => setIsGlobalMaxEnhanced(false),
-    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
-  }, "🌱 全員初期値"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setIsGlobalMaxEnhanced(true),
-    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
-  }, "⚡ 全員最大強化 (★5+完凸)")), /*#__PURE__*/React.createElement("button", {
-    onClick: onClose,
-    className: "p-2 rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer",
-    title: "閉じる"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "x",
-    className: "w-5 h-5"
-  }))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
-    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center mb-2"
+  }), "3位 3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
   }, "← 左右スワイプで全選手を並べて比較できます →"), /*#__PURE__*/React.createElement("div", {
-    className: "overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `space-y-6 ${minCompareWidth}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-3 ${colCountClass}`
-  }, adjustedCompareList.map(p => {
+    className: "overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800"
+  }, /*#__PURE__*/React.createElement("table", {
+    className: "w-full min-w-[640px] border-collapse text-left text-sm"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 bg-slate-900/90"
+  }, /*#__PURE__*/React.createElement("th", {
+    className: "p-3 w-40 min-w-[140px] bg-slate-900 text-xs font-black text-slate-400 uppercase tracking-wider sticky left-0 z-20 backdrop-blur-md border-r border-slate-800 shadow-md"
+  }, "比較項目"), adjustedCompareList.map(p => {
     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
     const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
     const mainStyle = p.style || p.playStyle || "スタイル未設定";
-    const abilities = getPlayerAbilities(p);
-    return /*#__PURE__*/React.createElement("div", {
+    return /*#__PURE__*/React.createElement("th", {
       key: p.id,
-      className: "glass-panel p-3 rounded-2xl border border-slate-800 space-y-3 relative group"
+      className: "p-3 min-w-[170px] bg-slate-900/60 text-center align-top border-r border-slate-800/80 last:border-r-0"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col items-center space-y-2 relative group"
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => onRemove(p),
-      className: "absolute top-2 right-2 z-10 p-1.5 rounded-full bg-slate-900/90 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer",
-      title: "この選手を比較から外す"
+      className: "absolute -top-1 -right-1 z-10 p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer",
+      title: "比較から外す"
     }, /*#__PURE__*/React.createElement(Icon, {
       name: "x",
       className: "w-3.5 h-3.5"
     })), /*#__PURE__*/React.createElement("div", {
-      className: "flex flex-col items-center text-center space-y-2 pt-1"
-    }, /*#__PURE__*/React.createElement("div", {
       className: "relative"
     }, /*#__PURE__*/React.createElement(PlayerAvatar, {
       player: p,
-      className: "w-16 h-22 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-xl"
+      className: "w-14 h-20 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md"
     }), /*#__PURE__*/React.createElement("span", {
-      className: `absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[10px] font-black ${getRarityBadgeStyle(currentRarity)}`
+      className: `absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`
     }, currentRarity)), /*#__PURE__*/React.createElement("div", {
-      className: "pt-2 w-full"
+      className: "pt-2.5 w-full"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "text-sm font-black text-white truncate"
+      className: "text-sm font-black text-white truncate max-w-[160px] mx-auto"
     }, p.name), /*#__PURE__*/React.createElement("div", {
-      className: "text-[11px] text-[#00FF66] font-bold mt-0.5"
-    }, p.position, " | ", mainStyle)), /*#__PURE__*/React.createElement("div", {
-      className: "grid grid-cols-2 gap-1.5 w-full pt-1"
+      className: "text-[10px] text-[#00FF66] font-bold mt-0.5"
+    }, p.mainPosition, " | ", mainStyle)), /*#__PURE__*/React.createElement("div", {
+      className: "w-full space-y-1 pt-1.5 border-t border-slate-800/80"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "bg-slate-950/80 p-1.5 rounded-lg border border-slate-800/80 text-center"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] text-slate-400 font-extrabold uppercase"
-    }, "総合値"), /*#__PURE__*/React.createElement("div", {
-      className: "text-base font-black font-num text-[#00FF66] flex items-center justify-center gap-1"
-    }, p.overall, renderRankBadge(p.overall, allCatalogOveralls))), /*#__PURE__*/React.createElement("div", {
-      className: "bg-slate-950/80 p-1.5 rounded-lg border border-slate-800/80 text-center"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] text-slate-400 font-extrabold uppercase"
-    }, "18種合計"), /*#__PURE__*/React.createElement("div", {
-      className: "text-base font-black font-num text-[#00E5FF] flex items-center justify-center gap-1"
-    }, getPlayerTotalStats18(p), renderRankBadge(getPlayerTotalStats18(p), allTotalStats18)))), /*#__PURE__*/React.createElement("div", {
-      className: "w-full space-y-1.5 pt-1 border-t border-slate-800/80 mt-1"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "flex items-center justify-between gap-1"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "text-[9px] text-slate-400 font-bold"
-    }, "レア指定:"), /*#__PURE__*/React.createElement("div", {
-      className: "flex gap-0.5"
+      className: "flex items-center justify-center gap-1"
     }, ['☆3', '☆4', '☆5'].map(r => /*#__PURE__*/React.createElement("button", {
       key: r,
-      onClick: () => {
-        setPlayerRarityMap(prev => ({
-          ...prev,
-          [p.id]: r
-        }));
-      },
+      onClick: () => setPlayerRarityMap(prev => ({
+        ...prev,
+        [p.id]: r
+      })),
       disabled: isEnhanced,
       className: `px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-800 text-slate-400 hover:text-white'} ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`
-    }, r)))), /*#__PURE__*/React.createElement("button", {
-      onClick: () => {
-        setPlayerEnhancedMap(prev => ({
-          ...prev,
-          [p.id]: !isEnhanced
-        }));
-      },
-      className: `w-full py-1 rounded-lg text-[10px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'}`
-    }, isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示')), /*#__PURE__*/React.createElement("div", {
       className: "w-full text-left space-y-2 pt-2 border-t border-slate-800/80"
     }, /*#__PURE__*/React.createElement("div", {
       className: "space-y-1 bg-slate-900/60 p-2 rounded-lg border border-slate-800/80"
@@ -3350,5 +3322,5 @@ function PlayerCompareModal({
     }, /*#__PURE__*/React.createElement("span", {
       className: `px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
-  })))))))))));
+  }))))))))))))));
 }
