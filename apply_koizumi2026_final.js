@@ -1,0 +1,100 @@
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+
+console.log('=== APPLYING FINAL UPDATE FOR KOIZUMI 2026 (p190) ===');
+
+// 1. Update image in src/data/koizumi2026Image.js
+const newImagePath = "C:\\Users\\nekon\\.gemini\\antigravity-ide\\brain\\e536f7dd-c90e-4781-98c2-370755852efb\\media__1786026227086.png";
+const imageJsPath = path.join(__dirname, 'src', 'data', 'koizumi2026Image.js');
+
+const bytes = fs.readFileSync(newImagePath);
+const base64 = bytes.toString('base64');
+const dataUrl = `data:image/png;base64,${base64}`;
+const imageJsContent = `window.KOIZUMI_2026_IMAGE = ${JSON.stringify(dataUrl)};\n`;
+
+fs.writeFileSync(imageJsPath, imageJsContent, 'utf-8');
+console.log('1. koizumi2026Image.js updated with latest card image. Size:', fs.statSync(imageJsPath).size);
+
+// 2. Ensure position in mockData.js is AM (OMF) and playStyle is パサーAM
+const mockPath = path.join(__dirname, 'src', 'data', 'mockData.js');
+let mockCode = fs.readFileSync(mockPath, 'utf-8');
+
+const p190Idx = mockCode.indexOf("id: 'p190'");
+if (p190Idx === -1) {
+  console.error("Could not find p190 in mockData.js!");
+  process.exit(1);
+}
+
+const p190AvatarIdx = mockCode.indexOf("avatarUrl:", p190Idx);
+const p190EndIdx = mockCode.indexOf("}", p190AvatarIdx);
+
+const beforeP190 = mockCode.substring(0, p190Idx);
+const afterP190 = mockCode.substring(p190EndIdx + 1);
+
+const updatedKoizumi2026Obj = `id: 'p190',
+    name: '小泉佳穂(2026)',
+    readingName: 'こいずみよしお',
+    category: 'MF',
+    mainPosition: 'OMF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '日本',
+    policy: 'ムービング',
+    playStyle: 'パサーAM',
+    playStyleLevel: 'Ⅱ',
+    overall: 6526,
+    maxOverall: 14676,
+    baseStats: { shoot: 1222, pass: 1275, dribble: 1240, defense: 1034, physical: 1174, speed: 740 },
+    detailStats: {
+      shoot: { finishing: 403, power: 428, composure: 391 },
+      pass: { shortPass: 431, longPass: 426, accuracy: 418 },
+      dribble: { breakout: 397, keeping: 412, ballTouch: 431 },
+      defense: { tackle: 361, interception: 350, marking: 323 },
+      physical: { jumping: 361, contact: 405, stamina: 408 },
+      speed: { running: 342, agility: 398 }
+    },
+    maxEnhanced: {
+      overall: 14676,
+      baseStats: { shoot: 2767, pass: 2856, dribble: 2809, defense: 2579, physical: 2743, speed: 1774 },
+      detailStats: {
+        shoot: { finishing: 914, power: 939, composure: 914 },
+        pass: { shortPass: 966, longPass: 949, accuracy: 941 },
+        dribble: { breakout: 920, keeping: 935, ballTouch: 954 },
+        defense: { tackle: 884, interception: 861, marking: 834 },
+        physical: { jumping: 872, contact: 928, stamina: 943 },
+        speed: { running: 853, agility: 921 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '操舵のパス', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：前中・中中に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　ダイレクトショートパス成功時に受け手のシュート発生確率UP' },
+    abilities: [
+      { name: '不屈のパサー', rank: '銀', description: '発動条件：途中出場　/　ショートパス・スタミナUP' },
+      { name: '柔軟なロングパサー', rank: '銀', description: '発動条件：途中出場　/　ロングパス・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  }`;
+
+mockCode = beforeP190 + updatedKoizumi2026Obj + afterP190;
+fs.writeFileSync(mockPath, mockCode, 'utf-8');
+console.log('2. mockData.js updated with p190 (OMF / パサーAM) in UTF-8.');
+
+// Verification
+const sandbox = { window: {} };
+sandbox.window = sandbox;
+vm.createContext(sandbox);
+
+vm.runInContext(mockCode, sandbox);
+const p190 = sandbox.window.INITIAL_PLAYERS.find(p => p.id === 'p190');
+console.log('3. Verification of p190 in mockData:', p190 ? `${p190.name} (${p190.mainPosition} / ${p190.playStyle})` : 'MISSING');
+
+const imageCode = fs.readFileSync(imageJsPath, 'utf-8');
+vm.runInContext(imageCode, sandbox);
+console.log('4. Verification of window.KOIZUMI_2026_IMAGE:', sandbox.window.KOIZUMI_2026_IMAGE ? 'LOADED' : 'MISSING');
+
+console.log('=== FINAL UPDATE SUCCESSFUL! ===');

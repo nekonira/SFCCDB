@@ -1,0 +1,173 @@
+/* サカつく2026 DB & チームビルダー カスタムスタイル */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+:root {
+  --bg-dark: #070a10;
+  --bg-card: #0e1522;
+  --bg-card-hover: #152033;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --neon-green: #00FF66;
+  --neon-green-glow: rgba(0, 255, 102, 0.35);
+  --electric-blue: #00E5FF;
+  --electric-blue-glow: rgba(0, 229, 255, 0.35);
+  --cyber-gold: #FFC700;
+}
+
+html {
+  font-size: 112.5%; /* ベースフォントサイズを拡大 (16px → 18px) */
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-dark);
+  color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+  font-size: 1rem;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-num {
+  font-family: 'Chakra Petch', 'Rajdhani', 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 1.06em;
+}
+
+/* ネオングローエフェクト */
+.neon-border-green {
+  border: 1px solid var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green-glow);
+}
+
+.neon-border-blue {
+  border: 1px solid var(--electric-blue);
+  box-shadow: 0 0 12px var(--electric-blue-glow);
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green-glow);
+}
+
+.neon-text-blue {
+  color: var(--electric-blue);
+  text-shadow: 0 0 10px var(--electric-blue-glow);
+}
+
+.glass-panel {
+  background: rgba(14, 21, 34, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(21, 32, 51, 0.8) 0%, rgba(14, 21, 34, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 255, 102, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(0, 255, 102, 0.15);
+}
+
+/* ピッチグラフィック */
+.soccer-pitch {
+  background: radial-gradient(circle at center, #11291b 0%, #0a1810 100%);
+  border: 2px solid rgba(0, 255, 102, 0.3);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.soccer-pitch::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(0, 255, 102, 0.03),
+    rgba(0, 255, 102, 0.03) 40px,
+    transparent 40px,
+    transparent 80px
+  );
+  pointer-events: none;
+}
+
+.pitch-line {
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.pitch-center-circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.pitch-half-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.pitch-penalty-area-top {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 18%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-top: none;
+}
+
+.pitch-penalty-area-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 18%;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+}
+
+/* スクロールバーのカスタマイズ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(7, 10, 16, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+/* アニメーション */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}

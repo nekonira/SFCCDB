@@ -1,0 +1,12 @@
+$path = "c:\Users\nekon\SFCCdeta\src\data\mockData.js"
+$utf8 = [System.Text.Encoding]::UTF8
+$content = [System.IO.File]::ReadAllText($path, $utf8)
+
+# Replace '精密なパサー' with '精緻なパサー'
+$oldStr = [System.Text.Encoding]::UTF8.GetString([byte[]](0xE7, 0xB2, 0xBE, 0xE5, 0xAF, 0x86, 0xE3, 0x81, 0xAA, 0xE3, 0x83, 0x91, 0xE3, 0x82, 0xB5, 0xE3, 0x83, 0xBC))
+$newStr = [System.Text.Encoding]::UTF8.GetString([byte[]](0xE7, 0xB2, 0xBE, 0xE7, 0xB7, 0xBB, 0xE3, 0x81, 0xAA, 0xE3, 0x83, 0x91, 0xE3, 0x82, 0xB5, 0xE3, 0x83, 0xBC))
+
+$newContent = $content.Replace($oldStr, $newStr)
+
+[System.IO.File]::WriteAllText($path, $newContent, $utf8)
+Write-Host "Successfully replaced all instances of 精密なパサー with 精緻なパサー!"
