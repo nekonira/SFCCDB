@@ -3089,14 +3089,14 @@ function PlayerCompareModal({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-5 h-5"
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-4"
-  }, adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
-    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
+  }))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center mb-2"
   }, "← 左右スワイプで全選手を並べて比較できます →"), /*#__PURE__*/React.createElement("div", {
-    className: "overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700"
+    className: "overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700"
   }, /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-3 ${colCountClass} ${minCompareWidth}`
+    className: `space-y-6 ${minCompareWidth}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `grid gap-3 ${colCountClass}`
   }, adjustedCompareList.map(p => {
     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
     const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
@@ -3324,9 +3324,7 @@ function PlayerCompareModal({
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-amber-400"
   }, "🧠"), " ", item.label), /*#__PURE__*/React.createElement("div", {
-    className: "overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass} ${minCompareWidth}`
+    className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`
   }, adjustedCompareList.map(p => {
     const val = getPlayerPlayTendency(p, item.key);
     return /*#__PURE__*/React.createElement("div", {
@@ -3337,7 +3335,7 @@ function PlayerCompareModal({
     }, p.name.split(' ')[0]), /*#__PURE__*/React.createElement("span", {
       className: `px-3 py-1 rounded-lg text-sm md:text-base font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
-  })))))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
+  }))))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
     position: "right"
   })));
 }
