@@ -2898,17 +2898,12 @@ function PlayerCompareModal({
 }) {
   if (compareList.length === 0) return null;
 
-  // 比較表全体での一括最大強化モード state
   const [isGlobalMaxEnhanced, setIsGlobalMaxEnhanced] = useState(false);
-
-  // 各比較選手ごとの個別強化モード設定 state ({ [playerId]: boolean })
   const [playerEnhancedMap, setPlayerEnhancedMap] = useState({});
-
-  // 各比較選手ごとの個別レアリティ設定 state
   const [playerRarityMap, setPlayerRarityMap] = useState(() => {
     const map = {};
     compareList.forEach(p => {
-      map[p.id] = p.simulatedRarity || p.rarity || '☆3';
+      map[p.id] = p.simulatedRarity || p.rarity || '笘・';
     });
     return map;
   });
@@ -2919,123 +2914,122 @@ function PlayerCompareModal({
     }
   }, [compareList, onClose]);
 
-  // 個別選択レアリティ＆強化モード反映後のリスト
   const adjustedCompareList = useMemo(() => {
     return compareList.map(p => {
       const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
-      const targetR = isEnhanced ? '☆5' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+      const targetR = isEnhanced ? '笘・' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '笘・';
       return getAdjustedPlayer(p, targetR, isEnhanced);
     });
   }, [compareList, playerRarityMap, playerEnhancedMap, isGlobalMaxEnhanced]);
+
   const statGroups = [{
     key: 'shoot',
     catName: 'SHO',
-    label: 'SHO (シュート)',
+    label: 'SHO (繧ｷ繝･繝ｼ繝・',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'finishing',
-      label: '決定力'
+      label: '豎ｺ螳壼鴨'
     }, {
       subKey: 'power',
-      label: 'キック力'
+      label: '繧ｭ繝・け蜉・
     }, {
       subKey: 'composure',
-      label: '冷静さ'
+      label: '蜀ｷ髱吶＆'
     }]
   }, {
     key: 'pass',
     catName: 'PAS',
-    label: 'PAS (パス)',
+    label: 'PAS (繝代せ)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'shortPass',
-      label: 'ショートパス'
+      label: '繧ｷ繝ｧ繝ｼ繝医ヱ繧ｹ'
     }, {
       subKey: 'longPass',
-      label: 'ロングパス'
+      label: '繝ｭ繝ｳ繧ｰ繝代せ'
     }, {
-      subKey: 'accuracy',
-      label: 'キック精度'
+      subKey: 'kickAccuracy',
+      label: '繧ｭ繝・け邊ｾ蠎ｦ'
     }]
   }, {
     key: 'dribble',
     catName: 'DRB',
-    label: 'DRB (ドリブル)',
+    label: 'DRB (繝峨Μ繝悶Ν)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
-      subKey: 'breakout',
-      label: '突破力'
+      subKey: 'dribble',
+      label: '遯∫ｴ蜉・
     }, {
-      subKey: 'keeping',
-      label: 'キープ力'
+      subKey: 'keep',
+      label: '繧ｭ繝ｼ繝怜鴨'
     }, {
       subKey: 'ballTouch',
-      label: 'ボールタッチ'
+      label: '繝懊・繝ｫ繧ｿ繝・メ'
     }]
   }, {
     key: 'defense',
     catName: 'DEF',
-    label: 'DEF (ディフェンス / GK能力)',
+    label: 'DEF (繝・ぅ繝輔ぉ繝ｳ繧ｹ / GK閭ｽ蜉・',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'tackle',
-      label: 'タックル',
-      gkLabel: 'セービング'
+      label: '繧ｿ繝・け繝ｫ',
+      gkLabel: '繧ｻ繝ｼ繝薙Φ繧ｰ'
     }, {
       subKey: 'interception',
-      label: 'パスカット',
-      gkLabel: '反応速度'
+      label: '繝代せ繧ｫ繝・ヨ',
+      gkLabel: '鬟帙・蜃ｺ縺・
     }, {
       subKey: 'marking',
-      label: 'マーク',
-      gkLabel: '1対1'
+      label: '繝槭・繧ｯ',
+      gkLabel: '繝上う繝懊・繝ｫ'
     }]
   }, {
     key: 'physical',
     catName: 'PHY',
-    label: 'PHY (フィジカル)',
+    label: 'PHY (繝輔ぅ繧ｸ繧ｫ繝ｫ)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
-      subKey: 'jumping',
-      label: 'ジャンプ'
+      subKey: 'jump',
+      label: '繧ｸ繝｣繝ｳ繝・
     }, {
       subKey: 'contact',
-      label: 'コンタクト'
+      label: '繝輔ぅ繧ｸ繧ｫ繝ｫ繧ｳ繝ｳ繧ｿ繧ｯ繝・
     }, {
       subKey: 'stamina',
-      label: 'スタミナ'
+      label: '繧ｹ繧ｿ繝溘リ'
     }]
   }, {
     key: 'speed',
     catName: 'SPD',
-    label: 'SPD (スピード)',
-    maxPossTotal: 400,
+    label: 'SPD (繧ｹ繝斐・繝・',
+    maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
-      subKey: 'running',
-      label: '走力'
+      subKey: 'speed',
+      label: '襍ｰ蜉・
     }, {
       subKey: 'agility',
-      label: '敏捷性'
+      label: '謨乗差諤ｧ'
     }]
   }];
 
-  // 1位(赤 ★BEST)、2位(黄 2ND)、3位(水色 3RD) のランク判定ヘルパー
   const renderRankBadge = (val, allVals) => {
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
     if (rank === 1) {
       return /*#__PURE__*/React.createElement("span", {
-        className: "text-[9px] font-black text-red-500 bg-red-500/10 px-1 py-0.2 rounded border border-red-500/30"
-      }, "★BEST");
+        className: "text-[9px] font-black text-red-400 bg-red-500/20 px-1 py-0.2 rounded border border-red-500/40"
+      }, "笘・EST");
     } else if (rank === 2) {
       return /*#__PURE__*/React.createElement("span", {
-        className: "text-[9px] font-extrabold text-amber-400 bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30"
+        className: "text-[9px] font-black text-amber-400 bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30"
       }, "2ND");
     } else if (rank === 3) {
       return /*#__PURE__*/React.createElement("span", {
@@ -3044,6 +3038,7 @@ function PlayerCompareModal({
     }
     return null;
   };
+
   const getRankBarStyle = (val, allVals) => {
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
@@ -3052,8 +3047,10 @@ function PlayerCompareModal({
     if (rank === 3) return 'bg-gradient-to-r from-cyan-600 via-[#00E5FF] to-blue-500';
     return 'bg-slate-600';
   };
+
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
+
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3073,12 +3070,12 @@ function PlayerCompareModal({
     className: "w-5 h-5 text-[#00FF66]"
   })), /*#__PURE__*/React.createElement("span", {
     className: "text-xs font-bold text-[#00FF66] tracking-wider uppercase hidden sm:inline-block"
-  }, "比較表")), /*#__PURE__*/React.createElement("h2", {
+  }, "豈碑ｼ・｡ｨ")), /*#__PURE__*/React.createElement("h2", {
     className: "text-base sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white text-center leading-tight flex-1"
-  }, "選手能力値 ＆ プレー意識 比較表"), /*#__PURE__*/React.createElement("button", {
+  }, "驕ｸ謇玖・蜉帛､ ・・繝励Ξ繝ｼ諢剰ｭ・豈碑ｼ・｡ｨ"), /*#__PURE__*/React.createElement("button", {
     onClick: onClose,
     className: "p-2 rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0",
-    title: "閉じる"
+    title: "髢峨§繧・
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-5 h-5"
@@ -3088,31 +3085,31 @@ function PlayerCompareModal({
     className: "flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsGlobalMaxEnhanced(false),
-    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
-  }, "🌱 初期値"), /*#__PURE__*/React.createElement("button", {
+    className: px-3 py-1 rounded-lg text-xs font-bold transition-all 
+  }, "験 蛻晄悄蛟､"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsGlobalMaxEnhanced(true),
-    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
-  }, "⚡ 最大強化")), /*#__PURE__*/React.createElement("button", {
+    className: px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 
+  }, "笞｡ 譛螟ｧ蠑ｷ蛹・)), /*#__PURE__*/React.createElement("button", {
     onClick: onClearAll,
     className: "px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
-    title: "比較対象をすべて解除"
-  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
+    title: "豈碑ｼ・ｯｾ雎｡繧偵☆縺ｹ縺ｦ隗｣髯､"
+  }, "卵・・蜈ｨ繧ｯ繝ｪ繧｢"), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-slate-800"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-red-400 font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-red-500"
-  }), "1位 ★BEST"), /*#__PURE__*/React.createElement("span", {
+  }), "1菴・笘・EST"), /*#__PURE__*/React.createElement("span", {
     className: "text-amber-400 font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-amber-400"
-  }), "2位 2ND"), /*#__PURE__*/React.createElement("span", {
+  }), "2菴・2ND"), /*#__PURE__*/React.createElement("span", {
     className: "text-[#00E5FF] font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-[#00E5FF]"
-  }), "3位 3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+  }), "3菴・3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
     className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
-  }, "← 左右スワイプで全選手を並べて比較できます →"), /*#__PURE__*/React.createElement("div", {
+  }, "竊・蟾ｦ蜿ｳ繧ｹ繝ｯ繧､繝励〒蜈ｨ驕ｸ謇九ｒ荳ｦ縺ｹ縺ｦ豈碑ｼ・〒縺阪∪縺・竊・), /*#__PURE__*/React.createElement("div", {
     className: "overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800"
   }, /*#__PURE__*/React.createElement("table", {
     className: "w-full min-w-[640px] border-collapse text-left text-sm"
@@ -3120,10 +3117,10 @@ function PlayerCompareModal({
     className: "border-b border-slate-800 bg-slate-900/90"
   }, /*#__PURE__*/React.createElement("th", {
     className: "p-3 w-40 min-w-[140px] bg-slate-900 text-xs font-black text-slate-400 uppercase tracking-wider sticky left-0 z-20 backdrop-blur-md border-r border-slate-800 shadow-md"
-  }, "比較項目"), adjustedCompareList.map(p => {
+  }, "豈碑ｼ・・岼"), adjustedCompareList.map(p => {
     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
-    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
-    const mainStyle = p.style || p.playStyle || "スタイル未設定";
+    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '笘・';
+    const mainStyle = p.style || p.playStyle || "繧ｹ繧ｿ繧､繝ｫ譛ｪ險ｭ螳・;
     return /*#__PURE__*/React.createElement("th", {
       key: p.id,
       className: "p-3 min-w-[170px] bg-slate-900/60 text-center align-top border-r border-slate-800/80 last:border-r-0"
@@ -3132,7 +3129,7 @@ function PlayerCompareModal({
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => onRemove(p),
       className: "absolute -top-1 -right-1 z-10 p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer",
-      title: "比較から外す"
+      title: "豈碑ｼ・°繧牙､悶☆"
     }, /*#__PURE__*/React.createElement(Icon, {
       name: "x",
       className: "w-3.5 h-3.5"
@@ -3142,7 +3139,7 @@ function PlayerCompareModal({
       player: p,
       className: "w-14 h-20 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md"
     }), /*#__PURE__*/React.createElement("span", {
-      className: `absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`
+      className: bsolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black 
     }, currentRarity)), /*#__PURE__*/React.createElement("div", {
       className: "pt-2.5 w-full"
     }, /*#__PURE__*/React.createElement("div", {
@@ -3153,149 +3150,101 @@ function PlayerCompareModal({
       className: "w-full space-y-1 pt-1.5 border-t border-slate-800/80"
     }, /*#__PURE__*/React.createElement("div", {
       className: "flex items-center justify-center gap-1"
-    }, ['☆3', '☆4', '☆5'].map(r => /*#__PURE__*/React.createElement("button", {
+    }, ['笘・', '笘・', '笘・'].map(r => /*#__PURE__*/React.createElement("button", {
       key: r,
       onClick: () => setPlayerRarityMap(prev => ({
         ...prev,
         [p.id]: r
       })),
       disabled: isEnhanced,
-      className: `px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-800 text-slate-400 hover:text-white'} ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`
+      className: px-1.5 py-0.5 rounded text-[9px] font-black transition-all  
     }, r))), /*#__PURE__*/React.createElement("button", {
       onClick: () => setPlayerEnhancedMap(prev => ({
         ...prev,
         [p.id]: !isEnhanced
       })),
-      className: `w-full py-0.5 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'}`
-    }, isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示'))));
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-6"
-  }, statGroups.map(grp => {
-    const allCatTotals = adjustedCompareList.map(p => getCategoryTotal(p, grp.key));
-    return /*#__PURE__*/React.createElement("div", {
-      key: grp.key,
-      className: "glass-panel p-4 rounded-2xl border border-slate-800 space-y-3 shadow-lg"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "space-y-2.5"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "text-sm md:text-base font-black text-[#00FF66] uppercase tracking-wider flex items-center justify-between border-b border-slate-800/80 pb-2"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "flex items-center gap-2"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "w-3 h-3 rounded-full bg-[#00FF66] shadow-sm shadow-[#00FF66]/50"
-    }), grp.label)), /*#__PURE__*/React.createElement("div", {
-      className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800 overflow-hidden ${colCountClass}`
-    }, adjustedCompareList.map(p => {
-      const catTot = getCategoryTotal(p, grp.key);
-      const pct = Math.min(100, Math.round(catTot / grp.maxPossTotal * 100));
-      return /*#__PURE__*/React.createElement("div", {
-        key: p.id,
-        className: "p-3 space-y-2 relative"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "flex justify-between items-center"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "text-xs md:text-sm font-black text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/30"
-      }, grp.catName, "合計"), /*#__PURE__*/React.createElement("div", {
-        className: "flex items-center gap-1.5"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "text-white font-num font-black text-lg md:text-xl"
-      }, catTot), renderRankBadge(catTot, allCatTotals))), /*#__PURE__*/React.createElement("div", {
-        className: "w-full bg-[#070a10] rounded-full h-3 md:h-3.5 overflow-hidden relative border border-slate-800"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "absolute inset-0 grid grid-cols-4 divide-x divide-slate-800/60 pointer-events-none"
-      }, /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", null)), /*#__PURE__*/React.createElement("div", {
-        className: `h-full rounded-full transition-all ${getRankBarStyle(catTot, allCatTotals)}`,
-        style: {
-          width: `${pct}%`
-        }
-      })));
-    }))), /*#__PURE__*/React.createElement("div", {
-      className: "pt-3 border-t border-slate-800/80 space-y-3"
-    }, grp.details.map(dt => {
-      const detailVals = adjustedCompareList.map(p => {
-        if (p.detailStats && p.detailStats[grp.key]) {
-          return p.detailStats[grp.key][dt.subKey] || 0;
-        }
-        return 0;
-      });
-      const hasGKInList = adjustedCompareList.some(p => p.mainPosition === 'GK' || p.category === 'GK');
-      const allGKInList = adjustedCompareList.every(p => p.mainPosition === 'GK' || p.category === 'GK');
-      let displayLabel = dt.label;
-      if (grp.key === 'defense' && dt.gkLabel) {
-        if (allGKInList) {
-          displayLabel = dt.gkLabel;
-        } else if (hasGKInList) {
-          displayLabel = `${dt.label} / ${dt.gkLabel}`;
-        }
-      }
-      return /*#__PURE__*/React.createElement("div", {
-        key: dt.subKey,
-        className: "space-y-1.5 bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800/80"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "text-[#00FF66]"
-      }, "▶"), " ", displayLabel), /*#__PURE__*/React.createElement("div", {
-        className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`
-      }, adjustedCompareList.map((p, idx) => {
-        const val = detailVals[idx];
-        const pct = Math.min(100, Math.round(val / grp.maxPossSub * 100));
-        return /*#__PURE__*/React.createElement("div", {
-          key: p.id,
-          className: "p-2 space-y-1 text-center"
-        }, /*#__PURE__*/React.createElement("div", {
-          className: "flex items-center justify-center gap-1"
-        }, /*#__PURE__*/React.createElement("span", {
-          className: "font-num font-black text-white text-sm md:text-base"
-        }, val), renderRankBadge(val, detailVals)), /*#__PURE__*/React.createElement("div", {
-          className: "w-full bg-[#070a10] rounded-full h-2 md:h-2.5 overflow-hidden relative border border-slate-800"
-        }, /*#__PURE__*/React.createElement("div", {
-          className: `h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`,
-          style: {
-            width: `${pct}%`
-          }
-        })));
-      })));
-    })));
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel p-4 rounded-2xl border border-amber-500/40 space-y-4 shadow-xl"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-xs font-extrabold text-amber-400 uppercase tracking-wider flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-2 gap-2"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "brain",
-    className: "w-5 h-5 text-amber-400"
-  }), "🧠 プレー意識 14項目 対比 (-2 〜 +2)"), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 text-[10px] font-num font-extrabold flex-wrap"
+      className: w-full py-0.5 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer 
+    }, isEnhanced ? '笞｡ 譛螟ｧ蠑ｷ蛹紋ｸｭ' : '験 騾壼ｸｸ陦ｨ遉ｺ'))));
+  }))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 bg-slate-900/40"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-[#00FF66] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+  }, "繧ｫ繧ｿ繝ｭ繧ｰ邱丞粋蜉・), adjustedCompareList.map(p => /*#__PURE__*/React.createElement("td", {
+    key: p.id,
+    className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00FF66]"
+  }, p.overall, " ", renderRankBadge(p.overall, allCatalogOveralls)))), /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 bg-slate-900/40"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-[#00E5FF] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+  }, "18鬆・岼 閭ｽ蜉帛粋險・), adjustedCompareList.map((p, idx) => /*#__PURE__*/React.createElement("td", {
+    key: p.id,
+    className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00E5FF]"
+  }, allTotalStats18[idx].toLocaleString(), " ", renderRankBadge(allTotalStats18[idx], allTotalStats18)))), statGroups.map(grp => /*#__PURE__*/React.createElement(React.Fragment, {
+    key: grp.key
+  }, /*#__PURE__*/React.createElement("tr", {
+    className: "bg-slate-900/90 border-t-2 border-b border-slate-800"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-amber-300 text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1.5"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "text-red-400 bg-red-500/20 px-1.5 py-0.5 rounded border border-red-500/40"
-  }, "+2:赤"), /*#__PURE__*/React.createElement("span", {
-    className: "text-orange-400 bg-orange-500/20 px-1.5 py-0.5 rounded border border-orange-500/40"
-  }, "+1:橙"), /*#__PURE__*/React.createElement("span", {
-    className: "text-slate-300 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700"
-  }, "0:灰"), /*#__PURE__*/React.createElement("span", {
-    className: "text-cyan-300 bg-cyan-500/20 px-1.5 py-0.5 rounded border border-cyan-500/40"
-  }, "-1:水"), /*#__PURE__*/React.createElement("span", {
-    className: "text-blue-400 bg-blue-500/20 px-1.5 py-0.5 rounded border border-blue-500/40"
-  }, "-2:青"))), /*#__PURE__*/React.createElement("div", {
-    className: "space-y-3"
-  }, PLAY_TENDENCY_ITEMS.map(item => /*#__PURE__*/React.createElement("div", {
-    key: item.key,
-    className: "space-y-1.5 bg-slate-900/60 p-2.5 rounded-2xl border border-slate-800/80"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-sm md:text-base font-black text-amber-300 pl-1 flex items-center gap-1.5"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-amber-400"
-  }, "🧠"), " ", item.label), /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`
-  }, adjustedCompareList.map(p => {
-    const val = getPlayerPlayTendency(p, item.key);
-    return /*#__PURE__*/React.createElement("div", {
+    className: "w-2.5 h-2.5 rounded-full bg-[#00FF66]"
+  }), grp.label), adjustedCompareList.map(p => {
+    const catTot = getCategoryTotal(p, grp.key);
+    const allCatTotals = adjustedCompareList.map(item => getCategoryTotal(item, grp.key));
+    return /*#__PURE__*/React.createElement("td", {
       key: p.id,
-      className: "p-2 flex items-center justify-center"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: `px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
-    }, formatTendencyVal(val)));
-  })))))))))));
+      className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-base text-amber-300"
+    }, catTot, " ", renderRankBadge(catTot, allCatTotals));
+  })), grp.details.map(dt => {
+    const detailVals = adjustedCompareList.map(p => {
+      if (p.detailStats && p.detailStats[grp.key]) {
+        return p.detailStats[grp.key][dt.subKey] || 0;
+      }
+      return 0;
+    });
+    return /*#__PURE__*/React.createElement("tr", {
+      key: dt.subKey,
+      className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
+    }, /*#__PURE__*/React.createElement("td", {
+      className: "p-2.5 text-xs font-bold text-slate-300 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
+    }, "笆ｶ ", dt.label), adjustedCompareList.map((p, idx) => {
+      const val = detailVals[idx];
+      const pct = Math.min(100, Math.round(val / grp.maxPossSub * 100));
+      return /*#__PURE__*/React.createElement("td", {
+        key: p.id,
+        className: "p-2.5 text-center border-r border-slate-800/40"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "flex items-center justify-center gap-1.5"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "font-num font-black text-white text-sm md:text-base"
+      }, val), renderRankBadge(val, detailVals)), /*#__PURE__*/React.createElement("div", {
+        className: "w-full bg-[#070a10] rounded-full h-2 mt-1 overflow-hidden border border-slate-800"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: h-full rounded-full transition-all ,
+        style: {
+          width: ${pct}%
+        }
+      })));
+    }));
+  }))), /*#__PURE__*/React.createElement("tr", {
+    className: "bg-amber-500/10 border-t-2 border-b border-amber-500/30"
+  }, /*#__PURE__*/React.createElement("td", {
+    colSpan: adjustedCompareList.length + 1,
+    className: "p-2.5 font-extrabold text-amber-400 text-xs tracking-wider uppercase"
+  }, "ｧ 繝励Ξ繝ｼ諢剰ｭ・14鬆・岼 蟇ｾ豈・(-2 縲・+2)")), PLAY_TENDENCY_ITEMS.map(item => {
+    const vals = adjustedCompareList.map(p => getPlayerPlayTendency(p, item.key));
+    return /*#__PURE__*/React.createElement("tr", {
+      key: item.key,
+      className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
+    }, /*#__PURE__*/React.createElement("td", {
+      className: "p-2.5 text-xs font-bold text-amber-200 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
+    }, "ｧ ", item.label), adjustedCompareList.map((p, idx) => {
+      const val = vals[idx];
+      return /*#__PURE__*/React.createElement("td", {
+        key: p.id,
+        className: "p-2 text-center border-r border-slate-800/40"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black 
+      }, formatTendencyVal(val)));
+    }));
+  }))))))))));
 }
