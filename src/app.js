@@ -3161,38 +3161,13 @@ function PlayerCompareModal({
       })),
       disabled: isEnhanced,
       className: `px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-800 text-slate-400 hover:text-white'} ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`
-      className: "w-full text-left space-y-2 pt-2 border-t border-slate-800/80"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "space-y-1 bg-slate-900/60 p-2 rounded-lg border border-slate-800/80"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] text-slate-400 font-bold flex items-center gap-1"
-    }, /*#__PURE__*/React.createElement("span", null, "⚽ 所持スキル")), p.skills && p.skills.length > 0 ? /*#__PURE__*/React.createElement("div", {
-      className: "space-y-1"
-    }, p.skills.map((s, i) => /*#__PURE__*/React.createElement("div", {
-      key: i,
-      className: "text-[10px] bg-slate-950/80 p-1 rounded border border-slate-800 text-slate-200 font-semibold flex items-center justify-between"
-    }, /*#__PURE__*/React.createElement("span", null, s.name || s)))) : /*#__PURE__*/React.createElement("div", {
-      className: "text-[10px] text-slate-500 italic"
-    }, "なし")), /*#__PURE__*/React.createElement("div", {
-      className: "space-y-1.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800/80"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] text-slate-400 font-bold flex items-center gap-1"
-    }, /*#__PURE__*/React.createElement("span", null, "✨ 所持アビリティ (", abilities.length, ")")), abilities && abilities.length > 0 ? /*#__PURE__*/React.createElement("div", {
-      className: "space-y-2"
-    }, abilities.map((ab, i) => /*#__PURE__*/React.createElement("div", {
-      key: i,
-      className: "space-y-1 bg-slate-950/60 p-1.5 rounded border border-slate-800/50"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "flex items-center gap-1.5 flex-wrap"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: `px-1.5 py-0.2 rounded text-[9px] ${getRankBadgeStyle(ab.rank)}`
-    }, ab.rank), /*#__PURE__*/React.createElement("span", {
-      className: `text-[11px] font-bold ${getRankTextStyle(ab.rank)}`
-    }, ab.name)), ab.description && /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] text-slate-300 leading-relaxed"
-    }, ab.description)))) : /*#__PURE__*/React.createElement("div", {
-      className: "text-[10px] text-slate-500 italic"
-    }, "なし")))));
+    }, r))), /*#__PURE__*/React.createElement("button", {
+      onClick: () => setPlayerEnhancedMap(prev => ({
+        ...prev,
+        [p.id]: !isEnhanced
+      })),
+      className: `w-full py-0.5 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'}`
+    }, isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示'))));
   }))), /*#__PURE__*/React.createElement("div", {
     className: "space-y-6"
   }, statGroups.map(grp => {
@@ -3322,5 +3297,5 @@ function PlayerCompareModal({
     }, /*#__PURE__*/React.createElement("span", {
       className: `px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
-  }))))))))))))));
+  })))))))))));
 }
