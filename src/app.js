@@ -3324,7 +3324,9 @@ function PlayerCompareModal({
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-amber-400"
   }, "🧠"), " ", item.label), /*#__PURE__*/React.createElement("div", {
-    className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass}`
+    className: "overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `grid gap-0 bg-slate-950/80 rounded-xl border border-slate-800/80 overflow-hidden ${colCountClass} ${minCompareWidth}`
   }, adjustedCompareList.map(p => {
     const val = getPlayerPlayTendency(p, item.key);
     return /*#__PURE__*/React.createElement("div", {
@@ -3335,7 +3337,7 @@ function PlayerCompareModal({
     }, p.name.split(' ')[0]), /*#__PURE__*/React.createElement("span", {
       className: `px-3 py-1 rounded-lg text-sm md:text-base font-num font-black ${getTendencyBadgeStyle(val)}`
     }, formatTendencyVal(val)));
-  }))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
+  })))))))))), /*#__PURE__*/React.createElement(SideAdBanner, {
     position: "right"
   })));
 }
