@@ -1635,7 +1635,7 @@ function PlayerDBTab({
   const [nationalityFilter, setNationalityFilter] = useState('ALL');
   const [rarityFilter, setRarityFilter] = useState('ALL');
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(false);
-  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 768) ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 1024) ? 'grid' : 'table');
 
   // テーブルソート設定 state ({ key, direction: 'asc' | 'desc' })
   const [sortConfig, setSortConfig] = useState({
@@ -2106,7 +2106,7 @@ function PlayerDBTab({
     name: "x",
     className: "w-3.5 h-3.5"
   }), "フィルターリセット")), viewMode === 'table' ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: "md:hidden space-y-2.5"
+    className: "lg:hidden space-y-2.5"
   }, filteredPlayers.map((p, idx) => {
     const isCompared = compareList.some(item => item.id === p.id);
     const totalStats = getPlayerTotalStats18(p);
@@ -2161,7 +2161,7 @@ function PlayerDBTab({
       className: "w-4 h-4"
     }))));
   })), /*#__PURE__*/React.createElement("div", {
-    className: "hidden md:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full"
+    className: "hidden lg:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full"
   }, /*#__PURE__*/React.createElement("table", {
     className: "w-full text-left text-xs"
   }, /*#__PURE__*/React.createElement("thead", {

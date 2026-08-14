@@ -1547,7 +1547,7 @@ function PlayerDBTab({
   const [rarityFilter, setRarityFilter] = useState('ALL');
 
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(false);
-  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 768) ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 1024) ? 'grid' : 'table');
 
   // テーブルソート設定 state ({ key, direction: 'asc' | 'desc' })
   const [sortConfig, setSortConfig] = useState({ key: 'overall', direction: 'desc' });
@@ -2009,8 +2009,8 @@ function PlayerDBTab({
 
       {viewMode === 'table' ? (
         <>
-          {/* モバイル専用: 横スクロール不要・画面幅100%フィット コンパクトリスト表示 */}
-          <div className="md:hidden space-y-2.5">
+          {/* モバイル/スマホ（縦画面・横画面対応）専用: 横スクロール不要・画面幅100%フィット コンパクトリスト表示 */}
+          <div className="lg:hidden space-y-2.5">
             {filteredPlayers.map((p, idx) => {
               const isCompared = compareList.some(item => item.id === p.id);
               const avatar = getPlayerAvatarUrl(p);
@@ -2079,8 +2079,8 @@ function PlayerDBTab({
             })}
           </div>
 
-          {/* デスクトップ専用: フル15列 ソート可能テーブル */}
-          <div className="hidden md:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full">
+          {/* PC/大画面専用: フル15列 ソート可能テーブル */}
+          <div className="hidden lg:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full">
             <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/90 text-slate-400 border-b border-slate-800 font-bold uppercase select-none">
               <tr>
