@@ -78,10 +78,10 @@ ${imageScriptTags}
   <script src="./src/data/mockData.js"></script>
 
   <!-- 3. Pure Transpiled React App (No Babel overhead) -->
-  <script src="./src/app.js"></script>
+  <script src="./src/app.js?v=20260815_align_v3"></script>
 
   <!-- 4. App Mount Script -->
-  <script src="./src/main.js"></script>
+  <script src="./src/main.js?v=20260815_align_v3"></script>
 </body>
 </html>
 `;

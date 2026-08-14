@@ -6,12 +6,6 @@
   <title>サカつく2026 データベース & チームビルダー</title>
   
   <script>
-    window.onerror = function(msg, url, line, col, error) {
-      var div = document.createElement('div');
-      div.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:999999;background:#990000;color:#ffffff;padding:16px;font-size:14px;font-family:sans-serif;word-break:break-all;';
-      div.innerHTML = '<b>[JavaScript 繧ｨ繝ｩ繝ｼ縺檎匱逕溘＠縺ｾ縺励◆]</b><br>' + msg + '<br><small>' + url + ' (Line ' + line + ')</small>';
-      if (document.body) { document.body.appendChild(div); } else { window.addEventListener('DOMContentLoaded', function(){ document.body.appendChild(div); }); }
-    };
     try { localStorage.clear(); } catch(e) {}
   </script>
 
@@ -97,8 +91,8 @@
   <script src="./src/data/hayashiRyoheiBook2Image.js"></script>
   <script src="./src/data/hayashiRyoheiBookImage.js"></script>
   <script src="./src/data/hidano2026Image.js"></script>
-  <script src="./src/data/higashiguchiImage.js"></script>
   <script src="./src/data/higashiImage.js"></script>
+  <script src="./src/data/higashiguchiImage.js"></script>
   <script src="./src/data/himenoMakoto2026Image.js"></script>
   <script src="./src/data/hiratsukaGift2026Image.js"></script>
   <script src="./src/data/hirokiitoImage.js"></script>
@@ -157,8 +151,8 @@
   <script src="./src/data/leeDongJun2026Image.js"></script>
   <script src="./src/data/leeHuiGyun2026Image.js"></script>
   <script src="./src/data/leeImage.js"></script>
-  <script src="./src/data/leekinwoImage.js"></script>
   <script src="./src/data/leeMyungJaeImage.js"></script>
+  <script src="./src/data/leekinwoImage.js"></script>
   <script src="./src/data/lennartMoserImage.js"></script>
   <script src="./src/data/leoCeara2026Image.js"></script>
   <script src="./src/data/leoCearaImage.js"></script>
@@ -188,9 +182,9 @@
   <script src="./src/data/mitoma2526Image.js"></script>
   <script src="./src/data/mitomajpnImage.js"></script>
   <script src="./src/data/miuraKazuyoshi2026Image.js"></script>
+  <script src="./src/data/moJaeHyeon2026Image.js"></script>
   <script src="./src/data/mochizuki2026Image.js"></script>
   <script src="./src/data/modricImage.js"></script>
-  <script src="./src/data/moJaeHyeon2026Image.js"></script>
   <script src="./src/data/molinaImage.js"></script>
   <script src="./src/data/morishigeImage.js"></script>
   <script src="./src/data/mugosa2026Image.js"></script>
@@ -231,8 +225,8 @@
   <script src="./src/data/ros2026Image.js"></script>
   <script src="./src/data/ryoheihayashiImage.js"></script>
   <script src="./src/data/sabbagImage.js"></script>
-  <script src="./src/data/sakai2026Image.js"></script>
   <script src="./src/data/sakaImage.js"></script>
+  <script src="./src/data/sakai2026Image.js"></script>
   <script src="./src/data/sakuragawa2026Image.js"></script>
   <script src="./src/data/salahImage.js"></script>
   <script src="./src/data/salibaImage.js"></script>
@@ -251,10 +245,10 @@
   <script src="./src/data/somaImage.js"></script>
   <script src="./src/data/somaYuki2026Image.js"></script>
   <script src="./src/data/sommerImage.js"></script>
+  <script src="./src/data/sonMlsImage.js"></script>
   <script src="./src/data/songBumKeunImage.js"></script>
   <script src="./src/data/songImage.js"></script>
   <script src="./src/data/sonheungminImage.js"></script>
-  <script src="./src/data/sonMlsImage.js"></script>
   <script src="./src/data/sorlothImage.js"></script>
   <script src="./src/data/spinazzolaImage.js"></script>
   <script src="./src/data/sugimoto2026Image.js"></script>
@@ -307,10 +301,10 @@
   <!-- 2. Full Player Database -->
   <script src="./src/data/mockData.js"></script>
 
-  <!-- 3. Pure Transpiled React Application -->
-  <script src="./src/app.js?v=20260815_43"></script>
+  <!-- 3. Pure Transpiled React App (No Babel overhead) -->
+  <script src="./src/app.js?v=20260815_align_v3"></script>
 
   <!-- 4. App Mount Script -->
-  <script src="./src/main.js?v=20260815_43"></script>
+  <script src="./src/main.js?v=20260815_align_v3"></script>
 </body>
 </html>

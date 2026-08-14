@@ -7,7 +7,6 @@ function mountApp() {
     }
   }
 }
-
 mountApp();
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', mountApp);

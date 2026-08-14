@@ -11,285 +11,239 @@ const PLAY_STYLES = ["オーソドックスGK", "スイーパーGK", "ストッ�
 const INITIAL_PLAYERS = window.INITIAL_PLAYERS || [];
 const INITIAL_MANAGERS = window.INITIAL_MANAGERS || [];
 const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
-const YOUTUBE_VIDEOS = [
-  {
-    id: "3cWmdX7SO9g",
-    title: "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=3cWmdX7SO9g"
-  },
-  {
-    id: "TW5ffHOwVho",
-    title: "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=TW5ffHOwVho"
-  },
-  {
-    id: "-ML6aziQT8A",
-    title: "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
-    thumbnail: "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=-ML6aziQT8A"
-  },
-  {
-    id: "rKvTMErnm7E",
-    title: "【質問歓迎】虹アビリティは欲しいよね。限定特練カードガチャ200連まつり【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/rKvTMErnm7E/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=rKvTMErnm7E"
-  },
-  {
-    id: "Nk9fShVZ1sI",
-    title: "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
-    thumbnail: "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
-  },
-  {
-    id: "9ZWQtijxVVM",
-    title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/9ZWQtijxVVM/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=9ZWQtijxVVM"
-  },
-  {
-    id: "B7wgP9c6dyQ",
-    title: "【質問歓迎】ブラジル人4人衆を育成して使ってみましょう【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/B7wgP9c6dyQ/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=B7wgP9c6dyQ"
-  },
-  {
-    id: "Bw9Xk-aqn5Q",
-    title: "【質問歓迎】物議を醸している限定ブラジル人ガチャ、370連祭り開催のお知らせ【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/Bw9Xk-aqn5Q/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=Bw9Xk-aqn5Q"
-  },
-  {
-    id: "L6wiFTj1-_I",
-    title: "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
-    thumbnail: "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=L6wiFTj1-_I"
-  },
-  {
-    id: "q0ShrPT_r0Y",
-    title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/q0ShrPT_r0Y/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=q0ShrPT_r0Y"
-  },
-  {
-    id: "pqmcNKbWNyo",
-    title: "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=pqmcNKbWNyo"
-  },
-  {
-    id: "CPTyoW1aIEc",
-    title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/CPTyoW1aIEc/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=CPTyoW1aIEc"
-  },
-  {
-    id: "unixgXGcOco",
-    title: "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
-    thumbnail: "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=unixgXGcOco"
-  },
-  {
-    id: "smq93QdtPkY",
-    title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
-    thumbnail: "https://i.ytimg.com/vi/smq93QdtPkY/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=smq93QdtPkY"
-  },
-  {
-    id: "19dFH-F1fyA",
-    title: "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
-    thumbnail: "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=19dFH-F1fyA"
-  }
-];
-
-const AFFILIATE_ADS = [
-  {
-    id: "rakuten_user_1",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933d29.f3516166.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MTY3NDAyLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933d29.f3516166.569332c7.ce1aeeb3/?me_id=2101008&me_adv_id=167402&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_2",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933dec.4e256677.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxIiwiYmFuIjo2NzM4MDUsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933dec.4e256677.569332c7.ce1aeeb3/?me_id=2101032&me_adv_id=673805&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_3",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/5693335b.1cabcc4e.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI4NSIsImJhbiI6MTQzNDI2NSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/5693335b.1cabcc4e.569332c7.ce1aeeb3/?me_id=1&me_adv_id=1434265&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_4",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56934416.e8681afe.569332c7.ce1aeeb3/?link_type=pict&rafst=rmn&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjM3Nzg5NiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56934416.e8681afe.569332c7.ce1aeeb3/?me_id=2101065&me_adv_id=2377896&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_5",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933f77.437320c8.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjMwMjg5NSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933f77.437320c8.569332c7.ce1aeeb3/?me_id=2101061&me_adv_id=2302895&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_6",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569345bd.2285d5fa.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjEzODQyNiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569345bd.2285d5fa.569332c7.ce1aeeb3/?me_id=2101064&me_adv_id=2138426&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_7",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569348ca.add96354.569348cb.d247976b/?me_id=1312968&item_id=10030243&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fhhh-style%2Fcabinet%2F60204%2Ff980-1.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">2026SS新作 UVカットパーカー つば付き</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_8",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934b82.b6aad5f9.56934b83.c5e00d8c/?me_id=1399277&item_id=10002614&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fdji-shop%2Fcabinet%2Fbnr%2F6937224133082_t.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">DJI Osmo Pocket 4 クリエイターコンボ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_9",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934c6a.299fede4.56934c6b.cb46746b/?me_id=1385473&item_id=10000447&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fvenex-j%2Fcabinet%2F08813271%2F08819837%2Fkyuyo_ponch_ol.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【ポイント10倍】ベネクス リカバリーウェア VENEX</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_10",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934fa0.48f1fa77.56934fa1.27f40ee1/?me_id=1365926&item_id=10003112&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnext-at%2Fcabinet%2Fsyouhin8%2F1542-26ss.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">セットアップ UVカット95% 洗えるスーツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_12",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569351c5.d6e14103.569351c6.ab760e7c/?me_id=1192233&item_id=11595787&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fesports%2Fcabinet%2F6000-202%2F6000000145999.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">サッカー日本代表 2026 レプリカ ユニフォーム</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_13",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693545f.c98bc76b.56935460.b107cdc1/?me_id=1240480&item_id=10003990&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ffootball-life%2Fcabinet%2Frakuup%2Frakuup1%2Fr1323_0813_0021.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">アルゼンチン代表 メッシ ホーム ユニフォーム</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_14",
-    badge: "楽天 PR",
-    htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569354a6.5664c2ff.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxIiwiYmFuIjoyMTg8NjQ3LCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569354a6.5664c2ff.569332c7.ce1aeeb3/?me_id=2100001&me_adv_id=2188647&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_15",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56935549.b8fa1385.5693554a.a4fbe38b/?me_id=1258767&item_id=10006491&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmundial%2Fcabinet%2Fimg09%2F2018-10101.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">クリスティアーノ・ロナウド Tシャツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_18",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56935817.368d4b42.56935818.53ddee2c/?me_id=1425378&item_id=10000113&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Falldocube%2Fcabinet%2F13643959%2F13646210%2F1-4.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">ALLDOCUBE iPlay 80 mini Turbo タブレット 8.8インチ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_19",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693588d.d1a7584c.5693588e.7adb3382/?me_id=1390924&item_id=10000010&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fpremiumgift%2Fcabinet%2F08670126%2F14q8h-main-2.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【新品】第13世代CPU搭載 Office付き 14.1型 ノートPC</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_20",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693591d.8f95d4d4.5693591e.ad3960e3/?me_id=1402356&item_id=10001496&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fpasodon%2Fcabinet%2F13009718%2F15_46_38.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">構成が選べる！Ryzen7/5 ゲーミングPC</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_21",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693592f.e55ca924.56935930.6adc2289/?me_id=1396705&item_id=10001716&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fkrdirect%2Fcabinet%2Fdesk%2Fgaming%2Fg_monitor_n_gkm1060b.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">PASOUL 煌 ゲーミングPC 22型液晶モニター付</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_22",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569359af.83f22ae0.569359b0.62cb3116/?me_id=1436979&item_id=10000002&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fsvitoo-direct-store%2Fcabinet%2F12874258%2F12995716%2F12995720%2F00-1.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【楽天1位】Android 16 タブレット 11インチ 20GB+128GB</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_23",
-    badge: "楽天 PR",
-    htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1786728392098";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
-  },
-  {
-    id: "rakuten_user_25",
-    badge: "楽天 PR",
-    htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="off";rakuten_ts="1786728704019";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
-  },
-  {
-    id: "amazon_user_26",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.SMOLESS_A1_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="一本で二回吸える！BLACK CURTAIN 加熱式タバコ デバイス" title="BLACK CURTAIN 加熱式タバコ デバイス"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">一本で二回吸える！BLACK CURTAIN 加熱式タバコ デバイス</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_27",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.FASOUL_Q1_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="1本で2回吸える Fasoul Q1 アイコス イルマ互換機" title="Fasoul Q1 アイコス イルマ互換機"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">【1本で2回吸える】Fasoul Q1 アイコス イルマ互換機</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_28",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.TANAKA_PAULO_BOOK_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】選ばれなかった僕の戦い方 田中パウロ淳一" title="選ばれなかった僕の戦い方 田中パウロ淳一"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">選ばれなかった僕の戦い方 - 田中パウロ淳一 (著)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_29",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.JLEAGUE_MEIKAN_2026_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】Jリーグ選手名鑑2026-27 J1・J2・J3" title="Jリーグ選手名鑑2026-27 J1・J2・J3"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">Jリーグ選手名鑑2026-27 J1・J2・J3 (エルゴラッソ特別編集)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_30",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.HAYASHI_RYOHEI_BOOK_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】林陵平のサッカー観戦術 試合がぐっと面白くなる極意" title="林陵平のサッカー観戦術"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">林陵平のサッカー観戦術 試合がぐっと面白くなる極意 (平凡社新書)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_31",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.HAYASHI_RYOHEI_BOOK2_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】林陵平のサッカー観戦術 2 試合がもっともっと面白くなる極意" title="林陵平のサッカー観戦術 2"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">林陵平のサッカー観戦術 2 試合がもっともっと面白くなる極意 (平凡社新書 1099)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "amazon_user_32",
-    badge: "Amazon PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.RERISE_GAMING_PC_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【Re-Rise】ゲーミングPC GeForce Windows11" title="【Re-Rise】ゲーミングPC"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">【Re-Rise】ゲーミングPC GeForce Windows11【コスパ重視】</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  }
-];
-
-function SideAdBanner({ position }) {
-  const [closedIds, setClosedIds] = React.useState({});
-  const [sidebarAds, setSidebarAds] = React.useState([]);
-
-  React.useEffect(() => {
+const YOUTUBE_VIDEOS = [{
+  id: "3cWmdX7SO9g",
+  title: "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=3cWmdX7SO9g"
+}, {
+  id: "TW5ffHOwVho",
+  title: "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=TW5ffHOwVho"
+}, {
+  id: "-ML6aziQT8A",
+  title: "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
+  thumbnail: "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=-ML6aziQT8A"
+}, {
+  id: "rKvTMErnm7E",
+  title: "【質問歓迎】虹アビリティは欲しいよね。限定特練カードガチャ200連まつり【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/rKvTMErnm7E/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=rKvTMErnm7E"
+}, {
+  id: "Nk9fShVZ1sI",
+  title: "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
+  thumbnail: "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
+}, {
+  id: "9ZWQtijxVVM",
+  title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/9ZWQtijxVVM/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=9ZWQtijxVVM"
+}, {
+  id: "B7wgP9c6dyQ",
+  title: "【質問歓迎】ブラジル人4人衆を育成して使ってみましょう【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/B7wgP9c6dyQ/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=B7wgP9c6dyQ"
+}, {
+  id: "Bw9Xk-aqn5Q",
+  title: "【質問歓迎】物議を醸している限定ブラジル人ガチャ、370連祭り開催のお知らせ【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/Bw9Xk-aqn5Q/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=Bw9Xk-aqn5Q"
+}, {
+  id: "L6wiFTj1-_I",
+  title: "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
+  thumbnail: "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=L6wiFTj1-_I"
+}, {
+  id: "q0ShrPT_r0Y",
+  title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/q0ShrPT_r0Y/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=q0ShrPT_r0Y"
+}, {
+  id: "pqmcNKbWNyo",
+  title: "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=pqmcNKbWNyo"
+}, {
+  id: "CPTyoW1aIEc",
+  title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/CPTyoW1aIEc/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=CPTyoW1aIEc"
+}, {
+  id: "unixgXGcOco",
+  title: "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
+  thumbnail: "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=unixgXGcOco"
+}, {
+  id: "smq93QdtPkY",
+  title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/smq93QdtPkY/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=smq93QdtPkY"
+}, {
+  id: "19dFH-F1fyA",
+  title: "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
+  thumbnail: "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=19dFH-F1fyA"
+}];
+const AFFILIATE_ADS = [{
+  id: "rakuten_user_1",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933d29.f3516166.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MTY3NDAyLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933d29.f3516166.569332c7.ce1aeeb3/?me_id=2101008&me_adv_id=167402&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_2",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933dec.4e256677.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxIiwiYmFuIjo6NzM4MDUsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933dec.4e256677.569332c7.ce1aeeb3/?me_id=2101032&me_adv_id=673805&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_3",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/5693335b.1cabcc4e.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI8NSIsImJhbiI6MTQzNDI2NSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/5693335b.1cabcc4e.569332c7.ce1aeeb3/?me_id=1&me_adv_id=1434265&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_4",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56934416.e8681afe.569332c7.ce1aeeb3/?link_type=pict&rafst=rmn&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjM3Nzg5NiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56934416.e8681afe.569332c7.ce1aeeb3/?me_id=2101065&me_adv_id=2377896&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_5",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/56933f77.437320c8.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjMwMjg5NSwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/56933f77.437320c8.569332c7.ce1aeeb3/?me_id=2101061&me_adv_id=2302895&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_6",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569345bd.2285d5fa.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjEzODQyNiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569345bd.2285d5fa.569332c7.ce1aeeb3/?me_id=2101064&me_adv_id=2138426&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_7",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569348ca.add96354.569348cb.d247976b/?me_id=1312968&item_id=10030243&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fhhh-style%2Fcabinet%2F60204%2Ff980-1.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">2026SS新作 UVカットパーカー つば付き</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_8",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934b82.b6aad5f9.56934b83.c5e00d8c/?me_id=1399277&item_id=10002614&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fdji-shop%2Fcabinet%2Fbnr%2F6937224133082_t.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">DJI Osmo Pocket 4 クリエイターコンボ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_9",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934c6a.299fede4.56934c6b.cb46746b/?me_id=1385473&item_id=10000447&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fvenex-j%2Fcabinet%2F08813271%2F08819837%2Fkyuyo_ponch_ol.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【ポイント10倍】ベネクス リカバリーウェア VENEX</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_10",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934fa0.48f1fa77.56934fa1.27f40ee1/?me_id=1365926&item_id=10003112&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnext-at%2Fcabinet%2Fsyouhin8%2F1542-26ss.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">セットアップ UVカット95% 洗えるスーツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_12",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569351c5.d6e14103.569351c6.ab760e7c/?me_id=1192233&item_id=11595787&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fesports%2Fcabinet%2F6000-202%2F6000000145999.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">サッカー日本代表 2026 レプリカ ユニフォーム</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569351c5.d6e14103.569351c6.ab760e7c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fesports%2F6000000145999%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_13",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693545f.c98bc76b.56935460.b107cdc1/?me_id=1240480&item_id=10003990&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Ffootball-life%2Fcabinet%2Frakuup%2Frakuup1%2Fr1323_0813_0021.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">アルゼンチン代表 メッシ ホーム ユニフォーム</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693545f.c98bc76b.56935460.b107cdc1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffootball-life%2Farg2018hjm10jr%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_14",
+  badge: "楽天 PR",
+  htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569354a6.5664c2ff.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxIiwiYmFuIjoyMTg8NjQ3LCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569354a6.5664c2ff.569332c7.ce1aeeb3/?me_id=2100001&me_adv_id=2188647&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
+}, {
+  id: "rakuten_user_15",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56935549.b8fa1385.5693554a.a4fbe38b/?me_id=1258767&item_id=10006491&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmundial%2Fcabinet%2Fimg09%2F2018-10101.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">クリスティアーノ・ロナウド Tシャツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_18",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56935817.368d4b42.56935818.53ddee2c/?me_id=1425378&item_id=10000113&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Falldocube%2Fcabinet%2F13643959%2F13646210%2F1-4.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">ALLDOCUBE iPlay 80 mini Turbo タブレット 8.8インチ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935817.368d4b42.56935818.53ddee2c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Falldocube%2Fiplay80miniturbo%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_19",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693588d.d1a7584c.5693588e.7adb3382/?me_id=1390924&item_id=10000010&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fpremiumgift%2Fcabinet%2F08670126%2F14q8h-main-2.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【新品】第13世代CPU搭載 Office付き 14.1型 ノートPC</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693588d.d1a7584c.5693588e.7adb3382/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpremiumgift%2Fn3350%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_20",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693591d.8f95d4d4.5693591e.ad3960e3/?me_id=1402356&item_id=10001496&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fpasodon%2Fcabinet%2F13009718%2F15_46_38.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">構成が選べる！Ryzen7/5 ゲーミングPC</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693591d.8f95d4d4.5693591e.ad3960e3/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpasodon%2Fam4gaming-t3%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_21",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/5693592f.e55ca924.56935930.6adc2289/?me_id=1396705&item_id=10001716&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fkrdirect%2Fcabinet%2Fdesk%2Fgaming%2Fg_monitor_n_gkm1060b.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">PASOUL 煌 ゲーミングPC 22型液晶モニター付</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/5693592f.e55ca924.56935930.6adc2289/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkrdirect%2Fgaming_blacktower_r_gtx960_i5_mn%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_22",
+  badge: "楽天 PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569359af.83f22ae0.569359b0.62cb3116/?me_id=1436979&item_id=10000002&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fsvitoo-direct-store%2Fcabinet%2F12874258%2F12995716%2F12995720%2F00-1.jpg%3F_ex%3D240x240&s=240x240&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【楽天1位】Android 16 タブレット 11インチ 20GB+128GB</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569359af.83f22ae0.569359b0.62cb3116/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsvitoo-direct-store%2F1119tp11%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "rakuten_user_23",
+  badge: "楽天 PR",
+  htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1786728392098";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
+}, {
+  id: "rakuten_user_25",
+  badge: "楽天 PR",
+  htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="off";rakuten_ts="1786728704019";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
+}, {
+  id: "amazon_user_26",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.SMOLESS_A1_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="一本で二回吸える！BLACK CURTAIN 加熱式タバコ デバイス" title="BLACK CURTAIN 加熱式タバコ デバイス"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">一本で二回吸える！BLACK CURTAIN 加熱式タバコ デバイス</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/black-curtain/heated-tobacco-black-curtain?ie=UTF8&returnUrl=%2Fdp%2FB0F58PLXZ7&linkCode=ll2&tag=nekonira-22&linkId=df91a68fac728854f068fef171312d8f&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_27",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.FASOUL_Q1_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="1本で2回吸える Fasoul Q1 アイコス イルマ互換機" title="Fasoul Q1 アイコス イルマ互換機"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">【1本で2回吸える】Fasoul Q1 アイコス イルマ互換機</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E3%80%901%E6%9C%AC%E3%81%A72%E5%9B%9E%E5%90%B8%E3%81%88%E3%82%8B%E3%80%91Fasoul-%E3%83%95%E3%82%A1%E3%82%BD%E3%82%A6%E3%83%AB-%E5%8A%A0%E7%86%B1%E5%BC%8F%E3%81%9F%E3%81%B0%E3%81%93%E4%BA%92%E6%8F%9B%E6%A9%9F-%E6%9C%AC%E4%BD%93%EF%BD%9C%E3%83%86%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%BB%E3%83%B3%E3%83%86%E3%82%A3%E3%82%A2%E5%AF%BE%E5%BF%9C%EF%BD%9C%E3%83%95%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E6%B6%B2%E6%99%B6%E6%90%AD%E8%BC%89%EF%BD%9CIQOS%E3%82%A4%E3%83%AB%E3%83%9E%E4%BA%92%E6%8F%9B-%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/dp/B0DRYMYYDH?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1MVS22IV7LODW&dib=eyJ2IjoiMSJ9.mXEDnTRopOTpbe7Z4XAdQdacsjWbwX7cLsnrwb8IJENvu4OGl4E2pR9vDfwaAqdYSPAK_R7IIAAbhFgOclFA1uqd-tWFJhxRkWpY1Nktw9Mt5hZS3CezUkzkEy3T33MXz_q0WEbgs8Rz830G3JXbBlCireCMyuQpjr23onAyzNCg5LdOTjv33_lLSMdK8mZbqvlOPASjIqAsvwySRjorttzXIjg6aVtXY2LPIN90fjkZJNcBcS00OZwsRr2B5wOm9DFEsmMZfERFvWvA7raIv_g8N2rTzuWEubZGMcW3XyE.2NB5tBfJg-TtSY47Glonl_PUYzmWCXFAI0CGdC01bsU&dib_tag=se&keywords=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%E4%BA%92%E6%8F%9B%E6%A9%9F&qid=1786730093&sprefix=%E3%82%A2%E3%82%A4%E3%82%B3%E3%82%B9%2B%E4%BA%92%E6%8F%9B%E6%A9%9F%2Caps%2C187&sr=8-3&th=1&linkCode=ll2&tag=nekonira-22&linkId=e1576813e8795f19b0c3cb190458d3c8&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_28",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.TANAKA_PAULO_BOOK_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】選ばれなかった僕の戦い方 田中パウロ淳一" title="選ばれなかった僕の戦い方 田中パウロ淳一"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">選ばれなかった僕の戦い方 - 田中パウロ淳一 (著)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E5%83%95%E3%81%AE%E6%88%A6%E3%81%84%E6%96%B9-%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%E6%B7%B3%E4%B8%80/dp/4799332872?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=2CELWWX3EENS6&dib=eyJ2IjoiMSJ9.U6ZDn9V4rnt5WcU9glXMm7zvcxoXmeQOiaGjT_wBXax2NpieoE9B9nAU11rR_nbvvd2ugUi6Wp0VW3YU_4CDH5uYD7kR3JtQ0Bnwo_XZNPRAc_KIDuWPtwAP8hjtJoqgMgPdTL1kmp4HX4Wqdkq_hXUv2ZDRSpvMQ7Q2UjHymJgCbUz-Ib0E1z1dvFxA1hJJIDGJsS3v5az5tETXhrzfpG1aO_1zQMBUREHiESrG0Gft0gM3RhgBVQ8n5AOgQXgJ.qCXwt1HvQvtJoT5ZFAeYWEnvQGOajoRm6MOVL2wBKmw&dib_tag=se&keywords=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD&qid=1786730352&sprefix=%E7%94%B0%E4%B8%AD%E3%83%91%E3%82%A6%E3%83%AD%2Cspecialty-aps%2C158&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=6a5ef973866b5a94c492e292f5828db3&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_29",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.JLEAGUE_MEIKAN_2026_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】Jリーグ選手名鑑2026-27 J1・J2・J3" title="Jリーグ選手名鑑2026-27 J1・J2・J3"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">Jリーグ選手名鑑2026-27 J1・J2・J3 (エルゴラッソ特別編集)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/J%E3%83%AA%E3%83%BC%E3%82%B0%E9%81%B8%E6%89%8B%E5%90%8D%E9%91%912026-27-J1%E3%83%BBJ2%E3%83%BBJ3-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD%E7%89%B9%E5%88%A5%E7%B7%A8%E9%9B%86-%E3%82%A8%E3%83%AB%E3%83%BB%E3%82%B4%E3%83%A9%E3%83%83%E3%82%BD-%E7%B7%A8%E9%9B%86%E9%83%A8/dp/B0H7W5YHT8?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-1&linkCode=ll2&tag=nekonira-22&linkId=7caf9f5d7632ea2afe86c5f874ec1a74&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_30",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.HAYASHI_RYOHEI_BOOK_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】林陵平のサッカー観戦術 試合がぐっと面白くなる極意" title="林陵平のサッカー観戦術"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">林陵平のサッカー観戦術 試合がぐっと面白くなる極意 (平凡社新書)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-%E8%A9%A6%E5%90%88%E3%81%8C%E3%81%90%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-1051-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8/dp/4582860516?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.-KOnjc2uzP7Sc1oPQmV9xr_JX4Q7S-EOxDua6m3zxMs8NbkbxvExqLKf9cMcDwU1qRrNmtk75d_kumXya9B0OQ5WEV3Uvt-JY7uZPSuzkrJ1Y3koRPGpzNqw1xIil0DrfMHpxFHrinwtqlTFmu2ab8y9DS31u4fpC0uvtIZOWHEef1HWrO47J7PalUeRSMnWKHSQSo2nH-4T6FyEUQyNm41vc24wXMtUoEgrrXFbaTd0yw-WUjPKVCGuSWcfJT9xlhEsEdbDtItTEzpv0LKwMoZf3HnPMXoNbAjvrGXpNeo.7OoiF3nnOljcEOg4dXC-op9Q7qMdL45_9c0IWk20jjI&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730406&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-14&linkCode=ll2&tag=nekonira-22&linkId=2a45586fca6cf3b97e6bd3679c2ffe3e&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_31",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.HAYASHI_RYOHEI_BOOK2_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【書籍】林陵平のサッカー観戦術 2 試合がもっともっと面白くなる極意" title="林陵平のサッカー観戦術 2"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">林陵平のサッカー観戦術 2 試合がもっともっと面白くなる極意 (平凡社新書 1099)</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E6%9E%97%E9%99%B5%E5%B9%B3%E3%81%AE%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%E8%A6%B3%E6%88%A6%E8%A1%93-2-%E8%A9%A6%E5%90%88%E3%81%8C%E3%82%82%E3%81%A3%E3%81%A8%E3%82%82%E3%81%A3%E3%81%A8%E9%9D%A2%E7%99%BD%E3%81%8F%E3%81%AA%E3%82%8B%E6%A5%B5%E6%84%8F-%E5%B9%B3%E5%87%A1%E7%A4%BE%E6%96%B0%E6%9B%B8-1099/dp/4582860990?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1PPPI4JAM6FMS&dib=eyJ2IjoiMSJ9.Ii674zUDIeClg1rHqoE7dvc3ZUq19iWxAL6qtPWqt8CfGI4vfpBAfK16Fnb0JRO06E_cxhlT2zfRls0lgzsxxX2MJyGVP0tID7Y5Dh0sK4tZUMh-IYbvX5WoN24mtxsX5YAJd5WSgoqLKOyQpTaQsEWpEo_WKV7D0eGe9CRfh-ldKVg3-XeEgrU-kl1Lsw2WwEpUUjHbCMWq85Q9k8QkhogMHObVuzTsLBrBZS4D7lA-sSIxU7VXdoJEtfGecEVl3NPXN_xzhP2K3yQi37VWk6LNoH6UNUYQNkB7_qGY1Wg.QTDFVDkX7BOc7TT0DbqKjrce3LRBKpXAa2Rojft0Y38&dib_tag=se&keywords=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC&qid=1786730971&sprefix=%E3%82%B5%E3%83%83%E3%82%AB%E3%83%BC%2Cspecialty-aps%2C165&sr=8-51-spons&xpid=FU1MxLqzOp2Bo&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGZfbmV4dA&psc=1&linkCode=ll2&tag=nekonira-22&linkId=2dd81d7345e0afc2f2f4a700ba9877ff&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}, {
+  id: "amazon_user_32",
+  badge: "Amazon PR",
+  htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="${window.RERISE_GAMING_PC_IMAGE || ''}" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:8px;" alt="【Re-Rise】ゲーミングPC GeForce Windows11" title="【Re-Rise】ゲーミングPC"></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333; font-weight:bold;">【Re-Rise】ゲーミングPC GeForce Windows11【コスパ重視】</a></p><div style="margin:6px 0 2px 0;"><a href="https://www.amazon.co.jp/%E3%80%90Re-Rise%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC-GeForce-Windows11-%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3%E3%80%90%E3%82%B3%E3%82%B9%E3%83%91%E9%87%8D%E8%A6%96%E3%80%91/dp/B0FZVW4KVD?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&crid=1H2N2M35UUNW2&dib=eyJ2IjoiMSJ9.307qIpNBJ-m2jiuITLE3qnFgHdrr8OdoSEi2nWi-EaQnigmbOkGu5WzGJIQpk65w8EhQHbzCUyZYLc8bQbpN905TBc6E4O44pQ96ljL1-rqqbzwLDCKVdOIJUgzcUOy3ycpgGpqQZbJZCD9rE479PExdAHWytET7xGsjfvig7gMFVIdkHMHpdPpg7_KKpAWOZdSH4iMY36bBlhizVUsowKtNWVRnfVeMCq0jyVfJ3UqlKaiGGZqoa_v49kRQBgH2RLhpImLHSpcv9Bg6o0XPoAL4E8fP3PMak33cFF_OswE.Lupd2JupJ5d7XHNQg8A8QWm4ID0ysuw7uptavhbrJtU&dib_tag=se&keywords=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC&qid=1786731574&sprefix=%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0pc%2Caps%2C175&sr=8-7&ufe=app_do%3Aamzn1.fos.35785624-70c4-44ae-a5c3-3f044f475d63&linkCode=ll2&tag=nekonira-22&linkId=713553fb67bbadabc20a26f33ad1bb8a&ref_=as_li_ss_tl" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#FF9900;color:#111!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> Amazonで購入 </div></a></div></td></tr></table></div></td></tr></table>`
+}];
+function SideAdBanner({
+  position
+}) {
+  const [closedIds, setClosedIds] = useState({});
+  const [sidebarAds, setSidebarAds] = useState([]);
+  useEffect(() => {
     const shuffled = [...AFFILIATE_ADS].sort(() => 0.5 - Math.random());
-    const isTallAd = (ad) => ad && ad.htmlCode && !ad.htmlCode.includes('468x160');
+    const isTallAd = ad => ad && ad.htmlCode && !ad.htmlCode.includes('468x160');
     const firstTwo = shuffled.slice(0, 2);
     const hasTall = firstTwo.some(isTallAd);
     const maxCount = hasTall ? 2 : 3;
     setSidebarAds(shuffled.slice(0, maxCount));
   }, [position]);
-
   const visibleAds = sidebarAds.filter(ad => !closedIds[ad.id]);
-
   if (visibleAds.length === 0) {
     return /*#__PURE__*/React.createElement("aside", {
       className: `hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start ${position === 'left' ? 'mr-3' : 'ml-3'}`
     });
   }
-
   return /*#__PURE__*/React.createElement("aside", {
     className: `hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ${position === 'left' ? 'mr-3' : 'ml-3'}`
   }, visibleAds.map(ad => /*#__PURE__*/React.createElement("div", {
     key: ad.id,
     className: "relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden"
   }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => setClosedIds(prev => ({ ...prev, [ad.id]: true })),
+    onClick: () => setClosedIds(prev => ({
+      ...prev,
+      [ad.id]: true
+    })),
     className: "absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer",
     title: "この広告を非表示"
-  }, "✕"), ad.htmlCode ? (
-    ad.htmlCode.includes('<script') ? /*#__PURE__*/React.createElement("iframe", {
-      srcDoc: `<!DOCTYPE html><html><head><base target='_blank'><style>body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;overflow:hidden;} img,table,div{max-width:100%!important;}</style></head><body>${ad.htmlCode}</body></html>`,
-      className: "w-full border-0 overflow-hidden rounded-xl",
-      style: { height: ad.htmlCode.includes('468x160') ? '160px' : '250px' },
-      title: ad.id
-    }) : /*#__PURE__*/React.createElement("div", {
-      className: "w-full flex justify-center items-center overflow-hidden [&_table]:max-w-full [&_img]:max-w-full [&_img]:h-auto [&_div]:max-w-full [&_td]:block [&_td]:w-full",
-      dangerouslySetInnerHTML: {
-        __html: ad.htmlCode
-      }
-    })
-  ) : /*#__PURE__*/React.createElement("a", {
+  }, "✕"), ad.htmlCode ? ad.htmlCode.includes('<script') ? /*#__PURE__*/React.createElement("iframe", {
+    srcDoc: `<!DOCTYPE html><html><head><base target='_blank'><style>body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;overflow:hidden;} img,table,div{max-width:100%!important;}</style></head><body>${ad.htmlCode}</body></html>`,
+    className: "w-full border-0 overflow-hidden rounded-xl",
+    style: {
+      height: ad.htmlCode.includes('468x160') ? '160px' : '250px'
+    },
+    title: ad.id
+  }) : /*#__PURE__*/React.createElement("div", {
+    className: "w-full flex justify-center items-center overflow-hidden [&_table]:max-w-full [&_img]:max-w-full [&_img]:h-auto [&_div]:max-w-full [&_td]:block [&_td]:w-full",
+    dangerouslySetInnerHTML: {
+      __html: ad.htmlCode
+    }
+  }) : /*#__PURE__*/React.createElement("a", {
     href: ad.url,
     target: "_blank",
     rel: "noopener noreferrer",
@@ -301,7 +255,6 @@ function SideAdBanner({ position }) {
     loading: "lazy"
   })))));
 }
-
 const OFFSETS = {
   '☆3': 0,
   '☆3+': 16,
@@ -376,7 +329,7 @@ const PLAYER_IMAGE_MAP = {
   "p01": "PELE_IMAGE",
   "p02": "RONALDO_IMAGE",
   "p03": "DEBRUYNE_IMAGE",
-    "p05": "VAN_DIJK_IMAGE",
+  "p05": "VAN_DIJK_IMAGE",
   "p06": "BELLINGHAM_IMAGE",
   "p07": "HONDA_IMAGE",
   "p08": "MESSI_MLS_IMAGE",
@@ -639,8 +592,7 @@ const PLAYER_IMAGE_MAP = {
   "p268": "IZUMI_TOYA_2026_TS_IMAGE",
   "p269": "YAMAMOTO_OUTA_2026_TS_IMAGE"
 };
-
-const getPlayerAvatarUrl = (player) => {
+const getPlayerAvatarUrl = player => {
   if (!player) return '';
   const imgVar = PLAYER_IMAGE_MAP[player.id];
   if (imgVar && window[imgVar]) return window[imgVar];
@@ -1314,7 +1266,7 @@ function App() {
   }, "DB & BUILDER")), /*#__PURE__*/React.createElement("p", {
     className: "text-xs text-slate-400 font-medium"
   }, "育成シミュレーション データベース"))), /*#__PURE__*/React.createElement("nav", {
-    className: "hidden md:flex items-center gap-1 bg-[#0e1522]/90 p-1.5 rounded-xl border border-slate-800"
+    className: "flex items-center gap-1 bg-[#0e1522]/90 p-1.5 rounded-xl border border-slate-800 overflow-x-auto max-w-full scrollbar-none"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('home'),
     className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'home' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
@@ -1442,12 +1394,21 @@ function App() {
     rel: "noopener noreferrer",
     className: "text-emerald-400 hover:underline font-bold"
   }, "NEKONIRA")))), compareList.length > 0 && /*#__PURE__*/React.createElement("div", {
-    className: "fixed bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#0e1522]/95 border border-[#00FF66]/50 rounded-2xl p-3 shadow-2xl shadow-[#00FF66]/20 backdrop-blur-xl flex items-center gap-4 max-w-xl w-[92%]"
+    className: "fixed bottom-16 md:bottom-6 left-1/2 -translate-x-1/2 z-40 bg-[#0e1522]/95 border border-[#00FF66]/50 rounded-2xl p-3 shadow-2xl shadow-[#00FF66]/20 backdrop-blur-xl flex items-center gap-3 max-w-xl w-[92%]"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2 flex-1 overflow-x-auto py-1"
+    className: "flex items-center gap-2.5 flex-1 overflow-x-auto py-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col flex-shrink-0"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-xs font-bold text-[#00FF66] whitespace-nowrap pl-1"
-  }, "比較 (", compareList.length, "/5)"), /*#__PURE__*/React.createElement("div", {
+  }, "比較 (", compareList.length, "/5)"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      setCompareList([]);
+      setIsCompareModalOpen(false);
+    },
+    className: "text-[10px] text-red-400 hover:text-red-300 font-bold underline cursor-pointer text-left pl-1",
+    title: "比較リストを全消去"
+  }, "全クリア")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-2"
   }, compareList.map(p => {
     const avatar = getPlayerAvatarUrl(p);
@@ -1459,7 +1420,7 @@ function App() {
       className: "w-10 h-14 rounded-lg object-contain bg-slate-950/90 border border-slate-700 shadow-md group-hover:border-[#00FF66] transition-colors"
     }), /*#__PURE__*/React.createElement("button", {
       onClick: () => toggleCompare(p),
-      className: "absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full p-0.5 shadow-md hover:scale-110 transition-transform",
+      className: "absolute -top-1.5 -right-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full p-0.5 shadow-md hover:scale-110 transition-transform cursor-pointer",
       title: "比較から外す"
     }, /*#__PURE__*/React.createElement(Icon, {
       name: "x",
@@ -1467,7 +1428,7 @@ function App() {
     })));
   }))), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsCompareModalOpen(true),
-    className: "flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs rounded-xl shadow-md hover:brightness-110 whitespace-nowrap"
+    className: "flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs rounded-xl shadow-md hover:brightness-110 whitespace-nowrap cursor-pointer"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "compare",
     className: "w-4 h-4"
@@ -1479,7 +1440,11 @@ function App() {
   }), isCompareModalOpen && /*#__PURE__*/React.createElement(PlayerCompareModal, {
     compareList: compareList,
     onClose: () => setIsCompareModalOpen(false),
-    onRemove: p => toggleCompare(p)
+    onRemove: p => toggleCompare(p),
+    onClearAll: () => {
+      setCompareList([]);
+      setIsCompareModalOpen(false);
+    }
   }));
 }
 function HomeTab({
@@ -1635,7 +1600,7 @@ function PlayerDBTab({
   const [nationalityFilter, setNationalityFilter] = useState('ALL');
   const [rarityFilter, setRarityFilter] = useState('ALL');
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(false);
-  const [viewMode, setViewMode] = useState(() => (typeof window !== 'undefined' && window.innerWidth < 1024) ? 'grid' : 'table');
+  const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
   // テーブルソート設定 state ({ key, direction: 'asc' | 'desc' })
   const [sortConfig, setSortConfig] = useState({
@@ -2109,6 +2074,7 @@ function PlayerDBTab({
     className: "lg:hidden space-y-2.5"
   }, filteredPlayers.map((p, idx) => {
     const isCompared = compareList.some(item => item.id === p.id);
+    const avatar = getPlayerAvatarUrl(p);
     const totalStats = getPlayerTotalStats18(p);
     return /*#__PURE__*/React.createElement("div", {
       key: `${p.id}_mb_${idx}`,
@@ -2278,7 +2244,7 @@ function PlayerDBTab({
     }, getCategoryTotal(p, 'physical')), /*#__PURE__*/React.createElement("td", {
       className: "py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white"
     }, getCategoryTotal(p, 'speed')), /*#__PURE__*/React.createElement("td", {
-      className: "py-3 px-3 text-right whitespace-nowrap",
+      className: "py-3 px-3 text-right",
       onClick: e => e.stopPropagation()
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => setSelectedPlayer(p),
@@ -2898,138 +2864,143 @@ function PlayerCompareModal({
 }) {
   if (compareList.length === 0) return null;
 
+  // 比較表全体での一括最大強化モード state
   const [isGlobalMaxEnhanced, setIsGlobalMaxEnhanced] = useState(false);
+
+  // 各比較選手ごとの個別強化モード設定 state ({ [playerId]: boolean })
   const [playerEnhancedMap, setPlayerEnhancedMap] = useState({});
+
+  // 各比較選手ごとの個別レアリティ設定 state
   const [playerRarityMap, setPlayerRarityMap] = useState(() => {
     const map = {};
     compareList.forEach(p => {
-      map[p.id] = p.simulatedRarity || p.rarity || '笘・';
+      map[p.id] = p.simulatedRarity || p.rarity || '☆3';
     });
     return map;
   });
-
   useEffect(() => {
     if (compareList.length === 0) {
       onClose();
     }
   }, [compareList, onClose]);
 
+  // 個別選択レアリティ＆強化モード反映後のリスト
   const adjustedCompareList = useMemo(() => {
     return compareList.map(p => {
       const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
-      const targetR = isEnhanced ? '笘・' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '笘・';
+      const targetR = isEnhanced ? '☆5' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
       return getAdjustedPlayer(p, targetR, isEnhanced);
     });
   }, [compareList, playerRarityMap, playerEnhancedMap, isGlobalMaxEnhanced]);
-
   const statGroups = [{
     key: 'shoot',
     catName: 'SHO',
-    label: 'SHO (繧ｷ繝･繝ｼ繝・',
+    label: 'SHO (シュート)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'finishing',
-      label: '豎ｺ螳壼鴨'
+      label: '決定力'
     }, {
       subKey: 'power',
-      label: '繧ｭ繝・け蜉・
+      label: 'キック力'
     }, {
       subKey: 'composure',
-      label: '蜀ｷ髱吶＆'
+      label: '冷静さ'
     }]
   }, {
     key: 'pass',
     catName: 'PAS',
-    label: 'PAS (繝代せ)',
+    label: 'PAS (パス)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'shortPass',
-      label: '繧ｷ繝ｧ繝ｼ繝医ヱ繧ｹ'
+      label: 'ショートパス'
     }, {
       subKey: 'longPass',
-      label: '繝ｭ繝ｳ繧ｰ繝代せ'
+      label: 'ロングパス'
     }, {
-      subKey: 'kickAccuracy',
-      label: '繧ｭ繝・け邊ｾ蠎ｦ'
+      subKey: 'accuracy',
+      label: 'キック精度'
     }]
   }, {
     key: 'dribble',
     catName: 'DRB',
-    label: 'DRB (繝峨Μ繝悶Ν)',
+    label: 'DRB (ドリブル)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
-      subKey: 'dribble',
-      label: '遯∫ｴ蜉・
+      subKey: 'breakout',
+      label: '突破力'
     }, {
-      subKey: 'keep',
-      label: '繧ｭ繝ｼ繝怜鴨'
+      subKey: 'keeping',
+      label: 'キープ力'
     }, {
       subKey: 'ballTouch',
-      label: '繝懊・繝ｫ繧ｿ繝・メ'
+      label: 'ボールタッチ'
     }]
   }, {
     key: 'defense',
     catName: 'DEF',
-    label: 'DEF (繝・ぅ繝輔ぉ繝ｳ繧ｹ / GK閭ｽ蜉・',
+    label: 'DEF (ディフェンス / GK能力)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
       subKey: 'tackle',
-      label: '繧ｿ繝・け繝ｫ',
-      gkLabel: '繧ｻ繝ｼ繝薙Φ繧ｰ'
+      label: 'タックル',
+      gkLabel: 'セービング'
     }, {
       subKey: 'interception',
-      label: '繝代せ繧ｫ繝・ヨ',
-      gkLabel: '鬟帙・蜃ｺ縺・
+      label: 'パスカット',
+      gkLabel: '反応速度'
     }, {
       subKey: 'marking',
-      label: '繝槭・繧ｯ',
-      gkLabel: '繝上う繝懊・繝ｫ'
+      label: 'マーク',
+      gkLabel: '1対1'
     }]
   }, {
     key: 'physical',
     catName: 'PHY',
-    label: 'PHY (繝輔ぅ繧ｸ繧ｫ繝ｫ)',
+    label: 'PHY (フィジカル)',
     maxPossTotal: 500,
     maxPossSub: 199,
     details: [{
-      subKey: 'jump',
-      label: '繧ｸ繝｣繝ｳ繝・
+      subKey: 'jumping',
+      label: 'ジャンプ'
     }, {
       subKey: 'contact',
-      label: '繝輔ぅ繧ｸ繧ｫ繝ｫ繧ｳ繝ｳ繧ｿ繧ｯ繝・
+      label: 'コンタクト'
     }, {
       subKey: 'stamina',
-      label: '繧ｹ繧ｿ繝溘リ'
+      label: 'スタミナ'
     }]
   }, {
     key: 'speed',
     catName: 'SPD',
-    label: 'SPD (繧ｹ繝斐・繝・',
-    maxPossTotal: 500,
+    label: 'SPD (スピード)',
+    maxPossTotal: 400,
     maxPossSub: 199,
     details: [{
-      subKey: 'speed',
-      label: '襍ｰ蜉・
+      subKey: 'running',
+      label: '走力'
     }, {
       subKey: 'agility',
-      label: '謨乗差諤ｧ'
+      label: '敏捷性'
     }]
   }];
 
+  // 1位(赤 ★BEST)、2位(黄 2ND)、3位(水色 3RD) のランク判定ヘルパー
   const renderRankBadge = (val, allVals) => {
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
     if (rank === 1) {
       return /*#__PURE__*/React.createElement("span", {
-        className: "text-[9px] font-black text-red-400 bg-red-500/20 px-1 py-0.2 rounded border border-red-500/40"
-      }, "笘・EST");
+        className: "text-[9px] font-black text-red-500 bg-red-500/10 px-1 py-0.2 rounded border border-red-500/30"
+      }, "★BEST");
     } else if (rank === 2) {
       return /*#__PURE__*/React.createElement("span", {
-        className: "text-[9px] font-black text-amber-400 bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30"
+        className: "text-[9px] font-extrabold text-amber-400 bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30"
       }, "2ND");
     } else if (rank === 3) {
       return /*#__PURE__*/React.createElement("span", {
@@ -3038,7 +3009,6 @@ function PlayerCompareModal({
     }
     return null;
   };
-
   const getRankBarStyle = (val, allVals) => {
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
@@ -3047,18 +3017,16 @@ function PlayerCompareModal({
     if (rank === 3) return 'bg-gradient-to-r from-cyan-600 via-[#00E5FF] to-blue-500';
     return 'bg-slate-600';
   };
-
   const allCatalogOveralls = adjustedCompareList.map(p => p.overall);
   const allTotalStats18 = adjustedCompareList.map(p => getPlayerTotalStats18(p));
-
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-6xl w-full mx-auto my-auto px-2"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 space-y-5 max-h-[92vh] overflow-y-auto animate-fadeIn shadow-2xl"
+    className: "glass-panel w-full rounded-3xl border border-[#00FF66]/40 p-4 md:p-6 flex flex-col max-h-[92vh] overflow-hidden animate-fadeIn shadow-2xl space-y-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "border-b border-slate-800 pb-4 space-y-3"
+    className: "flex-shrink-0 border-b border-slate-800 pb-3 space-y-3"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between gap-2"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3070,12 +3038,12 @@ function PlayerCompareModal({
     className: "w-5 h-5 text-[#00FF66]"
   })), /*#__PURE__*/React.createElement("span", {
     className: "text-xs font-bold text-[#00FF66] tracking-wider uppercase hidden sm:inline-block"
-  }, "豈碑ｼ・｡ｨ")), /*#__PURE__*/React.createElement("h2", {
+  }, "比較表")), /*#__PURE__*/React.createElement("h2", {
     className: "text-base sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white text-center leading-tight flex-1"
-  }, "驕ｸ謇玖・蜉帛､ ・・繝励Ξ繝ｼ諢剰ｭ・豈碑ｼ・｡ｨ"), /*#__PURE__*/React.createElement("button", {
+  }, "選手能力値 ＆ プレー意識 比較表"), /*#__PURE__*/React.createElement("button", {
     onClick: onClose,
     className: "p-2 rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0",
-    title: "髢峨§繧・
+    title: "閉じる"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-5 h-5"
@@ -3085,51 +3053,52 @@ function PlayerCompareModal({
     className: "flex items-center gap-1 bg-slate-900/90 p-1 rounded-xl border border-orange-500/40"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsGlobalMaxEnhanced(false),
-    className: px-3 py-1 rounded-lg text-xs font-bold transition-all 
-  }, "験 蛻晄悄蛟､"), /*#__PURE__*/React.createElement("button", {
+    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
+  }, "🌱 初期値"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsGlobalMaxEnhanced(true),
-    className: px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 
-  }, "笞｡ 譛螟ｧ蠑ｷ蛹・)), /*#__PURE__*/React.createElement("button", {
+    className: `px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
+  }, "⚡ 最大強化")), /*#__PURE__*/React.createElement("button", {
     onClick: onClearAll,
     className: "px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
-    title: "豈碑ｼ・ｯｾ雎｡繧偵☆縺ｹ縺ｦ隗｣髯､"
-  }, "卵・・蜈ｨ繧ｯ繝ｪ繧｢"), /*#__PURE__*/React.createElement("div", {
+    title: "比較対象をすべて解除"
+  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 px-3 py-1.5 rounded-xl border border-slate-800"
   }, /*#__PURE__*/React.createElement("span", {
     className: "text-red-400 font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-red-500"
-  }), "1菴・笘・EST"), /*#__PURE__*/React.createElement("span", {
+  }), "1位 ★BEST"), /*#__PURE__*/React.createElement("span", {
     className: "text-amber-400 font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-amber-400"
-  }), "2菴・2ND"), /*#__PURE__*/React.createElement("span", {
+  }), "2位 2ND"), /*#__PURE__*/React.createElement("span", {
     className: "text-[#00E5FF] font-extrabold flex items-center gap-1"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 rounded-full bg-[#00E5FF]"
-  }), "3菴・3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
-    className: "sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
-  }, "竊・蟾ｦ蜿ｳ繧ｹ繝ｯ繧､繝励〒蜈ｨ驕ｸ謇九ｒ荳ｦ縺ｹ縺ｦ豈碑ｼ・〒縺阪∪縺・竊・), /*#__PURE__*/React.createElement("div", {
-    className: "overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800"
+  }), "3位 3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+    className: "flex-shrink-0 sm:hidden text-[10px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2.5 py-1 rounded-lg border border-[#00FF66]/30 text-center"
+  }, "← 左右スワイプで全選手を並べて比較できます →"), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800 max-h-[calc(92vh-180px)]"
   }, /*#__PURE__*/React.createElement("table", {
     className: "w-full min-w-[640px] border-collapse text-left text-sm"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", {
-    className: "border-b border-slate-800 bg-slate-900/90"
+  }, /*#__PURE__*/React.createElement("thead", {
+    className: "sticky top-0 z-30 shadow-md"
+  }, /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 bg-slate-900"
   }, /*#__PURE__*/React.createElement("th", {
-    className: "p-3 w-40 min-w-[140px] bg-slate-900 text-xs font-black text-slate-400 uppercase tracking-wider sticky left-0 z-20 backdrop-blur-md border-r border-slate-800 shadow-md"
-  }, "豈碑ｼ・・岼"), adjustedCompareList.map(p => {
-    const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
-    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '笘・';
-    const mainStyle = p.style || p.playStyle || "繧ｹ繧ｿ繧､繝ｫ譛ｪ險ｭ螳・;
+    className: "p-3 w-44 min-w-[160px] bg-slate-900 text-xs sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md"
+  }, "比較項目"), adjustedCompareList.map(p => {
+    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+    const mainStyle = p.style || p.playStyle || "スタイル未設定";
     return /*#__PURE__*/React.createElement("th", {
       key: p.id,
-      className: "p-3 min-w-[170px] bg-slate-900/60 text-center align-top border-r border-slate-800/80 last:border-r-0"
+      className: "p-2.5 min-w-[170px] bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "flex flex-col items-center space-y-2 relative group"
+      className: "flex flex-col items-center relative group"
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => onRemove(p),
       className: "absolute -top-1 -right-1 z-10 p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer",
-      title: "豈碑ｼ・°繧牙､悶☆"
+      title: "比較から外す"
     }, /*#__PURE__*/React.createElement(Icon, {
       name: "x",
       className: "w-3.5 h-3.5"
@@ -3137,54 +3106,125 @@ function PlayerCompareModal({
       className: "relative"
     }, /*#__PURE__*/React.createElement(PlayerAvatar, {
       player: p,
-      className: "w-14 h-20 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md"
+      className: "w-12 h-16 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md"
     }), /*#__PURE__*/React.createElement("span", {
-      className: bsolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black 
+      className: `absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`
     }, currentRarity)), /*#__PURE__*/React.createElement("div", {
       className: "pt-2.5 w-full"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "text-sm font-black text-white truncate max-w-[160px] mx-auto"
+      className: "text-xs sm:text-sm font-black text-white truncate max-w-[160px] mx-auto"
     }, p.name), /*#__PURE__*/React.createElement("div", {
       className: "text-[10px] text-[#00FF66] font-bold mt-0.5"
-    }, p.mainPosition, " | ", mainStyle)), /*#__PURE__*/React.createElement("div", {
-      className: "w-full space-y-1 pt-1.5 border-t border-slate-800/80"
+    }, p.mainPosition, " | ", mainStyle))));
+  }))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 bg-slate-900/80"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-amber-400 text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+  }, "⚙️ 育成・強化設定"), adjustedCompareList.map(p => {
+    const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
+    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+    return /*#__PURE__*/React.createElement("td", {
+      key: p.id,
+      className: "p-2 border-r border-slate-800/60 align-top bg-slate-900/40"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "flex items-center justify-center gap-1"
-    }, ['笘・', '笘・', '笘・'].map(r => /*#__PURE__*/React.createElement("button", {
+      className: "w-full space-y-1.5"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-wrap items-center justify-center gap-1"
+    }, RARITIES.map(r => /*#__PURE__*/React.createElement("button", {
       key: r,
       onClick: () => setPlayerRarityMap(prev => ({
         ...prev,
         [p.id]: r
       })),
       disabled: isEnhanced,
-      className: px-1.5 py-0.5 rounded text-[9px] font-black transition-all  
+      className: `px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-800 text-slate-400 hover:text-white'} ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`
     }, r))), /*#__PURE__*/React.createElement("button", {
       onClick: () => setPlayerEnhancedMap(prev => ({
         ...prev,
         [p.id]: !isEnhanced
       })),
-      className: w-full py-0.5 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer 
-    }, isEnhanced ? '笞｡ 譛螟ｧ蠑ｷ蛹紋ｸｭ' : '験 騾壼ｸｸ陦ｨ遉ｺ'))));
-  }))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", {
+      className: `w-full py-1 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'}`
+    }, isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示')));
+  })), /*#__PURE__*/React.createElement("tr", {
+    className: "bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-indigo-500/20 border-t-2 border-b border-amber-500/40"
+  }, /*#__PURE__*/React.createElement("td", {
+    colSpan: adjustedCompareList.length + 1,
+    className: "p-2.5 font-black text-amber-300 text-xs sm:text-sm tracking-wider uppercase"
+  }, "⚽ 所持スキル ＆ アビリティ 対比")), /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800/60 bg-slate-900/30"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 text-xs sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top"
+  }, "所持スキル"), adjustedCompareList.map(p => {
+    const sk = getPlayerSkill(p);
+    return /*#__PURE__*/React.createElement("td", {
+      key: p.id,
+      className: "p-3 border-r border-slate-800/40 align-top text-left"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 space-y-1"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: `px-2 py-0.5 rounded text-[10px] ${getRankBadgeStyle(sk.rank)}`
+    }, sk.rank), /*#__PURE__*/React.createElement("span", {
+      className: `text-xs sm:text-sm font-black ${getRankTextStyle(sk.rank)}`
+    }, sk.name)), sk.description && /*#__PURE__*/React.createElement("p", {
+      className: "text-[11px] text-slate-300 leading-relaxed pt-0.5"
+    }, sk.description)));
+  })), /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800/60 bg-slate-900/30"
+  }, /*#__PURE__*/React.createElement("td", {
+    className: "p-3 text-xs sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top"
+  }, "所持アビリティ"), adjustedCompareList.map(p => {
+    const abs = getPlayerAbilities(p);
+    return /*#__PURE__*/React.createElement("td", {
+      key: p.id,
+      className: "p-3 border-r border-slate-800/40 align-top text-left"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "space-y-2"
+    }, abs.map((ab, idx) => /*#__PURE__*/React.createElement("div", {
+      key: idx,
+      className: "bg-slate-900/90 p-2 rounded-xl border border-slate-800 space-y-1"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: `px-1.5 py-0.5 rounded text-[9px] ${getRankBadgeStyle(ab.rank)}`
+    }, ab.rank), /*#__PURE__*/React.createElement("span", {
+      className: `text-xs sm:text-sm font-black ${getRankTextStyle(ab.rank)}`
+    }, ab.name)), ab.description && /*#__PURE__*/React.createElement("p", {
+      className: "text-[10px] text-slate-300 leading-normal"
+    }, ab.description)))));
+  })), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900/40"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-3 font-black text-[#00FF66] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
-  }, "繧ｫ繧ｿ繝ｭ繧ｰ邱丞粋蜉・), adjustedCompareList.map(p => /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-[#00FF66] text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+  }, "カタログ総合力"), adjustedCompareList.map(p => /*#__PURE__*/React.createElement("td", {
     key: p.id,
-    className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00FF66]"
-  }, p.overall, " ", renderRankBadge(p.overall, allCatalogOveralls)))), /*#__PURE__*/React.createElement("tr", {
+    className: "p-3 text-center border-r border-slate-800/60 font-num font-black"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative flex items-center justify-center min-h-[32px] w-full px-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute left-1 flex items-center justify-start w-10"
+  }, renderRankBadge(p.overall, allCatalogOveralls)), /*#__PURE__*/React.createElement("span", {
+    className: "text-xl md:text-2xl text-[#00FF66]"
+  }, p.overall))))), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900/40"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-3 font-black text-[#00E5FF] text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
-  }, "18鬆・岼 閭ｽ蜉帛粋險・), adjustedCompareList.map((p, idx) => /*#__PURE__*/React.createElement("td", {
+    className: "p-3 font-black text-[#00E5FF] text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+  }, "18項目 能力合計"), adjustedCompareList.map((p, idx) => /*#__PURE__*/React.createElement("td", {
     key: p.id,
-    className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-lg text-[#00E5FF]"
-  }, allTotalStats18[idx].toLocaleString(), " ", renderRankBadge(allTotalStats18[idx], allTotalStats18)))), statGroups.map(grp => /*#__PURE__*/React.createElement(React.Fragment, {
+    className: "p-3 text-center border-r border-slate-800/60 font-num font-black"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative flex items-center justify-center min-h-[32px] w-full px-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute left-1 flex items-center justify-start w-10"
+  }, renderRankBadge(allTotalStats18[idx], allTotalStats18)), /*#__PURE__*/React.createElement("span", {
+    className: "text-xl md:text-2xl text-[#00E5FF]"
+  }, allTotalStats18[idx].toLocaleString()))))), statGroups.map(grp => /*#__PURE__*/React.createElement(React.Fragment, {
     key: grp.key
   }, /*#__PURE__*/React.createElement("tr", {
     className: "bg-slate-900/90 border-t-2 border-b border-slate-800"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-3 font-black text-amber-300 text-xs sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1.5"
+    className: "p-3 font-black text-amber-300 text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1.5"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2.5 h-2.5 rounded-full bg-[#00FF66]"
   }), grp.label), adjustedCompareList.map(p => {
@@ -3192,9 +3232,16 @@ function PlayerCompareModal({
     const allCatTotals = adjustedCompareList.map(item => getCategoryTotal(item, grp.key));
     return /*#__PURE__*/React.createElement("td", {
       key: p.id,
-      className: "p-3 text-center border-r border-slate-800/60 font-num font-black text-base text-amber-300"
-    }, catTot, " ", renderRankBadge(catTot, allCatTotals));
+      className: "p-3 text-center border-r border-slate-800/60 font-num font-black"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "relative flex items-center justify-center min-h-[30px] w-full px-1"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "absolute left-1 flex items-center justify-start w-10"
+    }, renderRankBadge(catTot, allCatTotals)), /*#__PURE__*/React.createElement("span", {
+      className: "text-lg md:text-xl text-amber-300"
+    }, catTot)));
   })), grp.details.map(dt => {
+    const isGkRow = grp.key === 'defense';
     const detailVals = adjustedCompareList.map(p => {
       if (p.detailStats && p.detailStats[grp.key]) {
         return p.detailStats[grp.key][dt.subKey] || 0;
@@ -3205,23 +3252,25 @@ function PlayerCompareModal({
       key: dt.subKey,
       className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
     }, /*#__PURE__*/React.createElement("td", {
-      className: "p-2.5 text-xs font-bold text-slate-300 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
-    }, "笆ｶ ", dt.label), adjustedCompareList.map((p, idx) => {
+      className: "p-2.5 text-xs sm:text-sm font-bold text-slate-200 pl-4 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
+    }, "▶ ", dt.label), adjustedCompareList.map((p, idx) => {
       const val = detailVals[idx];
       const pct = Math.min(100, Math.round(val / grp.maxPossSub * 100));
       return /*#__PURE__*/React.createElement("td", {
         key: p.id,
         className: "p-2.5 text-center border-r border-slate-800/40"
       }, /*#__PURE__*/React.createElement("div", {
-        className: "flex items-center justify-center gap-1.5"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "font-num font-black text-white text-sm md:text-base"
-      }, val), renderRankBadge(val, detailVals)), /*#__PURE__*/React.createElement("div", {
+        className: "relative flex items-center justify-center min-h-[28px] w-full px-1"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "absolute left-1 flex items-center justify-start w-10"
+      }, renderRankBadge(val, detailVals)), /*#__PURE__*/React.createElement("span", {
+        className: "font-num font-black text-white text-base md:text-lg"
+      }, val)), /*#__PURE__*/React.createElement("div", {
         className: "w-full bg-[#070a10] rounded-full h-2 mt-1 overflow-hidden border border-slate-800"
       }, /*#__PURE__*/React.createElement("div", {
-        className: h-full rounded-full transition-all ,
+        className: `h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`,
         style: {
-          width: ${pct}%
+          width: `${pct}%`
         }
       })));
     }));
@@ -3229,22 +3278,22 @@ function PlayerCompareModal({
     className: "bg-amber-500/10 border-t-2 border-b border-amber-500/30"
   }, /*#__PURE__*/React.createElement("td", {
     colSpan: adjustedCompareList.length + 1,
-    className: "p-2.5 font-extrabold text-amber-400 text-xs tracking-wider uppercase"
-  }, "ｧ 繝励Ξ繝ｼ諢剰ｭ・14鬆・岼 蟇ｾ豈・(-2 縲・+2)")), PLAY_TENDENCY_ITEMS.map(item => {
+    className: "p-2.5 font-extrabold text-amber-400 text-xs sm:text-sm tracking-wider uppercase"
+  }, "🧠 プレー意識 14項目 対比 (-2 〜 +2)")), PLAY_TENDENCY_ITEMS.map(item => {
     const vals = adjustedCompareList.map(p => getPlayerPlayTendency(p, item.key));
     return /*#__PURE__*/React.createElement("tr", {
       key: item.key,
       className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
     }, /*#__PURE__*/React.createElement("td", {
-      className: "p-2.5 text-xs font-bold text-amber-200 pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
-    }, "ｧ ", item.label), adjustedCompareList.map((p, idx) => {
+      className: "p-2.5 text-xs sm:text-sm font-bold text-amber-200 pl-4 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
+    }, "🧠 ", item.label), adjustedCompareList.map((p, idx) => {
       const val = vals[idx];
       return /*#__PURE__*/React.createElement("td", {
         key: p.id,
         className: "p-2 text-center border-r border-slate-800/40"
       }, /*#__PURE__*/React.createElement("span", {
-        className: px-2.5 py-0.5 rounded-lg text-xs md:text-sm font-num font-black 
+        className: `px-2.5 py-0.5 rounded-lg text-xs sm:text-sm font-num font-black ${getTendencyBadgeStyle(val)}`
       }, formatTendencyVal(val)));
     }));
-  }))))))))));
+  })))))));
 }
