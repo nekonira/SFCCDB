@@ -4348,7 +4348,7 @@ function TeamBuilderTab({
     const totalComboBoostPct = allReqsFulfilled ? Math.round((baseComboSum + brazilBonusSum) / 18 * 10) / 10 : 0;
     const comboFactor = 1 + totalComboBoostPct / 100;
 
-    // 最終戦闘総合力 = 各選手ごとに [ポリシー適用後総合力 ✕ コンボ倍率] ➔ 端数切捨て ➔ 整数化合算
+    // 最終チーム総合力 = 各選手ごとに [ポリシー適用後総合力 ✕ コンボ倍率] ➔ 端数切捨て ➔ 整数化合算
     const boostedOverall = starterPlayers.reduce((acc, p) => {
       const isPolicyMatch = p.policy === teamPolicy;
       const policyVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : p.overall || 0;
@@ -4583,7 +4583,7 @@ function TeamBuilderTab({
     className: `p-3 rounded-xl border text-center transition-all ${comboValidation?.allReqsFulfilled ? 'bg-gradient-to-br from-amber-500/20 to-slate-950 border-amber-400/80 shadow-md shadow-amber-400/10' : 'bg-slate-950/80 border-slate-800/80'}`
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-center gap-1"
-  }, /*#__PURE__*/React.createElement("span", null, "最終戦闘総合力"), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/React.createElement("span", null, "最終チーム総合力"), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("span", {
     className: "text-xs"
   }, "🔥")), /*#__PURE__*/React.createElement("div", {
     className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
@@ -4752,7 +4752,7 @@ function TeamBuilderTab({
     className: "bg-amber-400/10 p-3 rounded-lg border border-amber-400/50"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[10px] font-bold text-amber-300"
-  }, "最終戦闘総合力 (コンボ発動)"), /*#__PURE__*/React.createElement("div", {
+  }, "最終チーム総合力 (コンボ発動)"), /*#__PURE__*/React.createElement("div", {
     className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
   }, comboValidation.boostedOverall.toLocaleString()))), /*#__PURE__*/React.createElement("div", {
     className: "text-xs space-y-1.5 pt-2 border-t border-slate-800/80"

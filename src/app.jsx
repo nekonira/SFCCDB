@@ -3188,7 +3188,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     const totalComboBoostPct = allReqsFulfilled ? Math.round(((baseComboSum + brazilBonusSum) / 18) * 10) / 10 : 0;
     const comboFactor = 1 + (totalComboBoostPct / 100);
 
-    // 最終戦闘総合力 = 各選手ごとに [ポリシー適用後総合力 ✕ コンボ倍率] ➔ 端数切捨て ➔ 整数化合算
+    // 最終チーム総合力 = 各選手ごとに [ポリシー適用後総合力 ✕ コンボ倍率] ➔ 端数切捨て ➔ 整数化合算
     const boostedOverall = starterPlayers.reduce((acc, p) => {
       const isPolicyMatch = p.policy === teamPolicy;
       const policyVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0);
@@ -3430,7 +3430,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             : 'bg-slate-950/80 border-slate-800/80'
             }`}>
             <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-center gap-1">
-              <span>最終戦闘総合力</span>
+              <span>最終チーム総合力</span>
               {comboValidation?.allReqsFulfilled && <span className="text-xs">🔥</span>}
             </div>
             <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
@@ -3643,7 +3643,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                 </div>
 
                 <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/50">
-                  <div className="text-[10px] font-bold text-amber-300">最終戦闘総合力 (コンボ発動)</div>
+                  <div className="text-[10px] font-bold text-amber-300">最終チーム総合力 (コンボ発動)</div>
                   <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
                     {comboValidation.boostedOverall.toLocaleString()}
                   </div>
