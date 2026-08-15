@@ -273,9 +273,20 @@ const AFFILIATE_ADS = [
   }
 ];
 
-function SideAdBanner({ position }) {
+// モーダル表示回数カウンター（詳細表示・比較表モーダルでの3回に1回の広告表示頻度制御用）
+let modalOpenCounter = 0;
+const checkModalAdFrequency = () => {
+  modalOpenCounter += 1;
+  return (modalOpenCounter % 3 === 1);
+};
+
+function SideAdBanner({ position, isModal = false, showModalAd = true }) {
   const [closedIds, setClosedIds] = useState({});
   const [sidebarAds, setSidebarAds] = useState([]);
+
+  if (isModal && !showModalAd) {
+    return null;
+  }
 
   useEffect(() => {
     const shuffled = [...AFFILIATE_ADS].sort(() => 0.5 - Math.random());
@@ -288,52 +299,107 @@ function SideAdBanner({ position }) {
 
   const visibleAds = sidebarAds.filter(ad => !closedIds[ad.id]);
 
+  const renderAdContent = (ad, isMobile = false) => {
+    if (ad.htmlCode) {
+      if (ad.htmlCode.includes('<script')) {
+        return (
+          <iframe
+            srcDoc={`<!DOCTYPE html><html><head><base target='_blank'><style>body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;overflow:hidden;} img,table,div{max-width:100%!important;height:auto!important;}</style></head><body>${ad.htmlCode}</body></html>`}
+            className="w-full border-0 overflow-hidden rounded-lg sm:rounded-xl"
+            style={{ height: isMobile ? (ad.htmlCode.includes('468x160') ? '90px' : '130px') : (ad.htmlCode.includes('468x160') ? '160px' : '250px') }}
+            title={ad.id}
+          />
+        );
+      }
+      return (
+        <div
+          className="w-full flex justify-center items-center overflow-hidden [&_table]:max-w-full [&_img]:max-w-full [&_img]:h-auto [&_div]:max-w-full [&_td]:block [&_td]:w-full"
+          dangerouslySetInnerHTML={{ __html: ad.htmlCode }}
+        />
+      );
+    }
+    return (
+      <a
+        href={ad.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block group w-full"
+      >
+        <img
+          src={ad.image}
+          alt={ad.title || ""}
+          className="w-full h-auto rounded-lg sm:rounded-xl object-cover group-hover:opacity-90 transition-opacity"
+          loading="lazy"
+        />
+      </a>
+    );
+  };
+
   if (visibleAds.length === 0) {
     return (
       <aside className={`hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start ${position === 'left' ? 'mr-3' : 'ml-3'}`} />
     );
   }
 
-  return (
-    <aside className={`hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ${position === 'left' ? 'mr-3' : 'ml-3'}`}>
-      {visibleAds.map(ad => (
-        <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
-          <button
-            onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
-            className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer"
-            title="この広告を非表示"
-          >
-            ✕
-          </button>
-          {ad.htmlCode ? (
-            ad.htmlCode.includes('<script') ? (
-              <iframe
-                srcDoc={`<!DOCTYPE html><html><head><base target='_blank'><style>body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;overflow:hidden;} img,table,div{max-width:100%!important;}</style></head><body>${ad.htmlCode}</body></html>`}
-                className="w-full border-0 overflow-hidden rounded-xl"
-                style={{ height: ad.htmlCode.includes('468x160') ? '160px' : '250px' }}
-                title={ad.id}
-              />
-            ) : (
-              <div className="w-full flex justify-center items-center overflow-hidden [&_table]:max-w-full [&_img]:max-w-full [&_img]:h-auto [&_div]:max-w-full [&_td]:block [&_td]:w-full" dangerouslySetInnerHTML={{ __html: ad.htmlCode }} />
-            )
-          ) : (
-            <a
-              href={ad.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group w-full"
+  // 左サイドバーはPCのみ表示
+  if (position === 'left') {
+    return (
+      <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto mr-3">
+        {visibleAds.map(ad => (
+          <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
+            <button
+              onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
+              className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer"
+              title="この広告を非表示"
             >
-              <img
-                src={ad.image}
-                alt={ad.title || ""}
-                className="w-full h-auto rounded-xl object-cover group-hover:opacity-90 transition-opacity"
-                loading="lazy"
-              />
-            </a>
-          )}
+              ✕
+            </button>
+            {renderAdContent(ad)}
+          </div>
+        ))}
+      </aside>
+    );
+  }
+
+  // 右サイドバー：PC表示（デスクトップ） ＋ スマホ・モバイル表示用 右側コンパクト固定広告（最大2個・✕ボタンで消去可能）
+  const mobileAds = visibleAds.slice(0, 2);
+
+  return (
+    <>
+      {/* PC表示用 右サイドバー広告 */}
+      <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ml-3">
+        {visibleAds.map(ad => (
+          <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
+            <button
+              onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
+              className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer"
+              title="この広告を非表示"
+            >
+              ✕
+            </button>
+            {renderAdContent(ad)}
+          </div>
+        ))}
+      </aside>
+
+      {/* スマホ・モバイル表示用 右側固定フローティング広告 (2つまで表示・✕ボタンで個別/全削除可能) */}
+      {mobileAds.length > 0 && (
+        <div className="xl:hidden fixed bottom-16 right-1.5 z-40 flex flex-col gap-2 max-w-[115px] sm:max-w-[135px] pointer-events-auto">
+          {mobileAds.map(ad => (
+            <div key={ad.id} className="relative group glass-panel p-1 rounded-xl border border-slate-800/90 bg-slate-900/95 shadow-2xl flex justify-center items-center overflow-hidden w-full backdrop-blur-md">
+              <button
+                onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
+                className="absolute top-0.5 right-0.5 z-20 w-4.5 h-4.5 rounded-full bg-slate-950/90 hover:bg-red-500 text-slate-300 hover:text-white border border-slate-700/80 flex items-center justify-center text-[9px] shadow-md cursor-pointer"
+                title="この広告を閉じる"
+              >
+                ✕
+              </button>
+              {renderAdContent(ad, true)}
+            </div>
+          ))}
         </div>
-      ))}
-    </aside>
+      )}
+    </>
   );
 }
 
@@ -1474,14 +1540,14 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
         </div>
       </div>
 
-      {/* YouTube 最新動画 (スマホ時のみ小さく固定スクロール) */}
-      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md">
-        <div className="flex items-center justify-between px-1">
-          <div className="flex items-center gap-2">
-            <span className="px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
+      {/* YouTube 最新動画 (スマホ時のみ超スリム固定スクロール) */}
+      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel px-2 py-1 md:p-3 rounded-lg md:rounded-2xl space-y-0.5 md:space-y-2 border border-red-500/30 bg-slate-900/95 shadow-xl backdrop-blur-md">
+        <div className="flex items-center justify-between px-0.5">
+          <div className="flex items-center gap-1">
+            <span className="px-1 py-0 rounded text-[8px] md:text-xs font-black bg-red-600 text-white flex items-center gap-0.5 shadow-sm">
               ▶ YouTube
             </span>
-            <h2 className="text-xs md:text-sm font-bold text-white flex items-center gap-1.5">
+            <h2 className="text-[10px] md:text-sm font-bold text-white flex items-center gap-1">
               ねこにら サカつく2026 最新動画
             </h2>
           </div>
@@ -1489,19 +1555,19 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
             href="https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+            className="text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
           >
-            チャンネルを見る ↗
+            チャンネル ↗
           </a>
         </div>
-        <div className="flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700">
+        <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
           {YOUTUBE_VIDEOS.map(video => (
             <a
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+              className="flex-shrink-0 w-[76px] sm:w-24 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded md:rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all shadow-md group flex flex-col justify-between"
             >
               <div className="relative aspect-video bg-slate-950 overflow-hidden">
                 <img
@@ -1511,8 +1577,8 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
                   loading="lazy"
                 />
               </div>
-              <div className="p-1.5 flex-1 flex flex-col justify-between">
-                <p className="text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight">
+              <div className="p-0.5 md:p-1.5 flex-1 flex flex-col justify-between">
+                <p className="text-[9px] md:text-[11px] font-bold text-slate-200 group-hover:text-white truncate md:line-clamp-2 leading-tight">
                   {video.title}
                 </p>
               </div>
@@ -1782,14 +1848,14 @@ function PlayerDBTab({
 
   return (
     <div className="space-y-6 animate-fadeIn">
-      {/* YouTube 最新動画 (スマホ時のみ小さく固定スクロール) */}
-      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md">
-        <div className="flex items-center justify-between px-1">
-          <div className="flex items-center gap-2">
-            <span className="px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
+      {/* YouTube 最新動画 (スマホ時のみ超スリム固定スクロール) */}
+      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel px-2 py-1 md:p-3 rounded-lg md:rounded-2xl space-y-0.5 md:space-y-2 border border-red-500/30 bg-slate-900/95 shadow-xl backdrop-blur-md">
+        <div className="flex items-center justify-between px-0.5">
+          <div className="flex items-center gap-1">
+            <span className="px-1 py-0 rounded text-[8px] md:text-xs font-black bg-red-600 text-white flex items-center gap-0.5 shadow-sm">
               ▶ YouTube
             </span>
-            <h3 className="text-xs md:text-sm font-bold text-white flex items-center gap-1.5">
+            <h3 className="text-[10px] md:text-sm font-bold text-white flex items-center gap-1">
               ねこにら サカつく2026 最新動画
             </h3>
           </div>
@@ -1797,19 +1863,19 @@ function PlayerDBTab({
             href="https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+            className="text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
           >
-            チャンネルを見る ↗
+            チャンネル ↗
           </a>
         </div>
-        <div className="flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700">
+        <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
           {YOUTUBE_VIDEOS.map(video => (
             <a
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+              className="flex-shrink-0 w-[76px] sm:w-24 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded md:rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all shadow-md group flex flex-col justify-between"
             >
               <div className="relative aspect-video bg-slate-950 overflow-hidden">
                 <img
@@ -1819,8 +1885,8 @@ function PlayerDBTab({
                   loading="lazy"
                 />
               </div>
-              <div className="p-1.5 flex-1 flex flex-col justify-between">
-                <p className="text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight">
+              <div className="p-0.5 md:p-1.5 flex-1 flex flex-col justify-between">
+                <p className="text-[9px] md:text-[11px] font-bold text-slate-200 group-hover:text-white truncate md:line-clamp-2 leading-tight">
                   {video.title}
                 </p>
               </div>
@@ -2470,6 +2536,11 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
   const [selectedRarity, setSelectedRarity] = useState(player.rarity || '☆3');
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(player.isMaxEnhanced || false);
 
+  // 詳細モーダル表示時の3回に1回頻度制御判定
+  const showModalAd = useMemo(() => {
+    return checkModalAdFrequency();
+  }, []);
+
   // レアリティ成長・育成状態反映プレイヤー
   const adjustedPlayer = useMemo(() => {
     return getAdjustedPlayer(player, selectedRarity, isMaxEnhanced);
@@ -2836,10 +2907,10 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
         </div>
       </div>
 
-      <SideAdBanner position="right" />
+        <SideAdBanner position="right" isModal={true} showModalAd={showModalAd} />
+      </div>
     </div>
-  </div>
-);
+  );
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -2847,6 +2918,11 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
 // ─────────────────────────────────────────────────────────────
 function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
   if (compareList.length === 0) return null;
+
+  // 比較表モーダル表示時の3回に1回頻度制御判定
+  const showModalAd = useMemo(() => {
+    return checkModalAdFrequency();
+  }, []);
 
   // 比較表全体での一括最大強化モード state
   const [isGlobalMaxEnhanced, setIsGlobalMaxEnhanced] = useState(false);
@@ -3054,12 +3130,12 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
             </div>
           )}
 
-          {/* PC・スマホ共通 統一サイドバイサイド比較テーブル（縦横スクロール可能・カード＆名前のみ固定） */}
+          {/* PC・スマホ共通 統一サイドバイサイド比較テーブル（均等幅＆固定テーブルレイアウト） */}
           <div className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-700 rounded-2xl border border-slate-800 max-h-[calc(92vh-180px)]">
-            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <table className="w-full table-fixed min-w-full sm:min-w-[640px] border-collapse text-left text-xs sm:text-sm">
               <thead className="sticky top-0 z-30 shadow-md">
                 <tr className="border-b border-slate-800 bg-slate-900">
-                  <th className="p-3 w-44 min-w-[160px] bg-slate-900 text-xs sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md">
+                  <th className="p-1.5 sm:p-3 w-[85px] sm:w-44 min-w-[85px] sm:min-w-[160px] bg-slate-900 text-[10px] sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md">
                     比較項目
                   </th>
                   {adjustedCompareList.map(p => {
@@ -3067,26 +3143,26 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                     const mainStyle = p.style || p.playStyle || "スタイル未設定";
 
                     return (
-                      <th key={p.id} className="p-2.5 min-w-[170px] bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md">
-                        <div className="flex flex-col items-center relative group">
+                      <th key={p.id} className="p-1 sm:p-2.5 bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md">
+                        <div className="flex flex-col items-center relative group w-full">
                           <button
                             onClick={() => onRemove(p)}
-                            className="absolute -top-1 -right-1 z-10 p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
+                            className="absolute -top-1 -right-1 z-10 p-0.5 sm:p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
                             title="比較から外す"
                           >
-                            <Icon name="x" className="w-3.5 h-3.5" />
+                            <Icon name="x" className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                           </button>
 
                           <div className="relative">
-                            <PlayerAvatar player={p} className="w-12 h-16 rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md" />
-                            <span className={`absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`}>
+                            <PlayerAvatar player={p} className="w-9 h-12 sm:w-12 sm:h-16 rounded-lg sm:rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md" />
+                            <span className={`absolute -bottom-1.5 left-1/2 -translate-x-1/2 px-1.5 py-0 rounded-full text-[8px] sm:text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`}>
                               {currentRarity}
                             </span>
                           </div>
 
-                          <div className="pt-2.5 w-full">
-                            <div className="text-xs sm:text-sm font-black text-white truncate max-w-[160px] mx-auto">{p.name}</div>
-                            <div className="text-[10px] text-[#00FF66] font-bold mt-0.5">{p.mainPosition} | {mainStyle}</div>
+                          <div className="pt-2 sm:pt-2.5 w-full overflow-hidden text-center px-0.5">
+                            <div className="text-[10px] sm:text-sm font-black text-white truncate w-full">{p.name}</div>
+                            <div className="text-[8px] sm:text-[10px] text-[#00FF66] font-bold mt-0.5 truncate w-full">{p.mainPosition} | {mainStyle}</div>
                           </div>
                         </div>
                       </th>
@@ -3097,23 +3173,23 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
               <tbody>
                 {/* 0. レア度 ＆ 強化設定コントロール行 */}
                 <tr className="border-b border-slate-800 bg-slate-900/80">
-                  <td className="p-3 font-black text-amber-400 text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
-                    ⚙️ 育成・強化設定
+                  <td className="p-1.5 sm:p-3 font-black text-amber-400 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                    ⚙️ 育成設定
                   </td>
                   {adjustedCompareList.map(p => {
                     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
                     const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
 
                     return (
-                      <td key={p.id} className="p-2 border-r border-slate-800/60 align-top bg-slate-900/40">
-                        <div className="w-full space-y-1.5">
-                          <div className="flex flex-wrap items-center justify-center gap-1">
+                      <td key={p.id} className="p-1 sm:p-2 border-r border-slate-800/60 align-top bg-slate-900/40">
+                        <div className="w-full space-y-1">
+                          <div className="flex flex-wrap items-center justify-center gap-0.5 sm:gap-1">
                             {RARITIES.map(r => (
                               <button
                                 key={r}
                                 onClick={() => setPlayerRarityMap(prev => ({ ...prev, [p.id]: r }))}
                                 disabled={isEnhanced}
-                                className={`px-1.5 py-0.5 rounded text-[9px] font-black transition-all ${currentRarity === r
+                                className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] font-black transition-all ${currentRarity === r
                                   ? 'bg-[#00FF66] text-slate-950 shadow'
                                   : 'bg-slate-800 text-slate-400 hover:text-white'
                                   } ${isEnhanced ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
@@ -3124,12 +3200,12 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                           </div>
                           <button
                             onClick={() => setPlayerEnhancedMap(prev => ({ ...prev, [p.id]: !isEnhanced }))}
-                            className={`w-full py-1 rounded text-[9px] font-black transition-all border flex items-center justify-center gap-1 cursor-pointer ${isEnhanced
+                            className={`w-full py-0.5 sm:py-1 rounded text-[8px] sm:text-[9px] font-black transition-all border flex items-center justify-center gap-0.5 cursor-pointer ${isEnhanced
                               ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 border-orange-400 shadow'
                               : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-slate-200'
                               }`}
                           >
-                            {isEnhanced ? '⚡ 最大強化中' : '🌱 通常表示'}
+                            {isEnhanced ? '⚡ 最大強化' : '🌱 通常'}
                           </button>
                         </div>
                       </td>
@@ -3137,33 +3213,26 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   })}
                 </tr>
 
-                {/* 1. 所持スキル ＆ アビリティ 対比 (カタログ総合力の上に配置) */}
-                <tr className="bg-gradient-to-r from-amber-500/20 via-purple-500/20 to-indigo-500/20 border-t-2 border-b border-amber-500/40">
-                  <td colSpan={adjustedCompareList.length + 1} className="p-2.5 font-black text-amber-300 text-xs sm:text-sm tracking-wider uppercase">
-                    ⚽ 所持スキル ＆ アビリティ 対比
-                  </td>
-                </tr>
-
                 {/* スキル行 */}
                 <tr className="border-b border-slate-800/60 bg-slate-900/30">
-                  <td className="p-3 text-xs sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
+                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
                     所持スキル
                   </td>
                   {adjustedCompareList.map(p => {
                     const sk = getPlayerSkill(p);
                     return (
-                      <td key={p.id} className="p-3 border-r border-slate-800/40 align-top text-left">
-                        <div className="bg-slate-900/90 p-2.5 rounded-xl border border-slate-800 space-y-1">
-                          <div className="flex items-center gap-1.5">
-                            <span className={`px-2 py-0.5 rounded text-[10px] ${getRankBadgeStyle(sk.rank)}`}>
+                      <td key={p.id} className="p-1.5 sm:p-3 border-r border-slate-800/40 align-top text-left">
+                        <div className="bg-slate-900/90 p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl border border-slate-800 space-y-0.5 sm:space-y-1">
+                          <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
+                            <span className={`px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] ${getRankBadgeStyle(sk.rank)}`}>
                               {sk.rank}
                             </span>
-                            <span className={`text-xs sm:text-sm font-black ${getRankTextStyle(sk.rank)}`}>
+                            <span className={`text-[10px] sm:text-sm font-black ${getRankTextStyle(sk.rank)}`}>
                               {sk.name}
                             </span>
                           </div>
                           {sk.description && (
-                            <p className="text-[11px] text-slate-300 leading-relaxed pt-0.5">{sk.description}</p>
+                            <p className="text-[9px] sm:text-[11px] text-slate-300 leading-tight sm:leading-relaxed pt-0.5">{sk.description}</p>
                           )}
                         </div>
                       </td>
@@ -3173,26 +3242,26 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* アビリティ行 */}
                 <tr className="border-b border-slate-800/60 bg-slate-900/30">
-                  <td className="p-3 text-xs sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
+                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
                     所持アビリティ
                   </td>
                   {adjustedCompareList.map(p => {
                     const abs = getPlayerAbilities(p);
                     return (
-                      <td key={p.id} className="p-3 border-r border-slate-800/40 align-top text-left">
-                        <div className="space-y-2">
+                      <td key={p.id} className="p-1.5 sm:p-3 border-r border-slate-800/40 align-top text-left">
+                        <div className="space-y-1 sm:space-y-2">
                           {abs.map((ab, idx) => (
-                            <div key={idx} className="bg-slate-900/90 p-2 rounded-xl border border-slate-800 space-y-1">
-                              <div className="flex items-center gap-1.5">
-                                <span className={`px-1.5 py-0.5 rounded text-[9px] ${getRankBadgeStyle(ab.rank)}`}>
+                            <div key={idx} className="bg-slate-900/90 p-1 sm:p-2 rounded-lg sm:rounded-xl border border-slate-800 space-y-0.5 sm:space-y-1">
+                              <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap">
+                                <span className={`px-1 py-0.5 rounded text-[8px] sm:text-[9px] ${getRankBadgeStyle(ab.rank)}`}>
                                   {ab.rank}
                                 </span>
-                                <span className={`text-xs sm:text-sm font-black ${getRankTextStyle(ab.rank)}`}>
+                                <span className={`text-[10px] sm:text-sm font-black ${getRankTextStyle(ab.rank)}`}>
                                   {ab.name}
                                 </span>
                               </div>
                               {ab.description && (
-                                <p className="text-[10px] text-slate-300 leading-normal">{ab.description}</p>
+                                <p className="text-[9px] sm:text-[10px] text-slate-300 leading-tight sm:leading-normal">{ab.description}</p>
                               )}
                             </div>
                           ))}
@@ -3204,31 +3273,31 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* 2. カタログ総合力 ＆ 18項目能力合計 */}
                 <tr className="border-b border-slate-800 bg-slate-900/40">
-                  <td className="p-3 font-black text-[#00FF66] text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                  <td className="p-1.5 sm:p-3 font-black text-[#00FF66] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
                     カタログ総合力
                   </td>
                   {adjustedCompareList.map(p => (
-                    <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black">
-                      <div className="relative flex items-center justify-center min-h-[32px] w-full px-1">
-                        <div className="absolute left-1 flex items-center justify-start w-10">
+                    <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                      <div className="relative flex items-center justify-center min-h-[26px] sm:min-h-[32px] w-full px-0.5 sm:px-1">
+                        <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                           {renderRankBadge(p.overall, allCatalogOveralls)}
                         </div>
-                        <span className="text-xl md:text-2xl text-[#00FF66]">{p.overall}</span>
+                        <span className="text-base sm:text-xl md:text-2xl text-[#00FF66]">{p.overall}</span>
                       </div>
                     </td>
                   ))}
                 </tr>
                 <tr className="border-b border-slate-800 bg-slate-900/40">
-                  <td className="p-3 font-black text-[#00E5FF] text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
-                    18項目 能力合計
+                  <td className="p-1.5 sm:p-3 font-black text-[#00E5FF] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                    18項目能力合計
                   </td>
                   {adjustedCompareList.map((p, idx) => (
-                    <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black">
-                      <div className="relative flex items-center justify-center min-h-[32px] w-full px-1">
-                        <div className="absolute left-1 flex items-center justify-start w-10">
+                    <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                      <div className="relative flex items-center justify-center min-h-[26px] sm:min-h-[32px] w-full px-0.5 sm:px-1">
+                        <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                           {renderRankBadge(allTotalStats18[idx], allTotalStats18)}
                         </div>
-                        <span className="text-xl md:text-2xl text-[#00E5FF]">{allTotalStats18[idx].toLocaleString()}</span>
+                        <span className="text-base sm:text-xl md:text-2xl text-[#00E5FF]">{allTotalStats18[idx].toLocaleString()}</span>
                       </div>
                     </td>
                   ))}
@@ -3239,20 +3308,20 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   <React.Fragment key={grp.key}>
                     {/* カテゴリ合計行 */}
                     <tr className="bg-slate-900/90 border-t-2 border-b border-slate-800">
-                      <td className="p-3 font-black text-amber-300 text-xs sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1.5">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#00FF66]"></span>
+                      <td className="p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1">
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00FF66]"></span>
                         {grp.label}
                       </td>
                       {adjustedCompareList.map(p => {
                         const catTot = getCategoryTotal(p, grp.key);
                         const allCatTotals = adjustedCompareList.map(item => getCategoryTotal(item, grp.key));
                         return (
-                          <td key={p.id} className="p-3 text-center border-r border-slate-800/60 font-num font-black">
-                            <div className="relative flex items-center justify-center min-h-[30px] w-full px-1">
-                              <div className="absolute left-1 flex items-center justify-start w-10">
+                          <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                            <div className="relative flex items-center justify-center min-h-[24px] sm:min-h-[30px] w-full px-0.5 sm:px-1">
+                              <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                                 {renderRankBadge(catTot, allCatTotals)}
                               </div>
-                              <span className="text-lg md:text-xl text-amber-300">{catTot}</span>
+                              <span className="text-sm sm:text-lg md:text-xl text-amber-300">{catTot}</span>
                             </div>
                           </td>
                         );
@@ -3271,7 +3340,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                       return (
                         <tr key={dt.subKey} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
-                          <td className="p-2.5 text-xs sm:text-sm font-bold text-slate-200 pl-4 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
+                          <td className="p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
                             ▶ {dt.label}
                           </td>
                           {adjustedCompareList.map((p, idx) => {
@@ -3279,14 +3348,11 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                             const pct = Math.min(100, Math.round((val / grp.maxPossSub) * 100));
 
                             return (
-                              <td key={p.id} className="p-2.5 text-center border-r border-slate-800/40">
-                                <div className="relative flex items-center justify-center min-h-[28px] w-full px-1">
-                                  <div className="absolute left-1 flex items-center justify-start w-10">
-                                    {renderRankBadge(val, detailVals)}
-                                  </div>
-                                  <span className="font-num font-black text-white text-base md:text-lg">{val}</span>
+                              <td key={p.id} className="p-1 sm:p-2.5 text-center border-r border-slate-800/40">
+                                <div className="relative flex items-center justify-center min-h-[22px] sm:min-h-[28px] w-full px-0.5 sm:px-1">
+                                  <span className="font-num font-black text-white text-xs sm:text-base md:text-lg">{val}</span>
                                 </div>
-                                <div className="w-full bg-[#070a10] rounded-full h-2 mt-1 overflow-hidden border border-slate-800">
+                                <div className="w-full bg-[#070a10] rounded-full h-1 sm:h-2 mt-0.5 sm:mt-1 overflow-hidden border border-slate-800">
                                   <div className={`h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`} style={{ width: `${pct}%` }}></div>
                                 </div>
                               </td>
@@ -3300,8 +3366,10 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* 4. プレー意識 14項目 */}
                 <tr className="bg-amber-500/10 border-t-2 border-b border-amber-500/30">
-                  <td colSpan={adjustedCompareList.length + 1} className="p-2.5 font-extrabold text-amber-400 text-xs sm:text-sm tracking-wider uppercase">
-                    🧠 プレー意識 14項目 対比 (-2 〜 +2)
+                  <td colSpan={adjustedCompareList.length + 1} className="p-1.5 sm:p-2.5 font-extrabold text-amber-400 text-[10px] sm:text-sm tracking-wider uppercase">
+                    <div className="sticky left-2 inline-flex items-center gap-1 font-black">
+                      🧠 プレー意識 14項目 対比 (-2 〜 +2)
+                    </div>
                   </td>
                 </tr>
                 {PLAY_TENDENCY_ITEMS.map(item => {
@@ -3329,6 +3397,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
           </div>
         </div>
       </div>
+
+      <SideAdBanner position="right" isModal={true} showModalAd={showModalAd} />
     </div>
   );
 }

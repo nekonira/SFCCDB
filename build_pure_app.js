@@ -76,10 +76,10 @@ ${imageScriptTags}
   <script src="./src/data/mockData.js"></script>
 
   <!-- 3. Pure Transpiled React Application -->
-  <script src="./src/app.js"></script>
+  <script src="./src/app.js?v=${Date.now()}"></script>
 
   <!-- 4. React App Mount Script -->
-  <script src="./src/main.js"></script>
+  <script src="./src/main.js?v=${Date.now()}"></script>
 </body>
 </html>
 `;
