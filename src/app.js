@@ -214,9 +214,6 @@ function SideAdBanner({
 }) {
   const [closedIds, setClosedIds] = useState({});
   const [sidebarAds, setSidebarAds] = useState([]);
-  if (isModal && !showModalAd) {
-    return null;
-  }
   useEffect(() => {
     const shuffled = [...AFFILIATE_ADS].sort(() => 0.5 - Math.random());
     const isTallAd = ad => ad && ad.htmlCode && !ad.htmlCode.includes('468x160');
@@ -263,11 +260,11 @@ function SideAdBanner({
     });
   }
 
-  // 左サイドバーはPCのみ表示
+  // 左サイドバーはPCのみ表示 (2つ固定表示)
   if (position === 'left') {
     return /*#__PURE__*/React.createElement("aside", {
       className: "hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto mr-3"
-    }, visibleAds.map(ad => /*#__PURE__*/React.createElement("div", {
+    }, visibleAds.slice(0, 2).map(ad => /*#__PURE__*/React.createElement("div", {
       key: ad.id,
       className: "relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden"
     }, /*#__PURE__*/React.createElement("button", {
@@ -280,11 +277,12 @@ function SideAdBanner({
     }, "✕"), renderAdContent(ad))));
   }
 
-  // 右サイドバー：PC表示（デスクトップ） ＋ スマホ・モバイル表示用 右側コンパクト固定広告（最大2個・✕ボタンで消去可能）
+  // 右サイドバー：PC表示（左右2つずつ常時表示） ＋ スマホ・モバイル表示用 右側コンパクト固定広告（モーダル時は3回に1回表示）
+  const shouldShowMobileAd = isModal ? showModalAd : true;
   const mobileAds = visibleAds.slice(0, 2);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", {
     className: "hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ml-3"
-  }, visibleAds.map(ad => /*#__PURE__*/React.createElement("div", {
+  }, visibleAds.slice(0, 2).map(ad => /*#__PURE__*/React.createElement("div", {
     key: ad.id,
     className: "relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden"
   }, /*#__PURE__*/React.createElement("button", {
@@ -294,7 +292,7 @@ function SideAdBanner({
     })),
     className: "absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer",
     title: "この広告を非表示"
-  }, "✕"), renderAdContent(ad)))), mobileAds.length > 0 && /*#__PURE__*/React.createElement("div", {
+  }, "✕"), renderAdContent(ad)))), shouldShowMobileAd && mobileAds.length > 0 && /*#__PURE__*/React.createElement("div", {
     className: "xl:hidden fixed bottom-16 right-1.5 z-40 flex flex-col gap-2 max-w-[115px] sm:max-w-[135px] pointer-events-auto"
   }, mobileAds.map(ad => /*#__PURE__*/React.createElement("div", {
     key: ad.id,
@@ -2146,7 +2144,9 @@ function PlayerDBTab({
       className: "px-1.5 py-0.5 rounded text-[10px] font-num font-black bg-slate-900 text-[#00FF66] border border-[#00FF66]/30"
     }, p.mainPosition), /*#__PURE__*/React.createElement("span", {
       className: "text-[10px] font-num font-extrabold text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/30"
-    }, p.rarity), p.nationality && /*#__PURE__*/React.createElement("span", {
+    }, p.rarity), p.policy && /*#__PURE__*/React.createElement("span", {
+      className: `text-[10px] font-black px-1.5 py-0.5 rounded border ${getPolicyBadgeClass(p.policy)}`
+    }, p.policy), p.nationality && /*#__PURE__*/React.createElement("span", {
       className: "text-[10px] text-slate-400 font-semibold truncate"
     }, "🌐 ", p.nationality)), /*#__PURE__*/React.createElement("div", {
       className: "font-black text-sm text-white truncate mt-1"
@@ -2655,7 +2655,9 @@ function PlayerDetailModal({
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto"
   }, /*#__PURE__*/React.createElement(SideAdBanner, {
-    position: "left"
+    position: "left",
+    isModal: true,
+    showModalAd: showModalAd
   }), /*#__PURE__*/React.createElement("div", {
     className: "glass-panel max-w-2xl w-full mx-auto rounded-3xl border border-slate-700 p-4 md:p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3087,77 +3089,82 @@ function PlayerCompareModal({
   return /*#__PURE__*/React.createElement("div", {
     className: "fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-1 sm:p-4 overflow-y-auto"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "max-w-6xl w-full mx-auto my-auto px-1 sm:px-2"
+    className: "max-w-[1750px] w-full mx-auto flex justify-between items-center px-1 sm:px-2 my-auto"
+  }, /*#__PURE__*/React.createElement(SideAdBanner, {
+    position: "left",
+    isModal: true,
+    showModalAd: showModalAd
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel max-w-6xl w-full mx-auto rounded-2xl sm:rounded-3xl border border-[#00FF66]/40 p-2 landscape:p-2 sm:p-6 flex flex-col max-h-[96vh] landscape:max-h-[98vh] overflow-hidden animate-fadeIn shadow-2xl space-y-1.5 sm:space-y-3 flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel w-full rounded-2xl sm:rounded-3xl border border-[#00FF66]/40 p-2 landscape:p-2 sm:p-6 flex flex-col max-h-[96vh] landscape:max-h-[98vh] overflow-hidden animate-fadeIn shadow-2xl space-y-1.5 sm:space-y-3"
+    className: "flex-shrink-0 border-b border-slate-800 pb-1.5 sm:pb-2"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex-shrink-0 border-b border-slate-800 pb-1.5 landscape:pb-1 sm:pb-3 space-y-1 landscape:space-y-1 sm:space-y-3"
+    className: "flex flex-wrap items-center justify-between gap-1 sm:gap-2"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between gap-1.5 sm:gap-2"
+    className: "flex items-center gap-1 sm:gap-1.5 flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 flex-shrink-0"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40"
+    className: "p-1 sm:p-1.5 rounded-md sm:rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "compare",
-    className: "w-4 h-4 sm:w-5 sm:h-5 text-[#00FF66]"
-  })), /*#__PURE__*/React.createElement("span", {
-    className: "text-xs font-bold text-[#00FF66] tracking-wider uppercase hidden sm:inline-block"
-  }, "比較表")), /*#__PURE__*/React.createElement("h2", {
-    className: "text-xs sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white text-center leading-tight flex-1 truncate"
-  }, "選手能力値 ＆ プレー意識 比較表"), /*#__PURE__*/React.createElement("button", {
+    className: "w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00FF66]"
+  })), /*#__PURE__*/React.createElement("h2", {
+    className: "text-xs sm:text-base font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white leading-tight"
+  }, "選手能力値 ＆ プレー意識 比較表")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1 sm:gap-2 flex-wrap ml-auto"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-orange-500/40"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsGlobalMaxEnhanced(false),
+    className: `px-1.5 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
+  }, "🌱 初期値"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsGlobalMaxEnhanced(true),
+    className: `px-1.5 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-xs font-bold transition-all flex items-center gap-0.5 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
+  }, "⚡ 最大強化")), /*#__PURE__*/React.createElement("button", {
+    onClick: onClearAll,
+    className: "px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] sm:text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-0.5 cursor-pointer",
+    title: "比較対象をすべて解除"
+  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 text-[9px] sm:text-xs text-slate-400 bg-slate-900/60 px-2 py-0.5 rounded-lg border border-slate-800"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-red-400 font-extrabold flex items-center gap-0.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "w-1.5 h-1.5 rounded-full bg-red-500"
+  }), "1位 ★BEST"), /*#__PURE__*/React.createElement("span", {
+    className: "text-amber-400 font-extrabold flex items-center gap-0.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "w-1.5 h-1.5 rounded-full bg-amber-400"
+  }), "2位 2ND"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#00E5FF] font-extrabold hidden md:flex items-center gap-0.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "w-1.5 h-1.5 rounded-full bg-[#00E5FF]"
+  }), "3位 3RD")), /*#__PURE__*/React.createElement("button", {
     onClick: onClose,
-    className: "p-1 sm:p-2 rounded-lg sm:rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0",
+    className: "p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0",
     title: "閉じる"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "x",
     className: "w-4 h-4 sm:w-5 sm:h-5"
-  }))), /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-0.5 sm:pt-1"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-0.5 sm:gap-1 bg-slate-900/90 p-0.5 sm:p-1 rounded-lg sm:rounded-xl border border-orange-500/40"
-  }, /*#__PURE__*/React.createElement("button", {
-    onClick: () => setIsGlobalMaxEnhanced(false),
-    className: `px-2 sm:px-3 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs font-bold transition-all ${!isGlobalMaxEnhanced ? 'bg-slate-800 text-slate-100 shadow border border-slate-700' : 'text-slate-400 hover:text-slate-200'}`
-  }, "🌱 初期値"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setIsGlobalMaxEnhanced(true),
-    className: `px-2 sm:px-3 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs font-bold transition-all flex items-center gap-0.5 ${isGlobalMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-slate-400 hover:text-slate-200'}`
-  }, "⚡ 最大強化")), /*#__PURE__*/React.createElement("button", {
-    onClick: onClearAll,
-    className: "px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer",
-    title: "比較対象をすべて解除"
-  }, "🗑️ 全クリア"), /*#__PURE__*/React.createElement("div", {
-    className: "hidden sm:flex landscape:hidden md:flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 px-3 py-1 rounded-xl border border-slate-800"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-red-400 font-extrabold flex items-center gap-1"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "w-2 h-2 rounded-full bg-red-500"
-  }), "1位 ★BEST"), /*#__PURE__*/React.createElement("span", {
-    className: "text-amber-400 font-extrabold flex items-center gap-1"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "w-2 h-2 rounded-full bg-amber-400"
-  }), "2位 2ND"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#00E5FF] font-extrabold flex items-center gap-1"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "w-2 h-2 rounded-full bg-[#00E5FF]"
-  }), "3位 3RD")))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
+  }))))), adjustedCompareList.length >= 3 && /*#__PURE__*/React.createElement("div", {
     className: "flex-shrink-0 sm:hidden text-[9px] font-bold text-[#00FF66] bg-[#00FF66]/10 px-2 py-0.5 rounded-md border border-[#00FF66]/30 text-center"
   }, "← 左右スワイプで全選手比較 →"), /*#__PURE__*/React.createElement("div", {
     className: "flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-700 rounded-xl sm:rounded-2xl border border-slate-800 max-h-[calc(94vh-100px)] landscape:max-h-[calc(98vh-65px)]"
   }, /*#__PURE__*/React.createElement("table", {
-    className: "w-full table-fixed min-w-full sm:min-w-[640px] border-collapse text-left text-xs sm:text-sm"
+    className: "w-full table-fixed min-w-full sm:min-w-[768px] border-collapse text-left text-xs sm:text-sm"
   }, /*#__PURE__*/React.createElement("thead", {
     className: "sticky top-0 z-30 shadow-md"
   }, /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900"
   }, /*#__PURE__*/React.createElement("th", {
-    className: "p-1 sm:p-3 w-[75px] landscape:w-[80px] sm:w-44 min-w-[75px] sm:min-w-[160px] bg-slate-900 text-[9px] sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md"
-  }, "比較項目"), adjustedCompareList.map(p => {
-    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+    className: "p-1.5 sm:p-3 w-[100px] landscape:w-[110px] sm:w-80 md:w-96 min-w-[100px] sm:min-w-[320px] max-w-[100px] sm:max-w-[384px] bg-slate-900 text-[10px] sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "truncate sm:whitespace-nowrap font-black"
+  }, "比較項目")), adjustedCompareList.map(p => {
+    const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
+    const currentRarity = isEnhanced ? '☆5' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
     const mainStyle = p.style || p.playStyle || "スタイル未設定";
     return /*#__PURE__*/React.createElement("th", {
       key: p.id,
-      className: "p-0.5 sm:p-2.5 bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md"
+      className: "p-1 sm:p-2.5 bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md"
     }, /*#__PURE__*/React.createElement("div", {
       className: "flex flex-col items-center relative group w-full"
     }, /*#__PURE__*/React.createElement("button", {
@@ -3166,28 +3173,30 @@ function PlayerCompareModal({
       title: "比較から外す"
     }, /*#__PURE__*/React.createElement(Icon, {
       name: "x",
-      className: "w-2.5 h-2.5 sm:w-3.5 sm:h-3.5"
+      className: "w-3 h-3 sm:w-3.5 sm:h-3.5"
     })), /*#__PURE__*/React.createElement("div", {
-      className: "relative"
+      className: "relative flex-shrink-0 my-0.5"
     }, /*#__PURE__*/React.createElement(PlayerAvatar, {
       player: p,
-      className: "w-7 h-9 landscape:w-7 landscape:h-9 sm:w-12 sm:h-16 rounded-md sm:rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md"
+      className: "w-10 h-14 sm:w-14 sm:h-20 aspect-[3/4] flex-shrink-0 object-cover rounded-lg sm:rounded-xl border border-slate-700 shadow-md bg-slate-950"
     }), /*#__PURE__*/React.createElement("span", {
-      className: `absolute -bottom-1 left-1/2 -translate-x-1/2 px-1 py-0 rounded-full text-[7px] sm:text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`
+      className: `absolute -bottom-1 left-1/2 -translate-x-1/2 px-1.5 py-0 rounded-full text-[7px] sm:text-[9px] font-black whitespace-nowrap ${getRarityBadgeStyle(currentRarity)}`
     }, currentRarity)), /*#__PURE__*/React.createElement("div", {
-      className: "pt-1 sm:pt-2.5 w-full overflow-hidden text-center px-0.5"
+      className: "pt-1.5 sm:pt-2.5 w-full overflow-hidden text-center px-0.5"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "text-[9px] sm:text-sm font-black text-white truncate w-full"
+      className: "text-[10px] sm:text-sm font-black text-white truncate w-full"
     }, p.name), /*#__PURE__*/React.createElement("div", {
-      className: "text-[7px] sm:text-[10px] text-[#00FF66] font-bold mt-0.2 truncate w-full"
+      className: "text-[8px] sm:text-[10px] text-[#00FF66] font-bold mt-0.2 truncate w-full"
     }, p.mainPosition, " | ", mainStyle))));
   }))), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900/80"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 font-black text-amber-400 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
-  }, "⚙️ 育成設定"), adjustedCompareList.map(p => {
+    className: "p-1.5 sm:p-3 font-black text-amber-400 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "truncate sm:whitespace-nowrap font-black"
+  }, "⚙️ 育成設定")), adjustedCompareList.map(p => {
     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : p.isMaxEnhanced || false);
-    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+    const currentRarity = isEnhanced ? '☆5' : playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
     return /*#__PURE__*/React.createElement("td", {
       key: p.id,
       className: "p-1 sm:p-2 border-r border-slate-800/60 align-top bg-slate-900/40"
@@ -3213,8 +3222,10 @@ function PlayerCompareModal({
   })), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800/60 bg-slate-900/30"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top"
-  }, "所持スキル"), adjustedCompareList.map(p => {
+    className: "p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top overflow-hidden"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "truncate sm:whitespace-nowrap font-black"
+  }, "所持スキル")), adjustedCompareList.map(p => {
     const sk = getPlayerSkill(p);
     return /*#__PURE__*/React.createElement("td", {
       key: p.id,
@@ -3233,7 +3244,7 @@ function PlayerCompareModal({
   })), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800/60 bg-slate-900/30"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top"
+    className: "p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top sm:whitespace-nowrap"
   }, "所持アビリティ"), adjustedCompareList.map(p => {
     const abs = getPlayerAbilities(p);
     return /*#__PURE__*/React.createElement("td", {
@@ -3256,7 +3267,7 @@ function PlayerCompareModal({
   })), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900/40"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 font-black text-[#00FF66] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+    className: "p-1.5 sm:p-3 font-black text-[#00FF66] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md sm:whitespace-nowrap"
   }, "カタログ総合力"), adjustedCompareList.map(p => /*#__PURE__*/React.createElement("td", {
     key: p.id,
     className: "p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black"
@@ -3269,7 +3280,7 @@ function PlayerCompareModal({
   }, p.overall))))), /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 bg-slate-900/40"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 font-black text-[#00E5FF] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md"
+    className: "p-1.5 sm:p-3 font-black text-[#00E5FF] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md sm:whitespace-nowrap"
   }, "18項目能力合計"), adjustedCompareList.map((p, idx) => /*#__PURE__*/React.createElement("td", {
     key: p.id,
     className: "p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black"
@@ -3284,7 +3295,7 @@ function PlayerCompareModal({
   }, /*#__PURE__*/React.createElement("tr", {
     className: "bg-slate-900/90 border-t-2 border-b border-slate-800"
   }, /*#__PURE__*/React.createElement("td", {
-    className: "p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1"
+    className: "p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1 sm:whitespace-nowrap"
   }, /*#__PURE__*/React.createElement("span", {
     className: "w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00FF66]"
   }), grp.label), adjustedCompareList.map(p => {
@@ -3312,7 +3323,7 @@ function PlayerCompareModal({
       key: dt.subKey,
       className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
     }, /*#__PURE__*/React.createElement("td", {
-      className: "p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
+      className: "p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md sm:whitespace-nowrap"
     }, "▶ ", dt.label), adjustedCompareList.map((p, idx) => {
       const val = detailVals[idx];
       const pct = Math.min(100, Math.round(val / grp.maxPossSub * 100));
@@ -3338,15 +3349,19 @@ function PlayerCompareModal({
     colSpan: adjustedCompareList.length + 1,
     className: "p-1.5 sm:p-2.5 font-extrabold text-amber-400 text-[10px] sm:text-sm tracking-wider uppercase"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "sticky left-2 inline-flex items-center gap-1 font-black"
-  }, "🧠 プレー意識 14項目 対比 (-2 〜 +2)"))), PLAY_TENDENCY_ITEMS.map(item => {
+    className: "sticky left-2 inline-flex items-center gap-1 font-black max-w-full overflow-hidden"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "truncate sm:whitespace-nowrap font-black"
+  }, "🧠 プレー意識 14項目 対比 (-2 〜 +2)")))), PLAY_TENDENCY_ITEMS.map(item => {
     const vals = adjustedCompareList.map(p => getPlayerPlayTendency(p, item.key));
     return /*#__PURE__*/React.createElement("tr", {
       key: item.key,
       className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
     }, /*#__PURE__*/React.createElement("td", {
-      className: "p-2.5 text-xs sm:text-sm font-bold text-amber-200 pl-4 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md"
-    }, "🧠 ", item.label), adjustedCompareList.map((p, idx) => {
+      className: "p-1.5 sm:p-2.5 text-[10px] sm:text-xs md:text-sm font-bold text-amber-200 pl-2 sm:pl-4 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md overflow-hidden"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "truncate sm:whitespace-nowrap font-bold w-full overflow-hidden"
+    }, "🧠 ", item.label)), adjustedCompareList.map((p, idx) => {
       const val = vals[idx];
       return /*#__PURE__*/React.createElement("td", {
         key: p.id,

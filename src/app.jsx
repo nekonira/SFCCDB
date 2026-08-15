@@ -284,10 +284,6 @@ function SideAdBanner({ position, isModal = false, showModalAd = true }) {
   const [closedIds, setClosedIds] = useState({});
   const [sidebarAds, setSidebarAds] = useState([]);
 
-  if (isModal && !showModalAd) {
-    return null;
-  }
-
   useEffect(() => {
     const shuffled = [...AFFILIATE_ADS].sort(() => 0.5 - Math.random());
     const isTallAd = (ad) => ad && ad.htmlCode && !ad.htmlCode.includes('468x160');
@@ -341,11 +337,11 @@ function SideAdBanner({ position, isModal = false, showModalAd = true }) {
     );
   }
 
-  // 左サイドバーはPCのみ表示
+  // 左サイドバーはPCのみ表示 (2つ固定表示)
   if (position === 'left') {
     return (
       <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto mr-3">
-        {visibleAds.map(ad => (
+        {visibleAds.slice(0, 2).map(ad => (
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
@@ -361,14 +357,15 @@ function SideAdBanner({ position, isModal = false, showModalAd = true }) {
     );
   }
 
-  // 右サイドバー：PC表示（デスクトップ） ＋ スマホ・モバイル表示用 右側コンパクト固定広告（最大2個・✕ボタンで消去可能）
+  // 右サイドバー：PC表示（左右2つずつ常時表示） ＋ スマホ・モバイル表示用 右側コンパクト固定広告（モーダル時は3回に1回表示）
+  const shouldShowMobileAd = isModal ? showModalAd : true;
   const mobileAds = visibleAds.slice(0, 2);
 
   return (
     <>
-      {/* PC表示用 右サイドバー広告 */}
+      {/* PC表示用 右サイドバー広告 (PCでは常時2つ表示) */}
       <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ml-3">
-        {visibleAds.map(ad => (
+        {visibleAds.slice(0, 2).map(ad => (
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
@@ -382,8 +379,8 @@ function SideAdBanner({ position, isModal = false, showModalAd = true }) {
         ))}
       </aside>
 
-      {/* スマホ・モバイル表示用 右側固定フローティング広告 (2つまで表示・✕ボタンで個別/全削除可能) */}
-      {mobileAds.length > 0 && (
+      {/* スマホ・モバイル表示用 右側固定フローティング広告 (モーダル表示時は3回に1回の頻度で表示) */}
+      {shouldShowMobileAd && mobileAds.length > 0 && (
         <div className="xl:hidden fixed bottom-16 right-1.5 z-40 flex flex-col gap-2 max-w-[115px] sm:max-w-[135px] pointer-events-auto">
           {mobileAds.map(ad => (
             <div key={ad.id} className="relative group glass-panel p-1 rounded-xl border border-slate-800/90 bg-slate-900/95 shadow-2xl flex justify-center items-center overflow-hidden w-full backdrop-blur-md">
@@ -2118,6 +2115,11 @@ function PlayerDBTab({
                         <span className="text-[10px] font-num font-extrabold text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded border border-amber-400/30">
                           {p.rarity}
                         </span>
+                        {p.policy && (
+                          <span className={`text-[10px] font-black px-1.5 py-0.5 rounded border ${getPolicyBadgeClass(p.policy)}`}>
+                            {p.policy}
+                          </span>
+                        )}
                         {p.nationality && (
                           <span className="text-[10px] text-slate-400 font-semibold truncate">
                             🌐 {p.nationality}
@@ -2600,7 +2602,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto">
       <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto">
-        <SideAdBanner position="left" />
+        <SideAdBanner position="left" isModal={true} showModalAd={showModalAd} />
 
         <div className="glass-panel max-w-2xl w-full mx-auto rounded-3xl border border-slate-700 p-4 md:p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn flex-shrink-0">
         <div className="flex items-start justify-between">
@@ -3057,68 +3059,67 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-1 sm:p-4 overflow-y-auto">
-      <div className="max-w-6xl w-full mx-auto my-auto px-1 sm:px-2">
-        <div className="glass-panel w-full rounded-2xl sm:rounded-3xl border border-[#00FF66]/40 p-2 landscape:p-2 sm:p-6 flex flex-col max-h-[96vh] landscape:max-h-[98vh] overflow-hidden animate-fadeIn shadow-2xl space-y-1.5 sm:space-y-3">
-          {/* モーダルヘッダー（横画面モード時はコンパクト化） */}
-          <div className="flex-shrink-0 border-b border-slate-800 pb-1.5 landscape:pb-1 sm:pb-3 space-y-1 landscape:space-y-1 sm:space-y-3">
-            <div className="flex items-center justify-between gap-1.5 sm:gap-2">
-              <div className="flex items-center gap-1.5 flex-shrink-0">
-                <div className="p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40">
-                  <Icon name="compare" className="w-4 h-4 sm:w-5 sm:h-5 text-[#00FF66]" />
+      <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-1 sm:px-2 my-auto">
+        <SideAdBanner position="left" isModal={true} showModalAd={showModalAd} />
+
+        <div className="glass-panel max-w-6xl w-full mx-auto rounded-2xl sm:rounded-3xl border border-[#00FF66]/40 p-2 landscape:p-2 sm:p-6 flex flex-col max-h-[96vh] landscape:max-h-[98vh] overflow-hidden animate-fadeIn shadow-2xl space-y-1.5 sm:space-y-3 flex-shrink-0">
+          {/* モーダルヘッダー（すべての操作・タイトル・凡例を横一列に統合して縦幅を極小化） */}
+          <div className="flex-shrink-0 border-b border-slate-800 pb-1.5 sm:pb-2">
+            <div className="flex flex-wrap items-center justify-between gap-1 sm:gap-2">
+              {/* 左側：アイコン ＆ タイトル */}
+              <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+                <div className="p-1 sm:p-1.5 rounded-md sm:rounded-xl bg-[#00FF66]/20 border border-[#00FF66]/40">
+                  <Icon name="compare" className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#00FF66]" />
                 </div>
-                <span className="text-xs font-bold text-[#00FF66] tracking-wider uppercase hidden sm:inline-block">
-                  比較表
-                </span>
+                <h2 className="text-xs sm:text-base font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white leading-tight">
+                  選手能力値 ＆ プレー意識 比較表
+                </h2>
               </div>
 
-              <h2 className="text-xs sm:text-xl md:text-2xl font-black font-num text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white text-center leading-tight flex-1 truncate">
-                選手能力値 ＆ プレー意識 比較表
-              </h2>
+              {/* 右側：コントロールボタン ＆ 順位凡例 ＆ 閉じるボタン（横一列整列） */}
+              <div className="flex items-center gap-1 sm:gap-2 flex-wrap ml-auto">
+                <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-orange-500/40">
+                  <button
+                    onClick={() => setIsGlobalMaxEnhanced(false)}
+                    className={`px-1.5 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-xs font-bold transition-all ${!isGlobalMaxEnhanced
+                      ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
+                      : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                  >
+                    🌱 初期値
+                  </button>
+                  <button
+                    onClick={() => setIsGlobalMaxEnhanced(true)}
+                    className={`px-1.5 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-xs font-bold transition-all flex items-center gap-0.5 ${isGlobalMaxEnhanced
+                      ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20'
+                      : 'text-slate-400 hover:text-slate-200'
+                      }`}
+                  >
+                    ⚡ 最大強化
+                  </button>
+                </div>
 
-              <button
-                onClick={onClose}
-                className="p-1 sm:p-2 rounded-lg sm:rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0"
-                title="閉じる"
-              >
-                <Icon name="x" className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
-            </div>
-
-            {/* コントロールバー ＆ 順位凡例（横画面時は1行超コンパクト化） */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-0.5 sm:pt-1">
-              <div className="flex items-center gap-0.5 sm:gap-1 bg-slate-900/90 p-0.5 sm:p-1 rounded-lg sm:rounded-xl border border-orange-500/40">
                 <button
-                  onClick={() => setIsGlobalMaxEnhanced(false)}
-                  className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs font-bold transition-all ${!isGlobalMaxEnhanced
-                    ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
-                    : 'text-slate-400 hover:text-slate-200'
-                    }`}
+                  onClick={onClearAll}
+                  className="px-1.5 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-[9px] sm:text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-0.5 cursor-pointer"
+                  title="比較対象をすべて解除"
                 >
-                  🌱 初期値
+                  🗑️ 全クリア
                 </button>
+
+                <div className="flex items-center gap-1.5 text-[9px] sm:text-xs text-slate-400 bg-slate-900/60 px-2 py-0.5 rounded-lg border border-slate-800">
+                  <span className="text-red-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>1位 ★BEST</span>
+                  <span className="text-amber-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>2位 2ND</span>
+                  <span className="text-[#00E5FF] font-extrabold hidden md:flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF]"></span>3位 3RD</span>
+                </div>
+
                 <button
-                  onClick={() => setIsGlobalMaxEnhanced(true)}
-                  className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs font-bold transition-all flex items-center gap-0.5 ${isGlobalMaxEnhanced
-                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20'
-                    : 'text-slate-400 hover:text-slate-200'
-                    }`}
+                  onClick={onClose}
+                  className="p-1 sm:p-1.5 rounded-lg sm:rounded-xl bg-slate-800/80 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700/60 hover:border-red-500/40 transition-all cursor-pointer flex-shrink-0"
+                  title="閉じる"
                 >
-                  ⚡ 最大強化
+                  <Icon name="x" className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
-              </div>
-
-              <button
-                onClick={onClearAll}
-                className="px-2 sm:px-3 py-0.5 sm:py-1.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/40 transition-all flex items-center gap-1 cursor-pointer"
-                title="比較対象をすべて解除"
-              >
-                🗑️ 全クリア
-              </button>
-
-              <div className="hidden sm:flex landscape:hidden md:flex items-center gap-2.5 text-[11px] sm:text-xs text-slate-400 bg-slate-900/60 px-3 py-1 rounded-xl border border-slate-800">
-                <span className="text-red-400 font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-500"></span>1位 ★BEST</span>
-                <span className="text-amber-400 font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-400"></span>2位 2ND</span>
-                <span className="text-[#00E5FF] font-extrabold flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#00E5FF]"></span>3位 3RD</span>
               </div>
             </div>
           </div>
@@ -3132,37 +3133,38 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
           {/* PC・スマホ共通 統一サイドバイサイド比較テーブル（均等幅＆固定テーブルレイアウト） */}
           <div className="flex-1 overflow-auto scrollbar-thin scrollbar-thumb-slate-700 rounded-xl sm:rounded-2xl border border-slate-800 max-h-[calc(94vh-100px)] landscape:max-h-[calc(98vh-65px)]">
-            <table className="w-full table-fixed min-w-full sm:min-w-[640px] border-collapse text-left text-xs sm:text-sm">
+            <table className="w-full table-fixed min-w-full sm:min-w-[768px] border-collapse text-left text-xs sm:text-sm">
               <thead className="sticky top-0 z-30 shadow-md">
                 <tr className="border-b border-slate-800 bg-slate-900">
-                  <th className="p-1 sm:p-3 w-[75px] landscape:w-[80px] sm:w-44 min-w-[75px] sm:min-w-[160px] bg-slate-900 text-[9px] sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md">
-                    比較項目
+                  <th className="p-1.5 sm:p-3 w-[100px] landscape:w-[110px] sm:w-80 md:w-96 min-w-[100px] sm:min-w-[320px] max-w-[100px] sm:max-w-[384px] bg-slate-900 text-[10px] sm:text-sm font-black text-slate-300 uppercase tracking-wider sticky left-0 top-0 z-40 border-r border-slate-800 shadow-md overflow-hidden">
+                    <div className="truncate sm:whitespace-nowrap font-black">比較項目</div>
                   </th>
                   {adjustedCompareList.map(p => {
-                    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+                    const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
+                    const currentRarity = isEnhanced ? '☆5' : (playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3');
                     const mainStyle = p.style || p.playStyle || "スタイル未設定";
 
                     return (
-                      <th key={p.id} className="p-0.5 sm:p-2.5 bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md">
+                      <th key={p.id} className="p-1 sm:p-2.5 bg-slate-900 text-center align-top border-r border-slate-800/80 last:border-r-0 sticky top-0 z-30 shadow-md">
                         <div className="flex flex-col items-center relative group w-full">
                           <button
                             onClick={() => onRemove(p)}
                             className="absolute -top-1 -right-1 z-10 p-0.5 sm:p-1 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white border border-slate-700 transition-colors cursor-pointer"
                             title="比較から外す"
                           >
-                            <Icon name="x" className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
+                            <Icon name="x" className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                           </button>
 
-                          <div className="relative">
-                            <PlayerAvatar player={p} className="w-7 h-9 landscape:w-7 landscape:h-9 sm:w-12 sm:h-16 rounded-md sm:rounded-xl object-contain bg-slate-950 border border-slate-700 shadow-md" />
-                            <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 px-1 py-0 rounded-full text-[7px] sm:text-[9px] font-black ${getRarityBadgeStyle(currentRarity)}`}>
+                          <div className="relative flex-shrink-0 my-0.5">
+                            <PlayerAvatar player={p} className="w-10 h-14 sm:w-14 sm:h-20 aspect-[3/4] flex-shrink-0 object-cover rounded-lg sm:rounded-xl border border-slate-700 shadow-md bg-slate-950" />
+                            <span className={`absolute -bottom-1 left-1/2 -translate-x-1/2 px-1.5 py-0 rounded-full text-[7px] sm:text-[9px] font-black whitespace-nowrap ${getRarityBadgeStyle(currentRarity)}`}>
                               {currentRarity}
                             </span>
                           </div>
 
-                          <div className="pt-1 sm:pt-2.5 w-full overflow-hidden text-center px-0.5">
-                            <div className="text-[9px] sm:text-sm font-black text-white truncate w-full">{p.name}</div>
-                            <div className="text-[7px] sm:text-[10px] text-[#00FF66] font-bold mt-0.2 truncate w-full">{p.mainPosition} | {mainStyle}</div>
+                          <div className="pt-1.5 sm:pt-2.5 w-full overflow-hidden text-center px-0.5">
+                            <div className="text-[10px] sm:text-sm font-black text-white truncate w-full">{p.name}</div>
+                            <div className="text-[8px] sm:text-[10px] text-[#00FF66] font-bold mt-0.2 truncate w-full">{p.mainPosition} | {mainStyle}</div>
                           </div>
                         </div>
                       </th>
@@ -3173,12 +3175,12 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
               <tbody>
                 {/* 0. レア度 ＆ 強化設定コントロール行 */}
                 <tr className="border-b border-slate-800 bg-slate-900/80">
-                  <td className="p-1.5 sm:p-3 font-black text-amber-400 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
-                    ⚙️ 育成設定
+                  <td className="p-1.5 sm:p-3 font-black text-amber-400 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md overflow-hidden">
+                    <div className="truncate sm:whitespace-nowrap font-black">⚙️ 育成設定</div>
                   </td>
                   {adjustedCompareList.map(p => {
                     const isEnhanced = isGlobalMaxEnhanced || (playerEnhancedMap[p.id] !== undefined ? playerEnhancedMap[p.id] : (p.isMaxEnhanced || false));
-                    const currentRarity = playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3';
+                    const currentRarity = isEnhanced ? '☆5' : (playerRarityMap[p.id] || p.simulatedRarity || p.rarity || '☆3');
 
                     return (
                       <td key={p.id} className="p-1 sm:p-2 border-r border-slate-800/60 align-top bg-slate-900/40">
@@ -3215,8 +3217,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* スキル行 */}
                 <tr className="border-b border-slate-800/60 bg-slate-900/30">
-                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
-                    所持スキル
+                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-amber-400 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top overflow-hidden">
+                    <div className="truncate sm:whitespace-nowrap font-black">所持スキル</div>
                   </td>
                   {adjustedCompareList.map(p => {
                     const sk = getPlayerSkill(p);
@@ -3242,7 +3244,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* アビリティ行 */}
                 <tr className="border-b border-slate-800/60 bg-slate-900/30">
-                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top">
+                  <td className="p-1.5 sm:p-3 text-[10px] sm:text-sm font-black text-purple-300 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md align-top sm:whitespace-nowrap">
                     所持アビリティ
                   </td>
                   {adjustedCompareList.map(p => {
@@ -3273,7 +3275,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                 {/* 2. カタログ総合力 ＆ 18項目能力合計 */}
                 <tr className="border-b border-slate-800 bg-slate-900/40">
-                  <td className="p-1.5 sm:p-3 font-black text-[#00FF66] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                  <td className="p-1.5 sm:p-3 font-black text-[#00FF66] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md sm:whitespace-nowrap">
                     カタログ総合力
                   </td>
                   {adjustedCompareList.map(p => (
@@ -3288,7 +3290,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   ))}
                 </tr>
                 <tr className="border-b border-slate-800 bg-slate-900/40">
-                  <td className="p-1.5 sm:p-3 font-black text-[#00E5FF] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md">
+                  <td className="p-1.5 sm:p-3 font-black text-[#00E5FF] text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md sm:whitespace-nowrap">
                     18項目能力合計
                   </td>
                   {adjustedCompareList.map((p, idx) => (
@@ -3308,7 +3310,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   <React.Fragment key={grp.key}>
                     {/* カテゴリ合計行 */}
                     <tr className="bg-slate-900/90 border-t-2 border-b border-slate-800">
-                      <td className="p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1">
+                      <td className="p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1 sm:whitespace-nowrap">
                         <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00FF66]"></span>
                         {grp.label}
                       </td>
@@ -3340,7 +3342,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 
                       return (
                         <tr key={dt.subKey} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
-                          <td className="p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
+                          <td className="p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md sm:whitespace-nowrap">
                             ▶ {dt.label}
                           </td>
                           {adjustedCompareList.map((p, idx) => {
@@ -3367,8 +3369,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                 {/* 4. プレー意識 14項目 */}
                 <tr className="bg-amber-500/10 border-t-2 border-b border-amber-500/30">
                   <td colSpan={adjustedCompareList.length + 1} className="p-1.5 sm:p-2.5 font-extrabold text-amber-400 text-[10px] sm:text-sm tracking-wider uppercase">
-                    <div className="sticky left-2 inline-flex items-center gap-1 font-black">
-                      🧠 プレー意識 14項目 対比 (-2 〜 +2)
+                    <div className="sticky left-2 inline-flex items-center gap-1 font-black max-w-full overflow-hidden">
+                      <span className="truncate sm:whitespace-nowrap font-black">🧠 プレー意識 14項目 対比 (-2 〜 +2)</span>
                     </div>
                   </td>
                 </tr>
@@ -3376,8 +3378,8 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   const vals = adjustedCompareList.map(p => getPlayerPlayTendency(p, item.key));
                   return (
                     <tr key={item.key} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
-                      <td className="p-2.5 text-xs sm:text-sm font-bold text-amber-200 pl-4 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md">
-                        🧠 {item.label}
+                      <td className="p-1.5 sm:p-2.5 text-[10px] sm:text-xs md:text-sm font-bold text-amber-200 pl-2 sm:pl-4 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md overflow-hidden">
+                        <div className="truncate sm:whitespace-nowrap font-bold w-full overflow-hidden">🧠 {item.label}</div>
                       </td>
                       {adjustedCompareList.map((p, idx) => {
                         const val = vals[idx];
