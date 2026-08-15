@@ -210,18 +210,20 @@ const checkModalAdFrequency = () => {
 function SideAdBanner({
   position,
   isModal = false,
-  showModalAd = true
+  showModalAd = true,
+  refreshKey = null
 }) {
   const [closedIds, setClosedIds] = useState({});
   const [sidebarAds, setSidebarAds] = useState([]);
   useEffect(() => {
+    setClosedIds({});
     const shuffled = [...AFFILIATE_ADS].sort(() => 0.5 - Math.random());
     const isTallAd = ad => ad && ad.htmlCode && !ad.htmlCode.includes('468x160');
     const firstTwo = shuffled.slice(0, 2);
     const hasTall = firstTwo.some(isTallAd);
     const maxCount = hasTall ? 2 : 3;
     setSidebarAds(shuffled.slice(0, maxCount));
-  }, [position]);
+  }, [position, refreshKey]);
   const visibleAds = sidebarAds.filter(ad => !closedIds[ad.id]);
   const renderAdContent = (ad, isMobile = false) => {
     if (ad.htmlCode) {
@@ -995,7 +997,7 @@ const getPlayerPlayTendency = (player, key) => {
   if (player && player.playTendencies && player.playTendencies[key] !== undefined) {
     return player.playTendencies[key];
   }
-  const isFW = ['CF', 'LW', 'RW', 'ST'].includes(player?.mainPosition);
+  const isFW = ['CF', 'LW', 'RW'].includes(player?.mainPosition);
   const isDF = ['CB', 'LFB', 'RFB', 'GK'].includes(player?.mainPosition);
   const defaultMap = {
     attack: isFW ? 2 : isDF ? -1 : 1,
@@ -1295,63 +1297,66 @@ function App() {
   return /*#__PURE__*/React.createElement("div", {
     className: "min-h-screen bg-[#070a10] text-slate-100 flex flex-col font-sans pb-20 md:pb-0"
   }, /*#__PURE__*/React.createElement("header", {
-    className: "relative md:sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3"
+    className: "relative md:sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-2 sm:px-4 lg:px-8 py-1.5 md:py-3"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "max-w-[1300px] w-full mx-auto flex items-center justify-between"
+    className: "max-w-[1300px] w-full mx-auto flex items-center justify-between gap-1.5 sm:gap-4"
   }, /*#__PURE__*/React.createElement("div", {
     onClick: () => setActiveTab('home'),
-    className: "flex items-center gap-3 cursor-pointer group"
+    className: "flex items-center gap-1.5 sm:gap-3 cursor-pointer group flex-shrink-0"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "w-10 h-10 rounded-xl bg-gradient-to-tr from-[#00FF66] to-[#00E5FF] p-[2px] shadow-lg shadow-[#00FF66]/20"
+    className: "w-7 h-7 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-tr from-[#00FF66] to-[#00E5FF] p-[1.5px] md:p-[2px] shadow-md shadow-[#00FF66]/20"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "w-full h-full bg-[#070a10] rounded-[10px] flex items-center justify-center"
+    className: "w-full h-full bg-[#070a10] rounded-[6px] md:rounded-[10px] flex items-center justify-center"
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "shield",
-    className: "w-6 h-6 text-[#00FF66] group-hover:scale-110 transition-transform"
+    className: "w-4 h-4 md:w-6 md:h-6 text-[#00FF66] group-hover:scale-110 transition-transform"
   }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2"
+    className: "flex items-center gap-1 sm:gap-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "font-num font-black text-xl md:text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white"
+    className: "font-num font-black text-sm sm:text-xl md:text-2xl tracking-tight sm:tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#00FF66] via-[#00E5FF] to-white"
   }, "サカつく2026"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px] font-extrabold px-1.5 py-0.5 rounded bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/40"
+    className: "text-[8px] sm:text-[10px] font-extrabold px-1 py-0.2 sm:px-1.5 sm:py-0.5 rounded bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/40 whitespace-nowrap"
   }, "DB & BUILDER")), /*#__PURE__*/React.createElement("p", {
-    className: "text-xs text-slate-400 font-medium"
+    className: "hidden sm:block text-xs text-slate-400 font-medium"
   }, "育成シミュレーション データベース"))), /*#__PURE__*/React.createElement("nav", {
-    className: "flex items-center gap-1 bg-[#0e1522]/90 p-1.5 rounded-xl border border-slate-800 overflow-x-auto max-w-full scrollbar-none"
+    className: "flex items-center gap-0.5 sm:gap-1 bg-[#0e1522]/90 p-1 sm:p-1.5 rounded-lg sm:rounded-xl border border-slate-800 overflow-x-auto max-w-full scrollbar-none"
   }, /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('home'),
-    className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'home' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
+    className: `flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all ${activeTab === 'home' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "sparkles",
-    className: "w-4 h-4"
-  }), "ホーム"), /*#__PURE__*/React.createElement("button", {
+    className: "w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "whitespace-nowrap"
+  }, "ホーム")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('players'),
-    className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'players' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
+    className: `flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all ${activeTab === 'players' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "users",
-    className: "w-4 h-4"
-  }), "選手DB"), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveTab('managers'),
-    className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'managers' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "award",
-    className: "w-4 h-4"
-  }), "監督・コンボDB (調整中)"), /*#__PURE__*/React.createElement("button", {
+    className: "w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "whitespace-nowrap"
+  }, "選手DB")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('builder'),
-    className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'builder' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
+    className: `flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all ${activeTab === 'builder' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "layout",
-    className: "w-4 h-4"
-  }), "チームビルダー (調整中)"), /*#__PURE__*/React.createElement("button", {
+    className: "w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "whitespace-nowrap"
+  }, "チームビルダー")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('data'),
-    className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${activeTab === 'data' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
+    className: `flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all ${activeTab === 'data' ? 'bg-gradient-to-r from-[#00FF66]/20 to-[#00E5FF]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400 hover:text-white hover:bg-slate-800/50'}`
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "database",
-    className: "w-4 h-4"
-  }), "データ管理")))), /*#__PURE__*/React.createElement("div", {
+    className: "w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0"
+  }), /*#__PURE__*/React.createElement("span", {
+    className: "whitespace-nowrap"
+  }, "データ管理"))))), /*#__PURE__*/React.createElement("div", {
     className: "flex-1 max-w-[1750px] w-full mx-auto flex justify-center items-start px-2 lg:px-4 py-4 md:py-6"
   }, /*#__PURE__*/React.createElement(SideAdBanner, {
-    position: "left"
+    position: "left",
+    refreshKey: activeTab
   }), /*#__PURE__*/React.createElement("main", {
     className: "flex-1 max-w-[1300px] w-full mx-auto min-w-0"
   }, activeTab === 'home' && /*#__PURE__*/React.createElement(HomeTab, {
@@ -1368,9 +1373,9 @@ function App() {
     setSelectedPlayer: setSelectedPlayer,
     simulatedGlobalRarity: simulatedGlobalRarity,
     setSimulatedGlobalRarity: setSimulatedGlobalRarity
-  }), activeTab === 'managers' && /*#__PURE__*/React.createElement(ManagerComboDBTab, {
-    onGoToDB: () => setActiveTab('players')
   }), activeTab === 'builder' && /*#__PURE__*/React.createElement(TeamBuilderTab, {
+    players: players,
+    setSelectedPlayer: setSelectedPlayer,
     onGoToDB: () => setActiveTab('players')
   }), activeTab === 'data' && /*#__PURE__*/React.createElement(DataManagerTab, {
     players: players,
@@ -1380,7 +1385,8 @@ function App() {
     combos: combos,
     setCombos: setCombos
   })), /*#__PURE__*/React.createElement(SideAdBanner, {
-    position: "right"
+    position: "right",
+    refreshKey: activeTab
   })), /*#__PURE__*/React.createElement("nav", {
     className: "md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070a10]/95 border-t border-slate-800/80 backdrop-blur-xl px-1 py-1.5 flex items-center justify-around shadow-2xl"
   }, /*#__PURE__*/React.createElement("button", {
@@ -1400,14 +1406,6 @@ function App() {
   }), /*#__PURE__*/React.createElement("span", {
     className: "text-[10px]"
   }, "選手DB")), /*#__PURE__*/React.createElement("button", {
-    onClick: () => setActiveTab('managers'),
-    className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'managers' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "award",
-    className: "w-5 h-5"
-  }), /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px]"
-  }, "監督・コンボ")), /*#__PURE__*/React.createElement("button", {
     onClick: () => setActiveTab('builder'),
     className: `flex flex-col items-center gap-0.5 px-2 py-1 rounded-lg transition-colors ${activeTab === 'builder' ? 'text-[#00FF66] font-bold' : 'text-slate-400'}`
   }, /*#__PURE__*/React.createElement(Icon, {
@@ -1536,7 +1534,7 @@ function HomeTab({
     name: "search",
     className: "w-5 h-5 text-slate-950"
   }), "選手データベースを開く")))), /*#__PURE__*/React.createElement("div", {
-    className: "grid grid-cols-2 md:grid-cols-4 gap-4"
+    className: "grid grid-cols-1 sm:grid-cols-3 gap-4"
   }, /*#__PURE__*/React.createElement("div", {
     className: "glass-card p-4 rounded-2xl flex items-center gap-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1570,18 +1568,7 @@ function HomeTab({
     className: "text-sm font-black font-num text-amber-400"
   }, "調整中"), /*#__PURE__*/React.createElement("div", {
     className: "text-xs text-slate-400 font-semibold"
-  }, "チームビルダー"))), /*#__PURE__*/React.createElement("div", {
-    className: "glass-card p-4 rounded-2xl flex items-center gap-4 opacity-60"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "tools",
-    className: "w-6 h-6"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-sm font-black font-num text-amber-400"
-  }, "調整中"), /*#__PURE__*/React.createElement("div", {
-    className: "text-xs text-slate-400 font-semibold"
-  }, "監督・コンボDB")))), /*#__PURE__*/React.createElement("div", {
+  }, "チームビルダー")))), /*#__PURE__*/React.createElement("div", {
     className: "sticky md:relative top-0 md:top-auto z-30 glass-panel px-2 py-1 md:p-3 rounded-lg md:rounded-2xl space-y-0.5 md:space-y-2 border border-red-500/30 bg-slate-900/95 shadow-xl backdrop-blur-md"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between px-0.5"
@@ -1774,8 +1761,7 @@ function PlayerDBTab({
       'LWG': 9,
       'RW': 10,
       'RWG': 10,
-      'CF': 11,
-      'ST': 11
+      'CF': 11
     };
     const multiplier = sortConfig.direction === 'asc' ? 1 : -1;
 
@@ -2418,23 +2404,2639 @@ function PlayerCard({
     className: "text-white text-sm md:text-base font-num font-black block"
   }, spdTot)))));
 }
-function ManagerComboDBTab({
-  onGoToDB
-}) {
-  return /*#__PURE__*/React.createElement(UnderAdjustmentNotice, {
-    title: "監督・コンボデータベース (調整中)",
-    description: "現在こちらの機能はアップデートのため調整中です。選手データベースをぜひご利用ください。",
-    onGoToDB: onGoToDB
-  });
-}
+
+// チームビルダー（デッキ編成・フォーメーションシミュレーター・コンボ解析）
+const ROMAN_LEVEL_MAP = {
+  'Ⅰ': 1,
+  'Ⅱ': 2,
+  'Ⅲ': 3,
+  'Ⅳ': 4,
+  'Ⅴ': 5,
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+  1: 1,
+  2: 2,
+  3: 3,
+  4: 4,
+  5: 5
+};
+const parsePlayStyleLevel = levelVal => {
+  if (levelVal === undefined || levelVal === null) return 1;
+  const str = String(levelVal).trim();
+  return ROMAN_LEVEL_MAP[str] || parseInt(str, 10) || 1;
+};
+const matchPlayStyle = (playerStyleStr, requiredStyleStr) => {
+  if (!playerStyleStr || !requiredStyleStr) return false;
+  const normP = String(playerStyleStr).trim().replace(/ブレイカー/g, 'ブレーカー');
+  const normReq = String(requiredStyleStr).trim().replace(/ブレイカー/g, 'ブレーカー');
+  if (normP === normReq) return true;
+
+  // 'サイドアタッカー' と 'アタッカー' を明確に区別
+  if (normReq === 'アタッカー') {
+    return normP === 'アタッカー';
+  }
+
+  // ポジション接尾辞 (LW, RW, LM, RM) の異なるプレースタイルが混同されないよう防止
+  const sidePositions = ['LW', 'RW', 'LM', 'RM'];
+  const reqSuffix = sidePositions.find(pos => normReq.endsWith(pos));
+  const pSuffix = sidePositions.find(pos => normP.endsWith(pos));
+  if (reqSuffix && pSuffix && reqSuffix !== pSuffix) {
+    return false; // 例: required: 'サイドアタッカーLM' と player: 'サイドアタッカーLW' はミスマッチ
+  }
+  if (normReq === 'サイドアタッカー') {
+    return normP.startsWith('サイドアタッカー');
+  }
+  return normP.startsWith(normReq) || normReq.startsWith(normP);
+};
+const checkPlayStyleRequirement = (player, requiredStyle, minLevel) => {
+  if (!player) return false;
+  const allStyles = [player.playStyle, player.style, ...(player.subPlayStyles || [])].filter(Boolean);
+  const styleMatched = allStyles.some(s => matchPlayStyle(s, requiredStyle));
+  const levelNum = parsePlayStyleLevel(player.playStyleLevel || player.styleLevel);
+  return styleMatched && levelNum >= minLevel;
+};
+const normalizePosition = pos => {
+  if (!pos || pos === 'ALL') return 'ALL';
+  const str = String(pos).trim().toUpperCase();
+  if (str === 'GK') return 'GK';
+  if (['CB', 'LCB', 'RCB', 'DF', 'DC'].includes(str)) return 'CB';
+  if (['LFB', 'LB', 'LSB', 'DL', 'SB'].includes(str)) return 'LFB';
+  if (['RFB', 'RB', 'RSB', 'DR'].includes(str)) return 'RFB';
+  if (['DM', 'LDM', 'RDM', 'DMF', 'DH', 'CH', 'CMF', 'CM'].includes(str)) return 'DM';
+  if (['AM', 'LAM', 'RAM', 'AMF', 'OMF', 'OH'].includes(str)) return 'AM';
+  if (['LM', 'LMF', 'LSH', 'SMF'].includes(str)) return 'LM';
+  if (['RM', 'RMF', 'RSH'].includes(str)) return 'RM';
+  if (['LW', 'LWG'].includes(str)) return 'LW';
+  if (['RW', 'RWG'].includes(str)) return 'RW';
+  if (['CF', 'LCF', 'RCF', 'ST', 'FW'].includes(str)) return 'CF';
+  return str;
+};
+const isPositionMatch = (playerPos, targetPos) => {
+  if (!playerPos || !targetPos) return false;
+  const targetNorm = normalizePosition(targetPos);
+  if (targetNorm === 'ALL') return true;
+  const playerNorm = normalizePosition(playerPos);
+  return playerNorm === targetNorm;
+};
 function TeamBuilderTab({
+  players,
+  setSelectedPlayer,
   onGoToDB
 }) {
-  return /*#__PURE__*/React.createElement(UnderAdjustmentNotice, {
-    title: "チームビルダー (調整中)",
-    description: "現在こちらの機能はフォーメーションロジック調整中です。公開まで今しばらくお待ちください。",
-    onGoToDB: onGoToDB
-  });
+  const FORMATION_COMBOS = [{
+    id: 'selecao70',
+    name: "セレソン’70",
+    policy: 'リアクション',
+    formationId: '343c_selecao',
+    buffs: [{
+      name: '決定力',
+      val: '+100%'
+    }, {
+      name: 'パスカット',
+      val: '+100%'
+    }, {
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+60%'
+    }],
+    specialNote: 'フィールド上のブラジル人選手1人につき、上記4能力（決定力・パスカット・タックル・マーク）が追加で2%強化！'
+  }, {
+    id: 'goldenZonen94',
+    name: "ゴールデンゾーネン'94",
+    policy: 'リアクション',
+    formationId: '343c_golden',
+    buffs: [{
+      name: 'キック精度',
+      val: '+80%'
+    }, {
+      name: '突破力',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }, {
+      name: 'スタミナ',
+      val: '+80%'
+    }]
+  }, {
+    id: 'selecaoDasQuinas16',
+    name: "セレソン・ダス・キナス'16",
+    policy: 'リアクション',
+    formationId: '442a_quinas',
+    buffs: [{
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }, {
+      name: '走力',
+      val: '+80%'
+    }]
+  }, {
+    id: 'alvinegroPraiano',
+    name: "アルヴィネグロ・プライアーノ’11",
+    policy: 'リアクション',
+    formationId: '442e_alvinegro',
+    buffs: [{
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+60%'
+    }, {
+      name: '決定力',
+      val: '+100%'
+    }, {
+      name: 'キック力',
+      val: '+100%'
+    }]
+  }, {
+    id: 'encarnados23',
+    name: "エンカルナードス’23",
+    policy: 'リアクション',
+    formationId: '433b_encarnados',
+    buffs: [{
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: '冷静さ',
+      val: '+80%'
+    }]
+  }, {
+    id: 'nerazzurro10',
+    name: 'ネラッズーロ’10',
+    policy: 'ムービング',
+    formationId: '433b_nerazzurro',
+    buffs: [{
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: '決定力',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+100%'
+    }]
+  }, {
+    id: 'canaria06',
+    name: "カナリア軍団’06",
+    policy: 'ムービング',
+    formationId: '442c_canaria',
+    buffs: [{
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: '走力',
+      val: '+80%'
+    }, {
+      name: '敏捷性',
+      val: '+80%'
+    }]
+  }, {
+    id: 'albiceleste01',
+    name: "アルビセレステ’01",
+    policy: 'ムービング',
+    formationId: '343a_albiceleste',
+    buffs: [{
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }, {
+      name: '走力',
+      val: '+80%'
+    }, {
+      name: '敏捷性',
+      val: '+80%'
+    }]
+  }, {
+    id: 'soberano94',
+    name: "ソベラーノ’94",
+    policy: 'ムービング',
+    formationId: '442e_soberano',
+    buffs: [{
+      name: 'キック力',
+      val: '+80%'
+    }, {
+      name: '突破力',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }, {
+      name: 'スタミナ',
+      val: '+80%'
+    }]
+  }, {
+    id: 'blauGrana15',
+    name: "ブラウ・グラーナ’15",
+    policy: 'ポゼッション',
+    formationId: '433a_blauGrana',
+    buffs: [{
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: '決定力',
+      val: '+80%'
+    }, {
+      name: 'キック精度',
+      val: '+80%'
+    }]
+  }, {
+    id: 'losCafeteros94',
+    name: "ロス・カフェテロス’94",
+    policy: 'ポゼッション',
+    formationId: '442d_losCafeteros',
+    buffs: [{
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: '走力',
+      val: '+80%'
+    }, {
+      name: 'キック力',
+      val: '+80%'
+    }]
+  }, {
+    id: 'laRoja24',
+    name: "ラ・ロハ’24",
+    policy: 'ポゼッション',
+    formationId: '433b_laRoja',
+    buffs: [{
+      name: '冷静さ',
+      val: '+80%'
+    }, {
+      name: 'キック精度',
+      val: '+80%'
+    }, {
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }]
+  }, {
+    id: 'laDea22',
+    name: "ラ・デア’22",
+    policy: 'ポゼッション',
+    formationId: '352b_laDea',
+    buffs: [{
+      name: '冷静さ',
+      val: '+80%'
+    }, {
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }]
+  }, {
+    id: 'blueImpact26',
+    name: "ブルー・インパクト’26",
+    policy: 'カウンター',
+    formationId: '361a_blueImpact',
+    buffs: [{
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+60%'
+    }, {
+      name: '決定力',
+      val: '+100%'
+    }, {
+      name: 'コンタクト',
+      val: '+100%'
+    }]
+  }, {
+    id: 'euskaldunak12',
+    name: "エウスカルドゥナク’12",
+    policy: 'カウンター',
+    formationId: '343a_euskaldunak',
+    buffs: [{
+      name: 'タックル',
+      val: '+60%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: '決定力',
+      val: '+80%'
+    }, {
+      name: '冷静さ',
+      val: '+100%'
+    }]
+  }, {
+    id: 'river18',
+    name: "リーベル’18",
+    policy: 'カウンター',
+    formationId: '433b_river',
+    buffs: [{
+      name: 'パスカット',
+      val: '+80%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'キック力',
+      val: '+80%'
+    }]
+  }, {
+    id: 'diavolo99',
+    name: "ディアボロ・ディ・ミラノ’99",
+    policy: 'カウンター',
+    formationId: '343b_diavolo',
+    buffs: [{
+      name: 'キック力',
+      val: '+80%'
+    }, {
+      name: '突破力',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }]
+  }, {
+    id: 'lesBleus98',
+    name: "レ・ブルー’98",
+    policy: 'カウンター',
+    formationId: '442d_lesBleus',
+    buffs: [{
+      name: 'キック力',
+      val: '+80%'
+    }, {
+      name: 'ジャンプ',
+      val: '+80%'
+    }, {
+      name: 'コンタクト',
+      val: '+80%'
+    }, {
+      name: '敏捷性',
+      val: '+80%'
+    }]
+  }];
+  const FORMATIONS = [{
+    id: '343c_selecao',
+    name: '3-4-3C (セレソン’70)',
+    comboId: 'selecao70',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%',
+      requiredStyle: 'スプリントCB',
+      minLevel: 2
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '38%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '62%',
+      requiredStyle: 'ハードマーカー',
+      minLevel: 2
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '35%',
+      left: '32%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'RAM',
+      top: '35%',
+      left: '68%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%',
+      requiredStyle: 'サイドアタッカーLW',
+      minLevel: 3
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%',
+      requiredStyle: 'ラインブレーカー',
+      minLevel: 3
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '343c_golden',
+    name: "3-4-3C (ゴールデンゾーネン'94)",
+    comboId: 'goldenZonen94',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%',
+      requiredStyle: 'ストッパー',
+      minLevel: 2
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%'
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '38%',
+      requiredStyle: 'ハードマーカー',
+      minLevel: 2
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '62%',
+      requiredStyle: 'セントラルDM',
+      minLevel: 3
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '35%',
+      left: '32%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'RAM',
+      top: '35%',
+      left: '68%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '442a_quinas',
+    name: "4-4-2A (セレソン・ダス・キナス'16)",
+    comboId: 'selecaoDasQuinas16',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%',
+      requiredStyle: '攻撃的LFB',
+      minLevel: 2
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'DM',
+      top: '56%',
+      left: '50%'
+    }, {
+      id: 7,
+      pos: 'LM',
+      label: 'LM',
+      top: '40%',
+      left: '20%',
+      requiredStyle: 'サイドアタッカーLM',
+      minLevel: 2
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'RM',
+      label: 'RM',
+      top: '40%',
+      left: '80%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%'
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%',
+      requiredStyle: 'ストライカー',
+      minLevel: 3
+    }]
+  }, {
+    id: '442e_alvinegro',
+    name: "4-4-2E (アルヴィネグロ・プライアーノ’11)",
+    comboId: 'alvinegroPraiano',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%',
+      requiredStyle: '攻撃的RFB',
+      minLevel: 2
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'DM',
+      top: '56%',
+      left: '50%'
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '38%',
+      left: '24%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%',
+      requiredStyle: 'パサーAM',
+      minLevel: 2
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'RAM',
+      top: '38%',
+      left: '76%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%'
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%',
+      requiredStyle: 'ラインブレーカー',
+      minLevel: 3
+    }]
+  }, {
+    id: '433b_encarnados',
+    name: "4-3-3B (エンカルナードス’23)",
+    comboId: 'encarnados23',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%',
+      requiredStyle: '組立CB',
+      minLevel: 2
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%',
+      requiredStyle: 'セントラルDM',
+      minLevel: 2
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%',
+      requiredStyle: 'アタッカー',
+      minLevel: 3
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '433b_nerazzurro',
+    name: "4-3-3B (ネラッズーロ’10)",
+    comboId: 'nerazzurro10',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%'
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%',
+      requiredStyle: 'セントラルDM',
+      minLevel: 2
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%',
+      requiredStyle: 'サイドアタッカーLW',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%',
+      requiredStyle: 'ワイドストライカーRW',
+      minLevel: 3
+    }]
+  }, {
+    id: '442c_canaria',
+    name: "4-4-2C (カナリア軍団’06)",
+    comboId: 'canaria06',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%',
+      requiredStyle: 'ストッパー',
+      minLevel: 2
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%',
+      requiredStyle: 'ハードマーカー',
+      minLevel: 3
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'LAM',
+      top: '35%',
+      left: '32%'
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'RAM',
+      top: '35%',
+      left: '68%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%'
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%',
+      requiredStyle: 'ストライカー',
+      minLevel: 2
+    }]
+  }, {
+    id: '343a_albiceleste',
+    name: "3-4-3A (アルビセレステ’01)",
+    comboId: 'albiceleste01',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%',
+      requiredStyle: '組立CB',
+      minLevel: 2
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%'
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'DM',
+      top: '54%',
+      left: '50%'
+    }, {
+      id: 6,
+      pos: 'LM',
+      label: 'LM',
+      top: '38%',
+      left: '20%',
+      requiredStyle: 'サイドアタッカーLM',
+      minLevel: 3
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 8,
+      pos: 'RM',
+      label: 'RM',
+      top: '38%',
+      left: '80%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%',
+      requiredStyle: 'ストライカー',
+      minLevel: 2
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '442e_soberano',
+    name: "4-4-2E (ソベラーノ’94)",
+    comboId: 'soberano94',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'DM',
+      top: '56%',
+      left: '50%'
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '38%',
+      left: '24%',
+      requiredStyle: 'パサーAM',
+      minLevel: 2
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'RAM',
+      top: '38%',
+      left: '76%',
+      requiredStyle: 'アタッカー',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%',
+      requiredStyle: 'ストライカー',
+      minLevel: 3
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%'
+    }]
+  }, {
+    id: '433a_blauGrana',
+    name: "4-3-3A (ブラウ・グラーナ’15)",
+    comboId: 'blauGrana15',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%',
+      requiredStyle: '組立CB',
+      minLevel: 2
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'DM',
+      top: '54%',
+      left: '50%'
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '35%',
+      left: '32%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'RAM',
+      top: '35%',
+      left: '68%',
+      requiredStyle: 'セントラルAM',
+      minLevel: 2
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%',
+      requiredStyle: 'ストライカー',
+      minLevel: 3
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '442d_losCafeteros',
+    name: "4-4-2D (ロス・カフェテロス’94)",
+    comboId: 'losCafeteros94',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%',
+      requiredStyle: 'ストッパー',
+      minLevel: 2
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '26%',
+      requiredStyle: 'セントラルDM',
+      minLevel: 3
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'DM',
+      top: '56%',
+      left: '50%'
+    }, {
+      id: 8,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '74%'
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%'
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%',
+      requiredStyle: 'ストライカー',
+      minLevel: 2
+    }]
+  }, {
+    id: '433b_laRoja',
+    name: "4-3-3B (ラ・ロハ’24)",
+    comboId: 'laRoja24',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%',
+      requiredStyle: '攻撃的RFB',
+      minLevel: 2
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%'
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%',
+      requiredStyle: 'パサーDM',
+      minLevel: 2
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 3
+    }]
+  }, {
+    id: '352b_laDea',
+    name: "3-5-2B (ラ・デア’22)",
+    comboId: 'laDea22',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%',
+      requiredStyle: 'ストッパー',
+      minLevel: 2
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%'
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'LDM',
+      top: '56%',
+      left: '38%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'RDM',
+      top: '56%',
+      left: '62%'
+    }, {
+      id: 7,
+      pos: 'LM',
+      label: 'LM',
+      top: '40%',
+      left: '18%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'RM',
+      label: 'RM',
+      top: '40%',
+      left: '82%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%',
+      requiredStyle: 'ラインブレーカー',
+      minLevel: 3
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%'
+    }]
+  }, {
+    id: '361a_blueImpact',
+    name: "3-6-1A (ブルー・インパクト’26)",
+    comboId: 'blueImpact26',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%'
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'LDM',
+      top: '56%',
+      left: '38%',
+      requiredStyle: 'パサーDM',
+      minLevel: 2
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'RDM',
+      top: '56%',
+      left: '62%'
+    }, {
+      id: 7,
+      pos: 'LM',
+      label: 'LM',
+      top: '40%',
+      left: '18%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 3
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'LAM',
+      top: '34%',
+      left: '34%'
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'RAM',
+      top: '34%',
+      left: '66%'
+    }, {
+      id: 10,
+      pos: 'RM',
+      label: 'RM',
+      top: '40%',
+      left: '82%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 2
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }]
+  }, {
+    id: '343a_euskaldunak',
+    name: "3-4-3A (エウスカルドゥナク’12)",
+    comboId: 'euskaldunak12',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%',
+      requiredStyle: 'ストッパー',
+      minLevel: 2
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%'
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'DM',
+      top: '54%',
+      left: '50%'
+    }, {
+      id: 6,
+      pos: 'LM',
+      label: 'LM',
+      top: '38%',
+      left: '20%'
+    }, {
+      id: 7,
+      pos: 'AM',
+      label: 'LAM',
+      top: '34%',
+      left: '50%',
+      requiredStyle: 'アタッカー',
+      minLevel: 3
+    }, {
+      id: 8,
+      pos: 'RM',
+      label: 'RM',
+      top: '38%',
+      left: '80%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%'
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%',
+      requiredStyle: 'ストライカー',
+      minLevel: 2
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '433b_river',
+    name: "4-3-3B (リーベル’18)",
+    comboId: 'river18',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%',
+      requiredStyle: 'ハードマーカー',
+      minLevel: 2
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 3
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 2
+    }]
+  }, {
+    id: '343b_diavolo',
+    name: "3-4-3B (ディアボロ・ディ・ミラノ’99)",
+    comboId: 'diavolo99',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'CB',
+      label: 'LCB',
+      top: '72%',
+      left: '26%'
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'CB',
+      top: '74%',
+      left: '50%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '72%',
+      left: '74%',
+      requiredStyle: '組立CB',
+      minLevel: 2
+    }, {
+      id: 5,
+      pos: 'DM',
+      label: 'LDM',
+      top: '56%',
+      left: '38%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'RDM',
+      top: '56%',
+      left: '62%',
+      requiredStyle: 'セントラルDM',
+      minLevel: 3
+    }, {
+      id: 7,
+      pos: 'LM',
+      label: 'LM',
+      top: '38%',
+      left: '18%'
+    }, {
+      id: 8,
+      pos: 'RM',
+      label: 'RM',
+      top: '38%',
+      left: '82%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%',
+      requiredStyle: 'ドリブラー',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%'
+    }]
+  }, {
+    id: '442d_lesBleus',
+    name: "4-4-2D (レ・ブルー’98)",
+    comboId: 'lesBleus98',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%',
+      requiredStyle: '守備的LFB',
+      minLevel: 2
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%'
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '26%'
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'DM',
+      top: '56%',
+      left: '50%'
+    }, {
+      id: 8,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '74%'
+    }, {
+      id: 9,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%',
+      requiredStyle: 'セントラルAM',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'LCF',
+      top: '16%',
+      left: '36%'
+    }, {
+      id: 11,
+      pos: 'CF',
+      label: 'RCF',
+      top: '16%',
+      left: '64%',
+      requiredStyle: 'ストライカー',
+      minLevel: 3
+    }]
+  }];
+  const [selectedFormation, setSelectedFormation] = useState(FORMATIONS[0]);
+  const [teamPolicy, setTeamPolicy] = useState('リアクション');
+  const [squadMap, setSquadMap] = useState({});
+  const [benchMap, setBenchMap] = useState({});
+  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(false);
+  const [activeSlotModal, setActiveSlotModal] = useState(null);
+  const [filterPos, setFilterPos] = useState('ALL');
+  const [modalSearchText, setModalSearchText] = useState('');
+
+  // 選手選択ドロワー/モーダル表示時の3回に1回頻度広告判定
+  const showSlotModalAd = useMemo(() => {
+    if (activeSlotModal) {
+      return checkModalAdFrequency();
+    }
+    return false;
+  }, [activeSlotModal]);
+
+  // 最大強化トグル対応の動的表示マップ
+  const displaySquadMap = useMemo(() => {
+    const map = {};
+    Object.keys(squadMap).forEach(key => {
+      if (squadMap[key]) {
+        map[key] = builderMaxEnhanced ? getAdjustedPlayer(squadMap[key], '☆5', true) : squadMap[key];
+      }
+    });
+    return map;
+  }, [squadMap, builderMaxEnhanced]);
+  const displayBenchMap = useMemo(() => {
+    const map = {};
+    Object.keys(benchMap).forEach(key => {
+      if (benchMap[key]) {
+        map[key] = builderMaxEnhanced ? getAdjustedPlayer(benchMap[key], '☆5', true) : benchMap[key];
+      }
+    });
+    return map;
+  }, [benchMap, builderMaxEnhanced]);
+
+  // フォーメーション切替時ポリシー自動マッチング
+  const handleSelectFormation = fmt => {
+    setSelectedFormation(fmt);
+    if (fmt.comboId === 'selecao70') {
+      setTeamPolicy('リアクション');
+    }
+  };
+
+  // 自動最強編成ロジック (ベンチ12名対応)
+  const handleAutoBuild = () => {
+    const sorted = [...players].sort((a, b) => {
+      const pA = builderMaxEnhanced ? getAdjustedPlayer(a, '☆5', true) : a;
+      const pB = builderMaxEnhanced ? getAdjustedPlayer(b, '☆5', true) : b;
+      return (pB.overall || 0) - (pA.overall || 0);
+    });
+    const newSquad = {};
+    const usedIds = new Set();
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
+    if (targetCombo) {
+      setTeamPolicy(targetCombo.policy);
+
+      // 指定位置条件 (RCB, RDM, LW, CF) を満たす選手を最優先セット
+      selectedFormation.slots.forEach(slot => {
+        if (slot.requiredStyle) {
+          const candidate = sorted.find(p => {
+            if (usedIds.has(p.id)) return false;
+            return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+          });
+          if (candidate) {
+            newSquad[slot.id] = candidate;
+            usedIds.add(candidate.id);
+          }
+        }
+      });
+    }
+
+    // 残りのスロットに総合力順で割り当て
+    selectedFormation.slots.forEach(slot => {
+      if (newSquad[slot.id]) return;
+      const match = sorted.find(p => !usedIds.has(p.id) && (p.mainPosition === slot.pos || p.subPositions && p.subPositions.includes(slot.pos)));
+      if (match) {
+        newSquad[slot.id] = match;
+        usedIds.add(match.id);
+      } else {
+        const fallback = sorted.find(p => !usedIds.has(p.id));
+        if (fallback) {
+          newSquad[slot.id] = fallback;
+          usedIds.add(fallback.id);
+        }
+      }
+    });
+
+    // ベンチ12名
+    const newBench = {};
+    for (let i = 0; i < 12; i++) {
+      const benchPlayer = sorted.find(p => !usedIds.has(p.id));
+      if (benchPlayer) {
+        newBench[i] = benchPlayer;
+        usedIds.add(benchPlayer.id);
+      }
+    }
+    setSquadMap(newSquad);
+    setBenchMap(newBench);
+  };
+  const handleClearSquad = () => {
+    setSquadMap({});
+    setBenchMap({});
+  };
+  const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
+  const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
+
+  // ポリシー一致選手への 1.05倍 乗算（各選手ごとに Math.floor(player.overall * 1.05) で端数切捨て ➔ 合算）
+  const policyAdjustedOverall = starterPlayers.reduce((acc, p) => {
+    const isPolicyMatch = p.policy === teamPolicy;
+    const playerBonusVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : p.overall || 0;
+    return acc + playerBonusVal;
+  }, 0);
+  const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+  const policyMatchCount = starterPlayers.filter(p => p.policy === teamPolicy).length;
+  const policyMatchPct = starterPlayers.length > 0 ? Math.round(policyMatchCount / starterPlayers.length * 100) : 0;
+
+  // フォーメーションコンボ達成判定 (位置指定厳格判定)
+  const activeComboData = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
+  const comboValidation = useMemo(() => {
+    if (!activeComboData) return null;
+    const isPolicyMatch = teamPolicy === activeComboData.policy;
+    const reqResults = selectedFormation.slots.filter(slot => slot.requiredStyle).map(slot => {
+      const playerInSlot = squadMap[slot.id];
+      const isFulfilled = checkPlayStyleRequirement(playerInSlot, slot.requiredStyle, slot.minLevel);
+      return {
+        slotId: slot.id,
+        posLabel: slot.label,
+        requiredStyle: slot.requiredStyle,
+        minLevel: slot.minLevel,
+        label: `【${slot.label}位置】${slot.requiredStyle} (LV.${slot.minLevel}以上)`,
+        isFulfilled,
+        player: playerInSlot ? builderMaxEnhanced ? getAdjustedPlayer(playerInSlot, '☆5', true) : playerInSlot : null
+      };
+    });
+    const allReqsFulfilled = isPolicyMatch && reqResults.every(r => r.isFulfilled);
+    const isSelecao = activeComboData.id === 'selecao70';
+    const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
+    const brazilBonusPct = brazilPlayerCount * 2;
+
+    // ボーナス率計算 (特定4項目特化コンボ ＋ ブラジル国籍4項目能力ボーナス)
+    const baseComboSum = allReqsFulfilled ? 320 : 0; // 320 / 18 = 17.8%
+    const brazilBonusSum = allReqsFulfilled && isSelecao ? brazilPlayerCount * 8 : 0;
+    const totalComboBoostPct = allReqsFulfilled ? Math.round((baseComboSum + brazilBonusSum) / 18 * 10) / 10 : 0;
+    const comboFactor = 1 + totalComboBoostPct / 100;
+
+    // 最終戦闘総合力 = 各選手ごとに [ポリシー適用後総合力 ✕ コンボ倍率] ➔ 端数切捨て ➔ 整数化合算
+    const boostedOverall = starterPlayers.reduce((acc, p) => {
+      const isPolicyMatch = p.policy === teamPolicy;
+      const policyVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : p.overall || 0;
+      const finalVal = allReqsFulfilled ? Math.floor(policyVal * comboFactor) : policyVal;
+      return acc + finalVal;
+    }, 0);
+    const totalGainedOverall = boostedOverall - rawBaseOverall;
+    const comboGainedOverall = boostedOverall - policyAdjustedOverall;
+    return {
+      combo: activeComboData,
+      isPolicyMatch,
+      reqResults,
+      allReqsFulfilled,
+      isSelecao,
+      brazilPlayerCount,
+      brazilBonusPct,
+      baseComboBonusPct: 17.8,
+      totalComboBoostPct,
+      boostedOverall,
+      totalGainedOverall,
+      comboGainedOverall
+    };
+  }, [activeComboData, teamPolicy, selectedFormation, squadMap, starterPlayers, builderMaxEnhanced, policyAdjustedOverall, rawBaseOverall]);
+  const getAssignedLocationInfo = playerId => {
+    const pIdStr = String(playerId);
+    for (const [slotId, player] of Object.entries(squadMap)) {
+      if (player && String(player.id) === pIdStr) {
+        const slotObj = selectedFormation.slots.find(s => String(s.id) === String(slotId));
+        return {
+          type: 'starter',
+          slotId,
+          label: `スタメン (${slotObj ? slotObj.label : '配置中'})`
+        };
+      }
+    }
+    for (const [benchIdx, player] of Object.entries(benchMap)) {
+      if (player && String(player.id) === pIdStr) {
+        return {
+          type: 'bench',
+          slotId: benchIdx,
+          label: `ベンチ (SUB${Number(benchIdx) + 1})`
+        };
+      }
+    }
+    return null;
+  };
+  const modalPlayers = useMemo(() => {
+    return players.filter(p => {
+      // ポジションフィルタ (LAM/RAM ➔ AM, LCF/RCF ➔ CF, LDM/RDM ➔ DM 等 完全正規化)
+      if (filterPos !== 'ALL') {
+        const isMainMatch = isPositionMatch(p.mainPosition, filterPos);
+        const isSubMatch = p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, filterPos));
+        if (!isMainMatch && !isSubMatch) return false;
+      }
+
+      // テキストリアルタイム検索フィルタ (選手名、プレースタイル、ポリシー、国籍、チーム)
+      if (modalSearchText.trim() !== '') {
+        const q = modalSearchText.trim().toLowerCase();
+        const nameMatch = p.name && p.name.toLowerCase().includes(q) || p.readingName && p.readingName.toLowerCase().includes(q);
+        const styleMatch = p.playStyle && p.playStyle.toLowerCase().includes(q);
+        const subStyleMatch = p.subPlayStyles && p.subPlayStyles.some(s => s.toLowerCase().includes(q));
+        const policyMatch = p.policy && p.policy.toLowerCase().includes(q);
+        const natMatch = p.nationality && p.nationality.toLowerCase().includes(q);
+        const teamMatch = p.team && p.team.toLowerCase().includes(q);
+        const posMatch = p.mainPosition && p.mainPosition.toLowerCase().includes(q) || p.subPositions && p.subPositions.some(sp => sp.toLowerCase().includes(q));
+        if (!nameMatch && !styleMatch && !subStyleMatch && !policyMatch && !natMatch && !teamMatch && !posMatch) {
+          return false;
+        }
+      }
+      return true;
+    }).map(p => builderMaxEnhanced ? getAdjustedPlayer(p, '☆5', true) : p).sort((a, b) => b.overall - a.overall);
+  }, [players, filterPos, modalSearchText, builderMaxEnhanced]);
+  const handleAssignPlayer = player => {
+    if (!activeSlotModal) return;
+    const baseP = player.rawPlayer || player;
+    const pId = String(baseP.id);
+
+    // 既に他のスロットに配置されているか探す
+    let prevType = null; // 'starter' | 'bench'
+    let prevSlotId = null;
+    Object.keys(squadMap).forEach(key => {
+      if (squadMap[key] && String(squadMap[key].id) === pId) {
+        prevType = 'starter';
+        prevSlotId = key;
+      }
+    });
+    if (!prevType) {
+      Object.keys(benchMap).forEach(key => {
+        if (benchMap[key] && String(benchMap[key].id) === pId) {
+          prevType = 'bench';
+          prevSlotId = key;
+        }
+      });
+    }
+    const currentType = activeSlotModal.type; // 'starter' | 'bench'
+    const currentSlotId = activeSlotModal.id;
+
+    // 現在のスロットに入っている既存選手
+    const existingPInCurrent = currentType === 'starter' ? squadMap[currentSlotId] : benchMap[currentSlotId];
+    if (prevType && String(prevSlotId) === String(currentSlotId) && prevType === currentType) {
+      // 同じスロットの場合は閉じるだけ
+      setActiveSlotModal(null);
+      return;
+    }
+    if (prevType && prevSlotId !== null) {
+      // 既に他スロットにいる場合は移動/入れ替え (Move / Swap)
+      if (currentType === 'starter') {
+        setSquadMap(prev => ({
+          ...prev,
+          [currentSlotId]: baseP
+        }));
+      } else {
+        setBenchMap(prev => ({
+          ...prev,
+          [currentSlotId]: baseP
+        }));
+      }
+      if (prevType === 'starter') {
+        setSquadMap(prev => {
+          const next = {
+            ...prev
+          };
+          if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
+            next[prevSlotId] = existingPInCurrent;
+          } else {
+            delete next[prevSlotId];
+          }
+          return next;
+        });
+      } else {
+        setBenchMap(prev => {
+          const next = {
+            ...prev
+          };
+          if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
+            next[prevSlotId] = existingPInCurrent;
+          } else {
+            delete next[prevSlotId];
+          }
+          return next;
+        });
+      }
+    } else {
+      // 未配置の新規割り当て
+      if (currentType === 'starter') {
+        setSquadMap(prev => ({
+          ...prev,
+          [currentSlotId]: baseP
+        }));
+      } else {
+        setBenchMap(prev => ({
+          ...prev,
+          [currentSlotId]: baseP
+        }));
+      }
+    }
+    setActiveSlotModal(null);
+  };
+  const handleRemoveSlot = (type, id, e) => {
+    e.stopPropagation();
+    if (type === 'starter') {
+      setSquadMap(prev => {
+        const next = {
+          ...prev
+        };
+        delete next[id];
+        return next;
+      });
+    } else {
+      setBenchMap(prev => {
+        const next = {
+          ...prev
+        };
+        delete next[id];
+        return next;
+      });
+    }
+  };
+  const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "space-y-6 animate-fadeIn pb-12"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel p-4 sm:p-6 rounded-2xl md:rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 shadow-xl"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col md:flex-row md:items-center justify-between gap-4"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00FF66]/10 border border-[#00FF66]/30 text-[#00FF66] text-xs font-bold mb-2"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-3.5 h-3.5"
+  }), "サカつく2026 チームビルダー ＆ コンボ解析"), /*#__PURE__*/React.createElement("h1", {
+    className: "text-2xl sm:text-3xl font-black text-white flex items-center gap-2"
+  }, "⚽ チームデッキ編成 ＆ フォーメーションコンボ"), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs sm:text-sm text-slate-400 mt-1"
+  }, "スタメン11名＋ベンチ12名編成！ポリシー一致 ＆ コンボボーナス適用後の最終総合力を即時解析。")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 flex-wrap"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => setBuilderMaxEnhanced(!builderMaxEnhanced),
+    className: `px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${builderMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-slate-950 font-black shadow-lg shadow-orange-500/20' : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700'}`
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-4 h-4"
+  }), builderMaxEnhanced ? '⚡ 最大強化 (ON)' : '🌱 初期数値 (OFF)'), /*#__PURE__*/React.createElement("button", {
+    onClick: handleAutoBuild,
+    className: "px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-4 h-4"
+  }), "⚡ 位置コンボ優先 自動最適編成"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleClearSquad,
+    className: "px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-slate-700 text-xs sm:text-sm font-bold flex items-center gap-1 transition-colors cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trash",
+    className: "w-4 h-4"
+  }), "全クリア"))), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-800/80"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+  }, builderMaxEnhanced ? '基本総合力 (加算前)' : '基本総合力 (加算前)'), /*#__PURE__*/React.createElement("div", {
+    className: "text-xl sm:text-2xl font-black font-num text-slate-200 mt-0.5"
+  }, rawBaseOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-[#00FF66] uppercase tracking-wider"
+  }, "ポリシー一致後"), /*#__PURE__*/React.createElement("div", {
+    className: "text-xl sm:text-2xl font-black font-num text-[#00FF66] mt-0.5"
+  }, policyAdjustedOverall.toLocaleString()), /*#__PURE__*/React.createElement("div", {
+    className: "text-[9px] font-bold text-[#00FF66]/80 mt-0.5"
+  }, "+", policyBonusGained.toLocaleString(), " (", policyMatchCount, "名一致)")), /*#__PURE__*/React.createElement("div", {
+    className: `p-3 rounded-xl border text-center transition-all ${comboValidation?.allReqsFulfilled ? 'bg-gradient-to-br from-amber-500/20 to-slate-950 border-amber-400/80 shadow-md shadow-amber-400/10' : 'bg-slate-950/80 border-slate-800/80'}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-center gap-1"
+  }, /*#__PURE__*/React.createElement("span", null, "最終戦闘総合力"), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("span", {
+    className: "text-xs"
+  }, "🔥")), /*#__PURE__*/React.createElement("div", {
+    className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
+  }, comboValidation ? comboValidation.boostedOverall.toLocaleString() : policyAdjustedOverall.toLocaleString()), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-black text-amber-300 mt-0.5"
+  }, "+", comboValidation.totalGainedOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-slate-400 uppercase tracking-wider"
+  }, "チームポリシー"), /*#__PURE__*/React.createElement("select", {
+    value: teamPolicy,
+    onChange: e => setTeamPolicy(e.target.value),
+    className: `mt-1 bg-slate-900 text-xs sm:text-sm font-black px-2 py-0.5 rounded border focus:outline-none cursor-pointer transition-all ${getPolicyTextColor(teamPolicy)} ${getPolicyBadgeClass(teamPolicy)}`
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "リアクション",
+    className: "bg-slate-900 text-cyan-400 font-extrabold"
+  }, "リアクション"), /*#__PURE__*/React.createElement("option", {
+    value: "カウンター",
+    className: "bg-slate-900 text-pink-400 font-extrabold"
+  }, "カウンター"), /*#__PURE__*/React.createElement("option", {
+    value: "ポゼッション",
+    className: "bg-slate-900 text-orange-400 font-extrabold"
+  }, "ポゼッション"), /*#__PURE__*/React.createElement("option", {
+    value: "ムービング",
+    className: "bg-slate-900 text-emerald-400 font-extrabold"
+  }, "ムービング"))))), /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-950/90 p-4 rounded-2xl border border-slate-800/90 shadow-xl space-y-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between flex-wrap gap-2 pb-2.5 border-b border-slate-800"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-xl"
+  }, "📋"), /*#__PURE__*/React.createElement("h3", {
+    className: "font-black text-sm sm:text-base text-white"
+  }, "フォーメーション選択 ", /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-normal text-slate-400"
+  }, "(ポリシー別一覧)"))), /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-bold text-slate-300 flex items-center gap-1.5 bg-slate-900 px-3 py-1 rounded-xl border border-slate-800"
+  }, /*#__PURE__*/React.createElement("span", null, "選択中:"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[#00FF66] font-black"
+  }, selectedFormation.name))), /*#__PURE__*/React.createElement("div", {
+    className: "overflow-x-auto max-h-[380px] scrollbar-thin scrollbar-thumb-slate-700"
+  }, /*#__PURE__*/React.createElement("table", {
+    className: "w-full text-left text-xs border-collapse"
+  }, /*#__PURE__*/React.createElement("thead", {
+    className: "sticky top-0 z-10"
+  }, /*#__PURE__*/React.createElement("tr", {
+    className: "border-b border-slate-800 text-slate-400 font-bold bg-slate-900"
+  }, /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 w-28 whitespace-nowrap"
+  }, "ポリシー"), /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 whitespace-nowrap"
+  }, "フォーメーション名"), /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 whitespace-nowrap"
+  }, "対象コンボ名"), /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 whitespace-nowrap hidden md:table-cell"
+  }, "コンボ能力ボーナス"), /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 text-center whitespace-nowrap"
+  }, "選択"))), /*#__PURE__*/React.createElement("tbody", {
+    className: "divide-y divide-slate-800/60"
+  }, ['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
+    const matchedFormations = FORMATIONS.filter(fmt => {
+      const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+      if (policyGroup === '基本') return !combo;
+      return combo?.policy === policyGroup;
+    });
+    if (matchedFormations.length === 0) return null;
+    return matchedFormations.map(fmt => {
+      const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+      const isSelected = selectedFormation.id === fmt.id;
+      return /*#__PURE__*/React.createElement("tr", {
+        key: fmt.id,
+        onClick: () => handleSelectFormation(fmt),
+        className: `cursor-pointer transition-colors ${isSelected ? 'bg-emerald-500/15 font-bold border-l-4 border-l-[#00FF66]' : 'hover:bg-slate-900/80'}`
+      }, /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 whitespace-nowrap"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: `text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(policyGroup)}`
+      }, policyGroup)), /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 font-bold text-white whitespace-nowrap"
+      }, fmt.name), /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 whitespace-nowrap"
+      }, combo ? /*#__PURE__*/React.createElement("span", {
+        className: "text-amber-400 font-extrabold flex items-center gap-1"
+      }, /*#__PURE__*/React.createElement("span", null, "🏆"), /*#__PURE__*/React.createElement("span", null, combo.name)) : /*#__PURE__*/React.createElement("span", {
+        className: "text-slate-500"
+      }, "-")), /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap"
+      }, combo ? /*#__PURE__*/React.createElement("div", {
+        className: "flex items-center gap-1.5 flex-wrap"
+      }, combo.buffs.map((b, bIdx) => /*#__PURE__*/React.createElement("span", {
+        key: bIdx,
+        className: "text-[10px] font-black bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-slate-200"
+      }, b.name, " ", /*#__PURE__*/React.createElement("span", {
+        className: "text-amber-400"
+      }, b.val)))) : /*#__PURE__*/React.createElement("span", {
+        className: "text-slate-500 text-[11px]"
+      }, "基本フォーメーション (コンボなし)")), /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 text-center whitespace-nowrap"
+      }, /*#__PURE__*/React.createElement("button", {
+        onClick: e => {
+          e.stopPropagation();
+          handleSelectFormation(fmt);
+        },
+        className: `px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'}`
+      }, isSelected ? '✓ 選択中' : '選択')));
+    });
+  }))))), comboValidation && /*#__PURE__*/React.createElement("div", {
+    className: `p-4 rounded-2xl border transition-all ${comboValidation.allReqsFulfilled ? 'bg-gradient-to-br from-amber-500/15 via-slate-900 to-slate-950 border-amber-400 shadow-xl shadow-amber-500/10' : 'bg-slate-900/90 border-slate-800'}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: `p-2 rounded-xl text-xl ${comboValidation.allReqsFulfilled ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-800 text-slate-400'}`
+  }, comboValidation.allReqsFulfilled ? '🏆' : '⚠️'), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 flex-wrap"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "font-black text-base sm:text-lg text-white"
+  }, "フォーメーションコンボ 【", comboValidation.combo.name, "】"), /*#__PURE__*/React.createElement("span", {
+    className: `text-[10px] font-black px-2 py-0.5 rounded border ${comboValidation.allReqsFulfilled ? 'bg-amber-400 text-slate-950 border-amber-300 font-extrabold animate-pulse' : 'bg-red-500/20 text-red-400 border-red-500/40'}`
+  }, comboValidation.allReqsFulfilled ? '✨ コンボ発動完了！' : '条件未達成')), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs text-slate-400 mt-0.5"
+  }, "必要ポリシー: ", /*#__PURE__*/React.createElement("strong", {
+    className: getPolicyTextColor(comboValidation.combo.policy)
+  }, comboValidation.combo.policy), " | 配置: ", /*#__PURE__*/React.createElement("strong", {
+    className: "text-white"
+  }, "LW / CF / RW / LAM / RAM / LDM / RDM / LCB / CB / RCB")))), comboValidation.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
+    className: "bg-amber-400/10 border border-amber-400/30 p-2.5 rounded-xl space-y-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-black text-amber-300 uppercase tracking-wider"
+  }, "発動中チーム能力ボーナス"), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 flex-wrap"
+  }, comboValidation.combo.buffs.map((b, i) => /*#__PURE__*/React.createElement("span", {
+    key: i,
+    className: "px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-num font-black text-xs shadow-sm"
+  }, b.name, " ", b.val))))), comboValidation.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
+    className: "mt-3 bg-slate-950 p-4 rounded-xl border border-amber-400/40 space-y-3 shadow-inner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between flex-wrap gap-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-black text-amber-300 flex items-center gap-1.5"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-4 h-4 text-amber-400"
+  }), "コンボボーナス総合力シミュレーション"), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950 shadow"
+  }, "✨ ", comboValidation.combo.name, " 発動中")), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-3 gap-3 text-center"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-900/90 p-3 rounded-lg border border-slate-800"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-slate-400"
+  }, "基本総合力 (未加算)"), /*#__PURE__*/React.createElement("div", {
+    className: "text-lg font-black font-num text-slate-200 mt-0.5"
+  }, rawBaseOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-900/90 p-3 rounded-lg border border-emerald-500/30"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-[#00FF66]"
+  }, "ポリシー一致ボーナス"), /*#__PURE__*/React.createElement("div", {
+    className: "text-lg font-black font-num text-[#00FF66] mt-0.5"
+  }, "+", policyBonusGained.toLocaleString(), " ", /*#__PURE__*/React.createElement("span", {
+    className: "text-xs"
+  }, "(一致", policyMatchCount, "名)"))), /*#__PURE__*/React.createElement("div", {
+    className: "bg-amber-400/10 p-3 rounded-lg border border-amber-400/50"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-amber-300"
+  }, "最終戦闘総合力 (コンボ発動)"), /*#__PURE__*/React.createElement("div", {
+    className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
+  }, comboValidation.boostedOverall.toLocaleString()))), /*#__PURE__*/React.createElement("div", {
+    className: "text-xs space-y-1.5 pt-2 border-t border-slate-800/80"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "font-bold text-slate-300"
+  }, "発動中ボーナス内訳:"), /*#__PURE__*/React.createElement("div", {
+    className: `grid grid-cols-1 ${comboValidation.isSelecao ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-2 text-[11px]`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-cyan-400 font-bold"
+  }, "🔰 ポリシー一致ボーナス:"), /*#__PURE__*/React.createElement("span", {
+    className: "text-white font-bold mt-1"
+  }, "一致 ", policyMatchCount, "名 (+", policyBonusGained.toLocaleString(), ")")), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-amber-400 font-bold"
+  }, "🏆 ", comboValidation.combo.name, " 発動効果:"), /*#__PURE__*/React.createElement("span", {
+    className: "text-white font-bold mt-1"
+  }, comboValidation.combo.buffs.map(b => `${b.name}${b.val}`).join(', '))), comboValidation.isSelecao && /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[#00FF66] font-bold"
+  }, "🇧🇷 ブラジル国籍ボーナス:"), /*#__PURE__*/React.createElement("span", {
+    className: "text-white font-bold mt-1"
+  }, "ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
+    className: "mt-3 space-y-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-bold text-slate-300"
+  }, "位置指定・発動条件チェックリスト:"), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: `p-2 rounded-xl border flex items-center justify-between ${comboValidation.isPolicyMatch ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-bold"
+  }, "チームポリシー: ", /*#__PURE__*/React.createElement("strong", {
+    className: getPolicyTextColor(comboValidation.combo.policy)
+  }, comboValidation.combo.policy)), /*#__PURE__*/React.createElement("span", {
+    className: "font-black"
+  }, comboValidation.isPolicyMatch ? '✓ 一致' : '❌ 要変更')), comboValidation.reqResults.map((req, idx) => /*#__PURE__*/React.createElement("div", {
+    key: idx,
+    className: `p-2 rounded-xl border flex items-center justify-between ${req.isFulfilled ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 truncate"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-black"
+  }, req.isFulfilled ? '✓' : '❌'), /*#__PURE__*/React.createElement("span", {
+    className: "font-bold truncate"
+  }, req.label)), req.player ? /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-black bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700 truncate max-w-[120px]"
+  }, req.player.name, " (LV.", req.player.playStyleLevel || 1, ")") : /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] font-bold opacity-75"
+  }, "未配置")))), comboValidation.isSelecao && /*#__PURE__*/React.createElement("div", {
+    className: "mt-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-base"
+  }, "🇧🇷"), /*#__PURE__*/React.createElement("span", {
+    className: "font-bold text-slate-200"
+  }, comboValidation.combo.specialNote)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-slate-400 font-bold"
+  }, "フィールド上ブラジル選手:"), /*#__PURE__*/React.createElement("span", {
+    className: "px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF66] border border-[#00FF66]/30 font-black font-num"
+  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
+    className: "relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-0 pointer-events-none opacity-25"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "absolute inset-4 border-2 border-white rounded-xl"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-1/2 left-4 right-4 h-0.5 bg-white -translate-y-1/2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-1/2 left-1/2 w-32 h-32 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute top-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-t-0 rounded-b-xl"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "absolute bottom-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-b-0 rounded-t-xl"
+  })), selectedFormation.slots.map(slot => {
+    const rawP = squadMap[slot.id];
+    const player = displaySquadMap[slot.id];
+    const isPolicyMatched = player && player.policy === teamPolicy;
+
+    // 位置条件達成チェック
+    const isReqSlot = !!slot.requiredStyle;
+    const isReqFulfilled = isReqSlot && checkPlayStyleRequirement(rawP, slot.requiredStyle, slot.minLevel);
+    return /*#__PURE__*/React.createElement("div", {
+      key: slot.id,
+      onClick: () => {
+        const normP = normalizePosition(slot.pos);
+        setFilterPos(normP);
+        setModalSearchText('');
+        setActiveSlotModal({
+          type: 'starter',
+          id: slot.id,
+          targetPos: normP,
+          rawLabel: slot.label
+        });
+      },
+      style: {
+        top: slot.top,
+        left: slot.left
+      },
+      className: "absolute -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer"
+    }, player ? /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col items-center relative active:scale-95 transition-transform"
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: e => handleRemoveSlot('starter', slot.id, e),
+      className: "absolute -top-1 -right-1 z-30 w-4 h-4 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 text-[10px]",
+      title: "外す"
+    }, "✕"), isReqSlot && /*#__PURE__*/React.createElement("span", {
+      className: `absolute -top-3 left-1/2 -translate-x-1/2 px-1 py-0.2 rounded text-[7px] sm:text-[8px] font-black whitespace-nowrap z-30 shadow ${isReqFulfilled ? 'bg-amber-400 text-slate-950 border border-amber-300' : 'bg-red-600 text-white border border-red-400'}`
+    }, isReqFulfilled ? `✓ ${slot.requiredStyle}` : `要:${slot.requiredStyle}`), /*#__PURE__*/React.createElement("div", {
+      className: `relative w-10 h-14 sm:w-14 sm:h-20 aspect-[3/4] rounded-lg sm:rounded-xl border-2 overflow-hidden shadow-lg bg-slate-950 ${isReqFulfilled ? 'border-amber-400 shadow-amber-400/40 ring-2 ring-amber-400/30' : isPolicyMatched ? 'border-[#00FF66] shadow-[#00FF66]/20' : 'border-slate-700'}`
+    }, /*#__PURE__*/React.createElement(PlayerAvatar, {
+      player: player,
+      className: "w-full h-full object-cover"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: `absolute bottom-0 left-0 right-0 py-0.2 text-center text-[7px] sm:text-[9px] font-black font-num ${getRarityBadgeStyle(player.rarity)}`
+    }, player.overall)), /*#__PURE__*/React.createElement("div", {
+      className: "mt-1 bg-slate-950/90 px-1.5 py-0.5 rounded-md border border-slate-800 text-center max-w-[70px] sm:max-w-[100px] shadow"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-[7px] sm:text-[9px] font-black text-white truncate"
+    }, player.name), /*#__PURE__*/React.createElement("div", {
+      className: "text-[6px] sm:text-[8px] font-bold text-[#00FF66] truncate"
+    }, slot.label))) : /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col items-center group-hover:scale-105 transition-transform"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `w-10 h-10 sm:w-14 sm:h-14 rounded-full border-2 border-dashed flex flex-col items-center justify-center shadow-lg backdrop-blur-sm ${isReqSlot ? 'border-amber-400/80 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20' : 'border-emerald-400/60 bg-slate-950/60 text-emerald-400 hover:bg-emerald-500/20'}`
+    }, /*#__PURE__*/React.createElement(Icon, {
+      name: "plus",
+      className: "w-4 h-4 sm:w-5 sm:h-5"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "text-[8px] sm:text-[10px] font-black"
+    }, slot.label)), isReqSlot && /*#__PURE__*/React.createElement("span", {
+      className: "mt-0.5 text-[7px] sm:text-[8px] font-bold text-amber-300 bg-amber-400/10 px-1 rounded border border-amber-400/30 whitespace-nowrap"
+    }, "要:", slot.requiredStyle)));
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel p-4 rounded-2xl border border-slate-800 bg-slate-900/90"
+  }, /*#__PURE__*/React.createElement("h3", {
+    className: "text-sm font-black text-white flex items-center justify-between gap-2 mb-3"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "flex items-center gap-2"
+  }, "🪑 ベンチ・サブメンバー (12名)"), /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-bold text-slate-400"
+  }, "SUB1 〜 SUB12")), /*#__PURE__*/React.createElement("div", {
+    className: "grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2 sm:gap-2.5"
+  }, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(idx => {
+    const benchPlayer = displayBenchMap[idx];
+    return /*#__PURE__*/React.createElement("div", {
+      key: idx,
+      onClick: () => {
+        setFilterPos('ALL');
+        setModalSearchText('');
+        setActiveSlotModal({
+          type: 'bench',
+          id: idx,
+          targetPos: 'SUB'
+        });
+      },
+      className: "flex flex-col items-center relative cursor-pointer group"
+    }, benchPlayer ? /*#__PURE__*/React.createElement("div", {
+      className: "relative w-full flex flex-col items-center active:scale-95 transition-transform"
+    }, /*#__PURE__*/React.createElement("button", {
+      onClick: e => handleRemoveSlot('bench', idx, e),
+      className: "absolute -top-1 -right-1 z-30 w-4 h-4 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 text-[10px]",
+      title: "外す"
+    }, "✕"), /*#__PURE__*/React.createElement("div", {
+      className: "w-10 h-14 sm:w-12 sm:h-16 aspect-[3/4] rounded-lg border border-slate-700 bg-slate-950 overflow-hidden relative shadow"
+    }, /*#__PURE__*/React.createElement(PlayerAvatar, {
+      player: benchPlayer,
+      className: "w-full h-full object-cover"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "absolute bottom-0 inset-x-0 text-center text-[8px] font-black font-num bg-slate-900/90 text-[#00FF66]"
+    }, benchPlayer.overall)), /*#__PURE__*/React.createElement("div", {
+      className: "text-[8px] font-bold text-white truncate max-w-full mt-0.5"
+    }, benchPlayer.name)) : /*#__PURE__*/React.createElement("div", {
+      className: "w-10 h-14 sm:w-12 sm:h-16 rounded-lg border border-dashed border-slate-700 bg-slate-950/60 flex flex-col items-center justify-center text-slate-500 hover:text-white hover:border-slate-500"
+    }, /*#__PURE__*/React.createElement(Icon, {
+      name: "plus",
+      className: "w-3.5 h-3.5"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "text-[8px] font-bold mt-0.5"
+    }, "SUB", idx + 1)));
+  }))), activeSlotModal && /*#__PURE__*/React.createElement("div", {
+    className: "fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto animate-fadeIn"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto"
+  }, /*#__PURE__*/React.createElement(SideAdBanner, {
+    position: "left",
+    isModal: true,
+    showModalAd: showSlotModalAd
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "glass-panel max-w-2xl w-full mx-auto rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 flex flex-col shadow-2xl max-h-[85vh] flex-shrink-0"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between pb-3 border-b border-slate-800"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h3", {
+    className: "font-black text-lg text-white"
+  }, "選手を割り当て (", activeSlotModal.targetPos, " スロット)"), currentSlotInfo?.requiredStyle && /*#__PURE__*/React.createElement("div", {
+    className: "mt-0.5 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-black"
+  }, "⭐ 【", currentSlotInfo.label, "位置条件】 ", currentSlotInfo.requiredStyle, " (LV.", currentSlotInfo.minLevel, "以上) を要配置")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveSlotModal(null),
+    className: "p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    className: "w-5 h-5"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "py-2.5 border-b border-slate-800 flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative flex-1"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "search",
+    className: "w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: modalSearchText,
+    onChange: e => setModalSearchText(e.target.value),
+    placeholder: "選手名・プレースタイル・国籍・ポリシーでリアルタイム検索 (例: 柴崎, ラインブレーカー, ブラジル)...",
+    className: "w-full bg-slate-950 border border-slate-700 focus:border-[#00FF66] rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
+  }), modalSearchText && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setModalSearchText(''),
+    className: "absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    className: "w-3.5 h-3.5"
+  }))), modalSearchText && /*#__PURE__*/React.createElement("button", {
+    onClick: () => setModalSearchText(''),
+    className: "px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold whitespace-nowrap cursor-pointer"
+  }, "クリア")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 overflow-x-auto py-3 border-b border-slate-800 scrollbar-none"
+  }, ['ALL', 'CF', 'LW', 'RW', 'AM', 'LM', 'RM', 'DM', 'LFB', 'RFB', 'CB', 'GK'].map(pos => /*#__PURE__*/React.createElement("button", {
+    key: pos,
+    onClick: () => setFilterPos(pos),
+    className: `px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap cursor-pointer ${filterPos === pos ? 'bg-[#00FF66] text-slate-950' : 'bg-slate-800 text-slate-400 hover:text-white'}`
+  }, pos))), /*#__PURE__*/React.createElement("div", {
+    className: "flex-1 overflow-y-auto space-y-2 py-3 pr-1 scrollbar-thin scrollbar-thumb-slate-700"
+  }, modalPlayers.length > 0 ? modalPlayers.map(p => {
+    const isSlotReqMatch = currentSlotInfo?.requiredStyle ? checkPlayStyleRequirement(p, currentSlotInfo.requiredStyle, currentSlotInfo.minLevel) : false;
+    const assignedInfo = getAssignedLocationInfo(p.id);
+    return /*#__PURE__*/React.createElement("div", {
+      key: p.id,
+      onClick: () => handleAssignPlayer(p),
+      className: `p-2.5 rounded-xl bg-slate-950 border flex items-center justify-between gap-3 cursor-pointer transition-all hover:bg-slate-800/40 ${isSlotReqMatch ? 'border-amber-400 shadow-md shadow-amber-400/20 bg-amber-500/10' : assignedInfo ? 'border-purple-500/40 bg-purple-500/5' : 'border-slate-800 hover:border-[#00FF66]/50'}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-3 min-w-0"
+    }, /*#__PURE__*/React.createElement(PlayerAvatar, {
+      player: p,
+      className: "w-10 h-14 aspect-[3/4] rounded-lg object-cover bg-slate-900 border border-slate-700 flex-shrink-0"
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "min-w-0"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5 flex-wrap"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "px-1.5 py-0.2 rounded text-[10px] font-black bg-slate-800 text-[#00FF66]"
+    }, p.mainPosition), /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] font-bold text-amber-400"
+    }, p.rarity), p.policy && /*#__PURE__*/React.createElement("span", {
+      className: `text-[9px] font-bold px-1 py-0.2 rounded border ${getPolicyBadgeClass(p.policy)}`
+    }, p.policy), assignedInfo && /*#__PURE__*/React.createElement("span", {
+      className: "text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 border border-purple-400/40"
+    }, "📍 ", assignedInfo.label), isSlotReqMatch && /*#__PURE__*/React.createElement("span", {
+      className: "text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 animate-pulse"
+    }, "⭐ 位置条件完全合致 (", p.playStyle, " LV.", p.playStyleLevel, ")")), /*#__PURE__*/React.createElement("div", {
+      className: "font-black text-sm text-white truncate mt-0.5"
+    }, p.name), /*#__PURE__*/React.createElement("div", {
+      className: "text-[10px] text-slate-400 truncate"
+    }, p.playStyle || 'スタイル未設定', " ", /*#__PURE__*/React.createElement("span", {
+      className: "text-[#00FF66] font-bold"
+    }, "LV.", p.playStyleLevel), " ", p.nationality && `| 🌐 ${p.nationality}`))), /*#__PURE__*/React.createElement("div", {
+      className: "text-right flex-shrink-0"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "text-xs text-slate-400 font-bold"
+    }, "総合力"), /*#__PURE__*/React.createElement("div", {
+      className: "text-lg font-black font-num text-[#00FF66]"
+    }, p.overall)));
+  }) : /*#__PURE__*/React.createElement("div", {
+    className: "text-center py-10 text-slate-400 text-xs font-bold"
+  }, "選択可能な選手が見つかりません。"))), /*#__PURE__*/React.createElement(SideAdBanner, {
+    position: "right",
+    isModal: true,
+    showModalAd: showSlotModalAd
+  }))));
 }
 function DataManagerTab({
   players,
