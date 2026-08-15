@@ -1244,7 +1244,7 @@ function App() {
   return /*#__PURE__*/React.createElement("div", {
     className: "min-h-screen bg-[#070a10] text-slate-100 flex flex-col font-sans pb-20 md:pb-0"
   }, /*#__PURE__*/React.createElement("header", {
-    className: "sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3"
+    className: "relative md:sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3"
   }, /*#__PURE__*/React.createElement("div", {
     className: "max-w-[1300px] w-full mx-auto flex items-center justify-between"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1531,28 +1531,28 @@ function HomeTab({
   }, "調整中"), /*#__PURE__*/React.createElement("div", {
     className: "text-xs text-slate-400 font-semibold"
   }, "監督・コンボDB")))), /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel p-4 md:p-6 rounded-3xl space-y-3 border border-red-500/30 bg-slate-900/40"
+    className: "sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between"
+    className: "flex items-center justify-between px-1"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "px-2 py-0.5 rounded text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm"
+    className: "px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm"
   }, "▶ YouTube"), /*#__PURE__*/React.createElement("h2", {
-    className: "text-base md:text-lg font-bold text-white flex items-center gap-1.5"
+    className: "text-xs md:text-sm font-bold text-white flex items-center gap-1.5"
   }, "ねこにら サカつく2026 最新動画")), /*#__PURE__*/React.createElement("a", {
     href: "https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "text-xs font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+    className: "text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
   }, "チャンネルを見る ↗")), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-3 overflow-x-auto pb-2 pt-1 scrollbar-thin scrollbar-thumb-slate-700"
+    className: "flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700"
   }, YOUTUBE_VIDEOS.map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
     href: video.url,
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "flex-shrink-0 w-44 md:w-52 bg-slate-900/90 hover:bg-slate-800/90 rounded-xl overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+    className: "flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative aspect-video bg-slate-950 overflow-hidden"
   }, /*#__PURE__*/React.createElement("img", {
@@ -1561,9 +1561,9 @@ function HomeTab({
     className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
     loading: "lazy"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "p-2.5 flex-1 flex flex-col justify-between"
+    className: "p-1.5 flex-1 flex flex-col justify-between"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "text-xs font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-snug"
+    className: "text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight"
   }, video.title)))))), /*#__PURE__*/React.createElement("div", {
     className: "space-y-4"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1854,28 +1854,28 @@ function PlayerDBTab({
   return /*#__PURE__*/React.createElement("div", {
     className: "space-y-6 animate-fadeIn"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel p-4 rounded-2xl space-y-3 border border-red-500/30 bg-slate-900/40"
+    className: "sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between"
+    className: "flex items-center justify-between px-1"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-2"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "px-2 py-0.5 rounded text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm"
+    className: "px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm"
   }, "▶ YouTube"), /*#__PURE__*/React.createElement("h3", {
-    className: "text-sm md:text-base font-bold text-white flex items-center gap-1.5"
+    className: "text-xs md:text-sm font-bold text-white flex items-center gap-1.5"
   }, "ねこにら サカつく2026 最新動画")), /*#__PURE__*/React.createElement("a", {
     href: "https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "text-xs font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+    className: "text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
   }, "チャンネルを見る ↗")), /*#__PURE__*/React.createElement("div", {
-    className: "flex gap-3 overflow-x-auto pb-2 pt-1 scrollbar-thin scrollbar-thumb-slate-700"
+    className: "flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700"
   }, YOUTUBE_VIDEOS.map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
     href: video.url,
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "flex-shrink-0 w-44 md:w-52 bg-slate-900/90 hover:bg-slate-800/90 rounded-xl overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+    className: "flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
   }, /*#__PURE__*/React.createElement("div", {
     className: "relative aspect-video bg-slate-950 overflow-hidden"
   }, /*#__PURE__*/React.createElement("img", {
@@ -1884,9 +1884,9 @@ function PlayerDBTab({
     className: "w-full h-full object-cover group-hover:scale-105 transition-transform duration-300",
     loading: "lazy"
   })), /*#__PURE__*/React.createElement("div", {
-    className: "p-2.5 flex-1 flex flex-col justify-between"
+    className: "p-1.5 flex-1 flex flex-col justify-between"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "text-xs font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-snug"
+    className: "text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight"
   }, video.title)))))), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#0e1522] p-4 md:p-6 rounded-3xl border border-slate-800"
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {

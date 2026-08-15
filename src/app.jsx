@@ -1145,7 +1145,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#070a10] text-slate-100 flex flex-col font-sans pb-20 md:pb-0">
-      <header className="sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3">
+      <header className="relative md:sticky top-0 z-40 glass-panel border-b border-slate-800/80 px-4 lg:px-8 py-3">
         <div className="max-w-[1300px] w-full mx-auto flex items-center justify-between">
           <div
             onClick={() => setActiveTab('home')}
@@ -1474,14 +1474,14 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
         </div>
       </div>
 
-      {/* YouTube 最新動画 (横一列スクロール) */}
-      <div className="glass-panel p-4 md:p-6 rounded-3xl space-y-3 border border-red-500/30 bg-slate-900/40">
-        <div className="flex items-center justify-between">
+      {/* YouTube 最新動画 (スマホ時のみ小さく固定スクロール) */}
+      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md">
+        <div className="flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
+            <span className="px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
               ▶ YouTube
             </span>
-            <h2 className="text-base md:text-lg font-bold text-white flex items-center gap-1.5">
+            <h2 className="text-xs md:text-sm font-bold text-white flex items-center gap-1.5">
               ねこにら サカつく2026 最新動画
             </h2>
           </div>
@@ -1489,19 +1489,19 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
             href="https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+            className="text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
           >
             チャンネルを見る ↗
           </a>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-2 pt-1 scrollbar-thin scrollbar-thumb-slate-700">
+        <div className="flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700">
           {YOUTUBE_VIDEOS.map(video => (
             <a
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-44 md:w-52 bg-slate-900/90 hover:bg-slate-800/90 rounded-xl overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+              className="flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
             >
               <div className="relative aspect-video bg-slate-950 overflow-hidden">
                 <img
@@ -1511,8 +1511,8 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
                   loading="lazy"
                 />
               </div>
-              <div className="p-2.5 flex-1 flex flex-col justify-between">
-                <p className="text-xs font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-snug">
+              <div className="p-1.5 flex-1 flex flex-col justify-between">
+                <p className="text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight">
                   {video.title}
                 </p>
               </div>
@@ -1782,14 +1782,14 @@ function PlayerDBTab({
 
   return (
     <div className="space-y-6 animate-fadeIn">
-      {/* YouTube 最新動画 (横一列スクロール) */}
-      <div className="glass-panel p-4 rounded-2xl space-y-3 border border-red-500/30 bg-slate-900/40">
-        <div className="flex items-center justify-between">
+      {/* YouTube 最新動画 (スマホ時のみ小さく固定スクロール) */}
+      <div className="sticky md:relative top-0 md:top-auto z-30 glass-panel p-3 rounded-2xl space-y-2 border border-red-500/30 bg-slate-900/90 shadow-2xl backdrop-blur-md">
+        <div className="flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
+            <span className="px-1.5 py-0.5 rounded text-[10px] md:text-xs font-black bg-red-600 text-white flex items-center gap-1 shadow-sm">
               ▶ YouTube
             </span>
-            <h3 className="text-sm md:text-base font-bold text-white flex items-center gap-1.5">
+            <h3 className="text-xs md:text-sm font-bold text-white flex items-center gap-1.5">
               ねこにら サカつく2026 最新動画
             </h3>
           </div>
@@ -1797,19 +1797,19 @@ function PlayerDBTab({
             href="https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
+            className="text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-1"
           >
             チャンネルを見る ↗
           </a>
         </div>
-        <div className="flex gap-3 overflow-x-auto pb-2 pt-1 scrollbar-thin scrollbar-thumb-slate-700">
+        <div className="flex gap-2.5 overflow-x-auto pb-1.5 pt-0.5 scrollbar-thin scrollbar-thumb-slate-700">
           {YOUTUBE_VIDEOS.map(video => (
             <a
               key={video.id}
               href={video.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 w-44 md:w-52 bg-slate-900/90 hover:bg-slate-800/90 rounded-xl overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
+              className="flex-shrink-0 w-32 md:w-40 bg-slate-900/90 hover:bg-slate-800/90 rounded-lg overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all hover:scale-[1.02] shadow-md group flex flex-col justify-between"
             >
               <div className="relative aspect-video bg-slate-950 overflow-hidden">
                 <img
@@ -1819,8 +1819,8 @@ function PlayerDBTab({
                   loading="lazy"
                 />
               </div>
-              <div className="p-2.5 flex-1 flex flex-col justify-between">
-                <p className="text-xs font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-snug">
+              <div className="p-1.5 flex-1 flex flex-col justify-between">
+                <p className="text-[11px] font-bold text-slate-200 group-hover:text-white line-clamp-2 leading-tight">
                   {video.title}
                 </p>
               </div>
