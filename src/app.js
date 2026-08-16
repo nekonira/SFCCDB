@@ -274,7 +274,7 @@ function SideAdBanner({
         ...prev,
         [ad.id]: true
       })),
-      className: "absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer",
+      className: "absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer",
       title: "この広告を非表示"
     }, "✕"), renderAdContent(ad))));
   }
@@ -292,7 +292,7 @@ function SideAdBanner({
       ...prev,
       [ad.id]: true
     })),
-    className: "absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer",
+    className: "absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer",
     title: "この広告を非表示"
   }, "✕"), renderAdContent(ad)))), shouldShowMobileAd && mobileAds.length > 0 && /*#__PURE__*/React.createElement("div", {
     className: "xl:hidden fixed bottom-16 right-1.5 z-40 flex flex-col gap-2 max-w-[115px] sm:max-w-[135px] pointer-events-auto"
@@ -304,7 +304,7 @@ function SideAdBanner({
       ...prev,
       [ad.id]: true
     })),
-    className: "absolute top-0.5 right-0.5 z-20 w-4.5 h-4.5 rounded-full bg-slate-950/90 hover:bg-red-500 text-slate-300 hover:text-white border border-slate-700/80 flex items-center justify-center text-[9px] shadow-md cursor-pointer",
+    className: "absolute top-1 right-1 z-30 w-7 h-7 rounded-full bg-slate-950/95 hover:bg-red-600 active:bg-red-700 text-white border-2 border-slate-600/90 hover:border-red-400 flex items-center justify-center text-xs font-bold shadow-lg cursor-pointer",
     title: "この広告を閉じる"
   }, "✕"), renderAdContent(ad, true)))));
 }
@@ -2743,7 +2743,7 @@ function TeamBuilderTab({
     id: 'euskaldunak12',
     name: "エウスカルドゥナク’12",
     policy: 'カウンター',
-    formationId: '343a_euskaldunak',
+    formationId: '343c_euskaldunak',
     buffs: [{
       name: 'タックル',
       val: '+60%'
@@ -3893,8 +3893,8 @@ function TeamBuilderTab({
       left: '50%'
     }]
   }, {
-    id: '343a_euskaldunak',
-    name: "3-4-3A (エウスカルドゥナク’12)",
+    id: '343c_euskaldunak',
+    name: "3-4-3C (エウスカルドゥナク’12)",
     comboId: 'euskaldunak12',
     slots: [{
       id: 1,
@@ -3925,29 +3925,29 @@ function TeamBuilderTab({
     }, {
       id: 5,
       pos: 'DM',
-      label: 'DM',
+      label: 'LDM',
       top: '54%',
-      left: '50%'
+      left: '38%'
     }, {
       id: 6,
-      pos: 'LM',
-      label: 'LM',
-      top: '38%',
-      left: '20%'
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '62%'
     }, {
       id: 7,
       pos: 'AM',
       label: 'LAM',
-      top: '34%',
-      left: '50%',
+      top: '35%',
+      left: '32%',
       requiredStyle: 'アタッカー',
       minLevel: 3
     }, {
       id: 8,
-      pos: 'RM',
-      label: 'RM',
-      top: '38%',
-      left: '80%'
+      pos: 'AM',
+      label: 'RAM',
+      top: '35%',
+      left: '68%'
     }, {
       id: 9,
       pos: 'LW',

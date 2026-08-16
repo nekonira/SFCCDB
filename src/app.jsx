@@ -346,7 +346,7 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
-              className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer"
+              className="absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer"
               title="この広告を非表示"
             >
               ✕
@@ -370,7 +370,7 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
-              className="absolute top-1 right-1 z-10 w-5 h-5 rounded-full bg-slate-950/80 hover:bg-red-500/90 text-slate-400 hover:text-white border border-slate-700/60 flex items-center justify-center text-[10px] opacity-70 group-hover:opacity-100 transition-all shadow-md cursor-pointer"
+              className="absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer"
               title="この広告を非表示"
             >
               ✕
@@ -387,7 +387,7 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
             <div key={ad.id} className="relative group glass-panel p-1 rounded-xl border border-slate-800/90 bg-slate-900/95 shadow-2xl flex justify-center items-center overflow-hidden w-full backdrop-blur-md">
               <button
                 onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
-                className="absolute top-0.5 right-0.5 z-20 w-4.5 h-4.5 rounded-full bg-slate-950/90 hover:bg-red-500 text-slate-300 hover:text-white border border-slate-700/80 flex items-center justify-center text-[9px] shadow-md cursor-pointer"
+                className="absolute top-1 right-1 z-30 w-7 h-7 rounded-full bg-slate-950/95 hover:bg-red-600 active:bg-red-700 text-white border-2 border-slate-600/90 hover:border-red-400 flex items-center justify-center text-xs font-bold shadow-lg cursor-pointer"
                 title="この広告を閉じる"
               >
                 ✕
@@ -2651,7 +2651,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       id: 'euskaldunak12',
       name: "エウスカルドゥナク’12",
       policy: 'カウンター',
-      formationId: '343a_euskaldunak',
+      formationId: '343c_euskaldunak',
       buffs: [
         { name: 'タックル', val: '+60%' },
         { name: 'マーク', val: '+80%' },
@@ -2951,18 +2951,18 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       ]
     },
     {
-      id: '343a_euskaldunak',
-      name: "3-4-3A (エウスカルドゥナク’12)",
+      id: '343c_euskaldunak',
+      name: "3-4-3C (エウスカルドゥナク’12)",
       comboId: 'euskaldunak12',
       slots: [
         { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
         { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
         { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
         { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
-        { id: 6, pos: 'LM', label: 'LM', top: '38%', left: '20%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 3 },
-        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '80%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 3 },
+        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
         { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
         { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
         { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
