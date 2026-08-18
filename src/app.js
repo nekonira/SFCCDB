@@ -1335,7 +1335,20 @@ function UnderAdjustmentNotice({
   }), "選手データベースを見る"));
 }
 function App() {
-  const [activeTab, setActiveTab] = useState('players');
+  const [activeTab, setActiveTab] = useState(() => {
+    try {
+      return localStorage.getItem('sfcc_active_tab') || 'players';
+    } catch (e) {
+      return 'players';
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('sfcc_active_tab', activeTab);
+    } catch (e) {}
+  }, [activeTab]);
+
   const getLatestPlayers = () => {
     const list = window.INITIAL_PLAYERS && window.INITIAL_PLAYERS.length > 0 ? window.INITIAL_PLAYERS : window.SAKATSUKU_DATA && window.SAKATSUKU_DATA.INITIAL_PLAYERS || INITIAL_PLAYERS || [];
     return list.map(p => ({
@@ -1345,9 +1358,6 @@ function App() {
   };
   const [players, setPlayers] = useState(() => getLatestPlayers());
   useEffect(() => {
-    try {
-      localStorage.clear();
-    } catch (e) {}
     const latest = getLatestPlayers();
     if (latest.length > 0) {
       setPlayers(latest);
@@ -6906,11 +6916,49 @@ function TeamBuilderTab({
       left: '50%'
     }]
   }];
-  const [selectedFormation, setSelectedFormation] = useState(FORMATIONS[0]);
-  const [teamPolicy, setTeamPolicy] = useState('リアクション');
-  const [squadMap, setSquadMap] = useState({});
-  const [benchMap, setBenchMap] = useState({});
-  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(false);
+  const getInitialActiveTeam = () => {
+    try {
+      const active = localStorage.getItem('sfcc_active_team');
+      if (active) return JSON.parse(active);
+    } catch (e) {}
+    return null;
+  };
+  const activePayload = useMemo(() => getInitialActiveTeam(), []);
+
+  const restorePlayerMap = React.useCallback(mapData => {
+    if (!mapData) return {};
+    const restored = {};
+    Object.keys(mapData).forEach(key => {
+      const storedP = mapData[key];
+      if (storedP && storedP.id) {
+        const freshP = players.find(p => String(p.id) === String(storedP.id));
+        restored[key] = freshP || storedP;
+      }
+    });
+    return restored;
+  }, [players]);
+
+  const [selectedFormation, setSelectedFormation] = useState(() => {
+    if (activePayload?.formationId) {
+      const fmt = FORMATIONS.find(f => f.id === activePayload.formationId);
+      if (fmt) return fmt;
+    }
+    return FORMATIONS[0];
+  });
+  const [teamPolicy, setTeamPolicy] = useState(() => activePayload?.teamPolicy || 'リアクション');
+  const [squadMap, setSquadMap] = useState(() => {
+    if (activePayload?.squadMap) {
+      return restorePlayerMap(activePayload.squadMap);
+    }
+    return {};
+  });
+  const [benchMap, setBenchMap] = useState(() => {
+    if (activePayload?.benchMap) {
+      return restorePlayerMap(activePayload.benchMap);
+    }
+    return {};
+  });
+  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : false);
   const [activeSlotModal, setActiveSlotModal] = useState(null);
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
@@ -6933,25 +6981,6 @@ function TeamBuilderTab({
   };
 
   const isInitialMount = React.useRef(true);
-  useEffect(() => {
-    try {
-      const active = localStorage.getItem('sfcc_active_team');
-      if (active) {
-        const parsed = JSON.parse(active);
-        if (parsed.formationId) {
-          const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
-          if (fmt) setSelectedFormation(fmt);
-        }
-        if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
-        if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
-        if (parsed.squadMap) setSquadMap(parsed.squadMap);
-        if (parsed.benchMap) setBenchMap(parsed.benchMap);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
-
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -7010,8 +7039,8 @@ function TeamBuilderTab({
     }
     if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
     if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
-    if (team.squadMap) setSquadMap(team.squadMap);
-    if (team.benchMap) setBenchMap(team.benchMap);
+    if (team.squadMap) setSquadMap(restorePlayerMap(team.squadMap));
+    if (team.benchMap) setBenchMap(restorePlayerMap(team.benchMap));
     setIsSaveModalOpen(false);
     showToast(`「${team.name}」を読み込みました！`);
   };

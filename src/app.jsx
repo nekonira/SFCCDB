@@ -1,4 +1,4 @@
-const { useState, useEffect, useMemo } = React;
+const { useState, useEffect, useMemo, useRef, useCallback } = React;
 const POSITIONS = ["GK","CB","LFB","RFB","DM","LM","RM","AM","LW","RW","CF"];
 const POLICIES = ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'];
 const RARITIES = ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
@@ -1257,7 +1257,20 @@ function UnderAdjustmentNotice({ title, description, onGoToDB }) {
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('players');
+  const [activeTab, setActiveTab] = useState(() => {
+    try {
+      return localStorage.getItem('sfcc_active_tab') || 'players';
+    } catch (e) {
+      return 'players';
+    }
+  });
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    try {
+      localStorage.setItem('sfcc_active_tab', tab);
+    } catch (e) {}
+  };
 
   const getLatestPlayers = () => {
     const list = (window.INITIAL_PLAYERS && window.INITIAL_PLAYERS.length > 0)
@@ -1272,9 +1285,6 @@ function App() {
   const [players, setPlayers] = useState(() => getLatestPlayers());
 
   useEffect(() => {
-    try {
-      localStorage.clear();
-    } catch (e) {}
     const latest = getLatestPlayers();
     if (latest.length > 0) {
       setPlayers(latest);
@@ -4001,11 +4011,49 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
   ];
 
-  const [selectedFormation, setSelectedFormation] = useState(FORMATIONS[0]);
-  const [teamPolicy, setTeamPolicy] = useState('リアクション');
-  const [squadMap, setSquadMap] = useState({});
-  const [benchMap, setBenchMap] = useState({});
-  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(false);
+  const getInitialActiveTeam = () => {
+    try {
+      const active = localStorage.getItem('sfcc_active_team');
+      if (active) return JSON.parse(active);
+    } catch (e) {}
+    return null;
+  };
+  const activePayload = useMemo(() => getInitialActiveTeam(), []);
+
+  const restorePlayerMap = useCallback((mapData) => {
+    if (!mapData) return {};
+    const restored = {};
+    Object.keys(mapData).forEach(key => {
+      const storedP = mapData[key];
+      if (storedP && storedP.id) {
+        const freshP = players.find(p => String(p.id) === String(storedP.id));
+        restored[key] = freshP || storedP;
+      }
+    });
+    return restored;
+  }, [players]);
+
+  const [selectedFormation, setSelectedFormation] = useState(() => {
+    if (activePayload?.formationId) {
+      const fmt = FORMATIONS.find(f => f.id === activePayload.formationId);
+      if (fmt) return fmt;
+    }
+    return FORMATIONS[0];
+  });
+  const [teamPolicy, setTeamPolicy] = useState(() => activePayload?.teamPolicy || 'リアクション');
+  const [squadMap, setSquadMap] = useState(() => {
+    if (activePayload?.squadMap) {
+      return restorePlayerMap(activePayload.squadMap);
+    }
+    return {};
+  });
+  const [benchMap, setBenchMap] = useState(() => {
+    if (activePayload?.benchMap) {
+      return restorePlayerMap(activePayload.benchMap);
+    }
+    return {};
+  });
+  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : false);
   const [activeSlotModal, setActiveSlotModal] = useState(null);
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
@@ -4039,13 +4087,13 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         }
         if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
         if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
-        if (parsed.squadMap) setSquadMap(parsed.squadMap);
-        if (parsed.benchMap) setBenchMap(parsed.benchMap);
+        if (parsed.squadMap) setSquadMap(restorePlayerMap(parsed.squadMap));
+        if (parsed.benchMap) setBenchMap(restorePlayerMap(parsed.benchMap));
       }
     } catch (e) {
       console.error(e);
     }
-  }, []);
+  }, [players]);
 
   useEffect(() => {
     if (isInitialMount.current) {
@@ -4105,8 +4153,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
     if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
     if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
-    if (team.squadMap) setSquadMap(team.squadMap);
-    if (team.benchMap) setBenchMap(team.benchMap);
+    if (team.squadMap) setSquadMap(restorePlayerMap(team.squadMap));
+    if (team.benchMap) setBenchMap(restorePlayerMap(team.benchMap));
     setIsSaveModalOpen(false);
     showToast(`「${team.name}」を読み込みました！`);
   };
