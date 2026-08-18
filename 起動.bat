@@ -1,8 +1,7 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
-echo サカつく2026 データベース サーバーを起動しています...
 start /min powershell -ExecutionPolicy Bypass -File .\server.ps1
-timeout /t 1 /nobreak >nul
-start http://localhost:3000/
+ping 127.0.0.1 -n 2 >nul
+start "" "%~dp0index.html"
+start "" "http://localhost:3000/"
 exit

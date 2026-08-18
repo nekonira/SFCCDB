@@ -39,6 +39,12 @@ const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
 
 const YOUTUBE_VIDEOS = [
   {
+    id: "PFUuw-rWI2E",
+    title: "【質問歓迎】MCO加入大会を開催いたします(4名)【サカつく2026】",
+    thumbnail: "https://i.ytimg.com/vi/PFUuw-rWI2E/hqdefault.jpg",
+    url: "https://www.youtube.com/watch?v=PFUuw-rWI2E"
+  },
+  {
     id: "3cWmdX7SO9g",
     title: "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
     thumbnail: "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
@@ -162,24 +168,9 @@ const AFFILIATE_ADS = [
     htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569345bd.2285d5fa.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOjEsImJhbiI6MjEzODQyNiwiYW1wIjpmYWxzZX0%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569345bd.2285d5fa.569332c7.ce1aeeb3/?me_id=2101064&me_adv_id=2138426&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
   },
   {
-    id: "rakuten_user_7",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/569348ca.add96354.569348cb.d247976b/?me_id=1312968&item_id=10030243&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fhhh-style%2Fcabinet%2F60204%2Ff980-1.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">2026SS新作 UVカットパーカー つば付き</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/569348ca.add96354.569348cb.d247976b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fhhh-style%2Ff980%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
     id: "rakuten_user_8",
     badge: "楽天 PR",
     htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934b82.b6aad5f9.56934b83.c5e00d8c/?me_id=1399277&item_id=10002614&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fdji-shop%2Fcabinet%2Fbnr%2F6937224133082_t.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">DJI Osmo Pocket 4 クリエイターコンボ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934b82.b6aad5f9.56934b83.c5e00d8c/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdji-shop%2F6937224133082%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_9",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934c6a.299fede4.56934c6b.cb46746b/?me_id=1385473&item_id=10000447&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fvenex-j%2Fcabinet%2F08813271%2F08819837%2Fkyuyo_ponch_ol.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">【ポイント10倍】ベネクス リカバリーウェア VENEX</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934c6a.299fede4.56934c6b.cb46746b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fvenex-j%2F8611%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
-  },
-  {
-    id: "rakuten_user_10",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56934fa0.48f1fa77.56934fa1.27f40ee1/?me_id=1365926&item_id=10003112&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fnext-at%2Fcabinet%2Fsyouhin8%2F1542-26ss.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">セットアップ UVカット95% 洗えるスーツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56934fa0.48f1fa77.56934fa1.27f40ee1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnext-at%2Foth-me-jk-1542-2%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
   },
   {
     id: "rakuten_user_12",
@@ -195,11 +186,6 @@ const AFFILIATE_ADS = [
     id: "rakuten_user_14",
     badge: "楽天 PR",
     htmlCode: `<a href="https://hb.afl.rakuten.co.jp/hsc/569354a6.5664c2ff.569332c7.ce1aeeb3/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiIxIiwiYmFuIjoyMTg8NjQ3LCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hsb/569354a6.5664c2ff.569332c7.ce1aeeb3/?me_id=2100001&me_adv_id=2188647&t=pict" border="0" style="margin:2px; max-width:100%; height:auto; border-radius:12px;" alt="" title=""></a>`
-  },
-  {
-    id: "rakuten_user_15",
-    badge: "楽天 PR",
-    htmlCode: `<table border="0" cellpadding="0" cellspacing="0"><tr><td><div style="border:1px solid #95a5a6;border-radius:.75rem;background-color:#FFFFFF;width:100%;margin:0px;padding:5px;text-align:center;overflow:hidden;"><table><tr><td style="width:100%;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><img src="https://hbb.afl.rakuten.co.jp/hgb/56935549.b8fa1385.5693554a.a4fbe38b/?me_id=1258767&item_id=10006491&pc=https%3A%2F%2Fthumbnail.image.rakuten.co.jp%2F%400_mall%2Fmundial%2Fcabinet%2Fimg09%2F2018-10101.jpg%3F_ex%3D300x300&s=300x300&t=picttext" border="0" style="margin:2px; max-width:100%; height:auto;" alt="" title=""></a></td></tr><tr><td style="vertical-align:top;width:100%;display:block;"><p style="font-size:11px;line-height:1.3em;text-align:left;margin:0px;padding:2px 4px;word-wrap:break-word"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word; color:#333;">クリスティアーノ・ロナウド Tシャツ</a></p><div style="margin:6px 0 2px 0;"><a href="https://hb.afl.rakuten.co.jp/ichiba/56935549.b8fa1385.5693554a.a4fbe38b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmundial%2F90003899%2F%3Fscid%3Daf_pc_bbtn&link_type=picttext&ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIzMDB4MzAwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjAsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ==" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;"><div style="width:100%;height:28px;background-color:#bf0000;color:#fff!important;font-size:12px;font-weight:700;line-height:28px;border-radius:14px;cursor:pointer;text-align:center;"> 楽天で購入 </div></a></div></td></tr></table></div></td></tr></table>`
   },
   {
     id: "rakuten_user_18",
@@ -232,9 +218,99 @@ const AFFILIATE_ADS = [
     htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="on";rakuten_ts="1786728392098";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
   },
   {
-    id: "rakuten_user_25",
-    badge: "楽天 PR",
-    htmlCode: `<script type="text/javascript">rakuten_design="slide";rakuten_affiliateId="139121d6.f8fc7b1a.139121d7.8db230fc";rakuten_items="ctsmatch";rakuten_genreId="0";rakuten_size="250x250";rakuten_target="_blank";rakuten_theme="gray";rakuten_border="off";rakuten_auto_mode="on";rakuten_genre_title="off";rakuten_recommend="off";rakuten_ts="1786728704019";</script><script type="text/javascript" src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>`
+    id: "dmm_user_33",
+    badge: "DMM PR",
+    htmlCode: `<ins class="widget-banner"></ins><script class="widget-banner-script" src="https://widget-view.dmm.com/js/banner_placement.js?affiliate_id=NEKONIRA-001&banner_id=1027_300_250"></script>`
+  },
+  {
+    id: "dmm_user_34",
+    badge: "DMM PR",
+    htmlCode: `<ins class="widget-banner"></ins><script class="widget-banner-script" src="https://widget-view.dmm.com/js/banner_placement.js?affiliate_id=NEKONIRA-001&banner_id=1198_300_250"></script>`
+  },
+  {
+    id: "dmm_user_35",
+    badge: "DMM PR",
+    htmlCode: `<ins class="widget-banner"></ins><script class="widget-banner-script" src="https://widget-view.dmm.com/js/banner_placement.js?affiliate_id=NEKONIRA-001&banner_id=879_300_250"></script>`
+  },
+  {
+    id: "dmm_user_37",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6191553%2Fb600esgk30720%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b600esgk30720/b600esgk30720pl.jpg" alt="無料で読む" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">無料で読む</span></a></div>`
+  },
+  {
+    id: "dmm_user_38",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F120876%2Fb330ctksb01466%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b330ctksb01466/b330ctksb01466pl.jpg" alt="無料で読む" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">無料で読む</span></a></div>`
+  },
+  {
+    id: "dmm_user_39",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6029489%2Fb900ckds06805%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b900ckds06805/b900ckds06805pl.jpg" alt="無料で読む" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">無料で読む</span></a></div>`
+  },
+  {
+    id: "dmm_user_40",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6283826%2Fb950athes02249%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b950athes02249/b950athes02249pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_41",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F4150125%2Fb900xkds05249%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b900xkds05249/b900xkds05249pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_42",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F906134%2Fb900vkds02207%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b900vkds02207/b900vkds02207pl.jpg" alt="無料で読む" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">無料で読む</span></a></div>`
+  },
+  {
+    id: "dmm_user_43",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F4365464%2Fb000ehftx15025%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b000ehftx15025/b000ehftx15025pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_44",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F560654%2Fb600psgk04472%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b600psgk04472/b600psgk04472pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_45",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6073142%2Fb900ckds19445%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b900ckds19445/b900ckds19445pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_46",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F56854%2Fb950bshes00093%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b950bshes00093/b950bshes00093pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_47",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F939379%2Fb000ahftx07628%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b000ahftx07628/b000ahftx07628pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_48",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6249223%2Fb355iakta98247%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b355iakta98247/b355iakta98247pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_49",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F766148%2Fb900rkds00962%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b900rkds00962/b900rkds00962pl.jpg" alt="無料で読む" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">無料で読む</span></a></div>`
+  },
+  {
+    id: "dmm_user_50",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F4291705%2Fb371khkss00720%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b371khkss00720/b371khkss00720pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_51",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F6289663%2Fb950athes05041%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b950athes05041/b950athes05041pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
+  },
+  {
+    id: "dmm_user_52",
+    badge: "DMM PR",
+    htmlCode: `<div style="margin:0;padding:5px;font-size:14px;word-break: break-all;"><a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2Fproduct%2F56848%2Fb950ashes00447%2F&af_id=NEKONIRA-001&ch=toolbar&ch_id=package_text_large" rel="sponsored" target="_blank"><img src="https://ebook-assets.dmm.com/digital/e-book/b950ashes00447/b950ashes00447pl.jpg" alt="試し読み" style="max-width:100%;height:auto;border-radius:8px;"/><span style="display:block;margin:5px 0 0 0;padding:0;text-align:center;color:#60a5fa;font-weight:bold;">試し読み</span></a></div>`
   },
   {
     id: "amazon_user_26",
@@ -299,13 +375,36 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
   const renderAdContent = (ad, isMobile = false) => {
     if (ad.htmlCode) {
       if (ad.htmlCode.includes('<script')) {
+        let nativeWidth = 300;
+        let nativeHeight = 250;
+        if (ad.htmlCode.includes('468x160')) {
+          nativeWidth = 468;
+          nativeHeight = 160;
+        } else if (ad.htmlCode.includes('250x250')) {
+          nativeWidth = 250;
+          nativeHeight = 250;
+        } else if (ad.htmlCode.includes('300_250') || ad.htmlCode.includes('300x250')) {
+          nativeWidth = 300;
+          nativeHeight = 250;
+        }
+
         return (
-          <iframe
-            srcDoc={`<!DOCTYPE html><html><head><base target='_blank'><style>body{margin:0;padding:0;background:transparent;display:flex;justify-content:center;align-items:center;overflow:hidden;} img,table,div{max-width:100%!important;height:auto!important;}</style></head><body>${ad.htmlCode}</body></html>`}
-            className="w-full border-0 overflow-hidden rounded-lg sm:rounded-xl"
-            style={{ height: isMobile ? (ad.htmlCode.includes('468x160') ? '90px' : '130px') : (ad.htmlCode.includes('468x160') ? '160px' : '250px') }}
-            title={ad.id}
-          />
+          <div
+            className="w-full relative overflow-hidden rounded-lg sm:rounded-xl [container-type:inline-size]"
+            style={{ aspectRatio: `${nativeWidth} / ${nativeHeight}` }}
+          >
+            <iframe
+              srcDoc={`<!DOCTYPE html><html><head><base target='_blank'><style>html,body{margin:0;padding:0;background:transparent;width:${nativeWidth}px;height:${nativeHeight}px;overflow:hidden;display:flex;justify-content:center;align-items:center;} *,*::before,*::after{box-sizing:border-box;}</style></head><body>${ad.htmlCode}</body></html>`}
+              className="border-0 overflow-hidden absolute top-0 left-0"
+              style={{
+                width: `${nativeWidth}px`,
+                height: `${nativeHeight}px`,
+                transform: `scale(calc(100cqw / ${nativeWidth}px))`,
+                transformOrigin: 'top left'
+              }}
+              title={ad.id}
+            />
+          </div>
         );
       }
       return (
@@ -1182,6 +1281,31 @@ function App() {
     }
   }, []);
 
+  const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
+
+  useEffect(() => {
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCR4YbOvw3pjlR5Ksordt3WQ')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
+          const fetched = data.items.map(item => {
+            const match = item.link ? item.link.match(/v=([^&]+)/) : null;
+            const videoId = item.guid ? item.guid.replace('yt:video:', '') : (match ? match[1] : '');
+            return {
+              id: videoId,
+              title: item.title,
+              thumbnail: item.thumbnail || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+              url: item.link
+            };
+          }).filter(v => v.id);
+          if (fetched.length > 0) {
+            setYoutubeVideos(fetched);
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   const [managers, setManagers] = useState(() => INITIAL_MANAGERS);
   const [combos, setCombos] = useState(() => INITIAL_COMBOS);
 
@@ -1529,7 +1653,7 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
           </a>
         </div>
         <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
-          {YOUTUBE_VIDEOS.map(video => (
+          {youtubeVideos.map(video => (
             <a
               key={video.id}
               href={video.url}
@@ -1837,7 +1961,7 @@ function PlayerDBTab({
           </a>
         </div>
         <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
-          {YOUTUBE_VIDEOS.map(video => (
+          {youtubeVideos.map(video => (
             <a
               key={video.id}
               href={video.url}
@@ -2694,6 +2818,342 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { name: 'コンタクト', val: '+80%' },
         { name: '敏捷性', val: '+80%' }
       ]
+    },
+    {
+      id: 'azzurri14',
+      name: "アズーリ’14",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '352b_azzurri',
+      buffs: [
+        { name: '冷静さ', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'friulani98',
+      name: "イ・フリウラーニ’98",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '343b_friulani',
+      buffs: [
+        { name: 'パスカット', val: '+80%' },
+        { name: 'キープ力', val: '+80%' },
+        { name: '敏捷性', val: '+80%' }
+      ]
+    },
+    {
+      id: 'crociati99',
+      name: "クロチャーティ’99",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '532b_crociati',
+      buffs: [
+        { name: '決定力', val: '+80%' },
+        { name: 'パスカット', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'hollywood01',
+      name: "FCハリウッド’01",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '541a_hollywood',
+      buffs: [
+        { name: 'キープ力', val: '+60%' },
+        { name: 'パスカット', val: '+60%' },
+        { name: 'コンタクト', val: '+60%' }
+      ]
+    },
+    {
+      id: 'azzurri06',
+      name: "アズーリ’06",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '451b_azzurri',
+      buffs: [
+        { name: '突破力', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' },
+        { name: '敏捷性', val: '+60%' }
+      ]
+    },
+    {
+      id: 'gulag94',
+      name: "ブロ・グルト’94",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '523a_gulag',
+      buffs: [
+        { name: 'コンタクト', val: '+80%' },
+        { name: '走力', val: '+80%' },
+        { name: 'キック力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'grifoni99',
+      name: "グリフォーニ’99",
+      rank: '銀',
+      policy: 'リアクション',
+      formationId: '442c_grifoni',
+      buffs: [
+        { name: 'キック力', val: '+80%' },
+        { name: 'ロングパス', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'blueGaru22',
+      name: "ブルー・ガル’22",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '361b_blueGaru',
+      buffs: [
+        { name: 'ストッパー', val: '+80%' },
+        { name: '組立CB', val: '+80%' },
+        { name: 'セントラルMF', val: '+80%' }
+      ]
+    },
+    {
+      id: 'danishDynamite18',
+      name: "ダニッシュ・ダイナマイト’18",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '451b_danish',
+      buffs: [
+        { name: 'コンタクト', val: '+80%' },
+        { name: '走力', val: '+80%' },
+        { name: 'キープ力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'monaco04',
+      name: "レ・ルージュ・エ・ブラン’04",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '433b_monaco',
+      buffs: [
+        { name: '決定力', val: '+80%' },
+        { name: 'キープ力', val: '+80%' },
+        { name: 'パスカット', val: '+80%' }
+      ]
+    },
+    {
+      id: 'amarela02',
+      name: "ヴァルデ・アマレーラ’02",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '532a_amarela',
+      buffs: [
+        { name: 'パスカット', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' },
+        { name: 'コンタクト', val: '+60%' }
+      ]
+    },
+    {
+      id: 'danishDynamite86',
+      name: "ダニッシュ・ダイナマイト’86",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '352b_danish86',
+      buffs: [
+        { name: '突破力', val: '+60%' },
+        { name: 'セービング', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' }
+      ]
+    },
+    {
+      id: 'amarillo06',
+      name: "サブマリーノ・アマリーリョ’06",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '442a_amarillo',
+      buffs: [
+        { name: '走力', val: '+80%' },
+        { name: 'パスカット', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'losMillonarios86',
+      name: "ロス・ミリョナリオス’86",
+      rank: '銀',
+      policy: 'ムービング',
+      formationId: '442d_losMillonarios',
+      buffs: [
+        { name: 'コンタクト', val: '+80%' },
+        { name: '走力', val: '+80%' },
+        { name: '冷静さ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'hinomaru93',
+      name: "ヒノマルスタイル’93",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '433b_hinomaru',
+      buffs: [
+        { name: 'ロングパス', val: '+80%' },
+        { name: '突破力', val: '+80%' },
+        { name: '走力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'schwarzGelben16',
+      name: "シュヴァルツ・ゲルベン’16",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '451a_schwarzGelben',
+      buffs: [
+        { name: 'コンタクト', val: '+80%' },
+        { name: '走力', val: '+80%' },
+        { name: 'キック精度', val: '+80%' }
+      ]
+    },
+    {
+      id: 'hinomaru68',
+      name: "ヒノマルスタイル’68",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '343c_hinomaru68',
+      buffs: [
+        { name: '決定力', val: '+80%' },
+        { name: 'ショートパス', val: '+80%' },
+        { name: 'キック精度', val: '+80%' }
+      ]
+    },
+    {
+      id: 'blanquiroja82',
+      name: "ラ・ブランキロハ’82",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '442e_blanquiroja',
+      buffs: [
+        { name: '突破力', val: '+80%' },
+        { name: 'セービング', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' }
+      ]
+    },
+    {
+      id: 'losPuros01',
+      name: "ロス・プロス’01",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '442a_losPuros',
+      buffs: [
+        { name: '突破力', val: '+60%' },
+        { name: 'キープ力', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' }
+      ]
+    },
+    {
+      id: 'greenFalcons98',
+      name: "グリーン・ファルコンズ’98",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '451b_greenFalcons',
+      buffs: [
+        { name: 'ロングパス', val: '+80%' },
+        { name: '冷静さ', val: '+80%' },
+        { name: '敏捷性', val: '+80%' }
+      ]
+    },
+    {
+      id: 'orlovi24',
+      name: "オルロヴィ’24",
+      rank: '銀',
+      policy: 'カウンター',
+      formationId: '442b_orlovi',
+      buffs: [
+        { name: '冷静さ', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
+    },
+    {
+      id: 'laRoja02',
+      name: "ラ・ロハ’02",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '442b_laRoja02',
+      buffs: [
+        { name: 'コンタクト', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' },
+        { name: 'パスカット', val: '+80%' }
+      ]
+    },
+    {
+      id: 'elLeon70',
+      name: "エル・レオン’70",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '343c_elLeon70',
+      buffs: [
+        { name: 'ロングパス', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' },
+        { name: 'キープ力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'ulcitca03',
+      name: "ウルチカ’03",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '451a_ulcitca03',
+      buffs: [
+        { name: '決定力', val: '+80%' },
+        { name: 'ロングパス', val: '+80%' },
+        { name: 'キープ力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'diablesRouges18',
+      name: "ディアブル・ルージュ’18",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '433a_diablesRouges18',
+      buffs: [
+        { name: 'キープ力', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' },
+        { name: 'スタミナ', val: '+60%' }
+      ]
+    },
+    {
+      id: 'taegukWarriors02',
+      name: "太極戦士’02",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '343b_taegukWarriors02',
+      buffs: [
+        { name: 'キック精度', val: '+60%' },
+        { name: 'キープ力', val: '+60%' },
+        { name: 'ジャンプ', val: '+60%' }
+      ]
+    },
+    {
+      id: 'dieAdler24',
+      name: "ディー・アドラー’24",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '541a_dieAdler24',
+      buffs: [
+        { name: 'ロングパス', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' },
+        { name: '走力', val: '+80%' }
+      ]
+    },
+    {
+      id: 'viola99',
+      name: "ヴィオラ’99",
+      rank: '銀',
+      policy: 'ポゼッション',
+      formationId: '451b_viola99',
+      buffs: [
+        { name: 'ボールタッチ', val: '+80%' },
+        { name: '走力', val: '+80%' },
+        { name: 'ジャンプ', val: '+80%' }
+      ]
     }
   ];
 
@@ -2911,7 +3371,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
         { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
         { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラー', minLevel: 3 },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 3 },
       ]
     },
     {
@@ -2927,7 +3387,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
         { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
         { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラー', minLevel: 2 },
+        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
         { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
         { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
       ]
@@ -2943,10 +3403,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
         { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'パサーDM', minLevel: 2 },
         { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%', requiredStyle: 'ドリブラー', minLevel: 3 },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 3 },
         { id: 8, pos: 'AM', label: 'LAM', top: '34%', left: '34%' },
         { id: 9, pos: 'AM', label: 'RAM', top: '34%', left: '66%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラー', minLevel: 2 },
+        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
         { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
       ]
     },
@@ -2981,9 +3441,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'ハードマーカー', minLevel: 2 },
         { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
         { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラー', minLevel: 3 },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 3 },
         { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラー', minLevel: 2 },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
       ]
     },
     {
@@ -2999,7 +3459,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%', requiredStyle: 'セントラルDM', minLevel: 3 },
         { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
         { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラー', minLevel: 2 },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
         { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
         { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
       ]
@@ -3020,6 +3480,510 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'セントラルAM', minLevel: 2 },
         { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
         { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 3 },
+      ]
+    },
+    {
+      id: '352b_azzurri',
+      name: "3-5-2B (アズーリ’14)",
+      comboId: 'azzurri14',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'セントラルDM', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '343b_friulani',
+      name: "3-4-3B (イ・フリウラーニ’98)",
+      comboId: 'friulani98',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: '組立CB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'サイドアタッカーLM', minLevel: 2 },
+        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+      ]
+    },
+    {
+      id: '532b_crociati',
+      name: "5-3-2B (クロチャーティ’99)",
+      comboId: 'crociati99',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
+        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+        { id: 7, pos: 'DM', label: 'LDM', top: '52%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+        { id: 8, pos: 'DM', label: 'RDM', top: '52%', left: '64%' },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '541a_hollywood',
+      name: "5-4-1A (FCハリウッド’01)",
+      comboId: 'hollywood01',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
+        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+        { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+        { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '451b_azzurri',
+      name: "4-5-1B (アズーリ’06)",
+      comboId: 'azzurri06',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      ]
+    },
+    {
+      id: '523a_gulag',
+      name: "5-2-3A (ブロ・グルト’94)",
+      comboId: 'gulag94',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+        { id: 7, pos: 'DM', label: 'LDM', top: '50%', left: '38%' },
+        { id: 8, pos: 'DM', label: 'RDM', top: '50%', left: '62%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+      ]
+    },
+    {
+      id: '442c_grifoni',
+      name: "4-4-2C (グリフォーニ’99)",
+      comboId: 'grifoni99',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '361b_blueGaru',
+      name: "3-6-1B (ブルー・ガル’22)",
+      comboId: 'blueGaru22',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: '組立CB', minLevel: 2 },
+        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '26%' },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%', requiredStyle: 'セントラルDM', minLevel: 2 },
+        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '74%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      ]
+    },
+    {
+      id: '451b_danish',
+      name: "4-5-1B (ダニッシュ・ダイナマイト’18)",
+      comboId: 'danishDynamite18',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
+        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '433b_monaco',
+      name: "4-3-3B (レ・ルージュ・エ・ブラン’04)",
+      comboId: 'monaco04',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'パサー', minLevel: 2 },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+      ]
+    },
+    {
+      id: '532a_amarela',
+      name: "5-3-2A (ヴァルデ・アマレーラ’02)",
+      comboId: 'amarela02',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '352b_danish86',
+      name: "3-5-2B (ダニッシュ・ダイナマイト’86)",
+      comboId: 'danishDynamite86',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'ハードマーカー', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '442a_amarillo',
+      name: "4-4-2A (サブマリーノ・アマリーリョ’06)",
+      comboId: 'amarillo06',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%', requiredStyle: 'サイドアタッカーRM', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '442d_losMillonarios',
+      name: "4-4-2D (ロス・ミリョナリオス’86)",
+      comboId: 'losMillonarios86',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%' },
+        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '433b_hinomaru',
+      name: "4-3-3B (ヒノマルスタイル’93)",
+      comboId: 'hinomaru93',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+      ]
+    },
+    {
+      id: '451a_schwarzGelben',
+      name: "4-5-1A (シュヴァルツ・ゲルベン’16)",
+      comboId: 'schwarzGelben16',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
+        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%' },
+        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      ]
+    },
+    {
+      id: '343c_hinomaru68',
+      name: "3-4-3C (ヒノマルスタイル’68)",
+      comboId: 'hinomaru68',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+      ]
+    },
+    {
+      id: '442e_blanquiroja',
+      name: "4-4-2E (ラ・ブランキロハ’82)",
+      comboId: 'blanquiroja82',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%', requiredStyle: 'パサーAM', minLevel: 2 },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '442a_losPuros',
+      name: "4-4-2A (ロス・プロス’01)",
+      comboId: 'losPuros01',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'スイーパーGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '451b_greenFalcons',
+      name: "4-5-1B (グリーン・ファルコンズ’98)",
+      comboId: 'greenFalcons98',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      ]
+    },
+    {
+      id: '442b_orlovi',
+      name: "4-4-2B (オルロヴィ’24)",
+      comboId: 'orlovi24',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+        { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '442b_laRoja02',
+      name: "4-4-2B (ラ・ロハ’02)",
+      comboId: 'laRoja02',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+        { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+      ]
+    },
+    {
+      id: '343c_elLeon70',
+      name: "3-4-3C (エル・レオン’70)",
+      comboId: 'elLeon70',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+      ]
+    },
+    {
+      id: '451a_ulcitca03',
+      name: "4-5-1A (ウルチカ’03)",
+      comboId: 'ulcitca03',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
+        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%', requiredStyle: 'アタッカー', minLevel: 2 },
+        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '433a_diablesRouges18',
+      name: "4-3-3A (ディアブル・ルージュ’18)",
+      comboId: 'diablesRouges18',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
+        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+      ]
+    },
+    {
+      id: '343b_taegukWarriors02',
+      name: "3-4-3B (太極戦士’02)",
+      comboId: 'taegukWarriors02',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+        { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+      ]
+    },
+    {
+      id: '541a_dieAdler24',
+      name: "5-4-1A (ディー・アドラー’24)",
+      comboId: 'dieAdler24',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+        { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 2 },
+        { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+        { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+      ]
+    },
+    {
+      id: '451b_viola99',
+      name: "4-5-1B (ヴィオラ’99)",
+      comboId: 'viola99',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
+        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
       ]
     }
   ];
@@ -4598,27 +5562,45 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
     }
   ];
 
-  // 1位(赤 ★BEST)、2位(黄 2ND)、3位(水色 3RD) のランク判定ヘルパー
+  // 1位(赤 ★BEST)、2位(黄 2ND)、3位(水色 3RD) のランク判定・バッジ・背景色ヘルパー（比較人数に応じて表示レベルを自動変更）
   const renderRankBadge = (val, allVals) => {
+    if (!val || val === 0 || !allVals || allVals.length < 2) return null;
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
+    const maxRank = Math.min(3, allVals.length - 1);
+
+    if (rank > maxRank) return null;
 
     if (rank === 1) {
-      return <span className="text-[9px] font-black text-red-500 bg-red-500/10 px-1 py-0.2 rounded border border-red-500/30">★BEST</span>;
+      return <span className="text-[9px] font-black text-red-200 bg-red-600/45 px-1.5 py-0.5 rounded border border-red-400/70 shadow-sm">★BEST</span>;
     } else if (rank === 2) {
-      return <span className="text-[9px] font-extrabold text-amber-400 bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30">2ND</span>;
+      return <span className="text-[9px] font-extrabold text-amber-100 bg-amber-500/45 px-1.5 py-0.5 rounded border border-amber-300/70 shadow-sm">2ND</span>;
     } else if (rank === 3) {
-      return <span className="text-[9px] font-bold text-[#00E5FF] bg-[#00E5FF]/10 px-1 py-0.2 rounded border border-[#00E5FF]/30">3RD</span>;
+      return <span className="text-[9px] font-bold text-cyan-100 bg-cyan-500/45 px-1.5 py-0.5 rounded border border-cyan-300/70 shadow-sm">3RD</span>;
     }
     return null;
+  };
+
+  const getRankCellBg = (val, allVals) => {
+    if (!val || val === 0 || !allVals || allVals.length < 2) return '';
+    const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
+    const rank = sortedUnique.indexOf(val) + 1;
+    const maxRank = Math.min(3, allVals.length - 1);
+
+    if (rank > maxRank) return '';
+
+    if (rank === 1) return 'bg-red-600/35 border-b border-red-400/50 shadow-[inset_0_0_15px_rgba(239,68,68,0.3)]';
+    if (rank === 2) return 'bg-amber-500/35 border-b border-amber-300/50 shadow-[inset_0_0_15px_rgba(245,158,11,0.3)]';
+    if (rank === 3) return 'bg-cyan-500/35 border-b border-cyan-300/50 shadow-[inset_0_0_15px_rgba(6,182,212,0.3)]';
+    return '';
   };
 
   const getRankBarStyle = (val, allVals) => {
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
-    if (rank === 1) return 'bg-gradient-to-r from-red-600 via-[#ff453a] to-amber-500 shadow-md shadow-red-500/20';
-    if (rank === 2) return 'bg-gradient-to-r from-amber-600 via-amber-400 to-[#00FF66]';
-    if (rank === 3) return 'bg-gradient-to-r from-cyan-600 via-[#00E5FF] to-blue-500';
+    if (rank === 1) return 'bg-red-500 shadow-md shadow-red-500/40';
+    if (rank === 2) return 'bg-amber-400 shadow-md shadow-amber-400/40';
+    if (rank === 3) return 'bg-[#00E5FF] shadow-md shadow-cyan-400/40';
     return 'bg-slate-600';
   };
 
@@ -4847,7 +5829,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                     カタログ総合力
                   </td>
                   {adjustedCompareList.map(p => (
-                    <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                    <td key={p.id} className={`p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black transition-colors ${getRankCellBg(p.overall, allCatalogOveralls)}`}>
                       <div className="relative flex items-center justify-center min-h-[26px] sm:min-h-[32px] w-full px-0.5 sm:px-1">
                         <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                           {renderRankBadge(p.overall, allCatalogOveralls)}
@@ -4862,7 +5844,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                     18項目能力合計
                   </td>
                   {adjustedCompareList.map((p, idx) => (
-                    <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                    <td key={p.id} className={`p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black transition-colors ${getRankCellBg(allTotalStats18[idx], allTotalStats18)}`}>
                       <div className="relative flex items-center justify-center min-h-[26px] sm:min-h-[32px] w-full px-0.5 sm:px-1">
                         <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                           {renderRankBadge(allTotalStats18[idx], allTotalStats18)}
@@ -4878,20 +5860,26 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                   <React.Fragment key={grp.key}>
                     {/* カテゴリ合計行 */}
                     <tr className="bg-slate-900/90 border-t-2 border-b border-slate-800">
-                      <td className="p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1 sm:whitespace-nowrap">
-                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00FF66]"></span>
-                        {grp.label}
+                      <td className="p-1.5 sm:p-3 font-black text-amber-300 text-[10px] sm:text-sm sticky left-0 z-10 bg-slate-900 border-r border-slate-800 shadow-md flex items-center gap-1 sm:whitespace-normal">
+                        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#00FF66] flex-shrink-0"></span>
+                        <span className="leading-tight">
+                          {grp.key === 'defense' ? (
+                            <>DEF (ディフェンス /<br />GK能力)</>
+                          ) : (
+                            grp.label
+                          )}
+                        </span>
                       </td>
                       {adjustedCompareList.map(p => {
                         const catTot = getCategoryTotal(p, grp.key);
                         const allCatTotals = adjustedCompareList.map(item => getCategoryTotal(item, grp.key));
                         return (
-                          <td key={p.id} className="p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black">
+                          <td key={p.id} className={`p-1 sm:p-3 text-center border-r border-slate-800/60 font-num font-black transition-colors ${getRankCellBg(catTot, allCatTotals)}`}>
                             <div className="relative flex items-center justify-center min-h-[24px] sm:min-h-[30px] w-full px-0.5 sm:px-1">
                               <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                                 {renderRankBadge(catTot, allCatTotals)}
                               </div>
-                              <span className="text-sm sm:text-lg md:text-xl text-amber-300">{catTot}</span>
+                              <span className="text-base sm:text-xl md:text-2xl text-amber-300">{catTot}</span>
                             </div>
                           </td>
                         );
@@ -4915,15 +5903,14 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                           </td>
                           {adjustedCompareList.map((p, idx) => {
                             const val = detailVals[idx];
-                            const pct = Math.min(100, Math.round((val / grp.maxPossSub) * 100));
 
                             return (
-                              <td key={p.id} className="p-1 sm:p-2.5 text-center border-r border-slate-800/40">
+                              <td key={p.id} className={`p-1 sm:p-2.5 text-center border-r border-slate-800/40 transition-colors ${getRankCellBg(val, detailVals)}`}>
                                 <div className="relative flex items-center justify-center min-h-[22px] sm:min-h-[28px] w-full px-0.5 sm:px-1">
-                                  <span className="font-num font-black text-white text-xs sm:text-base md:text-lg">{val}</span>
-                                </div>
-                                <div className="w-full bg-[#070a10] rounded-full h-1 sm:h-2 mt-0.5 sm:mt-1 overflow-hidden border border-slate-800">
-                                  <div className={`h-full rounded-full transition-all ${getRankBarStyle(val, detailVals)}`} style={{ width: `${pct}%` }}></div>
+                                  <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
+                                    {renderRankBadge(val, detailVals)}
+                                  </div>
+                                  <span className="font-num font-black text-white text-base sm:text-xl md:text-2xl">{val}</span>
                                 </div>
                               </td>
                             );

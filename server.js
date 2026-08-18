@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 3000;
+const PORTS = [3000, 3001, 3002, 3003, 8080, 8081];
 const ROOT = __dirname;
 
 const MIME_TYPES = {
@@ -17,35 +17,58 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
-const server = http.createServer((req, res) => {
-  let reqPath = decodeURIComponent(req.url.split('?')[0]);
-  if (reqPath === '/') {
-    reqPath = '/index.html';
+function createServerOnPort(index) {
+  if (index >= PORTS.length) {
+    console.error('No available ports found.');
+    return;
   }
 
-  const filePath = path.join(ROOT, reqPath.replace(/^\//, ''));
-
-  fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('404 Not Found');
-      return;
+  const port = PORTS[index];
+  const server = http.createServer((req, res) => {
+    let reqPath = decodeURIComponent(req.url.split('?')[0]);
+    if (reqPath === '/') {
+      reqPath = '/index.html';
     }
 
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    const filePath = path.join(ROOT, reqPath.replace(/^\//, ''));
 
-    res.writeHead(200, {
-      'Content-Type': contentType,
-      'Content-Length': stats.size,
-      'Access-Control-Allow-Origin': '*'
+    fs.stat(filePath, (err, stats) => {
+      if (err || !stats.isFile()) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('404 Not Found');
+        return;
+      }
+
+      const ext = path.extname(filePath).toLowerCase();
+      const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Content-Length': stats.size,
+        'Access-Control-Allow-Origin': '*'
+      });
+
+      const stream = fs.createReadStream(filePath);
+      stream.pipe(res);
     });
-
-    const stream = fs.createReadStream(filePath);
-    stream.pipe(res);
   });
-});
 
-server.listen(PORT, () => {
-  console.log(`Node High-Performance Web Server running at http://localhost:${PORT}/`);
-});
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.log(`Port ${port} in use, trying next port...`);
+      createServerOnPort(index + 1);
+    } else {
+      console.error('Server error:', err);
+    }
+  });
+
+  server.listen(port, () => {
+    const url = `http://localhost:${port}/`;
+    console.log(`\n==================================================`);
+    console.log(` Sakatsuku 2026 Database Web Server Started!`);
+    console.log(` URL: ${url}`);
+    console.log(`==================================================\n`);
+  });
+}
+
+createServerOnPort(0);
