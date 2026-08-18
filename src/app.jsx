@@ -1598,6 +1598,13 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
               <Icon name="search" className="w-5 h-5 text-slate-950" />
               選手データベースを開く
             </button>
+            <button
+              onClick={() => setActiveTab('builder')}
+              className="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-sm border border-[#00FF66]/40 hover:border-[#00FF66] shadow-lg flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
+            >
+              <Icon name="layout" className="w-5 h-5 text-[#00FF66]" />
+              チームビルダーを開く
+            </button>
           </div>
         </div>
       </div>
@@ -1621,15 +1628,21 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
             <div className="text-xs text-slate-400 font-semibold">レアリティ成長 (☆3〜☆5)</div>
           </div>
         </div>
-        <div className="glass-card p-4 rounded-2xl flex items-center gap-4 opacity-60">
-          <div className="p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
-            <Icon name="tools" className="w-6 h-6" />
+        <button
+          onClick={() => setActiveTab('builder')}
+          className="glass-card p-4 rounded-2xl flex items-center gap-4 text-left hover:border-[#00FF66]/50 transition-all cursor-pointer group"
+        >
+          <div className="p-3 rounded-xl bg-[#00FF66]/10 text-[#00FF66] border border-[#00FF66]/20 group-hover:scale-110 transition-transform">
+            <Icon name="layout" className="w-6 h-6" />
           </div>
           <div>
-            <div className="text-sm font-black font-num text-amber-400">調整中</div>
-            <div className="text-xs text-slate-400 font-semibold">チームビルダー</div>
+            <div className="text-base font-black text-white group-hover:text-[#00FF66] transition-colors flex items-center gap-1.5">
+              チームビルダー
+              <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/30">新機能</span>
+            </div>
+            <div className="text-xs text-slate-400 font-semibold">編成・コンボ解析</div>
           </div>
-        </div>
+        </button>
       </div>
 
       {/* YouTube 最新動画 (スマホ時のみ超スリム固定スクロール) */}
@@ -3997,6 +4010,126 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
 
+  const [savedSlots, setSavedSlots] = useState(() => {
+    try {
+      const data = localStorage.getItem('sfcc_saved_teams');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [newTeamName, setNewTeamName] = useState('');
+  const [toastMsg, setToastMsg] = useState(null);
+
+  const showToast = (msg) => {
+    setToastMsg(msg);
+    setTimeout(() => setToastMsg(null), 3000);
+  };
+
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    try {
+      const active = localStorage.getItem('sfcc_active_team');
+      if (active) {
+        const parsed = JSON.parse(active);
+        if (parsed.formationId) {
+          const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
+          if (fmt) setSelectedFormation(fmt);
+        }
+        if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
+        if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
+        if (parsed.squadMap) setSquadMap(parsed.squadMap);
+        if (parsed.benchMap) setBenchMap(parsed.benchMap);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    try {
+      const payload = {
+        formationId: selectedFormation?.id,
+        teamPolicy,
+        builderMaxEnhanced,
+        squadMap,
+        benchMap
+      };
+      localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
+
+  const handleSaveTeamSlot = (slotName, existingId = null) => {
+    const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
+    const newTeam = {
+      id: existingId || ('team_' + Date.now()),
+      name: nameToUse,
+      updatedAt: new Date().toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+      formationId: selectedFormation?.id,
+      formationName: selectedFormation?.name,
+      teamPolicy,
+      builderMaxEnhanced,
+      squadMap,
+      benchMap,
+      playerCount: Object.values(squadMap).filter(Boolean).length
+    };
+
+    let updated;
+    if (existingId) {
+      updated = savedSlots.map(s => s.id === existingId ? newTeam : s);
+    } else {
+      updated = [...savedSlots, newTeam];
+    }
+    setSavedSlots(updated);
+    try {
+      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    setNewTeamName('');
+    showToast(`「${nameToUse}」を保存しました！`);
+  };
+
+  const handleLoadTeamSlot = (team) => {
+    if (!team) return;
+    if (team.formationId) {
+      const fmt = FORMATIONS.find(f => f.id === team.formationId);
+      if (fmt) setSelectedFormation(fmt);
+    }
+    if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
+    if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
+    if (team.squadMap) setSquadMap(team.squadMap);
+    if (team.benchMap) setBenchMap(team.benchMap);
+    setIsSaveModalOpen(false);
+    showToast(`「${team.name}」を読み込みました！`);
+  };
+
+  const handleDeleteTeamSlot = (teamId) => {
+    const updated = savedSlots.filter(s => s.id !== teamId);
+    setSavedSlots(updated);
+    try {
+      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    showToast('スロットを削除しました');
+  };
+
+  const handleClearSquad = () => {
+    if (window.confirm('配置されている選手をすべてクリアしますか？')) {
+      setSquadMap({});
+      setBenchMap({});
+      showToast('チーム配置をクリアしました');
+    }
+  };
+
   // 選手選択ドロワー/モーダル表示時の3回に1回頻度広告判定
   const showSlotModalAd = useMemo(() => {
     if (activeSlotModal) {
@@ -4364,6 +4497,18 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             >
               <Icon name="trash" className="w-4 h-4" />
               全クリア
+            </button>
+            <button
+              onClick={() => setIsSaveModalOpen(true)}
+              className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer relative"
+            >
+              <Icon name="bookmark" className="w-4 h-4" />
+              チーム保存 / 呼出
+              {savedSlots.length > 0 && (
+                <span className="ml-1 px-1.5 py-0.2 rounded-full bg-white/20 text-white text-[10px] font-black">
+                  {savedSlots.length}
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -4967,6 +5112,114 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             </div>
 
             <SideAdBanner position="right" isModal={true} showModalAd={showSlotModalAd} />
+          </div>
+        </div>
+      )}
+
+      {toastMsg && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl border border-emerald-400/50 flex items-center gap-2 animate-bounce">
+          <Icon name="check" className="w-4 h-4" />
+          {toastMsg}
+        </div>
+      )}
+
+      {isSaveModalOpen && (
+        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-5 animate-scaleIn">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div>
+                <h2 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                  💾 チーム編成スロット保存 ＆ 呼び出し
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">作成したチームをブラウザに保存・切り替えできます</p>
+              </div>
+              <button
+                onClick={() => setIsSaveModalOpen(false)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
+              <div className="text-xs font-extrabold text-slate-300 flex items-center gap-1.5">
+                <Icon name="plus-circle" className="w-4 h-4 text-[#00FF66]" />
+                現在のチームをスロット保存
+              </div>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  placeholder={`チーム名 (例: マイチーム ${savedSlots.length + 1})`}
+                  value={newTeamName}
+                  onChange={e => setNewTeamName(e.target.value)}
+                  onKeyDown={e => { if (e.key === 'Enter') handleSaveTeamSlot(newTeamName); }}
+                  className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
+                />
+                <button
+                  onClick={() => handleSaveTeamSlot(newTeamName)}
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs sm:text-sm shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+                >
+                  新規保存
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="text-xs font-extrabold text-slate-400 flex items-center justify-between">
+                <span>保存済みチーム一覧 ({savedSlots.length} スロット)</span>
+              </div>
+              {savedSlots.length === 0 ? (
+                <div className="text-center py-8 text-slate-500 text-xs font-semibold bg-slate-950/40 rounded-2xl border border-dashed border-slate-800">
+                  保存されたチームスロットはありません
+                </div>
+              ) : (
+                <div className="space-y-2.5 max-h-[300px] overflow-y-auto pr-1 scrollbar-thin">
+                  {savedSlots.map(team => (
+                    <div key={team.id} className="bg-slate-950/90 border border-slate-800 hover:border-slate-700 p-3.5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                      <div className="space-y-1 min-w-0">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="font-extrabold text-sm text-white truncate">{team.name}</span>
+                          <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(team.teamPolicy)} ${getPolicyTextColor(team.teamPolicy)}`}>
+                            {team.teamPolicy}
+                          </span>
+                          {team.builderMaxEnhanced && (
+                            <span className="px-1.5 py-0.5 rounded text-[9px] font-black bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                              ⚡最大強化
+                            </span>
+                          )}
+                        </div>
+                        <div className="text-[11px] text-slate-400 flex items-center gap-3">
+                          <span>⚽ {team.formationName}</span>
+                          <span>👤 {team.playerCount || 0}名配置</span>
+                          <span>🕒 {team.updatedAt}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5 justify-end flex-shrink-0">
+                        <button
+                          onClick={() => handleLoadTeamSlot(team)}
+                          className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/40 text-xs font-bold transition-colors cursor-pointer"
+                        >
+                          呼出
+                        </button>
+                        <button
+                          onClick={() => handleSaveTeamSlot(team.name, team.id)}
+                          className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
+                        >
+                          上書き
+                        </button>
+                        <button
+                          onClick={() => handleDeleteTeamSlot(team.id)}
+                          className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold transition-colors cursor-pointer"
+                          title="削除"
+                        >
+                          <Icon name="trash" className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

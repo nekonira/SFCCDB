@@ -1640,7 +1640,13 @@ function HomeTab({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "search",
     className: "w-5 h-5 text-slate-950"
-  }), "選手データベースを開く")))), /*#__PURE__*/React.createElement("div", {
+  }), "選手データベースを開く"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('builder'),
+    className: "px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-extrabold text-sm border border-[#00FF66]/40 hover:border-[#00FF66] shadow-lg flex items-center gap-2 transition-all active:scale-95 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "layout",
+    className: "w-5 h-5 text-[#00FF66]"
+  }), "チームビルダーを開く")))), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-3 gap-4"
   }, /*#__PURE__*/React.createElement("div", {
     className: "glass-card p-4 rounded-2xl flex items-center gap-4"
@@ -1664,18 +1670,21 @@ function HomeTab({
     className: "text-2xl md:text-3xl font-num font-black text-white"
   }, "7 段階"), /*#__PURE__*/React.createElement("div", {
     className: "text-xs text-slate-400 font-semibold"
-  }, "レアリティ成長 (☆3〜☆5)"))), /*#__PURE__*/React.createElement("div", {
-    className: "glass-card p-4 rounded-2xl flex items-center gap-4 opacity-60"
+  }, "レアリティ成長 (☆3〜☆5)"))), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setActiveTab('builder'),
+    className: "glass-card p-4 rounded-2xl flex items-center gap-4 text-left hover:border-[#00FF66]/50 transition-all cursor-pointer group"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "p-3 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20"
+    className: "p-3 rounded-xl bg-[#00FF66]/10 text-[#00FF66] border border-[#00FF66]/20 group-hover:scale-110 transition-transform"
   }, /*#__PURE__*/React.createElement(Icon, {
-    name: "tools",
+    name: "layout",
     className: "w-6 h-6"
   })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "text-sm font-black font-num text-amber-400"
-  }, "調整中"), /*#__PURE__*/React.createElement("div", {
+    className: "text-base font-black text-white group-hover:text-[#00FF66] transition-colors flex items-center gap-1.5"
+  }, "チームビルダー", /*#__PURE__*/React.createElement("span", {
+    className: "px-1.5 py-0.5 rounded text-[10px] bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/30"
+  }, "新機能")), /*#__PURE__*/React.createElement("div", {
     className: "text-xs text-slate-400 font-semibold"
-  }, "チームビルダー")))), /*#__PURE__*/React.createElement("div", {
+  }, "編成・コンボ解析")))), /*#__PURE__*/React.createElement("div", {
     className: "sticky md:relative top-0 md:top-auto z-30 glass-panel px-2 py-1 md:p-3 rounded-lg md:rounded-2xl space-y-0.5 md:space-y-2 border border-red-500/30 bg-slate-900/95 shadow-xl backdrop-blur-md"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between px-0.5"
@@ -6906,6 +6915,126 @@ function TeamBuilderTab({
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
 
+  const [savedSlots, setSavedSlots] = useState(() => {
+    try {
+      const data = localStorage.getItem('sfcc_saved_teams');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+  const [newTeamName, setNewTeamName] = useState('');
+  const [toastMsg, setToastMsg] = useState(null);
+
+  const showToast = msg => {
+    setToastMsg(msg);
+    setTimeout(() => setToastMsg(null), 3000);
+  };
+
+  const isInitialMount = React.useRef(true);
+  useEffect(() => {
+    try {
+      const active = localStorage.getItem('sfcc_active_team');
+      if (active) {
+        const parsed = JSON.parse(active);
+        if (parsed.formationId) {
+          const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
+          if (fmt) setSelectedFormation(fmt);
+        }
+        if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
+        if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
+        if (parsed.squadMap) setSquadMap(parsed.squadMap);
+        if (parsed.benchMap) setBenchMap(parsed.benchMap);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    try {
+      const payload = {
+        formationId: selectedFormation?.id,
+        teamPolicy,
+        builderMaxEnhanced,
+        squadMap,
+        benchMap
+      };
+      localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
+    } catch (e) {
+      console.error(e);
+    }
+  }, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
+
+  const handleSaveTeamSlot = (slotName, existingId = null) => {
+    const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
+    const newTeam = {
+      id: existingId || ('team_' + Date.now()),
+      name: nameToUse,
+      updatedAt: new Date().toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+      formationId: selectedFormation?.id,
+      formationName: selectedFormation?.name,
+      teamPolicy,
+      builderMaxEnhanced,
+      squadMap,
+      benchMap,
+      playerCount: Object.values(squadMap).filter(Boolean).length
+    };
+
+    let updated;
+    if (existingId) {
+      updated = savedSlots.map(s => s.id === existingId ? newTeam : s);
+    } else {
+      updated = [...savedSlots, newTeam];
+    }
+    setSavedSlots(updated);
+    try {
+      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    setNewTeamName('');
+    showToast(`「${nameToUse}」を保存しました！`);
+  };
+
+  const handleLoadTeamSlot = team => {
+    if (!team) return;
+    if (team.formationId) {
+      const fmt = FORMATIONS.find(f => f.id === team.formationId);
+      if (fmt) setSelectedFormation(fmt);
+    }
+    if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
+    if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
+    if (team.squadMap) setSquadMap(team.squadMap);
+    if (team.benchMap) setBenchMap(team.benchMap);
+    setIsSaveModalOpen(false);
+    showToast(`「${team.name}」を読み込みました！`);
+  };
+
+  const handleDeleteTeamSlot = teamId => {
+    const updated = savedSlots.filter(s => s.id !== teamId);
+    setSavedSlots(updated);
+    try {
+      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+    } catch (e) {
+      console.error(e);
+    }
+    showToast('スロットを削除しました');
+  };
+
+  const handleClearSquad = () => {
+    if (window.confirm('配置されている選手をすべてクリアしますか？')) {
+      setSquadMap({});
+      setBenchMap({});
+      showToast('チーム配置をクリアしました');
+    }
+  };
+
   // 選手選択ドロワー/モーダル表示時の3回に1回頻度広告判定
   const showSlotModalAd = useMemo(() => {
     if (activeSlotModal) {
@@ -6997,10 +7126,6 @@ function TeamBuilderTab({
     }
     setSquadMap(newSquad);
     setBenchMap(newBench);
-  };
-  const handleClearSquad = () => {
-    setSquadMap({});
-    setBenchMap({});
   };
   const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
   const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
@@ -7261,7 +7386,15 @@ function TeamBuilderTab({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "trash",
     className: "w-4 h-4"
-  }), "全クリア"))), /*#__PURE__*/React.createElement("div", {
+  }), "全クリア"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsSaveModalOpen(true),
+    className: "px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer relative"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "bookmark",
+    className: "w-4 h-4"
+  }), "チーム保存 / 呼出", savedSlots.length > 0 && /*#__PURE__*/React.createElement("span", {
+    className: "ml-1 px-1.5 py-0.2 rounded-full bg-white/20 text-white text-[10px] font-black"
+  }, savedSlots.length)))), /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-800/80"
   }, /*#__PURE__*/React.createElement("div", {
     className: "bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center"
@@ -7521,7 +7654,7 @@ function TeamBuilderTab({
     className: "text-slate-400 font-bold"
   }, "フィールド上ブラジル選手:"), /*#__PURE__*/React.createElement("span", {
     className: "px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF66] border border-[#00FF66]/30 font-black font-num"
-  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
+  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%))"))), /*#__PURE__*/React.createElement("div", {
     className: "relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950"
   }, /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 pointer-events-none opacity-25"
@@ -7738,7 +7871,85 @@ function TeamBuilderTab({
     position: "right",
     isModal: true,
     showModalAd: showSlotModalAd
-  }))));
+  }))), toastMsg && /*#__PURE__*/React.createElement("div", {
+    className: "fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl border border-emerald-400/50 flex items-center gap-2 animate-bounce"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "check",
+    className: "w-4 h-4"
+  }), toastMsg), isSaveModalOpen && /*#__PURE__*/React.createElement("div", {
+    className: "fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-5 animate-scaleIn"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between border-b border-slate-800 pb-3"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", {
+    className: "text-lg sm:text-xl font-black text-white flex items-center gap-2"
+  }, "💾 チーム編成スロット保存 ＆ 呼び出し"), /*#__PURE__*/React.createElement("p", {
+    className: "text-xs text-slate-400 mt-0.5"
+  }, "作成したチームをブラウザに保存・切り替えできます")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setIsSaveModalOpen(false),
+    className: "p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    className: "w-5 h-5"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-extrabold text-slate-300 flex items-center gap-1.5"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "plus-circle",
+    className: "w-4 h-4 text-[#00FF66]"
+  }), "現在のチームをスロット保存"), /*#__PURE__*/React.createElement("div", {
+    className: "flex gap-2"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: `チーム名 (例: マイチーム ${savedSlots.length + 1})`,
+    value: newTeamName,
+    onChange: e => setNewTeamName(e.target.value),
+    onKeyDown: e => { if (e.key === 'Enter') handleSaveTeamSlot(newTeamName); },
+    className: "flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleSaveTeamSlot(newTeamName),
+    className: "px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs sm:text-sm shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+  }, "新規保存"))), /*#__PURE__*/React.createElement("div", {
+    className: "space-y-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "text-xs font-extrabold text-slate-400 flex items-center justify-between"
+  }, /*#__PURE__*/React.createElement("span", null, "保存済みチーム一覧 (", savedSlots.length, " スロット)")), savedSlots.length === 0 ? /*#__PURE__*/React.createElement("div", {
+    className: "text-center py-8 text-slate-500 text-xs font-semibold bg-slate-950/40 rounded-2xl border border-dashed border-slate-800"
+  }, "保存されたチームスロットはありません") : /*#__PURE__*/React.createElement("div", {
+    className: "space-y-2.5 max-h-[300px] overflow-y-auto pr-1 scrollbar-thin"
+  }, savedSlots.map(team => /*#__PURE__*/React.createElement("div", {
+    key: team.id,
+    className: "bg-slate-950/90 border border-slate-800 hover:border-slate-700 p-3.5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "space-y-1 min-w-0"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 flex-wrap"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "font-extrabold text-sm text-white truncate"
+  }, team.name), /*#__PURE__*/React.createElement("span", {
+    className: `text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(team.teamPolicy)} ${getPolicyTextColor(team.teamPolicy)}`
+  }, team.teamPolicy), team.builderMaxEnhanced && /*#__PURE__*/React.createElement("span", {
+    className: "px-1.5 py-0.5 rounded text-[9px] font-black bg-orange-500/20 text-orange-400 border border-orange-500/30"
+  }, "⚡最大強化")), /*#__PURE__*/React.createElement("div", {
+    className: "text-[11px] text-slate-400 flex items-center gap-3"
+  }, /*#__PURE__*/React.createElement("span", null, "⚽ ", team.formationName), /*#__PURE__*/React.createElement("span", null, "👤 ", team.playerCount || 0, "名配置"), /*#__PURE__*/React.createElement("span", null, "🕒 ", team.updatedAt))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 justify-end flex-shrink-0"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleLoadTeamSlot(team),
+    className: "px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/40 text-xs font-bold transition-colors cursor-pointer"
+  }, "呼出"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleSaveTeamSlot(team.name, team.id),
+    className: "px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
+  }, "上書き"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => handleDeleteTeamSlot(team.id),
+    className: "p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold transition-colors cursor-pointer",
+    title: "削除"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "trash",
+    className: "w-4 h-4"
+  }))))))))))))
 }
 function DataManagerTab({
   players,
