@@ -2620,6 +2620,7 @@ function TeamBuilderTab({
   const FORMATION_COMBOS = [{
     id: 'selecao70',
     name: "セレソン’70",
+    rank: '金',
     policy: 'リアクション',
     formationId: '343c_selecao',
     buffs: [{
@@ -2639,6 +2640,7 @@ function TeamBuilderTab({
   }, {
     id: 'goldenZonen94',
     name: "ゴールデンゾーネン'94",
+    rank: '金',
     policy: 'リアクション',
     formationId: '343c_golden',
     buffs: [{
@@ -2657,6 +2659,7 @@ function TeamBuilderTab({
   }, {
     id: 'selecaoDasQuinas16',
     name: "セレソン・ダス・キナス'16",
+    rank: '金',
     policy: 'リアクション',
     formationId: '442a_quinas',
     buffs: [{
@@ -2675,6 +2678,7 @@ function TeamBuilderTab({
   }, {
     id: 'alvinegroPraiano',
     name: "アルヴィネグロ・プライアーノ’11",
+    rank: '金',
     policy: 'リアクション',
     formationId: '442e_alvinegro',
     buffs: [{
@@ -2693,6 +2697,7 @@ function TeamBuilderTab({
   }, {
     id: 'encarnados23',
     name: "エンカルナードス’23",
+    rank: '金',
     policy: 'リアクション',
     formationId: '433b_encarnados',
     buffs: [{
@@ -2711,6 +2716,7 @@ function TeamBuilderTab({
   }, {
     id: 'nerazzurro10',
     name: 'ネラッズーロ’10',
+    rank: '金',
     policy: 'ムービング',
     formationId: '433b_nerazzurro',
     buffs: [{
@@ -2729,6 +2735,7 @@ function TeamBuilderTab({
   }, {
     id: 'canaria06',
     name: "カナリア軍団’06",
+    rank: '金',
     policy: 'ムービング',
     formationId: '442c_canaria',
     buffs: [{
@@ -2747,6 +2754,7 @@ function TeamBuilderTab({
   }, {
     id: 'albiceleste01',
     name: "アルビセレステ’01",
+    rank: '金',
     policy: 'ムービング',
     formationId: '343a_albiceleste',
     buffs: [{
@@ -2765,6 +2773,7 @@ function TeamBuilderTab({
   }, {
     id: 'soberano94',
     name: "ソベラーノ’94",
+    rank: '金',
     policy: 'ムービング',
     formationId: '442e_soberano',
     buffs: [{
@@ -2783,6 +2792,7 @@ function TeamBuilderTab({
   }, {
     id: 'blauGrana15',
     name: "ブラウ・グラーナ’15",
+    rank: '金',
     policy: 'ポゼッション',
     formationId: '433a_blauGrana',
     buffs: [{
@@ -2801,6 +2811,7 @@ function TeamBuilderTab({
   }, {
     id: 'losCafeteros94',
     name: "ロス・カフェテロス’94",
+    rank: '金',
     policy: 'ポゼッション',
     formationId: '442d_losCafeteros',
     buffs: [{
@@ -2819,6 +2830,7 @@ function TeamBuilderTab({
   }, {
     id: 'laRoja24',
     name: "ラ・ロハ’24",
+    rank: '金',
     policy: 'ポゼッション',
     formationId: '433b_laRoja',
     buffs: [{
@@ -2837,6 +2849,7 @@ function TeamBuilderTab({
   }, {
     id: 'laDea22',
     name: "ラ・デア’22",
+    rank: '金',
     policy: 'ポゼッション',
     formationId: '352b_laDea',
     buffs: [{
@@ -2855,6 +2868,7 @@ function TeamBuilderTab({
   }, {
     id: 'blueImpact26',
     name: "ブルー・インパクト’26",
+    rank: '金',
     policy: 'カウンター',
     formationId: '361a_blueImpact',
     buffs: [{
@@ -2873,6 +2887,7 @@ function TeamBuilderTab({
   }, {
     id: 'euskaldunak12',
     name: "エウスカルドゥナク’12",
+    rank: '金',
     policy: 'カウンター',
     formationId: '343c_euskaldunak',
     buffs: [{
@@ -2891,6 +2906,7 @@ function TeamBuilderTab({
   }, {
     id: 'river18',
     name: "リーベル’18",
+    rank: '金',
     policy: 'カウンター',
     formationId: '433b_river',
     buffs: [{
@@ -2909,6 +2925,7 @@ function TeamBuilderTab({
   }, {
     id: 'diavolo99',
     name: "ディアボロ・ディ・ミラノ’99",
+    rank: '金',
     policy: 'カウンター',
     formationId: '343b_diavolo',
     buffs: [{
@@ -2927,6 +2944,7 @@ function TeamBuilderTab({
   }, {
     id: 'lesBleus98',
     name: "レ・ブルー’98",
+    rank: '金',
     policy: 'カウンター',
     formationId: '442d_lesBleus',
     buffs: [{
@@ -7010,6 +7028,7 @@ function TeamBuilderTab({
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [newTeamName, setNewTeamName] = useState('');
   const [toastMsg, setToastMsg] = useState(null);
+  const [comboRankFilter, setComboRankFilter] = useState('ALL');
   const showToast = msg => {
     setToastMsg(msg);
     setTimeout(() => setToastMsg(null), 3000);
@@ -7242,7 +7261,7 @@ function TeamBuilderTab({
         player: playerInSlot ? builderMaxEnhanced ? getAdjustedPlayer(playerInSlot, '☆5', true) : playerInSlot : null
       };
     });
-    const allReqsFulfilled = isPolicyMatch && reqResults.every(r => r.isFulfilled);
+    const allReqsFulfilled = isPolicyMatch && reqResults.length > 0 && reqResults.every(r => r.isFulfilled);
     const isSelecao = activeComboData.id === 'selecao70';
     const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
     const brazilBonusPct = brazilPlayerCount * 2;
@@ -7277,6 +7296,19 @@ function TeamBuilderTab({
       comboGainedOverall
     };
   }, [activeComboData, teamPolicy, selectedFormation, squadMap, starterPlayers, builderMaxEnhanced, policyAdjustedOverall, rawBaseOverall]);
+  const isSilverCombo = comboValidation?.combo?.rank === '銀';
+  const checkFormationComboActive = useCallback(fmt => {
+    if (!fmt || !fmt.comboId) return false;
+    const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+    if (!combo) return false;
+    if (teamPolicy !== combo.policy) return false;
+    const reqSlots = fmt.slots.filter(s => s.requiredStyle);
+    if (reqSlots.length === 0) return false;
+    return reqSlots.every(slot => {
+      const p = squadMap[slot.id];
+      return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+    });
+  }, [FORMATION_COMBOS, squadMap, teamPolicy]);
   const getAssignedLocationInfo = playerId => {
     const pIdStr = String(playerId);
     for (const [slotId, player] of Object.entries(squadMap)) {
@@ -7493,16 +7525,12 @@ function TeamBuilderTab({
   }, policyAdjustedOverall.toLocaleString()), /*#__PURE__*/React.createElement("div", {
     className: "text-[9px] font-bold text-[#00FF66]/80 mt-0.5"
   }, "+", policyBonusGained.toLocaleString(), " (", policyMatchCount, "名一致)")), /*#__PURE__*/React.createElement("div", {
-    className: `p-3 rounded-xl border text-center transition-all ${comboValidation?.allReqsFulfilled ? 'bg-gradient-to-br from-amber-500/20 to-slate-950 border-amber-400/80 shadow-md shadow-amber-400/10' : 'bg-slate-950/80 border-slate-800/80'}`
+    className: "bg-slate-950/80 p-3 rounded-xl border border-amber-400/40 text-center"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-center gap-1"
-  }, /*#__PURE__*/React.createElement("span", null, "最終チーム総合力"), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("span", {
-    className: "text-xs"
-  }, "🔥")), /*#__PURE__*/React.createElement("div", {
+    className: "text-[10px] font-bold text-amber-300 uppercase tracking-wider"
+  }, "最終チーム総合力"), /*#__PURE__*/React.createElement("div", {
     className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
-  }, comboValidation ? comboValidation.boostedOverall.toLocaleString() : policyAdjustedOverall.toLocaleString()), comboValidation?.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-black text-amber-300 mt-0.5"
-  }, "+", comboValidation.totalGainedOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
+  }, policyAdjustedOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
     className: "bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center"
   }, /*#__PURE__*/React.createElement("div", {
     className: "text-[10px] font-bold text-slate-400 uppercase tracking-wider"
@@ -7534,11 +7562,23 @@ function TeamBuilderTab({
     className: "font-black text-sm sm:text-base text-white"
   }, "フォーメーション選択 ", /*#__PURE__*/React.createElement("span", {
     className: "text-xs font-normal text-slate-400"
-  }, "(ポリシー別一覧)"))), /*#__PURE__*/React.createElement("div", {
-    className: "text-xs font-bold text-slate-300 flex items-center gap-1.5 bg-slate-900 px-3 py-1 rounded-xl border border-slate-800"
-  }, /*#__PURE__*/React.createElement("span", null, "選択中:"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[#00FF66] font-black"
-  }, selectedFormation.name))), /*#__PURE__*/React.createElement("div", {
+  }, "(ポリシー・ランク別一覧)"))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 flex-wrap"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-[11px] font-bold text-slate-400"
+  }, "ランク:"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setComboRankFilter('ALL'),
+    className: `px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'ALL' ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800'}`
+  }, "すべて"), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setComboRankFilter('金'),
+    className: `px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '金' ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-slate-800'}`
+  }, /*#__PURE__*/React.createElement("span", null, "🏆 金コンボ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setComboRankFilter('銀'),
+    className: `px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '銀' ? 'bg-slate-200 text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-600 hover:bg-slate-800'}`
+  }, /*#__PURE__*/React.createElement("span", null, "🥈 銀コンボ")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => setComboRankFilter('BASIC'),
+    className: `px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'BASIC' ? 'bg-slate-400 text-slate-950 shadow' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800'}`
+  }, "基本"))), /*#__PURE__*/React.createElement("div", {
     className: "overflow-x-auto max-h-[380px] scrollbar-thin scrollbar-thumb-slate-700"
   }, /*#__PURE__*/React.createElement("table", {
     className: "w-full text-left text-xs border-collapse"
@@ -7561,6 +7601,8 @@ function TeamBuilderTab({
   }, ['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
     const matchedFormations = FORMATIONS.filter(fmt => {
       const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+      const cRank = combo ? combo.rank || '金' : 'BASIC';
+      if (comboRankFilter !== 'ALL' && cRank !== comboRankFilter) return false;
       if (policyGroup === '基本') return !combo;
       return combo?.policy === policyGroup;
     });
@@ -7568,6 +7610,8 @@ function TeamBuilderTab({
     return matchedFormations.map(fmt => {
       const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
       const isSelected = selectedFormation.id === fmt.id;
+      const isComboActive = checkFormationComboActive(fmt);
+      const isSilver = combo?.rank === '銀';
       return /*#__PURE__*/React.createElement("tr", {
         key: fmt.id,
         onClick: () => handleSelectFormation(fmt),
@@ -7580,9 +7624,13 @@ function TeamBuilderTab({
         className: "py-2.5 px-3 font-bold text-white whitespace-nowrap"
       }, fmt.name), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 whitespace-nowrap"
-      }, combo ? /*#__PURE__*/React.createElement("span", {
-        className: "text-amber-400 font-extrabold flex items-center gap-1"
-      }, /*#__PURE__*/React.createElement("span", null, "🏆"), /*#__PURE__*/React.createElement("span", null, combo.name)) : /*#__PURE__*/React.createElement("span", {
+      }, combo ? /*#__PURE__*/React.createElement("div", {
+        className: "flex items-center gap-1.5"
+      }, /*#__PURE__*/React.createElement("span", {
+        className: `px-1.5 py-0.5 rounded text-[9px] font-black shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`
+      }, isSilver ? '銀' : '金'), /*#__PURE__*/React.createElement("span", {
+        className: `font-extrabold flex items-center gap-1 ${isSilver ? 'text-slate-100' : 'text-amber-400'}`
+      }, /*#__PURE__*/React.createElement("span", null, isSilver ? '🥈' : '🏆'), /*#__PURE__*/React.createElement("span", null, combo.name))) : /*#__PURE__*/React.createElement("span", {
         className: "text-slate-500"
       }, "-")), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap"
@@ -7590,9 +7638,9 @@ function TeamBuilderTab({
         className: "flex items-center gap-1.5 flex-wrap"
       }, combo.buffs.map((b, bIdx) => /*#__PURE__*/React.createElement("span", {
         key: bIdx,
-        className: "text-[10px] font-black bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-slate-200"
+        className: `text-[10px] font-black px-1.5 py-0.5 rounded border ${isSilver ? 'bg-slate-800 border-slate-600 text-slate-200' : 'bg-amber-400/10 border-amber-400/30 text-amber-300'}`
       }, b.name, " ", /*#__PURE__*/React.createElement("span", {
-        className: "text-amber-400"
+        className: isSilver ? 'text-cyan-300' : 'text-amber-400'
       }, b.val)))) : /*#__PURE__*/React.createElement("span", {
         className: "text-slate-500 text-[11px]"
       }, "基本フォーメーション (コンボなし)")), /*#__PURE__*/React.createElement("td", {
@@ -7605,134 +7653,43 @@ function TeamBuilderTab({
         className: `px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'}`
       }, isSelected ? '✓ 選択中' : '選択')));
     });
-  }))))), comboValidation && /*#__PURE__*/React.createElement("div", {
-    className: `p-4 rounded-2xl border transition-all ${comboValidation.allReqsFulfilled ? 'bg-gradient-to-br from-amber-500/15 via-slate-900 to-slate-950 border-amber-400 shadow-xl shadow-amber-500/10' : 'bg-slate-900/90 border-slate-800'}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2.5"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: `p-2 rounded-xl text-xl ${comboValidation.allReqsFulfilled ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-800 text-slate-400'}`
-  }, comboValidation.allReqsFulfilled ? '🏆' : '⚠️'), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2 flex-wrap"
-  }, /*#__PURE__*/React.createElement("h3", {
-    className: "font-black text-base sm:text-lg text-white"
-  }, "フォーメーションコンボ 【", comboValidation.combo.name, "】"), /*#__PURE__*/React.createElement("span", {
-    className: `text-[10px] font-black px-2 py-0.5 rounded border ${comboValidation.allReqsFulfilled ? 'bg-amber-400 text-slate-950 border-amber-300 font-extrabold animate-pulse' : 'bg-red-500/20 text-red-400 border-red-500/40'}`
-  }, comboValidation.allReqsFulfilled ? '✨ コンボ発動完了！' : '条件未達成')), /*#__PURE__*/React.createElement("p", {
-    className: "text-xs text-slate-400 mt-0.5"
-  }, "必要ポリシー: ", /*#__PURE__*/React.createElement("strong", {
-    className: getPolicyTextColor(comboValidation.combo.policy)
-  }, comboValidation.combo.policy), " | 配置: ", /*#__PURE__*/React.createElement("strong", {
-    className: "text-white"
-  }, "LW / CF / RW / LAM / RAM / LDM / RDM / LCB / CB / RCB")))), comboValidation.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
-    className: "bg-amber-400/10 border border-amber-400/30 p-2.5 rounded-xl space-y-1"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-black text-amber-300 uppercase tracking-wider"
-  }, "発動中チーム能力ボーナス"), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 flex-wrap"
-  }, comboValidation.combo.buffs.map((b, i) => /*#__PURE__*/React.createElement("span", {
-    key: i,
-    className: "px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-num font-black text-xs shadow-sm"
-  }, b.name, " ", b.val))))), comboValidation.allReqsFulfilled && /*#__PURE__*/React.createElement("div", {
-    className: "mt-3 bg-slate-950 p-4 rounded-xl border border-amber-400/40 space-y-3 shadow-inner"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center justify-between flex-wrap gap-2"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-xs font-black text-amber-300 flex items-center gap-1.5"
-  }, /*#__PURE__*/React.createElement(Icon, {
-    name: "sparkles",
-    className: "w-4 h-4 text-amber-400"
-  }), "コンボボーナス総合力シミュレーション"), /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950 shadow"
-  }, "✨ ", comboValidation.combo.name, " 発動中")), /*#__PURE__*/React.createElement("div", {
-    className: "grid grid-cols-1 sm:grid-cols-3 gap-3 text-center"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "bg-slate-900/90 p-3 rounded-lg border border-slate-800"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-bold text-slate-400"
-  }, "基本総合力 (未加算)"), /*#__PURE__*/React.createElement("div", {
-    className: "text-lg font-black font-num text-slate-200 mt-0.5"
-  }, rawBaseOverall.toLocaleString())), /*#__PURE__*/React.createElement("div", {
-    className: "bg-slate-900/90 p-3 rounded-lg border border-emerald-500/30"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-bold text-[#00FF66]"
-  }, "ポリシー一致ボーナス"), /*#__PURE__*/React.createElement("div", {
-    className: "text-lg font-black font-num text-[#00FF66] mt-0.5"
-  }, "+", policyBonusGained.toLocaleString(), " ", /*#__PURE__*/React.createElement("span", {
-    className: "text-xs"
-  }, "(一致", policyMatchCount, "名)"))), /*#__PURE__*/React.createElement("div", {
-    className: "bg-amber-400/10 p-3 rounded-lg border border-amber-400/50"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-[10px] font-bold text-amber-300"
-  }, "最終チーム総合力 (コンボ発動)"), /*#__PURE__*/React.createElement("div", {
-    className: "text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5"
-  }, comboValidation.boostedOverall.toLocaleString()))), /*#__PURE__*/React.createElement("div", {
-    className: "text-xs space-y-1.5 pt-2 border-t border-slate-800/80"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "font-bold text-slate-300"
-  }, "発動中ボーナス内訳:"), /*#__PURE__*/React.createElement("div", {
-    className: `grid grid-cols-1 ${comboValidation.isSelecao ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-2 text-[11px]`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-cyan-400 font-bold"
-  }, "🔰 ポリシー一致ボーナス:"), /*#__PURE__*/React.createElement("span", {
-    className: "text-white font-bold mt-1"
-  }, "一致 ", policyMatchCount, "名 (+", policyBonusGained.toLocaleString(), ")")), /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-amber-400 font-bold"
-  }, "🏆 ", comboValidation.combo.name, " 発動効果:"), /*#__PURE__*/React.createElement("span", {
-    className: "text-white font-bold mt-1"
-  }, comboValidation.combo.buffs.map(b => `${b.name}${b.val}`).join(', '))), comboValidation.isSelecao && /*#__PURE__*/React.createElement("div", {
-    className: "flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-[#00FF66] font-bold"
-  }, "🇧🇷 ブラジル国籍ボーナス:"), /*#__PURE__*/React.createElement("span", {
-    className: "text-white font-bold mt-1"
-  }, "ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
-    className: "mt-3 space-y-2"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "text-xs font-bold text-slate-300"
-  }, "位置指定・発動条件チェックリスト:"), /*#__PURE__*/React.createElement("div", {
-    className: "grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: `p-2 rounded-xl border flex items-center justify-between ${comboValidation.isPolicyMatch ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "font-bold"
-  }, "チームポリシー: ", /*#__PURE__*/React.createElement("strong", {
-    className: getPolicyTextColor(comboValidation.combo.policy)
-  }, comboValidation.combo.policy)), /*#__PURE__*/React.createElement("span", {
-    className: "font-black"
-  }, comboValidation.isPolicyMatch ? '✓ 一致' : '❌ 要変更')), comboValidation.reqResults.map((req, idx) => /*#__PURE__*/React.createElement("div", {
-    key: idx,
-    className: `p-2 rounded-xl border flex items-center justify-between ${req.isFulfilled ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5 truncate"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "font-black"
-  }, req.isFulfilled ? '✓' : '❌'), /*#__PURE__*/React.createElement("span", {
-    className: "font-bold truncate"
-  }, req.label)), req.player ? /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px] font-black bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700 truncate max-w-[120px]"
-  }, req.player.name, " (LV.", req.player.playStyleLevel || 1, ")") : /*#__PURE__*/React.createElement("span", {
-    className: "text-[10px] font-bold opacity-75"
-  }, "未配置")))), comboValidation.isSelecao && /*#__PURE__*/React.createElement("div", {
-    className: "mt-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-1.5"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-base"
-  }, "🇧🇷"), /*#__PURE__*/React.createElement("span", {
-    className: "font-bold text-slate-200"
-  }, comboValidation.combo.specialNote)), /*#__PURE__*/React.createElement("div", {
-    className: "flex items-center gap-2"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "text-slate-400 font-bold"
-  }, "フィールド上ブラジル選手:"), /*#__PURE__*/React.createElement("span", {
-    className: "px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF66] border border-[#00FF66]/30 font-black font-num"
-  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
+  }))))), activeComboData && (() => {
+    const isSilver = activeComboData.rank === '銀';
+    return /*#__PURE__*/React.createElement("div", {
+      className: `p-4 rounded-2xl border transition-all ${isSilver ? 'bg-gradient-to-br from-slate-800/40 via-slate-900 to-slate-950 border-slate-700 shadow-xl' : 'bg-gradient-to-br from-amber-500/10 via-slate-900 to-slate-950 border-amber-500/40 shadow-xl'}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2.5"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: `p-2 rounded-xl text-xl ${isSilver ? 'bg-slate-200 text-slate-950 shadow font-black' : 'bg-amber-400 text-slate-950 shadow'}`
+    }, isSilver ? '🥈' : '🏆'), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2 flex-wrap"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: `text-[10px] font-black px-1.5 py-0.5 rounded ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`
+    }, isSilver ? '銀コンボ' : '金コンボ'), /*#__PURE__*/React.createElement("h3", {
+      className: "font-black text-base sm:text-lg text-white"
+    }, "フォーメーションコンボ 【", activeComboData.name, "】")), /*#__PURE__*/React.createElement("p", {
+      className: "text-xs text-slate-400 mt-0.5"
+    }, "推奨ポリシー: ", /*#__PURE__*/React.createElement("strong", {
+      className: getPolicyTextColor(activeComboData.policy)
+    }, activeComboData.policy)))), /*#__PURE__*/React.createElement("div", {
+      className: `p-2.5 rounded-xl space-y-1 border ${isSilver ? 'bg-slate-900 border-slate-700' : 'bg-slate-900 border-amber-500/30'}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: `text-[10px] font-black uppercase tracking-wider ${isSilver ? 'text-slate-300' : 'text-amber-300'}`
+    }, "チーム能力ボーナス"), /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-1.5 flex-wrap"
+    }, activeComboData.buffs.map((b, i) => /*#__PURE__*/React.createElement("span", {
+      key: i,
+      className: `px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${isSilver ? 'bg-slate-200 text-slate-950' : 'bg-amber-400 text-slate-950'}`
+    }, b.name, " ", b.val))))), activeComboData.specialNote && /*#__PURE__*/React.createElement("div", {
+      className: "mt-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2 text-xs"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "text-base"
+    }, "🇧🇷"), /*#__PURE__*/React.createElement("span", {
+      className: "font-bold text-slate-200"
+    }, activeComboData.specialNote)));
+  })(), /*#__PURE__*/React.createElement("div", {
     className: "relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950"
   }, /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 pointer-events-none opacity-25"

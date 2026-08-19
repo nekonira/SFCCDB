@@ -2638,6 +2638,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'selecao70',
       name: "セレソン’70",
+      rank: '金',
       policy: 'リアクション',
       formationId: '343c_selecao',
       buffs: [
@@ -2651,6 +2652,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'goldenZonen94',
       name: "ゴールデンゾーネン'94",
+      rank: '金',
       policy: 'リアクション',
       formationId: '343c_golden',
       buffs: [
@@ -2663,6 +2665,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'selecaoDasQuinas16',
       name: "セレソン・ダス・キナス'16",
+      rank: '金',
       policy: 'リアクション',
       formationId: '442a_quinas',
       buffs: [
@@ -2675,6 +2678,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'alvinegroPraiano',
       name: "アルヴィネグロ・プライアーノ’11",
+      rank: '金',
       policy: 'リアクション',
       formationId: '442e_alvinegro',
       buffs: [
@@ -2687,6 +2691,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'encarnados23',
       name: "エンカルナードス’23",
+      rank: '金',
       policy: 'リアクション',
       formationId: '433b_encarnados',
       buffs: [
@@ -2699,6 +2704,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'nerazzurro10',
       name: 'ネラッズーロ’10',
+      rank: '金',
       policy: 'ムービング',
       formationId: '433b_nerazzurro',
       buffs: [
@@ -2711,6 +2717,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'canaria06',
       name: "カナリア軍団’06",
+      rank: '金',
       policy: 'ムービング',
       formationId: '442c_canaria',
       buffs: [
@@ -2723,6 +2730,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'albiceleste01',
       name: "アルビセレステ’01",
+      rank: '金',
       policy: 'ムービング',
       formationId: '343a_albiceleste',
       buffs: [
@@ -2735,6 +2743,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'soberano94',
       name: "ソベラーノ’94",
+      rank: '金',
       policy: 'ムービング',
       formationId: '442e_soberano',
       buffs: [
@@ -2747,6 +2756,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'blauGrana15',
       name: "ブラウ・グラーナ’15",
+      rank: '金',
       policy: 'ポゼッション',
       formationId: '433a_blauGrana',
       buffs: [
@@ -2759,6 +2769,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'losCafeteros94',
       name: "ロス・カフェテロス’94",
+      rank: '金',
       policy: 'ポゼッション',
       formationId: '442d_losCafeteros',
       buffs: [
@@ -2771,6 +2782,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'laRoja24',
       name: "ラ・ロハ’24",
+      rank: '金',
       policy: 'ポゼッション',
       formationId: '433b_laRoja',
       buffs: [
@@ -2783,6 +2795,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'laDea22',
       name: "ラ・デア’22",
+      rank: '金',
       policy: 'ポゼッション',
       formationId: '352b_laDea',
       buffs: [
@@ -2795,6 +2808,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'blueImpact26',
       name: "ブルー・インパクト’26",
+      rank: '金',
       policy: 'カウンター',
       formationId: '361a_blueImpact',
       buffs: [
@@ -2807,6 +2821,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'euskaldunak12',
       name: "エウスカルドゥナク’12",
+      rank: '金',
       policy: 'カウンター',
       formationId: '343c_euskaldunak',
       buffs: [
@@ -2819,6 +2834,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'river18',
       name: "リーベル’18",
+      rank: '金',
       policy: 'カウンター',
       formationId: '433b_river',
       buffs: [
@@ -2831,6 +2847,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'diavolo99',
       name: "ディアボロ・ディ・ミラノ’99",
+      rank: '金',
       policy: 'カウンター',
       formationId: '343b_diavolo',
       buffs: [
@@ -2843,6 +2860,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     {
       id: 'lesBleus98',
       name: "レ・ブルー’98",
+      rank: '金',
       policy: 'カウンター',
       formationId: '442d_lesBleus',
       buffs: [
@@ -4112,6 +4130,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [newTeamName, setNewTeamName] = useState('');
   const [toastMsg, setToastMsg] = useState(null);
+  const [comboRankFilter, setComboRankFilter] = useState('ALL');
 
   const showToast = (msg) => {
     setToastMsg(msg);
@@ -4362,7 +4381,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         };
       });
 
-    const allReqsFulfilled = isPolicyMatch && reqResults.every(r => r.isFulfilled);
+    const allReqsFulfilled = isPolicyMatch && reqResults.length > 0 && reqResults.every(r => r.isFulfilled);
 
     const isSelecao = activeComboData.id === 'selecao70';
     const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
@@ -4400,6 +4419,23 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       comboGainedOverall
     };
   }, [activeComboData, teamPolicy, selectedFormation, squadMap, starterPlayers, builderMaxEnhanced, policyAdjustedOverall, rawBaseOverall]);
+
+  const isSilverCombo = comboValidation?.combo?.rank === '銀';
+
+  const checkFormationComboActive = useCallback((fmt) => {
+    if (!fmt || !fmt.comboId) return false;
+    const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+    if (!combo) return false;
+    if (teamPolicy !== combo.policy) return false;
+
+    const reqSlots = fmt.slots.filter(s => s.requiredStyle);
+    if (reqSlots.length === 0) return false;
+
+    return reqSlots.every(slot => {
+      const p = squadMap[slot.id];
+      return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+    });
+  }, [FORMATION_COMBOS, squadMap, teamPolicy]);
 
   const getAssignedLocationInfo = (playerId) => {
     const pIdStr = String(playerId);
@@ -4542,7 +4578,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
   };
 
-  const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
+    const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
 
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
@@ -4623,22 +4659,13 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               +{policyBonusGained.toLocaleString()} ({policyMatchCount}名一致)
             </div>
           </div>
-          <div className={`p-3 rounded-xl border text-center transition-all ${comboValidation?.allReqsFulfilled
-            ? 'bg-gradient-to-br from-amber-500/20 to-slate-950 border-amber-400/80 shadow-md shadow-amber-400/10'
-            : 'bg-slate-950/80 border-slate-800/80'
-            }`}>
-            <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider flex items-center justify-center gap-1">
-              <span>最終チーム総合力</span>
-              {comboValidation?.allReqsFulfilled && <span className="text-xs">🔥</span>}
+          <div className="bg-slate-950/80 p-3 rounded-xl border border-amber-400/40 text-center">
+            <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">
+              最終チーム総合力
             </div>
             <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
-              {comboValidation ? comboValidation.boostedOverall.toLocaleString() : policyAdjustedOverall.toLocaleString()}
+              {policyAdjustedOverall.toLocaleString()}
             </div>
-            {comboValidation?.allReqsFulfilled && (
-              <div className="text-[10px] font-black text-amber-300 mt-0.5">
-                +{comboValidation.totalGainedOverall.toLocaleString()}
-              </div>
-            )}
           </div>
           <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
             <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">チームポリシー</div>
@@ -4656,18 +4683,43 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         </div>
       </div>
 
-      {/* ポリシー別フォーメーション選択テーブル */}
+      {/* ポリシー・ランク別フォーメーション選択テーブル */}
       <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800/90 shadow-xl space-y-3">
         <div className="flex items-center justify-between flex-wrap gap-2 pb-2.5 border-b border-slate-800">
           <div className="flex items-center gap-2">
             <span className="text-xl">📋</span>
             <h3 className="font-black text-sm sm:text-base text-white">
-              フォーメーション選択 <span className="text-xs font-normal text-slate-400">(ポリシー別一覧)</span>
+              フォーメーション選択 <span className="text-xs font-normal text-slate-400">(ポリシー・ランク別一覧)</span>
             </h3>
           </div>
-          <div className="text-xs font-bold text-slate-300 flex items-center gap-1.5 bg-slate-900 px-3 py-1 rounded-xl border border-slate-800">
-            <span>選択中:</span>
-            <span className="text-[#00FF66] font-black">{selectedFormation.name}</span>
+
+          {/* ランクフィルターボタン */}
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className="text-[11px] font-bold text-slate-400">ランク:</span>
+            <button
+              onClick={() => setComboRankFilter('ALL')}
+              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'ALL' ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800'}`}
+            >
+              すべて
+            </button>
+            <button
+              onClick={() => setComboRankFilter('金')}
+              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '金' ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-slate-800'}`}
+            >
+              <span>🏆 金コンボ</span>
+            </button>
+            <button
+              onClick={() => setComboRankFilter('銀')}
+              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '銀' ? 'bg-slate-200 text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-600 hover:bg-slate-800'}`}
+            >
+              <span>🥈 銀コンボ</span>
+            </button>
+            <button
+              onClick={() => setComboRankFilter('BASIC')}
+              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'BASIC' ? 'bg-slate-400 text-slate-950 shadow' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800'}`}
+            >
+              基本
+            </button>
           </div>
         </div>
 
@@ -4686,6 +4738,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               {['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
                 const matchedFormations = FORMATIONS.filter(fmt => {
                   const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+                  const cRank = combo ? (combo.rank || '金') : 'BASIC';
+                  if (comboRankFilter !== 'ALL' && cRank !== comboRankFilter) return false;
                   if (policyGroup === '基本') return !combo;
                   return combo?.policy === policyGroup;
                 });
@@ -4695,6 +4749,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                 return matchedFormations.map((fmt) => {
                   const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
                   const isSelected = selectedFormation.id === fmt.id;
+                  const isComboActive = checkFormationComboActive(fmt);
+                  const isSilver = combo?.rank === '銀';
 
                   return (
                     <tr
@@ -4717,25 +4773,30 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                         {fmt.name}
                       </td>
 
-                      {/* 発動コンボ */}
+                      {/* 対象コンボ名 */}
                       <td className="py-2.5 px-3 whitespace-nowrap">
                         {combo ? (
-                          <span className="text-amber-400 font-extrabold flex items-center gap-1">
-                            <span>🏆</span>
-                            <span>{combo.name}</span>
-                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-black shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`}>
+                              {isSilver ? '銀' : '金'}
+                            </span>
+                            <span className={`font-extrabold flex items-center gap-1 ${isSilver ? 'text-slate-100' : 'text-amber-400'}`}>
+                              <span>{isSilver ? '🥈' : '🏆'}</span>
+                              <span>{combo.name}</span>
+                            </span>
+                          </div>
                         ) : (
                           <span className="text-slate-500">-</span>
                         )}
                       </td>
 
-                      {/* コンボ効果 */}
+                      {/* コンボ能力ボーナス */}
                       <td className="py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap">
                         {combo ? (
                           <div className="flex items-center gap-1.5 flex-wrap">
                             {combo.buffs.map((b, bIdx) => (
-                              <span key={bIdx} className="text-[10px] font-black bg-slate-900 px-1.5 py-0.5 rounded border border-slate-700 text-slate-200">
-                                {b.name} <span className="text-amber-400">{b.val}</span>
+                              <span key={bIdx} className={`text-[10px] font-black px-1.5 py-0.5 rounded border ${isSilver ? 'bg-slate-800 border-slate-600 text-slate-200' : 'bg-amber-400/10 border-amber-400/30 text-amber-300'}`}>
+                                {b.name} <span className={isSilver ? 'text-cyan-300' : 'text-amber-400'}>{b.val}</span>
                               </span>
                             ))}
                           </div>
@@ -4768,160 +4829,56 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         </div>
       </div>
 
-      {/* フォーメーションコンボ発動解析ダッシュボード */}
-      {comboValidation && (
-        <div className={`p-4 rounded-2xl border transition-all ${comboValidation.allReqsFulfilled
-          ? 'bg-gradient-to-br from-amber-500/15 via-slate-900 to-slate-950 border-amber-400 shadow-xl shadow-amber-500/10'
-          : 'bg-slate-900/90 border-slate-800'
-          }`}>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
-            <div className="flex items-center gap-2.5">
-              <span className={`p-2 rounded-xl text-xl ${comboValidation.allReqsFulfilled ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-800 text-slate-400'}`}>
-                {comboValidation.allReqsFulfilled ? '🏆' : '⚠️'}
-              </span>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="font-black text-base sm:text-lg text-white">
-                    フォーメーションコンボ 【{comboValidation.combo.name}】
-                  </h3>
-                  <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${comboValidation.allReqsFulfilled
-                    ? 'bg-amber-400 text-slate-950 border-amber-300 font-extrabold animate-pulse'
-                    : 'bg-red-500/20 text-red-400 border-red-500/40'
-                    }`}>
-                    {comboValidation.allReqsFulfilled ? '✨ コンボ発動完了！' : '条件未達成'}
-                  </span>
+      {/* フォーメーションコンボ情報 */}
+      {activeComboData && (() => {
+        const isSilver = activeComboData.rank === '銀';
+        return (
+          <div className={`p-4 rounded-2xl border transition-all ${isSilver
+            ? 'bg-gradient-to-br from-slate-800/40 via-slate-900 to-slate-950 border-slate-700 shadow-xl'
+            : 'bg-gradient-to-br from-amber-500/10 via-slate-900 to-slate-950 border-amber-500/40 shadow-xl'
+            }`}>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2.5">
+                <span className={`p-2 rounded-xl text-xl ${isSilver ? 'bg-slate-200 text-slate-950 shadow font-black' : 'bg-amber-400 text-slate-950 shadow'}`}>
+                  {isSilver ? '🥈' : '🏆'}
+                </span>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`text-[10px] font-black px-1.5 py-0.5 rounded ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`}>
+                      {isSilver ? '銀コンボ' : '金コンボ'}
+                    </span>
+                    <h3 className="font-black text-base sm:text-lg text-white">
+                      フォーメーションコンボ 【{activeComboData.name}】
+                    </h3>
+                  </div>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    推奨ポリシー: <strong className={getPolicyTextColor(activeComboData.policy)}>{activeComboData.policy}</strong>
+                  </p>
                 </div>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  必要ポリシー: <strong className={getPolicyTextColor(comboValidation.combo.policy)}>{comboValidation.combo.policy}</strong> | 配置: <strong className="text-white">LW / CF / RW / LAM / RAM / LDM / RDM / LCB / CB / RCB</strong>
-                </p>
               </div>
-            </div>
 
-            {/* 発動効果バッジ */}
-            {comboValidation.allReqsFulfilled && (
-              <div className="bg-amber-400/10 border border-amber-400/30 p-2.5 rounded-xl space-y-1">
-                <div className="text-[10px] font-black text-amber-300 uppercase tracking-wider">発動中チーム能力ボーナス</div>
+              {/* チーム能力ボーナス */}
+              <div className={`p-2.5 rounded-xl space-y-1 border ${isSilver ? 'bg-slate-900 border-slate-700' : 'bg-slate-900 border-amber-500/30'}`}>
+                <div className={`text-[10px] font-black uppercase tracking-wider ${isSilver ? 'text-slate-300' : 'text-amber-300'}`}>チーム能力ボーナス</div>
                 <div className="flex items-center gap-1.5 flex-wrap">
-                  {comboValidation.combo.buffs.map((b, i) => (
-                    <span key={i} className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-num font-black text-xs shadow-sm">
+                  {activeComboData.buffs.map((b, i) => (
+                    <span key={i} className={`px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${isSilver ? 'bg-slate-200 text-slate-950' : 'bg-amber-400 text-slate-950'}`}>
                       {b.name} {b.val}
                     </span>
                   ))}
                 </div>
               </div>
-            )}
-          </div>
-
-          {/* コンボボーナス総合力比較 ＆ 内訳解析パネル */}
-          {comboValidation.allReqsFulfilled && (
-            <div className="mt-3 bg-slate-950 p-4 rounded-xl border border-amber-400/40 space-y-3 shadow-inner">
-              <div className="flex items-center justify-between flex-wrap gap-2">
-                <div className="text-xs font-black text-amber-300 flex items-center gap-1.5">
-                  <Icon name="sparkles" className="w-4 h-4 text-amber-400" />
-                  コンボボーナス総合力シミュレーション
-                </div>
-                <span className="text-[10px] font-black px-2 py-0.5 rounded bg-amber-400 text-slate-950 shadow">
-                  ✨ {comboValidation.combo.name} 発動中
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-                <div className="bg-slate-900/90 p-3 rounded-lg border border-slate-800">
-                  <div className="text-[10px] font-bold text-slate-400">基本総合力 (未加算)</div>
-                  <div className="text-lg font-black font-num text-slate-200 mt-0.5">
-                    {rawBaseOverall.toLocaleString()}
-                  </div>
-                </div>
-
-                <div className="bg-slate-900/90 p-3 rounded-lg border border-emerald-500/30">
-                  <div className="text-[10px] font-bold text-[#00FF66]">ポリシー一致ボーナス</div>
-                  <div className="text-lg font-black font-num text-[#00FF66] mt-0.5">
-                    +{policyBonusGained.toLocaleString()} <span className="text-xs">(一致{policyMatchCount}名)</span>
-                  </div>
-                </div>
-
-                <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/50">
-                  <div className="text-[10px] font-bold text-amber-300">最終チーム総合力 (コンボ発動)</div>
-                  <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
-                    {comboValidation.boostedOverall.toLocaleString()}
-                  </div>
-                </div>
-              </div>
-
-              {/* ボーナス詳細内訳 */}
-              <div className="text-xs space-y-1.5 pt-2 border-t border-slate-800/80">
-                <div className="font-bold text-slate-300">発動中ボーナス内訳:</div>
-                <div className={`grid grid-cols-1 ${comboValidation.isSelecao ? 'sm:grid-cols-3' : 'sm:grid-cols-2'} gap-2 text-[11px]`}>
-                  <div className="flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800">
-                    <span className="text-cyan-400 font-bold">🔰 ポリシー一致ボーナス:</span>
-                    <span className="text-white font-bold mt-1">一致 {policyMatchCount}名 (+{policyBonusGained.toLocaleString()})</span>
-                  </div>
-                  <div className="flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800">
-                    <span className="text-amber-400 font-bold">🏆 {comboValidation.combo.name} 発動効果:</span>
-                    <span className="text-white font-bold mt-1">
-                      {comboValidation.combo.buffs.map(b => `${b.name}${b.val}`).join(', ')}
-                    </span>
-                  </div>
-                  {comboValidation.isSelecao && (
-                    <div className="flex flex-col justify-between bg-slate-900 p-2 rounded-lg border border-slate-800">
-                      <span className="text-[#00FF66] font-bold">🇧🇷 ブラジル国籍ボーナス:</span>
-                      <span className="text-white font-bold mt-1">ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}%)</span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* 位置指定条件チェックリスト */}
-          <div className="mt-3 space-y-2">
-            <div className="text-xs font-bold text-slate-300">位置指定・発動条件チェックリスト:</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              {/* ポリシー条件 */}
-              <div className={`p-2 rounded-xl border flex items-center justify-between ${comboValidation.isPolicyMatch ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`}>
-                <span className="font-bold">チームポリシー: <strong className={getPolicyTextColor(comboValidation.combo.policy)}>{comboValidation.combo.policy}</strong></span>
-                <span className="font-black">{comboValidation.isPolicyMatch ? '✓ 一致' : '❌ 要変更'}</span>
-              </div>
-
-              {/* プレースタイル位置条件 */}
-              {comboValidation.reqResults.map((req, idx) => (
-                <div
-                  key={idx}
-                  className={`p-2 rounded-xl border flex items-center justify-between ${req.isFulfilled ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-red-500/10 border-red-500/30 text-red-300'}`}
-                >
-                  <div className="flex items-center gap-1.5 truncate">
-                    <span className="font-black">{req.isFulfilled ? '✓' : '❌'}</span>
-                    <span className="font-bold truncate">{req.label}</span>
-                  </div>
-                  {req.player ? (
-                    <span className="text-[10px] font-black bg-slate-900/80 px-1.5 py-0.5 rounded border border-slate-700 truncate max-w-[120px]">
-                      {req.player.name} (LV.{req.player.playStyleLevel || 1})
-                    </span>
-                  ) : (
-                    <span className="text-[10px] font-bold opacity-75">未配置</span>
-                  )}
-                </div>
-              ))}
             </div>
 
-            {/* 国籍追加ボーナス（セレソン'70 ブラジル限定） */}
-            {comboValidation.isSelecao && (
-              <div className="mt-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-base">🇧🇷</span>
-                  <span className="font-bold text-slate-200">{comboValidation.combo.specialNote}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-slate-400 font-bold">フィールド上ブラジル選手:</span>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF66] border border-[#00FF66]/30 font-black font-num">
-                    {comboValidation.brazilPlayerCount}名 (上記4能力 +{comboValidation.brazilBonusPct}%)
-                  </span>
-                </div>
+            {activeComboData.specialNote && (
+              <div className="mt-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2 text-xs">
+                <span className="text-base">🇧🇷</span>
+                <span className="font-bold text-slate-200">{activeComboData.specialNote}</span>
               </div>
             )}
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* サッカーピッチ ＆ ピッチ上スロット (CB-GK間隔ゆったり調整) */}
       <div className="relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950">
