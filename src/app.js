@@ -1481,7 +1481,8 @@ function App() {
     managers: managers,
     combos: combos,
     setActiveTab: setActiveTab,
-    setSelectedPlayer: setSelectedPlayer
+    setSelectedPlayer: setSelectedPlayer,
+    youtubeVideos: youtubeVideos
   }), activeTab === 'players' && /*#__PURE__*/React.createElement(PlayerDBTab, {
     players: players,
     compareList: compareList,
@@ -1489,7 +1490,8 @@ function App() {
     setIsCompareModalOpen: setIsCompareModalOpen,
     setSelectedPlayer: setSelectedPlayer,
     simulatedGlobalRarity: simulatedGlobalRarity,
-    setSimulatedGlobalRarity: setSimulatedGlobalRarity
+    setSimulatedGlobalRarity: setSimulatedGlobalRarity,
+    youtubeVideos: youtubeVideos
   }), activeTab === 'builder' && /*#__PURE__*/React.createElement(TeamBuilderTab, {
     players: players,
     setSelectedPlayer: setSelectedPlayer,
@@ -1618,11 +1620,13 @@ function HomeTab({
   managers,
   combos,
   setActiveTab,
-  setSelectedPlayer
+  setSelectedPlayer,
+  youtubeVideos = YOUTUBE_VIDEOS
 }) {
   const topPlayers = useMemo(() => {
     return [...players].sort((a, b) => b.overall - a.overall).slice(0, 4);
   }, [players]);
+  const displayVideos = youtubeVideos || YOUTUBE_VIDEOS;
   return /*#__PURE__*/React.createElement("div", {
     className: "space-y-8 animate-fadeIn"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1711,7 +1715,7 @@ function HomeTab({
     className: "text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
   }, "チャンネル ↗")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none"
-  }, youtubeVideos.map(video => /*#__PURE__*/React.createElement("a", {
+  }, displayVideos.map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
     href: video.url,
     target: "_blank",
@@ -1754,7 +1758,8 @@ function PlayerDBTab({
   setIsCompareModalOpen,
   setSelectedPlayer,
   simulatedGlobalRarity,
-  setSimulatedGlobalRarity
+  setSimulatedGlobalRarity,
+  youtubeVideos = YOUTUBE_VIDEOS
 }) {
   const [searchName, setSearchName] = useState('');
   const [posFilter, setPosFilter] = useState('ALL');
@@ -2033,7 +2038,7 @@ function PlayerDBTab({
     className: "text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
   }, "チャンネル ↗")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none"
-  }, youtubeVideos.map(video => /*#__PURE__*/React.createElement("a", {
+  }, (youtubeVideos || YOUTUBE_VIDEOS).map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
     href: video.url,
     target: "_blank",

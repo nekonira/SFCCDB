@@ -1428,6 +1428,7 @@ function App() {
               combos={combos}
               setActiveTab={setActiveTab}
               setSelectedPlayer={setSelectedPlayer}
+              youtubeVideos={youtubeVideos}
             />
           )}
           {activeTab === 'players' && (
@@ -1439,6 +1440,7 @@ function App() {
               setSelectedPlayer={setSelectedPlayer}
               simulatedGlobalRarity={simulatedGlobalRarity}
               setSimulatedGlobalRarity={setSimulatedGlobalRarity}
+              youtubeVideos={youtubeVideos}
             />
           )}
           {activeTab === 'builder' && (
@@ -1582,10 +1584,12 @@ function App() {
   );
 }
 
-function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer }) {
+function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer, youtubeVideos = YOUTUBE_VIDEOS }) {
   const topPlayers = useMemo(() => {
     return [...players].sort((a, b) => b.overall - a.overall).slice(0, 4);
   }, [players]);
+
+  const displayVideos = youtubeVideos || YOUTUBE_VIDEOS;
 
   return (
     <div className="space-y-8 animate-fadeIn">
@@ -1681,7 +1685,7 @@ function HomeTab({ players, managers, combos, setActiveTab, setSelectedPlayer })
           </a>
         </div>
         <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
-          {youtubeVideos.map(video => (
+          {displayVideos.map(video => (
             <a
               key={video.id}
               href={video.url}
@@ -1738,7 +1742,8 @@ function PlayerDBTab({
   setIsCompareModalOpen,
   setSelectedPlayer,
   simulatedGlobalRarity,
-  setSimulatedGlobalRarity
+  setSimulatedGlobalRarity,
+  youtubeVideos = YOUTUBE_VIDEOS
 }) {
   const [searchName, setSearchName] = useState('');
   const [posFilter, setPosFilter] = useState('ALL');
@@ -1989,7 +1994,7 @@ function PlayerDBTab({
           </a>
         </div>
         <div className="flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
-          {youtubeVideos.map(video => (
+          {(youtubeVideos || YOUTUBE_VIDEOS).map(video => (
             <a
               key={video.id}
               href={video.url}
