@@ -13,7 +13,7 @@ const appJsx = fs.readFileSync(appJsxPath, 'utf-8');
 console.log('Transpiling src/app.jsx with Babel...');
 try {
   const result = Babel.transform(appJsx, {
-    presets: ['react'],
+    presets: [['react', { runtime: 'classic' }]],
     filename: 'app.jsx'
   });
   console.log('SUCCESS! Babel transpiled app.jsx into pure JS! Output size:', result.code.length, 'bytes');

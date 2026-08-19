@@ -33,8 +33,17 @@ $listener.Prefixes.Add("http://localhost:$port/")
 $listener.Prefixes.Add("http://127.0.0.1:$port/")
 
 try {
+    $localIp = (Get-NetIPAddress -AddressFamily IPv4 -Type Unicast | Where-Object { $_.IPAddress -notlike "127.*" -and $_.IPAddress -notlike "169.254.*" } | Select-Object -First 1).IPAddress
+    if ($localIp) {
+        $listener.Prefixes.Add("http://${localIp}:$port/")
+    }
+} catch {}
+
+try {
     $listener.Start()
-    Write-Host "Server started at http://localhost:$port/"
+    Write-Host "Server started!"
+    Write-Host "PC URL:      http://localhost:$port/"
+    if ($localIp) { Write-Host "iPhone/Wi-Fi: http://${localIp}:$port/" }
 } catch {
     Write-Host "Server is already running on port $port."
     exit

@@ -62,11 +62,23 @@ function createServerOnPort(index) {
     }
   });
 
-  server.listen(port, () => {
-    const url = `http://localhost:${port}/`;
+  server.listen(port, '0.0.0.0', () => {
+    const os = require('os');
+    let localIp = 'localhost';
+    const interfaces = os.networkInterfaces();
+    for (const name of Object.keys(interfaces)) {
+      for (const iface of interfaces[name]) {
+        if (iface.family === 'IPv4' && !iface.internal) {
+          localIp = iface.address;
+          break;
+        }
+      }
+    }
+
     console.log(`\n==================================================`);
     console.log(` Sakatsuku 2026 Database Web Server Started!`);
-    console.log(` URL: ${url}`);
+    console.log(` PC URL:      http://localhost:${port}/`);
+    console.log(` iPhone/Wi-Fi: http://${localIp}:${port}/`);
     console.log(`==================================================\n`);
   });
 }

@@ -4016,6 +4016,20 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
   ];
 
+  const sanitizeMapForStorage = (map) => {
+    if (!map) return {};
+    const sanitized = {};
+    Object.keys(map).forEach(key => {
+      const p = map[key];
+      if (p && p.id) {
+        // Strip large base64 avatarUrl strings to fit well within localStorage limits
+        const { avatarUrl, ...rest } = p;
+        sanitized[key] = rest;
+      }
+    });
+    return sanitized;
+  };
+
   const getInitialActiveTeam = () => {
     try {
       const active = localStorage.getItem('sfcc_active_team');
@@ -4032,7 +4046,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       const storedP = mapData[key];
       if (storedP && storedP.id) {
         const freshP = players.find(p => String(p.id) === String(storedP.id));
-        restored[key] = freshP || storedP;
+        restored[key] = freshP ? { ...freshP, ...storedP, avatarUrl: getPlayerAvatarUrl(freshP) } : storedP;
       }
     });
     return restored;
@@ -4098,7 +4112,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     } catch (e) {
       console.error(e);
     }
-  }, [players]);
+  }, [players, restorePlayerMap]);
 
   useEffect(() => {
     if (isInitialMount.current) {
@@ -4110,17 +4124,19 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         formationId: selectedFormation?.id,
         teamPolicy,
         builderMaxEnhanced,
-        squadMap,
-        benchMap
+        squadMap: sanitizeMapForStorage(squadMap),
+        benchMap: sanitizeMapForStorage(benchMap)
       };
       localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
     } catch (e) {
-      console.error(e);
+      console.error('sfcc_active_team save error:', e);
     }
   }, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
 
   const handleSaveTeamSlot = (slotName, existingId = null) => {
     const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
+    const sanitizedSquad = sanitizeMapForStorage(squadMap);
+    const sanitizedBench = sanitizeMapForStorage(benchMap);
     const newTeam = {
       id: existingId || ('team_' + Date.now()),
       name: nameToUse,
@@ -4129,8 +4145,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       formationName: selectedFormation?.name,
       teamPolicy,
       builderMaxEnhanced,
-      squadMap,
-      benchMap,
+      squadMap: sanitizedSquad,
+      benchMap: sanitizedBench,
       playerCount: Object.values(squadMap).filter(Boolean).length
     };
 
@@ -4143,11 +4159,12 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     setSavedSlots(updated);
     try {
       localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+      showToast(`「${nameToUse}」を保存しました！`);
     } catch (e) {
-      console.error(e);
+      console.error('sfcc_saved_teams save error:', e);
+      showToast('⚠️ チーム保存に失敗しました（ストレージ容量上限の可能性があります）');
     }
     setNewTeamName('');
-    showToast(`「${nameToUse}」を保存しました！`);
   };
 
   const handleLoadTeamSlot = (team) => {

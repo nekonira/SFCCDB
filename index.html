@@ -5,17 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
   
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="サカつく2026">
+  <meta name="theme-color" content="#070a10">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="manifest" href="./manifest.json">
+  
   <script>
     window.onerror = function(msg, url, line, col, error) {
+      if (typeof msg === 'string' && (msg.indexOf('ResizeObserver') !== -1 || msg.indexOf('Script error') !== -1)) {
+        return false;
+      }
       var root = document.getElementById('root');
-      if (root) {
+      if (root && (!root.firstElementChild || (root.firstElementChild.className && root.firstElementChild.className.indexOf('spinner') !== -1))) {
         root.innerHTML = '<div style="padding: 2rem; color: #f87171; background: #0f172a; border-radius: 16px; margin: 2rem auto; max-width: 640px; text-align: center; border: 1px solid #334155; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); font-family: system-ui, sans-serif;">' +
           '<h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fbbf24;">⚠️ サカつく2026 読み込みエラー</h2>' +
           '<p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; text-align: left; background: #1e293b; padding: 1rem; border-radius: 8px; font-family: monospace; word-break: break-all;">' +
-          msg + '<br><br><small style="color:#94a3b8">File: ' + url + ':' + line + ':' + col + '</small></p>' +
+          msg + '<br><br><small style="color:#94a3b8">File: ' + (url || 'inline') + ':' + (line || 0) + ':' + (col || 0) + '</small></p>' +
           '<button onclick="location.reload()" style="padding: 0.75rem 1.5rem; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">ページを再読み込み</button>' +
           '</div>';
       }
+      return false;
     };
   </script>
 

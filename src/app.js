@@ -1,7 +1,10 @@
-const _React = window.React || (typeof React !== 'undefined' ? React : null);
-const useState = _React ? _React.useState : null;
-const useEffect = _React ? _React.useEffect : null;
-const useMemo = _React ? _React.useMemo : null;
+const {
+  useState,
+  useEffect,
+  useMemo,
+  useRef,
+  useCallback
+} = React;
 const POSITIONS = ["GK", "CB", "LFB", "RFB", "DM", "LM", "RM", "AM", "LW", "RW", "CF"];
 const POLICIES = ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'];
 const RARITIES = ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
@@ -300,7 +303,6 @@ function SideAdBanner({
           nativeWidth = 300;
           nativeHeight = 250;
         }
-
         return /*#__PURE__*/React.createElement("div", {
           className: "w-full relative overflow-hidden rounded-lg sm:rounded-xl [container-type:inline-size]",
           style: {
@@ -731,8 +733,7 @@ const PLAYER_IMAGE_MAP = {
   "p272": "GREENWOOD_2026_IMAGE",
   "p273": "AKANJI_2026_IMAGE"
 };
-
-const getPlayerAvatarUrl = (player) => {
+const getPlayerAvatarUrl = player => {
   if (!player) return '';
   const imgVar = PLAYER_IMAGE_MAP[player.id];
   if (imgVar && window[imgVar]) return window[imgVar];
@@ -1348,13 +1349,12 @@ function App() {
       return 'players';
     }
   });
-
-  useEffect(() => {
+  const handleTabChange = tab => {
+    setActiveTab(tab);
     try {
-      localStorage.setItem('sfcc_active_tab', activeTab);
+      localStorage.setItem('sfcc_active_tab', tab);
     } catch (e) {}
-  }, [activeTab]);
-
+  };
   const getLatestPlayers = () => {
     const list = window.INITIAL_PLAYERS && window.INITIAL_PLAYERS.length > 0 ? window.INITIAL_PLAYERS : window.SAKATSUKU_DATA && window.SAKATSUKU_DATA.INITIAL_PLAYERS || INITIAL_PLAYERS || [];
     return list.map(p => ({
@@ -1371,26 +1371,23 @@ function App() {
   }, []);
   const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCR4YbOvw3pjlR5Ksordt3WQ')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
-          const fetched = data.items.map(item => {
-            const match = item.link ? item.link.match(/v=([^&]+)/) : null;
-            const videoId = item.guid ? item.guid.replace('yt:video:', '') : (match ? match[1] : '');
-            return {
-              id: videoId,
-              title: item.title,
-              thumbnail: item.thumbnail || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-              url: item.link
-            };
-          }).filter(v => v.id);
-          if (fetched.length > 0) {
-            setYoutubeVideos(fetched);
-          }
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCR4YbOvw3pjlR5Ksordt3WQ').then(res => res.json()).then(data => {
+      if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
+        const fetched = data.items.map(item => {
+          const match = item.link ? item.link.match(/v=([^&]+)/) : null;
+          const videoId = item.guid ? item.guid.replace('yt:video:', '') : match ? match[1] : '';
+          return {
+            id: videoId,
+            title: item.title,
+            thumbnail: item.thumbnail || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+            url: item.link
+          };
+        }).filter(v => v.id);
+        if (fetched.length > 0) {
+          setYoutubeVideos(fetched);
         }
-      })
-      .catch(() => {});
+      }
+    }).catch(() => {});
   }, []);
   const [managers, setManagers] = useState(() => INITIAL_MANAGERS);
   const [combos, setCombos] = useState(() => INITIAL_COMBOS);
@@ -1484,8 +1481,7 @@ function App() {
     managers: managers,
     combos: combos,
     setActiveTab: setActiveTab,
-    setSelectedPlayer: setSelectedPlayer,
-    youtubeVideos: youtubeVideos
+    setSelectedPlayer: setSelectedPlayer
   }), activeTab === 'players' && /*#__PURE__*/React.createElement(PlayerDBTab, {
     players: players,
     compareList: compareList,
@@ -1493,8 +1489,7 @@ function App() {
     setIsCompareModalOpen: setIsCompareModalOpen,
     setSelectedPlayer: setSelectedPlayer,
     simulatedGlobalRarity: simulatedGlobalRarity,
-    setSimulatedGlobalRarity: setSimulatedGlobalRarity,
-    youtubeVideos: youtubeVideos
+    setSimulatedGlobalRarity: setSimulatedGlobalRarity
   }), activeTab === 'builder' && /*#__PURE__*/React.createElement(TeamBuilderTab, {
     players: players,
     setSelectedPlayer: setSelectedPlayer,
@@ -1623,8 +1618,7 @@ function HomeTab({
   managers,
   combos,
   setActiveTab,
-  setSelectedPlayer,
-  youtubeVideos = YOUTUBE_VIDEOS
+  setSelectedPlayer
 }) {
   const topPlayers = useMemo(() => {
     return [...players].sort((a, b) => b.overall - a.overall).slice(0, 4);
@@ -1760,8 +1754,7 @@ function PlayerDBTab({
   setIsCompareModalOpen,
   setSelectedPlayer,
   simulatedGlobalRarity,
-  setSimulatedGlobalRarity,
-  youtubeVideos = YOUTUBE_VIDEOS
+  setSimulatedGlobalRarity
 }) {
   const [searchName, setSearchName] = useState('');
   const [posFilter, setPosFilter] = useState('ALL');
@@ -6922,6 +6915,22 @@ function TeamBuilderTab({
       left: '50%'
     }]
   }];
+  const sanitizeMapForStorage = map => {
+    if (!map) return {};
+    const sanitized = {};
+    Object.keys(map).forEach(key => {
+      const p = map[key];
+      if (p && p.id) {
+        // Strip large base64 avatarUrl strings to fit well within localStorage limits
+        const {
+          avatarUrl,
+          ...rest
+        } = p;
+        sanitized[key] = rest;
+      }
+    });
+    return sanitized;
+  };
   const getInitialActiveTeam = () => {
     try {
       const active = localStorage.getItem('sfcc_active_team');
@@ -6930,20 +6939,22 @@ function TeamBuilderTab({
     return null;
   };
   const activePayload = useMemo(() => getInitialActiveTeam(), []);
-
-  const restorePlayerMap = React.useCallback(mapData => {
+  const restorePlayerMap = useCallback(mapData => {
     if (!mapData) return {};
     const restored = {};
     Object.keys(mapData).forEach(key => {
       const storedP = mapData[key];
       if (storedP && storedP.id) {
         const freshP = players.find(p => String(p.id) === String(storedP.id));
-        restored[key] = freshP || storedP;
+        restored[key] = freshP ? {
+          ...freshP,
+          ...storedP,
+          avatarUrl: getPlayerAvatarUrl(freshP)
+        } : storedP;
       }
     });
     return restored;
   }, [players]);
-
   const [selectedFormation, setSelectedFormation] = useState(() => {
     if (activePayload?.formationId) {
       const fmt = FORMATIONS.find(f => f.id === activePayload.formationId);
@@ -6968,7 +6979,6 @@ function TeamBuilderTab({
   const [activeSlotModal, setActiveSlotModal] = useState(null);
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
-
   const [savedSlots, setSavedSlots] = useState(() => {
     try {
       const data = localStorage.getItem('sfcc_saved_teams');
@@ -6980,13 +6990,29 @@ function TeamBuilderTab({
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [newTeamName, setNewTeamName] = useState('');
   const [toastMsg, setToastMsg] = useState(null);
-
   const showToast = msg => {
     setToastMsg(msg);
     setTimeout(() => setToastMsg(null), 3000);
   };
-
-  const isInitialMount = React.useRef(true);
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    try {
+      const active = localStorage.getItem('sfcc_active_team');
+      if (active) {
+        const parsed = JSON.parse(active);
+        if (parsed.formationId) {
+          const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
+          if (fmt) setSelectedFormation(fmt);
+        }
+        if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
+        if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
+        if (parsed.squadMap) setSquadMap(restorePlayerMap(parsed.squadMap));
+        if (parsed.benchMap) setBenchMap(restorePlayerMap(parsed.benchMap));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [players, restorePlayerMap]);
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -6997,30 +7023,35 @@ function TeamBuilderTab({
         formationId: selectedFormation?.id,
         teamPolicy,
         builderMaxEnhanced,
-        squadMap,
-        benchMap
+        squadMap: sanitizeMapForStorage(squadMap),
+        benchMap: sanitizeMapForStorage(benchMap)
       };
       localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
     } catch (e) {
-      console.error(e);
+      console.error('sfcc_active_team save error:', e);
     }
   }, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
-
   const handleSaveTeamSlot = (slotName, existingId = null) => {
     const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
+    const sanitizedSquad = sanitizeMapForStorage(squadMap);
+    const sanitizedBench = sanitizeMapForStorage(benchMap);
     const newTeam = {
-      id: existingId || ('team_' + Date.now()),
+      id: existingId || 'team_' + Date.now(),
       name: nameToUse,
-      updatedAt: new Date().toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+      updatedAt: new Date().toLocaleString('ja-JP', {
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      }),
       formationId: selectedFormation?.id,
       formationName: selectedFormation?.name,
       teamPolicy,
       builderMaxEnhanced,
-      squadMap,
-      benchMap,
+      squadMap: sanitizedSquad,
+      benchMap: sanitizedBench,
       playerCount: Object.values(squadMap).filter(Boolean).length
     };
-
     let updated;
     if (existingId) {
       updated = savedSlots.map(s => s.id === existingId ? newTeam : s);
@@ -7030,13 +7061,13 @@ function TeamBuilderTab({
     setSavedSlots(updated);
     try {
       localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+      showToast(`「${nameToUse}」を保存しました！`);
     } catch (e) {
-      console.error(e);
+      console.error('sfcc_saved_teams save error:', e);
+      showToast('⚠️ チーム保存に失敗しました（ストレージ容量上限の可能性があります）');
     }
     setNewTeamName('');
-    showToast(`「${nameToUse}」を保存しました！`);
   };
-
   const handleLoadTeamSlot = team => {
     if (!team) return;
     if (team.formationId) {
@@ -7050,7 +7081,6 @@ function TeamBuilderTab({
     setIsSaveModalOpen(false);
     showToast(`「${team.name}」を読み込みました！`);
   };
-
   const handleDeleteTeamSlot = teamId => {
     const updated = savedSlots.filter(s => s.id !== teamId);
     setSavedSlots(updated);
@@ -7061,7 +7091,6 @@ function TeamBuilderTab({
     }
     showToast('スロットを削除しました');
   };
-
   const handleClearSquad = () => {
     if (window.confirm('配置されている選手をすべてクリアしますか？')) {
       setSquadMap({});
@@ -7198,11 +7227,9 @@ function TeamBuilderTab({
     const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
     const brazilBonusPct = brazilPlayerCount * 2;
 
-    // ボーナス率計算 (特定項目特化コンボ ＋ ブラジル国籍4項目能力ボーナス)
-    const rawBuffSum = activeComboData.buffs ? activeComboData.buffs.reduce((sum, b) => sum + (parseInt(b.val.replace(/[^0-9]/g, '')) || 80), 0) : 320;
-    const baseComboSum = allReqsFulfilled ? rawBuffSum : 0;
+    // ボーナス率計算 (特定4項目特化コンボ ＋ ブラジル国籍4項目能力ボーナス)
+    const baseComboSum = allReqsFulfilled ? 320 : 0; // 320 / 18 = 17.8%
     const brazilBonusSum = allReqsFulfilled && isSelecao ? brazilPlayerCount * 8 : 0;
-    const baseComboBonusPct = Math.round((rawBuffSum / 18) * 10) / 10;
     const totalComboBoostPct = allReqsFulfilled ? Math.round((baseComboSum + brazilBonusSum) / 18 * 10) / 10 : 0;
     const comboFactor = 1 + totalComboBoostPct / 100;
 
@@ -7223,7 +7250,7 @@ function TeamBuilderTab({
       isSelecao,
       brazilPlayerCount,
       brazilBonusPct,
-      baseComboBonusPct,
+      baseComboBonusPct: 17.8,
       totalComboBoostPct,
       boostedOverall,
       totalGainedOverall,
@@ -7533,13 +7560,9 @@ function TeamBuilderTab({
         className: "py-2.5 px-3 font-bold text-white whitespace-nowrap"
       }, fmt.name), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 whitespace-nowrap"
-      }, combo ? /*#__PURE__*/React.createElement("div", {
-        className: "flex items-center gap-1.5"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: `px-1.5 py-0.5 rounded text-[9px] ${getRankBadgeStyle(combo.rank || '金')}`
-      }, combo.rank || '金'), /*#__PURE__*/React.createElement("span", {
-        className: combo.rank === '銀' ? 'text-slate-200 font-extrabold' : 'text-amber-400 font-extrabold'
-      }, combo.name)) : /*#__PURE__*/React.createElement("span", {
+      }, combo ? /*#__PURE__*/React.createElement("span", {
+        className: "text-amber-400 font-extrabold flex items-center gap-1"
+      }, /*#__PURE__*/React.createElement("span", null, "🏆"), /*#__PURE__*/React.createElement("span", null, combo.name)) : /*#__PURE__*/React.createElement("span", {
         className: "text-slate-500"
       }, "-")), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap"
@@ -7689,7 +7712,7 @@ function TeamBuilderTab({
     className: "text-slate-400 font-bold"
   }, "フィールド上ブラジル選手:"), /*#__PURE__*/React.createElement("span", {
     className: "px-2 py-0.5 rounded bg-emerald-500/20 text-[#00FF66] border border-[#00FF66]/30 font-black font-num"
-  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%))"))), /*#__PURE__*/React.createElement("div", {
+  }, comboValidation.brazilPlayerCount, "名 (上記4能力 +", comboValidation.brazilBonusPct, "%)"))))), /*#__PURE__*/React.createElement("div", {
     className: "relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950"
   }, /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 pointer-events-none opacity-25"
@@ -7941,7 +7964,9 @@ function TeamBuilderTab({
     placeholder: `チーム名 (例: マイチーム ${savedSlots.length + 1})`,
     value: newTeamName,
     onChange: e => setNewTeamName(e.target.value),
-    onKeyDown: e => { if (e.key === 'Enter') handleSaveTeamSlot(newTeamName); },
+    onKeyDown: e => {
+      if (e.key === 'Enter') handleSaveTeamSlot(newTeamName);
+    },
     className: "flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
   }), /*#__PURE__*/React.createElement("button", {
     onClick: () => handleSaveTeamSlot(newTeamName),
@@ -7984,7 +8009,7 @@ function TeamBuilderTab({
   }, /*#__PURE__*/React.createElement(Icon, {
     name: "trash",
     className: "w-4 h-4"
-  }))))))))))))
+  }))))))))));
 }
 function DataManagerTab({
   players,
@@ -8607,13 +8632,13 @@ function PlayerCompareModal({
     }]
   }];
 
+  // 1位(赤 ★BEST)、2位(黄 2ND)、3位(水色 3RD) のランク判定・バッジ・背景色ヘルパー（比較人数に応じて表示レベルを自動変更）
   const renderRankBadge = (val, allVals) => {
     if (!val || val === 0 || !allVals || allVals.length < 2) return null;
     const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
     const rank = sortedUnique.indexOf(val) + 1;
     const maxRank = Math.min(3, allVals.length - 1);
     if (rank > maxRank) return null;
-
     if (rank === 1) {
       return /*#__PURE__*/React.createElement("span", {
         className: "text-[9px] font-black text-red-200 bg-red-600/45 px-1.5 py-0.5 rounded border border-red-400/70 shadow-sm"
@@ -8635,7 +8660,6 @@ function PlayerCompareModal({
     const rank = sortedUnique.indexOf(val) + 1;
     const maxRank = Math.min(3, allVals.length - 1);
     if (rank > maxRank) return '';
-
     if (rank === 1) return 'bg-red-600/35 border-b border-red-400/50 shadow-[inset_0_0_15px_rgba(239,68,68,0.3)]';
     if (rank === 2) return 'bg-amber-500/35 border-b border-amber-300/50 shadow-[inset_0_0_15px_rgba(245,158,11,0.3)]';
     if (rank === 3) return 'bg-cyan-500/35 border-b border-cyan-300/50 shadow-[inset_0_0_15px_rgba(6,182,212,0.3)]';
