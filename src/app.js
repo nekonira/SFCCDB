@@ -7587,16 +7587,16 @@ function TeamBuilderTab({
   }, /*#__PURE__*/React.createElement("tr", {
     className: "border-b border-slate-800 text-slate-400 font-bold bg-slate-900"
   }, /*#__PURE__*/React.createElement("th", {
+    className: "py-2.5 px-3 text-center whitespace-nowrap"
+  }, "選択"), /*#__PURE__*/React.createElement("th", {
     className: "py-2.5 px-3 w-28 whitespace-nowrap"
   }, "ポリシー"), /*#__PURE__*/React.createElement("th", {
-    className: "py-2.5 px-3 whitespace-nowrap"
-  }, "フォーメーション名"), /*#__PURE__*/React.createElement("th", {
     className: "py-2.5 px-3 whitespace-nowrap"
   }, "対象コンボ名"), /*#__PURE__*/React.createElement("th", {
     className: "py-2.5 px-3 whitespace-nowrap hidden md:table-cell"
   }, "コンボ能力ボーナス"), /*#__PURE__*/React.createElement("th", {
-    className: "py-2.5 px-3 text-center whitespace-nowrap"
-  }, "選択"))), /*#__PURE__*/React.createElement("tbody", {
+    className: "py-2.5 px-3 whitespace-nowrap font-bold text-white"
+  }, "フォーメーション名"))), /*#__PURE__*/React.createElement("tbody", {
     className: "divide-y divide-slate-800/60"
   }, ['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
     const matchedFormations = FORMATIONS.filter(fmt => {
@@ -7610,19 +7610,24 @@ function TeamBuilderTab({
     return matchedFormations.map(fmt => {
       const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
       const isSelected = selectedFormation.id === fmt.id;
-      const isComboActive = checkFormationComboActive(fmt);
       const isSilver = combo?.rank === '銀';
       return /*#__PURE__*/React.createElement("tr", {
         key: fmt.id,
         onClick: () => handleSelectFormation(fmt),
         className: `cursor-pointer transition-colors ${isSelected ? 'bg-emerald-500/15 font-bold border-l-4 border-l-[#00FF66]' : 'hover:bg-slate-900/80'}`
       }, /*#__PURE__*/React.createElement("td", {
+        className: "py-2.5 px-3 text-center whitespace-nowrap"
+      }, /*#__PURE__*/React.createElement("button", {
+        onClick: e => {
+          e.stopPropagation();
+          handleSelectFormation(fmt);
+        },
+        className: `px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'}`
+      }, isSelected ? '✓ 選択中' : '選択')), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 whitespace-nowrap"
       }, /*#__PURE__*/React.createElement("span", {
         className: `text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(policyGroup)}`
       }, policyGroup)), /*#__PURE__*/React.createElement("td", {
-        className: "py-2.5 px-3 font-bold text-white whitespace-nowrap"
-      }, fmt.name), /*#__PURE__*/React.createElement("td", {
         className: "py-2.5 px-3 whitespace-nowrap"
       }, combo ? /*#__PURE__*/React.createElement("div", {
         className: "flex items-center gap-1.5"
@@ -7644,14 +7649,8 @@ function TeamBuilderTab({
       }, b.val)))) : /*#__PURE__*/React.createElement("span", {
         className: "text-slate-500 text-[11px]"
       }, "基本フォーメーション (コンボなし)")), /*#__PURE__*/React.createElement("td", {
-        className: "py-2.5 px-3 text-center whitespace-nowrap"
-      }, /*#__PURE__*/React.createElement("button", {
-        onClick: e => {
-          e.stopPropagation();
-          handleSelectFormation(fmt);
-        },
-        className: `px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'}`
-      }, isSelected ? '✓ 選択中' : '選択')));
+        className: "py-2.5 px-3 font-bold text-white whitespace-nowrap"
+      }, fmt.name));
     });
   }))))), activeComboData && (() => {
     const isSilver = activeComboData.rank === '銀';

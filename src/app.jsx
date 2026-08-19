@@ -4727,11 +4727,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
           <table className="w-full text-left text-xs border-collapse">
             <thead className="sticky top-0 z-10">
               <tr className="border-b border-slate-800 text-slate-400 font-bold bg-slate-900">
+                <th className="py-2.5 px-3 text-center whitespace-nowrap">選択</th>
                 <th className="py-2.5 px-3 w-28 whitespace-nowrap">ポリシー</th>
-                <th className="py-2.5 px-3 whitespace-nowrap">フォーメーション名</th>
                 <th className="py-2.5 px-3 whitespace-nowrap">対象コンボ名</th>
                 <th className="py-2.5 px-3 whitespace-nowrap hidden md:table-cell">コンボ能力ボーナス</th>
-                <th className="py-2.5 px-3 text-center whitespace-nowrap">選択</th>
+                <th className="py-2.5 px-3 whitespace-nowrap font-bold text-white">フォーメーション名</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60">
@@ -4749,7 +4749,6 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                 return matchedFormations.map((fmt) => {
                   const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
                   const isSelected = selectedFormation.id === fmt.id;
-                  const isComboActive = checkFormationComboActive(fmt);
                   const isSilver = combo?.rank === '銀';
 
                   return (
@@ -4761,19 +4760,30 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                         : 'hover:bg-slate-900/80'
                         }`}
                     >
-                      {/* ポリシー名 */}
+                      {/* 1. 選択ボタン */}
+                      <td className="py-2.5 px-3 text-center whitespace-nowrap">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSelectFormation(fmt);
+                          }}
+                          className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected
+                            ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20'
+                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                            }`}
+                        >
+                          {isSelected ? '✓ 選択中' : '選択'}
+                        </button>
+                      </td>
+
+                      {/* 2. ポリシー名 */}
                       <td className="py-2.5 px-3 whitespace-nowrap">
                         <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(policyGroup)}`}>
                           {policyGroup}
                         </span>
                       </td>
 
-                      {/* フォーメーション名 */}
-                      <td className="py-2.5 px-3 font-bold text-white whitespace-nowrap">
-                        {fmt.name}
-                      </td>
-
-                      {/* 対象コンボ名 */}
+                      {/* 3. 対象コンボ名 */}
                       <td className="py-2.5 px-3 whitespace-nowrap">
                         {combo ? (
                           <div className="flex items-center gap-1.5">
@@ -4790,7 +4800,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                         )}
                       </td>
 
-                      {/* コンボ能力ボーナス */}
+                      {/* 4. コンボ能力ボーナス */}
                       <td className="py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap">
                         {combo ? (
                           <div className="flex items-center gap-1.5 flex-wrap">
@@ -4805,20 +4815,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                         )}
                       </td>
 
-                      {/* 選択ボタン */}
-                      <td className="py-2.5 px-3 text-center whitespace-nowrap">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleSelectFormation(fmt);
-                          }}
-                          className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected
-                            ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20'
-                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
-                            }`}
-                        >
-                          {isSelected ? '✓ 選択中' : '選択'}
-                        </button>
+                      {/* 5. フォーメーション名 */}
+                      <td className="py-2.5 px-3 font-bold text-white whitespace-nowrap">
+                        {fmt.name}
                       </td>
                     </tr>
                   );
