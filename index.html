@@ -5,39 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
   
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="サカつく2026">
-  <link rel="icon" type="image/png" sizes="192x192" href="./public/icon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
-  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <link rel="manifest" href="./manifest.json">
-  
   <script>
-    if (location.search.indexOf('reset=1') !== -1) {
-      try { localStorage.clear(); } catch(e) {}
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, '', location.pathname);
-      }
-    }
-
-    window.onerror = function(msg, url, line, col, error) {
-      if (typeof msg === 'string' && (msg.indexOf('ResizeObserver') !== -1 || msg.indexOf('Script error') !== -1)) {
-        return false;
-      }
-      var root = document.getElementById('root');
-      if (root && (!root.firstElementChild || (root.firstElementChild.className && root.firstElementChild.className.indexOf('spinner') !== -1))) {
-        root.innerHTML = '<div style="padding: 2rem; color: #f87171; background: #0f172a; border-radius: 16px; margin: 2rem auto; max-width: 640px; text-align: center; border: 1px solid #334155; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5); font-family: system-ui, sans-serif;">' +
-          '<h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fbbf24;">⚠️ サカつく2026 読み込みエラー</h2>' +
-          '<p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; text-align: left; background: #1e293b; padding: 1rem; border-radius: 8px; font-family: monospace; word-break: break-all;">' +
-          msg + '<br><br><small style="color:#94a3b8">File: ' + (url || 'inline') + ':' + (line || 0) + ':' + (col || 0) + '</small></p>' +
-          '<div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">' +
-          '<button onclick="location.reload()" style="padding: 0.75rem 1.25rem; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">再読み込み</button>' +
-          '<button onclick="try{localStorage.clear();}catch(e){} location.reload();" style="padding: 0.75rem 1.25rem; background: #475569; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">キャッシュ消去して再起動</button>' +
-          '</div></div>';
-      }
-      return false;
-    };
+    try { localStorage.clear(); } catch(e) {}
   </script>
 
   <!-- Local Libraries -->
@@ -46,21 +15,13 @@
   <script src="./src/lib/tailwind.js"></script>
 
   <style>
-    body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 0; }
+    body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
     .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
     .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .spinner { display: inline-block; width: 40px; height: 40px; border: 4px solid rgba(56, 189, 248, 0.2); border-top-color: #38bdf8; border-radius: 50%; animation: spin 1s linear infinite; }
   </style>
 </head>
 <body class="bg-[#070a10] text-slate-100 min-h-screen">
-  <div id="root">
-    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh; padding: 2rem; text-align: center;">
-      <div class="spinner" style="margin-bottom: 1.5rem;"></div>
-      <h2 style="font-size: 1.5rem; color: #38bdf8; margin: 0 0 0.5rem 0;">サカつく2026 データベース</h2>
-      <p style="color: #94a3b8; margin: 0;">データを読み込んでいます...</p>
-    </div>
-  </div>
+  <div id="root"></div>
 
   <!-- 1. Player Photos (145 Image Files) -->
   <script src="./src/data/akanji2026Image.js"></script>
@@ -345,9 +306,9 @@
   <script src="./src/data/mockData.js"></script>
 
   <!-- 3. Pure Transpiled React Application -->
-  <script src="./src/app.js?v=1786777100007"></script>
+  <script src="./src/app.js?v=1787147165875"></script>
 
   <!-- 4. React App Mount Script -->
-  <script src="./src/main.js?v=1786777100007"></script>
+  <script src="./src/main.js?v=1787147165875"></script>
 </body>
 </html>
