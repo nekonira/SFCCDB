@@ -4275,11 +4275,6 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     setBenchMap(newBench);
   };
 
-  const handleClearSquad = () => {
-    setSquadMap({});
-    setBenchMap({});
-  };
-
   const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
   const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
 
@@ -5413,7 +5408,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
       key: 'defense', catName: 'DEF', label: isGK ? 'GK能力 (DEF)' : 'ディフェンス (DEF)', items: [
         { name: isGK ? 'セービング' : 'タックル', val: adjustedPlayer.detailStats?.defense?.tackle || 0 },
         { name: isGK ? '反応速度' : 'パスカット', val: adjustedPlayer.detailStats?.defense?.interception || 0 },
-        { name: isGK ? '1対1' : 'マーク', val: adjustedPlayer.detailStats?.defense?.marking || 0 }
+        { name: isGK ? '1VS1' : 'マーク', val: adjustedPlayer.detailStats?.defense?.marking || 0 }
       ]
     },
     {
@@ -5834,7 +5829,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
       details: [
         { subKey: 'tackle', label: 'タックル', gkLabel: 'セービング' },
         { subKey: 'interception', label: 'パスカット', gkLabel: '反応速度' },
-        { subKey: 'marking', label: 'マーク', gkLabel: '1対1' }
+        { subKey: 'marking', label: 'マーク', gkLabel: '1VS1' }
       ]
     },
     {
@@ -6196,10 +6191,27 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                         return 0;
                       });
 
+                      let rowLabelContent = <>▶ {dt.label}</>;
+                      if (grp.key === 'defense') {
+                        const hasGK = adjustedCompareList.some(p => p.mainPosition === 'GK' || p.category === 'GK');
+                        const hasFP = adjustedCompareList.some(p => p.mainPosition !== 'GK' && p.category !== 'GK');
+                        if (hasGK && !hasFP) {
+                          rowLabelContent = <>▶ {dt.gkLabel || dt.label}</>;
+                        } else if (hasGK && hasFP) {
+                          rowLabelContent = (
+                            <span className="leading-tight inline-block">
+                              ▶ {dt.label}
+                              <br />
+                              <span className="text-[9px] sm:text-xs text-amber-300 font-normal pl-3">/ {dt.gkLabel || dt.label}</span>
+                            </span>
+                          );
+                        }
+                      }
+
                       return (
                         <tr key={dt.subKey} className="border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors">
-                          <td className="p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md sm:whitespace-nowrap">
-                            ▶ {dt.label}
+                          <td className="p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md whitespace-normal">
+                            {rowLabelContent}
                           </td>
                           {adjustedCompareList.map((p, idx) => {
                             const val = detailVals[idx];

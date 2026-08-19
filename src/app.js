@@ -8165,7 +8165,7 @@ function PlayerDetailModal({
       name: isGK ? '反応速度' : 'パスカット',
       val: adjustedPlayer.detailStats?.defense?.interception || 0
     }, {
-      name: isGK ? '1対1' : 'マーク',
+      name: isGK ? '1VS1' : 'マーク',
       val: adjustedPlayer.detailStats?.defense?.marking || 0
     }]
   }, {
@@ -8568,7 +8568,7 @@ function PlayerCompareModal({
     }, {
       subKey: 'marking',
       label: 'マーク',
-      gkLabel: '1対1'
+      gkLabel: '1VS1'
     }]
   }, {
     key: 'physical',
@@ -8880,12 +8880,26 @@ function PlayerCompareModal({
       }
       return 0;
     });
+    let rowLabelContent = /*#__PURE__*/React.createElement(React.Fragment, null, "▶ ", dt.label);
+    if (grp.key === 'defense') {
+      const hasGK = adjustedCompareList.some(p => p.mainPosition === 'GK' || p.category === 'GK');
+      const hasFP = adjustedCompareList.some(p => p.mainPosition !== 'GK' && p.category !== 'GK');
+      if (hasGK && !hasFP) {
+        rowLabelContent = /*#__PURE__*/React.createElement(React.Fragment, null, "▶ ", dt.gkLabel || dt.label);
+      } else if (hasGK && hasFP) {
+        rowLabelContent = /*#__PURE__*/React.createElement("span", {
+          className: "leading-tight inline-block"
+        }, "▶ ", dt.label, /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("span", {
+          className: "text-[9px] sm:text-xs text-amber-300 font-normal pl-3"
+        }, "/ ", dt.gkLabel || dt.label));
+      }
+    }
     return /*#__PURE__*/React.createElement("tr", {
       key: dt.subKey,
       className: "border-b border-slate-800/40 hover:bg-slate-800/30 transition-colors"
     }, /*#__PURE__*/React.createElement("td", {
-      className: "p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md sm:whitespace-nowrap"
-    }, "▶ ", dt.label), adjustedCompareList.map((p, idx) => {
+      className: "p-1 sm:p-2.5 text-[10px] sm:text-sm font-bold text-slate-200 pl-2 sm:pl-5 sticky left-0 z-10 bg-slate-950 border-r border-slate-800 shadow-md whitespace-normal"
+    }, rowLabelContent), adjustedCompareList.map((p, idx) => {
       const val = detailVals[idx];
       return /*#__PURE__*/React.createElement("td", {
         key: p.id,
