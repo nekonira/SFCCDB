@@ -264,7 +264,11 @@ const explicitMap = {
   p260: 'DIAS_GIFT_2026_IMAGE',
   p261: 'HIRATSUKA_GIFT_2026_IMAGE',
   p262: 'KAWAMOTO_PACK_2026_IMAGE',
-  p263: 'LEO_CEARA_2026_IMAGE'
+  p263: 'LEO_CEARA_2026_IMAGE',
+  p270: 'ALISSON_2026_IMAGE',
+  p271: 'ENDRICK_2026_IMAGE',
+  p272: 'GREENWOOD_2026_IMAGE',
+  p273: 'AKANJI_2026_IMAGE'
 };
 
 const mapJson = JSON.stringify(explicitMap, null, 2);
@@ -285,8 +289,8 @@ function replaceResolverInFile(filePath) {
   if (!fs.existsSync(filePath)) return;
   let code = fs.readFileSync(filePath, 'utf-8');
 
-  // Replace from getPlayerAvatarUrl start to window.getPlayerAvatarUrl end
-  const startMarker = "const getPlayerAvatarUrl =";
+  // Replace from PLAYER_IMAGE_MAP start to window.getPlayerAvatarUrl end
+  const startMarker = "const PLAYER_IMAGE_MAP =";
   const endMarker = "window.getPlayerAvatarUrl = getPlayerAvatarUrl;";
 
   const startIdx = code.indexOf(startMarker);
