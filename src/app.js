@@ -6934,25 +6934,36 @@ function TeamBuilderTab({
   const getInitialActiveTeam = () => {
     try {
       const active = localStorage.getItem('sfcc_active_team');
-      if (active) return JSON.parse(active);
+      if (active) {
+        const parsed = JSON.parse(active);
+        if (parsed && typeof parsed === 'object') return parsed;
+      }
     } catch (e) {}
     return null;
   };
   const activePayload = useMemo(() => getInitialActiveTeam(), []);
   const restorePlayerMap = useCallback(mapData => {
-    if (!mapData) return {};
+    if (!mapData || typeof mapData !== 'object') return {};
     const restored = {};
-    Object.keys(mapData).forEach(key => {
-      const storedP = mapData[key];
-      if (storedP && storedP.id) {
-        const freshP = players.find(p => String(p.id) === String(storedP.id));
-        restored[key] = freshP ? {
-          ...freshP,
-          ...storedP,
-          avatarUrl: getPlayerAvatarUrl(freshP)
-        } : storedP;
-      }
-    });
+    try {
+      Object.keys(mapData).forEach(key => {
+        const storedP = mapData[key];
+        if (storedP && typeof storedP === 'object' && storedP.id) {
+          const freshP = Array.isArray(players) ? players.find(p => p && (String(p.id) === String(storedP.id) || p.name && storedP.name && p.name === storedP.name)) : null;
+          if (freshP) {
+            restored[key] = {
+              ...storedP,
+              ...freshP,
+              avatarUrl: getPlayerAvatarUrl(freshP)
+            };
+          } else if (storedP.baseStats) {
+            restored[key] = storedP;
+          }
+        }
+      });
+    } catch (e) {
+      console.error('restorePlayerMap error:', e);
+    }
     return restored;
   }, [players]);
   const [selectedFormation, setSelectedFormation] = useState(() => {
@@ -6982,10 +6993,14 @@ function TeamBuilderTab({
   const [savedSlots, setSavedSlots] = useState(() => {
     try {
       const data = localStorage.getItem('sfcc_saved_teams');
-      return data ? JSON.parse(data) : [];
+      if (data) {
+        const parsed = JSON.parse(data);
+        if (Array.isArray(parsed)) return parsed;
+      }
     } catch (e) {
-      return [];
+      console.error('savedSlots init error:', e);
     }
+    return [];
   });
   const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
   const [newTeamName, setNewTeamName] = useState('');

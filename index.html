@@ -13,6 +13,13 @@
   <link rel="manifest" href="./manifest.json">
   
   <script>
+    if (location.search.indexOf('reset=1') !== -1) {
+      try { localStorage.clear(); } catch(e) {}
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', location.pathname);
+      }
+    }
+
     window.onerror = function(msg, url, line, col, error) {
       if (typeof msg === 'string' && (msg.indexOf('ResizeObserver') !== -1 || msg.indexOf('Script error') !== -1)) {
         return false;
@@ -23,8 +30,10 @@
           '<h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fbbf24;">⚠️ サカつく2026 読み込みエラー</h2>' +
           '<p style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; text-align: left; background: #1e293b; padding: 1rem; border-radius: 8px; font-family: monospace; word-break: break-all;">' +
           msg + '<br><br><small style="color:#94a3b8">File: ' + (url || 'inline') + ':' + (line || 0) + ':' + (col || 0) + '</small></p>' +
-          '<button onclick="location.reload()" style="padding: 0.75rem 1.5rem; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">ページを再読み込み</button>' +
-          '</div>';
+          '<div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">' +
+          '<button onclick="location.reload()" style="padding: 0.75rem 1.25rem; background: #2563eb; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">再読み込み</button>' +
+          '<button onclick="try{localStorage.clear();}catch(e){} location.reload();" style="padding: 0.75rem 1.25rem; background: #475569; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">キャッシュ消去して再起動</button>' +
+          '</div></div>';
       }
       return false;
     };
