@@ -8,10 +8,7 @@ $localHtml = @"
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
-  
-  <script>
-    try { localStorage.clear(); } catch(e) {}
-  </script>
+
 
   <!-- Local & Offline Robust Libraries (Zero CDN Dependency) -->
   <script src="./src/lib/react.min.js"></script>
