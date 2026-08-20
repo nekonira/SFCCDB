@@ -246,7 +246,7 @@ window.INITIAL_PLAYERS = [
     abilities: [
       { name: '砕氷船', rank: '金', description: '発動条件：好調　/　冷静さ・突破力・ボールタッチUP' },
       { name: '突破からの強撃', rank: '銀', description: '発動条件：絶好調　/　キック力・突破力UP' },
-      { name: 'ゴール前の嗅覚', rank: '銅', description: '発動条件：絶好調　/　決定力・敏捷性UP' }
+      { name: 'ゴール前の嗅覚', rank: '銅', description: '発動条件：好調　/　決定力・敏捷性UP' }
     ],
     avatarUrl: ''
   },
@@ -786,7 +786,7 @@ window.INITIAL_PLAYERS = [
     abilities: [
       { name: 'ランニングスナイパー', rank: '金', description: '発動条件：好調　/　決定力・キック力・走力UP' },
       { name: 'ムービングスナイパー', rank: '銀', description: '発動条件：好調　/　冷静さ・敏捷性UP' },
-      { name: 'ゴール前の嗅覚', rank: '銅', description: '発動条件：絶好調　/　決定力・敏捷性UP' }
+      { name: 'ゴール前の嗅覚', rank: '銅', description: '発動条件：好調　/　決定力・敏捷性UP' }
     ],
     avatarUrl: ''
   },
@@ -6288,7 +6288,7 @@ window.INITIAL_PLAYERS = [
     "skill": { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
     "abilities": [
       { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
-      { name: '全方向の守護', rank: '銀', description: '発動条件：途中出場　/　反応速度・ジャンプUP' }
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' }
     ],
     "avatarUrl": ""
   },
@@ -6406,7 +6406,7 @@ window.INITIAL_PLAYERS = [
     },
     "skill": { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
     "abilities": [
-      { name: '全方向の守護', rank: '銀', description: '発動条件：途中出場　/　反応速度・ジャンプUP' },
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
       { name: '強靭な守護神', rank: '銀', description: '発動条件：好調　/　セービング・コンタクトUP' }
     ],
     "avatarUrl": ""
@@ -7002,7 +7002,7 @@ window.INITIAL_PLAYERS = [
     "skill": { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
     "abilities": [
       { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
-      { name: '全方向の守護', rank: '銀', description: '発動条件：途中出場　/　反応速度・ジャンプUP' }
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' }
     ],
     "avatarUrl": ""
   },
@@ -7239,7 +7239,7 @@ window.INITIAL_PLAYERS = [
     },
     "skill": { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
     "abilities": [
-      { name: '全方向の守護', rank: '銀', description: '発動条件：途中出場　/　反応速度・ジャンプUP' },
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
       { name: 'パワーアジリティ', rank: '銀', description: '発動条件：好調　/　コンタクト・敏捷性UP' }
     ],
     "avatarUrl": ""
@@ -10333,7 +10333,7 @@ window.INITIAL_PLAYERS = [
     },
     playTendencies: {
       attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
-      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
+      shortPass: 0, longPass: 2, throughPass: 1, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
     skill: { name: 'ファストフィード', rank: '銅', description: '発動エリア：中中・後左中右　/　発動条件：CFの位置に居る選手へのロングパス時　/　ロングパス・キック精度UP　/　成功時に受け手のトラップ発生確率UP' },
@@ -14571,7 +14571,823 @@ window.INITIAL_PLAYERS = [
       { name: 'ピッチの分断者', rank: '銀', description: '発動条件：絶好調　/　パスカット・スタミナUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p274',
+    name: '本多勇喜(2026)',
+    readingName: 'ほんだゆうき',
+    category: 'DF',
+    mainPosition: 'LFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '日本',
+    policy: 'リアクション',
+    playStyle: 'クリエイティブLFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 6238,
+    maxOverall: 14399,
+    baseStats: { shoot: 1001, pass: 1315, dribble: 1242, defense: 1035, physical: 1201, speed: 648 },
+    detailStats: {
+      shoot: { finishing: 319, power: 358, composure: 324 },
+      pass: { shortPass: 438, longPass: 442, accuracy: 435 },
+      dribble: { breakout: 412, keeping: 423, ballTouch: 407 },
+      defense: { tackle: 348, interception: 343, marking: 344 },
+      physical: { jumping: 367, contact: 407, stamina: 427 },
+      speed: { running: 261, agility: 387 }
+    },
+    maxEnhanced: {
+      overall: 14399,
+      baseStats: { shoot: 2498, pass: 2884, dribble: 2775, defense: 2640, physical: 2770, speed: 1718 },
+      detailStats: {
+        shoot: { finishing: 818, power: 857, composure: 823 },
+        pass: { shortPass: 961, longPass: 965, accuracy: 958 },
+        dribble: { breakout: 923, keeping: 934, ballTouch: 918 },
+        defense: { tackle: 883, interception: 878, marking: 879 },
+        physical: { jumping: 878, contact: 930, stamina: 962 },
+        speed: { running: 796, agility: 922 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: 'コントロールフィード', rank: '銅', description: '発動エリア：中左右・後左右　/　発動条件：ロングパス時　/　ロングパス・キック精度UP' },
+    abilities: [
+      { name: '長短のキック', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ロングパスUP' },
+      { name: '力強いボールキープ', rank: '銀', description: '発動条件：好調　/　キープ力・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p275',
+    name: 'クリスティアン・プリシッチ',
+    readingName: 'くりすてぃあんぷりしっち',
+    category: 'FW',
+    mainPosition: 'RW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'アメリカ合衆国',
+    policy: 'ポゼッション',
+    playStyle: 'ドリブラーRW',
+    playStyleLevel: 'Ⅱ',
+    overall: 6617,
+    maxOverall: 15169,
+    baseStats: { shoot: 1322, pass: 1302, dribble: 1384, defense: 878, physical: 1044, speed: 844 },
+    detailStats: {
+      shoot: { finishing: 460, power: 419, composure: 443 },
+      pass: { shortPass: 435, longPass: 433, accuracy: 434 },
+      dribble: { breakout: 458, keeping: 460, ballTouch: 466 },
+      defense: { tackle: 302, interception: 295, marking: 281 },
+      physical: { jumping: 306, contact: 363, stamina: 375 },
+      speed: { running: 405, agility: 439 }
+    },
+    maxEnhanced: {
+      overall: 15169,
+      baseStats: { shoot: 2879, pass: 2871, dribble: 2977, defense: 2387, physical: 2589, speed: 1914 },
+      detailStats: {
+        shoot: { finishing: 983, power: 930, composure: 966 },
+        pass: { shortPass: 958, longPass: 956, accuracy: 957 },
+        dribble: { breakout: 993, keeping: 995, ballTouch: 989 },
+        defense: { tackle: 813, interception: 794, marking: 780 },
+        physical: { jumping: 817, contact: 874, stamina: 898 },
+        speed: { running: 940, agility: 974 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: { name: '切り裂くドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・走力UP' },
+    abilities: [
+      { name: '失わないドリブラー', rank: '銀', description: '発動条件：絶好調　/　突破力・キープ力UP' },
+      { name: 'ゴール前の落ち着き', rank: '銀', description: '発動条件：好調　/　決定力・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p276',
+    name: 'ジェイ・イツェス',
+    readingName: 'じぇいいつぇす',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'インドネシア',
+    policy: 'ポゼッション',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5812,
+    maxOverall: 14941,
+    baseStats: { shoot: 940, pass: 990, dribble: 1141, defense: 1203, physical: 1146, speed: 678 },
+    detailStats: {
+      shoot: { finishing: 283, power: 339, composure: 318 },
+      pass: { shortPass: 345, longPass: 339, accuracy: 306 },
+      dribble: { breakout: 367, keeping: 380, ballTouch: 394 },
+      defense: { tackle: 395, interception: 406, marking: 402 },
+      physical: { jumping: 391, contact: 381, stamina: 374 },
+      speed: { running: 330, agility: 348 }
+    },
+    maxEnhanced: {
+      overall: 14941,
+      baseStats: { shoot: 2437, pass: 2559, dribble: 2674, defense: 2808, physical: 2739, speed: 1724 },
+      detailStats: {
+        shoot: { finishing: 782, power: 838, composure: 817 },
+        pass: { shortPass: 868, longPass: 862, accuracy: 829 },
+        dribble: { breakout: 878, keeping: 891, ballTouch: 905 },
+        defense: { tackle: 930, interception: 941, marking: 937 },
+        physical: { jumping: 926, contact: 916, stamina: 897 },
+        speed: { running: 853, agility: 871 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '冴え渡るインターセプト', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・敏捷性UP' },
+    abilities: [
+      { name: 'インターセプター', rank: '銀', description: '発動条件：好調　/　パスカット・マークUP' },
+      { name: 'パワフルジャンパー', rank: '銅', description: '発動条件：途中出場　/　ジャンプ・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p277',
+    name: 'チャナティップ・ソングラシン',
+    readingName: 'ちゃなてぃっぷそんぐらしん',
+    category: 'MF',
+    mainPosition: 'AM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'タイ',
+    policy: 'ムービング',
+    playStyle: 'アタッカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5889,
+    maxOverall: 14922,
+    baseStats: { shoot: 1113, pass: 1152, dribble: 1195, defense: 864, physical: 943, speed: 812 },
+    detailStats: {
+      shoot: { finishing: 387, power: 352, composure: 374 },
+      pass: { shortPass: 394, longPass: 404, accuracy: 354 },
+      dribble: { breakout: 402, keeping: 392, ballTouch: 401 },
+      defense: { tackle: 306, interception: 284, marking: 274 },
+      physical: { jumping: 254, contact: 327, stamina: 362 },
+      speed: { running: 412, agility: 400 }
+    },
+    maxEnhanced: {
+      overall: 14922,
+      baseStats: { shoot: 2658, pass: 2733, dribble: 2764, defense: 2409, physical: 2512, speed: 1846 },
+      detailStats: {
+        shoot: { finishing: 898, power: 863, composure: 897 },
+        pass: { shortPass: 929, longPass: 927, accuracy: 877 },
+        dribble: { breakout: 925, keeping: 915, ballTouch: 924 },
+        defense: { tackle: 829, interception: 795, marking: 785 },
+        physical: { jumping: 765, contact: 850, stamina: 897 },
+        speed: { running: 923, agility: 923 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '敵陣を切り裂くパス', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：スルーパス時　/　スルーパス・キック精度UP' },
+    abilities: [
+      { name: '精緻なパサー', rank: '銀', description: '発動条件：絶好調　/　ショートパス・キック精度UP' },
+      { name: 'すり抜けるロングパサー', rank: '銅', description: '発動条件：好調　/　ロングパス・突破力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p278',
+    name: 'キム・ナミル(配布)',
+    readingName: 'きむなみる',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '韓国',
+    policy: 'ムービング',
+    playStyle: 'ハードマーカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5491,
+    maxOverall: 12893,
+    baseStats: { shoot: 880, pass: 938, dribble: 969, defense: 1167, physical: 1059, speed: 572 },
+    detailStats: {
+      shoot: { finishing: 312, power: 293, composure: 275 },
+      pass: { shortPass: 319, longPass: 307, accuracy: 312 },
+      dribble: { breakout: 313, keeping: 324, ballTouch: 332 },
+      defense: { tackle: 370, interception: 396, marking: 401 },
+      physical: { jumping: 357, contact: 353, stamina: 349 },
+      speed: { running: 273, agility: 299 }
+    },
+    maxEnhanced: {
+      overall: 12893,
+      baseStats: { shoot: 2152, pass: 2270, dribble: 2229, defense: 2475, physical: 2355, speed: 1412 },
+      detailStats: {
+        shoot: { finishing: 732, power: 713, composure: 707 },
+        pass: { shortPass: 763, longPass: 751, accuracy: 756 },
+        dribble: { breakout: 733, keeping: 744, ballTouch: 752 },
+        defense: { tackle: 814, interception: 828, marking: 833 },
+        physical: { jumping: 777, contact: 785, stamina: 793 },
+        speed: { running: 693, agility: 719 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '奮戦のパスカット', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカットUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: 'ハイタワーの天敵', rank: '銀', description: '発動条件：好調　/　マーク・ジャンプUP' },
+      { name: '不屈のパサー', rank: '銅', description: '発動条件：途中出場　/　ショートパス・スタミナUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p279',
+    name: 'アン・ジョンファン(配布)',
+    readingName: 'あんじょんふぁん',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '韓国',
+    policy: 'ムービング',
+    playStyle: 'ストライカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5460,
+    maxOverall: 13046,
+    baseStats: { shoot: 1087, pass: 1049, dribble: 1145, defense: 745, physical: 909, speed: 815 },
+    detailStats: {
+      shoot: { finishing: 377, power: 323, composure: 387 },
+      pass: { shortPass: 368, longPass: 325, accuracy: 356 },
+      dribble: { breakout: 413, keeping: 352, ballTouch: 380 },
+      defense: { tackle: 260, interception: 238, marking: 247 },
+      physical: { jumping: 305, contact: 285, stamina: 319 },
+      speed: { running: 406, agility: 409 }
+    },
+    maxEnhanced: {
+      overall: 13046,
+      baseStats: { shoot: 2419, pass: 2309, dribble: 2453, defense: 1969, physical: 2217, speed: 1679 },
+      detailStats: {
+        shoot: { finishing: 821, power: 767, composure: 831 },
+        pass: { shortPass: 788, longPass: 745, accuracy: 776 },
+        dribble: { breakout: 845, keeping: 784, ballTouch: 824 },
+        defense: { tackle: 668, interception: 646, marking: 655 },
+        physical: { jumping: 737, contact: 729, stamina: 751 },
+        speed: { running: 838, agility: 841 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 0, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: -1, rushOut: 0, feint: 0, press: -1
+    },
+    skill: { name: '点で合わせるシュート', rank: '銅', description: '発動エリア：前中　/　発動条件：ワンタッチシュート時　/　決定力・キック力・冷静さUP' },
+    abilities: [
+      { name: '冷静な突破', rank: '銀', description: '発動条件：絶好調　/　冷静さ・突破力UP' },
+      { name: 'ゴール前の嗅覚', rank: '銅', description: '発動条件：好調　/　決定力・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p280',
+    name: '飯島潤一郎(チケット交換)',
+    readingName: 'いいじまじゅんいちろう',
+    category: 'GK',
+    mainPosition: 'GK',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '日本',
+    policy: 'ムービング',
+    playStyle: 'オーソドックスGK',
+    playStyleLevel: 'Ⅱ',
+    overall: 5130,
+    maxOverall: 11582,
+    baseStats: { shoot: 682, pass: 485, dribble: 601, defense: 1065, physical: 999, speed: 652 },
+    detailStats: {
+      shoot: { finishing: 195, power: 279, composure: 208 },
+      pass: { shortPass: 158, longPass: 169, accuracy: 158 },
+      dribble: { breakout: 198, keeping: 195, ballTouch: 208 },
+      defense: { tackle: 367, interception: 354, marking: 344 },
+      physical: { jumping: 408, contact: 404, stamina: 187 },
+      speed: { running: 284, agility: 368 }
+    },
+    maxEnhanced: {
+      overall: 11582,
+      baseStats: { shoot: 1852, pass: 1799, dribble: 1771, defense: 2379, physical: 2301, speed: 1480 },
+      detailStats: {
+        shoot: { finishing: 585, power: 669, composure: 598 },
+        pass: { shortPass: 596, longPass: 607, accuracy: 596 },
+        dribble: { breakout: 588, keeping: 585, ballTouch: 598 },
+        defense: { tackle: 805, interception: 792, marking: 782 },
+        physical: { jumping: 846, contact: 842, stamina: 613 },
+        speed: { running: 698, agility: 782 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -2, shoot: -1, longShoot: -1,
+      shortPass: -1, longPass: 1, throughPass: -1, cutIn: -1, keep: -1,
+      delay: -1, rushOut: -1, feint: -1, press: -1
+    },
+    skill: { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
+    abilities: [
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
+      { name: '強靭な守護神', rank: '銅', description: '発動条件：好調　/　セービング・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p281',
+    name: 'バルフィー(チケット交換)',
+    readingName: 'ばるふぃー',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'エジプト',
+    policy: 'カウンター',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5082,
+    maxOverall: 12666,
+    baseStats: { shoot: 898, pass: 919, dribble: 992, defense: 893, physical: 953, speed: 717 },
+    detailStats: {
+      shoot: { finishing: 298, power: 298, composure: 302 },
+      pass: { shortPass: 316, longPass: 350, accuracy: 253 },
+      dribble: { breakout: 358, keeping: 317, ballTouch: 317 },
+      defense: { tackle: 294, interception: 306, marking: 293 },
+      physical: { jumping: 303, contact: 274, stamina: 376 },
+      speed: { running: 364, agility: 353 }
+    },
+    maxEnhanced: {
+      overall: 12666,
+      baseStats: { shoot: 2104, pass: 2197, dribble: 2234, defense: 2207, physical: 2231, speed: 1693 },
+      detailStats: {
+        shoot: { finishing: 700, power: 700, composure: 704 },
+        pass: { shortPass: 742, longPass: 776, accuracy: 679 },
+        dribble: { breakout: 772, keeping: 731, ballTouch: 731 },
+        defense: { tackle: 732, interception: 744, marking: 731 },
+        physical: { jumping: 717, contact: 700, stamina: 814 },
+        speed: { running: 802, agility: 891 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '鋭角的なタックル', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP' },
+    abilities: [
+      { name: 'ストロングマーカー', rank: '銀', description: '発動条件：好調　/　マーク・コンタクトUP' },
+      { name: 'エアバトラー', rank: '銅', description: '発動条件：絶好調　/　タックル・ジャンプUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p282',
+    name: 'ペク・ギョンス(チケット交換)',
+    readingName: 'ぺく・ぎょんす',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '韓国',
+    policy: 'ポゼッション',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5077,
+    maxOverall: 12536,
+    baseStats: { shoot: 833, pass: 899, dribble: 911, defense: 1029, physical: 1017, speed: 653 },
+    detailStats: {
+      shoot: { finishing: 251, power: 310, composure: 272 },
+      pass: { shortPass: 307, longPass: 317, accuracy: 275 },
+      dribble: { breakout: 283, keeping: 306, ballTouch: 322 },
+      defense: { tackle: 319, interception: 354, marking: 356 },
+      physical: { jumping: 344, contact: 317, stamina: 356 },
+      speed: { running: 317, agility: 336 }
+    },
+    maxEnhanced: {
+      overall: 12536,
+      baseStats: { shoot: 2039, pass: 2177, dribble: 2153, defense: 2343, physical: 2319, speed: 1505 },
+      detailStats: {
+        shoot: { finishing: 653, power: 712, composure: 674 },
+        pass: { shortPass: 733, longPass: 743, accuracy: 701 },
+        dribble: { breakout: 697, keeping: 720, ballTouch: 736 },
+        defense: { tackle: 757, interception: 792, marking: 794 },
+        physical: { jumping: 782, contact: 755, stamina: 782 },
+        speed: { running: 743, agility: 762 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '冴え渡るインターセプト', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・敏捷性UP' },
+    abilities: [
+      { name: 'ハイタワーの天敵', rank: '銀', description: '発動条件：好調　/　マーク・ジャンプUP' },
+      { name: 'アジャイルクラッシャー', rank: '銅', description: '発動条件：好調　/　タックル・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p283',
+    name: 'バロウズ(チケット交換)',
+    readingName: 'ばろうず',
+    category: 'DF',
+    mainPosition: 'LFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ジャマイカ',
+    policy: 'カウンター',
+    playStyle: '攻撃的LFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 5102,
+    maxOverall: 12566,
+    baseStats: { shoot: 898, pass: 919, dribble: 992, defense: 893, physical: 953, speed: 717 },
+    detailStats: {
+      shoot: { finishing: 298, power: 298, composure: 302 },
+      pass: { shortPass: 316, longPass: 350, accuracy: 253 },
+      dribble: { breakout: 358, keeping: 317, ballTouch: 317 },
+      defense: { tackle: 294, interception: 306, marking: 293 },
+      physical: { jumping: 303, contact: 274, stamina: 376 },
+      speed: { running: 364, agility: 353 }
+    },
+    maxEnhanced: {
+      overall: 12566,
+      baseStats: { shoot: 2104, pass: 2197, dribble: 2234, defense: 2207, physical: 2231, speed: 1593 },
+      detailStats: {
+        shoot: { finishing: 700, power: 700, composure: 704 },
+        pass: { shortPass: 742, longPass: 776, accuracy: 679 },
+        dribble: { breakout: 772, keeping: 731, ballTouch: 731 },
+        defense: { tackle: 732, interception: 744, marking: 731 },
+        physical: { jumping: 717, contact: 700, stamina: 814 },
+        speed: { running: 802, agility: 791 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: 'ファストフィード', rank: '銅', description: '発動エリア：中中・後左中右　/　発動条件：CFの位置に居る選手へのロングパス時　/　ロングパス・キック精度UP　/　成功時に受け手のトラップ発生確率UP' },
+    abilities: [
+      { name: '走り切るロングパサー', rank: '銀', description: '発動条件：途中出場　/　ロングパス・スタミナUP' },
+      { name: '切り裂くパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・突破力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p284',
+    name: 'アルガンチューワ(チケット交換)',
+    readingName: 'あるがんちゅーわ',
+    category: 'DF',
+    mainPosition: 'RFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ウズベキスタン',
+    policy: 'カウンター',
+    playStyle: '攻撃的RFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 5142,
+    maxOverall: 12527,
+    baseStats: { shoot: 878, pass: 856, dribble: 1104, defense: 882, physical: 865, speed: 748 },
+    detailStats: {
+      shoot: { finishing: 300, power: 280, composure: 298 },
+      pass: { shortPass: 269, longPass: 331, accuracy: 256 },
+      dribble: { breakout: 419, keeping: 349, ballTouch: 336 },
+      defense: { tackle: 265, interception: 339, marking: 278 },
+      physical: { jumping: 269, contact: 226, stamina: 370 },
+      speed: { running: 388, agility: 360 }
+    },
+    maxEnhanced: {
+      overall: 12527,
+      baseStats: { shoot: 2084, pass: 2134, dribble: 2346, defense: 2196, physical: 2143, speed: 1624 },
+      detailStats: {
+        shoot: { finishing: 702, power: 682, composure: 700 },
+        pass: { shortPass: 695, longPass: 757, accuracy: 682 },
+        dribble: { breakout: 833, keeping: 763, ballTouch: 750 },
+        defense: { tackle: 703, interception: 777, marking: 716 },
+        physical: { jumping: 683, contact: 652, stamina: 808 },
+        speed: { running: 826, agility: 798 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '打開のドリブル', rank: '銅', description: '発動エリア：中左右・後左右　/　発動条件：ドリブル時　/　突破力・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '不屈のドリブル突破', rank: '銀', description: '発動条件：絶好調　/　突破力・スタミナUP' },
+      { name: 'スピードランナー', rank: '銅', description: '発動条件：途中出場　/　走力・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p285',
+    name: 'ススペイタ(チケット交換)',
+    readingName: 'すすぺいた',
+    category: 'MF',
+    mainPosition: 'DMF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'リアクション',
+    playStyle: 'パサーDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 5154,
+    maxOverall: 12610,
+    baseStats: { shoot: 938, pass: 1099, dribble: 968, defense: 984, physical: 832, speed: 583 },
+    detailStats: {
+      shoot: { finishing: 323, power: 309, composure: 306 },
+      pass: { shortPass: 390, longPass: 381, accuracy: 328 },
+      dribble: { breakout: 338, keeping: 313, ballTouch: 317 },
+      defense: { tackle: 315, interception: 363, marking: 306 },
+      physical: { jumping: 238, contact: 280, stamina: 314 },
+      speed: { running: 291, agility: 292 }
+    },
+    maxEnhanced: {
+      overall: 12610,
+      baseStats: { shoot: 2192, pass: 2413, dribble: 2210, defense: 2274, physical: 2110, speed: 1411 },
+      detailStats: {
+        shoot: { finishing: 737, power: 723, composure: 732 },
+        pass: { shortPass: 828, longPass: 819, accuracy: 766 },
+        dribble: { breakout: 752, keeping: 727, ballTouch: 731 },
+        defense: { tackle: 753, interception: 789, marking: 732 },
+        physical: { jumping: 652, contact: 706, stamina: 752 },
+        speed: { running: 705, agility: 706 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '安定したパスワーク', rank: '銅', description: '発動エリア：前左中右・中左中右　/　発動条件：AM・RW・LW・CFの選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のショートパス発生確率UP' },
+    abilities: [
+      { name: '分断のパサー', rank: '銀', description: '発動条件：途中出場　/　ショートパス・パスカットUP' },
+      { name: '逆襲のドリブラー', rank: '銅', description: '発動条件：好調　/　突破力・タックルUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p286',
+    name: '透明男(チケット交換)',
+    readingName: 'とうめいおとこ',
+    category: 'MF',
+    mainPosition: 'DMF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '日本',
+    policy: 'カウンター',
+    playStyle: 'ハードマーカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5179,
+    maxOverall: 12671,
+    baseStats: { shoot: 865, pass: 945, dribble: 1045, defense: 1119, physical: 907, speed: 584 },
+    detailStats: {
+      shoot: { finishing: 297, power: 288, composure: 280 },
+      pass: { shortPass: 323, longPass: 316, accuracy: 306 },
+      dribble: { breakout: 323, keeping: 356, ballTouch: 366 },
+      defense: { tackle: 393, interception: 365, marking: 361 },
+      physical: { jumping: 249, contact: 287, stamina: 371 },
+      speed: { running: 313, agility: 271 }
+    },
+    maxEnhanced: {
+      overall: 12671,
+      baseStats: { shoot: 2119, pass: 2259, dribble: 2287, defense: 2409, physical: 2185, speed: 1412 },
+      detailStats: {
+        shoot: { finishing: 711, power: 702, composure: 706 },
+        pass: { shortPass: 761, longPass: 754, accuracy: 744 },
+        dribble: { breakout: 737, keeping: 770, ballTouch: 780 },
+        defense: { tackle: 831, interception: 791, marking: 787 },
+        physical: { jumping: 663, contact: 713, stamina: 809 },
+        speed: { running: 727, agility: 685 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '奮戦のタックル', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
+      { name: 'シルクタッチ', rank: '銅', description: '発動条件：好調　/　ショートパス・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p287',
+    name: 'ムサイール(チケット交換)',
+    readingName: 'むさいーる',
+    category: 'MF',
+    mainPosition: 'OMF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'UAE',
+    policy: 'リアクション',
+    playStyle: 'セントラルAM',
+    playStyleLevel: 'Ⅱ',
+    overall: 5234,
+    maxOverall: 12907,
+    baseStats: { shoot: 1041, pass: 1027, dribble: 1022, defense: 915, physical: 1070, speed: 638 },
+    detailStats: {
+      shoot: { finishing: 334, power: 392, composure: 315 },
+      pass: { shortPass: 335, longPass: 342, accuracy: 350 },
+      dribble: { breakout: 316, keeping: 351, ballTouch: 355 },
+      defense: { tackle: 314, interception: 303, marking: 298 },
+      physical: { jumping: 362, contact: 391, stamina: 317 },
+      speed: { running: 316, agility: 322 }
+    },
+    maxEnhanced: {
+      overall: 12907,
+      baseStats: { shoot: 2295, pass: 2317, dribble: 2300, defense: 2169, physical: 2348, speed: 1478 },
+      detailStats: {
+        shoot: { finishing: 748, power: 806, composure: 741 },
+        pass: { shortPass: 773, longPass: 768, accuracy: 776 },
+        dribble: { breakout: 742, keeping: 777, ballTouch: 781 },
+        defense: { tackle: 740, interception: 717, marking: 712 },
+        physical: { jumping: 776, contact: 817, stamina: 755 },
+        speed: { running: 730, agility: 748 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: 'コントロールトラップ', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力・コンタクトUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '力強いボールキープ', rank: '銀', description: '発動条件：好調　/　キープ力・コンタクトUP' },
+      { name: '柔と剛のタッチ', rank: '銅', description: '発動条件：好調　/　キック力・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p288',
+    name: 'P・ラマンベラ(チケット交換)',
+    readingName: 'ぴー・らまんべら',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '南アフリカ',
+    policy: 'ポゼッション',
+    playStyle: 'ドリブラーLW',
+    playStyleLevel: 'Ⅱ',
+    overall: 5100,
+    maxOverall: 12336,
+    baseStats: { shoot: 912, pass: 911, dribble: 1061, defense: 733, physical: 817, speed: 708 },
+    detailStats: {
+      shoot: { finishing: 304, power: 304, composure: 304 },
+      pass: { shortPass: 320, longPass: 282, accuracy: 309 },
+      dribble: { breakout: 390, keeping: 316, ballTouch: 355 },
+      defense: { tackle: 240, interception: 251, marking: 242 },
+      physical: { jumping: 276, contact: 250, stamina: 291 },
+      speed: { running: 357, agility: 351 }
+    },
+    maxEnhanced: {
+      overall: 12336,
+      baseStats: { shoot: 2178, pass: 2189, dribble: 2363, defense: 1951, physical: 2071, speed: 1584 },
+      detailStats: {
+        shoot: { finishing: 730, power: 718, composure: 730 },
+        pass: { shortPass: 746, longPass: 708, accuracy: 735 },
+        dribble: { breakout: 828, keeping: 754, ballTouch: 781 },
+        defense: { tackle: 654, interception: 653, marking: 644 },
+        physical: { jumping: 690, contact: 664, stamina: 717 },
+        speed: { running: 795, agility: 789 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
+      { name: '懐の深いパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・キープ力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p289',
+    name: 'J・ラマンベラ(チケット交換)',
+    readingName: 'じぇー・らまんべら',
+    category: 'FW',
+    mainPosition: 'RW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '南アフリカ',
+    policy: 'カウンター',
+    playStyle: 'ドリブラーRW',
+    playStyleLevel: 'Ⅱ',
+    overall: 5105,
+    maxOverall: 12329,
+    baseStats: { shoot: 925, pass: 877, dribble: 1025, defense: 732, physical: 818, speed: 758 },
+    detailStats: {
+      shoot: { finishing: 310, power: 303, composure: 312 },
+      pass: { shortPass: 293, longPass: 281, accuracy: 303 },
+      dribble: { breakout: 348, keeping: 327, ballTouch: 350 },
+      defense: { tackle: 239, interception: 250, marking: 243 },
+      physical: { jumping: 279, contact: 249, stamina: 290 },
+      speed: { running: 393, agility: 365 }
+    },
+    maxEnhanced: {
+      overall: 12329,
+      baseStats: { shoot: 2191, pass: 2155, dribble: 2327, defense: 1950, physical: 2072, speed: 1634 },
+      detailStats: {
+        shoot: { finishing: 736, power: 717, composure: 738 },
+        pass: { shortPass: 719, longPass: 707, accuracy: 729 },
+        dribble: { breakout: 786, keeping: 765, ballTouch: 776 },
+        defense: { tackle: 653, interception: 652, marking: 645 },
+        physical: { jumping: 693, contact: 663, stamina: 716 },
+        speed: { running: 831, agility: 803 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: { name: '切り裂くドリブル', rank: '銅', description: '発動エリア：前左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のシュート発生確率UP' },
+    abilities: [
+      { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },
+      { name: '俊敏なドリブラー', rank: '銅', description: '発動条件：絶好調　/　突破力・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p290',
+    name: 'アンタンシェン(チケット交換)',
+    readingName: 'あんたんしぇん',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '中国',
+    policy: 'カウンター',
+    playStyle: 'ラインブレーカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5092,
+    maxOverall: 12380,
+    baseStats: { shoot: 999, pass: 826, dribble: 1023, defense: 742, physical: 877, speed: 719 },
+    detailStats: {
+      shoot: { finishing: 351, power: 304, composure: 344 },
+      pass: { shortPass: 272, longPass: 261, accuracy: 293 },
+      dribble: { breakout: 373, keeping: 339, ballTouch: 311 },
+      defense: { tackle: 251, interception: 253, marking: 238 },
+      physical: { jumping: 281, contact: 290, stamina: 306 },
+      speed: { running: 376, agility: 343 }
+    },
+    maxEnhanced: {
+      overall: 12380,
+      baseStats: { shoot: 2313, pass: 2068, dribble: 2313, defense: 1948, physical: 2167, speed: 1571 },
+      detailStats: {
+        shoot: { finishing: 789, power: 742, composure: 782 },
+        pass: { shortPass: 686, longPass: 675, accuracy: 707 },
+        dribble: { breakout: 799, keeping: 765, ballTouch: 749 },
+        defense: { tackle: 653, interception: 655, marking: 640 },
+        physical: { jumping: 707, contact: 728, stamina: 732 },
+        speed: { running: 802, agility: 769 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 0, shoot: 2, longShoot: 1,
+      shortPass: -1, longPass: -1, throughPass: -1, cutIn: 0, keep: -1,
+      delay: -1, rushOut: 2, feint: 0, press: 0
+    },
+    skill: { name: '点で合わせるシュート', rank: '銅', description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP' },
+    abilities: [
+      { name: '裏への飛び出し', rank: '銀', description: '発動条件：絶好調　/　決定力・走力UP' },
+      { name: '冷静な突破', rank: '銅', description: '発動条件：途中出場　/　冷静さ・突破力UP' }
+    ],
+    avatarUrl: ''
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB'] };

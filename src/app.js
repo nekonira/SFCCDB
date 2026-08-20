@@ -9,7 +9,7 @@ const POSITIONS = ["GK", "CB", "LFB", "RFB", "DM", "LM", "RM", "AM", "LW", "RW",
 const POLICIES = ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'];
 const RARITIES = ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
 const PLAY_STYLE_LEVELS = ["Ⅰ", "Ⅱ", "Ⅲ"];
-const PLAY_STYLES = ["オーソドックスGK", "スイーパーGK", "ストッパー", "組立CB", "スプリントCB", "守備的LFB", "守備的RFB", "攻撃的LFB", "攻撃的RFB", "ハードマーカー", "セントラルDM", "パサーDM", "ドリブラーLM", "サイドアタッカーLM", "ドリブラーRM", "サイドアタッカーRM", "セントラルAM", "パサーAM", "アタッカー", "ドリブラーLW", "サイドアタッカーLW", "ワイドストライカーLW", "ドリブラーRW", "サイドアタッカーRW", "ワイドストライカーRW", "ポストプレーヤー", "ラインブレーカー", "ストライカー"];
+const PLAY_STYLES = ["オーソドックスGK", "スイーパーGK", "ストッパー", "組立CB", "スプリントCB", "守備的LFB", "守備的RFB", "クリエイティブLFB", "攻撃的LFB", "攻撃的RFB", "ハードマーカー", "セントラルDM", "パサーDM", "ドリブラーLM", "サイドアタッカーLM", "ドリブラーRM", "サイドアタッカーRM", "セントラルAM", "パサーAM", "アタッカー", "ドリブラーLW", "サイドアタッカーLW", "ワイドストライカーLW", "ドリブラーRW", "サイドアタッカーRW", "ワイドストライカーRW", "ポストプレーヤー", "ラインブレーカー", "ストライカー"];
 const INITIAL_PLAYERS = window.INITIAL_PLAYERS || [];
 const INITIAL_MANAGERS = window.INITIAL_MANAGERS || [];
 const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
@@ -731,7 +731,24 @@ const PLAYER_IMAGE_MAP = {
   "p270": "ALISSON_2026_IMAGE",
   "p271": "ENDRICK_2026_IMAGE",
   "p272": "GREENWOOD_2026_IMAGE",
-  "p273": "AKANJI_2026_IMAGE"
+  "p273": "AKANJI_2026_IMAGE",
+  "p274": "HONDA_2026_IMAGE",
+  "p275": "PULISIC_2026_IMAGE",
+  "p276": "IDZES_2026_IMAGE",
+  "p277": "CHANATHIP_2026_IMAGE",
+  "p278": "KIM_NAMIL_HAIFU_IMAGE",
+  "p279": "AHN_JUNGHWAN_HAIFU_IMAGE",
+  "p280": "IIJIMA_2026_IMAGE",
+  "p281": "BARFIE_2026_IMAGE",
+  "p282": "BAEK_GYEONGSU_2026_IMAGE",
+  "p283": "BURROWS_2026_IMAGE",
+  "p284": "ARGANTCHUEV_2026_IMAGE",
+  "p285": "SUSPEITA_2026_IMAGE",
+  "p286": "TOUMEIOTOKO_2026_IMAGE",
+  "p287": "MUSAIR_2026_IMAGE",
+  "p288": "P_RAMANBELA_2026_IMAGE",
+  "p289": "J_RAMANBELA_2026_IMAGE",
+  "p290": "ANTANCHEN_2026_IMAGE"
 };
 const getPlayerAvatarUrl = player => {
   if (!player) return '';
@@ -896,21 +913,26 @@ const getPlayerAbilities = player => {
 };
 
 // 指定レアリティおよび強化状態(初期/最大強化)に応じて能力値を自動計算・適用する動的プレイヤー生成関数
+const isHaifuPlayer = p => {
+  if (!p) return false;
+  const name = p.name || p.rawPlayer && p.rawPlayer.name || '';
+  return name.includes('配布') || name.includes('チケット交換') || name.includes('交換') || !!p.isHaifu || !!(p.rawPlayer && p.rawPlayer.isHaifu);
+};
 const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
   if (!player) return null;
-  // 加工済みの調整済みオブジェクトが渡された場合も常に無加工な元プレイヤーデータ(rawPlayer)を参照
   const basePlayer = player.rawPlayer || player;
   const avatar = getPlayerAvatarUrl(basePlayer);
+  const isHaifu = isHaifuPlayer(basePlayer);
 
-  // 🔥 最大強化選択時は全選手をレアリティ☆5固定およびisMaxEnhanced: trueとして生成
   if (useMaxEnhanced) {
+    const targetRarityVal = isHaifu ? (basePlayer.rarity || '☆3') : '☆5';
     if (basePlayer.maxEnhanced) {
       const sourceObj = basePlayer.maxEnhanced;
       return {
         ...basePlayer,
         rawPlayer: basePlayer,
-        rarity: '☆5',
-        simulatedRarity: '☆5',
+        rarity: targetRarityVal,
+        simulatedRarity: targetRarityVal,
         overall: sourceObj.overall,
         baseStats: sourceObj.baseStats,
         detailStats: sourceObj.detailStats,
@@ -919,20 +941,18 @@ const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
         isMaxEnhanced: true
       };
     } else {
-      // 専用最大強化データ未入力の選手も自動的に☆5育成完了状態(isMaxEnhanced: true)で生成
-      const baseResult = getAdjustedPlayer(basePlayer, '☆5', false);
+      const baseResult = getAdjustedPlayer(basePlayer, targetRarityVal, false);
       return {
         ...baseResult,
         rawPlayer: basePlayer,
-        rarity: '☆5',
-        simulatedRarity: '☆5',
+        rarity: targetRarityVal,
+        simulatedRarity: targetRarityVal,
         isMaxEnhanced: true
       };
     }
   }
 
-  // 🌱 通常初期値選択時のレアリティ別加算計算
-  const currentRarity = targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3';
+  const currentRarity = isHaifu ? (basePlayer.rarity || '☆3') : (targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3');
   const baseRarity = basePlayer.baseRarity || '☆3';
   const baseOffset = OFFSETS[baseRarity] !== undefined ? OFFSETS[baseRarity] : 0;
   const targetOffset = OFFSETS[currentRarity] !== undefined ? OFFSETS[currentRarity] : baseOffset;
@@ -2671,7 +2691,7 @@ function TeamBuilderTab({
     specialNote: 'フィールド上のブラジル人選手1人につき、上記4能力（決定力・パスカット・タックル・マーク）が追加で2%強化！'
   }, {
     id: 'goldenZonen94',
-    name: "ゴールデンゾーネン'94",
+    name: "ゴーデンゾーネン'94",
     rank: '金',
     policy: 'リアクション',
     formationId: '343c_golden',
@@ -3522,7 +3542,7 @@ function TeamBuilderTab({
     }]
   }, {
     id: '343c_golden',
-    name: "3-4-3C (ゴールデンゾーネン'94)",
+    name: "3-4-3C (ゴーデンゾーネン'94)",
     comboId: 'goldenZonen94',
     slots: [{
       id: 1,
@@ -8445,7 +8465,7 @@ function PlayerDetailModal({
   }, "🌱 無育成 (初期値)"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setIsMaxEnhanced(true),
     className: `px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isMaxEnhanced ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20' : 'text-orange-400 hover:text-orange-300'}`
-  }, "🔥 最大強化"))), /*#__PURE__*/React.createElement("div", {
+  }, "🔥 最大強化"))), !isHaifuPlayer(player) && /*#__PURE__*/React.createElement("div", {
     className: `bg-slate-900/90 p-3.5 rounded-2xl border space-y-2 transition-all ${isMaxEnhanced ? 'border-orange-500/40' : 'border-amber-500/40'}`
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center justify-between"

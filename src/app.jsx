@@ -11,6 +11,7 @@ const PLAY_STYLES = [
   "スプリントCB",
   "守備的LFB",
   "守備的RFB",
+  "クリエイティブLFB",
   "攻撃的LFB",
   "攻撃的RFB",
   "ハードマーカー",
@@ -839,7 +840,24 @@ const PLAYER_IMAGE_MAP = {
   "p270": "ALISSON_2026_IMAGE",
   "p271": "ENDRICK_2026_IMAGE",
   "p272": "GREENWOOD_2026_IMAGE",
-  "p273": "AKANJI_2026_IMAGE"
+  "p273": "AKANJI_2026_IMAGE",
+  "p274": "HONDA_2026_IMAGE",
+  "p275": "PULISIC_2026_IMAGE",
+  "p276": "IDZES_2026_IMAGE",
+  "p277": "CHANATHIP_2026_IMAGE",
+  "p278": "KIM_NAMIL_HAIFU_IMAGE",
+  "p279": "AHN_JUNGHWAN_HAIFU_IMAGE",
+  "p280": "IIJIMA_2026_IMAGE",
+  "p281": "BARFIE_2026_IMAGE",
+  "p282": "BAEK_GYEONGSU_2026_IMAGE",
+  "p283": "BURROWS_2026_IMAGE",
+  "p284": "ARGANTCHUEV_2026_IMAGE",
+  "p285": "SUSPEITA_2026_IMAGE",
+  "p286": "TOUMEIOTOKO_2026_IMAGE",
+  "p287": "MUSAIR_2026_IMAGE",
+  "p288": "P_RAMANBELA_2026_IMAGE",
+  "p289": "J_RAMANBELA_2026_IMAGE",
+  "p290": "ANTANCHEN_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -978,22 +996,30 @@ const getPlayerAbilities = (player) => {
   ];
 };
 
+const isHaifuPlayer = (p) => {
+  if (!p) return false;
+  const name = p.name || (p.rawPlayer && p.rawPlayer.name) || '';
+  return name.includes('配布') || name.includes('チケット交換') || name.includes('交換') || !!p.isHaifu || !!(p.rawPlayer && p.rawPlayer.isHaifu);
+};
+
 // 指定レアリティおよび強化状態(初期/最大強化)に応じて能力値を自動計算・適用する動的プレイヤー生成関数
 const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
   if (!player) return null;
   // 加工済みの調整済みオブジェクトが渡された場合も常に無加工な元プレイヤーデータ(rawPlayer)を参照
   const basePlayer = player.rawPlayer || player;
   const avatar = getPlayerAvatarUrl(basePlayer);
+  const isHaifu = isHaifuPlayer(basePlayer);
 
-  // 🔥 最大強化選択時は全選手をレアリティ☆5固定およびisMaxEnhanced: trueとして生成
+  // 🔥 最大強化選択時は通常選手は☆5固定、配布選手は元レアリティ維持
   if (useMaxEnhanced) {
+    const targetRarityVal = isHaifu ? (basePlayer.rarity || '☆3') : '☆5';
     if (basePlayer.maxEnhanced) {
       const sourceObj = basePlayer.maxEnhanced;
       return {
         ...basePlayer,
         rawPlayer: basePlayer,
-        rarity: '☆5',
-        simulatedRarity: '☆5',
+        rarity: targetRarityVal,
+        simulatedRarity: targetRarityVal,
         overall: sourceObj.overall,
         baseStats: sourceObj.baseStats,
         detailStats: sourceObj.detailStats,
@@ -1002,20 +1028,20 @@ const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
         isMaxEnhanced: true
       };
     } else {
-      // 専用最大強化データ未入力の選手も自動的に☆5育成完了状態(isMaxEnhanced: true)で生成
-      const baseResult = getAdjustedPlayer(basePlayer, '☆5', false);
+      // 専用最大強化データ未入力の選手も自動的に育成完了状態(isMaxEnhanced: true)で生成
+      const baseResult = getAdjustedPlayer(basePlayer, targetRarityVal, false);
       return {
         ...baseResult,
         rawPlayer: basePlayer,
-        rarity: '☆5',
-        simulatedRarity: '☆5',
+        rarity: targetRarityVal,
+        simulatedRarity: targetRarityVal,
         isMaxEnhanced: true
       };
     }
   }
 
-  // 🌱 通常初期値選択時のレアリティ別加算計算
-  const currentRarity = targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3';
+  // 🌱 通常初期値選択時のレアリティ別加算計算 (配布選手はレアリティ固定)
+  const currentRarity = isHaifu ? (basePlayer.rarity || '☆3') : (targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3');
   const baseRarity = basePlayer.baseRarity || '☆3';
 
   const baseOffset = OFFSETS[baseRarity] !== undefined ? OFFSETS[baseRarity] : 0;
@@ -2685,7 +2711,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     },
     {
       id: 'goldenZonen94',
-      name: "ゴールデンゾーネン'94",
+      name: "ゴーデンゾーネン'94",
       rank: '金',
       policy: 'リアクション',
       formationId: '343c_golden',
@@ -3263,7 +3289,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     },
     {
       id: '343c_golden',
-      name: "3-4-3C (ゴールデンゾーネン'94)",
+      name: "3-4-3C (ゴーデンゾーネン'94)",
       comboId: 'goldenZonen94',
       slots: [
         { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
@@ -5808,7 +5834,8 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
           </div>
         )}
 
-        {/* 🌟 成長・レアリティ段階切替シミュレーター */}
+        {/* 🌟 成長・レアリティ段階切替シミュレーター (※配布選手は非表示) */}
+        {!isHaifuPlayer(player) && (
         <div className={`bg-slate-900/90 p-3.5 rounded-2xl border space-y-2 transition-all ${isMaxEnhanced ? 'border-orange-500/40' : 'border-amber-500/40'
           }`}>
           <div className="flex items-center justify-between">
@@ -5857,6 +5884,8 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
             }
           </div>
         </div>
+
+        )}
 
         <div className="grid grid-cols-2 gap-3 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
           <div>
