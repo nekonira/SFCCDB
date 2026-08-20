@@ -14,10 +14,15 @@ const INITIAL_PLAYERS = window.INITIAL_PLAYERS || [];
 const INITIAL_MANAGERS = window.INITIAL_MANAGERS || [];
 const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
 const YOUTUBE_VIDEOS = [{
-  id: "PFUuw-rWI2E",
-  title: "【質問歓迎】MCO加入大会を開催いたします(4名)【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/PFUuw-rWI2E/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=PFUuw-rWI2E"
+  id: "YxToi7zTO4I",
+  title: "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=YxToi7zTO4I"
+}, {
+  id: "9OwLKGom0IU",
+  title: "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
+  thumbnail: "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=9OwLKGom0IU"
 }, {
   id: "3cWmdX7SO9g",
   title: "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
@@ -34,65 +39,55 @@ const YOUTUBE_VIDEOS = [{
   thumbnail: "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=-ML6aziQT8A"
 }, {
-  id: "rKvTMErnm7E",
-  title: "【質問歓迎】虹アビリティは欲しいよね。限定特練カードガチャ200連まつり【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/rKvTMErnm7E/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=rKvTMErnm7E"
-}, {
   id: "Nk9fShVZ1sI",
   title: "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
   thumbnail: "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
-}, {
-  id: "9ZWQtijxVVM",
-  title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/9ZWQtijxVVM/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=9ZWQtijxVVM"
-}, {
-  id: "B7wgP9c6dyQ",
-  title: "【質問歓迎】ブラジル人4人衆を育成して使ってみましょう【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/B7wgP9c6dyQ/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=B7wgP9c6dyQ"
-}, {
-  id: "Bw9Xk-aqn5Q",
-  title: "【質問歓迎】物議を醸している限定ブラジル人ガチャ、370連祭り開催のお知らせ【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/Bw9Xk-aqn5Q/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=Bw9Xk-aqn5Q"
 }, {
   id: "L6wiFTj1-_I",
   title: "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
   thumbnail: "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=L6wiFTj1-_I"
 }, {
-  id: "q0ShrPT_r0Y",
-  title: "【質問歓迎】能力を比較できるアプリを開発中。皆さんの協力が必要なので力を貸してください【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/q0ShrPT_r0Y/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=q0ShrPT_r0Y"
-}, {
   id: "pqmcNKbWNyo",
   title: "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
   thumbnail: "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=pqmcNKbWNyo"
-}, {
-  id: "CPTyoW1aIEc",
-  title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/CPTyoW1aIEc/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=CPTyoW1aIEc"
 }, {
   id: "unixgXGcOco",
   title: "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
   thumbnail: "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=unixgXGcOco"
 }, {
-  id: "smq93QdtPkY",
-  title: "【質問歓迎】完凸ブラジルトリオを育成していきます(2回目)【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/smq93QdtPkY/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=smq93QdtPkY"
-}, {
   id: "19dFH-F1fyA",
   title: "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
   thumbnail: "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
   url: "https://www.youtube.com/watch?v=19dFH-F1fyA"
+}, {
+  id: "mLr4PRijhBg",
+  title: "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
+  thumbnail: "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=mLr4PRijhBg"
+}, {
+  id: "5DYUfVpv4GI",
+  title: "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
+  thumbnail: "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=5DYUfVpv4GI"
+}, {
+  id: "XAaNfUibPyE",
+  title: "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
+  thumbnail: "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=XAaNfUibPyE"
+}, {
+  id: "mYgT5gcq-F8",
+  title: "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
+  thumbnail: "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=mYgT5gcq-F8"
+}, {
+  id: "l68pj27IqOg",
+  title: "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
+  thumbnail: "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
+  url: "https://www.youtube.com/watch?v=l68pj27IqOg"
 }];
 const AFFILIATE_ADS = [{
   id: "rakuten_user_1",
@@ -911,21 +906,23 @@ const getPlayerAbilities = player => {
     description: 'メンタル補正'
   }];
 };
-
-// 指定レアリティおよび強化状態(初期/最大強化)に応じて能力値を自動計算・適用する動的プレイヤー生成関数
 const isHaifuPlayer = p => {
   if (!p) return false;
   const name = p.name || p.rawPlayer && p.rawPlayer.name || '';
   return name.includes('配布') || name.includes('チケット交換') || name.includes('交換') || !!p.isHaifu || !!(p.rawPlayer && p.rawPlayer.isHaifu);
 };
+
+// 指定レアリティおよび強化状態(初期/最大強化)に応じて能力値を自動計算・適用する動的プレイヤー生成関数
 const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
   if (!player) return null;
+  // 加工済みの調整済みオブジェクトが渡された場合も常に無加工な元プレイヤーデータ(rawPlayer)を参照
   const basePlayer = player.rawPlayer || player;
   const avatar = getPlayerAvatarUrl(basePlayer);
   const isHaifu = isHaifuPlayer(basePlayer);
 
+  // 🔥 最大強化選択時は通常選手は☆5固定、配布選手は元レアリティ維持
   if (useMaxEnhanced) {
-    const targetRarityVal = isHaifu ? (basePlayer.rarity || '☆3') : '☆5';
+    const targetRarityVal = isHaifu ? basePlayer.rarity || '☆3' : '☆5';
     if (basePlayer.maxEnhanced) {
       const sourceObj = basePlayer.maxEnhanced;
       return {
@@ -941,6 +938,7 @@ const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
         isMaxEnhanced: true
       };
     } else {
+      // 専用最大強化データ未入力の選手も自動的に育成完了状態(isMaxEnhanced: true)で生成
       const baseResult = getAdjustedPlayer(basePlayer, targetRarityVal, false);
       return {
         ...baseResult,
@@ -952,7 +950,8 @@ const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
     }
   }
 
-  const currentRarity = isHaifu ? (basePlayer.rarity || '☆3') : (targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3');
+  // 🌱 通常初期値選択時のレアリティ別加算計算 (配布選手はレアリティ固定)
+  const currentRarity = isHaifu ? basePlayer.rarity || '☆3' : targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3';
   const baseRarity = basePlayer.baseRarity || '☆3';
   const baseOffset = OFFSETS[baseRarity] !== undefined ? OFFSETS[baseRarity] : 0;
   const targetOffset = OFFSETS[currentRarity] !== undefined ? OFFSETS[currentRarity] : baseOffset;
@@ -1391,16 +1390,16 @@ function App() {
   }, []);
   const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fchannel_id%3DUCR4YbOvw3pjlR5Ksordt3WQ').then(res => res.json()).then(data => {
+    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fplaylist_id%3DPLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4').then(res => res.json()).then(data => {
       if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
         const fetched = data.items.map(item => {
           const match = item.link ? item.link.match(/v=([^&]+)/) : null;
           const videoId = item.guid ? item.guid.replace('yt:video:', '') : match ? match[1] : '';
           return {
             id: videoId,
-            title: item.title,
+            title: item.title ? item.title.replace(/&amp;/g, '&') : '',
             thumbnail: item.thumbnail || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-            url: item.link
+            url: item.link || `https://www.youtube.com/watch?v=${videoId}`
           };
         }).filter(v => v.id);
         if (fetched.length > 0) {
@@ -1729,11 +1728,11 @@ function HomeTab({
   }, "▶ YouTube"), /*#__PURE__*/React.createElement("h2", {
     className: "text-[10px] md:text-sm font-bold text-white flex items-center gap-1"
   }, "ねこにら サカつく2026 最新動画")), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos",
+    href: "https://www.youtube.com/playlist?list=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4",
     target: "_blank",
     rel: "noopener noreferrer",
     className: "text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
-  }, "チャンネル ↗")), /*#__PURE__*/React.createElement("div", {
+  }, "再生リスト ↗")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none"
   }, displayVideos.map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
@@ -1786,8 +1785,20 @@ function PlayerDBTab({
   const [playStyleFilter, setPlayStyleFilter] = useState('ALL');
   const [playStyleLevelFilter, setPlayStyleLevelFilter] = useState('ALL');
   const [policyFilter, setPolicyFilter] = useState('ALL');
-  const [nationalityFilter, setNationalityFilter] = useState('ALL');
+  const [nationalityFilter, setNationalityFilter] = useState([]);
   const [rarityFilter, setRarityFilter] = useState('ALL');
+  const [isNatDropdownOpen, setIsNatDropdownOpen] = useState(false);
+  const [natSearchQuery, setNatSearchQuery] = useState('');
+  const natDropdownRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = e => {
+      if (natDropdownRef.current && !natDropdownRef.current.contains(e.target)) {
+        setIsNatDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
   const [isMaxEnhanced, setIsMaxEnhanced] = useState(false);
   const [viewMode, setViewMode] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024 ? 'grid' : 'table');
 
@@ -1796,13 +1807,34 @@ function PlayerDBTab({
     key: 'overall',
     direction: 'desc'
   });
-  const nationalitiesList = useMemo(() => {
+  const {
+    nationalitiesList,
+    natCountMap
+  } = useMemo(() => {
     const set = new Set();
+    const counts = {};
     players.forEach(p => {
-      if (p.nationality && p.nationality.trim()) set.add(p.nationality.trim());
+      if (p.nationality && p.nationality.trim()) {
+        const nat = p.nationality.trim();
+        set.add(nat);
+        counts[nat] = (counts[nat] || 0) + 1;
+      }
     });
-    return Array.from(set).sort((a, b) => getNationalityReading(a).localeCompare(getNationalityReading(b), 'ja'));
+    const list = Array.from(set).sort((a, b) => getNationalityReading(a).localeCompare(getNationalityReading(b), 'ja'));
+    return {
+      nationalitiesList: list,
+      natCountMap: counts
+    };
   }, [players]);
+  const toggleNationality = nat => {
+    setNationalityFilter(prev => {
+      if (prev.includes(nat)) {
+        return prev.filter(item => item !== nat);
+      } else {
+        return [...prev, nat];
+      }
+    });
+  };
   const handleSort = key => {
     setSortConfig(prev => {
       if (prev.key === key) {
@@ -1879,11 +1911,10 @@ function PlayerDBTab({
         if (pPol !== policyFilter && !pPol.includes(policyFilter)) return false;
       }
 
-      // 6. 国籍フィルター（厳密・正確判定）
-      if (nationalityFilter !== 'ALL') {
+      // 6. 国籍フィルター（複数選択・配列判定）
+      if (nationalityFilter && nationalityFilter.length > 0) {
         const pNat = (p.nationality || '').trim();
-        const fNat = nationalityFilter.trim();
-        if (pNat !== fNat) return false;
+        if (!nationalityFilter.includes(pNat)) return false;
       }
 
       // 7. レアリティフィルター
@@ -2052,11 +2083,11 @@ function PlayerDBTab({
   }, "▶ YouTube"), /*#__PURE__*/React.createElement("h3", {
     className: "text-[10px] md:text-sm font-bold text-white flex items-center gap-1"
   }, "ねこにら サカつく2026 最新動画")), /*#__PURE__*/React.createElement("a", {
-    href: "https://www.youtube.com/@%E3%81%AD%E3%81%93%E3%81%AB%E3%82%891/videos",
+    href: "https://www.youtube.com/playlist?list=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4",
     target: "_blank",
     rel: "noopener noreferrer",
     className: "text-[9px] md:text-[11px] font-bold text-red-400 hover:text-red-300 hover:underline flex items-center gap-0.5"
-  }, "チャンネル ↗")), /*#__PURE__*/React.createElement("div", {
+  }, "再生リスト ↗")), /*#__PURE__*/React.createElement("div", {
     className: "flex gap-1 md:gap-2.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none"
   }, (youtubeVideos || YOUTUBE_VIDEOS).map(video => /*#__PURE__*/React.createElement("a", {
     key: video.id,
@@ -2125,7 +2156,7 @@ function PlayerDBTab({
     name: "grid",
     className: "w-4 h-4"
   }), "カード")))), /*#__PURE__*/React.createElement("div", {
-    className: "glass-panel p-4 rounded-2xl space-y-3"
+    className: `glass-panel p-4 rounded-2xl space-y-3 relative ${isNatDropdownOpen ? 'z-50' : 'z-10'}`
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3"
   }, /*#__PURE__*/React.createElement("div", {
@@ -2143,18 +2174,102 @@ function PlayerDBTab({
     value: searchName,
     onChange: e => setSearchName(e.target.value),
     className: "w-full bg-slate-900/90 border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs text-white focus:outline-none focus:border-[#00FF66]"
-  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
-    className: "text-xs font-bold text-slate-400 mb-1 block"
-  }, "国籍 フィルター"), /*#__PURE__*/React.createElement("select", {
-    value: nationalityFilter,
-    onChange: e => setNationalityFilter(e.target.value),
-    className: "w-full bg-slate-900/90 border border-slate-700 rounded-xl px-2.5 py-2 text-xs text-white focus:outline-none focus:border-[#00FF66]"
-  }, /*#__PURE__*/React.createElement("option", {
-    value: "ALL"
-  }, "すべて (国籍)"), nationalitiesList.map(nat => /*#__PURE__*/React.createElement("option", {
-    key: nat,
-    value: nat
-  }, nat)))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: `relative ${isNatDropdownOpen ? 'z-50' : 'z-10'}`,
+    ref: natDropdownRef
+  }, /*#__PURE__*/React.createElement("label", {
+    className: "text-xs font-bold text-slate-400 mb-1 flex items-center justify-between"
+  }, /*#__PURE__*/React.createElement("span", null, "国籍 フィルター 🌐"), nationalityFilter.length > 0 && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: e => {
+      e.stopPropagation();
+      setNationalityFilter([]);
+    },
+    className: "px-2 py-0.5 rounded-md bg-red-500/20 text-red-400 border border-red-500/40 text-[10px] font-bold hover:bg-red-500/30 transition-colors flex items-center gap-1"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "x",
+    className: "w-3 h-3"
+  }), /*#__PURE__*/React.createElement("span", null, "クリア (", nationalityFilter.length, ")"))), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setIsNatDropdownOpen(prev => !prev),
+    className: `w-full bg-slate-900/90 border ${nationalityFilter.length > 0 ? 'border-[#00FF66] text-[#00FF66]' : 'border-slate-700 text-white'} rounded-xl px-2.5 py-2 text-xs text-left flex items-center justify-between focus:outline-none transition-colors`
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "truncate pr-1"
+  }, nationalityFilter.length === 0 && "すべて (国籍)", nationalityFilter.length === 1 && nationalityFilter[0], nationalityFilter.length === 2 && `${nationalityFilter[0]}, ${nationalityFilter[1]}`, nationalityFilter.length > 2 && `${nationalityFilter[0]}, ${nationalityFilter[1]} (+${nationalityFilter.length - 2})`), /*#__PURE__*/React.createElement("span", {
+    className: "text-[10px] opacity-70"
+  }, "▼")), isNatDropdownOpen && /*#__PURE__*/React.createElement("div", {
+    className: "absolute left-0 top-full mt-1.5 w-72 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl z-[100] p-2.5 space-y-2"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "relative"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    placeholder: "国籍を検索...",
+    value: natSearchQuery,
+    onChange: e => setNatSearchQuery(e.target.value),
+    className: "w-full bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
+  }), natSearchQuery && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setNatSearchQuery(''),
+    className: "absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+  }, "✕")), /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-1 items-center justify-between pb-1 border-b border-slate-800 text-[10px]"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex flex-wrap gap-1 items-center"
+  }, /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: e => {
+      e.stopPropagation();
+      setNationalityFilter([]);
+    },
+    className: `px-2 py-0.5 rounded font-bold transition-colors ${nationalityFilter.length === 0 ? 'bg-[#00FF66] text-black' : 'bg-red-500/20 text-red-400 border border-red-500/40 hover:bg-red-500/30'}`
+  }, nationalityFilter.length === 0 ? 'すべて' : '✕ クリア'), ['日本', 'ブラジル', 'アルゼンチン', 'スペイン', 'フランス', 'ドイツ'].map(quickNat => /*#__PURE__*/React.createElement("button", {
+    key: quickNat,
+    type: "button",
+    onClick: e => {
+      e.stopPropagation();
+      toggleNationality(quickNat);
+    },
+    className: `px-1.5 py-0.5 rounded ${nationalityFilter.includes(quickNat) ? 'bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/50 font-bold' : 'bg-slate-800 text-slate-400 hover:text-white'}`
+  }, quickNat)))), /*#__PURE__*/React.createElement("div", {
+    className: "max-h-52 overflow-y-auto space-y-0.5 pr-1"
+  }, nationalitiesList.filter(nat => !natSearchQuery || nat.includes(natSearchQuery.trim()) || getNationalityReading(nat).includes(natSearchQuery.trim())).map(nat => {
+    const isChecked = nationalityFilter.includes(nat);
+    const count = natCountMap[nat] || 0;
+    return /*#__PURE__*/React.createElement("div", {
+      key: nat,
+      onClick: e => {
+        e.stopPropagation();
+        toggleNationality(nat);
+      },
+      className: `flex items-center justify-between px-2 py-1.5 rounded-lg text-xs cursor-pointer transition-colors ${isChecked ? 'bg-[#00FF66]/15 text-white font-medium' : 'text-slate-300 hover:bg-slate-800/80'}`
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center gap-2 pointer-events-none"
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "checkbox",
+      checked: isChecked,
+      readOnly: true,
+      className: "rounded border-slate-700 bg-slate-950 text-[#00FF66] focus:ring-0 cursor-pointer pointer-events-none"
+    }), /*#__PURE__*/React.createElement("span", null, nat)), /*#__PURE__*/React.createElement("span", {
+      className: "text-[10px] text-slate-500 font-num pointer-events-none"
+    }, count, "名"));
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between pt-1 border-t border-slate-800 text-[10px] text-slate-400"
+  }, /*#__PURE__*/React.createElement("span", null, "選択中: ", /*#__PURE__*/React.createElement("strong", {
+    className: "text-[#00FF66]"
+  }, nationalityFilter.length === 0 ? '全対象' : `${nationalityFilter.length} か国`)), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5"
+  }, nationalityFilter.length > 0 && /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: e => {
+      e.stopPropagation();
+      setNationalityFilter([]);
+    },
+    className: "px-2 py-0.5 bg-red-500/20 text-red-400 border border-red-500/40 rounded-md font-bold hover:bg-red-500/30 transition-colors"
+  }, "クリア"), /*#__PURE__*/React.createElement("button", {
+    type: "button",
+    onClick: () => setIsNatDropdownOpen(false),
+    className: "px-2.5 py-0.5 bg-slate-800 text-white rounded-md font-medium hover:bg-slate-700 transition-colors"
+  }, "閉じる"))))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
     className: "text-xs font-bold text-slate-400 mb-1 block"
   }, "並び替え (ソート)"), /*#__PURE__*/React.createElement("select", {
     value: sortConfig.key,
@@ -2239,14 +2354,14 @@ function PlayerDBTab({
     className: "flex items-center justify-between text-xs font-bold text-slate-400 px-1"
   }, /*#__PURE__*/React.createElement("span", null, "ヒット件数: ", /*#__PURE__*/React.createElement("strong", {
     className: "text-white text-base font-num"
-  }, filteredPlayers.length), " 件"), (searchName || posFilter !== 'ALL' || playStyleFilter !== 'ALL' || playStyleLevelFilter !== 'ALL' || policyFilter !== 'ALL' || nationalityFilter !== 'ALL' || rarityFilter !== 'ALL' || simulatedGlobalRarity !== 'ORIGINAL') && /*#__PURE__*/React.createElement("button", {
+  }, filteredPlayers.length), " 件"), (searchName || posFilter !== 'ALL' || playStyleFilter !== 'ALL' || playStyleLevelFilter !== 'ALL' || policyFilter !== 'ALL' || nationalityFilter.length > 0 || rarityFilter !== 'ALL' || simulatedGlobalRarity !== 'ORIGINAL') && /*#__PURE__*/React.createElement("button", {
     onClick: () => {
       setSearchName('');
       setPosFilter('ALL');
       setPlayStyleFilter('ALL');
       setPlayStyleLevelFilter('ALL');
       setPolicyFilter('ALL');
-      setNationalityFilter('ALL');
+      setNationalityFilter([]);
       setRarityFilter('ALL');
       setSimulatedGlobalRarity('ORIGINAL');
       setSortConfig({
