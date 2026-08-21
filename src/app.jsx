@@ -438,6 +438,9 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
       <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto mr-3">
         {visibleAds.slice(0, 2).map(ad => (
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
+            <span className="absolute bottom-1 left-1 z-30 px-1.5 py-0.5 rounded bg-slate-950/85 text-[10px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow">
+              PR
+            </span>
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
               className="absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer"
@@ -462,6 +465,9 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
       <aside className="hidden xl:block w-44 2xl:w-52 flex-shrink-0 sticky top-20 self-start space-y-3 max-h-[calc(100vh-6rem)] overflow-y-auto ml-3">
         {visibleAds.slice(0, 2).map(ad => (
           <div key={ad.id} className="relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden">
+            <span className="absolute bottom-1 left-1 z-30 px-1.5 py-0.5 rounded bg-slate-950/85 text-[10px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow">
+              PR
+            </span>
             <button
               onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
               className="absolute top-1 right-1 z-30 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-950/90 hover:bg-red-600 active:bg-red-700 text-slate-200 hover:text-white border-2 border-slate-600/80 hover:border-red-400 flex items-center justify-center text-xs sm:text-sm font-bold opacity-90 hover:opacity-100 transition-all shadow-lg cursor-pointer"
@@ -479,6 +485,9 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
         <div className="xl:hidden fixed bottom-16 right-1.5 z-40 flex flex-col gap-2 max-w-[115px] sm:max-w-[135px] pointer-events-auto">
           {mobileAds.map(ad => (
             <div key={ad.id} className="relative group glass-panel p-1 rounded-xl border border-slate-800/90 bg-slate-900/95 shadow-2xl flex justify-center items-center overflow-hidden w-full backdrop-blur-md">
+              <span className="absolute bottom-1 left-1 z-30 px-1 py-0.5 rounded bg-slate-950/85 text-[9px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow">
+                PR
+              </span>
               <button
                 onClick={() => setClosedIds(prev => ({ ...prev, [ad.id]: true }))}
                 className="absolute top-1 right-1 z-30 w-7 h-7 rounded-full bg-slate-950/95 hover:bg-red-600 active:bg-red-700 text-white border-2 border-slate-600/90 hover:border-red-400 flex items-center justify-center text-xs font-bold shadow-lg cursor-pointer"

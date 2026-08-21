@@ -347,7 +347,9 @@ function SideAdBanner({
     }, visibleAds.slice(0, 2).map(ad => /*#__PURE__*/React.createElement("div", {
       key: ad.id,
       className: "relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden"
-    }, /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "absolute bottom-1 left-1 z-30 px-1.5 py-0.5 rounded bg-slate-950/85 text-[10px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow"
+    }, "PR"), /*#__PURE__*/React.createElement("button", {
       onClick: () => setClosedIds(prev => ({
         ...prev,
         [ad.id]: true
@@ -365,7 +367,9 @@ function SideAdBanner({
   }, visibleAds.slice(0, 2).map(ad => /*#__PURE__*/React.createElement("div", {
     key: ad.id,
     className: "relative group glass-panel p-2 rounded-2xl border border-slate-800/80 bg-slate-900/80 shadow-xl flex justify-center items-center overflow-hidden"
-  }, /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "absolute bottom-1 left-1 z-30 px-1.5 py-0.5 rounded bg-slate-950/85 text-[10px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow"
+  }, "PR"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setClosedIds(prev => ({
       ...prev,
       [ad.id]: true
@@ -377,7 +381,9 @@ function SideAdBanner({
   }, mobileAds.map(ad => /*#__PURE__*/React.createElement("div", {
     key: ad.id,
     className: "relative group glass-panel p-1 rounded-xl border border-slate-800/90 bg-slate-900/95 shadow-2xl flex justify-center items-center overflow-hidden w-full backdrop-blur-md"
-  }, /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "absolute bottom-1 left-1 z-30 px-1 py-0.5 rounded bg-slate-950/85 text-[9px] leading-none font-bold text-slate-300 border border-slate-700/60 select-none pointer-events-none shadow"
+  }, "PR"), /*#__PURE__*/React.createElement("button", {
     onClick: () => setClosedIds(prev => ({
       ...prev,
       [ad.id]: true
