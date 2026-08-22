@@ -81,7 +81,7 @@ const tanakaSora2026Obj = `,
     skill: { name: '点で合わせるシュート', rank: '銅', description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP' },
     abilities: [
       { name: '俊敏なタッチ', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' },
-      { name: '裏への飛び出し', rank: '銀', description: '発動条件：途中出場　/　決定力・走力UP' }
+      { name: '裏への飛び出し', rank: '銀', description: '発動条件：絶好調　/ 決定力・走力UP' }
     ],
     avatarUrl: ''
   }
