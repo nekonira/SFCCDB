@@ -88,7 +88,7 @@ const toshida2026TSObj = `,
     skill: { name: '魂のワンタッチ', rank: '銀', description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP' },
     abilities: [
       { name: '力強いフィニッシュ', rank: '銀', description: '発動条件：好調　/　決定力・コンタクトUP' },
-      { name: '柔と剛のタッチ', rank: '銀', description: '発動条件：好調　/　キック力・ボールタッチUP' }
+      { name: '柔と剛のタッチ', rank: '銀', description: '発動条件：途中出場　/　キック力・ボールタッチUP' }
     ],
     avatarUrl: ''
   }

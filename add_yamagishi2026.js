@@ -81,7 +81,7 @@ const yamagishi2026Obj = `,
     skill: { name: '絶妙なトラップ', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力UP　/　成功時に自身のシュート発生確率UP' },
     abilities: [
       { name: 'ゴール前の落ち着き', rank: '銀', description: 'ゴール前で冷静にコースを見極めて得点力を向上' },
-      { name: '上空のターゲットマン', rank: '銀', description: '発動条件：途中出場　/　キープ力・ジャンプUP' }
+      { name: '上空のターゲットマン', rank: '銀', description: '発動条件：絶好調　/　キープ力・ジャンプUP' }
     ],
     avatarUrl: ''
   }

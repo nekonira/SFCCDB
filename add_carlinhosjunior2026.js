@@ -75,7 +75,7 @@ const carlinhosJunior2026Obj = `,
     },
     skill: { name: '確信のロングシュート', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：シュート・ロングシュート時　/　決定力・キック力UP' },
     abilities: [
-      { name: 'アジャイルキッカー', rank: '銀', description: '発動条件：途中出場　/　キック力・敏捷性UP' },
+      { name: 'アジャイルキッカー', rank: '銀', description: '発動条件：絶好調　/　キック力・敏捷性UP' },
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' }
     ],
     avatarUrl: ''
