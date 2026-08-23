@@ -1966,8 +1966,8 @@ function PlayerDBTab({
         const hasPos = allPos.some(pos => {
           if (!pos) return false;
           if (pos === posFilter) return true;
-          if (posFilter === 'DM' && (pos === 'DM' || pos === 'DMF' || pos === 'CMF')) return true;
-          if (posFilter === 'AM' && (pos === 'AM' || pos === 'OMF')) return true;
+          if (posFilter === 'DM' && (pos === 'DM' || pos === 'DM' || pos === 'CMF')) return true;
+          if (posFilter === 'AM' && (pos === 'AM' || pos === 'AM')) return true;
           if (posFilter === 'LM' && (pos === 'LM' || pos === 'LMF' || pos === 'SMF' && p.category === 'MF')) return true;
           if (posFilter === 'RM' && (pos === 'RM' || pos === 'RMF' || pos === 'SMF' && p.category === 'MF')) return true;
           if ((posFilter === 'LFB' || posFilter === 'LSB') && (pos === 'LFB' || pos === 'LSB')) return true;
@@ -2027,14 +2027,14 @@ function PlayerDBTab({
       'RFB': 4,
       'RSB': 4,
       'DM': 5,
-      'DMF': 5,
+      'DM': 5,
       'CMF': 5,
       'LM': 6,
       'LMF': 6,
       'RM': 7,
       'RMF': 7,
       'AM': 8,
-      'OMF': 8,
+      'AM': 8,
       'LW': 9,
       'LWG': 9,
       'RW': 10,
@@ -2827,8 +2827,8 @@ const normalizePosition = pos => {
   if (['CB', 'LCB', 'RCB', 'DF', 'DC'].includes(str)) return 'CB';
   if (['LFB', 'LB', 'LSB', 'DL', 'SB'].includes(str)) return 'LFB';
   if (['RFB', 'RB', 'RSB', 'DR'].includes(str)) return 'RFB';
-  if (['DM', 'LDM', 'RDM', 'DMF', 'DH', 'CH', 'CMF', 'CM'].includes(str)) return 'DM';
-  if (['AM', 'LAM', 'RAM', 'AMF', 'OMF', 'OH'].includes(str)) return 'AM';
+  if (['DM', 'LDM', 'RDM', 'DM', 'DH', 'CH', 'CMF', 'CM'].includes(str)) return 'DM';
+  if (['AM', 'LAM', 'RAM', 'AMF', 'AM', 'OH'].includes(str)) return 'AM';
   if (['LM', 'LMF', 'LSH', 'SMF'].includes(str)) return 'LM';
   if (['RM', 'RMF', 'RSH'].includes(str)) return 'RM';
   if (['LW', 'LWG'].includes(str)) return 'LW';

@@ -15105,7 +15105,7 @@ window.INITIAL_PLAYERS = [
     name: 'ススペイタ(チケット交換)',
     readingName: 'すすぺいた',
     category: 'MF',
-    mainPosition: 'DMF',
+    mainPosition: 'DM',
     subPositions: [],
     rarity: '☆3',
     baseRarity: '☆3',
@@ -15153,7 +15153,7 @@ window.INITIAL_PLAYERS = [
     name: '透明男(チケット交換)',
     readingName: 'とうめいおとこ',
     category: 'MF',
-    mainPosition: 'DMF',
+    mainPosition: 'DM',
     subPositions: [],
     rarity: '☆3',
     baseRarity: '☆3',
@@ -15201,7 +15201,7 @@ window.INITIAL_PLAYERS = [
     name: 'ムサイール(チケット交換)',
     readingName: 'むさいーる',
     category: 'MF',
-    mainPosition: 'OMF',
+    mainPosition: 'AM',
     subPositions: [],
     rarity: '☆3',
     baseRarity: '☆3',
@@ -19326,4 +19326,4 @@ window.INITIAL_PLAYERS = [
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK', 'LM', 'RM'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB', 'ドリブラーLM', 'ドリブラーRM', 'ドリブラーRW', 'ドリブラーLW', 'サイドアタッカーLW'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'AM', 'CMF', 'DM', 'LFB', 'RFB', 'CB', 'GK', 'LM', 'RM'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB', 'ドリブラーLM', 'ドリブラーRM', 'ドリブラーRW', 'ドリブラーLW', 'サイドアタッカーLW'] };
