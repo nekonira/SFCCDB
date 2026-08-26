@@ -13,6 +13,71 @@ const PLAY_STYLES = ["オーソドックスGK", "スイーパーGK", "ストッ�
 const INITIAL_PLAYERS = window.INITIAL_PLAYERS || [];
 const INITIAL_MANAGERS = window.INITIAL_MANAGERS || [];
 const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
+const COUNTRY_CODE_MAP = {
+  '日本': 'jp',
+  'ブラジル': 'br',
+  'スペイン': 'es',
+  'アルゼンチン': 'ar',
+  'フランス': 'fr',
+  'ドイツ': 'de',
+  'イングランド': 'gb-eng',
+  'イタリア': 'it',
+  'オランダ': 'nl',
+  'ポルトガル': 'pt',
+  'ウルグアイ': 'uy',
+  'クロアチア': 'hr',
+  'コロンビア': 'co',
+  'ベルギー': 'be',
+  'ノルウェー': 'no',
+  '韓国': 'kr',
+  'アメリカ合衆国': 'us',
+  'モロッコ': 'ma',
+  'エジプト': 'eg',
+  'タイ': 'th',
+  'インドネシア': 'id',
+  'トルコ': 'tr',
+  'スイス': 'ch',
+  'スウェーデン': 'se',
+  'ポーランド': 'pl',
+  'ジョージア': 'ge',
+  'スコットランド': 'gb-sct',
+  'コートジボワール': 'ci',
+  'パラグアイ': 'py',
+  'スロベニア': 'si',
+  'アイスランド': 'is',
+  'ウズベキスタン': 'uz',
+  'ジャマイカ': 'jm',
+  'シエラレオーネ': 'sl',
+  'シリア': 'sy',
+  'モンテネグロ': 'me',
+  'ヨルダン': 'jo',
+  'UAE': 'ae',
+  '中国': 'cn',
+  '南アフリカ': 'za',
+  '香港': 'hk'
+};
+
+const getCountryFlag = (nationality) => {
+  if (!nationality) return '';
+  const code = COUNTRY_CODE_MAP[String(nationality).trim()];
+  return code ? `https://flagcdn.com/20x15/${code}.png` : '';
+};
+
+const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover rounded-xs border border-slate-700/60 shadow-xs" }) => {
+  if (!nationality) return null;
+  const code = COUNTRY_CODE_MAP[String(nationality).trim()];
+  if (!code) return /*#__PURE__*/React.createElement("span", { className: "text-xs" }, "🌐");
+  return /*#__PURE__*/React.createElement("img", {
+    src: `https://flagcdn.com/20x15/${code}.png`,
+    srcSet: `https://flagcdn.com/40x30/${code}.png 2x`,
+    alt: nationality,
+    title: nationality,
+    className: className,
+    loading: "lazy",
+    onError: (e) => { e.target.style.display = 'none'; }
+  });
+};
+
 const YOUTUBE_VIDEOS = [
   {
     id: "EFmaOGfDggw",
@@ -2336,7 +2401,7 @@ function PlayerDBTab({
       toggleNationality(quickNat);
     },
     className: `px-1.5 py-0.5 rounded ${nationalityFilter.includes(quickNat) ? 'bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/50 font-bold' : 'bg-slate-800 text-slate-400 hover:text-white'}`
-  }, quickNat)))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("span", { className: "flex items-center gap-1" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: quickNat, className: "w-3.5 h-2.5 object-cover rounded-xs" }), /*#__PURE__*/React.createElement("span", null, quickNat)))))), /*#__PURE__*/React.createElement("div", {
     className: "max-h-52 overflow-y-auto space-y-0.5 pr-1"
   }, nationalitiesList.filter(nat => !natSearchQuery || nat.includes(natSearchQuery.trim()) || getNationalityReading(nat).includes(natSearchQuery.trim())).map(nat => {
     const isChecked = nationalityFilter.includes(nat);
@@ -2506,7 +2571,7 @@ function PlayerDBTab({
       className: `text-[10px] font-black px-1.5 py-0.5 rounded border ${getPolicyBadgeClass(p.policy)}`
     }, p.policy), p.nationality && /*#__PURE__*/React.createElement("span", {
       className: "text-[10px] text-slate-400 font-semibold truncate"
-    }, "🌐 ", p.nationality)), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("span", { className: "flex items-center gap-1" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality, className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" }), /*#__PURE__*/React.createElement("span", null, p.nationality)))), /*#__PURE__*/React.createElement("div", {
       className: "font-black text-sm text-white truncate mt-1"
     }, p.name), /*#__PURE__*/React.createElement("div", {
       className: "text-[10px] text-purple-300 font-bold truncate mt-0.5"
@@ -2630,7 +2695,7 @@ function PlayerDBTab({
       className: "px-2 py-0.5 rounded font-black text-xs bg-slate-800 text-[#00FF66] font-num"
     }, p.mainPosition, p.subPositions && p.subPositions.length > 0 ? ` / ${p.subPositions.join(' / ')}` : '')), /*#__PURE__*/React.createElement("td", {
       className: "py-3 px-2 text-center text-xs font-semibold text-slate-300 whitespace-nowrap"
-    }, p.nationality || '-'), /*#__PURE__*/React.createElement("td", {
+    }, p.nationality ? /*#__PURE__*/React.createElement("div", { className: "flex items-center justify-center gap-1.5" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality }), /*#__PURE__*/React.createElement("span", { className: "font-bold" }, p.nationality)) : '-'), /*#__PURE__*/React.createElement("td", {
       className: "py-3 px-2 text-slate-300 text-xs whitespace-nowrap"
     }, p.playStyle, p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : '', " ", /*#__PURE__*/React.createElement("span", {
       className: "text-[#00FF66] font-num font-bold"
@@ -2853,6 +2918,7 @@ const isPositionMatch = (playerPos, targetPos) => {
   const playerNorm = normalizePosition(playerPos);
   return playerNorm === targetNorm;
 };
+
 const STAT_NAME_MAP = {
   '決定力': ['shoot', 'finishing'],
   'キック力': ['shoot', 'power'],
@@ -8087,9 +8153,9 @@ function TeamBuilderTab({
         className: "flex items-center gap-1.5 text-amber-300"
       }, /*#__PURE__*/React.createElement("span", null, "⚡"), /*#__PURE__*/React.createElement("span", null, "対象能力別の加算ボーナス内訳")), comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
         className: "text-xs text-amber-300 font-bold"
-      }, "🇧🇷 ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "% 適用中)"), comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
+      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: "ブラジル" }), " ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "% 適用中)"), comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
         className: "text-xs text-amber-300 font-bold"
-      }, "🇪🇸 スペイン選手 ", comboValidation.spainPlayerCount, "名 (+", comboValidation.spainBonusPct, "% 適用中)")), /*#__PURE__*/React.createElement("div", {
+      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: "スペイン" }), " スペイン選手 ", comboValidation.spainPlayerCount, "名 (+", comboValidation.spainBonusPct, "% 適用中)")), /*#__PURE__*/React.createElement("div", {
         className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5"
       }, comboValidation.statBuffBreakdown.map((sb, idx) => /*#__PURE__*/React.createElement("div", {
         key: idx,
@@ -8104,9 +8170,7 @@ function TeamBuilderTab({
         className: `p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${(comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) ? 'bg-amber-500/10 border-amber-500/30 text-amber-200' : 'bg-slate-950 border-slate-800 text-slate-300'}`
       }, /*#__PURE__*/React.createElement("div", {
         className: "flex items-center gap-2"
-      }, /*#__PURE__*/React.createElement("span", {
-        className: "text-base"
-      }, comboValidation.isLaRoja ? "🇪🇸" : "🇧🇷"), /*#__PURE__*/React.createElement("span", {
+      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: comboValidation.isLaRoja ? "スペイン" : "ブラジル", className: "w-5 h-3.5 object-cover rounded-xs shadow-sm" }), /*#__PURE__*/React.createElement("span", {
         className: "font-bold"
       }, activeComboData.specialNote)), comboValidation.isSelecao && /*#__PURE__*/React.createElement("span", {
         className: "px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow"
@@ -8376,7 +8440,7 @@ function TeamBuilderTab({
       className: "text-[10px] text-slate-400 truncate"
     }, p.playStyle || 'スタイル未設定', " ", /*#__PURE__*/React.createElement("span", {
       className: "text-[#00FF66] font-bold"
-    }, "LV.", p.playStyleLevel), " ", p.nationality && `| 🌐 ${p.nationality}`))), /*#__PURE__*/React.createElement("div", {
+    }, "LV.", p.playStyleLevel), " ", p.nationality && /*#__PURE__*/React.createElement("span", { className: "inline-flex items-center gap-1 font-medium text-slate-300" }, /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality, className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" }), /*#__PURE__*/React.createElement("span", null, p.nationality))))), /*#__PURE__*/React.createElement("div", {
       className: "text-right flex-shrink-0"
     }, /*#__PURE__*/React.createElement("div", {
       className: "text-xs text-slate-400 font-bold"
@@ -8710,7 +8774,7 @@ function PlayerDetailModal({
     className: "text-2xl md:text-3xl font-black text-white"
   }, adjustedPlayer.name), /*#__PURE__*/React.createElement("div", {
     className: "text-xs text-slate-400 font-medium"
-  }, adjustedPlayer.nationality))), /*#__PURE__*/React.createElement("button", {
+  }, /*#__PURE__*/React.createElement("span", { className: "flex items-center justify-center gap-1.5" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: adjustedPlayer.nationality, className: "w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm" }), /*#__PURE__*/React.createElement("span", null, adjustedPlayer.nationality))))), /*#__PURE__*/React.createElement("button", {
     onClick: onClose,
     className: "p-1 text-slate-400 hover:text-white"
   }, /*#__PURE__*/React.createElement(Icon, {

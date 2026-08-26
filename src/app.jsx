@@ -38,6 +38,75 @@ const INITIAL_PLAYERS = window.INITIAL_PLAYERS || [];
 const INITIAL_MANAGERS = window.INITIAL_MANAGERS || [];
 const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
 
+const COUNTRY_CODE_MAP = {
+  '日本': 'jp',
+  'ブラジル': 'br',
+  'スペイン': 'es',
+  'アルゼンチン': 'ar',
+  'フランス': 'fr',
+  'ドイツ': 'de',
+  'イングランド': 'gb-eng',
+  'イタリア': 'it',
+  'オランダ': 'nl',
+  'ポルトガル': 'pt',
+  'ウルグアイ': 'uy',
+  'クロアチア': 'hr',
+  'コロンビア': 'co',
+  'ベルギー': 'be',
+  'ノルウェー': 'no',
+  '韓国': 'kr',
+  'アメリカ合衆国': 'us',
+  'モロッコ': 'ma',
+  'エジプト': 'eg',
+  'タイ': 'th',
+  'インドネシア': 'id',
+  'トルコ': 'tr',
+  'スイス': 'ch',
+  'スウェーデン': 'se',
+  'ポーランド': 'pl',
+  'ジョージア': 'ge',
+  'スコットランド': 'gb-sct',
+  'コートジボワール': 'ci',
+  'パラグアイ': 'py',
+  'スロベニア': 'si',
+  'アイスランド': 'is',
+  'ウズベキスタン': 'uz',
+  'ジャマイカ': 'jm',
+  'シエラレオーネ': 'sl',
+  'シリア': 'sy',
+  'モンテネグロ': 'me',
+  'ヨルダン': 'jo',
+  'UAE': 'ae',
+  '中国': 'cn',
+  '南アフリカ': 'za',
+  '香港': 'hk'
+};
+
+const getCountryFlag = (nationality) => {
+  if (!nationality) return '';
+  const code = COUNTRY_CODE_MAP[String(nationality).trim()];
+  return code ? `https://flagcdn.com/20x15/${code}.png` : '';
+};
+
+const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover rounded-xs border border-slate-700/60 shadow-xs" }) => {
+  if (!nationality) return null;
+  const code = COUNTRY_CODE_MAP[String(nationality).trim()];
+  if (!code) return <span className="text-xs">🌐</span>;
+  return (
+    <img
+      src={`https://flagcdn.com/20x15/${code}.png`}
+      srcSet={`https://flagcdn.com/40x30/${code}.png 2x`}
+      alt={nationality}
+      title={nationality}
+      className={className}
+      loading="lazy"
+      onError={(e) => {
+        e.target.style.display = 'none';
+      }}
+    />
+  );
+};
+
 const YOUTUBE_VIDEOS = [
   {
     id: "EFmaOGfDggw",
@@ -2341,7 +2410,7 @@ function PlayerDBTab({
                     </button>
                     {['日本', 'ブラジル', 'アルゼンチン', 'スペイン', 'フランス', 'ドイツ'].map(quickNat => (
                       <button
-                        key={quickNat}
+                        key=<span className="flex items-center gap-1"><FlagIcon nationality={quickNat} className="w-3.5 h-2.5 object-cover rounded-xs" /><span>{quickNat}</span></span>
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
@@ -2538,7 +2607,7 @@ function PlayerDBTab({
                         )}
                         {p.nationality && (
                           <span className="text-[10px] text-slate-400 font-semibold truncate">
-                            🌐 {p.nationality}
+                            <span className="flex items-center gap-1"><FlagIcon nationality={p.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" /><span>{p.nationality}</span></span>
                           </span>
                         )}
                       </div>
@@ -2680,7 +2749,7 @@ function PlayerDBTab({
                       </span>
                     </td>
                     <td className="py-3 px-2 text-center text-xs font-semibold text-slate-300 whitespace-nowrap">
-                      {p.nationality || '-'}
+                      {p.nationality ? <div className="flex items-center justify-center gap-1.5"><FlagIcon nationality={p.nationality} /><span className="font-bold">{p.nationality}</span></div> : '-'}
                     </td>
                     <td className="py-3 px-2 text-slate-300 text-xs whitespace-nowrap">
                       {p.playStyle}{p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{p.playStyleLevel}</span>
@@ -2784,8 +2853,15 @@ function PlayerCard({ player, onClick, onCompareToggle, isCompared }) {
             <div className="text-xs text-purple-300 font-medium mt-0.5">
               {player.playStyle} <span className="text-[#00FF66] font-num font-bold">LV.{player.playStyleLevel}</span>
             </div>
-            <div className={`text-xs ${getPolicyTextColor(player.policy)}`}>
-              {player.policy}
+            <div className="flex items-center gap-1.5 text-xs flex-wrap">
+              <span className={getPolicyTextColor(player.policy)}>{player.policy}</span>
+              {player.nationality && (
+                <span className="text-slate-400 font-semibold flex items-center gap-1">
+                  <span>•</span>
+                  <FlagIcon nationality={player.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" />
+                  <span>{player.nationality}</span>
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -2920,6 +2996,7 @@ const isPositionMatch = (playerPos, targetPos) => {
   const playerNorm = normalizePosition(playerPos);
   return playerNorm === targetNorm;
 };
+
 
 const STAT_NAME_MAP = {
   '決定力': ['shoot', 'finishing'],
@@ -5395,13 +5472,13 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                         <span>対象能力別の加算ボーナス内訳</span>
                       </span>
                       {comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 && (
-                        <span className="text-xs text-amber-300 font-bold">
-                          🇧🇷 ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
+                        <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
+                          <FlagIcon nationality="ブラジル" /> ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
                         </span>
                       )}
                       {comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && (
-                        <span className="text-xs text-amber-300 font-bold">
-                          🇪🇸 スペイン選手 {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
+                        <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
+                          <FlagIcon nationality="スペイン" /> スペイン選手 {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
                         </span>
                       )}
                     </div>
@@ -5431,7 +5508,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                     : 'bg-slate-950 border-slate-800 text-slate-300'
                 }`}>
                   <div className="flex items-center gap-2">
-                    <span className="text-base">{comboValidation.isLaRoja ? '🇪🇸' : '🇧🇷'}</span>
+                    <FlagIcon nationality={comboValidation.isLaRoja ? 'スペイン' : 'ブラジル'} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
                     <span className="font-bold">{activeComboData.specialNote}</span>
                   </div>
                   {comboValidation.isSelecao && (
@@ -5798,7 +5875,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                             </div>
                             <div className="font-black text-sm text-white truncate mt-0.5">{p.name}</div>
                             <div className="text-[10px] text-slate-400 truncate">
-                              {p.playStyle || 'スタイル未設定'} <span className="text-[#00FF66] font-bold">LV.{p.playStyleLevel}</span> {p.nationality && `| 🌐 ${p.nationality}`}
+                              <span>{p.playStyle || 'スタイル未設定'}</span> <span className="text-[#00FF66] font-bold">LV.{p.playStyleLevel}</span> {p.nationality && <span className="inline-flex items-center gap-1 font-medium text-slate-300"><span>|</span><FlagIcon nationality={p.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" /><span>{p.nationality}</span></span>}
                             </div>
                           </div>
                         </div>
@@ -6109,7 +6186,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
                 <span>{adjustedPlayer.mainPosition}{adjustedPlayer.subPositions && adjustedPlayer.subPositions.length > 0 ? ` / ${adjustedPlayer.subPositions.join(' / ')}` : ''}</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-black text-white">{adjustedPlayer.name}</h2>
-              <div className="text-xs text-slate-400 font-medium">{adjustedPlayer.nationality}</div>
+              <div className="text-xs text-slate-300 font-bold flex items-center justify-center gap-1"><FlagIcon nationality={adjustedPlayer.nationality} className="w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm" /><span>{adjustedPlayer.nationality}</span></div>
             </div>
           </div>
           <button onClick={onClose} className="p-1 text-slate-400 hover:text-white">
