@@ -70,7 +70,7 @@ const gaviObj = `,
     },
     playTendencies: {
       attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
-      shortPass: 2, longPass: 1, throughPass: 0, cutIn: 0, keep: 0,
+      shortPass: 0, longPass: 2, throughPass: 1, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
     skill: { name: '3Dパス', rank: '銀', description: '発動エリア：後左中右　/　発動条件：中左右・後左右に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のロングパス発生確率UP' },
