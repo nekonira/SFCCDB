@@ -40,6 +40,12 @@ const INITIAL_COMBOS = window.INITIAL_COMBOS || [];
 
 const YOUTUBE_VIDEOS = [
   {
+    id: "EFmaOGfDggw",
+    title: "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
+    thumbnail: "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
+    url: "https://www.youtube.com/watch?v=EFmaOGfDggw"
+  },
+  {
     id: "YxToi7zTO4I",
     title: "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
     thumbnail: "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
@@ -2952,6 +2958,21 @@ const getPlayerStatValue = (player, statName) => {
 function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const FORMATION_COMBOS = [
     {
+      id: 'laRoja26',
+      name: "ラ・ロハ’26",
+      rank: '金',
+      policy: 'ポゼッション',
+      formationId: '433b_laRoja26',
+      buffs: [
+        { name: '決定力', val: '+80%' },
+        { name: 'ショートパス', val: '+80%' },
+        { name: 'タックル', val: '+80%' },
+        { name: 'マーク', val: '+80%' }
+      ],
+      specialNote: 'フィールド上のスペイン選手1人につき、上記4能力（決定力・ショートパス・タックル・マーク）が追加で2%強化！'
+    },
+
+    {
       id: 'selecao70',
       name: "セレソン’70",
       rank: '金',
@@ -3525,6 +3546,25 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   ];
 
   const FORMATIONS = [
+    {
+      id: '433b_laRoja26',
+      name: '4-3-3B (ラ・ロハ’26)',
+      comboId: 'laRoja26',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 3 },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 }
+      ]
+    },
+
     {
       id: '343c_selecao',
       name: '3-4-3C (セレソン’70)',
@@ -4716,8 +4756,12 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     const allReqsFulfilled = isPolicyMatch && reqResults.length > 0 && reqResults.every(r => r.isFulfilled);
 
     const isSelecao = activeComboData.id === 'selecao70';
+    const isLaRoja = activeComboData.id === 'laRoja26';
     const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
     const brazilBonusPct = brazilPlayerCount * 2;
+    const spainPlayerCount = isLaRoja ? starterPlayers.filter(p => p.nationality === 'スペイン').length : 0;
+    const spainBonusPct = spainPlayerCount * 2;
+    const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : 0);
 
     // 各能力ボーナスごとの加算量（各選手・各能力ごとに %UP 後に Math.floor で端数切捨て）計算
     const statBuffBreakdown = [];
@@ -4726,7 +4770,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     if (allReqsFulfilled && activeComboData.buffs) {
       activeComboData.buffs.forEach(b => {
         const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
-        const effectivePct = basePct + (isSelecao ? brazilBonusPct : 0);
+        const effectivePct = basePct + nationExtraPct;
 
         let statGainedSum = 0;
         starterPlayers.forEach(p => {
@@ -4757,6 +4801,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       reqResults,
       allReqsFulfilled,
       isSelecao,
+        isLaRoja,
+        spainPlayerCount,
+        spainBonusPct,
       brazilPlayerCount,
       brazilBonusPct,
       statBuffBreakdown,
@@ -5352,6 +5399,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                           🇧🇷 ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
                         </span>
                       )}
+                      {comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && (
+                        <span className="text-xs text-amber-300 font-bold">
+                          🇪🇸 スペイン選手 {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
+                        </span>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -5374,17 +5426,22 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               {/* Special Brazil Note if present */}
               {activeComboData.specialNote && (
                 <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${
-                  comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0
+                  (comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0)
                     ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
                     : 'bg-slate-950 border-slate-800 text-slate-300'
                 }`}>
                   <div className="flex items-center gap-2">
-                    <span className="text-base">🇧🇷</span>
+                    <span className="text-base">{comboValidation.isLaRoja ? '🇪🇸' : '🇧🇷'}</span>
                     <span className="font-bold">{activeComboData.specialNote}</span>
                   </div>
                   {comboValidation.isSelecao && (
                     <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
                       スタメン {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
+                    </span>
+                  )}
+                  {comboValidation.isLaRoja && (
+                    <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
+                      スタメン {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
                     </span>
                   )}
                 </div>

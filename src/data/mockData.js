@@ -19427,7 +19427,7 @@ window.INITIAL_PLAYERS = [
     name: 'ガビ',
     readingName: 'がび',
     category: 'MF',
-    mainPosition: 'DMF',
+    mainPosition: 'DM',
     subPositions: [],
     rarity: '☆3',
     baseRarity: '☆3',
