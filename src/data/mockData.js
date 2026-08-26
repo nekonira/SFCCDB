@@ -19335,7 +19335,7 @@ window.INITIAL_PLAYERS = [
     baseRarity: '☆3',
     nationality: 'スペイン',
     policy: 'ポゼッション',
-    playStyle: 'ワイドストライカー',
+    playStyle: 'ワイドストライカーRW',
     playStyleLevel: 'Ⅲ',
     overall: 7948,
     maxOverall: 16185,
