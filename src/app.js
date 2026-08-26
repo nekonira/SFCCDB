@@ -839,7 +839,11 @@ const PLAYER_IMAGE_MAP = {
   "p369": "SVEND_BRODERSEN_2026_IMAGE",
   "p370": "KIM_JIN_HYEON_2026_IMAGE",
   "p371": "NISHIKAWA_SHUSAKU_2026_IMAGE",
-  "p372": "PARK_ILGYU_2026_IMAGE"
+  "p372": "PARK_ILGYU_2026_IMAGE",
+  "p373": "YAMAL_IMAGE",
+  "p374": "CUBARSI_IMAGE",
+  "p375": "GAVI_IMAGE",
+  "p376": "SIMON_IMAGE"
 };
 const getPlayerAvatarUrl = player => {
   if (!player) return '';

@@ -19323,7 +19323,203 @@ window.INITIAL_PLAYERS = [
       { name: '守勢のロングフィード', rank: '銀', description: '発動条件：絶好調　/　1VS1・ロングパスUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p373',
+    name: 'ラミン・ヤマル',
+    readingName: 'らみんやまる',
+    category: 'FW',
+    mainPosition: 'RW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'スペイン',
+    policy: 'ポゼッション',
+    playStyle: 'ワイドストライカー',
+    playStyleLevel: 'Ⅲ',
+    overall: 7948,
+    maxOverall: 16185,
+    baseStats: { shoot: 1477, pass: 1472, dribble: 1501, defense: 1002, physical: 1187, speed: 957 },
+    detailStats: {
+      shoot: { finishing: 492, power: 491, composure: 494 },
+      pass: { shortPass: 488, longPass: 493, accuracy: 491 },
+      dribble: { breakout: 501, keeping: 497, ballTouch: 503 },
+      defense: { tackle: 318, interception: 354, marking: 330 },
+      physical: { jumping: 343, contact: 417, stamina: 427 },
+      speed: { running: 469, agility: 488 }
+    },
+    maxEnhanced: {
+      overall: 16185,
+      baseStats: { shoot: 3034, pass: 3041, dribble: 3094, defense: 2511, physical: 2732, speed: 2027 },
+      detailStats: {
+        shoot: { finishing: 1015, power: 1002, composure: 1017 },
+        pass: { shortPass: 1011, longPass: 1016, accuracy: 1014 },
+        dribble: { breakout: 1036, keeping: 1032, ballTouch: 1026 },
+        defense: { tackle: 829, interception: 853, marking: 829 },
+        physical: { jumping: 854, contact: 928, stamina: 950 },
+        speed: { running: 1004, agility: 1023 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 2, longShoot: 1,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 2, keep: 0,
+      delay: -1, rushOut: 1, feint: 1, press: 0
+    },
+    skill: { name: '流星の弾道', rank: '金', description: '発動エリア：前左中右　/　発動条件：シュート時　/　決定力、キック力UP' },
+    abilities: [
+      { name: '変幻自在のドリブラー', rank: '金', description: '発動条件：好調　/　突破力・キープ力・ボールタッチUP' },
+      { name: '冷静なフィニッシュ', rank: '銀', description: '発動条件：好調　/　決定力・冷静さUP' },
+      { name: '俊敏なパサー', rank: '銀', description: '発動条件：好調　/　ショートパス・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p374',
+    name: 'パウ・クバルシ',
+    readingName: 'ぱうくばるし',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'スペイン',
+    policy: 'ポゼッション',
+    playStyle: '組立CB',
+    playStyleLevel: 'Ⅲ',
+    overall: 7444,
+    maxOverall: 15731,
+    baseStats: { shoot: 956, pass: 1414, dribble: 1280, defense: 1412, physical: 1260, speed: 840 },
+    detailStats: {
+      shoot: { finishing: 292, power: 330, composure: 334 },
+      pass: { shortPass: 482, longPass: 479, accuracy: 453 },
+      dribble: { breakout: 410, keeping: 406, ballTouch: 464 },
+      defense: { tackle: 457, interception: 482, marking: 473 },
+      physical: { jumping: 415, contact: 438, stamina: 407 },
+      speed: { running: 409, agility: 431 }
+    },
+    maxEnhanced: {
+      overall: 15731,
+      baseStats: { shoot: 2453, pass: 2983, dribble: 2813, defense: 3017, physical: 2853, speed: 1886 },
+      detailStats: {
+        shoot: { finishing: 791, power: 829, composure: 833 },
+        pass: { shortPass: 1005, longPass: 1002, accuracy: 976 },
+        dribble: { breakout: 921, keeping: 917, ballTouch: 975 },
+        defense: { tackle: 992, interception: 1017, marking: 1008 },
+        physical: { jumping: 950, contact: 973, stamina: 930 },
+        speed: { running: 932, agility: 954 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '逆襲の初動', rank: '金', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカットUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '反撃の起点', rank: '金', description: '発動条件：好調　/　ロングパス・タックル・パスカットUP' },
+      { name: '駆け引きの美学', rank: '銀', description: '発動条件：絶好調　/　キック精度・マークUP' },
+      { name: '長短のキック', rank: '銅', description: '発動条件：好調　/　ショートパス・ロングパスUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p375',
+    name: 'ガビ',
+    readingName: 'がび',
+    category: 'MF',
+    mainPosition: 'DMF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'スペイン',
+    policy: 'ポゼッション',
+    playStyle: 'パサーDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 7232,
+    maxOverall: 15426,
+    baseStats: { shoot: 1150, pass: 1438, dribble: 1382, defense: 1243, physical: 1173, speed: 875 },
+    detailStats: {
+      shoot: { finishing: 390, power: 395, composure: 365 },
+      pass: { shortPass: 478, longPass: 481, accuracy: 479 },
+      dribble: { breakout: 462, keeping: 465, ballTouch: 455 },
+      defense: { tackle: 426, interception: 412, marking: 405 },
+      physical: { jumping: 266, contact: 449, stamina: 458 },
+      speed: { running: 409, agility: 466 }
+    },
+    maxEnhanced: {
+      overall: 15426,
+      baseStats: { shoot: 2695, pass: 3043, dribble: 2915, defense: 2824, physical: 2742, speed: 1897 },
+      detailStats: {
+        shoot: { finishing: 901, power: 906, composure: 888 },
+        pass: { shortPass: 1013, longPass: 1016, accuracy: 1014 },
+        dribble: { breakout: 973, keeping: 976, ballTouch: 966 },
+        defense: { tackle: 961, interception: 935, marking: 928 },
+        physical: { jumping: 777, contact: 972, stamina: 993 },
+        speed: { running: 920, agility: 977 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 2, longPass: 1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '3Dパス', rank: '銀', description: '発動エリア：後左中右　/　発動条件：中左右・後左右に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のロングパス発生確率UP' },
+    abilities: [
+      { name: '精緻なパサー', rank: '銀', description: '発動条件：絶好調　/　ショートパス・キック精度UP' },
+      { name: '機敏なロングパサー', rank: '銀', description: '発動条件：好調　/　ロングパス・敏捷性UP' },
+      { name: '不屈の魂', rank: '銅', description: '発動条件：好調　/　キープ力・スタミナUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p376',
+    name: 'ウナイ・シモン',
+    readingName: 'うないしもん',
+    category: 'GK',
+    mainPosition: 'GK',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'スペイン',
+    policy: 'ポゼッション',
+    playStyle: 'オーソドックスGK',
+    playStyleLevel: 'Ⅱ',
+    overall: 7292,
+    maxOverall: 15633,
+    baseStats: { shoot: 936, pass: 1164, dribble: 1014, defense: 1400, physical: 1265, speed: 851 },
+    detailStats: {
+      shoot: { finishing: 298, power: 300, composure: 338 },
+      pass: { shortPass: 358, longPass: 401, accuracy: 405 },
+      dribble: { breakout: 343, keeping: 318, ballTouch: 353 },
+      defense: { tackle: 474, interception: 463, marking: 463 },
+      physical: { jumping: 452, contact: 408, stamina: 405 },
+      speed: { running: 421, agility: 430 }
+    },
+    maxEnhanced: {
+      overall: 15633,
+      baseStats: { shoot: 2397, pass: 2769, dribble: 2475, defense: 3005, physical: 2858, speed: 1873 },
+      detailStats: {
+        shoot: { finishing: 785, power: 787, composure: 825 },
+        pass: { shortPass: 893, longPass: 936, accuracy: 940 },
+        dribble: { breakout: 830, keeping: 805, ballTouch: 840 },
+        defense: { tackle: 1009, interception: 998, marking: 998 },
+        physical: { jumping: 987, contact: 943, stamina: 928 },
+        speed: { running: 932, agility: 941 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -2, shoot: -1, longShoot: -1,
+      shortPass: -1, longPass: 1, throughPass: -1, cutIn: -1, keep: -1,
+      delay: -1, rushOut: -1, feint: -1, press: -1
+    },
+    skill: { name: 'エレガントセーブ', rank: '銀', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
+    abilities: [
+      { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
+      { name: '激情のキック', rank: '銅', description: '発動条件：絶好調　/　キック精度・コンタクトUP' }
+    ],
+    avatarUrl: ''
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'AM', 'CMF', 'DM', 'LFB', 'RFB', 'CB', 'GK', 'LM', 'RM'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB', 'ドリブラーLM', 'ドリブラーRM', 'ドリブラーRW', 'ドリブラーLW', 'サイドアタッカーLW'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'AM', 'CMF', 'DM', 'LFB', 'RFB', 'CB', 'GK', 'LM', 'RM'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB', 'ドリブラーLM', 'ドリブラーRM', 'ドリブラーRW', 'ドリブラーLW', 'サイドアタッカーLW', 'ワイドストライカー', '組立CB'] };
