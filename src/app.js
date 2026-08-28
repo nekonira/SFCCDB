@@ -80,86 +80,126 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
-    id: "EFmaOGfDggw",
-    title: "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
-    thumbnail: "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
-    url: "https://www.youtube.com/watch?v=EFmaOGfDggw"
-  },{
-  id: "YxToi7zTO4I",
-  title: "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=YxToi7zTO4I"
-}, {
-  id: "9OwLKGom0IU",
-  title: "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
-  thumbnail: "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=9OwLKGom0IU"
-}, {
-  id: "3cWmdX7SO9g",
-  title: "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=3cWmdX7SO9g"
-}, {
-  id: "TW5ffHOwVho",
-  title: "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=TW5ffHOwVho"
-}, {
-  id: "-ML6aziQT8A",
-  title: "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
-  thumbnail: "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=-ML6aziQT8A"
-}, {
-  id: "Nk9fShVZ1sI",
-  title: "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
-  thumbnail: "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
-}, {
-  id: "L6wiFTj1-_I",
-  title: "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
-  thumbnail: "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=L6wiFTj1-_I"
-}, {
-  id: "pqmcNKbWNyo",
-  title: "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=pqmcNKbWNyo"
-}, {
-  id: "unixgXGcOco",
-  title: "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
-  thumbnail: "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=unixgXGcOco"
-}, {
-  id: "19dFH-F1fyA",
-  title: "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
-  thumbnail: "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=19dFH-F1fyA"
-}, {
-  id: "mLr4PRijhBg",
-  title: "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
-  thumbnail: "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=mLr4PRijhBg"
-}, {
-  id: "5DYUfVpv4GI",
-  title: "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
-  thumbnail: "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=5DYUfVpv4GI"
-}, {
-  id: "XAaNfUibPyE",
-  title: "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
-  thumbnail: "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=XAaNfUibPyE"
-}, {
-  id: "mYgT5gcq-F8",
-  title: "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
-  thumbnail: "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=mYgT5gcq-F8"
-}, {
-  id: "l68pj27IqOg",
-  title: "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
-  thumbnail: "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
-  url: "https://www.youtube.com/watch?v=l68pj27IqOg"
-}];
+    "id": "wbuRTGvbpYk",
+    "title": "【引く前に見て】限定スペインガチャ徹底解説！ヤマルが超ぶっ壊れ性能【サカつく2026】クバルシ、ガビ、ウナイ・シモン",
+    "thumbnail": "https://i.ytimg.com/vi/wbuRTGvbpYk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=wbuRTGvbpYk"
+  },
+  {
+    "id": "EFmaOGfDggw",
+    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
+    "thumbnail": "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=EFmaOGfDggw"
+  },
+  {
+    "id": "YxToi7zTO4I",
+    "title": "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=YxToi7zTO4I"
+  },
+  {
+    "id": "9OwLKGom0IU",
+    "title": "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
+    "thumbnail": "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=9OwLKGom0IU"
+  },
+  {
+    "id": "3cWmdX7SO9g",
+    "title": "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=3cWmdX7SO9g"
+  },
+  {
+    "id": "TW5ffHOwVho",
+    "title": "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=TW5ffHOwVho"
+  },
+  {
+    "id": "-ML6aziQT8A",
+    "title": "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
+    "thumbnail": "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=-ML6aziQT8A"
+  },
+  {
+    "id": "Nk9fShVZ1sI",
+    "title": "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
+    "thumbnail": "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
+  },
+  {
+    "id": "L6wiFTj1-_I",
+    "title": "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
+    "thumbnail": "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=L6wiFTj1-_I"
+  },
+  {
+    "id": "pqmcNKbWNyo",
+    "title": "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=pqmcNKbWNyo"
+  },
+  {
+    "id": "unixgXGcOco",
+    "title": "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
+    "thumbnail": "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=unixgXGcOco"
+  },
+  {
+    "id": "19dFH-F1fyA",
+    "title": "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
+    "thumbnail": "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=19dFH-F1fyA"
+  },
+  {
+    "id": "mLr4PRijhBg",
+    "title": "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
+    "thumbnail": "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=mLr4PRijhBg"
+  },
+  {
+    "id": "5DYUfVpv4GI",
+    "title": "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
+    "thumbnail": "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=5DYUfVpv4GI"
+  },
+  {
+    "id": "XAaNfUibPyE",
+    "title": "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
+    "thumbnail": "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=XAaNfUibPyE"
+  },
+  {
+    "id": "mYgT5gcq-F8",
+    "title": "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
+    "thumbnail": "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=mYgT5gcq-F8"
+  },
+  {
+    "id": "l68pj27IqOg",
+    "title": "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=l68pj27IqOg"
+  },
+  {
+    "id": "uvwGRAXypnY",
+    "title": "【引く前に見て】新ガチャ徹底解説！インフレ加速!!! 新特練パーマーがやばい【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/uvwGRAXypnY/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=uvwGRAXypnY"
+  },
+  {
+    "id": "qZQI5X7Y6h0",
+    "title": "【引く前に見て】日本代表ガチャ徹底解説！驚異の排出率11％！鎌田、伊藤洋輝の能力値が凄い!!!【サカつく2026】三笘薫、伊東純也、上田綺世、中村敬斗、堂安律、佐野海舟、渡辺剛、谷口彰悟、鈴木彩艶",
+    "thumbnail": "https://i.ytimg.com/vi/qZQI5X7Y6h0/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=qZQI5X7Y6h0"
+  },
+  {
+    "id": "86LGDFNUVkA",
+    "title": "【完全網羅】メインストーリー外伝、攻略解説【サカつく2026】EXTRA STORY",
+    "thumbnail": "https://i.ytimg.com/vi/86LGDFNUVkA/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=86LGDFNUVkA"
+  }
+];
 const AFFILIATE_ADS = [{
   id: "rakuten_user_1",
   badge: "楽天 PR",
@@ -1576,25 +1616,47 @@ function App() {
       setPlayers(latest);
     }
   }, []);
-  const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
+      const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.youtube.com%2Ffeeds%2Fvideos.xml%3Fplaylist_id%3DPLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4').then(res => res.json()).then(data => {
-      if (data && data.status === 'ok' && Array.isArray(data.items) && data.items.length > 0) {
-        const fetched = data.items.map(item => {
-          const match = item.link ? item.link.match(/v=([^&]+)/) : null;
-          const videoId = item.guid ? item.guid.replace('yt:video:', '') : match ? match[1] : '';
-          return {
-            id: videoId,
-            title: item.title ? item.title.replace(/&amp;/g, '&') : '',
-            thumbnail: item.thumbnail || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
-            url: item.link || `https://www.youtube.com/watch?v=${videoId}`
-          };
-        }).filter(v => v.id);
-        if (fetched.length > 0) {
-          setYoutubeVideos(fetched);
+    // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得
+    const playlistUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.youtube.com/playlist?list=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4');
+    fetch(playlistUrl)
+      .then(res => res.text())
+      .then(html => {
+        const matches = [...html.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)];
+        const seen = new Set();
+        const videoIds = [];
+        matches.forEach(m => {
+          if (!seen.has(m[1])) {
+            seen.add(m[1]);
+            videoIds.push(m[1]);
+          }
+        });
+        if (videoIds.length > 0) {
+          const topIds = videoIds.slice(0, 20);
+          Promise.all(topIds.map(id => 
+            fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`)
+              .then(r => r.json())
+              .then(data => ({
+                id: id,
+                title: data && data.title ? data.title : `サカつく2026 攻略動画 (${id})`,
+                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+                url: `https://www.youtube.com/watch?v=${id}`
+              }))
+              .catch(() => ({
+                id: id,
+                title: `サカつく2026 攻略動画 (${id})`,
+                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+                url: `https://www.youtube.com/watch?v=${id}`
+              }))
+          )).then(fetched => {
+            if (fetched.length > 0) {
+              setYoutubeVideos(fetched);
+            }
+          });
         }
-      }
-    }).catch(() => {});
+      })
+      .catch(() => {});
   }, []);
   const [managers, setManagers] = useState(() => INITIAL_MANAGERS);
   const [combos, setCombos] = useState(() => INITIAL_COMBOS);
