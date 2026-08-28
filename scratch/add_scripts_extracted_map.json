@@ -1,0 +1,927 @@
+{
+  "p278": {
+    "varName": "AHN_JUNGHWAN_HAIFU_IMAGE",
+    "name": "アン・ジョンファン(配布)",
+    "source": "add_ahnjunghwanhaifu.js"
+  },
+  "p306": {
+    "varName": "AKITOSUZUKI_2025_IMAGE",
+    "name": "鈴木章斗",
+    "source": "add_akitosuzuki2025.js"
+  },
+  "p233": {
+    "varName": "AMADOU_BAKAYOKO_2026_IMAGE",
+    "name": "アマドゥ・バカヨコ(2026)",
+    "source": "add_amadoubakayoko2026.js"
+  },
+  "p289": {
+    "varName": "ANTANCHEN_2026_IMAGE",
+    "name": "アンタンシェン(チケット交換)",
+    "source": "add_antanchen2026.js"
+  },
+  "p198": {
+    "varName": "ARAKI_RYOTARO_2026_IMAGE",
+    "name": "荒木遼太郎(2026)",
+    "source": "add_arakiryotaro2026.js"
+  },
+  "p307": {
+    "varName": "ARATAWATANABE_2025_IMAGE",
+    "name": "渡邊新太",
+    "source": "add_aratawatanabe2025.js"
+  },
+  "p283": {
+    "varName": "ARGANTCHUEV_2026_IMAGE",
+    "name": "アルガンチューワ(チケット交換)",
+    "source": "add_argantchuev2026.js"
+  },
+  "p308": {
+    "varName": "ATARUESAKA_2025_IMAGE",
+    "name": "江坂任",
+    "source": "add_ataruesaka2025.js"
+  },
+  "p281": {
+    "varName": "BAEK_GYEONGSU_2026_IMAGE",
+    "name": "ペク・ギョンス(チケット交換)",
+    "source": "add_baekgyeongsu2026.js"
+  },
+  "p280": {
+    "varName": "BARFIE_2026_IMAGE",
+    "name": "バルフィー(チケット交換)",
+    "source": "add_barfie2026.js"
+  },
+  "p234": {
+    "varName": "BRENO_HERCULANO_2026_IMAGE",
+    "name": "ブルーノ・エルクラーノ(2026)",
+    "source": "add_brenoherculano2026.js"
+  },
+  "p282": {
+    "varName": "BURROWS_2026_IMAGE",
+    "name": "バロウズ(チケット交換)",
+    "source": "add_burrows2026.js"
+  },
+  "p204": {
+    "varName": "CARLINHOS_JUNIOR_2026_IMAGE",
+    "name": "カルリーニョス・ジュニオ(2026)",
+    "source": "add_carlinhosjunior2026.js"
+  },
+  "p276": {
+    "varName": "CHANATHIP_2026_IMAGE",
+    "name": "チャナティップ・ソングラシン",
+    "source": "add_chanathip2026.js"
+  },
+  "p224": {
+    "varName": "CHOI_GEON_JU_2026_IMAGE",
+    "name": "チェ・ゴンジュ(2026)",
+    "source": "add_choigeonju2026.js"
+  },
+  "p373": {
+    "varName": "CUBARSI_IMAGE",
+    "name": "パウ・クバルシ",
+    "source": "add_cubarsi.js"
+  },
+  "p327": {
+    "varName": "DAIKIMATSUOKA_2025_IMAGE",
+    "name": "松岡大起",
+    "source": "add_daikimatsuoka2025.js"
+  },
+  "p296": {
+    "varName": "DAIKIWATARI_2025_IMAGE",
+    "name": "渡大生",
+    "source": "add_daikiwatari2025.js"
+  },
+  "p259": {
+    "varName": "DIAS_GIFT_2026_IMAGE",
+    "name": "ルベン・ディアス(配布)",
+    "source": "add_diasgift2026.js"
+  },
+  "p297": {
+    "varName": "DISARO_2025_IMAGE",
+    "name": "ディサロ燦シルヴァーノ",
+    "source": "add_disaro2025.js"
+  },
+  "p226": {
+    "varName": "EMERSON_RAMON_2026_IMAGE",
+    "name": "エメルソン・ハモン(2026)",
+    "source": "add_emersonramon2026.js"
+  },
+  "p230": {
+    "varName": "FRIDJONSSON_2026_IMAGE",
+    "name": "ホルムベルト・アーロン・フリズヨンソン(2026)",
+    "source": "add_fridjonsson2026.js"
+  },
+  "p197": {
+    "varName": "FUJIKAWA_KOTARO_2026_IMAGE",
+    "name": "藤川虎太朗(2026)",
+    "source": "add_fujikawakotaro2026.js"
+  },
+  "p340": {
+    "varName": "FUKUMORI_AKITO_2026_IMAGE",
+    "name": "福森晃斗",
+    "source": "add_fukumoriakito2026.js"
+  },
+  "p374": {
+    "varName": "GAVI_IMAGE",
+    "name": "ガビ",
+    "source": "add_gavi.js"
+  },
+  "p213": {
+    "varName": "GO_JAE_HYEON_2026_IMAGE",
+    "name": "コ・ジェヒョン(2026)",
+    "source": "add_gojaehyeon2026.js"
+  },
+  "p196": {
+    "varName": "GOTO_YUSUKE_2026_IMAGE",
+    "name": "後藤優介(2026)",
+    "source": "add_gotoyusuke2026.js"
+  },
+  "p258": {
+    "varName": "HAALAND_GIFT_2026_IMAGE",
+    "name": "アーリング・ハーランド(配布)",
+    "source": "add_haalandgift2026.js"
+  },
+  "p360": {
+    "varName": "HARA_TAICHI_2026_IMAGE",
+    "name": "原大智",
+    "source": "add_harataichi2026.js"
+  },
+  "p241": {
+    "varName": "HIDANO_2026_IMAGE",
+    "name": "肥田野蓮治(2026)",
+    "source": "add_hidano2026.js"
+  },
+  "p201": {
+    "varName": "HIMENO_MAKOTO_2026_IMAGE",
+    "name": "姫野誠(2026)",
+    "source": "add_himenomakoto2026.js"
+  },
+  "p260": {
+    "varName": "HIRATSUKA_GIFT_2026_IMAGE",
+    "name": "平塚浪馬(配布)",
+    "source": "add_hiratsukagift2026.js"
+  },
+  "p273": {
+    "varName": "HONDA_2026_IMAGE",
+    "name": "本多勇喜(2026)",
+    "source": "add_honda2026.js"
+  },
+  "p255": {
+    "varName": "HUMMET_2026_IMAGE",
+    "name": "デニス・ヒュメット(2026)",
+    "source": "add_hummet2026.js"
+  },
+  "p346": {
+    "varName": "ICHIHARA_RION_2026_IMAGE",
+    "name": "市原吏音",
+    "source": "add_ichihararion2026.js"
+  },
+  "p367": {
+    "varName": "ICHIKAWA_AKINORI_2026_IMAGE",
+    "name": "市川暉記",
+    "source": "add_ichikawaakinori2026.js"
+  },
+  "p275": {
+    "varName": "IDZES_2026_IMAGE",
+    "name": "ジェイ・イツェス",
+    "source": "add_idzes2026.js"
+  },
+  "p358": {
+    "varName": "IENAGA_AKIHIRO_2026_IMAGE",
+    "name": "家長昭博",
+    "source": "add_ienagaakihiro2026.js"
+  },
+  "p336": {
+    "varName": "IGARASHI_SENA_2026_IMAGE",
+    "name": "五十嵐駿己",
+    "source": "add_igarashisena2026.js"
+  },
+  "p279": {
+    "varName": "IIJIMA_2026_IMAGE",
+    "name": "飯島潤一郎(チケット交換)",
+    "source": "add_iijima2026.js"
+  },
+  "p338": {
+    "varName": "INOUE_TAISEI_2026_IMAGE",
+    "name": "井上太聖",
+    "source": "add_inouetaisei2026.js"
+  },
+  "p352": {
+    "varName": "INUI_TAKASHI_2026_IMAGE",
+    "name": "乾貴士",
+    "source": "add_inuitakashi2026.js"
+  },
+  "p207": {
+    "varName": "ISHII_HISATSUGU_2026_IMAGE",
+    "name": "石井久継(2026)",
+    "source": "add_ishiihisatsugu2026.js"
+  },
+  "p243": {
+    "varName": "ISHIKAWA_DAICHI_2026_IMAGE",
+    "name": "石川大地(2026)",
+    "source": "add_ishikawadaichi2026.js"
+  },
+  "p359": {
+    "varName": "ITO_TATSUYA_2026_IMAGE",
+    "name": "伊藤達哉",
+    "source": "add_itotatsuya2026.js"
+  },
+  "p294": {
+    "varName": "ITSUKISOMENO_2025_IMAGE",
+    "name": "染野唯月",
+    "source": "add_itsukisomeno2025.js"
+  },
+  "p353": {
+    "varName": "IWASAKI_YUTO_2026_IMAGE",
+    "name": "岩崎悠人",
+    "source": "add_iwasakiyuto2026.js"
+  },
+  "p267": {
+    "varName": "IZUMI_TOYA_2026_TS_IMAGE",
+    "name": "泉柊椰(2026TS)",
+    "source": "add_izumitoya2026ts.js"
+  },
+  "p223": {
+    "varName": "JEON_BYEONG_GWAN_2026_IMAGE",
+    "name": "チョン・ビョングァン(2026)",
+    "source": "add_jeonbyeonggwan2026.js"
+  },
+  "p229": {
+    "varName": "JOO_MIN_KYU_2026_IMAGE",
+    "name": "ジュ・ミンギュ(2026)",
+    "source": "add_joominkyu2026.js"
+  },
+  "p288": {
+    "varName": "J_RAMANBELA_2026_IMAGE",
+    "name": "J・ラマンベラ(チケット交換)",
+    "source": "add_jramanbela2026.js"
+  },
+  "p318": {
+    "varName": "JUNAMANO_2025_IMAGE",
+    "name": "天野純",
+    "source": "add_junamano2025.js"
+  },
+  "p228": {
+    "varName": "JUNIOR_ROCHA_2026_IMAGE",
+    "name": "ジュニーニョ・ロシャ(2026)",
+    "source": "add_juniorrocha2026.js"
+  },
+  "p298": {
+    "varName": "KAITOTANIGUCHI_2025_IMAGE",
+    "name": "谷口海斗",
+    "source": "add_kaitotaniguchi2025.js"
+  },
+  "p345": {
+    "varName": "KAMIYAMA_KYOSUKE_2026_IMAGE",
+    "name": "神山京右",
+    "source": "add_kamiyamakyosuke2026.js"
+  },
+  "p202": {
+    "varName": "KATO_CHIHIRO_2026_IMAGE",
+    "name": "加藤千尋(2026)",
+    "source": "add_katochihiro2026.js"
+  },
+  "p185": {
+    "varName": "KAWABE_2026_IMAGE",
+    "name": "川辺駿(2026)",
+    "source": "add_kawabe2026.js"
+  },
+  "p247": {
+    "varName": "KAWAMOTO_2026_IMAGE",
+    "name": "川本梨誉(2026)",
+    "source": "add_kawamoto2026.js"
+  },
+  "p261": {
+    "varName": "KAWAMOTO_PACK_2026_IMAGE",
+    "name": "河本龍将(パック)",
+    "source": "add_kawamotopack2026.js"
+  },
+  "p249": {
+    "varName": "KAWAMURA_KEITO_2026_IMAGE",
+    "name": "河村慶人(2026)",
+    "source": "add_kawamurakeito2026.js"
+  },
+  "p295": {
+    "varName": "KAZUSHIMITSUHIRA_2025_IMAGE",
+    "name": "三平和司",
+    "source": "add_kazushimitsuhira2025.js"
+  },
+  "p299": {
+    "varName": "KENSUKENAGAI_2025_IMAGE",
+    "name": "永井謙佑",
+    "source": "add_kensukenagai2025.js"
+  },
+  "p227": {
+    "varName": "KIDA_2026_IMAGE",
+    "name": "氣田亮真(2026)",
+    "source": "add_kida2026.js"
+  },
+  "p332": {
+    "varName": "KIMITONONO_2025_IMAGE",
+    "name": "濃野公人",
+    "source": "add_kimitonono2025.js"
+  },
+  "p369": {
+    "varName": "KIM_JIN_HYEON_2026_IMAGE",
+    "name": "キム・ジンヒョン",
+    "source": "add_kimjinhyeon2026.js"
+  },
+  "p277": {
+    "varName": "KIM_NAMIL_HAIFU_IMAGE",
+    "name": "キム・ナミル(配布)",
+    "source": "add_kimnamilhaifu.js"
+  },
+  "p195": {
+    "varName": "KIMURA_TAKAYA_2026_IMAGE",
+    "name": "木村太哉(2026)",
+    "source": "add_kimuratakaya2026.js"
+  },
+  "p184": {
+    "varName": "KIYOTAKE_2026_IMAGE",
+    "name": "清武弘嗣(2026)",
+    "source": "add_kiyotake2026.js"
+  },
+  "p252": {
+    "varName": "KLIMALA_2026_IMAGE",
+    "name": "パトリク・クリマラ(2026)",
+    "source": "add_klimala2026.js"
+  },
+  "p339": {
+    "varName": "KOGA_TAIYO_2026_IMAGE",
+    "name": "古賀太陽",
+    "source": "add_kogataiyo2026.js"
+  },
+  "p189": {
+    "varName": "KOIZUMI_2026_IMAGE",
+    "name": "小泉佳穂(2026)",
+    "source": "add_koizumi2026.js"
+  },
+  "p322": {
+    "varName": "KOKIMORITA_2025_IMAGE",
+    "name": "森田晃樹",
+    "source": "add_kokimorita2025.js"
+  },
+  "p354": {
+    "varName": "KONNO_KAZUYA_2026_IMAGE",
+    "name": "紺野和也",
+    "source": "add_konnokazuya2026.js"
+  },
+  "p319": {
+    "varName": "KOSUKEONOSE_2025_IMAGE",
+    "name": "小野瀬康介",
+    "source": "add_kosukeonose2025.js"
+  },
+  "p331": {
+    "varName": "KOTAMURAMATSU_2025_IMAGE",
+    "name": "村松航太",
+    "source": "add_kotamuramatsu2025.js"
+  },
+  "p304": {
+    "varName": "KOYAKITAGAWA_2025_IMAGE",
+    "name": "北川航也",
+    "source": "add_koyakitagawa2025.js"
+  },
+  "p206": {
+    "varName": "KURATA_SHU_2026_IMAGE",
+    "name": "倉田秋(2026)",
+    "source": "add_kuratashu2026.js"
+  },
+  "p212": {
+    "varName": "LEE_CHUNG_YONG_2026_IMAGE",
+    "name": "イ・チュンヨン(2026)",
+    "source": "add_leechungyong2026.js"
+  },
+  "p316": {
+    "varName": "LEEDONGGYEONG_2025_IMAGE",
+    "name": "イ・ドンギョン",
+    "source": "add_leedonggyeong2025.js"
+  },
+  "p225": {
+    "varName": "LEE_DONG_JUN_2026_IMAGE",
+    "name": "イ・ドンジュン(2026)",
+    "source": "add_leedongjun2026.js"
+  },
+  "p181": {
+    "varName": "LEE_HUI_GYUN_2026_IMAGE",
+    "name": "イ・ヒギュン(2026)",
+    "source": "add_leehuigyun2026.js"
+  },
+  "p262": {
+    "varName": "LEO_CEARA_2026_IMAGE",
+    "name": "レオ・セアラ(2026TS)",
+    "source": "add_leoceara2026.js"
+  },
+  "p293": {
+    "varName": "LUCAO_2025_IMAGE",
+    "name": "ルカオ",
+    "source": "add_lucao2025.js"
+  },
+  "p232": {
+    "varName": "LUCAS_BARCELOS_2026_IMAGE",
+    "name": "ルーカス・バルセロス(2026)",
+    "source": "add_lucasbarcelos2026.js"
+  },
+  "p211": {
+    "varName": "LUDWIGSON_GUSTAV_2026_IMAGE",
+    "name": "グスタフ・ルドヴィグソン(2026)",
+    "source": "add_ludwigsongustav2026.js"
+  },
+  "p300": {
+    "varName": "MAOHOSOYA_2025_IMAGE",
+    "name": "細谷真大",
+    "source": "add_maohosoya2025.js"
+  },
+  "p302": {
+    "varName": "MARCELORYAN_2025_IMAGE",
+    "name": "マルセロ・ヒアン",
+    "source": "add_marceloryan2025.js"
+  },
+  "p209": {
+    "varName": "MARCO_TULIO_2026_IMAGE",
+    "name": "マルコ・トゥーリオ(2026)",
+    "source": "add_marcotulio2026.js"
+  },
+  "p301": {
+    "varName": "MARCUSVINICIUS_2025_IMAGE",
+    "name": "マルクス・ヴィニシウス",
+    "source": "add_marcusvinicius2025.js"
+  },
+  "p337": {
+    "varName": "MARIUS_HOIBRATEN_2026_IMAGE",
+    "name": "マリウス・ホイブラーテン",
+    "source": "add_mariushuibraten2026.js"
+  },
+  "p183": {
+    "varName": "MATHEUS_BUENO_2026_IMAGE",
+    "name": "マテウス・ブエノ(2026)",
+    "source": "add_matheusbueno2026.js"
+  },
+  "p315": {
+    "varName": "MATHEUSJESUS_2025_IMAGE",
+    "name": "マテウス・ジェズス",
+    "source": "add_matheusjesus2025.js"
+  },
+  "p210": {
+    "varName": "MATHEUS_MORAES_2026_IMAGE",
+    "name": "マテウス・モラエス(2026)",
+    "source": "add_matheusmoraes2026.js"
+  },
+  "p199": {
+    "varName": "MATHEUS_SAVIO_2026_IMAGE",
+    "name": "マテウス・サヴィオ(2026)",
+    "source": "add_matheussavio2026.js"
+  },
+  "p335": {
+    "varName": "MATSUBARA_KO_2026_IMAGE",
+    "name": "松原后",
+    "source": "add_matsubarako2026.js"
+  },
+  "p240": {
+    "varName": "MIURA_KAZUYOSHI_2026_IMAGE",
+    "name": "三浦知良(2026)",
+    "source": "add_miurakazuyoshi2026.js"
+  },
+  "p253": {
+    "varName": "MUGOSA_2026_IMAGE",
+    "name": "ステファン・ムゴシャ(2026)",
+    "source": "add_mugosa2026.js"
+  },
+  "p286": {
+    "varName": "MUSAIR_2026_IMAGE",
+    "name": "ムサイール(チケット交換)",
+    "source": "add_musair2026.js"
+  },
+  "p245": {
+    "varName": "MUTO_2026_IMAGE",
+    "name": "武藤雄樹(2026)",
+    "source": "add_muto2026.js"
+  },
+  "p363": {
+    "varName": "MUTO_YOSHINORI_2026_IMAGE",
+    "name": "武藤嘉紀",
+    "source": "add_mutoyoshinori2026.js"
+  },
+  "p242": {
+    "varName": "NAGAKURA_2026_IMAGE",
+    "name": "長倉幹樹(2026)",
+    "source": "add_nagakura2026.js"
+  },
+  "p194": {
+    "varName": "NAGO_2026_IMAGE",
+    "name": "名古新太郎(2026)",
+    "source": "add_nago2026.js"
+  },
+  "p250": {
+    "varName": "NAITO_YAMATO_2026_IMAGE",
+    "name": "内藤大和(2026)",
+    "source": "add_naitoyamato2026.js"
+  },
+  "p361": {
+    "varName": "NAKAMA_HAYATO_2026_IMAGE",
+    "name": "仲間隼斗",
+    "source": "add_nakamahayato2026.js"
+  },
+  "p208": {
+    "varName": "NAKAMURA_RYOTA_2026_IMAGE",
+    "name": "中村亮太(2026)",
+    "source": "add_nakamuraryota2026.js"
+  },
+  "p344": {
+    "varName": "NAKATANI_SHINNOSUKE_2026_IMAGE",
+    "name": "中谷進之介",
+    "source": "add_nakatanishinnosuke2026.js"
+  },
+  "p349": {
+    "varName": "NAKAYAMA_YUTA_2026_IMAGE",
+    "name": "中山雄太",
+    "source": "add_nakayamayuta2026.js"
+  },
+  "p309": {
+    "varName": "NAOKINOMURA_2025_IMAGE",
+    "name": "野村直輝",
+    "source": "add_naokinomura2025.js"
+  },
+  "p370": {
+    "varName": "NISHIKAWA_SHUSAKU_2026_IMAGE",
+    "name": "西川周作",
+    "source": "add_nishikawashusaku2026.js"
+  },
+  "p180": {
+    "varName": "NISHIZAWA_2026_IMAGE",
+    "name": "西澤健太(2026)",
+    "source": "add_nishizawa2026.js"
+  },
+  "p203": {
+    "varName": "NORMAN_CAMPBELL_2026_IMAGE",
+    "name": "ノーマン・キャンベル(2026)",
+    "source": "add_normancampbell2026.js"
+  },
+  "p357": {
+    "varName": "NOYORI_KAZUYA_2026_IMAGE",
+    "name": "野寄和哉",
+    "source": "add_noyorikazuya2026.js"
+  },
+  "p292": {
+    "varName": "OHSEHUN_2025_IMAGE",
+    "name": "オ・セフン",
+    "source": "add_ohsehun2025.js"
+  },
+  "p366": {
+    "varName": "OSAKO_KEISUKE_2026_IMAGE",
+    "name": "大迫敬介",
+    "source": "add_osakokeisuke2026.js"
+  },
+  "p303": {
+    "varName": "PABLOSABBAG_2025_IMAGE",
+    "name": "パブロ・サバグ",
+    "source": "add_pablosabbag2025.js"
+  },
+  "p371": {
+    "varName": "PARK_ILGYU_2026_IMAGE",
+    "name": "朴一圭",
+    "source": "add_parkilgyu2026.js"
+  },
+  "p365": {
+    "varName": "PISANO_ALEX_2026_IMAGE",
+    "name": "ピサノ・アレックス幸冬堀尾",
+    "source": "add_pisanopalex2026.js"
+  },
+  "p287": {
+    "varName": "P_RAMANBELA_2026_IMAGE",
+    "name": "P・ラマンベラ(チケット交換)",
+    "source": "add_pramanbela2026.js"
+  },
+  "p274": {
+    "varName": "PULISIC_2026_IMAGE",
+    "name": "クリスティアン・プリシッチ",
+    "source": "add_pulisic2026.js"
+  },
+  "p305": {
+    "varName": "RAFAELELIAS_2025_IMAGE",
+    "name": "ラファエル・エリアス",
+    "source": "add_rafaelelias2025.js"
+  },
+  "p190": {
+    "varName": "REIJNDERS_DIST_2026_IMAGE",
+    "name": "タイアニ・ラインデルス(配布)",
+    "source": "add_reijndersdist2026.js"
+  },
+  "p313": {
+    "varName": "RENASAKURA_2025_IMAGE",
+    "name": "浅倉廉",
+    "source": "add_renasakura2025.js"
+  },
+  "p333": {
+    "varName": "RIKUHANDA_2025_IMAGE",
+    "name": "半田陸",
+    "source": "add_rikuhanda2025.js"
+  },
+  "p312": {
+    "varName": "RYOMAWATANABE_2025_IMAGE",
+    "name": "渡邊凌磨",
+    "source": "add_ryomawatanabe2025.js"
+  },
+  "p236": {
+    "varName": "SAKURAGAWA_2026_IMAGE",
+    "name": "櫻川ソロモン(2026)",
+    "source": "add_sakuragawa2026.js"
+  },
+  "p192": {
+    "varName": "SASAKI_2026_IMAGE",
+    "name": "佐々木大樹(2026)",
+    "source": "add_sasaki2026.js"
+  },
+  "p350": {
+    "varName": "SASAKI_SHO_2026_IMAGE",
+    "name": "佐々木翔",
+    "source": "add_sasakisho2026.js"
+  },
+  "p200": {
+    "varName": "SATO_RYUNOSUKE_2026_IMAGE",
+    "name": "佐藤龍之介(2026)",
+    "source": "add_satoryunosuke2026.js"
+  },
+  "p238": {
+    "varName": "SAWAKAMI_2026_IMAGE",
+    "name": "澤上竜二(2026)",
+    "source": "add_sawakami2026.js"
+  },
+  "p178": {
+    "varName": "SEO_MINWOO_2026_IMAGE",
+    "name": "ソ・ミヌ(2026)",
+    "source": "add_seo_minwoo2026.js"
+  },
+  "p182": {
+    "varName": "SHIBASAKI_2026_IMAGE",
+    "name": "柴崎岳(2026)",
+    "source": "add_shibasaki2026.js"
+  },
+  "p239": {
+    "varName": "SHIMADA_2026_IMAGE",
+    "name": "島田拓海(2026)",
+    "source": "add_shimada2026.js"
+  },
+  "p310": {
+    "varName": "SHINJIKAGAWA_2025_IMAGE",
+    "name": "香川真司",
+    "source": "add_shinjikagawa2025.js"
+  },
+  "p246": {
+    "varName": "SHINTANI_2026_IMAGE",
+    "name": "新谷聖基(2026)",
+    "source": "add_shintani2026.js"
+  },
+  "p328": {
+    "varName": "SHUHEIKAMIMURA_2025_IMAGE",
+    "name": "上村周平",
+    "source": "add_shuheikamimura2025.js"
+  },
+  "p321": {
+    "varName": "SHUNTATANAKA_2025_IMAGE",
+    "name": "田中駿汰",
+    "source": "add_shuntatanaka2025.js"
+  },
+  "p375": {
+    "varName": "SIMON_IMAGE",
+    "name": "ウナイ・シモン",
+    "source": "add_simon.js"
+  },
+  "p205": {
+    "varName": "SOMA_YUKI_2026_IMAGE",
+    "name": "相馬勇紀(2026)",
+    "source": "add_somayuki2026.js"
+  },
+  "p334": {
+    "varName": "SOYAFUJIWARA_2025_IMAGE",
+    "name": "藤原奏哉",
+    "source": "add_soyafujiwara2025.js"
+  },
+  "p342": {
+    "varName": "SUGATA_MASAHIRO_2026_IMAGE",
+    "name": "菅田真啓",
+    "source": "add_sugatamasahiro2026.js"
+  },
+  "p235": {
+    "varName": "SUGIMOTO_2026_IMAGE",
+    "name": "杉本健勇(2026)",
+    "source": "add_sugimoto2026.js"
+  },
+  "p343": {
+    "varName": "SUMIYOSHI_JELANI_2026_IMAGE",
+    "name": "住吉ジェラニレショーン",
+    "source": "add_sumiyoshijelani2026.js"
+  },
+  "p284": {
+    "varName": "SUSPEITA_2026_IMAGE",
+    "name": "ススペイタ(チケット交換)",
+    "source": "add_suspeita2026.js"
+  },
+  "p347": {
+    "varName": "SUZUKI_YOSHINORI_2026_IMAGE",
+    "name": "鈴木義宜",
+    "source": "add_suzukiyoshinori2026.js"
+  },
+  "p290": {
+    "varName": "SUZUKIYUMA_2025_IMAGE",
+    "name": "鈴木優磨",
+    "source": "add_suzukiyuma2025.js"
+  },
+  "p355": {
+    "varName": "SUZUKI_YUTO_2026_IMAGE",
+    "name": "鈴木雄斗",
+    "source": "add_suzukiyuto2026.js"
+  },
+  "p368": {
+    "varName": "SVEND_BRODERSEN_2026_IMAGE",
+    "name": "スベンド・ブローダーセン",
+    "source": "add_svendbrodersen2026.js"
+  },
+  "p311": {
+    "varName": "TAKASHIUSAMI_2025_IMAGE",
+    "name": "宇佐美貴史",
+    "source": "add_takashiusami2025.js"
+  },
+  "p323": {
+    "varName": "TAKUMAARANO_2025_IMAGE",
+    "name": "荒野拓馬",
+    "source": "add_takumaarano2025.js"
+  },
+  "p325": {
+    "varName": "TAKUYAKIDA_2025_IMAGE",
+    "name": "喜田拓也",
+    "source": "add_takuyakida2025.js"
+  },
+  "p265": {
+    "varName": "TAMURA_SHOTA_2026_TS_IMAGE",
+    "name": "田村翔太(2026TS)",
+    "source": "add_tamurashota2026ts.js"
+  },
+  "p356": {
+    "varName": "TANAKA_KAZUKI_2026_IMAGE",
+    "name": "田中和樹",
+    "source": "add_tanakakazuki2026.js"
+  },
+  "p362": {
+    "varName": "TANAKA_PAULO_JUNICHI_2026_IMAGE",
+    "name": "田中パウロ淳一",
+    "source": "add_tanakapaulojunichi2026.js"
+  },
+  "p251": {
+    "varName": "TANAKA_SORA_2026_IMAGE",
+    "name": "田中想来(2026)",
+    "source": "add_tanakasora2026.js"
+  },
+  "p351": {
+    "varName": "TANIGUCHI_HIROTO_2026_IMAGE",
+    "name": "谷口栄斗",
+    "source": "add_taniguchihiroto2026.js"
+  },
+  "p364": {
+    "varName": "TANI_KOSEI_2026_IMAGE",
+    "name": "谷晃生",
+    "source": "add_tanikosei2026.js"
+  },
+  "p256": {
+    "varName": "TANIMURA_KAINA_2026_IMAGE",
+    "name": "谷村海那(2026)",
+    "source": "add_tanimurakaina2026.js"
+  },
+  "p222": {
+    "varName": "THIAGUINHO_2026_IMAGE",
+    "name": "チアギーニョ(2026)",
+    "source": "add_thiaguinho2026.js"
+  },
+  "p188": {
+    "varName": "TOJO_2026_IMAGE",
+    "name": "東條敦輝(2026)",
+    "source": "add_tojo2026.js"
+  },
+  "p314": {
+    "varName": "TOLGAYARSLAN_2025_IMAGE",
+    "name": "トルガイ・アルスラン",
+    "source": "add_tolgayarslan2025.js"
+  },
+  "p191": {
+    "varName": "TONO_2026_IMAGE",
+    "name": "遠野大弥(2026)",
+    "source": "add_tono2026.js"
+  },
+  "p237": {
+    "varName": "TOSHIDA_2026_IMAGE",
+    "name": "土信田悠生(2026)",
+    "source": "add_toshida2026.js"
+  },
+  "p266": {
+    "varName": "TOSHIDA_YUSEI_2026_TS_IMAGE",
+    "name": "土信田悠生(2026TS)",
+    "source": "add_toshidayusei2026ts.js"
+  },
+  "p285": {
+    "varName": "TOUMEIOTOKO_2026_IMAGE",
+    "name": "透明男(チケット交換)",
+    "source": "add_toumeiotoko2026.js"
+  },
+  "p254": {
+    "varName": "TRANZISKA_2026_IMAGE",
+    "name": "ヤコブ・トランジスカ(2026)",
+    "source": "add_tranziska2026.js"
+  },
+  "p341": {
+    "varName": "UEDA_NAOMICHI_2026_IMAGE",
+    "name": "植田直通",
+    "source": "add_uedanaomichi2026.js"
+  },
+  "p231": {
+    "varName": "YAGO_CARIELLO_2026_IMAGE",
+    "name": "ヤゴ・カリエッロ(2026)",
+    "source": "add_yagocariello2026.js"
+  },
+  "p264": {
+    "varName": "YAMADA_HIROTO_2026_TS_IMAGE",
+    "name": "山田寛人(2026TS)",
+    "source": "add_yamadahiroto2026ts.js"
+  },
+  "p257": {
+    "varName": "YAMAGISHI_2026_IMAGE",
+    "name": "山岸祐也(2026)",
+    "source": "add_yamagishi2026.js"
+  },
+  "p263": {
+    "varName": "YAMAGISHI_2026_TS_IMAGE",
+    "name": "山岸祐也(2026TS)",
+    "source": "add_yamagishi2026ts.js"
+  },
+  "p187": {
+    "varName": "YAMAGUCHI_DAIKI_2026_IMAGE",
+    "name": "山口大輝(2026)",
+    "source": "add_yamaguchidaiki2026.js"
+  },
+  "p348": {
+    "varName": "YAMAKAWA_TETSUSHI_2026_IMAGE",
+    "name": "山川哲史",
+    "source": "add_yamakawatetsushi2026.js"
+  },
+  "p372": {
+    "varName": "YAMAL_IMAGE",
+    "name": "ラミン・ヤマル",
+    "source": "add_yamal.js"
+  },
+  "p193": {
+    "varName": "YAMAMI_2026_IMAGE",
+    "name": "山見大登(2026)",
+    "source": "add_yamami2026.js"
+  },
+  "p268": {
+    "varName": "YAMAMOTO_OUTA_2026_TS_IMAGE",
+    "name": "山本桜大(2026TS)",
+    "source": "add_yamamotoouta2026ts.js"
+  },
+  "p186": {
+    "varName": "YAMAMOTO_YUKI_2026_IMAGE",
+    "name": "山本悠樹(2026)",
+    "source": "add_yamamotoyuki2026.js"
+  },
+  "p179": {
+    "varName": "YAMANE_2026_IMAGE",
+    "name": "山根陸(2026)",
+    "source": "add_yamane2026.js"
+  },
+  "p244": {
+    "varName": "YAMURA_2026_IMAGE",
+    "name": "矢村健(2026)",
+    "source": "add_yamura2026.js"
+  },
+  "p248": {
+    "varName": "YANO_KISHO_2026_IMAGE",
+    "name": "矢野貴章(2026)",
+    "source": "add_yanokisho2026.js"
+  },
+  "p317": {
+    "varName": "YASUTOWAKIZAKA_2025_IMAGE",
+    "name": "脇坂泰斗",
+    "source": "add_yasutowakizaka2025.js"
+  },
+  "p326": {
+    "varName": "YURILARA_2025_IMAGE",
+    "name": "ユーリ・ララ",
+    "source": "add_yurilara2025.js"
+  },
+  "p324": {
+    "varName": "YUTAFUKAZAWA_2025_IMAGE",
+    "name": "深澤佑太",
+    "source": "add_yutafukazawa2025.js"
+  },
+  "p330": {
+    "varName": "YUTOHORIGOME_2025_IMAGE",
+    "name": "堀米悠斗",
+    "source": "add_yutohorigome2025.js"
+  },
+  "p329": {
+    "varName": "YUTONAGATOMO_2025_IMAGE",
+    "name": "長友佑都",
+    "source": "add_yutonagatomo2025.js"
+  },
+  "p291": {
+    "varName": "YUYAOSAKO_2025_IMAGE",
+    "name": "大迫勇也",
+    "source": "add_yuyaosako2025.js"
+  }
+}
