@@ -2230,5 +2230,11 @@
     "name": "ウナイ・シモン",
     "varName": "SIMON_IMAGE",
     "imageFile": "simonImage.js"
+  },
+  {
+    "id": "p377",
+    "name": "ソン・ミンギュ(2025)",
+    "varName": "SONG_MIN_KYU_2025_IMAGE",
+    "imageFile": "songminkyu2025Image.js"
   }
 ]

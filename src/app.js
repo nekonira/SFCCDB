@@ -953,7 +953,8 @@ const PLAYER_IMAGE_MAP = {
   "p373": "YAMAL_IMAGE",
   "p374": "CUBARSI_IMAGE",
   "p375": "GAVI_IMAGE",
-  "p376": "SIMON_IMAGE"
+  "p376": "SIMON_IMAGE",
+  "p377": "SONG_MIN_KYU_2025_IMAGE"
 };
 const getPlayerAvatarUrl = player => {
   if (!player) return '';

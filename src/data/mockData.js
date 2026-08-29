@@ -7374,7 +7374,7 @@ window.INITIAL_PLAYERS = [
     "baseRarity": "☆3",
     "nationality": "韓国",
     "policy": "ポゼッション",
-    "playStyle": "サイドアタッカー",
+    "playStyle": "サイドアタッカーLW",
     "playStyleLevel": "Ⅱ",
     "overall": 6087,
     "maxOverall": 14262,
@@ -19519,7 +19519,55 @@ window.INITIAL_PLAYERS = [
       { name: '激情のキック', rank: '銅', description: '発動条件：絶好調　/　キック精度・コンタクトUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p377',
+    name: 'ソン・ミンギュ',
+    readingName: 'そんみんぎゅ',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '韓国',
+    policy: 'ポゼッション',
+    playStyle: 'サイドアタッカーLW',
+    playStyleLevel: 'Ⅱ',
+    overall: 6087,
+    maxOverall: 14262,
+    baseStats: { shoot: 1233, pass: 1151, dribble: 1169, defense: 995, physical: 1213, speed: 681 },
+    detailStats: {
+      shoot: { finishing: 430, power: 400, composure: 403 },
+      pass: { shortPass: 386, longPass: 384, accuracy: 381 },
+      dribble: { breakout: 382, keeping: 383, ballTouch: 404 },
+      defense: { tackle: 343, interception: 337, marking: 315 },
+      physical: { jumping: 405, contact: 353, stamina: 455 },
+      speed: { running: 334, agility: 347 }
+    },
+    maxEnhanced: {
+      overall: 14262,
+      baseStats: { shoot: 2790, pass: 2720, dribble: 2762, defense: 2504, physical: 2758, speed: 1751 },
+      detailStats: {
+        shoot: { finishing: 953, power: 911, composure: 926 },
+        pass: { shortPass: 909, longPass: 907, accuracy: 904 },
+        dribble: { breakout: 917, keeping: 918, ballTouch: 927 },
+        defense: { tackle: 854, interception: 836, marking: 814 },
+        physical: { jumping: 916, contact: 864, stamina: 978 },
+        speed: { running: 869, agility: 882 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 1, shoot: 0, longShoot: 0,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: -1, keep: 0,
+      delay: -1, rushOut: 2, feint: 1, press: 0
+    },
+    skill: { name: '狙いすましたシュート', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：シュート時　/　決定力・シュートUP　/　成功時に自身のシュート発生確率UP' },
+    abilities: [
+      { name: '絶え間ないボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・トラップUP' },
+      { name: '冷静なフィニッシュ', rank: '銀', description: '発動条件：絶好調　/　決定力・冷静さUP' }
+    ],
+    avatarUrl: ''
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'AM', 'CMF', 'DM', 'LFB', 'RFB', 'CB', 'GK', 'LM', 'RM'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK', 'クリエイティブLFB', 'ドリブラーLM', 'ドリブラーRM', 'ドリブラーRW', 'ドリブラーLW', 'サイドアタッカーLW', 'ワイドストライカー', '組立CB'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
