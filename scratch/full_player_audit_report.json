@@ -1,0 +1,3350 @@
+[
+  {
+    "id": "p01",
+    "name": "ペレ",
+    "readingName": "ぺれ",
+    "assignedVar": "PELE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p02",
+    "name": "クリスティアーノ・ロナウド",
+    "readingName": "くりすてぃあーのろなうど",
+    "assignedVar": "RONALDO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p03",
+    "name": "ケヴィン・デ・ブライネ",
+    "readingName": "けゔぃんでぶらいね",
+    "assignedVar": "DEBRUYNE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p05",
+    "name": "ヴィルジル・ファン・ダイク",
+    "readingName": "ゔぃるじるふぁんだいく",
+    "assignedVar": "VAN_DIJK_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p06",
+    "name": "ジュード・ベリンガム",
+    "readingName": "じゅーどべりんがむ",
+    "assignedVar": "BELLINGHAM_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p07",
+    "name": "本田圭佑",
+    "readingName": "ほんだけいすけ",
+    "assignedVar": "HONDA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p08",
+    "name": "リオネル・メッシ(MLS)",
+    "readingName": "りおねるめっし",
+    "assignedVar": "MESSI_MLS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p09",
+    "name": "ヴィニシウス・ジュニオール",
+    "readingName": "ゔぃにしうすじゅにおーる",
+    "assignedVar": "VINICIUS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p10",
+    "name": "トーマス・ミュラー",
+    "readingName": "とーますみゅらー",
+    "assignedVar": "MULLER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p11",
+    "name": "ウスマン・デンベレ",
+    "readingName": "うすまんでんべれ",
+    "assignedVar": "DEMBELE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p12",
+    "name": "マルコ・ロイス",
+    "readingName": "まるころいす",
+    "assignedVar": "REUS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p13",
+    "name": "ヨシュコ・グヴァルディオル",
+    "readingName": "よしゅこぐゔぁるでぃおる",
+    "assignedVar": "GVARDIOL_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p14",
+    "name": "モハメド・サラー",
+    "readingName": "もはめどさらー",
+    "assignedVar": "SALAH_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p15",
+    "name": "ペドロ・ポロ",
+    "readingName": "ぺどろぽろ",
+    "assignedVar": "PORRO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p16",
+    "name": "ソン・フンミン(MLS)",
+    "readingName": "そんふんみん",
+    "assignedVar": "SON_MLS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p17",
+    "name": "アーリング・ハーランド",
+    "readingName": "あーりんぐはーらんど",
+    "assignedVar": "HAALAND_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p18",
+    "name": "アントワーヌ・グリーズマン",
+    "readingName": "あんとわーぬぐりーずまん",
+    "assignedVar": "GRIEZMANN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p19",
+    "name": "ロベルト・レヴァンドフスキ",
+    "readingName": "ろべるとれゔぁんどふすき",
+    "assignedVar": "LEWANDOWSKI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p20",
+    "name": "フェデリコ・バルベルデ",
+    "readingName": "ふぇでりこばるべるで",
+    "assignedVar": "VALVERDE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p21",
+    "name": "ウィリアム・サリバ",
+    "readingName": "うぃりあむさりば",
+    "assignedVar": "SALIBA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p22",
+    "name": "鎌田大地",
+    "readingName": "かまだだいち",
+    "assignedVar": "KAMADA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p23",
+    "name": "フィル・フォーデン",
+    "readingName": "ふぃるふぉーでん",
+    "assignedVar": "FODEN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p24",
+    "name": "クヴィチャ・クヴァラツヘリア",
+    "readingName": "くゔぃちゃくゔぁらつへりあ",
+    "assignedVar": "KVARATSKHELIA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p25",
+    "name": "アマド・ディアロ",
+    "readingName": "あまどでぃあろ",
+    "assignedVar": "DIALLO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p26",
+    "name": "ペドロ",
+    "readingName": "ぺどろ",
+    "assignedVar": "PEDRO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p27",
+    "name": "ウェストン・マッケニー",
+    "readingName": "うぇすとんまっけにー",
+    "assignedVar": "MCKENNIE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p28",
+    "name": "ステファン・エル・シャーラウィ",
+    "readingName": "すてふぁんえるしゃーらうぃ",
+    "assignedVar": "EL_SHAARAWY_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p29",
+    "name": "倉田秋(歴戦の猛者)",
+    "readingName": "くらたしゅう",
+    "assignedVar": "KURATA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p30",
+    "name": "アシュリー・ヤング",
+    "readingName": "あしゅりーやんぐ",
+    "assignedVar": "YOUNG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p31",
+    "name": "オマル・マーモウシュ",
+    "readingName": "おまるまーもうしゅ",
+    "assignedVar": "MARMOUSH_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p32",
+    "name": "ジョアン・ペドロ",
+    "readingName": "じょあんぺどろ",
+    "assignedVar": "JOAO_PEDRO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p33",
+    "name": "南野拓実",
+    "readingName": "みなみのたくみ",
+    "assignedVar": "MINAMINO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p34",
+    "name": "ルカ・モドリッチ",
+    "readingName": "るかもどりっち",
+    "assignedVar": "MODRIC_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p35",
+    "name": "マルティン・ウーデゴール",
+    "readingName": "まるてぃんうーでごーる",
+    "assignedVar": "ODEGAARD_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p36",
+    "name": "ファビアン・ルイス",
+    "readingName": "ふぁびあんるいす",
+    "assignedVar": "FABIAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p37",
+    "name": "ファン・インボム",
+    "readingName": "ふぁんいんぼむ",
+    "assignedVar": "HWANG_INBEOM_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p38",
+    "name": "ハカン・チャルハノール",
+    "readingName": "はかんちゃるはのーる",
+    "assignedVar": "CALHANOGLU_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p39",
+    "name": "ニコロー・バレッラ",
+    "readingName": "にころーばれっら",
+    "assignedVar": "BARELLA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p40",
+    "name": "エデルソン",
+    "readingName": "えでるそん",
+    "assignedVar": "EDERSON_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p41",
+    "name": "オーレリアン・チュアメニ",
+    "readingName": "おーれりあんちゅあめに",
+    "assignedVar": "TCHOUAMENI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p42",
+    "name": "ロドリゴ・ベンタンクール",
+    "readingName": "ろどりごべんたんくーる",
+    "assignedVar": "BENTANCUR_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p43",
+    "name": "クリスティアン・ロルダン",
+    "readingName": "くりすてぃあんろるだん",
+    "assignedVar": "ROLDAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p44",
+    "name": "中村憲剛",
+    "readingName": "なかむらけんご",
+    "assignedVar": "NAKAMURA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p45",
+    "name": "イスコ",
+    "readingName": "いすこ",
+    "assignedVar": "ISCO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p46",
+    "name": "ショーン・ロングスタッフ",
+    "readingName": "しょーんろんぐすたっふ",
+    "assignedVar": "LONGSTAFF_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p47",
+    "name": "東慶悟",
+    "readingName": "ひがしけいご",
+    "assignedVar": "HIGASHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p48",
+    "name": "スコット・マクトミネイ",
+    "readingName": "すこっとまくとみねい",
+    "assignedVar": "MCTOMINAY_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p49",
+    "name": "エドゥアルド・カマヴィンガ",
+    "readingName": "えどぅあるどかまゔぃんが",
+    "assignedVar": "CAMAVINGA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p50",
+    "name": "佐野海舟",
+    "readingName": "さのかいしゅう",
+    "assignedVar": "SANO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p51",
+    "name": "山口蛍(2026)",
+    "readingName": "やまぐちほたる",
+    "assignedVar": "YAMAGUCHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p52",
+    "name": "橋本拳人",
+    "readingName": "はしもとけんと",
+    "assignedVar": "HASHIMOTO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p53",
+    "name": "ダンテ",
+    "readingName": "だんて",
+    "assignedVar": "DANTE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p54",
+    "name": "谷口彰悟",
+    "readingName": "たにぐちしょうご",
+    "assignedVar": "TANIGUCHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p55",
+    "name": "森重真人",
+    "readingName": "もりしげまさと",
+    "assignedVar": "MORISHIGE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p56",
+    "name": "上田綺世",
+    "readingName": "うえだあやせ",
+    "assignedVar": "AYASE_UEDA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p57",
+    "name": "歐偉倫",
+    "readingName": "おういりん",
+    "assignedVar": "AUWAILUN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p58",
+    "name": "佐藤寿人",
+    "readingName": "さとうひさと",
+    "assignedVar": "HISATOSATO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p59",
+    "name": "小林悠",
+    "readingName": "こばやしゆう",
+    "assignedVar": "YUKOBAYASHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p60",
+    "name": "ソン・フンミン",
+    "readingName": "そんふんみん",
+    "assignedVar": "SONHEUNGMIN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p61",
+    "name": "ラウタロ・マルティネス",
+    "readingName": "らうたろまるてぃねす",
+    "assignedVar": "LAUTARO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p62",
+    "name": "柿谷曜一朗",
+    "readingName": "かきたによういちろう",
+    "assignedVar": "KAKITANI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p63",
+    "name": "アンヘル・コレア",
+    "readingName": "あんへるこれあ",
+    "assignedVar": "CORREA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p64",
+    "name": "アレクサンダー・セルロート",
+    "readingName": "あれくさんだーせるろーと",
+    "assignedVar": "SORLOTH_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p65",
+    "name": "林陵平",
+    "readingName": "はやしりょうへい",
+    "assignedVar": "RYOHEIHAYASHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p66",
+    "name": "カラム・ウィルソン",
+    "readingName": "からむうぃるそん",
+    "assignedVar": "WILSON_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p67",
+    "name": "エデル・ミリトン",
+    "readingName": "えでるみりとん",
+    "assignedVar": "MILITAO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p68",
+    "name": "伊藤洋輝",
+    "readingName": "いとうひろき",
+    "assignedVar": "HIROKIITO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p69",
+    "name": "渡辺剛",
+    "readingName": "わたなべつよし",
+    "assignedVar": "TSUYOSHIWATANABE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p70",
+    "name": "ガブリエウ",
+    "readingName": "がぶりえう",
+    "assignedVar": "GABRIEL_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p71",
+    "name": "アレッサンドロ・バストーニ",
+    "readingName": "あれっさんどろばすとーに",
+    "assignedVar": "BASTONI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p72",
+    "name": "ナタン・アケ",
+    "readingName": "なたんあけ",
+    "assignedVar": "AKE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p73",
+    "name": "坪井慶介",
+    "readingName": "つぼいけいすけ",
+    "assignedVar": "TSUBOI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p74",
+    "name": "フェデリコ・ガッティ",
+    "readingName": "ふぇでりこがっち",
+    "assignedVar": "GATTI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p75",
+    "name": "アレクサンドロ・リベイロ",
+    "readingName": "あれくさんどろりべいろ",
+    "assignedVar": "ALEXSANDRO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p76",
+    "name": "アレハンドロ・バルデ",
+    "readingName": "あれはんどろばるで",
+    "assignedVar": "BALDE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p77",
+    "name": "ジョアン・カンセロ",
+    "readingName": "じょあんかんせろ",
+    "assignedVar": "CANCELO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p78",
+    "name": "フェデリコ・ディマルコ",
+    "readingName": "ふぇでりこでぃまるこ",
+    "assignedVar": "DIMARCO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p79",
+    "name": "アクラフ・ハキミ",
+    "readingName": "あくらふはきみ",
+    "assignedVar": "HAKIMI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p80",
+    "name": "デンゼル・ダンフリース",
+    "readingName": "でんぜるだんふりーす",
+    "assignedVar": "DUMFRIES_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p81",
+    "name": "ナウエル・モリーナ",
+    "readingName": "なうえるもりーな",
+    "assignedVar": "MOLINA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p82",
+    "name": "レオナルド・スピナッツォーラ",
+    "readingName": "れおなるどすぴなっつぉーら",
+    "assignedVar": "SPINAZZOLA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p83",
+    "name": "ユリエン・ティンバー",
+    "readingName": "ゆりえんてぃんばー",
+    "assignedVar": "TIMBER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p84",
+    "name": "ルーク・ショー",
+    "readingName": "るーくしょー",
+    "assignedVar": "LUKESHAW_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p85",
+    "name": "カイル・ウォーカー",
+    "readingName": "かいるうぉーかー",
+    "assignedVar": "WALKER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p86",
+    "name": "ベン・ホワイト",
+    "readingName": "べんほわいと",
+    "assignedVar": "BENWHITE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p87",
+    "name": "リース・ジェイムズ",
+    "readingName": "りーすじぇいむず",
+    "assignedVar": "REECEJAMES_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p88",
+    "name": "ブカヨ・サカ",
+    "readingName": "ぶかよさか",
+    "assignedVar": "SAKA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p89",
+    "name": "ブラヒム・ディアス",
+    "readingName": "ぶらひむでぃあす",
+    "assignedVar": "BRAHIM_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p90",
+    "name": "李健和",
+    "readingName": "りけんわ",
+    "assignedVar": "LEEKINWO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p91",
+    "name": "ミゲル・アルミロン",
+    "readingName": "みげるあるみろん",
+    "assignedVar": "ALMIRON_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p92",
+    "name": "伊東純也",
+    "readingName": "いとうじゅんや",
+    "assignedVar": "ITO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p93",
+    "name": "堂安律",
+    "readingName": "どうあんりつ",
+    "assignedVar": "DOAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p94",
+    "name": "フアン・クアドラード",
+    "readingName": "ふあんくあどらーど",
+    "assignedVar": "CUADRADO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p95",
+    "name": "三笘薫(日本代表)",
+    "readingName": "みとまかおる",
+    "assignedVar": "MITOMAJPN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p96",
+    "name": "中村敬斗",
+    "readingName": "なかむらけいと",
+    "assignedVar": "KEITO_NAKAMURA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p97",
+    "name": "ニコ・ウィリアムズ",
+    "readingName": "にこうぃりあむず",
+    "assignedVar": "NICOWILLIAMS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p98",
+    "name": "三笘薫(25/26)",
+    "readingName": "みとまかおる",
+    "assignedVar": "MITOMA2526_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p99",
+    "name": "ファン・ヒチャン",
+    "readingName": "ふぁんひちゃん",
+    "assignedVar": "HWANG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p100",
+    "name": "ティボ・クルトワ",
+    "readingName": "てぃぼくるとわ",
+    "assignedVar": "COURTOIS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p101",
+    "name": "ヤン・オブラク",
+    "readingName": "やんおぶらく",
+    "assignedVar": "OBLAK_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p102",
+    "name": "鈴木彩艶",
+    "readingName": "すずきざいおん",
+    "assignedVar": "SUZUKI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p103",
+    "name": "マイク・メニャン",
+    "readingName": "まいくめにゃん",
+    "assignedVar": "MAIGNAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p104",
+    "name": "ヤン・ゾマー",
+    "readingName": "やんぞまー",
+    "assignedVar": "SOMMER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p105",
+    "name": "ジョアン・ガルシア",
+    "readingName": "じょあんがるしあ",
+    "assignedVar": "JOANGARCIA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p106",
+    "name": "ニック・ポープ",
+    "readingName": "にっくぽーぷ",
+    "assignedVar": "POPE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p107",
+    "name": "ブルーノ・ギマランイス",
+    "readingName": "ぶるーのぎまらんいす",
+    "assignedVar": "BRUNO_GUIMARAES_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p108",
+    "name": "ハフィーニャ",
+    "readingName": "はふぃーにゃ",
+    "assignedVar": "RAPHINHA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p109",
+    "name": "ロドリゴ",
+    "readingName": "ろどりご",
+    "assignedVar": "RODRYGO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p110",
+    "name": "ブレーメル",
+    "readingName": "ぶれーめる",
+    "assignedVar": "BREMER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p111",
+    "name": "河本鬼茂",
+    "readingName": "かわもとおにしげ",
+    "assignedVar": "KAWAMOTO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p112",
+    "name": "リオネル・メッシ(配布)",
+    "readingName": "りおねるめっしはいふ",
+    "assignedVar": "MESSI_HAIFU_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p113",
+    "name": "相馬勇紀(J1 BEST11 2025)",
+    "readingName": "そうまゆうき",
+    "assignedVar": "SOMA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p114",
+    "name": "ラファエル・エリアス(J1 BEST11 2025)",
+    "readingName": "らふぁえるえりあす",
+    "assignedVar": "RAFAEL_ELIAS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p115",
+    "name": "レオ・セアラ(J1 BEST11 2025)",
+    "readingName": "れおせあら",
+    "assignedVar": "LEO_CEARA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p116",
+    "name": "伊藤達哉(J1 BEST11 2025)",
+    "readingName": "いとうたつや",
+    "assignedVar": "ITO_TATSUYA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p117",
+    "name": "小泉佳穂(J1 BEST11 2025)",
+    "readingName": "こいずみよしお",
+    "assignedVar": "KOIZUMI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p118",
+    "name": "稲垣祥(J1 BEST11 2025)",
+    "readingName": "いながきしょう",
+    "assignedVar": "INAGAKI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p119",
+    "name": "田中聡(J1 BEST11 2025)",
+    "readingName": "たなかさとし",
+    "assignedVar": "TANAKA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p120",
+    "name": "荒木隼人(J1 BEST11 2025)",
+    "readingName": "あらきはやと",
+    "assignedVar": "ARAKI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p121",
+    "name": "古賀太陽(J1 BEST11 2025)",
+    "readingName": "こがたいよう",
+    "assignedVar": "KOGA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p122",
+    "name": "植田直通(J1 BEST11 2025)",
+    "readingName": "うえだなおみち",
+    "assignedVar": "NAOMICHI_UEDA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p123",
+    "name": "早川友基(J1 BEST11 2025)",
+    "readingName": "はやかわともき",
+    "assignedVar": "HAYAKAWA_BEST11_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p127",
+    "name": "早川友基(2026)",
+    "readingName": "はやかわともき",
+    "assignedVar": "HAYAKAWA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p128",
+    "name": "川島永嗣(2026)",
+    "readingName": "かわしまえいじ",
+    "assignedVar": "KAWASHIMA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p129",
+    "name": "前川黛也(2026)",
+    "readingName": "まえかわだいや",
+    "assignedVar": "MAEKAWA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p130",
+    "name": "シュミット・ダニエル(2026)",
+    "readingName": "しゅみっとだにえる",
+    "assignedVar": "SCHMIDT_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p131",
+    "name": "東口順昭(2026)",
+    "readingName": "ひがしぐちまさあき",
+    "assignedVar": "HIGASHIGUCHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p132",
+    "name": "小島亨介(2026)",
+    "readingName": "こじまりょうすけ",
+    "assignedVar": "KOJIMA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p133",
+    "name": "マテウス(2026)",
+    "readingName": "まてうす",
+    "assignedVar": "MATHEUS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p134",
+    "name": "林彰洋(2026)",
+    "readingName": "はやしあきひろ",
+    "assignedVar": "AKIHIRO_HAYASHI_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p135",
+    "name": "太田岳志(2026)",
+    "readingName": "おおたがくじ",
+    "assignedVar": "GAKUJI_OTA_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p136",
+    "name": "後藤雅明(2026)",
+    "readingName": "ごとうまさあき",
+    "assignedVar": "MASAAKI_GOTO_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p137",
+    "name": "レナート・モーザー(2026)",
+    "readingName": "れなーともーざー",
+    "assignedVar": "LENNART_MOSER_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p138",
+    "name": "パブロ・サバグ(K1 BEST11 2025)",
+    "readingName": "ぱぶろさばぐ",
+    "assignedVar": "SABBAG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p139",
+    "name": "ソン・ミンギュ(K1 BEST11 2025)",
+    "readingName": "そんみんぎゅ",
+    "assignedVar": "SONG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p140",
+    "name": "イ・ドンギョン(K1 BEST11 2025)",
+    "readingName": "いどんぎょん",
+    "assignedVar": "LEE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p141",
+    "name": "カン・サンユン(K1 BEST11 2025)",
+    "readingName": "かんさんゆん",
+    "assignedVar": "KANG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p142",
+    "name": "キム・ジンギュ(K1 BEST11 2025)",
+    "readingName": "きむじんぎゅ",
+    "assignedVar": "KIM_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p143",
+    "name": "パク・ジンソプ(K1 BEST11 2025)",
+    "readingName": "ぱくじんそぷ",
+    "assignedVar": "PARK_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p144",
+    "name": "ホン・ジョンホ(K1 BEST11 2025)",
+    "readingName": "ほんじょんほ",
+    "assignedVar": "HONG_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p145",
+    "name": "イ・ミョンジェ(K1 BEST11 2025)",
+    "readingName": "いみょんじぇ",
+    "assignedVar": "LEE_MYUNG_JAE_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p146",
+    "name": "キム・ムンファン(K1 BEST11 2025)",
+    "readingName": "きむむんはん",
+    "assignedVar": "KIM_MOON_HWAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p147",
+    "name": "ソン・ボムグン(K1 BEST11 2025)",
+    "readingName": "そんぼむぐん",
+    "assignedVar": "SONG_BUM_KEUN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p148",
+    "name": "ヤザン・アルアラブ(K1 BEST11 2025)",
+    "readingName": "やざんあるあらぶ",
+    "assignedVar": "YAZAN_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p149",
+    "name": "荒木隼人(2026)",
+    "readingName": "あらきはやと",
+    "assignedVar": "ARAKI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p150",
+    "name": "マテイ・ヨニッチ(2026)",
+    "readingName": "まていよにっち",
+    "assignedVar": "JONJIC_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p151",
+    "name": "立田悠悟(2026)",
+    "readingName": "たつたゆうご",
+    "assignedVar": "TATSUTA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p152",
+    "name": "岡哲平(2026)",
+    "readingName": "おかてっぺい",
+    "assignedVar": "OKA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p153",
+    "name": "岩下航(2026)",
+    "readingName": "いわしたわたる",
+    "assignedVar": "IWASHITA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p154",
+    "name": "喜岡佳太(2026)",
+    "readingName": "よしおかけいた",
+    "assignedVar": "YOSHIOKA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p155",
+    "name": "西山大雅(2026)",
+    "readingName": "にしやまたいが",
+    "assignedVar": "NISHIYAMA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p156",
+    "name": "ジュリアン・セレスティン(2026)",
+    "readingName": "じゅりあんせれすてぃん",
+    "assignedVar": "CELESTINE_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p157",
+    "name": "塩谷司(2026)",
+    "readingName": "しおたにつかさ",
+    "assignedVar": "SHIOTANI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p158",
+    "name": "昌子源(2026)",
+    "readingName": "しょうじげん",
+    "assignedVar": "SHOJI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p159",
+    "name": "畠中槙之輔(2026)",
+    "readingName": "はたなかしんのすけ",
+    "assignedVar": "HATANAKA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p160",
+    "name": "根本健太(2026)",
+    "readingName": "ねもとけんた",
+    "assignedVar": "NEMOTO_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p161",
+    "name": "細井響(2026)",
+    "readingName": "ほそいきょう",
+    "assignedVar": "HOSOI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p162",
+    "name": "フアン・アントニオ・ロス(2026)",
+    "readingName": "ふあんあんとにおろす",
+    "assignedVar": "ROS_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p163",
+    "name": "藤井陽也(2026)",
+    "readingName": "ふじいはるや",
+    "assignedVar": "FUJII_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p164",
+    "name": "酒井高徳(2026)",
+    "readingName": "さかいごうとく",
+    "assignedVar": "SAKAI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p165",
+    "name": "望月ヘンリー海輝(2026)",
+    "readingName": "もちづきへんりーひろき",
+    "assignedVar": "MOCHIZUKI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p166",
+    "name": "生駒稀生(2026)",
+    "readingName": "いこまけい",
+    "assignedVar": "IKOMA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p167",
+    "name": "佐々木旭(2026)",
+    "readingName": "ささきあさひ",
+    "assignedVar": "SASAKI_ASAHI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p168",
+    "name": "吉田豊(2026)",
+    "readingName": "よしだゆたか",
+    "assignedVar": "YOSHIDA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p169",
+    "name": "大崎航詩(2026)",
+    "readingName": "おおさきこうし",
+    "assignedVar": "OSAKI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p170",
+    "name": "前嶋洋太(2026)",
+    "readingName": "まえじまようた",
+    "assignedVar": "MAEJIMA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p171",
+    "name": "藤春廣輝(2026)",
+    "readingName": "ふじはるひろき",
+    "assignedVar": "FUJIHARU_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p172",
+    "name": "室屋成(2026)",
+    "readingName": "むろやせい",
+    "assignedVar": "MUROYA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p173",
+    "name": "梅木怜(2026)",
+    "readingName": "うめきれい",
+    "assignedVar": "UMEKI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p174",
+    "name": "福田心之助(2026)",
+    "readingName": "ふくだしんのすけ",
+    "assignedVar": "FUKUDA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p175",
+    "name": "西谷優希(2026)",
+    "readingName": "にしやゆうき",
+    "assignedVar": "NISHIYA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p176",
+    "name": "西村恭史(2026)",
+    "readingName": "にしむらやすふみ",
+    "assignedVar": "NISHIMURA_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p177",
+    "name": "メン・ソンウン(2026)",
+    "readingName": "めんそんうん",
+    "assignedVar": "MAENG_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p178",
+    "name": "河原創(2026)",
+    "readingName": "かわはらそう",
+    "assignedVar": "KAWAHARA_2026_IMAGE",
+    "scriptVar": "SEO_MINWOO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SEO_MINWOO_2026_IMAGE, Assigned: KAWAHARA_2026_IMAGE)"
+  },
+  {
+    "id": "p179",
+    "name": "ソ・ミヌ(2026)",
+    "readingName": "そみぬ",
+    "assignedVar": "SEO_MINWOO_2026_IMAGE",
+    "scriptVar": "YAMANE_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMANE_2026_IMAGE, Assigned: SEO_MINWOO_2026_IMAGE)"
+  },
+  {
+    "id": "p180",
+    "name": "山根陸(2026)",
+    "readingName": "やまねりく",
+    "assignedVar": "YAMANE_2026_IMAGE",
+    "scriptVar": "NISHIZAWA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NISHIZAWA_2026_IMAGE, Assigned: YAMANE_2026_IMAGE)"
+  },
+  {
+    "id": "p181",
+    "name": "西澤健太(2026)",
+    "readingName": "にしざわけんた",
+    "assignedVar": "NISHIZAWA_2026_IMAGE",
+    "scriptVar": "LEE_HUI_GYUN_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LEE_HUI_GYUN_2026_IMAGE, Assigned: NISHIZAWA_2026_IMAGE)"
+  },
+  {
+    "id": "p182",
+    "name": "イ・ヒギュン(2026)",
+    "readingName": "いひぎゅん",
+    "assignedVar": "LEE_HUI_GYUN_2026_IMAGE",
+    "scriptVar": "SHIBASAKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SHIBASAKI_2026_IMAGE, Assigned: LEE_HUI_GYUN_2026_IMAGE)"
+  },
+  {
+    "id": "p183",
+    "name": "柴崎岳(2026)",
+    "readingName": "しばさきがく",
+    "assignedVar": "SHIBASAKI_2026_IMAGE",
+    "scriptVar": "MATHEUS_BUENO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MATHEUS_BUENO_2026_IMAGE, Assigned: SHIBASAKI_2026_IMAGE)"
+  },
+  {
+    "id": "p184",
+    "name": "マテウス・ブエノ(2026)",
+    "readingName": "まてうすぶえの",
+    "assignedVar": "MATHEUS_BUENO_2026_IMAGE",
+    "scriptVar": "KIYOTAKE_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KIYOTAKE_2026_IMAGE, Assigned: MATHEUS_BUENO_2026_IMAGE)"
+  },
+  {
+    "id": "p185",
+    "name": "清武弘嗣(2026)",
+    "readingName": "きよたけひろし",
+    "assignedVar": "KIYOTAKE_2026_IMAGE",
+    "scriptVar": "KAWABE_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAWABE_2026_IMAGE, Assigned: KIYOTAKE_2026_IMAGE)"
+  },
+  {
+    "id": "p186",
+    "name": "川辺駿(2026)",
+    "readingName": "かわべはやお",
+    "assignedVar": "KAWABE_2026_IMAGE",
+    "scriptVar": "YAMAMOTO_YUKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAMOTO_YUKI_2026_IMAGE, Assigned: KAWABE_2026_IMAGE)"
+  },
+  {
+    "id": "p187",
+    "name": "山本悠樹(2026)",
+    "readingName": "やまもとゆうき",
+    "assignedVar": "YAMAMOTO_YUKI_2026_IMAGE",
+    "scriptVar": "YAMAGUCHI_DAIKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAGUCHI_DAIKI_2026_IMAGE, Assigned: YAMAMOTO_YUKI_2026_IMAGE)"
+  },
+  {
+    "id": "p188",
+    "name": "山口大輝(2026)",
+    "readingName": "やまぐちだいき",
+    "assignedVar": "YAMAGUCHI_DAIKI_2026_IMAGE",
+    "scriptVar": "TOJO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TOJO_2026_IMAGE, Assigned: YAMAGUCHI_DAIKI_2026_IMAGE)"
+  },
+  {
+    "id": "p189",
+    "name": "東條敦輝(2026)",
+    "readingName": "とうじょうあつき",
+    "assignedVar": "TOJO_2026_IMAGE",
+    "scriptVar": "KOIZUMI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KOIZUMI_2026_IMAGE, Assigned: TOJO_2026_IMAGE)"
+  },
+  {
+    "id": "p190",
+    "name": "小泉佳穂(2026)",
+    "readingName": "こいずみよしお",
+    "assignedVar": "KOIZUMI_2026_IMAGE",
+    "scriptVar": "REIJNDERS_DIST_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: REIJNDERS_DIST_2026_IMAGE, Assigned: KOIZUMI_2026_IMAGE)"
+  },
+  {
+    "id": "p191",
+    "name": "タイアニ・ラインデルス(配布)",
+    "readingName": "たいあにらいんでるす",
+    "assignedVar": "REIJNDERS_DIST_2026_IMAGE",
+    "scriptVar": "TONO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TONO_2026_IMAGE, Assigned: REIJNDERS_DIST_2026_IMAGE)"
+  },
+  {
+    "id": "p192",
+    "name": "遠野大弥(2026)",
+    "readingName": "とおのだいや",
+    "assignedVar": "TONO_2026_IMAGE",
+    "scriptVar": "SASAKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SASAKI_2026_IMAGE, Assigned: TONO_2026_IMAGE)"
+  },
+  {
+    "id": "p193",
+    "name": "佐々木大樹(2026)",
+    "readingName": "ささきだいじゅ",
+    "assignedVar": "SASAKI_2026_IMAGE",
+    "scriptVar": "YAMAMI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAMI_2026_IMAGE, Assigned: SASAKI_2026_IMAGE)"
+  },
+  {
+    "id": "p194",
+    "name": "山見大登(2026)",
+    "readingName": "やまみひろと",
+    "assignedVar": "YAMAMI_2026_IMAGE",
+    "scriptVar": "NAGO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAGO_2026_IMAGE, Assigned: YAMAMI_2026_IMAGE)"
+  },
+  {
+    "id": "p195",
+    "name": "名古新太郎(2026)",
+    "readingName": "なごしんたろう",
+    "assignedVar": "NAGO_2026_IMAGE",
+    "scriptVar": "KIMURA_TAKAYA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KIMURA_TAKAYA_2026_IMAGE, Assigned: NAGO_2026_IMAGE)"
+  },
+  {
+    "id": "p196",
+    "name": "木村太哉(2026)",
+    "readingName": "きむらたかや",
+    "assignedVar": "KIMURA_TAKAYA_2026_IMAGE",
+    "scriptVar": "GOTO_YUSUKE_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: GOTO_YUSUKE_2026_IMAGE, Assigned: KIMURA_TAKAYA_2026_IMAGE)"
+  },
+  {
+    "id": "p197",
+    "name": "後藤優介(2026)",
+    "readingName": "ごとうゆうすけ",
+    "assignedVar": "GOTO_YUSUKE_2026_IMAGE",
+    "scriptVar": "FUJIKAWA_KOTARO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: FUJIKAWA_KOTARO_2026_IMAGE, Assigned: GOTO_YUSUKE_2026_IMAGE)"
+  },
+  {
+    "id": "p198",
+    "name": "藤川虎太朗(2026)",
+    "readingName": "ふじかわこたろう",
+    "assignedVar": "FUJIKAWA_KOTARO_2026_IMAGE",
+    "scriptVar": "ARAKI_RYOTARO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ARAKI_RYOTARO_2026_IMAGE, Assigned: FUJIKAWA_KOTARO_2026_IMAGE)"
+  },
+  {
+    "id": "p199",
+    "name": "荒木遼太郎(2026)",
+    "readingName": "あらきりょうたろう",
+    "assignedVar": "ARAKI_RYOTARO_2026_IMAGE",
+    "scriptVar": "MATHEUS_SAVIO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MATHEUS_SAVIO_2026_IMAGE, Assigned: ARAKI_RYOTARO_2026_IMAGE)"
+  },
+  {
+    "id": "p200",
+    "name": "マテウス・サヴィオ(2026)",
+    "readingName": "まてうすさゔぃお",
+    "assignedVar": "MATHEUS_SAVIO_2026_IMAGE",
+    "scriptVar": "SATO_RYUNOSUKE_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SATO_RYUNOSUKE_2026_IMAGE, Assigned: MATHEUS_SAVIO_2026_IMAGE)"
+  },
+  {
+    "id": "p201",
+    "name": "佐藤龍之介(2026)",
+    "readingName": "さとうりゅうのすけ",
+    "assignedVar": "SATO_RYUNOSUKE_2026_IMAGE",
+    "scriptVar": "HIMENO_MAKOTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: HIMENO_MAKOTO_2026_IMAGE, Assigned: SATO_RYUNOSUKE_2026_IMAGE)"
+  },
+  {
+    "id": "p202",
+    "name": "姫野誠(2026)",
+    "readingName": "ひめのまこと",
+    "assignedVar": "HIMENO_MAKOTO_2026_IMAGE",
+    "scriptVar": "KATO_CHIHIRO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KATO_CHIHIRO_2026_IMAGE, Assigned: HIMENO_MAKOTO_2026_IMAGE)"
+  },
+  {
+    "id": "p203",
+    "name": "加藤千尋(2026)",
+    "readingName": "かとうちひろ",
+    "assignedVar": "KATO_CHIHIRO_2026_IMAGE",
+    "scriptVar": "NORMAN_CAMPBELL_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NORMAN_CAMPBELL_2026_IMAGE, Assigned: KATO_CHIHIRO_2026_IMAGE)"
+  },
+  {
+    "id": "p204",
+    "name": "ノーマン・キャンベル(2026)",
+    "readingName": "のーまんきゃんべる",
+    "assignedVar": "NORMAN_CAMPBELL_2026_IMAGE",
+    "scriptVar": "CARLINHOS_JUNIOR_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: CARLINHOS_JUNIOR_2026_IMAGE, Assigned: NORMAN_CAMPBELL_2026_IMAGE)"
+  },
+  {
+    "id": "p205",
+    "name": "カルリーニョス・ジュニオ(2026)",
+    "readingName": "かるりーにょすじゅにお",
+    "assignedVar": "CARLINHOS_JUNIOR_2026_IMAGE",
+    "scriptVar": "SOMA_YUKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SOMA_YUKI_2026_IMAGE, Assigned: CARLINHOS_JUNIOR_2026_IMAGE)"
+  },
+  {
+    "id": "p206",
+    "name": "相馬勇紀(2026)",
+    "readingName": "そうまゆうき",
+    "assignedVar": "SOMA_YUKI_2026_IMAGE",
+    "scriptVar": "KURATA_SHU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KURATA_SHU_2026_IMAGE, Assigned: SOMA_YUKI_2026_IMAGE)"
+  },
+  {
+    "id": "p207",
+    "name": "倉田秋(2026)",
+    "readingName": "くらたしゅう",
+    "assignedVar": "KURATA_SHU_2026_IMAGE",
+    "scriptVar": "ISHII_HISATSUGU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ISHII_HISATSUGU_2026_IMAGE, Assigned: KURATA_SHU_2026_IMAGE)"
+  },
+  {
+    "id": "p208",
+    "name": "石井久継(2026)",
+    "readingName": "いしいひさつぐ",
+    "assignedVar": "ISHII_HISATSUGU_2026_IMAGE",
+    "scriptVar": "NAKAMURA_RYOTA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAKAMURA_RYOTA_2026_IMAGE, Assigned: ISHII_HISATSUGU_2026_IMAGE)"
+  },
+  {
+    "id": "p209",
+    "name": "中村亮太(2026)",
+    "readingName": "なかむらりょうた",
+    "assignedVar": "NAKAMURA_RYOTA_2026_IMAGE",
+    "scriptVar": "MARCO_TULIO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MARCO_TULIO_2026_IMAGE, Assigned: NAKAMURA_RYOTA_2026_IMAGE)"
+  },
+  {
+    "id": "p210",
+    "name": "マルコ・トゥーリオ(2026)",
+    "readingName": "まることぅーりお",
+    "assignedVar": "MARCO_TULIO_2026_IMAGE",
+    "scriptVar": "MATHEUS_MORAES_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MATHEUS_MORAES_2026_IMAGE, Assigned: MARCO_TULIO_2026_IMAGE)"
+  },
+  {
+    "id": "p211",
+    "name": "マテウス・モラエス(2026)",
+    "readingName": "まてうすもらえす",
+    "assignedVar": "MATHEUS_MORAES_2026_IMAGE",
+    "scriptVar": "LUDWIGSON_GUSTAV_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LUDWIGSON_GUSTAV_2026_IMAGE, Assigned: MATHEUS_MORAES_2026_IMAGE)"
+  },
+  {
+    "id": "p212",
+    "name": "グスタフ・ルドヴィグソン(2026)",
+    "readingName": "ぐすたふるどゔぃぐそん",
+    "assignedVar": "LUDWIGSON_GUSTAV_2026_IMAGE",
+    "scriptVar": "LEE_CHUNG_YONG_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LEE_CHUNG_YONG_2026_IMAGE, Assigned: LUDWIGSON_GUSTAV_2026_IMAGE)"
+  },
+  {
+    "id": "p213",
+    "name": "イ・チュンヨン(2026)",
+    "readingName": "い・ちゅんよん",
+    "assignedVar": "LEE_CHUNG_YONG_2026_IMAGE",
+    "scriptVar": "GO_JAE_HYEON_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: GO_JAE_HYEON_2026_IMAGE, Assigned: LEE_CHUNG_YONG_2026_IMAGE)"
+  },
+  {
+    "id": "p214",
+    "name": "コ・ジェヒョン(2026)",
+    "readingName": "こ・じぇひょん",
+    "assignedVar": "GO_JAE_HYEON_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p215",
+    "name": "久保藤次郎(2026)",
+    "readingName": "くぼとうじろう",
+    "assignedVar": "KUBO_TOJIRO_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p216",
+    "name": "髙橋大悟(2026)",
+    "readingName": "たかはしだいご",
+    "assignedVar": "TAKAHASHI_DAIGO_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p217",
+    "name": "モ・ジェヒョン(2026)",
+    "readingName": "もじぇひょん",
+    "assignedVar": "MO_JAE_HYEON_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p218",
+    "name": "松橋優安(2026)",
+    "readingName": "まつはしゆあん",
+    "assignedVar": "MATSUHASHI_YUAN_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p219",
+    "name": "竹本雄飛(2026)",
+    "readingName": "たけもとゆうひ",
+    "assignedVar": "TAKEMOTO_YUHI_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p220",
+    "name": "亀田歩夢(2026)",
+    "readingName": "かめだあゆむ",
+    "assignedVar": "KAMEDA_AYUMU_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p221",
+    "name": "チアゴ・アンドラーデ(2026)",
+    "readingName": "ちあごあんどらーで",
+    "assignedVar": "THIAGO_ANDRADE_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p222",
+    "name": "ガレゴ(2026)",
+    "readingName": "がれご",
+    "assignedVar": "GALEGO_2026_IMAGE",
+    "scriptVar": "THIAGUINHO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: THIAGUINHO_2026_IMAGE, Assigned: GALEGO_2026_IMAGE)"
+  },
+  {
+    "id": "p223",
+    "name": "チアギーニョ(2026)",
+    "readingName": "ちあぎーにょ",
+    "assignedVar": "THIAGUINHO_2026_IMAGE",
+    "scriptVar": "JEON_BYEONG_GWAN_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: JEON_BYEONG_GWAN_2026_IMAGE, Assigned: THIAGUINHO_2026_IMAGE)"
+  },
+  {
+    "id": "p224",
+    "name": "チョン・ビョングァン(2026)",
+    "readingName": "ちょん・びょんぐぁん",
+    "assignedVar": "JEON_BYEONG_GWAN_2026_IMAGE",
+    "scriptVar": "CHOI_GEON_JU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: CHOI_GEON_JU_2026_IMAGE, Assigned: JEON_BYEONG_GWAN_2026_IMAGE)"
+  },
+  {
+    "id": "p225",
+    "name": "チェ・ゴンジュ(2026)",
+    "readingName": "ちぇ・ごんじゅ",
+    "assignedVar": "CHOI_GEON_JU_2026_IMAGE",
+    "scriptVar": "LEE_DONG_JUN_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LEE_DONG_JUN_2026_IMAGE, Assigned: CHOI_GEON_JU_2026_IMAGE)"
+  },
+  {
+    "id": "p226",
+    "name": "イ・ドンジュン(2026)",
+    "readingName": "い・どんじゅん",
+    "assignedVar": "LEE_DONG_JUN_2026_IMAGE",
+    "scriptVar": "EMERSON_RAMON_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: EMERSON_RAMON_2026_IMAGE, Assigned: LEE_DONG_JUN_2026_IMAGE)"
+  },
+  {
+    "id": "p227",
+    "name": "エメルソン・ハモン(2026)",
+    "readingName": "えめるそん・はもん",
+    "assignedVar": "EMERSON_RAMON_2026_IMAGE",
+    "scriptVar": "KIDA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KIDA_2026_IMAGE, Assigned: EMERSON_RAMON_2026_IMAGE)"
+  },
+  {
+    "id": "p228",
+    "name": "氣田亮真(2026)",
+    "readingName": "きだりょうま",
+    "assignedVar": "KIDA_2026_IMAGE",
+    "scriptVar": "JUNIOR_ROCHA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: JUNIOR_ROCHA_2026_IMAGE, Assigned: KIDA_2026_IMAGE)"
+  },
+  {
+    "id": "p229",
+    "name": "ジュニーニョ・ロシャ(2026)",
+    "readingName": "じゅにーにょ・ろしゃ",
+    "assignedVar": "JUNIOR_ROCHA_2026_IMAGE",
+    "scriptVar": "JOO_MIN_KYU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: JOO_MIN_KYU_2026_IMAGE, Assigned: JUNIOR_ROCHA_2026_IMAGE)"
+  },
+  {
+    "id": "p230",
+    "name": "ジュ・ミンギュ(2026)",
+    "readingName": "じゅ・みんぎゅ",
+    "assignedVar": "JOO_MIN_KYU_2026_IMAGE",
+    "scriptVar": "FRIDJONSSON_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: FRIDJONSSON_2026_IMAGE, Assigned: JOO_MIN_KYU_2026_IMAGE)"
+  },
+  {
+    "id": "p231",
+    "name": "ホルムベルト・アーロン・フリズヨンソン(2026)",
+    "readingName": "ほるむべると・あーろん・ふりずよんそん",
+    "assignedVar": "FRIDJONSSON_2026_IMAGE",
+    "scriptVar": "YAGO_CARIELLO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAGO_CARIELLO_2026_IMAGE, Assigned: FRIDJONSSON_2026_IMAGE)"
+  },
+  {
+    "id": "p232",
+    "name": "ヤゴ・カリエッロ(2026)",
+    "readingName": "やご・かりえっろ",
+    "assignedVar": "YAGO_CARIELLO_2026_IMAGE",
+    "scriptVar": "LUCAS_BARCELOS_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LUCAS_BARCELOS_2026_IMAGE, Assigned: YAGO_CARIELLO_2026_IMAGE)"
+  },
+  {
+    "id": "p233",
+    "name": "ルーカス・バルセロス(2026)",
+    "readingName": "るーかす・ばるせろす",
+    "assignedVar": "LUCAS_BARCELOS_2026_IMAGE",
+    "scriptVar": "AMADOU_BAKAYOKO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: AMADOU_BAKAYOKO_2026_IMAGE, Assigned: LUCAS_BARCELOS_2026_IMAGE)"
+  },
+  {
+    "id": "p234",
+    "name": "アマドゥ・バカヨコ(2026)",
+    "readingName": "あまどぅ・ばかよこ",
+    "assignedVar": "AMADOU_BAKAYOKO_2026_IMAGE",
+    "scriptVar": "BRENO_HERCULANO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: BRENO_HERCULANO_2026_IMAGE, Assigned: AMADOU_BAKAYOKO_2026_IMAGE)"
+  },
+  {
+    "id": "p235",
+    "name": "ブルーノ・エルクラーノ(2026)",
+    "readingName": "ぶるーの・えるくらーの",
+    "assignedVar": "BRENO_HERCULANO_2026_IMAGE",
+    "scriptVar": "SUGIMOTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUGIMOTO_2026_IMAGE, Assigned: BRENO_HERCULANO_2026_IMAGE)"
+  },
+  {
+    "id": "p236",
+    "name": "杉本健勇(2026)",
+    "readingName": "すぎもと・けんゆう",
+    "assignedVar": "SUGIMOTO_2026_IMAGE",
+    "scriptVar": "SAKURAGAWA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SAKURAGAWA_2026_IMAGE, Assigned: SUGIMOTO_2026_IMAGE)"
+  },
+  {
+    "id": "p237",
+    "name": "櫻川ソロモン(2026)",
+    "readingName": "さくらがわ・そろもん",
+    "assignedVar": "SAKURAGAWA_2026_IMAGE",
+    "scriptVar": "TOSHIDA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TOSHIDA_2026_IMAGE, Assigned: SAKURAGAWA_2026_IMAGE)"
+  },
+  {
+    "id": "p238",
+    "name": "土信田悠生(2026)",
+    "readingName": "としだ・ゆうせい",
+    "assignedVar": "TOSHIDA_2026_IMAGE",
+    "scriptVar": "SAWAKAMI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SAWAKAMI_2026_IMAGE, Assigned: TOSHIDA_2026_IMAGE)"
+  },
+  {
+    "id": "p239",
+    "name": "澤上竜二(2026)",
+    "readingName": "さわかみ・りゅうじ",
+    "assignedVar": "SAWAKAMI_2026_IMAGE",
+    "scriptVar": "SHIMADA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SHIMADA_2026_IMAGE, Assigned: SAWAKAMI_2026_IMAGE)"
+  },
+  {
+    "id": "p240",
+    "name": "島田拓海(2026)",
+    "readingName": "しまだ・たくみ",
+    "assignedVar": "SHIMADA_2026_IMAGE",
+    "scriptVar": "MIURA_KAZUYOSHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MIURA_KAZUYOSHI_2026_IMAGE, Assigned: SHIMADA_2026_IMAGE)"
+  },
+  {
+    "id": "p241",
+    "name": "三浦知良(2026)",
+    "readingName": "みうら・かずよし",
+    "assignedVar": "MIURA_KAZUYOSHI_2026_IMAGE",
+    "scriptVar": "HIDANO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: HIDANO_2026_IMAGE, Assigned: MIURA_KAZUYOSHI_2026_IMAGE)"
+  },
+  {
+    "id": "p242",
+    "name": "肥田野蓮治(2026)",
+    "readingName": "ひだの・れんじ",
+    "assignedVar": "HIDANO_2026_IMAGE",
+    "scriptVar": "NAGAKURA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAGAKURA_2026_IMAGE, Assigned: HIDANO_2026_IMAGE)"
+  },
+  {
+    "id": "p243",
+    "name": "長倉幹樹(2026)",
+    "readingName": "ながくら・もとき",
+    "assignedVar": "NAGAKURA_2026_IMAGE",
+    "scriptVar": "ISHIKAWA_DAICHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ISHIKAWA_DAICHI_2026_IMAGE, Assigned: NAGAKURA_2026_IMAGE)"
+  },
+  {
+    "id": "p244",
+    "name": "石川大地(2026)",
+    "readingName": "いしかわ・だいち",
+    "assignedVar": "ISHIKAWA_DAICHI_2026_IMAGE",
+    "scriptVar": "YAMURA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMURA_2026_IMAGE, Assigned: ISHIKAWA_DAICHI_2026_IMAGE)"
+  },
+  {
+    "id": "p245",
+    "name": "矢村健(2026)",
+    "readingName": "やむら・けん",
+    "assignedVar": "YAMURA_2026_IMAGE",
+    "scriptVar": "MUTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MUTO_2026_IMAGE, Assigned: YAMURA_2026_IMAGE)"
+  },
+  {
+    "id": "p246",
+    "name": "武藤雄樹(2026)",
+    "readingName": "むとう・ゆうき",
+    "assignedVar": "MUTO_2026_IMAGE",
+    "scriptVar": "SHINTANI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SHINTANI_2026_IMAGE, Assigned: MUTO_2026_IMAGE)"
+  },
+  {
+    "id": "p247",
+    "name": "新谷聖基(2026)",
+    "readingName": "しんたに・まさき",
+    "assignedVar": "SHINTANI_2026_IMAGE",
+    "scriptVar": "KAWAMOTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAWAMOTO_2026_IMAGE, Assigned: SHINTANI_2026_IMAGE)"
+  },
+  {
+    "id": "p248",
+    "name": "川本梨誉(2026)",
+    "readingName": "かわもと・りよ",
+    "assignedVar": "KAWAMOTO_2026_IMAGE",
+    "scriptVar": "YANO_KISHO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YANO_KISHO_2026_IMAGE, Assigned: KAWAMOTO_2026_IMAGE)"
+  },
+  {
+    "id": "p249",
+    "name": "矢野貴章(2026)",
+    "readingName": "やの・きしょう",
+    "assignedVar": "YANO_KISHO_2026_IMAGE",
+    "scriptVar": "KAWAMURA_KEITO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAWAMURA_KEITO_2026_IMAGE, Assigned: YANO_KISHO_2026_IMAGE)"
+  },
+  {
+    "id": "p250",
+    "name": "河村慶人(2026)",
+    "readingName": "かわむら・けいと",
+    "assignedVar": "KAWAMURA_KEITO_2026_IMAGE",
+    "scriptVar": "NAITO_YAMATO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAITO_YAMATO_2026_IMAGE, Assigned: KAWAMURA_KEITO_2026_IMAGE)"
+  },
+  {
+    "id": "p251",
+    "name": "内藤大和(2026)",
+    "readingName": "ないとう・やまと",
+    "assignedVar": "NAITO_YAMATO_2026_IMAGE",
+    "scriptVar": "TANAKA_SORA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANAKA_SORA_2026_IMAGE, Assigned: NAITO_YAMATO_2026_IMAGE)"
+  },
+  {
+    "id": "p252",
+    "name": "田中想来(2026)",
+    "readingName": "たなか・そら",
+    "assignedVar": "TANAKA_SORA_2026_IMAGE",
+    "scriptVar": "KLIMALA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KLIMALA_2026_IMAGE, Assigned: TANAKA_SORA_2026_IMAGE)"
+  },
+  {
+    "id": "p253",
+    "name": "パトリク・クリマラ(2026)",
+    "readingName": "ぱとりく・くりまら",
+    "assignedVar": "KLIMALA_2026_IMAGE",
+    "scriptVar": "MUGOSA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MUGOSA_2026_IMAGE, Assigned: KLIMALA_2026_IMAGE)"
+  },
+  {
+    "id": "p254",
+    "name": "ステファン・ムゴシャ(2026)",
+    "readingName": "すてふぁん・むごしゃ",
+    "assignedVar": "MUGOSA_2026_IMAGE",
+    "scriptVar": "TRANZISKA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TRANZISKA_2026_IMAGE, Assigned: MUGOSA_2026_IMAGE)"
+  },
+  {
+    "id": "p255",
+    "name": "ヤコブ・トランジスカ(2026)",
+    "readingName": "やこぶ・とらんじすか",
+    "assignedVar": "TRANZISKA_2026_IMAGE",
+    "scriptVar": "HUMMET_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: HUMMET_2026_IMAGE, Assigned: TRANZISKA_2026_IMAGE)"
+  },
+  {
+    "id": "p256",
+    "name": "デニス・ヒュメット(2026)",
+    "readingName": "でにす・ひゅめっと",
+    "assignedVar": "HUMMET_2026_IMAGE",
+    "scriptVar": "TANIMURA_KAINA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANIMURA_KAINA_2026_IMAGE, Assigned: HUMMET_2026_IMAGE)"
+  },
+  {
+    "id": "p257",
+    "name": "谷村海那(2026)",
+    "readingName": "たにむら・かいな",
+    "assignedVar": "TANIMURA_KAINA_2026_IMAGE",
+    "scriptVar": "YAMAGISHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAGISHI_2026_IMAGE, Assigned: TANIMURA_KAINA_2026_IMAGE)"
+  },
+  {
+    "id": "p258",
+    "name": "山岸祐也(2026)",
+    "readingName": "やまぎし・ゆうや",
+    "assignedVar": "YAMAGISHI_2026_IMAGE",
+    "scriptVar": "HAALAND_GIFT_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: HAALAND_GIFT_2026_IMAGE, Assigned: YAMAGISHI_2026_IMAGE)"
+  },
+  {
+    "id": "p259",
+    "name": "アーリング・ハーランド(配布)",
+    "readingName": "あーりんぐ・はーらんど",
+    "assignedVar": "HAALAND_GIFT_2026_IMAGE",
+    "scriptVar": "DIAS_GIFT_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: DIAS_GIFT_2026_IMAGE, Assigned: HAALAND_GIFT_2026_IMAGE)"
+  },
+  {
+    "id": "p260",
+    "name": "ルベン・ディアス(配布)",
+    "readingName": "るべん・でぃあす",
+    "assignedVar": "DIAS_GIFT_2026_IMAGE",
+    "scriptVar": "HIRATSUKA_GIFT_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: HIRATSUKA_GIFT_2026_IMAGE, Assigned: DIAS_GIFT_2026_IMAGE)"
+  },
+  {
+    "id": "p261",
+    "name": "平塚浪馬(配布)",
+    "readingName": "ひらつか・ろうま",
+    "assignedVar": "HIRATSUKA_GIFT_2026_IMAGE",
+    "scriptVar": "KAWAMOTO_PACK_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAWAMOTO_PACK_2026_IMAGE, Assigned: HIRATSUKA_GIFT_2026_IMAGE)"
+  },
+  {
+    "id": "p262",
+    "name": "河本龍将(パック)",
+    "readingName": "かわもと・たつまさ",
+    "assignedVar": "KAWAMOTO_PACK_2026_IMAGE",
+    "scriptVar": "LEO_CEARA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: LEO_CEARA_2026_IMAGE, Assigned: KAWAMOTO_PACK_2026_IMAGE)"
+  },
+  {
+    "id": "p263",
+    "name": "レオ・セアラ(2026TS)",
+    "readingName": "れお・せあら",
+    "assignedVar": "LEO_CEARA_2026_IMAGE",
+    "scriptVar": "YAMAGISHI_2026_TS_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAGISHI_2026_TS_IMAGE, Assigned: LEO_CEARA_2026_IMAGE)"
+  },
+  {
+    "id": "p264",
+    "name": "山岸祐也(2026TS)",
+    "readingName": "やまぎし・ゆうや",
+    "assignedVar": "YAMADA_HIROTO_2026_TS_IMAGE",
+    "scriptVar": "YAMADA_HIROTO_2026_TS_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p265",
+    "name": "山田寛人(2026TS)",
+    "readingName": "やまだ・ひろと",
+    "assignedVar": "TAMURA_SHOTA_2026_TS_IMAGE",
+    "scriptVar": "TAMURA_SHOTA_2026_TS_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p266",
+    "name": "田村翔太(2026TS)",
+    "readingName": "たむら・しょうた",
+    "assignedVar": "TAMURA_SHOTA_2026_TS_IMAGE",
+    "scriptVar": "TOSHIDA_YUSEI_2026_TS_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TOSHIDA_YUSEI_2026_TS_IMAGE, Assigned: TAMURA_SHOTA_2026_TS_IMAGE)"
+  },
+  {
+    "id": "p267",
+    "name": "土信田悠生(2026TS)",
+    "readingName": "としだ・ゆうせい",
+    "assignedVar": "IZUMI_TOYA_2026_TS_IMAGE",
+    "scriptVar": "IZUMI_TOYA_2026_TS_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p268",
+    "name": "泉柊椰(2026TS)",
+    "readingName": "いずみ・とうや",
+    "assignedVar": "IZUMI_TOYA_2026_TS_IMAGE",
+    "scriptVar": "YAMAMOTO_OUTA_2026_TS_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAMOTO_OUTA_2026_TS_IMAGE, Assigned: IZUMI_TOYA_2026_TS_IMAGE)"
+  },
+  {
+    "id": "p269",
+    "name": "山本桜大(2026TS)",
+    "readingName": "やまもと・おうた",
+    "assignedVar": "YAMAMOTO_OUTA_2026_TS_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p270",
+    "name": "アリソン",
+    "readingName": "ありそん",
+    "assignedVar": "ALISSON_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p271",
+    "name": "エンドリッキ",
+    "readingName": "えんどりっき",
+    "assignedVar": "ENDRICK_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p272",
+    "name": "メイソン・グリーンウッド",
+    "readingName": "めいそんぐりーんうっど",
+    "assignedVar": "GREENWOOD_2026_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p273",
+    "name": "マヌエル・アカンジ",
+    "readingName": "まぬえるあかんじ",
+    "assignedVar": "HONDA_2026_IMAGE",
+    "scriptVar": "HONDA_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p274",
+    "name": "本多勇喜(2026)",
+    "readingName": "ほんだゆうき",
+    "assignedVar": "HONDA_2026_IMAGE",
+    "scriptVar": "PULISIC_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: PULISIC_2026_IMAGE, Assigned: HONDA_2026_IMAGE)"
+  },
+  {
+    "id": "p275",
+    "name": "クリスティアン・プリシッチ",
+    "readingName": "くりすてぃあんぷりしっち",
+    "assignedVar": "IDZES_2026_IMAGE",
+    "scriptVar": "IDZES_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p276",
+    "name": "ジェイ・イツェス",
+    "readingName": "じぇいいつぇす",
+    "assignedVar": "CHANATHIP_2026_IMAGE",
+    "scriptVar": "CHANATHIP_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p277",
+    "name": "チャナティップ・ソングラシン",
+    "readingName": "ちゃなてぃっぷそんぐらしん",
+    "assignedVar": "CHANATHIP_2026_IMAGE",
+    "scriptVar": "KIM_NAMIL_HAIFU_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KIM_NAMIL_HAIFU_IMAGE, Assigned: CHANATHIP_2026_IMAGE)"
+  },
+  {
+    "id": "p278",
+    "name": "キム・ナミル(配布)",
+    "readingName": "きむなみる",
+    "assignedVar": "AHN_JUNGHWAN_HAIFU_IMAGE",
+    "scriptVar": "AHN_JUNGHWAN_HAIFU_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p279",
+    "name": "アン・ジョンファン(配布)",
+    "readingName": "あんじょんふぁん",
+    "assignedVar": "AHN_JUNGHWAN_HAIFU_IMAGE",
+    "scriptVar": "IIJIMA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: IIJIMA_2026_IMAGE, Assigned: AHN_JUNGHWAN_HAIFU_IMAGE)"
+  },
+  {
+    "id": "p280",
+    "name": "飯島潤一郎(チケット交換)",
+    "readingName": "いいじまじゅんいちろう",
+    "assignedVar": "BARFIE_2026_IMAGE",
+    "scriptVar": "BARFIE_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p281",
+    "name": "バルフィー(チケット交換)",
+    "readingName": "ばるふぃー",
+    "assignedVar": "BAEK_GYEONGSU_2026_IMAGE",
+    "scriptVar": "BAEK_GYEONGSU_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p282",
+    "name": "ペク・ギョンス(チケット交換)",
+    "readingName": "ぺく・ぎょんす",
+    "assignedVar": "BAEK_GYEONGSU_2026_IMAGE",
+    "scriptVar": "BURROWS_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: BURROWS_2026_IMAGE, Assigned: BAEK_GYEONGSU_2026_IMAGE)"
+  },
+  {
+    "id": "p283",
+    "name": "バロウズ(チケット交換)",
+    "readingName": "ばろうず",
+    "assignedVar": "ARGANTCHUEV_2026_IMAGE",
+    "scriptVar": "ARGANTCHUEV_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p284",
+    "name": "アルガンチューワ(チケット交換)",
+    "readingName": "あるがんちゅーわ",
+    "assignedVar": "ARGANTCHUEV_2026_IMAGE",
+    "scriptVar": "SUSPEITA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUSPEITA_2026_IMAGE, Assigned: ARGANTCHUEV_2026_IMAGE)"
+  },
+  {
+    "id": "p285",
+    "name": "ススペイタ(チケット交換)",
+    "readingName": "すすぺいた",
+    "assignedVar": "SUSPEITA_2026_IMAGE",
+    "scriptVar": "TOUMEIOTOKO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TOUMEIOTOKO_2026_IMAGE, Assigned: SUSPEITA_2026_IMAGE)"
+  },
+  {
+    "id": "p286",
+    "name": "透明男(チケット交換)",
+    "readingName": "とうめいおとこ",
+    "assignedVar": "MUSAIR_2026_IMAGE",
+    "scriptVar": "MUSAIR_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p287",
+    "name": "ムサイール(チケット交換)",
+    "readingName": "むさいーる",
+    "assignedVar": "MUSAIR_2026_IMAGE",
+    "scriptVar": "P_RAMANBELA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: P_RAMANBELA_2026_IMAGE, Assigned: MUSAIR_2026_IMAGE)"
+  },
+  {
+    "id": "p288",
+    "name": "P・ラマンベラ(チケット交換)",
+    "readingName": "ぴー・らまんべら",
+    "assignedVar": "J_RAMANBELA_2026_IMAGE",
+    "scriptVar": "J_RAMANBELA_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p289",
+    "name": "J・ラマンベラ(チケット交換)",
+    "readingName": "じぇー・らまんべら",
+    "assignedVar": "ANTANCHEN_2026_IMAGE",
+    "scriptVar": "ANTANCHEN_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p290",
+    "name": "アンタンシェン(チケット交換)",
+    "readingName": "あんたんしぇん",
+    "assignedVar": "ANTANCHEN_2026_IMAGE",
+    "scriptVar": "SUZUKIYUMA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUZUKIYUMA_2025_IMAGE, Assigned: ANTANCHEN_2026_IMAGE)"
+  },
+  {
+    "id": "p291",
+    "name": "鈴木優磨",
+    "readingName": "すずき・ゆうま",
+    "assignedVar": "SUZUKIYUMA_2025_IMAGE",
+    "scriptVar": "YUYAOSAKO_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YUYAOSAKO_2025_IMAGE, Assigned: SUZUKIYUMA_2025_IMAGE)"
+  },
+  {
+    "id": "p292",
+    "name": "大迫勇也",
+    "readingName": "おおさこ・ゆうや",
+    "assignedVar": "OHSEHUN_2025_IMAGE",
+    "scriptVar": "OHSEHUN_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p293",
+    "name": "オ・セフン",
+    "readingName": "お・せふん",
+    "assignedVar": "LUCAO_2025_IMAGE",
+    "scriptVar": "LUCAO_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p294",
+    "name": "ルカオ",
+    "readingName": "るかお",
+    "assignedVar": "ITSUKISOMENO_2025_IMAGE",
+    "scriptVar": "ITSUKISOMENO_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p295",
+    "name": "染野唯月",
+    "readingName": "そめの・いつき",
+    "assignedVar": "ITSUKISOMENO_2025_IMAGE",
+    "scriptVar": "KAZUSHIMITSUHIRA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAZUSHIMITSUHIRA_2025_IMAGE, Assigned: ITSUKISOMENO_2025_IMAGE)"
+  },
+  {
+    "id": "p296",
+    "name": "三平和司",
+    "readingName": "みつひら・かずし",
+    "assignedVar": "DAIKIWATARI_2025_IMAGE",
+    "scriptVar": "DAIKIWATARI_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p297",
+    "name": "渡大生",
+    "readingName": "わたり・だいき",
+    "assignedVar": "DAIKIWATARI_2025_IMAGE",
+    "scriptVar": "DISARO_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: DISARO_2025_IMAGE, Assigned: DAIKIWATARI_2025_IMAGE)"
+  },
+  {
+    "id": "p298",
+    "name": "ディサロ燦シルヴァーノ",
+    "readingName": "でぃさろ・あきら・しるヴぁーの",
+    "assignedVar": "DISARO_2025_IMAGE",
+    "scriptVar": "KAITOTANIGUCHI_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KAITOTANIGUCHI_2025_IMAGE, Assigned: DISARO_2025_IMAGE)"
+  },
+  {
+    "id": "p299",
+    "name": "谷口海斗",
+    "readingName": "たにぐち・かいと",
+    "assignedVar": "KAITOTANIGUCHI_2025_IMAGE",
+    "scriptVar": "KENSUKENAGAI_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KENSUKENAGAI_2025_IMAGE, Assigned: KAITOTANIGUCHI_2025_IMAGE)"
+  },
+  {
+    "id": "p300",
+    "name": "永井謙佑",
+    "readingName": "ながい・けんすけ",
+    "assignedVar": "KENSUKENAGAI_2025_IMAGE",
+    "scriptVar": "MAOHOSOYA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MAOHOSOYA_2025_IMAGE, Assigned: KENSUKENAGAI_2025_IMAGE)"
+  },
+  {
+    "id": "p301",
+    "name": "細谷真大",
+    "readingName": "ほそや・まひろ",
+    "assignedVar": "MAOHOSOYA_2025_IMAGE",
+    "scriptVar": "MARCUSVINICIUS_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MARCUSVINICIUS_2025_IMAGE, Assigned: MAOHOSOYA_2025_IMAGE)"
+  },
+  {
+    "id": "p302",
+    "name": "マルクス・ヴィニシウス",
+    "readingName": "まるくす・ヴぃにしうす",
+    "assignedVar": "MARCUSVINICIUS_2025_IMAGE",
+    "scriptVar": "MARCELORYAN_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MARCELORYAN_2025_IMAGE, Assigned: MARCUSVINICIUS_2025_IMAGE)"
+  },
+  {
+    "id": "p303",
+    "name": "マルセロ・ヒアン",
+    "readingName": "まるせろ・ひあん",
+    "assignedVar": "MARCELORYAN_2025_IMAGE",
+    "scriptVar": "PABLOSABBAG_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: PABLOSABBAG_2025_IMAGE, Assigned: MARCELORYAN_2025_IMAGE)"
+  },
+  {
+    "id": "p304",
+    "name": "パブロ・サバグ",
+    "readingName": "ぱぶろ・さばぐ",
+    "assignedVar": "KOYAKITAGAWA_2025_IMAGE",
+    "scriptVar": "KOYAKITAGAWA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p305",
+    "name": "北川航也",
+    "readingName": "きたがわ・こうや",
+    "assignedVar": "KOYAKITAGAWA_2025_IMAGE",
+    "scriptVar": "RAFAELELIAS_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: RAFAELELIAS_2025_IMAGE, Assigned: KOYAKITAGAWA_2025_IMAGE)"
+  },
+  {
+    "id": "p306",
+    "name": "ラファエル・エリアス",
+    "readingName": "らふぁえる・えりあす",
+    "assignedVar": "AKITOSUZUKI_2025_IMAGE",
+    "scriptVar": "AKITOSUZUKI_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p307",
+    "name": "鈴木章斗",
+    "readingName": "すずき・あきと",
+    "assignedVar": "AKITOSUZUKI_2025_IMAGE",
+    "scriptVar": "ARATAWATANABE_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ARATAWATANABE_2025_IMAGE, Assigned: AKITOSUZUKI_2025_IMAGE)"
+  },
+  {
+    "id": "p308",
+    "name": "渡邊新太",
+    "readingName": "わたなべ・あらた",
+    "assignedVar": "ARATAWATANABE_2025_IMAGE",
+    "scriptVar": "ATARUESAKA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ATARUESAKA_2025_IMAGE, Assigned: ARATAWATANABE_2025_IMAGE)"
+  },
+  {
+    "id": "p309",
+    "name": "江坂任",
+    "readingName": "えさか・あたる",
+    "assignedVar": "ATARUESAKA_2025_IMAGE",
+    "scriptVar": "NAOKINOMURA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAOKINOMURA_2025_IMAGE, Assigned: ATARUESAKA_2025_IMAGE)"
+  },
+  {
+    "id": "p310",
+    "name": "野村直輝",
+    "readingName": "のむら・なおき",
+    "assignedVar": "NAOKINOMURA_2025_IMAGE",
+    "scriptVar": "SHINJIKAGAWA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SHINJIKAGAWA_2025_IMAGE, Assigned: NAOKINOMURA_2025_IMAGE)"
+  },
+  {
+    "id": "p311",
+    "name": "香川真司",
+    "readingName": "かがわ・しんじ",
+    "assignedVar": "SHINJIKAGAWA_2025_IMAGE",
+    "scriptVar": "TAKASHIUSAMI_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TAKASHIUSAMI_2025_IMAGE, Assigned: SHINJIKAGAWA_2025_IMAGE)"
+  },
+  {
+    "id": "p312",
+    "name": "宇佐美貴史",
+    "readingName": "うさみ・たかし",
+    "assignedVar": "RYOMAWATANABE_2025_IMAGE",
+    "scriptVar": "RYOMAWATANABE_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p313",
+    "name": "渡邊凌磨",
+    "readingName": "わたなべ・りょうま",
+    "assignedVar": "RENASAKURA_2025_IMAGE",
+    "scriptVar": "RENASAKURA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p314",
+    "name": "浅倉廉",
+    "readingName": "あさくら・れん",
+    "assignedVar": "RENASAKURA_2025_IMAGE",
+    "scriptVar": "TOLGAYARSLAN_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TOLGAYARSLAN_2025_IMAGE, Assigned: RENASAKURA_2025_IMAGE)"
+  },
+  {
+    "id": "p315",
+    "name": "トルガイ・アルスラン",
+    "readingName": "とるがい・あるすらん",
+    "assignedVar": "MATHEUSJESUS_2025_IMAGE",
+    "scriptVar": "MATHEUSJESUS_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p316",
+    "name": "マテウス・ジェズス",
+    "readingName": "まてうす・じぇずす",
+    "assignedVar": "LEEDONGGYEONG_2025_IMAGE",
+    "scriptVar": "LEEDONGGYEONG_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p317",
+    "name": "イ・ドンギョン",
+    "readingName": "い・どんぎょん",
+    "assignedVar": "LEEDONGGYEONG_2025_IMAGE",
+    "scriptVar": "YASUTOWAKIZAKA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YASUTOWAKIZAKA_2025_IMAGE, Assigned: LEEDONGGYEONG_2025_IMAGE)"
+  },
+  {
+    "id": "p318",
+    "name": "脇坂泰斗",
+    "readingName": "わきざか・やすと",
+    "assignedVar": "JUNAMANO_2025_IMAGE",
+    "scriptVar": "JUNAMANO_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p319",
+    "name": "天野純",
+    "readingName": "あまの・じゅん",
+    "assignedVar": "JUNAMANO_2025_IMAGE",
+    "scriptVar": "KOSUKEONOSE_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KOSUKEONOSE_2025_IMAGE, Assigned: JUNAMANO_2025_IMAGE)"
+  },
+  {
+    "id": "p320",
+    "name": "小野瀬康介",
+    "readingName": "おのせ・こうすけ",
+    "assignedVar": "KOSUKEONOSE_2025_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p321",
+    "name": "稲垣祥",
+    "readingName": "いながき・しょう",
+    "assignedVar": "SHUNTATANAKA_2025_IMAGE",
+    "scriptVar": "SHUNTATANAKA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p322",
+    "name": "田中駿汰",
+    "readingName": "たなか・しゅんた",
+    "assignedVar": "KOKIMORITA_2025_IMAGE",
+    "scriptVar": "KOKIMORITA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p323",
+    "name": "森田晃樹",
+    "readingName": "もりた・こうき",
+    "assignedVar": "KOKIMORITA_2025_IMAGE",
+    "scriptVar": "TAKUMAARANO_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TAKUMAARANO_2025_IMAGE, Assigned: KOKIMORITA_2025_IMAGE)"
+  },
+  {
+    "id": "p324",
+    "name": "荒野拓馬",
+    "readingName": "あらの・たくま",
+    "assignedVar": "TAKUMAARANO_2025_IMAGE",
+    "scriptVar": "YUTAFUKAZAWA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YUTAFUKAZAWA_2025_IMAGE, Assigned: TAKUMAARANO_2025_IMAGE)"
+  },
+  {
+    "id": "p325",
+    "name": "深澤佑太",
+    "readingName": "ふかざわ・ゆうた",
+    "assignedVar": "TAKUYAKIDA_2025_IMAGE",
+    "scriptVar": "TAKUYAKIDA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p326",
+    "name": "喜田拓也",
+    "readingName": "きだ・たくや",
+    "assignedVar": "TAKUYAKIDA_2025_IMAGE",
+    "scriptVar": "YURILARA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YURILARA_2025_IMAGE, Assigned: TAKUYAKIDA_2025_IMAGE)"
+  },
+  {
+    "id": "p327",
+    "name": "ユーリ・ララ",
+    "readingName": "ゆーり・らら",
+    "assignedVar": "DAIKIMATSUOKA_2025_IMAGE",
+    "scriptVar": "DAIKIMATSUOKA_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p328",
+    "name": "松岡大起",
+    "readingName": "まつおか・だいき",
+    "assignedVar": "DAIKIMATSUOKA_2025_IMAGE",
+    "scriptVar": "SHUHEIKAMIMURA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SHUHEIKAMIMURA_2025_IMAGE, Assigned: DAIKIMATSUOKA_2025_IMAGE)"
+  },
+  {
+    "id": "p329",
+    "name": "上村周平",
+    "readingName": "かみむら・しゅうへい",
+    "assignedVar": "SHUHEIKAMIMURA_2025_IMAGE",
+    "scriptVar": "YUTONAGATOMO_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YUTONAGATOMO_2025_IMAGE, Assigned: SHUHEIKAMIMURA_2025_IMAGE)"
+  },
+  {
+    "id": "p330",
+    "name": "長友佑都",
+    "readingName": "ながとも・ゆうと",
+    "assignedVar": "YUTOHORIGOME_2025_IMAGE",
+    "scriptVar": "YUTOHORIGOME_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p331",
+    "name": "堀米悠斗",
+    "readingName": "ほりごめ・ゆうと",
+    "assignedVar": "KOTAMURAMATSU_2025_IMAGE",
+    "scriptVar": "KOTAMURAMATSU_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p332",
+    "name": "村松航太",
+    "readingName": "むらまつ・こうた",
+    "assignedVar": "KIMITONONO_2025_IMAGE",
+    "scriptVar": "KIMITONONO_2025_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p333",
+    "name": "濃野公人",
+    "readingName": "のうの・きみと",
+    "assignedVar": "KIMITONONO_2025_IMAGE",
+    "scriptVar": "RIKUHANDA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: RIKUHANDA_2025_IMAGE, Assigned: KIMITONONO_2025_IMAGE)"
+  },
+  {
+    "id": "p334",
+    "name": "半田陸",
+    "readingName": "はんだ・りく",
+    "assignedVar": "RIKUHANDA_2025_IMAGE",
+    "scriptVar": "SOYAFUJIWARA_2025_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SOYAFUJIWARA_2025_IMAGE, Assigned: RIKUHANDA_2025_IMAGE)"
+  },
+  {
+    "id": "p335",
+    "name": "藤原奏哉",
+    "readingName": "ふじわら・そうや",
+    "assignedVar": "MATSUBARA_KO_2026_IMAGE",
+    "scriptVar": "MATSUBARA_KO_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p336",
+    "name": "松原后",
+    "readingName": "まつばら・こう",
+    "assignedVar": "IGARASHI_SENA_2026_IMAGE",
+    "scriptVar": "IGARASHI_SENA_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p337",
+    "name": "五十嵐駿己",
+    "readingName": "いがらし・せな",
+    "assignedVar": "IGARASHI_SENA_2026_IMAGE",
+    "scriptVar": "MARIUS_HOIBRATEN_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: MARIUS_HOIBRATEN_2026_IMAGE, Assigned: IGARASHI_SENA_2026_IMAGE)"
+  },
+  {
+    "id": "p338",
+    "name": "マリウス・ホイブラーテン",
+    "readingName": "まりうす・ほいぶらーてん",
+    "assignedVar": "INOUE_TAISEI_2026_IMAGE",
+    "scriptVar": "INOUE_TAISEI_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p339",
+    "name": "井上太聖",
+    "readingName": "いのうえ・たいせい",
+    "assignedVar": "INOUE_TAISEI_2026_IMAGE",
+    "scriptVar": "KOGA_TAIYO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KOGA_TAIYO_2026_IMAGE, Assigned: INOUE_TAISEI_2026_IMAGE)"
+  },
+  {
+    "id": "p340",
+    "name": "古賀太陽",
+    "readingName": "こが・たいよう",
+    "assignedVar": "FUKUMORI_AKITO_2026_IMAGE",
+    "scriptVar": "FUKUMORI_AKITO_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p341",
+    "name": "福森晃斗",
+    "readingName": "ふくもり・あきと",
+    "assignedVar": "FUKUMORI_AKITO_2026_IMAGE",
+    "scriptVar": "UEDA_NAOMICHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: UEDA_NAOMICHI_2026_IMAGE, Assigned: FUKUMORI_AKITO_2026_IMAGE)"
+  },
+  {
+    "id": "p342",
+    "name": "植田直通",
+    "readingName": "うえだ・なおみち",
+    "assignedVar": "SUGATA_MASAHIRO_2026_IMAGE",
+    "scriptVar": "SUGATA_MASAHIRO_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p343",
+    "name": "菅田真啓",
+    "readingName": "すがた・まさひろ",
+    "assignedVar": "SUGATA_MASAHIRO_2026_IMAGE",
+    "scriptVar": "SUMIYOSHI_JELANI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUMIYOSHI_JELANI_2026_IMAGE, Assigned: SUGATA_MASAHIRO_2026_IMAGE)"
+  },
+  {
+    "id": "p344",
+    "name": "住吉ジェラニレショーン",
+    "readingName": "すみよし・じぇらにれしょーん",
+    "assignedVar": "NAKATANI_SHINNOSUKE_2026_IMAGE",
+    "scriptVar": "NAKATANI_SHINNOSUKE_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p345",
+    "name": "中谷進之介",
+    "readingName": "なかたに・しんのすけ",
+    "assignedVar": "KAMIYAMA_KYOSUKE_2026_IMAGE",
+    "scriptVar": "KAMIYAMA_KYOSUKE_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p346",
+    "name": "神山京右",
+    "readingName": "かみやま・きょうすけ",
+    "assignedVar": "ICHIHARA_RION_2026_IMAGE",
+    "scriptVar": "ICHIHARA_RION_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p347",
+    "name": "市原吏音",
+    "readingName": "いちはら・りおん",
+    "assignedVar": "ICHIHARA_RION_2026_IMAGE",
+    "scriptVar": "SUZUKI_YOSHINORI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUZUKI_YOSHINORI_2026_IMAGE, Assigned: ICHIHARA_RION_2026_IMAGE)"
+  },
+  {
+    "id": "p348",
+    "name": "鈴木義宜",
+    "readingName": "すずき・よしのり",
+    "assignedVar": "SUZUKI_YOSHINORI_2026_IMAGE",
+    "scriptVar": "YAMAKAWA_TETSUSHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAKAWA_TETSUSHI_2026_IMAGE, Assigned: SUZUKI_YOSHINORI_2026_IMAGE)"
+  },
+  {
+    "id": "p349",
+    "name": "山川哲史",
+    "readingName": "やまかわ・てつし",
+    "assignedVar": "NAKAYAMA_YUTA_2026_IMAGE",
+    "scriptVar": "NAKAYAMA_YUTA_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p350",
+    "name": "中山雄太",
+    "readingName": "なかやま・ゆうた",
+    "assignedVar": "NAKAYAMA_YUTA_2026_IMAGE",
+    "scriptVar": "SASAKI_SHO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SASAKI_SHO_2026_IMAGE, Assigned: NAKAYAMA_YUTA_2026_IMAGE)"
+  },
+  {
+    "id": "p351",
+    "name": "佐々木翔",
+    "readingName": "ささき・しょう",
+    "assignedVar": "SASAKI_SHO_2026_IMAGE",
+    "scriptVar": "TANIGUCHI_HIROTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANIGUCHI_HIROTO_2026_IMAGE, Assigned: SASAKI_SHO_2026_IMAGE)"
+  },
+  {
+    "id": "p352",
+    "name": "谷口栄斗",
+    "readingName": "たにぐち・ひろと",
+    "assignedVar": "INUI_TAKASHI_2026_IMAGE",
+    "scriptVar": "INUI_TAKASHI_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p353",
+    "name": "乾貴士",
+    "readingName": "いぬい・たかし",
+    "assignedVar": "INUI_TAKASHI_2026_IMAGE",
+    "scriptVar": "IWASAKI_YUTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: IWASAKI_YUTO_2026_IMAGE, Assigned: INUI_TAKASHI_2026_IMAGE)"
+  },
+  {
+    "id": "p354",
+    "name": "岩崎悠人",
+    "readingName": "いわさき・ゆうと",
+    "assignedVar": "IWASAKI_YUTO_2026_IMAGE",
+    "scriptVar": "KONNO_KAZUYA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: KONNO_KAZUYA_2026_IMAGE, Assigned: IWASAKI_YUTO_2026_IMAGE)"
+  },
+  {
+    "id": "p355",
+    "name": "紺野和也",
+    "readingName": "こんの・かずや",
+    "assignedVar": "KONNO_KAZUYA_2026_IMAGE",
+    "scriptVar": "SUZUKI_YUTO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SUZUKI_YUTO_2026_IMAGE, Assigned: KONNO_KAZUYA_2026_IMAGE)"
+  },
+  {
+    "id": "p356",
+    "name": "鈴木雄斗",
+    "readingName": "すずき・ゆうと",
+    "assignedVar": "SUZUKI_YUTO_2026_IMAGE",
+    "scriptVar": "TANAKA_KAZUKI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANAKA_KAZUKI_2026_IMAGE, Assigned: SUZUKI_YUTO_2026_IMAGE)"
+  },
+  {
+    "id": "p357",
+    "name": "田中和樹",
+    "readingName": "たなか・かずき",
+    "assignedVar": "NOYORI_KAZUYA_2026_IMAGE",
+    "scriptVar": "NOYORI_KAZUYA_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p358",
+    "name": "野寄和哉",
+    "readingName": "のより・かずや",
+    "assignedVar": "IENAGA_AKIHIRO_2026_IMAGE",
+    "scriptVar": "IENAGA_AKIHIRO_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p359",
+    "name": "家長昭博",
+    "readingName": "いえなが・あきひろ",
+    "assignedVar": "IENAGA_AKIHIRO_2026_IMAGE",
+    "scriptVar": "ITO_TATSUYA_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: ITO_TATSUYA_2026_IMAGE, Assigned: IENAGA_AKIHIRO_2026_IMAGE)"
+  },
+  {
+    "id": "p360",
+    "name": "伊藤達哉",
+    "readingName": "いとう・たつや",
+    "assignedVar": "HARA_TAICHI_2026_IMAGE",
+    "scriptVar": "HARA_TAICHI_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p361",
+    "name": "原大智",
+    "readingName": "はら・たいち",
+    "assignedVar": "HARA_TAICHI_2026_IMAGE",
+    "scriptVar": "NAKAMA_HAYATO_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NAKAMA_HAYATO_2026_IMAGE, Assigned: HARA_TAICHI_2026_IMAGE)"
+  },
+  {
+    "id": "p362",
+    "name": "仲間隼斗",
+    "readingName": "なかま・はやと",
+    "assignedVar": "NAKAMA_HAYATO_2026_IMAGE",
+    "scriptVar": "TANAKA_PAULO_JUNICHI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANAKA_PAULO_JUNICHI_2026_IMAGE, Assigned: NAKAMA_HAYATO_2026_IMAGE)"
+  },
+  {
+    "id": "p363",
+    "name": "田中パウロ淳一",
+    "readingName": "たなか・ぱうろ・じゅんいち",
+    "assignedVar": "MUTO_YOSHINORI_2026_IMAGE",
+    "scriptVar": "MUTO_YOSHINORI_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p364",
+    "name": "武藤嘉紀",
+    "readingName": "むとう・よしのり",
+    "assignedVar": "MUTO_YOSHINORI_2026_IMAGE",
+    "scriptVar": "TANI_KOSEI_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: TANI_KOSEI_2026_IMAGE, Assigned: MUTO_YOSHINORI_2026_IMAGE)"
+  },
+  {
+    "id": "p365",
+    "name": "谷晃生",
+    "readingName": "たに・こうせい",
+    "assignedVar": "PISANO_ALEX_2026_IMAGE",
+    "scriptVar": "PISANO_ALEX_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p366",
+    "name": "ピサノ・アレックス幸冬堀尾",
+    "readingName": "ぴさの・あれっくすこうとほりお",
+    "assignedVar": "OSAKO_KEISUKE_2026_IMAGE",
+    "scriptVar": "OSAKO_KEISUKE_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p367",
+    "name": "大迫敬介",
+    "readingName": "おおさこ・けいすけ",
+    "assignedVar": "ICHIKAWA_AKINORI_2026_IMAGE",
+    "scriptVar": "ICHIKAWA_AKINORI_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p368",
+    "name": "市川暉記",
+    "readingName": "いちかわ・あきのり",
+    "assignedVar": "ICHIKAWA_AKINORI_2026_IMAGE",
+    "scriptVar": "SVEND_BRODERSEN_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SVEND_BRODERSEN_2026_IMAGE, Assigned: ICHIKAWA_AKINORI_2026_IMAGE)"
+  },
+  {
+    "id": "p369",
+    "name": "スベンド・ブローダーセン",
+    "readingName": "すべんど・ぶろーだーせん",
+    "assignedVar": "KIM_JIN_HYEON_2026_IMAGE",
+    "scriptVar": "KIM_JIN_HYEON_2026_IMAGE",
+    "status": "OK",
+    "note": ""
+  },
+  {
+    "id": "p370",
+    "name": "キム・ジンヒョン",
+    "readingName": "きむ・じんひょん",
+    "assignedVar": "KIM_JIN_HYEON_2026_IMAGE",
+    "scriptVar": "NISHIKAWA_SHUSAKU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: NISHIKAWA_SHUSAKU_2026_IMAGE, Assigned: KIM_JIN_HYEON_2026_IMAGE)"
+  },
+  {
+    "id": "p371",
+    "name": "西川周作",
+    "readingName": "にしかわ・しゅうさく",
+    "assignedVar": "NISHIKAWA_SHUSAKU_2026_IMAGE",
+    "scriptVar": "PARK_ILGYU_2026_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: PARK_ILGYU_2026_IMAGE, Assigned: NISHIKAWA_SHUSAKU_2026_IMAGE)"
+  },
+  {
+    "id": "p372",
+    "name": "朴一圭",
+    "readingName": "ぱく・いるぎゅ",
+    "assignedVar": "PARK_ILGYU_2026_IMAGE",
+    "scriptVar": "YAMAL_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: YAMAL_IMAGE, Assigned: PARK_ILGYU_2026_IMAGE)"
+  },
+  {
+    "id": "p373",
+    "name": "ラミン・ヤマル",
+    "readingName": "らみんやまる",
+    "assignedVar": "YAMAL_IMAGE",
+    "scriptVar": "CUBARSI_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: CUBARSI_IMAGE, Assigned: YAMAL_IMAGE)"
+  },
+  {
+    "id": "p374",
+    "name": "パウ・クバルシ",
+    "readingName": "ぱうくばるし",
+    "assignedVar": "CUBARSI_IMAGE",
+    "scriptVar": "GAVI_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: GAVI_IMAGE, Assigned: CUBARSI_IMAGE)"
+  },
+  {
+    "id": "p375",
+    "name": "ガビ",
+    "readingName": "がび",
+    "assignedVar": "GAVI_IMAGE",
+    "scriptVar": "SIMON_IMAGE",
+    "status": "MISMATCH_WITH_SCRIPT",
+    "note": "(Script intended: SIMON_IMAGE, Assigned: GAVI_IMAGE)"
+  },
+  {
+    "id": "p376",
+    "name": "ウナイ・シモン",
+    "readingName": "うないしもん",
+    "assignedVar": "SIMON_IMAGE",
+    "scriptVar": "NONE",
+    "status": "OK",
+    "note": ""
+  }
+]
