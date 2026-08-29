@@ -1,0 +1,2234 @@
+[
+  {
+    "id": "p01",
+    "name": "ペレ",
+    "varName": "PELE_IMAGE",
+    "imageFile": "peleImage.js"
+  },
+  {
+    "id": "p02",
+    "name": "クリスティアーノ・ロナウド",
+    "varName": "RONALDO_IMAGE",
+    "imageFile": "ronaldoImage.js"
+  },
+  {
+    "id": "p03",
+    "name": "ケヴィン・デ・ブライネ",
+    "varName": "DEBRUYNE_IMAGE",
+    "imageFile": "debruyneImage.js"
+  },
+  {
+    "id": "p05",
+    "name": "ヴィルジル・ファン・ダイク",
+    "varName": "VAN_DIJK_IMAGE",
+    "imageFile": "vandijkImage.js"
+  },
+  {
+    "id": "p06",
+    "name": "ジュード・ベリンガム",
+    "varName": "BELLINGHAM_IMAGE",
+    "imageFile": "bellinghamImage.js"
+  },
+  {
+    "id": "p07",
+    "name": "本田圭佑",
+    "varName": "HONDA_IMAGE",
+    "imageFile": "hondaImage.js"
+  },
+  {
+    "id": "p08",
+    "name": "リオネル・メッシ(MLS)",
+    "varName": "MESSI_MLS_IMAGE",
+    "imageFile": "messiMlsImage.js"
+  },
+  {
+    "id": "p09",
+    "name": "ヴィニシウス・ジュニオール",
+    "varName": "VINICIUS_IMAGE",
+    "imageFile": "viniciusImage.js"
+  },
+  {
+    "id": "p10",
+    "name": "トーマス・ミュラー",
+    "varName": "MULLER_IMAGE",
+    "imageFile": "mullerImage.js"
+  },
+  {
+    "id": "p11",
+    "name": "ウスマン・デンベレ",
+    "varName": "DEMBELE_IMAGE",
+    "imageFile": "dembeleImage.js"
+  },
+  {
+    "id": "p12",
+    "name": "マルコ・ロイス",
+    "varName": "REUS_IMAGE",
+    "imageFile": "reusImage.js"
+  },
+  {
+    "id": "p13",
+    "name": "ヨシュコ・グヴァルディオル",
+    "varName": "GVARDIOL_IMAGE",
+    "imageFile": "gvardiolImage.js"
+  },
+  {
+    "id": "p14",
+    "name": "モハメド・サラー",
+    "varName": "SALAH_IMAGE",
+    "imageFile": "salahImage.js"
+  },
+  {
+    "id": "p15",
+    "name": "ペドロ・ポロ",
+    "varName": "PORRO_IMAGE",
+    "imageFile": "porroImage.js"
+  },
+  {
+    "id": "p16",
+    "name": "ソン・フンミン(MLS)",
+    "varName": "SON_MLS_IMAGE",
+    "imageFile": "sonMlsImage.js"
+  },
+  {
+    "id": "p17",
+    "name": "アーリング・ハーランド",
+    "varName": "HAALAND_IMAGE",
+    "imageFile": "haalandImage.js"
+  },
+  {
+    "id": "p18",
+    "name": "アントワーヌ・グリーズマン",
+    "varName": "GRIEZMANN_IMAGE",
+    "imageFile": "griezmannImage.js"
+  },
+  {
+    "id": "p19",
+    "name": "ロベルト・レヴァンドフスキ",
+    "varName": "LEWANDOWSKI_IMAGE",
+    "imageFile": "lewandowskiImage.js"
+  },
+  {
+    "id": "p20",
+    "name": "フェデリコ・バルベルデ",
+    "varName": "VALVERDE_IMAGE",
+    "imageFile": "valverdeImage.js"
+  },
+  {
+    "id": "p21",
+    "name": "ウィリアム・サリバ",
+    "varName": "SALIBA_IMAGE",
+    "imageFile": "salibaImage.js"
+  },
+  {
+    "id": "p22",
+    "name": "鎌田大地",
+    "varName": "KAMADA_IMAGE",
+    "imageFile": "kamadaImage.js"
+  },
+  {
+    "id": "p23",
+    "name": "フィル・フォーデン",
+    "varName": "FODEN_IMAGE",
+    "imageFile": "fodenImage.js"
+  },
+  {
+    "id": "p24",
+    "name": "クヴィチャ・クヴァラツヘリア",
+    "varName": "KVARATSKHELIA_IMAGE",
+    "imageFile": "kvaratskheliaImage.js"
+  },
+  {
+    "id": "p25",
+    "name": "アマド・ディアロ",
+    "varName": "DIALLO_IMAGE",
+    "imageFile": "dialloImage.js"
+  },
+  {
+    "id": "p26",
+    "name": "ペドロ",
+    "varName": "PEDRO_IMAGE",
+    "imageFile": "pedroImage.js"
+  },
+  {
+    "id": "p27",
+    "name": "ウェストン・マッケニー",
+    "varName": "MCKENNIE_IMAGE",
+    "imageFile": "mckennieImage.js"
+  },
+  {
+    "id": "p28",
+    "name": "ステファン・エル・シャーラウィ",
+    "varName": "EL_SHAARAWY_IMAGE",
+    "imageFile": "elShaarawyImage.js"
+  },
+  {
+    "id": "p29",
+    "name": "倉田秋(歴戦の猛者)",
+    "varName": "KURATA_IMAGE",
+    "imageFile": "kurataImage.js"
+  },
+  {
+    "id": "p30",
+    "name": "アシュリー・ヤング",
+    "varName": "YOUNG_IMAGE",
+    "imageFile": "youngImage.js"
+  },
+  {
+    "id": "p31",
+    "name": "オマル・マーモウシュ",
+    "varName": "MARMOUSH_IMAGE",
+    "imageFile": "marmoushImage.js"
+  },
+  {
+    "id": "p32",
+    "name": "ジョアン・ペドロ",
+    "varName": "JOAO_PEDRO_IMAGE",
+    "imageFile": "joaoPedroImage.js"
+  },
+  {
+    "id": "p33",
+    "name": "南野拓実",
+    "varName": "MINAMINO_IMAGE",
+    "imageFile": "minaminoImage.js"
+  },
+  {
+    "id": "p34",
+    "name": "ルカ・モドリッチ",
+    "varName": "MODRIC_IMAGE",
+    "imageFile": "modricImage.js"
+  },
+  {
+    "id": "p35",
+    "name": "マルティン・ウーデゴール",
+    "varName": "ODEGAARD_IMAGE",
+    "imageFile": "odegaardImage.js"
+  },
+  {
+    "id": "p36",
+    "name": "ファビアン・ルイス",
+    "varName": "FABIAN_IMAGE",
+    "imageFile": "fabianImage.js"
+  },
+  {
+    "id": "p37",
+    "name": "ファン・インボム",
+    "varName": "HWANG_INBEOM_IMAGE",
+    "imageFile": "hwangInBeomImage.js"
+  },
+  {
+    "id": "p38",
+    "name": "ハカン・チャルハノール",
+    "varName": "CALHANOGLU_IMAGE",
+    "imageFile": "calhanogluImage.js"
+  },
+  {
+    "id": "p39",
+    "name": "ニコロー・バレッラ",
+    "varName": "BARELLA_IMAGE",
+    "imageFile": "barellaImage.js"
+  },
+  {
+    "id": "p40",
+    "name": "エデルソン",
+    "varName": "EDERSON_IMAGE",
+    "imageFile": "edersonImage.js"
+  },
+  {
+    "id": "p41",
+    "name": "オーレリアン・チュアメニ",
+    "varName": "TCHOUAMENI_IMAGE",
+    "imageFile": "tchouameniImage.js"
+  },
+  {
+    "id": "p42",
+    "name": "ロドリゴ・ベンタンクール",
+    "varName": "BENTANCUR_IMAGE",
+    "imageFile": "bentancurImage.js"
+  },
+  {
+    "id": "p43",
+    "name": "クリスティアン・ロルダン",
+    "varName": "ROLDAN_IMAGE",
+    "imageFile": "roldanImage.js"
+  },
+  {
+    "id": "p44",
+    "name": "中村憲剛",
+    "varName": "NAKAMURA_IMAGE",
+    "imageFile": "nakamuraImage.js"
+  },
+  {
+    "id": "p45",
+    "name": "イスコ",
+    "varName": "ISCO_IMAGE",
+    "imageFile": "iscoImage.js"
+  },
+  {
+    "id": "p46",
+    "name": "ショーン・ロングスタッフ",
+    "varName": "LONGSTAFF_IMAGE",
+    "imageFile": "longstaffImage.js"
+  },
+  {
+    "id": "p47",
+    "name": "東慶悟",
+    "varName": "HIGASHI_IMAGE",
+    "imageFile": "higashiImage.js"
+  },
+  {
+    "id": "p48",
+    "name": "スコット・マクトミネイ",
+    "varName": "MCTOMINAY_IMAGE",
+    "imageFile": "mctominayImage.js"
+  },
+  {
+    "id": "p49",
+    "name": "エドゥアルド・カマヴィンガ",
+    "varName": "CAMAVINGA_IMAGE",
+    "imageFile": "camavingaImage.js"
+  },
+  {
+    "id": "p50",
+    "name": "佐野海舟",
+    "varName": "SANO_IMAGE",
+    "imageFile": "sanoImage.js"
+  },
+  {
+    "id": "p51",
+    "name": "山口蛍(2026)",
+    "varName": "YAMAGUCHI_IMAGE",
+    "imageFile": "yamaguchiImage.js"
+  },
+  {
+    "id": "p52",
+    "name": "橋本拳人",
+    "varName": "HASHIMOTO_IMAGE",
+    "imageFile": "hashimotoImage.js"
+  },
+  {
+    "id": "p53",
+    "name": "ダンテ",
+    "varName": "DANTE_IMAGE",
+    "imageFile": "danteImage.js"
+  },
+  {
+    "id": "p54",
+    "name": "谷口彰悟",
+    "varName": "TANIGUCHI_IMAGE",
+    "imageFile": "taniguchiImage.js"
+  },
+  {
+    "id": "p55",
+    "name": "森重真人",
+    "varName": "MORISHIGE_IMAGE",
+    "imageFile": "morishigeImage.js"
+  },
+  {
+    "id": "p56",
+    "name": "上田綺世",
+    "varName": "AYASE_UEDA_IMAGE",
+    "imageFile": "ayaseUedaImage.js"
+  },
+  {
+    "id": "p57",
+    "name": "歐偉倫",
+    "varName": "AUWAILUN_IMAGE",
+    "imageFile": "auwailunImage.js"
+  },
+  {
+    "id": "p58",
+    "name": "佐藤寿人",
+    "varName": "HISATOSATO_IMAGE",
+    "imageFile": "hisatosatoImage.js"
+  },
+  {
+    "id": "p59",
+    "name": "小林悠",
+    "varName": "YUKOBAYASHI_IMAGE",
+    "imageFile": "yukobayashiImage.js"
+  },
+  {
+    "id": "p60",
+    "name": "ソン・フンミン",
+    "varName": "SONHEUNGMIN_IMAGE",
+    "imageFile": "sonheungminImage.js"
+  },
+  {
+    "id": "p61",
+    "name": "ラウタロ・マルティネス",
+    "varName": "LAUTARO_IMAGE",
+    "imageFile": "lautaroImage.js"
+  },
+  {
+    "id": "p62",
+    "name": "柿谷曜一朗",
+    "varName": "KAKITANI_IMAGE",
+    "imageFile": "kakitaniImage.js"
+  },
+  {
+    "id": "p63",
+    "name": "アンヘル・コレア",
+    "varName": "CORREA_IMAGE",
+    "imageFile": "correaImage.js"
+  },
+  {
+    "id": "p64",
+    "name": "アレクサンダー・セルロート",
+    "varName": "SORLOTH_IMAGE",
+    "imageFile": "sorlothImage.js"
+  },
+  {
+    "id": "p65",
+    "name": "林陵平",
+    "varName": "RYOHEIHAYASHI_IMAGE",
+    "imageFile": "ryoheihayashiImage.js"
+  },
+  {
+    "id": "p66",
+    "name": "カラム・ウィルソン",
+    "varName": "WILSON_IMAGE",
+    "imageFile": "wilsonImage.js"
+  },
+  {
+    "id": "p67",
+    "name": "エデル・ミリトン",
+    "varName": "MILITAO_IMAGE",
+    "imageFile": "militaoImage.js"
+  },
+  {
+    "id": "p68",
+    "name": "伊藤洋輝",
+    "varName": "HIROKIITO_IMAGE",
+    "imageFile": "hirokiitoImage.js"
+  },
+  {
+    "id": "p69",
+    "name": "渡辺剛",
+    "varName": "TSUYOSHIWATANABE_IMAGE",
+    "imageFile": "tsuyoshiwatanabeImage.js"
+  },
+  {
+    "id": "p70",
+    "name": "ガブリエウ",
+    "varName": "GABRIEL_IMAGE",
+    "imageFile": "gabrielImage.js"
+  },
+  {
+    "id": "p71",
+    "name": "アレッサンドロ・バストーニ",
+    "varName": "BASTONI_IMAGE",
+    "imageFile": "bastoniImage.js"
+  },
+  {
+    "id": "p72",
+    "name": "ナタン・アケ",
+    "varName": "AKE_IMAGE",
+    "imageFile": "akeImage.js"
+  },
+  {
+    "id": "p73",
+    "name": "坪井慶介",
+    "varName": "TSUBOI_IMAGE",
+    "imageFile": "tsuboiImage.js"
+  },
+  {
+    "id": "p74",
+    "name": "フェデリコ・ガッティ",
+    "varName": "GATTI_IMAGE",
+    "imageFile": "gattiImage.js"
+  },
+  {
+    "id": "p75",
+    "name": "アレクサンドロ・リベイロ",
+    "varName": "ALEXSANDRO_IMAGE",
+    "imageFile": "alexsandroImage.js"
+  },
+  {
+    "id": "p76",
+    "name": "アレハンドロ・バルデ",
+    "varName": "BALDE_IMAGE",
+    "imageFile": "baldeImage.js"
+  },
+  {
+    "id": "p77",
+    "name": "ジョアン・カンセロ",
+    "varName": "CANCELO_IMAGE",
+    "imageFile": "canceloImage.js"
+  },
+  {
+    "id": "p78",
+    "name": "フェデリコ・ディマルコ",
+    "varName": "DIMARCO_IMAGE",
+    "imageFile": "dimarcoImage.js"
+  },
+  {
+    "id": "p79",
+    "name": "アクラフ・ハキミ",
+    "varName": "HAKIMI_IMAGE",
+    "imageFile": "hakimiImage.js"
+  },
+  {
+    "id": "p80",
+    "name": "デンゼル・ダンフリース",
+    "varName": "DUMFRIES_IMAGE",
+    "imageFile": "dumfriesImage.js"
+  },
+  {
+    "id": "p81",
+    "name": "ナウエル・モリーナ",
+    "varName": "MOLINA_IMAGE",
+    "imageFile": "molinaImage.js"
+  },
+  {
+    "id": "p82",
+    "name": "レオナルド・スピナッツォーラ",
+    "varName": "SPINAZZOLA_IMAGE",
+    "imageFile": "spinazzolaImage.js"
+  },
+  {
+    "id": "p83",
+    "name": "ユリエン・ティンバー",
+    "varName": "TIMBER_IMAGE",
+    "imageFile": "timberImage.js"
+  },
+  {
+    "id": "p84",
+    "name": "ルーク・ショー",
+    "varName": "LUKESHAW_IMAGE",
+    "imageFile": "lukeshawImage.js"
+  },
+  {
+    "id": "p85",
+    "name": "カイル・ウォーカー",
+    "varName": "WALKER_IMAGE",
+    "imageFile": "walkerImage.js"
+  },
+  {
+    "id": "p86",
+    "name": "ベン・ホワイト",
+    "varName": "BENWHITE_IMAGE",
+    "imageFile": "benwhiteImage.js"
+  },
+  {
+    "id": "p87",
+    "name": "リース・ジェイムズ",
+    "varName": "REECEJAMES_IMAGE",
+    "imageFile": "reecejamesImage.js"
+  },
+  {
+    "id": "p88",
+    "name": "ブカヨ・サカ",
+    "varName": "SAKA_IMAGE",
+    "imageFile": "sakaImage.js"
+  },
+  {
+    "id": "p89",
+    "name": "ブラヒム・ディアス",
+    "varName": "BRAHIM_IMAGE",
+    "imageFile": "brahimImage.js"
+  },
+  {
+    "id": "p90",
+    "name": "李健和",
+    "varName": "LEEKINWO_IMAGE",
+    "imageFile": "leekinwoImage.js"
+  },
+  {
+    "id": "p91",
+    "name": "ミゲル・アルミロン",
+    "varName": "ALMIRON_IMAGE",
+    "imageFile": "almironImage.js"
+  },
+  {
+    "id": "p92",
+    "name": "伊東純也",
+    "varName": "ITO_IMAGE",
+    "imageFile": "itoImage.js"
+  },
+  {
+    "id": "p93",
+    "name": "堂安律",
+    "varName": "DOAN_IMAGE",
+    "imageFile": "doanImage.js"
+  },
+  {
+    "id": "p94",
+    "name": "フアン・クアドラード",
+    "varName": "CUADRADO_IMAGE",
+    "imageFile": "cuadradoImage.js"
+  },
+  {
+    "id": "p95",
+    "name": "三笘薫(日本代表)",
+    "varName": "MITOMAJPN_IMAGE",
+    "imageFile": "mitomajpnImage.js"
+  },
+  {
+    "id": "p96",
+    "name": "中村敬斗",
+    "varName": "KEITO_NAKAMURA_IMAGE",
+    "imageFile": "keitoNakamuraImage.js"
+  },
+  {
+    "id": "p97",
+    "name": "ニコ・ウィリアムズ",
+    "varName": "NICOWILLIAMS_IMAGE",
+    "imageFile": "nicowilliamsImage.js"
+  },
+  {
+    "id": "p98",
+    "name": "三笘薫(25/26)",
+    "varName": "MITOMA2526_IMAGE",
+    "imageFile": "mitoma2526Image.js"
+  },
+  {
+    "id": "p99",
+    "name": "ファン・ヒチャン",
+    "varName": "HWANG_IMAGE",
+    "imageFile": "hwangImage.js"
+  },
+  {
+    "id": "p100",
+    "name": "ティボ・クルトワ",
+    "varName": "COURTOIS_IMAGE",
+    "imageFile": "courtoisImage.js"
+  },
+  {
+    "id": "p101",
+    "name": "ヤン・オブラク",
+    "varName": "OBLAK_IMAGE",
+    "imageFile": "oblakImage.js"
+  },
+  {
+    "id": "p102",
+    "name": "鈴木彩艶",
+    "varName": "SUZUKI_IMAGE",
+    "imageFile": "suzukiImage.js"
+  },
+  {
+    "id": "p103",
+    "name": "マイク・メニャン",
+    "varName": "MAIGNAN_IMAGE",
+    "imageFile": "maignanImage.js"
+  },
+  {
+    "id": "p104",
+    "name": "ヤン・ゾマー",
+    "varName": "SOMMER_IMAGE",
+    "imageFile": "sommerImage.js"
+  },
+  {
+    "id": "p105",
+    "name": "ジョアン・ガルシア",
+    "varName": "JOANGARCIA_IMAGE",
+    "imageFile": "joangarciaImage.js"
+  },
+  {
+    "id": "p106",
+    "name": "ニック・ポープ",
+    "varName": "POPE_IMAGE",
+    "imageFile": "popeImage.js"
+  },
+  {
+    "id": "p107",
+    "name": "ブルーノ・ギマランイス",
+    "varName": "BRUNO_GUIMARAES_IMAGE",
+    "imageFile": "brunoguimaraesImage.js"
+  },
+  {
+    "id": "p108",
+    "name": "ハフィーニャ",
+    "varName": "RAPHINHA_IMAGE",
+    "imageFile": "raphinhaImage.js"
+  },
+  {
+    "id": "p109",
+    "name": "ロドリゴ",
+    "varName": "RODRYGO_IMAGE",
+    "imageFile": "rodrygoImage.js"
+  },
+  {
+    "id": "p110",
+    "name": "ブレーメル",
+    "varName": "BREMER_IMAGE",
+    "imageFile": "bremerImage.js"
+  },
+  {
+    "id": "p111",
+    "name": "河本鬼茂",
+    "varName": "KAWAMOTO_IMAGE",
+    "imageFile": "kawamotoImage.js"
+  },
+  {
+    "id": "p112",
+    "name": "リオネル・メッシ(配布)",
+    "varName": "MESSI_HAIFU_IMAGE",
+    "imageFile": "messiHaifuImage.js"
+  },
+  {
+    "id": "p113",
+    "name": "相馬勇紀(J1 BEST11 2025)",
+    "varName": "SOMA_IMAGE",
+    "imageFile": "somaImage.js"
+  },
+  {
+    "id": "p114",
+    "name": "ラファエル・エリアス(J1 BEST11 2025)",
+    "varName": "RAFAELELIAS_2025_IMAGE",
+    "imageFile": "rafaelelias2025Image.js"
+  },
+  {
+    "id": "p115",
+    "name": "レオ・セアラ(J1 BEST11 2025)",
+    "varName": "LEO_CEARA_IMAGE",
+    "imageFile": "leoCearaImage.js"
+  },
+  {
+    "id": "p116",
+    "name": "伊藤達哉(J1 BEST11 2025)",
+    "varName": "ITO_TATSUYA_IMAGE",
+    "imageFile": "itoTatsuyaImage.js"
+  },
+  {
+    "id": "p117",
+    "name": "小泉佳穂(J1 BEST11 2025)",
+    "varName": "KOIZUMI_IMAGE",
+    "imageFile": "koizumiImage.js"
+  },
+  {
+    "id": "p118",
+    "name": "稲垣祥(J1 BEST11 2025)",
+    "varName": "SHOINAGAKI_2025_IMAGE",
+    "imageFile": "shoinagaki2025Image.js"
+  },
+  {
+    "id": "p119",
+    "name": "田中聡(J1 BEST11 2025)",
+    "varName": "TANAKA_IMAGE",
+    "imageFile": "tanakaImage.js"
+  },
+  {
+    "id": "p120",
+    "name": "荒木隼人(J1 BEST11 2025)",
+    "varName": "ARAKI_IMAGE",
+    "imageFile": "arakiImage.js"
+  },
+  {
+    "id": "p121",
+    "name": "古賀太陽(J1 BEST11 2025)",
+    "varName": "KOGA_IMAGE",
+    "imageFile": "kogaImage.js"
+  },
+  {
+    "id": "p122",
+    "name": "植田直通(J1 BEST11 2025)",
+    "varName": "NAOMICHI_UEDA_IMAGE",
+    "imageFile": "uedaImage.js"
+  },
+  {
+    "id": "p123",
+    "name": "早川友基(J1 BEST11 2025)",
+    "varName": "HAYAKAWA_BEST11_IMAGE",
+    "imageFile": "hayakawaBest11Image.js"
+  },
+  {
+    "id": "p127",
+    "name": "早川友基(2026)",
+    "varName": "HAYAKAWA_2026_IMAGE",
+    "imageFile": "hayakawaImage.js"
+  },
+  {
+    "id": "p128",
+    "name": "川島永嗣(2026)",
+    "varName": "KAWASHIMA_IMAGE",
+    "imageFile": "kawashimaImage.js"
+  },
+  {
+    "id": "p129",
+    "name": "前川黛也(2026)",
+    "varName": "MAEKAWA_IMAGE",
+    "imageFile": "maekawaImage.js"
+  },
+  {
+    "id": "p130",
+    "name": "シュミット・ダニエル(2026)",
+    "varName": "SCHMIDT_IMAGE",
+    "imageFile": "schmidtImage.js"
+  },
+  {
+    "id": "p131",
+    "name": "東口順昭(2026)",
+    "varName": "HIGASHIGUCHI_IMAGE",
+    "imageFile": "higashiguchiImage.js"
+  },
+  {
+    "id": "p132",
+    "name": "小島亨介(2026)",
+    "varName": "KOJIMA_IMAGE",
+    "imageFile": "kojimaImage.js"
+  },
+  {
+    "id": "p133",
+    "name": "マテウス(2026)",
+    "varName": "MATHEUS_IMAGE",
+    "imageFile": "matheusImage.js"
+  },
+  {
+    "id": "p134",
+    "name": "林彰洋(2026)",
+    "varName": "AKIHIRO_HAYASHI_IMAGE",
+    "imageFile": "akihiroHayashiImage.js"
+  },
+  {
+    "id": "p135",
+    "name": "太田岳志(2026)",
+    "varName": "GAKUJI_OTA_IMAGE",
+    "imageFile": "gakujiOtaImage.js"
+  },
+  {
+    "id": "p136",
+    "name": "後藤雅明(2026)",
+    "varName": "MASAAKI_GOTO_IMAGE",
+    "imageFile": "masaakiGotoImage.js"
+  },
+  {
+    "id": "p137",
+    "name": "レナート・モーザー(2026)",
+    "varName": "LENNART_MOSER_IMAGE",
+    "imageFile": "lennartMoserImage.js"
+  },
+  {
+    "id": "p138",
+    "name": "パブロ・サバグ(K1 BEST11 2025)",
+    "varName": "PABLOSABBAG_2025_IMAGE",
+    "imageFile": "pablosabbag2025Image.js"
+  },
+  {
+    "id": "p139",
+    "name": "ソン・ミンギュ(K1 BEST11 2025)",
+    "varName": "SONG_IMAGE",
+    "imageFile": "songImage.js"
+  },
+  {
+    "id": "p140",
+    "name": "イ・ドンギョン(K1 BEST11 2025)",
+    "varName": "LEE_IMAGE",
+    "imageFile": "leeImage.js"
+  },
+  {
+    "id": "p141",
+    "name": "カン・サンユン(K1 BEST11 2025)",
+    "varName": "KANG_IMAGE",
+    "imageFile": "kangImage.js"
+  },
+  {
+    "id": "p142",
+    "name": "キム・ジンギュ(K1 BEST11 2025)",
+    "varName": "KIM_IMAGE",
+    "imageFile": "kimImage.js"
+  },
+  {
+    "id": "p143",
+    "name": "パク・ジンソプ(K1 BEST11 2025)",
+    "varName": "PARK_IMAGE",
+    "imageFile": "parkImage.js"
+  },
+  {
+    "id": "p144",
+    "name": "ホン・ジョンホ(K1 BEST11 2025)",
+    "varName": "HONG_IMAGE",
+    "imageFile": "hongImage.js"
+  },
+  {
+    "id": "p145",
+    "name": "イ・ミョンジェ(K1 BEST11 2025)",
+    "varName": "LEE_MYUNG_JAE_IMAGE",
+    "imageFile": "leeMyungJaeImage.js"
+  },
+  {
+    "id": "p146",
+    "name": "キム・ムンファン(K1 BEST11 2025)",
+    "varName": "KIM_MOON_HWAN_IMAGE",
+    "imageFile": "kimMoonHwanImage.js"
+  },
+  {
+    "id": "p147",
+    "name": "ソン・ボムグン(K1 BEST11 2025)",
+    "varName": "SONG_BUM_KEUN_IMAGE",
+    "imageFile": "songBumKeunImage.js"
+  },
+  {
+    "id": "p148",
+    "name": "ヤザン・アルアラブ(K1 BEST11 2025)",
+    "varName": "YAZAN_IMAGE",
+    "imageFile": "yazanImage.js"
+  },
+  {
+    "id": "p149",
+    "name": "荒木隼人(2026)",
+    "varName": "ARAKI_2026_IMAGE",
+    "imageFile": "araki2026Image.js"
+  },
+  {
+    "id": "p150",
+    "name": "マテイ・ヨニッチ(2026)",
+    "varName": "JONJIC_2026_IMAGE",
+    "imageFile": "jonjic2026Image.js"
+  },
+  {
+    "id": "p151",
+    "name": "立田悠悟(2026)",
+    "varName": "TATSUTA_2026_IMAGE",
+    "imageFile": "tatsuta2026Image.js"
+  },
+  {
+    "id": "p152",
+    "name": "岡哲平(2026)",
+    "varName": "OKA_2026_IMAGE",
+    "imageFile": "oka2026Image.js"
+  },
+  {
+    "id": "p153",
+    "name": "岩下航(2026)",
+    "varName": "IWASHITA_2026_IMAGE",
+    "imageFile": "iwashita2026Image.js"
+  },
+  {
+    "id": "p154",
+    "name": "喜岡佳太(2026)",
+    "varName": "YOSHIOKA_2026_IMAGE",
+    "imageFile": "yoshioka2026Image.js"
+  },
+  {
+    "id": "p155",
+    "name": "西山大雅(2026)",
+    "varName": "NISHIYAMA_2026_IMAGE",
+    "imageFile": "nishiyama2026Image.js"
+  },
+  {
+    "id": "p156",
+    "name": "ジュリアン・セレスティン(2026)",
+    "varName": "CELESTINE_2026_IMAGE",
+    "imageFile": "celestine2026Image.js"
+  },
+  {
+    "id": "p157",
+    "name": "塩谷司(2026)",
+    "varName": "SHIOTANI_2026_IMAGE",
+    "imageFile": "shiotani2026Image.js"
+  },
+  {
+    "id": "p158",
+    "name": "昌子源(2026)",
+    "varName": "SHOJI_2026_IMAGE",
+    "imageFile": "shoji2026Image.js"
+  },
+  {
+    "id": "p159",
+    "name": "畠中槙之輔(2026)",
+    "varName": "HATANAKA_2026_IMAGE",
+    "imageFile": "hatanaka2026Image.js"
+  },
+  {
+    "id": "p160",
+    "name": "根本健太(2026)",
+    "varName": "NEMOTO_2026_IMAGE",
+    "imageFile": "nemoto2026Image.js"
+  },
+  {
+    "id": "p161",
+    "name": "細井響(2026)",
+    "varName": "HOSOI_2026_IMAGE",
+    "imageFile": "hosoi2026Image.js"
+  },
+  {
+    "id": "p162",
+    "name": "フアン・アントニオ・ロス(2026)",
+    "varName": "ROS_2026_IMAGE",
+    "imageFile": "ros2026Image.js"
+  },
+  {
+    "id": "p163",
+    "name": "藤井陽也(2026)",
+    "varName": "FUJII_2026_IMAGE",
+    "imageFile": "fujii2026Image.js"
+  },
+  {
+    "id": "p164",
+    "name": "酒井高徳(2026)",
+    "varName": "SAKAI_2026_IMAGE",
+    "imageFile": "sakai2026Image.js"
+  },
+  {
+    "id": "p165",
+    "name": "望月ヘンリー海輝(2026)",
+    "varName": "MOCHIZUKI_2026_IMAGE",
+    "imageFile": "mochizuki2026Image.js"
+  },
+  {
+    "id": "p166",
+    "name": "生駒稀生(2026)",
+    "varName": "IKOMA_2026_IMAGE",
+    "imageFile": "ikoma2026Image.js"
+  },
+  {
+    "id": "p167",
+    "name": "佐々木旭(2026)",
+    "varName": "SASAKI_2026_IMAGE",
+    "imageFile": "sasaki2026Image.js"
+  },
+  {
+    "id": "p168",
+    "name": "吉田豊(2026)",
+    "varName": "YOSHIDA_2026_IMAGE",
+    "imageFile": "yoshida2026Image.js"
+  },
+  {
+    "id": "p169",
+    "name": "大崎航詩(2026)",
+    "varName": "OSAKI_2026_IMAGE",
+    "imageFile": "osaki2026Image.js"
+  },
+  {
+    "id": "p170",
+    "name": "前嶋洋太(2026)",
+    "varName": "MAEJIMA_2026_IMAGE",
+    "imageFile": "maejima2026Image.js"
+  },
+  {
+    "id": "p171",
+    "name": "藤春廣輝(2026)",
+    "varName": "FUJIHARU_2026_IMAGE",
+    "imageFile": "fujiharu2026Image.js"
+  },
+  {
+    "id": "p172",
+    "name": "室屋成(2026)",
+    "varName": "MUROYA_2026_IMAGE",
+    "imageFile": "muroya2026Image.js"
+  },
+  {
+    "id": "p173",
+    "name": "梅木怜(2026)",
+    "varName": "UMEKI_2026_IMAGE",
+    "imageFile": "umeki2026Image.js"
+  },
+  {
+    "id": "p174",
+    "name": "福田心之助(2026)",
+    "varName": "FUKUDA_2026_IMAGE",
+    "imageFile": "fukuda2026Image.js"
+  },
+  {
+    "id": "p175",
+    "name": "西谷優希(2026)",
+    "varName": "NISHIYA_2026_IMAGE",
+    "imageFile": "nishiya2026Image.js"
+  },
+  {
+    "id": "p176",
+    "name": "西村恭史(2026)",
+    "varName": "NISHIMURA_2026_IMAGE",
+    "imageFile": "nishimura2026Image.js"
+  },
+  {
+    "id": "p177",
+    "name": "メン・ソンウン(2026)",
+    "varName": "MAENG_2026_IMAGE",
+    "imageFile": "maeng2026Image.js"
+  },
+  {
+    "id": "p178",
+    "name": "河原創(2026)",
+    "varName": "KAWAHARA_2026_IMAGE",
+    "imageFile": "kawahara2026Image.js"
+  },
+  {
+    "id": "p179",
+    "name": "ソ・ミヌ(2026)",
+    "varName": "SEO_MINWOO_2026_IMAGE",
+    "imageFile": "seoMinwoo2026Image.js"
+  },
+  {
+    "id": "p180",
+    "name": "山根陸(2026)",
+    "varName": "YAMANE_2026_IMAGE",
+    "imageFile": "yamane2026Image.js"
+  },
+  {
+    "id": "p181",
+    "name": "西澤健太(2026)",
+    "varName": "NISHIZAWA_2026_IMAGE",
+    "imageFile": "nishizawa2026Image.js"
+  },
+  {
+    "id": "p182",
+    "name": "イ・ヒギュン(2026)",
+    "varName": "LEE_HUI_GYUN_2026_IMAGE",
+    "imageFile": "leeHuiGyun2026Image.js"
+  },
+  {
+    "id": "p183",
+    "name": "柴崎岳(2026)",
+    "varName": "SHIBASAKI_2026_IMAGE",
+    "imageFile": "shibasaki2026Image.js"
+  },
+  {
+    "id": "p184",
+    "name": "マテウス・ブエノ(2026)",
+    "varName": "MATHEUS_BUENO_2026_IMAGE",
+    "imageFile": "matheusBueno2026Image.js"
+  },
+  {
+    "id": "p185",
+    "name": "清武弘嗣(2026)",
+    "varName": "KIYOTAKE_2026_IMAGE",
+    "imageFile": "kiyotake2026Image.js"
+  },
+  {
+    "id": "p186",
+    "name": "川辺駿(2026)",
+    "varName": "KAWABE_2026_IMAGE",
+    "imageFile": "kawabe2026Image.js"
+  },
+  {
+    "id": "p187",
+    "name": "山本悠樹(2026)",
+    "varName": "YAMAMOTO_YUKI_2026_IMAGE",
+    "imageFile": "yamamotoYuki2026Image.js"
+  },
+  {
+    "id": "p188",
+    "name": "山口大輝(2026)",
+    "varName": "YAMAGUCHI_DAIKI_2026_IMAGE",
+    "imageFile": "yamaguchiDaiki2026Image.js"
+  },
+  {
+    "id": "p189",
+    "name": "東條敦輝(2026)",
+    "varName": "TOJO_2026_IMAGE",
+    "imageFile": "tojo2026Image.js"
+  },
+  {
+    "id": "p190",
+    "name": "小泉佳穂(2026)",
+    "varName": "KOIZUMI_2026_IMAGE",
+    "imageFile": "koizumi2026Image.js"
+  },
+  {
+    "id": "p191",
+    "name": "タイアニ・ラインデルス(配布)",
+    "varName": "REIJNDERS_DIST_2026_IMAGE",
+    "imageFile": "reijndersDist2026Image.js"
+  },
+  {
+    "id": "p192",
+    "name": "遠野大弥(2026)",
+    "varName": "TONO_2026_IMAGE",
+    "imageFile": "tono2026Image.js"
+  },
+  {
+    "id": "p193",
+    "name": "佐々木大樹(2026)",
+    "varName": "SASAKI_2026_IMAGE",
+    "imageFile": "sasaki2026Image.js"
+  },
+  {
+    "id": "p194",
+    "name": "山見大登(2026)",
+    "varName": "YAMAMI_2026_IMAGE",
+    "imageFile": "yamami2026Image.js"
+  },
+  {
+    "id": "p195",
+    "name": "名古新太郎(2026)",
+    "varName": "NAGO_2026_IMAGE",
+    "imageFile": "nago2026Image.js"
+  },
+  {
+    "id": "p196",
+    "name": "木村太哉(2026)",
+    "varName": "KIMURA_TAKAYA_2026_IMAGE",
+    "imageFile": "kimuraTakaya2026Image.js"
+  },
+  {
+    "id": "p197",
+    "name": "後藤優介(2026)",
+    "varName": "GOTO_YUSUKE_2026_IMAGE",
+    "imageFile": "gotoYusuke2026Image.js"
+  },
+  {
+    "id": "p198",
+    "name": "藤川虎太朗(2026)",
+    "varName": "FUJIKAWA_KOTARO_2026_IMAGE",
+    "imageFile": "fujikawaKotaro2026Image.js"
+  },
+  {
+    "id": "p199",
+    "name": "荒木遼太郎(2026)",
+    "varName": "ARAKI_RYOTARO_2026_IMAGE",
+    "imageFile": "arakiRyotaro2026Image.js"
+  },
+  {
+    "id": "p200",
+    "name": "マテウス・サヴィオ(2026)",
+    "varName": "MATHEUS_SAVIO_2026_IMAGE",
+    "imageFile": "matheusSavio2026Image.js"
+  },
+  {
+    "id": "p201",
+    "name": "佐藤龍之介(2026)",
+    "varName": "SATO_RYUNOSUKE_2026_IMAGE",
+    "imageFile": "satoRyunosuke2026Image.js"
+  },
+  {
+    "id": "p202",
+    "name": "姫野誠(2026)",
+    "varName": "HIMENO_MAKOTO_2026_IMAGE",
+    "imageFile": "himenoMakoto2026Image.js"
+  },
+  {
+    "id": "p203",
+    "name": "加藤千尋(2026)",
+    "varName": "KATO_CHIHIRO_2026_IMAGE",
+    "imageFile": "katoChihiro2026Image.js"
+  },
+  {
+    "id": "p204",
+    "name": "ノーマン・キャンベル(2026)",
+    "varName": "NORMAN_CAMPBELL_2026_IMAGE",
+    "imageFile": "normanCampbell2026Image.js"
+  },
+  {
+    "id": "p205",
+    "name": "カルリーニョス・ジュニオ(2026)",
+    "varName": "CARLINHOS_JUNIOR_2026_IMAGE",
+    "imageFile": "carlinhosJunior2026Image.js"
+  },
+  {
+    "id": "p206",
+    "name": "相馬勇紀(2026)",
+    "varName": "SOMA_YUKI_2026_IMAGE",
+    "imageFile": "somaYuki2026Image.js"
+  },
+  {
+    "id": "p207",
+    "name": "倉田秋(2026)",
+    "varName": "KURATA_SHU_2026_IMAGE",
+    "imageFile": "kurataShu2026Image.js"
+  },
+  {
+    "id": "p208",
+    "name": "石井久継(2026)",
+    "varName": "ISHII_HISATSUGU_2026_IMAGE",
+    "imageFile": "ishiiHisatsugu2026Image.js"
+  },
+  {
+    "id": "p209",
+    "name": "中村亮太(2026)",
+    "varName": "NAKAMURA_RYOTA_2026_IMAGE",
+    "imageFile": "nakamuraRyota2026Image.js"
+  },
+  {
+    "id": "p210",
+    "name": "マルコ・トゥーリオ(2026)",
+    "varName": "MARCO_TULIO_2026_IMAGE",
+    "imageFile": "marcoTulio2026Image.js"
+  },
+  {
+    "id": "p211",
+    "name": "マテウス・モラエス(2026)",
+    "varName": "MATHEUS_MORAES_2026_IMAGE",
+    "imageFile": "matheusMoraes2026Image.js"
+  },
+  {
+    "id": "p212",
+    "name": "グスタフ・ルドヴィグソン(2026)",
+    "varName": "LUDWIGSON_GUSTAV_2026_IMAGE",
+    "imageFile": "ludwigsonGustav2026Image.js"
+  },
+  {
+    "id": "p213",
+    "name": "イ・チュンヨン(2026)",
+    "varName": "LEE_CHUNG_YONG_2026_IMAGE",
+    "imageFile": "leeChungYong2026Image.js"
+  },
+  {
+    "id": "p214",
+    "name": "コ・ジェヒョン(2026)",
+    "varName": "GO_JAE_HYEON_2026_IMAGE",
+    "imageFile": "goJaeHyeon2026Image.js"
+  },
+  {
+    "id": "p215",
+    "name": "久保藤次郎(2026)",
+    "varName": "KUBO_TOJIRO_2026_IMAGE",
+    "imageFile": "kuboTojiro2026Image.js"
+  },
+  {
+    "id": "p216",
+    "name": "髙橋大悟(2026)",
+    "varName": "TAKAHASHI_DAIGO_2026_IMAGE",
+    "imageFile": "takahashiDaigo2026Image.js"
+  },
+  {
+    "id": "p217",
+    "name": "モ・ジェヒョン(2026)",
+    "varName": "MO_JAE_HYEON_2026_IMAGE",
+    "imageFile": "moJaeHyeon2026Image.js"
+  },
+  {
+    "id": "p218",
+    "name": "松橋優安(2026)",
+    "varName": "MATSUHASHI_YUAN_2026_IMAGE",
+    "imageFile": "matsuhashiYuan2026Image.js"
+  },
+  {
+    "id": "p219",
+    "name": "竹本雄飛(2026)",
+    "varName": "TAKEMOTO_YUHI_2026_IMAGE",
+    "imageFile": "takemotoYuhi2026Image.js"
+  },
+  {
+    "id": "p220",
+    "name": "亀田歩夢(2026)",
+    "varName": "KAMEDA_AYUMU_2026_IMAGE",
+    "imageFile": "kamedaAyumu2026Image.js"
+  },
+  {
+    "id": "p221",
+    "name": "チアゴ・アンドラーデ(2026)",
+    "varName": "THIAGO_ANDRADE_2026_IMAGE",
+    "imageFile": "thiagoAndrade2026Image.js"
+  },
+  {
+    "id": "p222",
+    "name": "ガレゴ(2026)",
+    "varName": "GALEGO_2026_IMAGE",
+    "imageFile": "galego2026Image.js"
+  },
+  {
+    "id": "p223",
+    "name": "チアギーニョ(2026)",
+    "varName": "THIAGUINHO_2026_IMAGE",
+    "imageFile": "thiaguinho2026Image.js"
+  },
+  {
+    "id": "p224",
+    "name": "チョン・ビョングァン(2026)",
+    "varName": "JEON_BYEONG_GWAN_2026_IMAGE",
+    "imageFile": "jeonByeongGwan2026Image.js"
+  },
+  {
+    "id": "p225",
+    "name": "チェ・ゴンジュ(2026)",
+    "varName": "CHOI_GEON_JU_2026_IMAGE",
+    "imageFile": "choiGeonJu2026Image.js"
+  },
+  {
+    "id": "p226",
+    "name": "イ・ドンジュン(2026)",
+    "varName": "LEE_DONG_JUN_2026_IMAGE",
+    "imageFile": "leeDongJun2026Image.js"
+  },
+  {
+    "id": "p227",
+    "name": "エメルソン・ハモン(2026)",
+    "varName": "EMERSON_RAMON_2026_IMAGE",
+    "imageFile": "emersonRamon2026Image.js"
+  },
+  {
+    "id": "p228",
+    "name": "氣田亮真(2026)",
+    "varName": "KIDA_2026_IMAGE",
+    "imageFile": "kida2026Image.js"
+  },
+  {
+    "id": "p229",
+    "name": "ジュニーニョ・ロシャ(2026)",
+    "varName": "JUNIOR_ROCHA_2026_IMAGE",
+    "imageFile": "juniorRocha2026Image.js"
+  },
+  {
+    "id": "p230",
+    "name": "ジュ・ミンギュ(2026)",
+    "varName": "JOO_MIN_KYU_2026_IMAGE",
+    "imageFile": "jooMinKyu2026Image.js"
+  },
+  {
+    "id": "p231",
+    "name": "ホルムベルト・アーロン・フリズヨンソン(2026)",
+    "varName": "FRIDJONSSON_2026_IMAGE",
+    "imageFile": "fridjonsson2026Image.js"
+  },
+  {
+    "id": "p232",
+    "name": "ヤゴ・カリエッロ(2026)",
+    "varName": "YAGO_CARIELLO_2026_IMAGE",
+    "imageFile": "yagoCariello2026Image.js"
+  },
+  {
+    "id": "p233",
+    "name": "ルーカス・バルセロス(2026)",
+    "varName": "LUCAS_BARCELOS_2026_IMAGE",
+    "imageFile": "lucasBarcelos2026Image.js"
+  },
+  {
+    "id": "p234",
+    "name": "アマドゥ・バカヨコ(2026)",
+    "varName": "AMADOU_BAKAYOKO_2026_IMAGE",
+    "imageFile": "amadouBakayoko2026Image.js"
+  },
+  {
+    "id": "p235",
+    "name": "ブルーノ・エルクラーノ(2026)",
+    "varName": "BRENO_HERCULANO_2026_IMAGE",
+    "imageFile": "brenoHerculano2026Image.js"
+  },
+  {
+    "id": "p236",
+    "name": "杉本健勇(2026)",
+    "varName": "SUGIMOTO_2026_IMAGE",
+    "imageFile": "sugimoto2026Image.js"
+  },
+  {
+    "id": "p237",
+    "name": "櫻川ソロモン(2026)",
+    "varName": "SAKURAGAWA_2026_IMAGE",
+    "imageFile": "sakuragawa2026Image.js"
+  },
+  {
+    "id": "p238",
+    "name": "土信田悠生(2026)",
+    "varName": "TOSHIDA_2026_IMAGE",
+    "imageFile": "toshida2026Image.js"
+  },
+  {
+    "id": "p239",
+    "name": "澤上竜二(2026)",
+    "varName": "SAWAKAMI_2026_IMAGE",
+    "imageFile": "sawakami2026Image.js"
+  },
+  {
+    "id": "p240",
+    "name": "島田拓海(2026)",
+    "varName": "SHIMADA_2026_IMAGE",
+    "imageFile": "shimada2026Image.js"
+  },
+  {
+    "id": "p241",
+    "name": "三浦知良(2026)",
+    "varName": "MIURA_KAZUYOSHI_2026_IMAGE",
+    "imageFile": "miuraKazuyoshi2026Image.js"
+  },
+  {
+    "id": "p242",
+    "name": "肥田野蓮治(2026)",
+    "varName": "HIDANO_2026_IMAGE",
+    "imageFile": "hidano2026Image.js"
+  },
+  {
+    "id": "p243",
+    "name": "長倉幹樹(2026)",
+    "varName": "NAGAKURA_2026_IMAGE",
+    "imageFile": "nagakura2026Image.js"
+  },
+  {
+    "id": "p244",
+    "name": "石川大地(2026)",
+    "varName": "ISHIKAWA_DAICHI_2026_IMAGE",
+    "imageFile": "ishikawaDaichi2026Image.js"
+  },
+  {
+    "id": "p245",
+    "name": "矢村健(2026)",
+    "varName": "YAMURA_2026_IMAGE",
+    "imageFile": "yamura2026Image.js"
+  },
+  {
+    "id": "p246",
+    "name": "武藤雄樹(2026)",
+    "varName": "MUTO_2026_IMAGE",
+    "imageFile": "muto2026Image.js"
+  },
+  {
+    "id": "p247",
+    "name": "新谷聖基(2026)",
+    "varName": "SHINTANI_2026_IMAGE",
+    "imageFile": "shintani2026Image.js"
+  },
+  {
+    "id": "p248",
+    "name": "川本梨誉(2026)",
+    "varName": "KAWAMOTO_2026_IMAGE",
+    "imageFile": "kawamoto2026Image.js"
+  },
+  {
+    "id": "p249",
+    "name": "矢野貴章(2026)",
+    "varName": "YANO_KISHO_2026_IMAGE",
+    "imageFile": "yanoKisho2026Image.js"
+  },
+  {
+    "id": "p250",
+    "name": "河村慶人(2026)",
+    "varName": "KAWAMURA_KEITO_2026_IMAGE",
+    "imageFile": "kawamuraKeito2026Image.js"
+  },
+  {
+    "id": "p251",
+    "name": "内藤大和(2026)",
+    "varName": "NAITO_YAMATO_2026_IMAGE",
+    "imageFile": "naitoYamato2026Image.js"
+  },
+  {
+    "id": "p252",
+    "name": "田中想来(2026)",
+    "varName": "TANAKA_SORA_2026_IMAGE",
+    "imageFile": "tanakaSora2026Image.js"
+  },
+  {
+    "id": "p253",
+    "name": "パトリク・クリマラ(2026)",
+    "varName": "KLIMALA_2026_IMAGE",
+    "imageFile": "klimala2026Image.js"
+  },
+  {
+    "id": "p254",
+    "name": "ステファン・ムゴシャ(2026)",
+    "varName": "MUGOSA_2026_IMAGE",
+    "imageFile": "mugosa2026Image.js"
+  },
+  {
+    "id": "p255",
+    "name": "ヤコブ・トランジスカ(2026)",
+    "varName": "TRANZISKA_2026_IMAGE",
+    "imageFile": "tranziska2026Image.js"
+  },
+  {
+    "id": "p256",
+    "name": "デニス・ヒュメット(2026)",
+    "varName": "HUMMET_2026_IMAGE",
+    "imageFile": "hummet2026Image.js"
+  },
+  {
+    "id": "p257",
+    "name": "谷村海那(2026)",
+    "varName": "TANIMURA_KAINA_2026_IMAGE",
+    "imageFile": "tanimuraKaina2026Image.js"
+  },
+  {
+    "id": "p258",
+    "name": "山岸祐也(2026)",
+    "varName": "YAMAGISHI_2026_IMAGE",
+    "imageFile": "yamagishi2026Image.js"
+  },
+  {
+    "id": "p259",
+    "name": "アーリング・ハーランド(配布)",
+    "varName": "HAALAND_GIFT_2026_IMAGE",
+    "imageFile": "haalandGift2026Image.js"
+  },
+  {
+    "id": "p260",
+    "name": "ルベン・ディアス(配布)",
+    "varName": "DIAS_GIFT_2026_IMAGE",
+    "imageFile": "diasGift2026Image.js"
+  },
+  {
+    "id": "p261",
+    "name": "平塚浪馬(配布)",
+    "varName": "HIRATSUKA_GIFT_2026_IMAGE",
+    "imageFile": "hiratsukaGift2026Image.js"
+  },
+  {
+    "id": "p262",
+    "name": "河本龍将(パック)",
+    "varName": "KAWAMOTO_PACK_2026_IMAGE",
+    "imageFile": "kawamotoPack2026Image.js"
+  },
+  {
+    "id": "p263",
+    "name": "レオ・セアラ(2026TS)",
+    "varName": "LEO_CEARA_2026_IMAGE",
+    "imageFile": "leoCeara2026Image.js"
+  },
+  {
+    "id": "p264",
+    "name": "山岸祐也(2026TS)",
+    "varName": "YAMAGISHI_2026_TS_IMAGE",
+    "imageFile": "yamagishi2026TSImage.js"
+  },
+  {
+    "id": "p265",
+    "name": "山田寛人(2026TS)",
+    "varName": "YAMADA_HIROTO_2026_TS_IMAGE",
+    "imageFile": "yamadaHiroto2026TSImage.js"
+  },
+  {
+    "id": "p266",
+    "name": "田村翔太(2026TS)",
+    "varName": "TAMURA_SHOTA_2026_TS_IMAGE",
+    "imageFile": "tamuraShota2026TSImage.js"
+  },
+  {
+    "id": "p267",
+    "name": "土信田悠生(2026TS)",
+    "varName": "TOSHIDA_YUSEI_2026_TS_IMAGE",
+    "imageFile": "toshidaYusei2026TSImage.js"
+  },
+  {
+    "id": "p268",
+    "name": "泉柊椰(2026TS)",
+    "varName": "IZUMI_TOYA_2026_TS_IMAGE",
+    "imageFile": "izumiToya2026TSImage.js"
+  },
+  {
+    "id": "p269",
+    "name": "山本桜大(2026TS)",
+    "varName": "YAMAMOTO_OUTA_2026_TS_IMAGE",
+    "imageFile": "yamamotoOuta2026TSImage.js"
+  },
+  {
+    "id": "p270",
+    "name": "アリソン",
+    "varName": "ALISSON_2026_IMAGE",
+    "imageFile": "alisson2026Image.js"
+  },
+  {
+    "id": "p271",
+    "name": "エンドリッキ",
+    "varName": "ENDRICK_2026_IMAGE",
+    "imageFile": "endrick2026Image.js"
+  },
+  {
+    "id": "p272",
+    "name": "メイソン・グリーンウッド",
+    "varName": "GREENWOOD_2026_IMAGE",
+    "imageFile": "greenwood2026Image.js"
+  },
+  {
+    "id": "p273",
+    "name": "マヌエル・アカンジ",
+    "varName": "AKANJI_2026_IMAGE",
+    "imageFile": "akanji2026Image.js"
+  },
+  {
+    "id": "p274",
+    "name": "本多勇喜(2026)",
+    "varName": "HONDA_2026_IMAGE",
+    "imageFile": "honda2026Image.js"
+  },
+  {
+    "id": "p275",
+    "name": "クリスティアン・プリシッチ",
+    "varName": "PULISIC_2026_IMAGE",
+    "imageFile": "pulisic2026Image.js"
+  },
+  {
+    "id": "p276",
+    "name": "ジェイ・イツェス",
+    "varName": "IDZES_2026_IMAGE",
+    "imageFile": "idzes2026Image.js"
+  },
+  {
+    "id": "p277",
+    "name": "チャナティップ・ソングラシン",
+    "varName": "CHANATHIP_2026_IMAGE",
+    "imageFile": "chanathip2026Image.js"
+  },
+  {
+    "id": "p278",
+    "name": "キム・ナミル(配布)",
+    "varName": "KIM_NAMIL_HAIFU_IMAGE",
+    "imageFile": "kimnamilhaifuImage.js"
+  },
+  {
+    "id": "p279",
+    "name": "アン・ジョンファン(配布)",
+    "varName": "AHN_JUNGHWAN_HAIFU_IMAGE",
+    "imageFile": "ahnjunghwanhaifuImage.js"
+  },
+  {
+    "id": "p280",
+    "name": "飯島潤一郎(チケット交換)",
+    "varName": "IIJIMA_2026_IMAGE",
+    "imageFile": "iijima2026Image.js"
+  },
+  {
+    "id": "p281",
+    "name": "バルフィー(チケット交換)",
+    "varName": "BARFIE_2026_IMAGE",
+    "imageFile": "barfie2026Image.js"
+  },
+  {
+    "id": "p282",
+    "name": "ペク・ギョンス(チケット交換)",
+    "varName": "BAEK_GYEONGSU_2026_IMAGE",
+    "imageFile": "baekgyeongsu2026Image.js"
+  },
+  {
+    "id": "p283",
+    "name": "バロウズ(チケット交換)",
+    "varName": "BURROWS_2026_IMAGE",
+    "imageFile": "burrows2026Image.js"
+  },
+  {
+    "id": "p284",
+    "name": "アルガンチューワ(チケット交換)",
+    "varName": "ARGANTCHUEV_2026_IMAGE",
+    "imageFile": "argantchuev2026Image.js"
+  },
+  {
+    "id": "p285",
+    "name": "ススペイタ(チケット交換)",
+    "varName": "SUSPEITA_2026_IMAGE",
+    "imageFile": "suspeita2026Image.js"
+  },
+  {
+    "id": "p286",
+    "name": "透明男(チケット交換)",
+    "varName": "TOUMEIOTOKO_2026_IMAGE",
+    "imageFile": "toumeiotoko2026Image.js"
+  },
+  {
+    "id": "p287",
+    "name": "ムサイール(チケット交換)",
+    "varName": "MUSAIR_2026_IMAGE",
+    "imageFile": "musair2026Image.js"
+  },
+  {
+    "id": "p288",
+    "name": "P・ラマンベラ(チケット交換)",
+    "varName": "P_RAMANBELA_2026_IMAGE",
+    "imageFile": "pramanbela2026Image.js"
+  },
+  {
+    "id": "p289",
+    "name": "J・ラマンベラ(チケット交換)",
+    "varName": "J_RAMANBELA_2026_IMAGE",
+    "imageFile": "jramanbela2026Image.js"
+  },
+  {
+    "id": "p290",
+    "name": "アンタンシェン(チケット交換)",
+    "varName": "ANTANCHEN_2026_IMAGE",
+    "imageFile": "antanchen2026Image.js"
+  },
+  {
+    "id": "p291",
+    "name": "鈴木優磨",
+    "varName": "SUZUKIYUMA_2025_IMAGE",
+    "imageFile": "suzukiyuma2025Image.js"
+  },
+  {
+    "id": "p292",
+    "name": "大迫勇也",
+    "varName": "YUYAOSAKO_2025_IMAGE",
+    "imageFile": "yuyaosako2025Image.js"
+  },
+  {
+    "id": "p293",
+    "name": "オ・セフン",
+    "varName": "OHSEHUN_2025_IMAGE",
+    "imageFile": "ohsehun2025Image.js"
+  },
+  {
+    "id": "p294",
+    "name": "ルカオ",
+    "varName": "LUCAO_2025_IMAGE",
+    "imageFile": "lucao2025Image.js"
+  },
+  {
+    "id": "p295",
+    "name": "染野唯月",
+    "varName": "ITSUKISOMENO_2025_IMAGE",
+    "imageFile": "itsukisomeno2025Image.js"
+  },
+  {
+    "id": "p296",
+    "name": "三平和司",
+    "varName": "KAZUSHIMITSUHIRA_2025_IMAGE",
+    "imageFile": "kazushimitsuhira2025Image.js"
+  },
+  {
+    "id": "p297",
+    "name": "渡大生",
+    "varName": "DAIKIWATARI_2025_IMAGE",
+    "imageFile": "daikiwatari2025Image.js"
+  },
+  {
+    "id": "p298",
+    "name": "ディサロ燦シルヴァーノ",
+    "varName": "DISARO_2025_IMAGE",
+    "imageFile": "disaro2025Image.js"
+  },
+  {
+    "id": "p299",
+    "name": "谷口海斗",
+    "varName": "KAITOTANIGUCHI_2025_IMAGE",
+    "imageFile": "kaitotaniguchi2025Image.js"
+  },
+  {
+    "id": "p300",
+    "name": "永井謙佑",
+    "varName": "KENSUKENAGAI_2025_IMAGE",
+    "imageFile": "kensukenagai2025Image.js"
+  },
+  {
+    "id": "p301",
+    "name": "細谷真大",
+    "varName": "MAOHOSOYA_2025_IMAGE",
+    "imageFile": "maohosoya2025Image.js"
+  },
+  {
+    "id": "p302",
+    "name": "マルクス・ヴィニシウス",
+    "varName": "MARCUSVINICIUS_2025_IMAGE",
+    "imageFile": "marcusvinicius2025Image.js"
+  },
+  {
+    "id": "p303",
+    "name": "マルセロ・ヒアン",
+    "varName": "MARCELORYAN_2025_IMAGE",
+    "imageFile": "marceloryan2025Image.js"
+  },
+  {
+    "id": "p304",
+    "name": "パブロ・サバグ",
+    "varName": "PABLOSABBAG_2025_IMAGE",
+    "imageFile": "pablosabbag2025Image.js"
+  },
+  {
+    "id": "p305",
+    "name": "北川航也",
+    "varName": "KOYAKITAGAWA_2025_IMAGE",
+    "imageFile": "koyakitagawa2025Image.js"
+  },
+  {
+    "id": "p306",
+    "name": "ラファエル・エリアス",
+    "varName": "RAFAELELIAS_2025_IMAGE",
+    "imageFile": "rafaelelias2025Image.js"
+  },
+  {
+    "id": "p307",
+    "name": "鈴木章斗",
+    "varName": "AKITOSUZUKI_2025_IMAGE",
+    "imageFile": "akitosuzuki2025Image.js"
+  },
+  {
+    "id": "p308",
+    "name": "渡邊新太",
+    "varName": "ARATAWATANABE_2025_IMAGE",
+    "imageFile": "aratawatanabe2025Image.js"
+  },
+  {
+    "id": "p309",
+    "name": "江坂任",
+    "varName": "ATARUESAKA_2025_IMAGE",
+    "imageFile": "ataruesaka2025Image.js"
+  },
+  {
+    "id": "p310",
+    "name": "野村直輝",
+    "varName": "NAOKINOMURA_2025_IMAGE",
+    "imageFile": "naokinomura2025Image.js"
+  },
+  {
+    "id": "p311",
+    "name": "香川真司",
+    "varName": "SHINJIKAGAWA_2025_IMAGE",
+    "imageFile": "shinjikagawa2025Image.js"
+  },
+  {
+    "id": "p312",
+    "name": "宇佐美貴史",
+    "varName": "TAKASHIUSAMI_2025_IMAGE",
+    "imageFile": "takashiusami2025Image.js"
+  },
+  {
+    "id": "p313",
+    "name": "渡邊凌磨",
+    "varName": "RYOMAWATANABE_2025_IMAGE",
+    "imageFile": "ryomawatanabe2025Image.js"
+  },
+  {
+    "id": "p314",
+    "name": "浅倉廉",
+    "varName": "RENASAKURA_2025_IMAGE",
+    "imageFile": "renasakura2025Image.js"
+  },
+  {
+    "id": "p315",
+    "name": "トルガイ・アルスラン",
+    "varName": "TOLGAYARSLAN_2025_IMAGE",
+    "imageFile": "tolgayarslan2025Image.js"
+  },
+  {
+    "id": "p316",
+    "name": "マテウス・ジェズス",
+    "varName": "MATHEUSJESUS_2025_IMAGE",
+    "imageFile": "matheusjesus2025Image.js"
+  },
+  {
+    "id": "p317",
+    "name": "イ・ドンギョン",
+    "varName": "LEEDONGGYEONG_2025_IMAGE",
+    "imageFile": "leedonggyeong2025Image.js"
+  },
+  {
+    "id": "p318",
+    "name": "脇坂泰斗",
+    "varName": "YASUTOWAKIZAKA_2025_IMAGE",
+    "imageFile": "yasutowakizaka2025Image.js"
+  },
+  {
+    "id": "p319",
+    "name": "天野純",
+    "varName": "JUNAMANO_2025_IMAGE",
+    "imageFile": "junamano2025Image.js"
+  },
+  {
+    "id": "p320",
+    "name": "小野瀬康介",
+    "varName": "KOSUKEONOSE_2025_IMAGE",
+    "imageFile": "kosukeonose2025Image.js"
+  },
+  {
+    "id": "p321",
+    "name": "稲垣祥",
+    "varName": "SHOINAGAKI_2025_IMAGE",
+    "imageFile": "shoinagaki2025Image.js"
+  },
+  {
+    "id": "p322",
+    "name": "田中駿汰",
+    "varName": "SHUNTATANAKA_2025_IMAGE",
+    "imageFile": "shuntatanaka2025Image.js"
+  },
+  {
+    "id": "p323",
+    "name": "森田晃樹",
+    "varName": "KOKIMORITA_2025_IMAGE",
+    "imageFile": "kokimorita2025Image.js"
+  },
+  {
+    "id": "p324",
+    "name": "荒野拓馬",
+    "varName": "TAKUMAARANO_2025_IMAGE",
+    "imageFile": "takumaarano2025Image.js"
+  },
+  {
+    "id": "p325",
+    "name": "深澤佑太",
+    "varName": "YUTAFUKAZAWA_2025_IMAGE",
+    "imageFile": "yutafukazawa2025Image.js"
+  },
+  {
+    "id": "p326",
+    "name": "喜田拓也",
+    "varName": "TAKUYAKIDA_2025_IMAGE",
+    "imageFile": "takuyakida2025Image.js"
+  },
+  {
+    "id": "p327",
+    "name": "ユーリ・ララ",
+    "varName": "YURILARA_2025_IMAGE",
+    "imageFile": "yurilara2025Image.js"
+  },
+  {
+    "id": "p328",
+    "name": "松岡大起",
+    "varName": "DAIKIMATSUOKA_2025_IMAGE",
+    "imageFile": "daikimatsuoka2025Image.js"
+  },
+  {
+    "id": "p329",
+    "name": "上村周平",
+    "varName": "SHUHEIKAMIMURA_2025_IMAGE",
+    "imageFile": "shuheikamimura2025Image.js"
+  },
+  {
+    "id": "p330",
+    "name": "長友佑都",
+    "varName": "YUTONAGATOMO_2025_IMAGE",
+    "imageFile": "yutonagatomo2025Image.js"
+  },
+  {
+    "id": "p331",
+    "name": "堀米悠斗",
+    "varName": "YUTOHORIGOME_2025_IMAGE",
+    "imageFile": "yutohorigome2025Image.js"
+  },
+  {
+    "id": "p332",
+    "name": "村松航太",
+    "varName": "KOTAMURAMATSU_2025_IMAGE",
+    "imageFile": "kotamuramatsu2025Image.js"
+  },
+  {
+    "id": "p333",
+    "name": "濃野公人",
+    "varName": "KIMITONONO_2025_IMAGE",
+    "imageFile": "kimitonono2025Image.js"
+  },
+  {
+    "id": "p334",
+    "name": "半田陸",
+    "varName": "RIKUHANDA_2025_IMAGE",
+    "imageFile": "rikuhanda2025Image.js"
+  },
+  {
+    "id": "p335",
+    "name": "藤原奏哉",
+    "varName": "SOYAFUJIWARA_2025_IMAGE",
+    "imageFile": "soyafujiwara2025Image.js"
+  },
+  {
+    "id": "p336",
+    "name": "松原后",
+    "varName": "MATSUBARA_KO_2026_IMAGE",
+    "imageFile": "matsubaraKo2026Image.js"
+  },
+  {
+    "id": "p337",
+    "name": "五十嵐駿己",
+    "varName": "IGARASHI_SENA_2026_IMAGE",
+    "imageFile": "igarashiSena2026Image.js"
+  },
+  {
+    "id": "p338",
+    "name": "マリウス・ホイブラーテン",
+    "varName": "MARIUS_HOIBRATEN_2026_IMAGE",
+    "imageFile": "mariusHoibraten2026Image.js"
+  },
+  {
+    "id": "p339",
+    "name": "井上太聖",
+    "varName": "INOUE_TAISEI_2026_IMAGE",
+    "imageFile": "inoueTaisei2026Image.js"
+  },
+  {
+    "id": "p340",
+    "name": "古賀太陽",
+    "varName": "KOGA_TAIYO_2026_IMAGE",
+    "imageFile": "kogaTaiyo2026Image.js"
+  },
+  {
+    "id": "p341",
+    "name": "福森晃斗",
+    "varName": "FUKUMORI_AKITO_2026_IMAGE",
+    "imageFile": "fukumoriAkito2026Image.js"
+  },
+  {
+    "id": "p342",
+    "name": "植田直通",
+    "varName": "UEDA_NAOMICHI_2026_IMAGE",
+    "imageFile": "uedaNaomichi2026Image.js"
+  },
+  {
+    "id": "p343",
+    "name": "菅田真啓",
+    "varName": "SUGATA_MASAHIRO_2026_IMAGE",
+    "imageFile": "sugataMasahiro2026Image.js"
+  },
+  {
+    "id": "p344",
+    "name": "住吉ジェラニレショーン",
+    "varName": "SUMIYOSHI_JELANI_2026_IMAGE",
+    "imageFile": "sumiyoshiJelani2026Image.js"
+  },
+  {
+    "id": "p345",
+    "name": "中谷進之介",
+    "varName": "NAKATANI_SHINNOSUKE_2026_IMAGE",
+    "imageFile": "nakataniShinnosuke2026Image.js"
+  },
+  {
+    "id": "p346",
+    "name": "神山京右",
+    "varName": "KAMIYAMA_KYOSUKE_2026_IMAGE",
+    "imageFile": "kamiyamaKyosuke2026Image.js"
+  },
+  {
+    "id": "p347",
+    "name": "市原吏音",
+    "varName": "ICHIHARA_RION_2026_IMAGE",
+    "imageFile": "ichiharaRion2026Image.js"
+  },
+  {
+    "id": "p348",
+    "name": "鈴木義宜",
+    "varName": "SUZUKI_YOSHINORI_2026_IMAGE",
+    "imageFile": "suzukiYoshinori2026Image.js"
+  },
+  {
+    "id": "p349",
+    "name": "山川哲史",
+    "varName": "YAMAKAWA_TETSUSHI_2026_IMAGE",
+    "imageFile": "yamakawaTetsushi2026Image.js"
+  },
+  {
+    "id": "p350",
+    "name": "中山雄太",
+    "varName": "NAKAYAMA_YUTA_2026_IMAGE",
+    "imageFile": "nakayamaYuta2026Image.js"
+  },
+  {
+    "id": "p351",
+    "name": "佐々木翔",
+    "varName": "SASAKI_SHO_2026_IMAGE",
+    "imageFile": "sasakiSho2026Image.js"
+  },
+  {
+    "id": "p352",
+    "name": "谷口栄斗",
+    "varName": "TANIGUCHI_HIROTO_2026_IMAGE",
+    "imageFile": "taniguchiHiroto2026Image.js"
+  },
+  {
+    "id": "p353",
+    "name": "乾貴士",
+    "varName": "INUI_TAKASHI_2026_IMAGE",
+    "imageFile": "inuiTakashi2026Image.js"
+  },
+  {
+    "id": "p354",
+    "name": "岩崎悠人",
+    "varName": "IWASAKI_YUTO_2026_IMAGE",
+    "imageFile": "iwasakiYuto2026Image.js"
+  },
+  {
+    "id": "p355",
+    "name": "紺野和也",
+    "varName": "KONNO_KAZUYA_2026_IMAGE",
+    "imageFile": "konnoKazuya2026Image.js"
+  },
+  {
+    "id": "p356",
+    "name": "鈴木雄斗",
+    "varName": "SUZUKI_YUTO_2026_IMAGE",
+    "imageFile": "suzukiYuto2026Image.js"
+  },
+  {
+    "id": "p357",
+    "name": "田中和樹",
+    "varName": "TANAKA_KAZUKI_2026_IMAGE",
+    "imageFile": "tanakaKazuki2026Image.js"
+  },
+  {
+    "id": "p358",
+    "name": "野寄和哉",
+    "varName": "NOYORI_KAZUYA_2026_IMAGE",
+    "imageFile": "noyoriKazuya2026Image.js"
+  },
+  {
+    "id": "p359",
+    "name": "家長昭博",
+    "varName": "IENAGA_AKIHIRO_2026_IMAGE",
+    "imageFile": "ienagaAkihiro2026Image.js"
+  },
+  {
+    "id": "p360",
+    "name": "伊藤達哉",
+    "varName": "ITO_TATSUYA_2026_IMAGE",
+    "imageFile": "itoTatsuya2026Image.js"
+  },
+  {
+    "id": "p361",
+    "name": "原大智",
+    "varName": "HARA_TAICHI_2026_IMAGE",
+    "imageFile": "haraTaichi2026Image.js"
+  },
+  {
+    "id": "p362",
+    "name": "仲間隼斗",
+    "varName": "NAKAMA_HAYATO_2026_IMAGE",
+    "imageFile": "nakamaHayato2026Image.js"
+  },
+  {
+    "id": "p363",
+    "name": "田中パウロ淳一",
+    "varName": "TANAKA_PAULO_JUNICHI_2026_IMAGE",
+    "imageFile": "tanakaPauloJunichi2026Image.js"
+  },
+  {
+    "id": "p364",
+    "name": "武藤嘉紀",
+    "varName": "MUTO_YOSHINORI_2026_IMAGE",
+    "imageFile": "mutoYoshinori2026Image.js"
+  },
+  {
+    "id": "p365",
+    "name": "谷晃生",
+    "varName": "TANI_KOSEI_2026_IMAGE",
+    "imageFile": "taniKosei2026Image.js"
+  },
+  {
+    "id": "p366",
+    "name": "ピサノ・アレックス幸冬堀尾",
+    "varName": "PISANO_ALEX_2026_IMAGE",
+    "imageFile": "pisanopalex2026Image.js"
+  },
+  {
+    "id": "p367",
+    "name": "大迫敬介",
+    "varName": "OSAKO_KEISUKE_2026_IMAGE",
+    "imageFile": "osakoKeisuke2026Image.js"
+  },
+  {
+    "id": "p368",
+    "name": "市川暉記",
+    "varName": "ICHIKAWA_AKINORI_2026_IMAGE",
+    "imageFile": "ichikawaAkinori2026Image.js"
+  },
+  {
+    "id": "p369",
+    "name": "スベンド・ブローダーセン",
+    "varName": "SVEND_BRODERSEN_2026_IMAGE",
+    "imageFile": "svendBrodersen2026Image.js"
+  },
+  {
+    "id": "p370",
+    "name": "キム・ジンヒョン",
+    "varName": "KIM_JIN_HYEON_2026_IMAGE",
+    "imageFile": "kimJinHyeon2026Image.js"
+  },
+  {
+    "id": "p371",
+    "name": "西川周作",
+    "varName": "NISHIKAWA_SHUSAKU_2026_IMAGE",
+    "imageFile": "nishikawaShusaku2026Image.js"
+  },
+  {
+    "id": "p372",
+    "name": "朴一圭",
+    "varName": "PARK_ILGYU_2026_IMAGE",
+    "imageFile": "parkIlgyu2026Image.js"
+  },
+  {
+    "id": "p373",
+    "name": "ラミン・ヤマル",
+    "varName": "YAMAL_IMAGE",
+    "imageFile": "yamalImage.js"
+  },
+  {
+    "id": "p374",
+    "name": "パウ・クバルシ",
+    "varName": "CUBARSI_IMAGE",
+    "imageFile": "cubarsiImage.js"
+  },
+  {
+    "id": "p375",
+    "name": "ガビ",
+    "varName": "GAVI_IMAGE",
+    "imageFile": "gaviImage.js"
+  },
+  {
+    "id": "p376",
+    "name": "ウナイ・シモン",
+    "varName": "SIMON_IMAGE",
+    "imageFile": "simonImage.js"
+  }
+]
