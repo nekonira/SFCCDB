@@ -56,17 +56,20 @@ const COUNTRY_CODE_MAP = {
   '南アフリカ': 'za',
   '香港': 'hk'
 };
-
-const getCountryFlag = (nationality) => {
+const getCountryFlag = nationality => {
   if (!nationality) return '';
   const code = COUNTRY_CODE_MAP[String(nationality).trim()];
   return code ? `https://flagcdn.com/20x15/${code}.png` : '';
 };
-
-const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover rounded-xs border border-slate-700/60 shadow-xs" }) => {
+const FlagIcon = ({
+  nationality,
+  className = "w-4 h-3 inline-block object-cover rounded-xs border border-slate-700/60 shadow-xs"
+}) => {
   if (!nationality) return null;
   const code = COUNTRY_CODE_MAP[String(nationality).trim()];
-  if (!code) return /*#__PURE__*/React.createElement("span", { className: "text-xs" }, "🌐");
+  if (!code) return /*#__PURE__*/React.createElement("span", {
+    className: "text-xs"
+  }, "🌐");
   return /*#__PURE__*/React.createElement("img", {
     src: `https://flagcdn.com/20x15/${code}.png`,
     srcSet: `https://flagcdn.com/40x30/${code}.png 2x`,
@@ -74,132 +77,112 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
     title: nationality,
     className: className,
     loading: "lazy",
-    onError: (e) => { e.target.style.display = 'none'; }
+    onError: e => {
+      e.target.style.display = 'none';
+    }
   });
 };
-
-const YOUTUBE_VIDEOS = [
-  {
-    "id": "wbuRTGvbpYk",
-    "title": "【引く前に見て】限定スペインガチャ徹底解説！ヤマルが超ぶっ壊れ性能【サカつく2026】クバルシ、ガビ、ウナイ・シモン",
-    "thumbnail": "https://i.ytimg.com/vi/wbuRTGvbpYk/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=wbuRTGvbpYk"
-  },
-  {
-    "id": "EFmaOGfDggw",
-    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
-    "thumbnail": "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=EFmaOGfDggw"
-  },
-  {
-    "id": "YxToi7zTO4I",
-    "title": "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=YxToi7zTO4I"
-  },
-  {
-    "id": "9OwLKGom0IU",
-    "title": "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
-    "thumbnail": "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=9OwLKGom0IU"
-  },
-  {
-    "id": "3cWmdX7SO9g",
-    "title": "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=3cWmdX7SO9g"
-  },
-  {
-    "id": "TW5ffHOwVho",
-    "title": "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=TW5ffHOwVho"
-  },
-  {
-    "id": "-ML6aziQT8A",
-    "title": "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
-    "thumbnail": "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=-ML6aziQT8A"
-  },
-  {
-    "id": "Nk9fShVZ1sI",
-    "title": "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
-    "thumbnail": "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
-  },
-  {
-    "id": "L6wiFTj1-_I",
-    "title": "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
-    "thumbnail": "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=L6wiFTj1-_I"
-  },
-  {
-    "id": "pqmcNKbWNyo",
-    "title": "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=pqmcNKbWNyo"
-  },
-  {
-    "id": "unixgXGcOco",
-    "title": "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
-    "thumbnail": "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=unixgXGcOco"
-  },
-  {
-    "id": "19dFH-F1fyA",
-    "title": "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
-    "thumbnail": "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=19dFH-F1fyA"
-  },
-  {
-    "id": "mLr4PRijhBg",
-    "title": "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
-    "thumbnail": "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=mLr4PRijhBg"
-  },
-  {
-    "id": "5DYUfVpv4GI",
-    "title": "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
-    "thumbnail": "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=5DYUfVpv4GI"
-  },
-  {
-    "id": "XAaNfUibPyE",
-    "title": "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
-    "thumbnail": "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=XAaNfUibPyE"
-  },
-  {
-    "id": "mYgT5gcq-F8",
-    "title": "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
-    "thumbnail": "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=mYgT5gcq-F8"
-  },
-  {
-    "id": "l68pj27IqOg",
-    "title": "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=l68pj27IqOg"
-  },
-  {
-    "id": "uvwGRAXypnY",
-    "title": "【引く前に見て】新ガチャ徹底解説！インフレ加速!!! 新特練パーマーがやばい【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/uvwGRAXypnY/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=uvwGRAXypnY"
-  },
-  {
-    "id": "qZQI5X7Y6h0",
-    "title": "【引く前に見て】日本代表ガチャ徹底解説！驚異の排出率11％！鎌田、伊藤洋輝の能力値が凄い!!!【サカつく2026】三笘薫、伊東純也、上田綺世、中村敬斗、堂安律、佐野海舟、渡辺剛、谷口彰悟、鈴木彩艶",
-    "thumbnail": "https://i.ytimg.com/vi/qZQI5X7Y6h0/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=qZQI5X7Y6h0"
-  },
-  {
-    "id": "86LGDFNUVkA",
-    "title": "【完全網羅】メインストーリー外伝、攻略解説【サカつく2026】EXTRA STORY",
-    "thumbnail": "https://i.ytimg.com/vi/86LGDFNUVkA/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=86LGDFNUVkA"
-  }
-];
+const YOUTUBE_VIDEOS = [{
+  "id": "wbuRTGvbpYk",
+  "title": "【引く前に見て】限定スペインガチャ徹底解説！ヤマルが超ぶっ壊れ性能【サカつく2026】クバルシ、ガビ、ウナイ・シモン",
+  "thumbnail": "https://i.ytimg.com/vi/wbuRTGvbpYk/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=wbuRTGvbpYk"
+}, {
+  "id": "EFmaOGfDggw",
+  "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
+  "thumbnail": "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=EFmaOGfDggw"
+}, {
+  "id": "YxToi7zTO4I",
+  "title": "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=YxToi7zTO4I"
+}, {
+  "id": "9OwLKGom0IU",
+  "title": "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
+  "thumbnail": "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=9OwLKGom0IU"
+}, {
+  "id": "3cWmdX7SO9g",
+  "title": "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=3cWmdX7SO9g"
+}, {
+  "id": "TW5ffHOwVho",
+  "title": "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=TW5ffHOwVho"
+}, {
+  "id": "-ML6aziQT8A",
+  "title": "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
+  "thumbnail": "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=-ML6aziQT8A"
+}, {
+  "id": "Nk9fShVZ1sI",
+  "title": "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
+  "thumbnail": "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
+}, {
+  "id": "L6wiFTj1-_I",
+  "title": "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
+  "thumbnail": "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=L6wiFTj1-_I"
+}, {
+  "id": "pqmcNKbWNyo",
+  "title": "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=pqmcNKbWNyo"
+}, {
+  "id": "unixgXGcOco",
+  "title": "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
+  "thumbnail": "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=unixgXGcOco"
+}, {
+  "id": "19dFH-F1fyA",
+  "title": "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
+  "thumbnail": "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=19dFH-F1fyA"
+}, {
+  "id": "mLr4PRijhBg",
+  "title": "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
+  "thumbnail": "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=mLr4PRijhBg"
+}, {
+  "id": "5DYUfVpv4GI",
+  "title": "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
+  "thumbnail": "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=5DYUfVpv4GI"
+}, {
+  "id": "XAaNfUibPyE",
+  "title": "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
+  "thumbnail": "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=XAaNfUibPyE"
+}, {
+  "id": "mYgT5gcq-F8",
+  "title": "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
+  "thumbnail": "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=mYgT5gcq-F8"
+}, {
+  "id": "l68pj27IqOg",
+  "title": "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=l68pj27IqOg"
+}, {
+  "id": "uvwGRAXypnY",
+  "title": "【引く前に見て】新ガチャ徹底解説！インフレ加速!!! 新特練パーマーがやばい【サカつく2026】",
+  "thumbnail": "https://i.ytimg.com/vi/uvwGRAXypnY/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=uvwGRAXypnY"
+}, {
+  "id": "qZQI5X7Y6h0",
+  "title": "【引く前に見て】日本代表ガチャ徹底解説！驚異の排出率11％！鎌田、伊藤洋輝の能力値が凄い!!!【サカつく2026】三笘薫、伊東純也、上田綺世、中村敬斗、堂安律、佐野海舟、渡辺剛、谷口彰悟、鈴木彩艶",
+  "thumbnail": "https://i.ytimg.com/vi/qZQI5X7Y6h0/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=qZQI5X7Y6h0"
+}, {
+  "id": "86LGDFNUVkA",
+  "title": "【完全網羅】メインストーリー外伝、攻略解説【サカつく2026】EXTRA STORY",
+  "thumbnail": "https://i.ytimg.com/vi/86LGDFNUVkA/hqdefault.jpg",
+  "url": "https://www.youtube.com/watch?v=86LGDFNUVkA"
+}];
 const AFFILIATE_ADS = [{
   id: "rakuten_user_1",
   badge: "楽天 PR",
@@ -970,27 +953,10 @@ const PlayerAvatar = ({
   alt = ""
 }) => {
   const [imgError, setImgError] = React.useState(false);
-  const [resolvedUrl, setResolvedUrl] = React.useState(() => getPlayerAvatarUrl(player));
+  const avatarUrl = getPlayerAvatarUrl(player);
   React.useEffect(() => {
     setImgError(false);
-    const initialUrl = getPlayerAvatarUrl(player);
-    setResolvedUrl(initialUrl);
-    if (!initialUrl && player) {
-      let count = 0;
-      const timer = setInterval(() => {
-        count++;
-        const currentUrl = getPlayerAvatarUrl(player);
-        if (currentUrl) {
-          setResolvedUrl(currentUrl);
-          clearInterval(timer);
-        } else if (count >= 10) {
-          clearInterval(timer);
-        }
-      }, 500);
-      return () => clearInterval(timer);
-    }
-  }, [player?.id]);
-  const avatarUrl = resolvedUrl || getPlayerAvatarUrl(player);
+  }, [avatarUrl, player?.id]);
   const category = player?.category || 'FW';
   const pos = player?.mainPosition || player?.category || 'FW';
   const name = player?.name || '';
@@ -1616,47 +1582,39 @@ function App() {
       setPlayers(latest);
     }
   }, []);
-      const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
+  const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
     // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得
     const playlistUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.youtube.com/playlist?list=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4');
-    fetch(playlistUrl)
-      .then(res => res.text())
-      .then(html => {
-        const matches = [...html.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)];
-        const seen = new Set();
-        const videoIds = [];
-        matches.forEach(m => {
-          if (!seen.has(m[1])) {
-            seen.add(m[1]);
-            videoIds.push(m[1]);
+    fetch(playlistUrl).then(res => res.text()).then(html => {
+      const matches = [...html.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)];
+      const seen = new Set();
+      const videoIds = [];
+      matches.forEach(m => {
+        if (!seen.has(m[1])) {
+          seen.add(m[1]);
+          videoIds.push(m[1]);
+        }
+      });
+      if (videoIds.length > 0) {
+        const topIds = videoIds.slice(0, 20);
+        Promise.all(topIds.map(id => fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`).then(r => r.json()).then(data => ({
+          id: id,
+          title: data && data.title ? data.title : `サカつく2026 攻略動画 (${id})`,
+          thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+          url: `https://www.youtube.com/watch?v=${id}`
+        })).catch(() => ({
+          id: id,
+          title: `サカつく2026 攻略動画 (${id})`,
+          thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+          url: `https://www.youtube.com/watch?v=${id}`
+        })))).then(fetched => {
+          if (fetched.length > 0) {
+            setYoutubeVideos(fetched);
           }
         });
-        if (videoIds.length > 0) {
-          const topIds = videoIds.slice(0, 20);
-          Promise.all(topIds.map(id => 
-            fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`)
-              .then(r => r.json())
-              .then(data => ({
-                id: id,
-                title: data && data.title ? data.title : `サカつく2026 攻略動画 (${id})`,
-                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-                url: `https://www.youtube.com/watch?v=${id}`
-              }))
-              .catch(() => ({
-                id: id,
-                title: `サカつく2026 攻略動画 (${id})`,
-                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-                url: `https://www.youtube.com/watch?v=${id}`
-              }))
-          )).then(fetched => {
-            if (fetched.length > 0) {
-              setYoutubeVideos(fetched);
-            }
-          });
-        }
-      })
-      .catch(() => {});
+      }
+    }).catch(() => {});
   }, []);
   const [managers, setManagers] = useState(() => INITIAL_MANAGERS);
   const [combos, setCombos] = useState(() => INITIAL_COMBOS);
@@ -2473,14 +2431,19 @@ function PlayerDBTab({
     },
     className: `px-2 py-0.5 rounded font-bold transition-colors ${nationalityFilter.length === 0 ? 'bg-[#00FF66] text-black' : 'bg-red-500/20 text-red-400 border border-red-500/40 hover:bg-red-500/30'}`
   }, nationalityFilter.length === 0 ? 'すべて' : '✕ クリア'), ['日本', 'ブラジル', 'アルゼンチン', 'スペイン', 'フランス', 'ドイツ'].map(quickNat => /*#__PURE__*/React.createElement("button", {
-    key: quickNat,
+    key: /*#__PURE__*/React.createElement("span", {
+      className: "flex items-center gap-1"
+    }, /*#__PURE__*/React.createElement(FlagIcon, {
+      nationality: quickNat,
+      className: "w-3.5 h-2.5 object-cover rounded-xs"
+    }), /*#__PURE__*/React.createElement("span", null, quickNat)),
     type: "button",
     onClick: e => {
       e.stopPropagation();
       toggleNationality(quickNat);
     },
     className: `px-1.5 py-0.5 rounded ${nationalityFilter.includes(quickNat) ? 'bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/50 font-bold' : 'bg-slate-800 text-slate-400 hover:text-white'}`
-  }, /*#__PURE__*/React.createElement("span", { className: "flex items-center gap-1" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: quickNat, className: "w-3.5 h-2.5 object-cover rounded-xs" }), /*#__PURE__*/React.createElement("span", null, quickNat)))))), /*#__PURE__*/React.createElement("div", {
+  }, quickNat)))), /*#__PURE__*/React.createElement("div", {
     className: "max-h-52 overflow-y-auto space-y-0.5 pr-1"
   }, nationalitiesList.filter(nat => !natSearchQuery || nat.includes(natSearchQuery.trim()) || getNationalityReading(nat).includes(natSearchQuery.trim())).map(nat => {
     const isChecked = nationalityFilter.includes(nat);
@@ -2650,7 +2613,12 @@ function PlayerDBTab({
       className: `text-[10px] font-black px-1.5 py-0.5 rounded border ${getPolicyBadgeClass(p.policy)}`
     }, p.policy), p.nationality && /*#__PURE__*/React.createElement("span", {
       className: "text-[10px] text-slate-400 font-semibold truncate"
-    }, /*#__PURE__*/React.createElement("span", { className: "flex items-center gap-1" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality, className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" }), /*#__PURE__*/React.createElement("span", null, p.nationality)))), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "flex items-center gap-1"
+    }, /*#__PURE__*/React.createElement(FlagIcon, {
+      nationality: p.nationality,
+      className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60"
+    }), /*#__PURE__*/React.createElement("span", null, p.nationality)))), /*#__PURE__*/React.createElement("div", {
       className: "font-black text-sm text-white truncate mt-1"
     }, p.name), /*#__PURE__*/React.createElement("div", {
       className: "text-[10px] text-purple-300 font-bold truncate mt-0.5"
@@ -2774,7 +2742,13 @@ function PlayerDBTab({
       className: "px-2 py-0.5 rounded font-black text-xs bg-slate-800 text-[#00FF66] font-num"
     }, p.mainPosition, p.subPositions && p.subPositions.length > 0 ? ` / ${p.subPositions.join(' / ')}` : '')), /*#__PURE__*/React.createElement("td", {
       className: "py-3 px-2 text-center text-xs font-semibold text-slate-300 whitespace-nowrap"
-    }, p.nationality ? /*#__PURE__*/React.createElement("div", { className: "flex items-center justify-center gap-1.5" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality }), /*#__PURE__*/React.createElement("span", { className: "font-bold" }, p.nationality)) : '-'), /*#__PURE__*/React.createElement("td", {
+    }, p.nationality ? /*#__PURE__*/React.createElement("div", {
+      className: "flex items-center justify-center gap-1.5"
+    }, /*#__PURE__*/React.createElement(FlagIcon, {
+      nationality: p.nationality
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "font-bold"
+    }, p.nationality)) : '-'), /*#__PURE__*/React.createElement("td", {
       className: "py-3 px-2 text-slate-300 text-xs whitespace-nowrap"
     }, p.playStyle, p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : '', " ", /*#__PURE__*/React.createElement("span", {
       className: "text-[#00FF66] font-num font-bold"
@@ -2866,8 +2840,15 @@ function PlayerCard({
   }, player.playStyle, " ", /*#__PURE__*/React.createElement("span", {
     className: "text-[#00FF66] font-num font-bold"
   }, "LV.", player.playStyleLevel)), /*#__PURE__*/React.createElement("div", {
-    className: `text-xs ${getPolicyTextColor(player.policy)}`
-  }, player.policy))), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-1.5 text-xs flex-wrap"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: getPolicyTextColor(player.policy)
+  }, player.policy), player.nationality && /*#__PURE__*/React.createElement("span", {
+    className: "text-slate-400 font-semibold flex items-center gap-1"
+  }, /*#__PURE__*/React.createElement("span", null, "•"), /*#__PURE__*/React.createElement(FlagIcon, {
+    nationality: player.nationality,
+    className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60"
+  }), /*#__PURE__*/React.createElement("span", null, player.nationality))))), /*#__PURE__*/React.createElement("div", {
     className: "space-y-1.5 mb-3 bg-slate-950/60 p-2 rounded-xl border border-slate-800/80"
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex items-center gap-1.5 flex-wrap"
@@ -2997,7 +2978,6 @@ const isPositionMatch = (playerPos, targetPos) => {
   const playerNorm = normalizePosition(playerPos);
   return playerNorm === targetNorm;
 };
-
 const STAT_NAME_MAP = {
   '決定力': ['shoot', 'finishing'],
   'キック力': ['shoot', 'power'],
@@ -3035,22 +3015,27 @@ function TeamBuilderTab({
   setSelectedPlayer,
   onGoToDB
 }) {
-  const FORMATION_COMBOS = [
-    {
-      id: 'laRoja26',
-      name: "ラ・ロハ’26",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '433b_laRoja26',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'ショートパス', val: '+80%' },
-        { name: 'タックル', val: '+80%' },
-        { name: 'マーク', val: '+80%' }
-      ],
-      specialNote: 'フィールド上のスペイン選手1人につき、上記4能力（決定力・ショートパス・タックル・マーク）が追加で2%強化！'
-    },
-{
+  const FORMATION_COMBOS = [{
+    id: 'laRoja26',
+    name: "ラ・ロハ’26",
+    rank: '金',
+    policy: 'ポゼッション',
+    formationId: '433b_laRoja26',
+    buffs: [{
+      name: '決定力',
+      val: '+80%'
+    }, {
+      name: 'ショートパス',
+      val: '+80%'
+    }, {
+      name: 'タックル',
+      val: '+80%'
+    }, {
+      name: 'マーク',
+      val: '+80%'
+    }],
+    specialNote: 'フィールド上のスペイン選手1人につき、上記4能力（決定力・ショートパス・タックル・マーク）が追加で2%強化！'
+  }, {
     id: 'selecao70',
     name: "セレソン’70",
     rank: '金',
@@ -3842,26 +3827,86 @@ function TeamBuilderTab({
       val: '+80%'
     }]
   }];
-  const FORMATIONS = [
-    {
-      id: '433b_laRoja26',
-      name: '4-3-3B (ラ・ロハ’26)',
-      comboId: 'laRoja26',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 3 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 }
-      ]
-    },
-{
+  const FORMATIONS = [{
+    id: '433b_laRoja26',
+    name: '4-3-3B (ラ・ロハ’26)',
+    comboId: 'laRoja26',
+    slots: [{
+      id: 1,
+      pos: 'GK',
+      label: 'GK',
+      top: '90%',
+      left: '50%'
+    }, {
+      id: 2,
+      pos: 'LFB',
+      label: 'LFB',
+      top: '70%',
+      left: '16%',
+      requiredStyle: '攻撃的LFB',
+      minLevel: 2
+    }, {
+      id: 3,
+      pos: 'CB',
+      label: 'LCB',
+      top: '73%',
+      left: '38%',
+      requiredStyle: '組立CB',
+      minLevel: 3
+    }, {
+      id: 4,
+      pos: 'CB',
+      label: 'RCB',
+      top: '73%',
+      left: '62%'
+    }, {
+      id: 5,
+      pos: 'RFB',
+      label: 'RFB',
+      top: '70%',
+      left: '84%'
+    }, {
+      id: 6,
+      pos: 'DM',
+      label: 'LDM',
+      top: '54%',
+      left: '36%'
+    }, {
+      id: 7,
+      pos: 'DM',
+      label: 'RDM',
+      top: '54%',
+      left: '64%'
+    }, {
+      id: 8,
+      pos: 'AM',
+      label: 'AM',
+      top: '34%',
+      left: '50%'
+    }, {
+      id: 9,
+      pos: 'LW',
+      label: 'LW',
+      top: '18%',
+      left: '20%',
+      requiredStyle: 'サイドアタッカーLW',
+      minLevel: 2
+    }, {
+      id: 10,
+      pos: 'CF',
+      label: 'CF',
+      top: '14%',
+      left: '50%'
+    }, {
+      id: 11,
+      pos: 'RW',
+      label: 'RW',
+      top: '18%',
+      left: '80%',
+      requiredStyle: 'ワイドストライカーRW',
+      minLevel: 3
+    }]
+  }, {
     id: '343c_selecao',
     name: '3-4-3C (セレソン’70)',
     comboId: 'selecao70',
@@ -7461,7 +7506,7 @@ function TeamBuilderTab({
     }
     return {};
   });
-  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : false);
+  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : true);
   const [activeSlotModal, setActiveSlotModal] = useState(null);
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
@@ -7618,69 +7663,416 @@ function TeamBuilderTab({
     return map;
   }, [benchMap, builderMaxEnhanced]);
 
-  // フォーメーション切替時ポリシー自動マッチング
-  const handleSelectFormation = fmt => {
-    setSelectedFormation(fmt);
-    if (fmt.comboId === 'selecao70') {
-      setTeamPolicy('リアクション');
-    }
-  };
-
-  // 自動最強編成ロジック (ベンチ12名対応)
-  const handleAutoBuild = () => {
-    const sorted = [...players].sort((a, b) => {
-      const pA = builderMaxEnhanced ? getAdjustedPlayer(a, '☆5', true) : a;
-      const pB = builderMaxEnhanced ? getAdjustedPlayer(b, '☆5', true) : b;
-      return (pB.overall || 0) - (pA.overall || 0);
-    });
-    const newSquad = {};
-    const usedIds = new Set();
-    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
-    if (targetCombo) {
-      setTeamPolicy(targetCombo.policy);
-
-      // 指定位置条件 (RCB, RDM, LW, CF) を満たす選手を最優先セット
-      selectedFormation.slots.forEach(slot => {
-        if (slot.requiredStyle) {
-          const candidate = sorted.find(p => {
-            if (usedIds.has(p.id)) return false;
-            return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+  // 全パターン最高総合力判定付き 自動最適編成コア関数
+  const runAutoBuildForFormation = fmtToBuild => {
+    const targetFmt = fmtToBuild || selectedFormation;
+    if (!targetFmt) return;
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
+    const NATIONAL_TEAM_BONUS_COMBOS = {
+      'selecao70': 'ブラジル',
+      'laRoja26': 'スペイン'
+    };
+    const buildSquadForPolicy = (pol, forceCombo) => {
+      const activeCombo = forceCombo && targetCombo ? targetCombo : null;
+      const targetNation = activeCombo ? NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null : null;
+      const newSquad = {};
+      const usedIds = new Set();
+      const calcExactOverall = sq => {
+        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : p.overall || 0), 0);
+        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+        let totalComboStatBonus = 0;
+        if (activeCombo) {
+          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+            const pInSlot = sq[s.id];
+            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
           });
-          if (candidate) {
-            newSquad[slot.id] = candidate;
-            usedIds.add(candidate.id);
+          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+          if (allFulfilled && activeCombo.buffs) {
+            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+            const nEx = natCnt * 2;
+            activeCombo.buffs.forEach(b => {
+              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+              const effectivePct = basePct + nEx;
+              starters.forEach(p => {
+                const statVal = getPlayerStatValue(p, b.name);
+                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
+              });
+            });
           }
         }
+        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+      };
+      const isPosEligible = (p, slotPos) => {
+        if (!p) return false;
+        return p.mainPosition === slotPos || p.subPositions && p.subPositions.includes(slotPos);
+      };
+      const evaluateCandidateForSlot = (slot, candidate) => {
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 2000 : 1000;
+        const isTargetNation = targetNation && candidate.nationality === targetNation;
+        const nationScore = isTargetNation ? 500 : 0;
+        newSquad[slot.id] = candidate;
+        const teamOverall = calcExactOverall(newSquad);
+        delete newSquad[slot.id];
+        return teamOverall * 10 + posScore + nationScore;
+      };
+      if (activeCombo) {
+        targetFmt.slots.forEach(slot => {
+          if (slot.requiredStyle) {
+            const candidates = players.filter(p => {
+              if (usedIds.has(p.id)) return false;
+              if (!isPosEligible(p, slot.pos)) return false;
+              return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+            });
+            if (candidates.length > 0) {
+              const scored = candidates.map(p => ({
+                player: p,
+                score: evaluateCandidateForSlot(slot, p)
+              }));
+              scored.sort((a, b) => b.score - a.score);
+              const best = scored[0].player;
+              newSquad[slot.id] = best;
+              usedIds.add(best.id);
+            }
+          }
+        });
+      }
+      targetFmt.slots.forEach(slot => {
+        if (newSquad[slot.id]) return;
+        const candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+        if (candidates.length === 0) return;
+        const scored = candidates.map(p => ({
+          player: p,
+          score: evaluateCandidateForSlot(slot, p)
+        }));
+        scored.sort((a, b) => b.score - a.score);
+        const best = scored[0].player;
+        newSquad[slot.id] = best;
+        usedIds.add(best.id);
       });
-    }
+      let bestSquadOverall = calcExactOverall(newSquad);
+      let improved = true;
+      let pass = 0;
+      while (improved && pass < 10) {
+        improved = false;
+        pass++;
+        targetFmt.slots.forEach(slot => {
+          let currentP = newSquad[slot.id];
+          if (!currentP) return;
+          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+          unusedCandidates.forEach(candP => {
+            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) return;
+            if (!isPosEligible(candP, slot.pos)) return;
+            newSquad[slot.id] = candP;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              usedIds.delete(currentP.id);
+              usedIds.add(candP.id);
+              currentP = candP;
+              improved = true;
+            } else {
+              newSquad[slot.id] = currentP;
+            }
+          });
+        });
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id >= slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
+            if (pAEligibleB && pBEligibleA) {
+              newSquad[slotA.id] = pB;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                improved = true;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+            for (const cand of unusedCandidates) {
+              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+              if (!candEligibleA) continue;
+              newSquad[slotA.id] = cand;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                usedIds.delete(pB.id);
+                usedIds.add(cand.id);
+                improved = true;
+                break;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+      }
+      const getEffVal = p => {
+        const adjP = getAdjustedPlayer(p, '☆5', true);
+        const base = adjP.overall || 0;
+        const isMatch = adjP.policy === pol;
+        return isMatch ? Math.floor(base * 1.05) : base;
+      };
+      const remaining = players.filter(p => !usedIds.has(p.id)).sort((a, b) => getEffVal(b) - getEffVal(a));
+      const newBench = {};
+      for (let i = 0; i < Math.min(12, remaining.length); i++) {
+        newBench[i] = remaining[i];
+        usedIds.add(remaining[i].id);
+      }
+      return {
+        policy: pol,
+        squad: newSquad,
+        bench: newBench,
+        finalTeamOverall: bestSquadOverall
+      };
+    };
+    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+    const bestResult = buildSquadForPolicy(targetPolicy, true);
+    setBuilderMaxEnhanced(true);
+    setTeamPolicy(bestResult.policy);
+    setSquadMap(bestResult.squad);
+    setBenchMap(bestResult.bench);
+  };
+  const handleAutoBuild = () => {
+    runAutoBuildForFormation(selectedFormation);
+  };
 
-    // 残りのスロットに総合力順で割り当て
-    selectedFormation.slots.forEach(slot => {
-      if (newSquad[slot.id]) return;
-      const match = sorted.find(p => !usedIds.has(p.id) && (p.mainPosition === slot.pos || p.subPositions && p.subPositions.includes(slot.pos)));
-      if (match) {
-        newSquad[slot.id] = match;
-        usedIds.add(match.id);
-      } else {
-        const fallback = sorted.find(p => !usedIds.has(p.id));
-        if (fallback) {
-          newSquad[slot.id] = fallback;
-          usedIds.add(fallback.id);
+  // 🛡️ ポリシー統一 自動最適編成ロジック (11名全スタメンのポリシーを100%完全一致＋フォメコン発動での最高総合力選出)
+  const handleUnifiedPolicyAutoBuild = () => {
+    const targetFmt = selectedFormation;
+    if (!targetFmt) return;
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
+    const NATIONAL_TEAM_BONUS_COMBOS = {
+      'selecao70': 'ブラジル',
+      'laRoja26': 'スペイン'
+    };
+    const buildUnifiedSquadForPolicy = pol => {
+      const activeCombo = targetCombo;
+      const targetNation = activeCombo ? NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null : null;
+      const newSquad = {};
+      const usedIds = new Set();
+      const calcExactOverall = sq => {
+        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : p.overall || 0), 0);
+        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+        let totalComboStatBonus = 0;
+        if (activeCombo) {
+          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+            const pInSlot = sq[s.id];
+            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
+          });
+          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+          if (allFulfilled && activeCombo.buffs) {
+            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+            const nEx = natCnt * 2;
+            activeCombo.buffs.forEach(b => {
+              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+              const effectivePct = basePct + nEx;
+              starters.forEach(p => {
+                const statVal = getPlayerStatValue(p, b.name);
+                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
+              });
+            });
+          }
         }
+        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+      };
+      const isPosEligible = (p, slotPos) => {
+        if (!p) return false;
+        return p.mainPosition === slotPos || p.subPositions && p.subPositions.includes(slotPos);
+      };
+      const evaluateCandidateForSlot = (slot, candidate) => {
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 2000 : 1000;
+        const isTargetNation = targetNation && candidate.nationality === targetNation;
+        const nationScore = isTargetNation ? 500 : 0;
+        const isPolicyMatch = candidate.policy === pol;
+        const policyScore = isPolicyMatch ? 10000 : 0;
+        newSquad[slot.id] = candidate;
+        const teamOverall = calcExactOverall(newSquad);
+        delete newSquad[slot.id];
+        return teamOverall * 10 + policyScore + posScore + nationScore;
+      };
+      if (activeCombo) {
+        targetFmt.slots.forEach(slot => {
+          if (slot.requiredStyle) {
+            let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+            if (candidates.length === 0) {
+              candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+            }
+            if (candidates.length > 0) {
+              const scored = candidates.map(p => ({
+                player: p,
+                score: evaluateCandidateForSlot(slot, p)
+              }));
+              scored.sort((a, b) => b.score - a.score);
+              const best = scored[0].player;
+              newSquad[slot.id] = best;
+              usedIds.add(best.id);
+            }
+          }
+        });
       }
-    });
-
-    // ベンチ12名
-    const newBench = {};
-    for (let i = 0; i < 12; i++) {
-      const benchPlayer = sorted.find(p => !usedIds.has(p.id));
-      if (benchPlayer) {
-        newBench[i] = benchPlayer;
-        usedIds.add(benchPlayer.id);
+      targetFmt.slots.forEach(slot => {
+        if (newSquad[slot.id]) return;
+        let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos));
+        if (candidates.length === 0) {
+          candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+        }
+        if (candidates.length === 0) return;
+        const scored = candidates.map(p => ({
+          player: p,
+          score: evaluateCandidateForSlot(slot, p)
+        }));
+        scored.sort((a, b) => b.score - a.score);
+        const best = scored[0].player;
+        newSquad[slot.id] = best;
+        usedIds.add(best.id);
+      });
+      let bestSquadOverall = calcExactOverall(newSquad);
+      let improved = true;
+      let pass = 0;
+      while (improved && pass < 10) {
+        improved = false;
+        pass++;
+        targetFmt.slots.forEach(slot => {
+          let currentP = newSquad[slot.id];
+          if (!currentP) return;
+          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+          for (const candP of unusedCandidates) {
+            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) continue;
+            if (!isPosEligible(candP, slot.pos)) continue;
+            if (currentP.policy === pol && candP.policy !== pol) continue;
+            newSquad[slot.id] = candP;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              usedIds.delete(currentP.id);
+              usedIds.add(candP.id);
+              currentP = candP;
+              improved = true;
+              break;
+            } else {
+              newSquad[slot.id] = currentP;
+            }
+          }
+        });
+        targetFmt.slots.forEach(slotA => {
+          let pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id >= slotB.id) return;
+            let pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
+            if (pAEligibleB && pBEligibleA) {
+              newSquad[slotA.id] = pB;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                improved = true;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+        targetFmt.slots.forEach(slotA => {
+          let pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            let pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+            for (const cand of unusedCandidates) {
+              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+              if (!candEligibleA) continue;
+              if (pB.policy === pol && cand.policy !== pol) continue;
+              newSquad[slotA.id] = cand;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                usedIds.delete(pB.id);
+                usedIds.add(cand.id);
+                improved = true;
+                break;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
       }
+      const getEffVal = p => {
+        const adjP = getAdjustedPlayer(p, '☆5', true);
+        const base = adjP.overall || 0;
+        const isMatch = adjP.policy === pol;
+        return isMatch ? Math.floor(base * 1.05) : base;
+      };
+      const remaining = players.filter(p => !usedIds.has(p.id)).sort((a, b) => getEffVal(b) - getEffVal(a));
+      const newBench = {};
+      for (let i = 0; i < Math.min(12, remaining.length); i++) {
+        newBench[i] = remaining[i];
+        usedIds.add(remaining[i].id);
+      }
+      const startersList = Object.values(newSquad).filter(Boolean);
+      const unifiedPolicyCount = startersList.filter(p => p.policy === pol).length;
+      return {
+        policy: pol,
+        squad: newSquad,
+        bench: newBench,
+        unifiedPolicyCount,
+        finalTeamOverall: bestSquadOverall
+      };
+    };
+    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+    const bestResult = buildUnifiedSquadForPolicy(targetPolicy);
+    setBuilderMaxEnhanced(true);
+    setTeamPolicy(bestResult.policy);
+    setSquadMap(bestResult.squad);
+    setBenchMap(bestResult.bench);
+  };
+  const handleSelectFormation = fmt => {
+    setSelectedFormation(fmt);
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === fmt.id || c.id === fmt.comboId);
+    if (targetCombo && targetCombo.policy) {
+      setTeamPolicy(targetCombo.policy);
     }
-    setSquadMap(newSquad);
-    setBenchMap(newBench);
   };
   const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
   const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
@@ -7736,7 +8128,7 @@ function TeamBuilderTab({
     const brazilBonusPct = brazilPlayerCount * 2;
     const spainPlayerCount = isLaRoja ? starterPlayers.filter(p => p.nationality === 'スペイン').length : 0;
     const spainBonusPct = spainPlayerCount * 2;
-    const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : 0);
+    const nationExtraPct = isSelecao ? brazilBonusPct : isLaRoja ? spainBonusPct : 0;
 
     // 各能力ボーナスごとの加算量（各選手・各能力ごとに %UP 後に Math.floor で端数切捨て）計算
     const statBuffBreakdown = [];
@@ -7983,6 +8375,12 @@ function TeamBuilderTab({
     name: "sparkles",
     className: "w-4 h-4"
   }), "⚡ 位置コンボ優先 自動最適編成"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleUnifiedPolicyAutoBuild,
+    className: "px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs sm:text-sm shadow-lg shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "shield",
+    className: "w-4 h-4"
+  }), "🛡️ ポリシー統一 自動最適編成"), /*#__PURE__*/React.createElement("button", {
     onClick: handleClearSquad,
     className: "px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-slate-700 text-xs sm:text-sm font-bold flex items-center gap-1 transition-colors cursor-pointer"
   }, /*#__PURE__*/React.createElement(Icon, {
@@ -8231,10 +8629,14 @@ function TeamBuilderTab({
       }, /*#__PURE__*/React.createElement("span", {
         className: "flex items-center gap-1.5 text-amber-300"
       }, /*#__PURE__*/React.createElement("span", null, "⚡"), /*#__PURE__*/React.createElement("span", null, "対象能力別の加算ボーナス内訳")), comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
-        className: "text-xs text-amber-300 font-bold"
-      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: "ブラジル" }), " ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "% 適用中)"), comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
-        className: "text-xs text-amber-300 font-bold"
-      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: "スペイン" }), " スペイン選手 ", comboValidation.spainPlayerCount, "名 (+", comboValidation.spainBonusPct, "% 適用中)")), /*#__PURE__*/React.createElement("div", {
+        className: "text-xs text-amber-300 font-bold flex items-center gap-1"
+      }, /*#__PURE__*/React.createElement(FlagIcon, {
+        nationality: "ブラジル"
+      }), " ブラジル選手 ", comboValidation.brazilPlayerCount, "名 (+", comboValidation.brazilBonusPct, "% 適用中)"), comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && /*#__PURE__*/React.createElement("span", {
+        className: "text-xs text-amber-300 font-bold flex items-center gap-1"
+      }, /*#__PURE__*/React.createElement(FlagIcon, {
+        nationality: "スペイン"
+      }), " スペイン選手 ", comboValidation.spainPlayerCount, "名 (+", comboValidation.spainBonusPct, "% 適用中)")), /*#__PURE__*/React.createElement("div", {
         className: "grid grid-cols-2 sm:grid-cols-4 gap-2.5"
       }, comboValidation.statBuffBreakdown.map((sb, idx) => /*#__PURE__*/React.createElement("div", {
         key: idx,
@@ -8246,10 +8648,13 @@ function TeamBuilderTab({
       }, "+", sb.effectivePct, "%")), /*#__PURE__*/React.createElement("strong", {
         className: "text-lg sm:text-xl font-num font-black text-[#00FF66] block"
       }, "+", sb.gainedOverall.toLocaleString())))))), activeComboData.specialNote && /*#__PURE__*/React.createElement("div", {
-        className: `p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${(comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) ? 'bg-amber-500/10 border-amber-500/30 text-amber-200' : 'bg-slate-950 border-slate-800 text-slate-300'}`
+        className: `p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 || comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 ? 'bg-amber-500/10 border-amber-500/30 text-amber-200' : 'bg-slate-950 border-slate-800 text-slate-300'}`
       }, /*#__PURE__*/React.createElement("div", {
         className: "flex items-center gap-2"
-      }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: comboValidation.isLaRoja ? "スペイン" : "ブラジル", className: "w-5 h-3.5 object-cover rounded-xs shadow-sm" }), /*#__PURE__*/React.createElement("span", {
+      }, /*#__PURE__*/React.createElement(FlagIcon, {
+        nationality: comboValidation.isLaRoja ? 'スペイン' : 'ブラジル',
+        className: "w-5 h-3.5 object-cover rounded-xs shadow-sm"
+      }), /*#__PURE__*/React.createElement("span", {
         className: "font-bold"
       }, activeComboData.specialNote)), comboValidation.isSelecao && /*#__PURE__*/React.createElement("span", {
         className: "px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow"
@@ -8316,6 +8721,29 @@ function TeamBuilderTab({
       }, "各選手 総合力 1.05倍")));
     }
   })(), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center justify-between gap-2.5 flex-wrap p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 shadow-lg my-1"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "text-xs font-bold text-slate-300 flex items-center gap-1"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-3.5 h-3.5 text-amber-400"
+  }), "自動最適編成:")), /*#__PURE__*/React.createElement("div", {
+    className: "flex items-center gap-2 flex-wrap"
+  }, /*#__PURE__*/React.createElement("button", {
+    onClick: handleAutoBuild,
+    className: "px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs shadow-md shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "sparkles",
+    className: "w-3.5 h-3.5"
+  }), "⚡ 位置コンボ優先 自動最適編成"), /*#__PURE__*/React.createElement("button", {
+    onClick: handleUnifiedPolicyAutoBuild,
+    className: "px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs shadow-md shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: "shield",
+    className: "w-3.5 h-3.5"
+  }), "🛡️ ポリシー統一 自動最適編成"))), /*#__PURE__*/React.createElement("div", {
     className: "relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950"
   }, /*#__PURE__*/React.createElement("div", {
     className: "absolute inset-0 pointer-events-none opacity-25"
@@ -8517,9 +8945,14 @@ function TeamBuilderTab({
       className: "font-black text-sm text-white truncate mt-0.5"
     }, p.name), /*#__PURE__*/React.createElement("div", {
       className: "text-[10px] text-slate-400 truncate"
-    }, p.playStyle || 'スタイル未設定', " ", /*#__PURE__*/React.createElement("span", {
+    }, /*#__PURE__*/React.createElement("span", null, p.playStyle || 'スタイル未設定'), " ", /*#__PURE__*/React.createElement("span", {
       className: "text-[#00FF66] font-bold"
-    }, "LV.", p.playStyleLevel), " ", p.nationality && /*#__PURE__*/React.createElement("span", { className: "inline-flex items-center gap-1 font-medium text-slate-300" }, /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(FlagIcon, { nationality: p.nationality, className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" }), /*#__PURE__*/React.createElement("span", null, p.nationality))))), /*#__PURE__*/React.createElement("div", {
+    }, "LV.", p.playStyleLevel), " ", p.nationality && /*#__PURE__*/React.createElement("span", {
+      className: "inline-flex items-center gap-1 font-medium text-slate-300"
+    }, /*#__PURE__*/React.createElement("span", null, "|"), /*#__PURE__*/React.createElement(FlagIcon, {
+      nationality: p.nationality,
+      className: "w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60"
+    }), /*#__PURE__*/React.createElement("span", null, p.nationality))))), /*#__PURE__*/React.createElement("div", {
       className: "text-right flex-shrink-0"
     }, /*#__PURE__*/React.createElement("div", {
       className: "text-xs text-slate-400 font-bold"
@@ -8852,8 +9285,11 @@ function PlayerDetailModal({
   }, adjustedPlayer.rarity), /*#__PURE__*/React.createElement("span", null, "•"), /*#__PURE__*/React.createElement("span", null, adjustedPlayer.mainPosition, adjustedPlayer.subPositions && adjustedPlayer.subPositions.length > 0 ? ` / ${adjustedPlayer.subPositions.join(' / ')}` : '')), /*#__PURE__*/React.createElement("h2", {
     className: "text-2xl md:text-3xl font-black text-white"
   }, adjustedPlayer.name), /*#__PURE__*/React.createElement("div", {
-    className: "text-xs text-slate-400 font-medium"
-  }, /*#__PURE__*/React.createElement("span", { className: "flex items-center justify-center gap-1.5" }, /*#__PURE__*/React.createElement(FlagIcon, { nationality: adjustedPlayer.nationality, className: "w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm" }), /*#__PURE__*/React.createElement("span", null, adjustedPlayer.nationality))))), /*#__PURE__*/React.createElement("button", {
+    className: "text-xs text-slate-300 font-bold flex items-center justify-center gap-1"
+  }, /*#__PURE__*/React.createElement(FlagIcon, {
+    nationality: adjustedPlayer.nationality,
+    className: "w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm"
+  }), /*#__PURE__*/React.createElement("span", null, adjustedPlayer.nationality)))), /*#__PURE__*/React.createElement("button", {
     onClick: onClose,
     className: "p-1 text-slate-400 hover:text-white"
   }, /*#__PURE__*/React.createElement(Icon, {

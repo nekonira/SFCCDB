@@ -4383,7 +4383,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
         { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
         { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' }
       ]
     },
     {
@@ -4585,7 +4585,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
     return {};
   });
-  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : false);
+  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : true);
   const [activeSlotModal, setActiveSlotModal] = useState(null);
   const [filterPos, setFilterPos] = useState('ALL');
   const [modalSearchText, setModalSearchText] = useState('');
@@ -4747,73 +4747,473 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     return map;
   }, [benchMap, builderMaxEnhanced]);
 
-  // フォーメーション切替時ポリシー自動マッチング
-  const handleSelectFormation = (fmt) => {
-    setSelectedFormation(fmt);
-    if (fmt.comboId === 'selecao70') {
-      setTeamPolicy('リアクション');
-    }
-  };
+  // 全パターン最高総合力判定付き 自動最適編成コア関数
+  const runAutoBuildForFormation = (fmtToBuild) => {
+    const targetFmt = fmtToBuild || selectedFormation;
+    if (!targetFmt) return;
 
-  // 自動最強編成ロジック (ベンチ12名対応)
-  const handleAutoBuild = () => {
-    const sorted = [...players].sort((a, b) => {
-      const pA = builderMaxEnhanced ? getAdjustedPlayer(a, '☆5', true) : a;
-      const pB = builderMaxEnhanced ? getAdjustedPlayer(b, '☆5', true) : b;
-      return (pB.overall || 0) - (pA.overall || 0);
-    });
-    const newSquad = {};
-    const usedIds = new Set();
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
 
-    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
+    const NATIONAL_TEAM_BONUS_COMBOS = {
+      'selecao70': 'ブラジル',
+      'laRoja26': 'スペイン'
+    };
 
-    if (targetCombo) {
-      setTeamPolicy(targetCombo.policy);
+    const buildSquadForPolicy = (pol, forceCombo) => {
+      const activeCombo = (forceCombo && targetCombo) ? targetCombo : null;
+      const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
 
-      // 指定位置条件 (RCB, RDM, LW, CF) を満たす選手を最優先セット
-      selectedFormation.slots.forEach(slot => {
-        if (slot.requiredStyle) {
-          const candidate = sorted.find(p => {
-            if (usedIds.has(p.id)) return false;
-            return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+      const newSquad = {};
+      const usedIds = new Set();
+
+      const calcExactOverall = (sq) => {
+        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
+        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+
+        let totalComboStatBonus = 0;
+        if (activeCombo) {
+          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+            const pInSlot = sq[s.id];
+            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
           });
+          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+          if (allFulfilled && activeCombo.buffs) {
+            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+            const nEx = natCnt * 2;
 
-          if (candidate) {
-            newSquad[slot.id] = candidate;
-            usedIds.add(candidate.id);
+            activeCombo.buffs.forEach(b => {
+              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+              const effectivePct = basePct + nEx;
+              starters.forEach(p => {
+                const statVal = getPlayerStatValue(p, b.name);
+                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
+              });
+            });
           }
         }
+        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+      };
+
+      const isPosEligible = (p, slotPos) => {
+        if (!p) return false;
+        return p.mainPosition === slotPos || (p.subPositions && p.subPositions.includes(slotPos));
+      };
+
+      const evaluateCandidateForSlot = (slot, candidate) => {
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 2000 : 1000;
+        const isTargetNation = targetNation && candidate.nationality === targetNation;
+        const nationScore = isTargetNation ? 500 : 0;
+
+        newSquad[slot.id] = candidate;
+        const teamOverall = calcExactOverall(newSquad);
+        delete newSquad[slot.id];
+
+        return teamOverall * 10 + posScore + nationScore;
+      };
+
+      if (activeCombo) {
+        targetFmt.slots.forEach(slot => {
+          if (slot.requiredStyle) {
+            const candidates = players.filter(p => {
+              if (usedIds.has(p.id)) return false;
+              if (!isPosEligible(p, slot.pos)) return false;
+              return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+            });
+            if (candidates.length > 0) {
+              const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+              scored.sort((a, b) => b.score - a.score);
+              const best = scored[0].player;
+              newSquad[slot.id] = best;
+              usedIds.add(best.id);
+            }
+          }
+        });
+      }
+
+      targetFmt.slots.forEach(slot => {
+        if (newSquad[slot.id]) return;
+        const candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+        if (candidates.length === 0) return;
+        const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+        scored.sort((a, b) => b.score - a.score);
+        const best = scored[0].player;
+        newSquad[slot.id] = best;
+        usedIds.add(best.id);
       });
-    }
 
-    // 残りのスロットに総合力順で割り当て
-    selectedFormation.slots.forEach(slot => {
-      if (newSquad[slot.id]) return;
-      const match = sorted.find(p => !usedIds.has(p.id) && (p.mainPosition === slot.pos || (p.subPositions && p.subPositions.includes(slot.pos))));
-      if (match) {
-        newSquad[slot.id] = match;
-        usedIds.add(match.id);
-      } else {
-        const fallback = sorted.find(p => !usedIds.has(p.id));
-        if (fallback) {
-          newSquad[slot.id] = fallback;
-          usedIds.add(fallback.id);
+      let bestSquadOverall = calcExactOverall(newSquad);
+      let improved = true;
+      let pass = 0;
+
+      while (improved && pass < 10) {
+        improved = false;
+        pass++;
+
+        targetFmt.slots.forEach(slot => {
+          let currentP = newSquad[slot.id];
+          if (!currentP) return;
+          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+
+          unusedCandidates.forEach(candP => {
+            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) return;
+            if (!isPosEligible(candP, slot.pos)) return;
+
+            newSquad[slot.id] = candP;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              usedIds.delete(currentP.id);
+              usedIds.add(candP.id);
+              currentP = candP;
+              improved = true;
+            } else {
+              newSquad[slot.id] = currentP;
+            }
+          });
+        });
+
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id >= slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
+
+            if (pAEligibleB && pBEligibleA) {
+              newSquad[slotA.id] = pB;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                improved = true;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+
+            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+            for (const cand of unusedCandidates) {
+              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+              if (!candEligibleA) continue;
+
+              newSquad[slotA.id] = cand;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                usedIds.delete(pB.id);
+                usedIds.add(cand.id);
+                improved = true;
+                break;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+      }
+
+      const getEffVal = p => {
+        const adjP = getAdjustedPlayer(p, '☆5', true);
+        const base = adjP.overall || 0;
+        const isMatch = adjP.policy === pol;
+        return isMatch ? Math.floor(base * 1.05) : base;
+      };
+
+      const remaining = players
+        .filter(p => !usedIds.has(p.id))
+        .sort((a, b) => getEffVal(b) - getEffVal(a));
+
+      const newBench = {};
+      for (let i = 0; i < Math.min(12, remaining.length); i++) {
+        newBench[i] = remaining[i];
+        usedIds.add(remaining[i].id);
+      }
+
+      return {
+        policy: pol,
+        squad: newSquad,
+        bench: newBench,
+        finalTeamOverall: bestSquadOverall
+      };
+    };
+
+    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+    const bestResult = buildSquadForPolicy(targetPolicy, true);
+
+    setBuilderMaxEnhanced(true);
+    setTeamPolicy(bestResult.policy);
+    setSquadMap(bestResult.squad);
+    setBenchMap(bestResult.bench);
+  };
+
+  const handleAutoBuild = () => {
+    runAutoBuildForFormation(selectedFormation);
+  };
+
+  // 🛡️ ポリシー統一 自動最適編成ロジック (11名全スタメンのポリシーを100%完全一致＋フォメコン発動での最高総合力選出)
+  const handleUnifiedPolicyAutoBuild = () => {
+    const targetFmt = selectedFormation;
+    if (!targetFmt) return;
+
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
+
+    const NATIONAL_TEAM_BONUS_COMBOS = {
+      'selecao70': 'ブラジル',
+      'laRoja26': 'スペイン'
+    };
+
+    const buildUnifiedSquadForPolicy = (pol) => {
+      const activeCombo = targetCombo;
+      const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
+
+      const newSquad = {};
+      const usedIds = new Set();
+
+      const calcExactOverall = (sq) => {
+        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
+        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+
+        let totalComboStatBonus = 0;
+        if (activeCombo) {
+          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+            const pInSlot = sq[s.id];
+            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
+          });
+          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+          if (allFulfilled && activeCombo.buffs) {
+            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+            const nEx = natCnt * 2;
+
+            activeCombo.buffs.forEach(b => {
+              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+              const effectivePct = basePct + nEx;
+              starters.forEach(p => {
+                const statVal = getPlayerStatValue(p, b.name);
+                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
+              });
+            });
+          }
         }
-      }
-    });
+        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+      };
 
-    // ベンチ12名
-    const newBench = {};
-    for (let i = 0; i < 12; i++) {
-      const benchPlayer = sorted.find(p => !usedIds.has(p.id));
-      if (benchPlayer) {
-        newBench[i] = benchPlayer;
-        usedIds.add(benchPlayer.id);
+      const isPosEligible = (p, slotPos) => {
+        if (!p) return false;
+        return p.mainPosition === slotPos || (p.subPositions && p.subPositions.includes(slotPos));
+      };
+
+      const evaluateCandidateForSlot = (slot, candidate) => {
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 2000 : 1000;
+        const isTargetNation = targetNation && candidate.nationality === targetNation;
+        const nationScore = isTargetNation ? 500 : 0;
+        const isPolicyMatch = candidate.policy === pol;
+        const policyScore = isPolicyMatch ? 10000 : 0;
+
+        newSquad[slot.id] = candidate;
+        const teamOverall = calcExactOverall(newSquad);
+        delete newSquad[slot.id];
+
+        return teamOverall * 10 + policyScore + posScore + nationScore;
+      };
+
+      if (activeCombo) {
+        targetFmt.slots.forEach(slot => {
+          if (slot.requiredStyle) {
+            let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+            if (candidates.length === 0) {
+              candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+            }
+            if (candidates.length > 0) {
+              const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+              scored.sort((a, b) => b.score - a.score);
+              const best = scored[0].player;
+              newSquad[slot.id] = best;
+              usedIds.add(best.id);
+            }
+          }
+        });
       }
+
+      targetFmt.slots.forEach(slot => {
+        if (newSquad[slot.id]) return;
+        let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos));
+        if (candidates.length === 0) {
+          candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+        }
+        if (candidates.length === 0) return;
+        const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+        scored.sort((a, b) => b.score - a.score);
+        const best = scored[0].player;
+        newSquad[slot.id] = best;
+        usedIds.add(best.id);
+      });
+
+      let bestSquadOverall = calcExactOverall(newSquad);
+      let improved = true;
+      let pass = 0;
+
+      while (improved && pass < 10) {
+        improved = false;
+        pass++;
+
+        targetFmt.slots.forEach(slot => {
+          let currentP = newSquad[slot.id];
+          if (!currentP) return;
+          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+
+          for (const candP of unusedCandidates) {
+            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) continue;
+            if (!isPosEligible(candP, slot.pos)) continue;
+            if (currentP.policy === pol && candP.policy !== pol) continue;
+
+            newSquad[slot.id] = candP;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              usedIds.delete(currentP.id);
+              usedIds.add(candP.id);
+              currentP = candP;
+              improved = true;
+              break;
+            } else {
+              newSquad[slot.id] = currentP;
+            }
+          }
+        });
+
+        targetFmt.slots.forEach(slotA => {
+          let pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id >= slotB.id) return;
+            let pB = newSquad[slotB.id];
+            if (!pB) return;
+
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
+
+            if (pAEligibleB && pBEligibleA) {
+              newSquad[slotA.id] = pB;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                improved = true;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+
+        targetFmt.slots.forEach(slotA => {
+          let pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            let pB = newSquad[slotB.id];
+            if (!pB) return;
+
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+
+            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+            for (const cand of unusedCandidates) {
+              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+              if (!candEligibleA) continue;
+              if (pB.policy === pol && cand.policy !== pol) continue;
+
+              newSquad[slotA.id] = cand;
+              newSquad[slotB.id] = pA;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                usedIds.delete(pB.id);
+                usedIds.add(cand.id);
+                improved = true;
+                break;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+              }
+            }
+          });
+        });
+      }
+
+      const getEffVal = p => {
+        const adjP = getAdjustedPlayer(p, '☆5', true);
+        const base = adjP.overall || 0;
+        const isMatch = adjP.policy === pol;
+        return isMatch ? Math.floor(base * 1.05) : base;
+      };
+
+      const remaining = players
+        .filter(p => !usedIds.has(p.id))
+        .sort((a, b) => getEffVal(b) - getEffVal(a));
+
+      const newBench = {};
+      for (let i = 0; i < Math.min(12, remaining.length); i++) {
+        newBench[i] = remaining[i];
+        usedIds.add(remaining[i].id);
+      }
+
+      const startersList = Object.values(newSquad).filter(Boolean);
+      const unifiedPolicyCount = startersList.filter(p => p.policy === pol).length;
+
+      return {
+        policy: pol,
+        squad: newSquad,
+        bench: newBench,
+        unifiedPolicyCount,
+        finalTeamOverall: bestSquadOverall
+      };
+    };
+
+    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+    const bestResult = buildUnifiedSquadForPolicy(targetPolicy);
+
+    setBuilderMaxEnhanced(true);
+    setTeamPolicy(bestResult.policy);
+    setSquadMap(bestResult.squad);
+    setBenchMap(bestResult.bench);
+  };
+
+  const handleSelectFormation = (fmt) => {
+    setSelectedFormation(fmt);
+    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === fmt.id || c.id === fmt.comboId);
+    if (targetCombo && targetCombo.policy) {
+      setTeamPolicy(targetCombo.policy);
     }
-
-    setSquadMap(newSquad);
-    setBenchMap(newBench);
   };
 
   const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
@@ -5130,6 +5530,13 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             >
               <Icon name="sparkles" className="w-4 h-4" />
               ⚡ 位置コンボ優先 自動最適編成
+            </button>
+            <button
+              onClick={handleUnifiedPolicyAutoBuild}
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs sm:text-sm shadow-lg shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+            >
+              <Icon name="shield" className="w-4 h-4" />
+              🛡️ ポリシー統一 自動最適編成
             </button>
             <button
               onClick={handleClearSquad}
@@ -5659,6 +6066,32 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
           );
         }
       })()}
+
+      {/* ピッチ直上 自動最適編成ボタンバー (位置コンボ優先 ＆ ポリシー統一) */}
+      <div className="flex items-center justify-between gap-2.5 flex-wrap p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 shadow-lg my-1">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold text-slate-300 flex items-center gap-1">
+            <Icon name="sparkles" className="w-3.5 h-3.5 text-amber-400" />
+            自動最適編成:
+          </span>
+        </div>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={handleAutoBuild}
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs shadow-md shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+          >
+            <Icon name="sparkles" className="w-3.5 h-3.5" />
+            ⚡ 位置コンボ優先 自動最適編成
+          </button>
+          <button
+            onClick={handleUnifiedPolicyAutoBuild}
+            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs shadow-md shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+          >
+            <Icon name="shield" className="w-3.5 h-3.5" />
+            🛡️ ポリシー統一 自動最適編成
+          </button>
+        </div>
+      </div>
 
       {/* サッカーピッチ ＆ ピッチ上スロット (CB-GK間隔ゆったり調整) */}
       <div className="relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950">

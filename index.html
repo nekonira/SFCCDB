@@ -4,74 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
-  
-  <!-- React & React DOM -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Custom Loading Styles -->
+
+
+  <!-- Local Libraries -->
+  <script src="./src/lib/react.min.js"></script>
+  <script src="./src/lib/react-dom.min.js"></script>
+  <script src="./src/lib/tailwind.js"></script>
+
   <style>
-    @keyframes app-spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    @keyframes app-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-    .app-loading-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      background-color: #070a10;
-      color: #f1f5f9;
-      font-family: system-ui, -apple-system, sans-serif;
-    }
-    .app-loading-spinner {
-      width: 56px;
-      height: 56px;
-      border: 4px solid rgba(56, 189, 248, 0.15);
-      border-top-color: #38bdf8;
-      border-radius: 50%;
-      animation: app-spin 0.8s linear infinite;
-      margin-bottom: 24px;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
-    }
-    .app-loading-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #38bdf8;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-      animation: app-pulse 2s infinite ease-in-out;
-    }
-    .app-loading-subtext {
-      font-size: 0.9rem;
-      color: #94a3b8;
-    }
+    body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
+    .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
+    .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); }
   </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7254824656295291"
-     crossorigin="anonymous"></script>
 </head>
 <body class="bg-[#070a10] text-slate-100 min-h-screen">
-  <div id="root">
-    <div class="app-loading-container">
-      <div class="app-loading-spinner"></div>
-      <div class="app-loading-title">サカつく2026 データベース</div>
-      <div class="app-loading-subtext">選手データ・画像を読み込み中... しばらくお待ちください</div>
-    </div>
-  </div>
+  <div id="root"></div>
 
-  <!-- 1. All Image Data Files (383 Image Files) -->
+  <!-- 1. Player Photos (145 Image Files) -->
   <script src="./src/data/ahnjunghwanhaifuImage.js"></script>
   <script src="./src/data/akanji2026Image.js"></script>
   <script src="./src/data/akeImage.js"></script>
@@ -160,8 +109,8 @@
   <script src="./src/data/hayashiRyoheiBook2Image.js"></script>
   <script src="./src/data/hayashiRyoheiBookImage.js"></script>
   <script src="./src/data/hidano2026Image.js"></script>
-  <script src="./src/data/higashiImage.js"></script>
   <script src="./src/data/higashiguchiImage.js"></script>
+  <script src="./src/data/higashiImage.js"></script>
   <script src="./src/data/himenoMakoto2026Image.js"></script>
   <script src="./src/data/hiratsukaGift2026Image.js"></script>
   <script src="./src/data/hirokiitoImage.js"></script>
@@ -221,9 +170,9 @@
   <script src="./src/data/kensukenagai2025Image.js"></script>
   <script src="./src/data/kida2026Image.js"></script>
   <script src="./src/data/kimImage.js"></script>
+  <script src="./src/data/kimitonono2025Image.js"></script>
   <script src="./src/data/kimJinHyeon2026Image.js"></script>
   <script src="./src/data/kimMoonHwanImage.js"></script>
-  <script src="./src/data/kimitonono2025Image.js"></script>
   <script src="./src/data/kimnamilhaifuImage.js"></script>
   <script src="./src/data/kimuraTakaya2026Image.js"></script>
   <script src="./src/data/kiyotake2026Image.js"></script>
@@ -244,12 +193,12 @@
   <script src="./src/data/kvaratskheliaImage.js"></script>
   <script src="./src/data/lautaroImage.js"></script>
   <script src="./src/data/leeChungYong2026Image.js"></script>
+  <script src="./src/data/leedonggyeong2025Image.js"></script>
   <script src="./src/data/leeDongJun2026Image.js"></script>
   <script src="./src/data/leeHuiGyun2026Image.js"></script>
   <script src="./src/data/leeImage.js"></script>
-  <script src="./src/data/leeMyungJaeImage.js"></script>
-  <script src="./src/data/leedonggyeong2025Image.js"></script>
   <script src="./src/data/leekinwoImage.js"></script>
+  <script src="./src/data/leeMyungJaeImage.js"></script>
   <script src="./src/data/lennartMoserImage.js"></script>
   <script src="./src/data/leoCeara2026Image.js"></script>
   <script src="./src/data/leoCearaImage.js"></script>
@@ -272,9 +221,9 @@
   <script src="./src/data/masaakiGotoImage.js"></script>
   <script src="./src/data/matheusBueno2026Image.js"></script>
   <script src="./src/data/matheusImage.js"></script>
+  <script src="./src/data/matheusjesus2025Image.js"></script>
   <script src="./src/data/matheusMoraes2026Image.js"></script>
   <script src="./src/data/matheusSavio2026Image.js"></script>
-  <script src="./src/data/matheusjesus2025Image.js"></script>
   <script src="./src/data/matsubaraKo2026Image.js"></script>
   <script src="./src/data/matsuhashiYuan2026Image.js"></script>
   <script src="./src/data/mckennieImage.js"></script>
@@ -286,9 +235,9 @@
   <script src="./src/data/mitoma2526Image.js"></script>
   <script src="./src/data/mitomajpnImage.js"></script>
   <script src="./src/data/miuraKazuyoshi2026Image.js"></script>
-  <script src="./src/data/moJaeHyeon2026Image.js"></script>
   <script src="./src/data/mochizuki2026Image.js"></script>
   <script src="./src/data/modricImage.js"></script>
+  <script src="./src/data/moJaeHyeon2026Image.js"></script>
   <script src="./src/data/molinaImage.js"></script>
   <script src="./src/data/morishigeImage.js"></script>
   <script src="./src/data/mugosa2026Image.js"></script>
@@ -333,8 +282,8 @@
   <script src="./src/data/pramanbela2026Image.js"></script>
   <script src="./src/data/premierLeagueFanBook2026Image.js"></script>
   <script src="./src/data/pulisic2026Image.js"></script>
-  <script src="./src/data/rafaelEliasImage.js"></script>
   <script src="./src/data/rafaelelias2025Image.js"></script>
+  <script src="./src/data/rafaelEliasImage.js"></script>
   <script src="./src/data/raphinhaImage.js"></script>
   <script src="./src/data/reecejamesImage.js"></script>
   <script src="./src/data/reijndersDist2026Image.js"></script>
@@ -349,8 +298,8 @@
   <script src="./src/data/ryoheihayashiImage.js"></script>
   <script src="./src/data/ryomawatanabe2025Image.js"></script>
   <script src="./src/data/sabbagImage.js"></script>
-  <script src="./src/data/sakaImage.js"></script>
   <script src="./src/data/sakai2026Image.js"></script>
+  <script src="./src/data/sakaImage.js"></script>
   <script src="./src/data/sakuragawa2026Image.js"></script>
   <script src="./src/data/salahImage.js"></script>
   <script src="./src/data/salibaImage.js"></script>
@@ -377,10 +326,11 @@
   <script src="./src/data/somaImage.js"></script>
   <script src="./src/data/somaYuki2026Image.js"></script>
   <script src="./src/data/sommerImage.js"></script>
-  <script src="./src/data/sonMlsImage.js"></script>
   <script src="./src/data/songBumKeunImage.js"></script>
   <script src="./src/data/songImage.js"></script>
+  <script src="./src/data/songminkyu2025Image.js"></script>
   <script src="./src/data/sonheungminImage.js"></script>
+  <script src="./src/data/sonMlsImage.js"></script>
   <script src="./src/data/sorlothImage.js"></script>
   <script src="./src/data/soyafujiwara2025Image.js"></script>
   <script src="./src/data/spinazzolaImage.js"></script>
@@ -390,8 +340,8 @@
   <script src="./src/data/suspeita2026Image.js"></script>
   <script src="./src/data/suzukiImage.js"></script>
   <script src="./src/data/suzukiYoshinori2026Image.js"></script>
-  <script src="./src/data/suzukiYuto2026Image.js"></script>
   <script src="./src/data/suzukiyuma2025Image.js"></script>
+  <script src="./src/data/suzukiYuto2026Image.js"></script>
   <script src="./src/data/svendBrodersen2026Image.js"></script>
   <script src="./src/data/takahashiDaigo2026Image.js"></script>
   <script src="./src/data/takashiusami2025Image.js"></script>
@@ -404,9 +354,9 @@
   <script src="./src/data/tanakaPauloBookImage.js"></script>
   <script src="./src/data/tanakaPauloJunichi2026Image.js"></script>
   <script src="./src/data/tanakaSora2026Image.js"></script>
-  <script src="./src/data/taniKosei2026Image.js"></script>
   <script src="./src/data/taniguchiHiroto2026Image.js"></script>
   <script src="./src/data/taniguchiImage.js"></script>
+  <script src="./src/data/taniKosei2026Image.js"></script>
   <script src="./src/data/tanimuraKaina2026Image.js"></script>
   <script src="./src/data/tatsuta2026Image.js"></script>
   <script src="./src/data/tchouameniImage.js"></script>
@@ -456,11 +406,13 @@
   <script src="./src/data/yutonagatomo2025Image.js"></script>
   <script src="./src/data/yuyaosako2025Image.js"></script>
 
-  <script src="./src/data/songminkyu2025Image.js"></script>
-
-  <!-- 2. Application Core Data & React Bundle -->
+  <!-- 2. Full Player Database -->
   <script src="./src/data/mockData.js"></script>
-  <script src="./src/app.js"></script>
-  <script src="./src/main.js"></script>
+
+  <!-- 3. Pure Transpiled React Application -->
+  <script src="./src/app.js?v=1788152691583"></script>
+
+  <!-- 4. React App Mount Script -->
+  <script src="./src/main.js?v=1788152691583"></script>
 </body>
 </html>
