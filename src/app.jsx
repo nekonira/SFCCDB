@@ -109,6 +109,18 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "gq08QLFPiF8",
+    "title": "【まさかの結果】ポリシー別フォメコン使用率ランキング【サカつく2026】フォーメーションコンボ使用比率大調査",
+    "thumbnail": "https://i.ytimg.com/vi/gq08QLFPiF8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=gq08QLFPiF8"
+  },
+  {
+    "id": "tinj05LdBj8",
+    "title": "【超絶性能】新フォメコン『ラ・ロハ’26』徹底人選解説【サカつく2026】理論値最強メンバー、スキル構成解説、ポジション別適性選手など",
+    "thumbnail": "https://i.ytimg.com/vi/tinj05LdBj8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=tinj05LdBj8"
+  },
+  {
     "id": "wbuRTGvbpYk",
     "title": "【引く前に見て】限定スペインガチャ徹底解説！ヤマルが超ぶっ壊れ性能【サカつく2026】クバルシ、ガビ、ウナイ・シモン",
     "thumbnail": "https://i.ytimg.com/vi/wbuRTGvbpYk/hqdefault.jpg",
@@ -155,78 +167,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
     "thumbnail": "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
-  },
-  {
-    "id": "L6wiFTj1-_I",
-    "title": "【引く前に見て】限定ガチャ徹底解説！物議を醸すリアクション大強化時代突入【サカつく2026】ギマランイス、ハフィーニャ、ロドリゴ、ブレーメル",
-    "thumbnail": "https://i.ytimg.com/vi/L6wiFTj1-_I/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=L6wiFTj1-_I"
-  },
-  {
-    "id": "pqmcNKbWNyo",
-    "title": "【衝撃】GKにベルベットフィードを覚えさせてみた結果をご報告いたします【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/pqmcNKbWNyo/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=pqmcNKbWNyo"
-  },
-  {
-    "id": "unixgXGcOco",
-    "title": "【初心者必見】リアルタイム対戦のコツ『1VS1』徹底解説【サカつく2026】　駆け引きのポイント、数値の秘密、最重要項目、豪華報酬など",
-    "thumbnail": "https://i.ytimg.com/vi/unixgXGcOco/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=unixgXGcOco"
-  },
-  {
-    "id": "19dFH-F1fyA",
-    "title": "【ぶっ壊れ】新フォメコン、『セレソン’70』徹底人選解説【サカつく2026】ペレ育成方法、ブラジル人選手、ポジション別ランキングなど",
-    "thumbnail": "https://i.ytimg.com/vi/19dFH-F1fyA/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=19dFH-F1fyA"
-  },
-  {
-    "id": "mLr4PRijhBg",
-    "title": "【引く前に見て】限定ガチャ徹底解説！ペレの能力値がヤバい！ヴィニシウスも強い!!! 無料ブラジル人選手ガチャも解説【サカつく2026】ミリトン、エデルソン、ガブリエウ・マガリャンイス、ジョアンペドロ",
-    "thumbnail": "https://i.ytimg.com/vi/mLr4PRijhBg/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=mLr4PRijhBg"
-  },
-  {
-    "id": "5DYUfVpv4GI",
-    "title": "【引く前に見て】新ガチャ徹底解説！無料配布影山優佳&新特練SSRがすごい【サカつく2026】サラー、オタメンディ、モイーズ・キーン、デスト",
-    "thumbnail": "https://i.ytimg.com/vi/5DYUfVpv4GI/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=5DYUfVpv4GI"
-  },
-  {
-    "id": "XAaNfUibPyE",
-    "title": "【完全網羅】ハーフアニバーサリー最新アップデート情報を総まとめ Ver.2.1【サカつく2026】ペレ登場、新フォメコン追加、SSR影山優佳配布、ブラジルガチャ、W杯イベント、シューズ強化リセットなど",
-    "thumbnail": "https://i.ytimg.com/vi/XAaNfUibPyE/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=XAaNfUibPyE"
-  },
-  {
-    "id": "mYgT5gcq-F8",
-    "title": "【引く前に見て】新ガチャ徹底解説！ベリンガムの能力値がヤバい！グヴァルディオル足速すぎ!!!【サカつく2026】バルデ、ダンテ",
-    "thumbnail": "https://i.ytimg.com/vi/mYgT5gcq-F8/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=mYgT5gcq-F8"
-  },
-  {
-    "id": "l68pj27IqOg",
-    "title": "【引く前に見て】新ガチャ徹底解説！香港レジェンド&無料配布特練カード【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/l68pj27IqOg/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=l68pj27IqOg"
-  },
-  {
-    "id": "uvwGRAXypnY",
-    "title": "【引く前に見て】新ガチャ徹底解説！インフレ加速!!! 新特練パーマーがやばい【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/uvwGRAXypnY/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=uvwGRAXypnY"
-  },
-  {
-    "id": "qZQI5X7Y6h0",
-    "title": "【引く前に見て】日本代表ガチャ徹底解説！驚異の排出率11％！鎌田、伊藤洋輝の能力値が凄い!!!【サカつく2026】三笘薫、伊東純也、上田綺世、中村敬斗、堂安律、佐野海舟、渡辺剛、谷口彰悟、鈴木彩艶",
-    "thumbnail": "https://i.ytimg.com/vi/qZQI5X7Y6h0/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=qZQI5X7Y6h0"
-  },
-  {
-    "id": "86LGDFNUVkA",
-    "title": "【完全網羅】メインストーリー外伝、攻略解説【サカつく2026】EXTRA STORY",
-    "thumbnail": "https://i.ytimg.com/vi/86LGDFNUVkA/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=86LGDFNUVkA"
   }
 ];
 
@@ -1520,47 +1460,70 @@ function App() {
     }
   }, []);
 
-      const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
+          const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
-    // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得
-    const playlistUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.youtube.com/playlist?list=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4');
-    fetch(playlistUrl)
-      .then(res => res.text())
-      .then(html => {
-        const matches = [...html.matchAll(/"videoId":"([a-zA-Z0-9_-]{11})"/g)];
-        const seen = new Set();
-        const videoIds = [];
-        matches.forEach(m => {
-          if (!seen.has(m[1])) {
-            seen.add(m[1]);
-            videoIds.push(m[1]);
+    // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得 (RSS json API + CORS proxy fallback)
+    const rssFeedUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4';
+    const rss2jsonUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssFeedUrl);
+
+    const decodeEntities = (str) => {
+      if (!str) return '';
+      return str
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+    };
+
+    fetch(rss2jsonUrl)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.status === 'ok' && data.items && data.items.length > 0) {
+          const fetched = data.items.map(item => {
+            const match = (item.link || '').match(/v=([a-zA-Z0-9_-]{11})/);
+            const id = match ? match[1] : '';
+            return {
+              id: id,
+              title: decodeEntities(item.title),
+              thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+              url: `https://www.youtube.com/watch?v=${id}`
+            };
+          }).filter(v => v.id);
+          if (fetched.length > 0) {
+            setYoutubeVideos(fetched);
           }
-        });
-        if (videoIds.length > 0) {
-          const topIds = videoIds.slice(0, 20);
-          Promise.all(topIds.map(id => 
-            fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`)
-              .then(r => r.json())
-              .then(data => ({
-                id: id,
-                title: data && data.title ? data.title : `サカつく2026 攻略動画 (${id})`,
-                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-                url: `https://www.youtube.com/watch?v=${id}`
-              }))
-              .catch(() => ({
-                id: id,
-                title: `サカつく2026 攻略動画 (${id})`,
-                thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-                url: `https://www.youtube.com/watch?v=${id}`
-              }))
-          )).then(fetched => {
+        } else {
+          throw new Error('rss2json returned non-ok status');
+        }
+      })
+      .catch(() => {
+        const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rssFeedUrl);
+        fetch(proxyUrl)
+          .then(res => res.text())
+          .then(xmlText => {
+            const parser = new DOMParser();
+            const xml = parser.parseFromString(xmlText, 'text/xml');
+            const entries = xml.querySelectorAll('entry');
+            const fetched = [];
+            entries.forEach(entry => {
+              const id = entry.querySelector('videoId')?.textContent || (entry.getElementsByTagName('yt:videoId')[0] ? entry.getElementsByTagName('yt:videoId')[0].textContent : null);
+              const title = entry.querySelector('title')?.textContent;
+              if (id && title) {
+                fetched.push({
+                  id: id,
+                  title: decodeEntities(title),
+                  thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+                  url: `https://www.youtube.com/watch?v=${id}`
+                });
+              }
+            });
             if (fetched.length > 0) {
               setYoutubeVideos(fetched);
             }
-          });
-        }
-      })
-      .catch(() => {});
+          })
+          .catch(() => {});
+      });
   }, []);
 
   const [managers, setManagers] = useState(() => INITIAL_MANAGERS);
