@@ -1,6 +1,15 @@
 const { useState, useEffect, useMemo, useRef, useCallback } = React;
 const POSITIONS = ["GK","CB","LFB","RFB","DM","LM","RM","AM","LW","RW","CF"];
 const POLICIES = ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'];
+const getPlayerRarities = (player) => {
+  if (!player) return ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
+  const baseR = player.baseRarity || player.rawPlayer?.baseRarity || player.rarity;
+  if (baseR === '☆2') {
+    return ['☆2', '☆2+', '☆2++', '☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
+  }
+  return ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
+};
+
 const RARITIES = ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
 const PLAY_STYLE_LEVELS = ["Ⅰ","Ⅱ","Ⅲ"];
 const PLAY_STYLES = [
@@ -553,6 +562,19 @@ function SideAdBanner({ position, isModal = false, showModalAd = true, refreshKe
   );
 }
 
+const OFFSETS_2STAR = {
+  '☆2': 0,
+  '☆2+': 8,
+  '☆2++': 16,
+  '☆3': 34,
+  '☆3+': 43,
+  '☆3++': 53,
+  '☆4': 74,
+  '☆4+': 84,
+  '☆4++': 95,
+  '☆5': 120
+};
+
 const OFFSETS = {
   '☆3': 0,
   '☆3+': 16,
@@ -995,7 +1017,8 @@ const PLAYER_IMAGE_MAP = {
   "p374": "CUBARSI_IMAGE",
   "p375": "GAVI_IMAGE",
   "p376": "SIMON_IMAGE",
-  "p377": "SONG_MIN_KYU_2025_IMAGE"
+  "p377": "SONG_MIN_KYU_2025_IMAGE",
+  "p378": "FLORIAN_THAUVIN_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -1182,9 +1205,16 @@ const getAdjustedPlayer = (player, targetRarity, useMaxEnhanced = false) => {
   const currentRarity = isHaifu ? (basePlayer.rarity || '☆3') : (targetRarity || basePlayer.simulatedRarity || basePlayer.rarity || '☆3');
   const baseRarity = basePlayer.baseRarity || '☆3';
 
-  const baseOffset = OFFSETS[baseRarity] !== undefined ? OFFSETS[baseRarity] : 0;
-  const targetOffset = OFFSETS[currentRarity] !== undefined ? OFFSETS[currentRarity] : baseOffset;
-  const diff = targetOffset - baseOffset;
+  let diff = 0;
+  if (baseRarity === '☆2') {
+    const baseOffset = OFFSETS_2STAR[baseRarity] !== undefined ? OFFSETS_2STAR[baseRarity] : 0;
+    const targetOffset = OFFSETS_2STAR[currentRarity] !== undefined ? OFFSETS_2STAR[currentRarity] : baseOffset;
+    diff = targetOffset - baseOffset;
+  } else {
+    const baseOffset = OFFSETS[baseRarity] !== undefined ? OFFSETS[baseRarity] : 0;
+    const targetOffset = OFFSETS[currentRarity] !== undefined ? OFFSETS[currentRarity] : baseOffset;
+    diff = targetOffset - baseOffset;
+  }
 
   const overallVal = basePlayer.overall || 0;
   const baseStatsObj = basePlayer.baseStats;
@@ -6683,7 +6713,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
           </div>
 
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1">
-            {RARITIES.map(r => {
+            {getPlayerRarities(adjustedPlayer || player).map(r => {
               const isActive = isMaxEnhanced ? r === '☆5' : selectedRarity === r;
               const isDisabled = isMaxEnhanced && r !== '☆5';
               return (

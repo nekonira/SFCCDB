@@ -19567,7 +19567,55 @@ window.INITIAL_PLAYERS = [
       { name: '冷静なフィニッシュ', rank: '銀', description: '発動条件：絶好調　/　決定力・冷静さUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p378',
+    name: 'フロリアン・トヴァン',
+    readingName: 'ふろりあんとゔぁん',
+    category: 'MF',
+    mainPosition: 'AM',
+    subPositions: [],
+    rarity: '☆2',
+    baseRarity: '☆2',
+    nationality: 'フランス',
+    policy: 'リアクション',
+    playStyle: 'パサーAM',
+    playStyleLevel: 'Ⅱ',
+    overall: 6131,
+    maxOverall: 13040,
+    baseStats: { shoot: 1261, pass: 1337, dribble: 1141, defense: 752, physical: 979, speed: 838 },
+    detailStats: {
+      shoot: { finishing: 449, power: 378, composure: 434 },
+      pass: { shortPass: 437, longPass: 445, accuracy: 455 },
+      dribble: { breakout: 462, keeping: 457, ballTouch: 222 },
+      defense: { tackle: 238, interception: 219, marking: 295 },
+      physical: { jumping: 274, contact: 328, stamina: 377 },
+      speed: { running: 417, agility: 421 }
+    },
+    maxEnhanced: {
+      overall: 13040,
+      baseStats: { shoot: 2431, pass: 2523, dribble: 2568, defense: 1849, physical: 2091, speed: 1578 },
+      detailStats: {
+        shoot: { finishing: 835, power: 764, composure: 832 },
+        pass: { shortPass: 847, longPass: 843, accuracy: 833 },
+        dribble: { breakout: 853, keeping: 860, ballTouch: 855 },
+        defense: { tackle: 620, interception: 624, marking: 605 },
+        physical: { jumping: 681, contact: 672, stamina: 738 },
+        speed: { running: 763, agility: 815 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '強引な中央突破', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：ドリブル時　/　突破力・キープ力UP' },
+    abilities: [
+      { name: '懐の深いパサー', rank: '銀', description: '発動条件：絶好調　/　ショートパス・キープ力UP' },
+      { name: '技巧派ドリブラー', rank: '銅', description: '発動条件：途中出場　/　突破力・ボールタッチUP' }
+    ],
+    avatarUrl: ''
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆2', '☆2+', '☆2++', '☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
