@@ -19582,7 +19582,7 @@ window.INITIAL_PLAYERS = [
     playStyle: 'パサーAM',
     playStyleLevel: 'Ⅱ',
     overall: 6131,
-    maxOverall: 13040,
+    maxOverall: 13890,
     baseStats: { shoot: 1261, pass: 1337, dribble: 1141, defense: 752, physical: 979, speed: 838 },
     detailStats: {
       shoot: { finishing: 449, power: 378, composure: 434 },
@@ -19593,15 +19593,15 @@ window.INITIAL_PLAYERS = [
       speed: { running: 417, agility: 421 }
     },
     maxEnhanced: {
-      overall: 13040,
-      baseStats: { shoot: 2431, pass: 2523, dribble: 2568, defense: 1849, physical: 2091, speed: 1578 },
+      overall: 13890,
+      baseStats: { shoot: 2581, pass: 2673, dribble: 2718, defense: 1999, physical: 2241, speed: 1678 },
       detailStats: {
-        shoot: { finishing: 835, power: 764, composure: 832 },
-        pass: { shortPass: 847, longPass: 843, accuracy: 833 },
-        dribble: { breakout: 853, keeping: 860, ballTouch: 855 },
-        defense: { tackle: 620, interception: 624, marking: 605 },
-        physical: { jumping: 681, contact: 672, stamina: 738 },
-        speed: { running: 763, agility: 815 }
+        shoot: { finishing: 885, power: 814, composure: 882 },
+        pass: { shortPass: 897, longPass: 893, accuracy: 883 },
+        dribble: { breakout: 903, keeping: 910, ballTouch: 905 },
+        defense: { tackle: 670, interception: 674, marking: 655 },
+        physical: { jumping: 731, contact: 722, stamina: 788 },
+        speed: { running: 813, agility: 865 }
       }
     },
     playTendencies: {
