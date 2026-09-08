@@ -3078,8 +3078,8 @@ function TeamBuilderTab({
     }],
     specialNote: 'フィールド上のブラジル人選手1人につき、上記4能力（決定力・パスカット・タックル・マーク）が追加で2%強化！'
   }, {
-    id: 'goldenZonen94',
-    name: "ゴーデンゾーネン'94",
+    id: 'goldenZonen95',
+    name: "ゴーデンゾーネン'95",
     rank: '金',
     policy: 'リアクション',
     formationId: '343c_golden',
@@ -4009,8 +4009,8 @@ function TeamBuilderTab({
     }]
   }, {
     id: '343c_golden',
-    name: "3-4-3C (ゴーデンゾーネン'94)",
-    comboId: 'goldenZonen94',
+    name: "3-4-3C (ゴーデンゾーネン'95)",
+    comboId: 'goldenZonen95',
     slots: [{
       id: 1,
       pos: 'GK',
