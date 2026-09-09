@@ -4,7 +4,7 @@ const path = require('path');
 const mockPath = path.join(__dirname, 'src', 'data', 'mockData.js');
 const code = fs.readFileSync(mockPath, 'utf-8');
 
-['ジャックナイフ', 'ボールキープ', '突破', 'ゴール前の嗅覚'].forEach(k => {
+['不敵', '不適', '至純', '精妙', '生成'].forEach(k => {
   const matches = [];
   const regex = new RegExp(`{\\s*name:\\s*['"][^'"]*${k}[^'"]*['"],\\s*rank:[^}]*}`, 'g');
   let m;
@@ -12,5 +12,5 @@ const code = fs.readFileSync(mockPath, 'utf-8');
     matches.push(m[0]);
   }
   console.log(`=== Keyword: ${k} (${matches.length} matches) ===`);
-  matches.slice(0, 3).forEach(m => console.log(m));
+  matches.forEach(m => console.log(m));
 });
