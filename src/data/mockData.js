@@ -19811,6 +19811,54 @@ window.INITIAL_PLAYERS = [
       { name: 'ワイドカッター', rank: '銅', description: '発動条件：好調　/　突破力・パスカットUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p383',
+    name: 'プジョン(配布)',
+    readingName: 'ぷじょん',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'スペイン',
+    policy: 'ポゼッション',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 5460,
+    maxOverall: 12733,
+    baseStats: { shoot: 875, pass: 833, dribble: 778, defense: 1132, physical: 1126, speed: 694 },
+    detailStats: {
+      shoot: { finishing: 289, power: 292, composure: 294 },
+      pass: { shortPass: 322, longPass: 294, accuracy: 217 },
+      dribble: { breakout: 230, keeping: 267, ballTouch: 281 },
+      defense: { tackle: 383, interception: 369, marking: 380 },
+      physical: { jumping: 381, contact: 361, stamina: 384 },
+      speed: { running: 335, agility: 359 }
+    },
+    maxEnhanced: {
+      overall: 12733,
+      baseStats: { shoot: 2099, pass: 2129, dribble: 2038, defense: 2463, physical: 2446, speed: 1558 },
+      detailStats: {
+        shoot: { finishing: 697, power: 700, composure: 702 },
+        pass: { shortPass: 754, longPass: 726, accuracy: 649 },
+        dribble: { breakout: 650, keeping: 687, ballTouch: 701 },
+        defense: { tackle: 827, interception: 812, marking: 824 },
+        physical: { jumping: 825, contact: 805, stamina: 816 },
+        speed: { running: 767, agility: 791 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '鋭角的なタックル', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP' },
+    abilities: [
+      { name: 'エアバトラー', rank: '銀', description: '発動条件：絶好調　/　タックル・ジャンプUP' },
+      { name: 'ピッチの分断者', rank: '銅', description: '発動条件：絶好調　/　パスカット・スタミナUP' }
+    ],
+    avatarUrl: ''
   }
 ];
 

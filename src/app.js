@@ -925,7 +925,8 @@ const PLAYER_IMAGE_MAP = {
     "p379": "MIKEL_OYARZABAL_2026_IMAGE",
     "p380": "DANI_OLMO_2026_IMAGE",
     "p381": "PEDRI_2026_IMAGE",
-    "p382": "MARCOS_LLORENTE_2026_IMAGE"
+    "p382": "MARCOS_LLORENTE_2026_IMAGE",
+    "p383": "PUJON_HAIFU_2026_IMAGE"
 };
 const getPlayerAvatarUrl = player => {
   if (!player) return '';
