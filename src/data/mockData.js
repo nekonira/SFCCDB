@@ -19752,7 +19752,7 @@ window.INITIAL_PLAYERS = [
     },
     playTendencies: {
       attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
-      shortPass: 2, longPass: 1, throughPass: 0, cutIn: 0, keep: 0,
+      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
     skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前中・中中　/　発動条件：CFの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のシュート発生確率UP' },
