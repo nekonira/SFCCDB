@@ -12,6 +12,10 @@ html_content = f"""<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7254824656295291"
+     crossorigin="anonymous"></script>
+
 
 
   <!-- Local Libraries -->
