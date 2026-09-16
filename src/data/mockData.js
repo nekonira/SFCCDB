@@ -20144,7 +20144,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: '奪還', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: '奪還', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
       { name: '守りの哲学', rank: '金', description: '発動条件：好調　/　タックル・パスカット・マークUP' },
       { name: 'パワフルジャンパー', rank: '銀', description: '発動条件：好調　/　ジャンプ・コンタクトUP' },
