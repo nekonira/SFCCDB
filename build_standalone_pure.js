@@ -71,8 +71,9 @@ const htmlContent = `<!DOCTYPE html>
   <!-- 1. Player Photos (${imageFiles.length} Image Files) -->
 ${imageScriptTags}
 
-  <!-- 2. Full Player Database -->
+  <!-- 2. Full Player Database & Special Cards -->
   <script src="./src/data/mockData.js"></script>
+  <script src="./src/data/specialCardsData.js"></script>
 
   <!-- 3. Pure Transpiled React App (No Babel overhead) -->
   <script src="./src/app.js?v=20260815_align_v3"></script>
@@ -81,6 +82,7 @@ ${imageScriptTags}
   <script src="./src/main.js?v=20260815_align_v3"></script>
 </body>
 </html>
+
 `;
 
 fs.writeFileSync(indexPath, htmlContent, 'utf-8');

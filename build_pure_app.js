@@ -69,7 +69,9 @@ const htmlContent = `<!DOCTYPE html>
   <!-- 1. Player Photos (145 Image Files) -->
 ${imageScriptTags}
 
-  <!-- 2. Full Player Database -->
+  <!-- 2. Official Special Training Cards & Full Player Database -->
+  <script src="./src/data/haalandDemonCardImage.js"></script>
+  <script src="./src/data/specialCardsData.js"></script>
   <script src="./src/data/mockData.js"></script>
 
   <!-- 3. Pure Transpiled React Application -->
