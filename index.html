@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>サカつく2026 データベース & チームビルダー</title>
-
-
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7254824656295291"
      crossorigin="anonymous"></script>
+
+
 
   <!-- Local Libraries -->
   <script src="./src/lib/react.min.js"></script>
@@ -19,12 +19,59 @@
     body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
     .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
     .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); }
+
+    @keyframes app-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes app-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .app-loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #070a10;
+      color: #f1f5f9;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .app-loading-spinner {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(56, 189, 248, 0.15);
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      animation: app-spin 0.8s linear infinite;
+      margin-bottom: 24px;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    }
+    .app-loading-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      animation: app-pulse 2s infinite ease-in-out;
+    }
+    .app-loading-subtext {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
   </style>
 </head>
 <body class="bg-[#070a10] text-slate-100 min-h-screen">
-  <div id="root"></div>
+  <div id="root">
+    <div class="app-loading-container">
+      <div class="app-loading-spinner"></div>
+      <div class="app-loading-title">サカつく2026 データベース ＆ チームビルダー</div>
+      <div class="app-loading-subtext">選手データ・特練カードデータを読み込み中... しばらくお待ちください</div>
+    </div>
+  </div>
 
-  <!-- 1. Player Photos (505 Image Files) -->
+  <!-- 1. Player Photos (511 Image Files) -->
   <script src="./src/data/ahnjunghwanhaifuImage.js"></script>
   <script src="./src/data/aikawaCardImage.js"></script>
   <script src="./src/data/akanji2026Image.js"></script>
@@ -90,6 +137,7 @@
   <script src="./src/data/cubarsiImage.js"></script>
   <script src="./src/data/daikimatsuoka2025Image.js"></script>
   <script src="./src/data/daikiwatari2025Image.js"></script>
+  <script src="./src/data/daizenMaeda2026Image.js"></script>
   <script src="./src/data/daniOlmo2026Image.js"></script>
   <script src="./src/data/danteImage.js"></script>
   <script src="./src/data/dePaulCardImage.js"></script>
@@ -222,6 +270,7 @@
   <script src="./src/data/keanCardImage.js"></script>
   <script src="./src/data/keitoNakamuraImage.js"></script>
   <script src="./src/data/kensukenagai2025Image.js"></script>
+  <script src="./src/data/kentoShiogai2026Image.js"></script>
   <script src="./src/data/kida2026Image.js"></script>
   <script src="./src/data/kimImage.js"></script>
   <script src="./src/data/kimJinHyeon2026Image.js"></script>
@@ -236,6 +285,7 @@
   <script src="./src/data/koizumi2026Image.js"></script>
   <script src="./src/data/koizumiImage.js"></script>
   <script src="./src/data/kojimaImage.js"></script>
+  <script src="./src/data/kokiOgawa2026Image.js"></script>
   <script src="./src/data/kokimorita2025Image.js"></script>
   <script src="./src/data/koloMuaniCardImage.js"></script>
   <script src="./src/data/konnoKazuya2026Image.js"></script>
@@ -369,12 +419,6 @@
   <script src="./src/data/pramanbela2026Image.js"></script>
   <script src="./src/data/premierLeagueFanBook2026Image.js"></script>
   <script src="./src/data/pujonHaifu2026Image.js"></script>
-  <script src="./src/data/kokiOgawa2026Image.js"></script>
-  <script src="./src/data/kentoShiogai2026Image.js"></script>
-  <script src="./src/data/daizenMaeda2026Image.js"></script>
-  <script src="./src/data/takefusaKubo2026Image.js"></script>
-  <script src="./src/data/yukinariSugawara2026Image.js"></script>
-  <script src="./src/data/takehiroTomiyasu2026Image.js"></script>
   <script src="./src/data/pulisic2026Image.js"></script>
   <script src="./src/data/pulisicCardImage.js"></script>
   <script src="./src/data/rabiotCardImage.js"></script>
@@ -457,6 +501,8 @@
   <script src="./src/data/tagliaficoCardImage.js"></script>
   <script src="./src/data/takahashiDaigo2026Image.js"></script>
   <script src="./src/data/takashiusami2025Image.js"></script>
+  <script src="./src/data/takefusaKubo2026Image.js"></script>
+  <script src="./src/data/takehiroTomiyasu2026Image.js"></script>
   <script src="./src/data/takemotoYuhi2026Image.js"></script>
   <script src="./src/data/takumaarano2025Image.js"></script>
   <script src="./src/data/takuyakida2025Image.js"></script>
@@ -527,6 +573,7 @@
   <script src="./src/data/yoshida2026Image.js"></script>
   <script src="./src/data/yoshioka2026Image.js"></script>
   <script src="./src/data/youngImage.js"></script>
+  <script src="./src/data/yukinariSugawara2026Image.js"></script>
   <script src="./src/data/yukobayashiImage.js"></script>
   <script src="./src/data/yurilara2025Image.js"></script>
   <script src="./src/data/yutafukazawa2025Image.js"></script>

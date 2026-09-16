@@ -7862,15 +7862,19 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
 // ─────────────────────────────────────────────────────────────
 function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGoToDB }) {
   // モード切り替え ('slots' | 'singleCompare' | 'buildCompare')
-  const [subTab, setSubTab] = useState('slots');
+  const [subTab, setSubTab] = useState('singleCompare');
 
   // 公式カードデータ取得
   const officialCards = window.OFFICIAL_SPECIAL_CARDS || [];
 
   // 選択選手 state
+  const [simPlayerRarity, setSimPlayerRarity] = useState('☆5');
+  const [simPlayerMaxEnhanced, setSimPlayerMaxEnhanced] = useState(false);
+
   const [currentPlayer, setCurrentPlayer] = useState(() => {
-    if (selectedPlayer) return selectedPlayer;
-    return players && players.length > 0 ? players[0] : null;
+    const raw = (selectedPlayer && (selectedPlayer.rawPlayer || selectedPlayer)) || (players && players.length > 0 ? (players[0].rawPlayer || players[0]) : null);
+    if (!raw) return null;
+    return getAdjustedPlayer(raw, '☆5', false);
   });
 
   // 検索・絞り込み用
@@ -7879,9 +7883,11 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
 
   useEffect(() => {
     if (selectedPlayer) {
-      setCurrentPlayer(selectedPlayer);
+      const raw = selectedPlayer.rawPlayer || selectedPlayer;
+      const adjusted = getAdjustedPlayer(raw, simPlayerRarity, simPlayerMaxEnhanced);
+      setCurrentPlayer(adjusted);
     }
-  }, [selectedPlayer]);
+  }, [selectedPlayer, simPlayerRarity, simPlayerMaxEnhanced]);
 
   // フィルタリング後の選手リスト
   const filteredPlayers = useMemo(() => {
@@ -8066,8 +8072,6 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     }
     setTimeout(() => setAutoSelectToast(null), 3500);
   };
-  const [simPlayerRarity, setSimPlayerRarity] = useState('☆5');
-  const [simPlayerMaxEnhanced, setSimPlayerMaxEnhanced] = useState(true);
 
   const handleSimPlayerRarityChange = useCallback((targetRarity, isMax = false) => {
     setSimPlayerRarity(targetRarity);
@@ -8907,7 +8911,6 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
                             【アビリティ】
                           </span>
                         )}
-                        {item.isSkill ? renderSkillBadge(item.rank) : renderRankBadge(item.rank)}
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-1">
@@ -9251,170 +9254,299 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
 
             {/* List Display: Table Mode vs Card Grid Mode */}
             {cardViewMode === 'table' ? (
-              <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-xl">
-                <table className="w-full text-left text-xs border-collapse font-sans">
-                  <thead>
-                    <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold select-none">
-                      <th className="p-3 text-center w-12">比較</th>
-                      <th className="p-3 text-center w-16">画像</th>
-                      <th className="p-3 text-center w-20 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('rank')}>
-                        ランク {renderCardSortIcon('rank')}
-                      </th>
-                      <th className="p-3 text-center w-28">特練種別</th>
-                      <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('name')}>
-                        カード名称 {renderCardSortIcon('name')}
-                      </th>
-                      <th className="p-3">スキル / アビリティ / 特殊効果</th>
-                      <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('bonus')}>
-                        対象ボーナス {renderCardSortIcon('bonus')}
-                      </th>
-                      <th className="p-3 text-center cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('baseSum')}>
-                        無凸合計 {renderCardSortIcon('baseSum')}
-                      </th>
-                      <th className="p-3 text-center text-amber-400 cursor-pointer hover:text-amber-300 transition-colors" onClick={() => handleCardSort('maxSum')}>
-                        完凸合計 {renderCardSortIcon('maxSum')}
-                      </th>
-                      <th className="p-3 text-center w-36">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-800/60">
-                    {filteredCards.length === 0 ? (
-                      <tr>
-                        <td colSpan="10" className="p-8 text-center text-slate-500">
-                          該当する特練カードが見つかりません
-                        </td>
-                      </tr>
-                    ) : (
-                      filteredCards.map(c => {
-                        const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
-                        const isCompared = selectedCompareCardIds.includes(c.id);
-                        const cardSkill = getSpecialCardSkill(c);
-                        const cardEffect = getSpecialCardEffect(c);
-                        const baseSum = Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
-                        const maxSum = Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+              <>
+                {/* モバイル/スマホ専用: 横スクロール不要・画面幅100%フィット 縦型カードリスト (選手DBと同等のレスポンシブ表示) */}
+                <div className="lg:hidden space-y-3">
+                  {filteredCards.length === 0 ? (
+                    <div className="p-8 text-center text-slate-500 bg-slate-950 rounded-2xl border border-slate-800">
+                      該当する特練カードが見つかりません
+                    </div>
+                  ) : (
+                    filteredCards.map(c => {
+                      const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+                      const isCompared = selectedCompareCardIds.includes(c.id);
+                      const cardSkill = getSpecialCardSkill(c);
+                      const cardEffect = getSpecialCardEffect(c);
+                      const baseSum = Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+                      const maxSum = Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
 
-                        return (
-                          <tr key={c.id} className={`hover:bg-slate-900/60 transition-colors ${isCompared ? 'bg-amber-500/10' : ''}`}>
-                            <td className="p-3 text-center">
-                              <button
-                                onClick={() => toggleCompareCard(c.id)}
-                                className={`w-6 h-6 rounded flex items-center justify-center mx-auto transition-all cursor-pointer ${
-                                  isCompared ? 'bg-amber-500 text-slate-950 font-black shadow' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                }`}
-                              >
-                                {isCompared ? '✓' : '+'}
-                              </button>
-                            </td>
-                            <td className="p-3 text-center">
+                      return (
+                        <div
+                          key={c.id}
+                          onClick={() => setDetailModalCard(c)}
+                          className={`glass-panel p-3.5 rounded-2xl border transition-all space-y-3 cursor-pointer active:scale-[0.99] ${
+                            isCompared
+                              ? 'border-amber-500 bg-amber-500/10 shadow-lg shadow-amber-500/10'
+                              : 'border-slate-800 bg-slate-900/90 hover:border-slate-700'
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex-shrink-0">
                               {imgUrl ? (
-                                <img src={imgUrl} alt={c.name} className="w-10 h-14 object-contain rounded-md bg-slate-900 border border-slate-700 mx-auto" />
+                                <img src={imgUrl} alt={c.name} className="w-16 h-22 object-cover rounded-xl border border-amber-500/30 shadow-md" />
                               ) : (
-                                <div className="w-10 h-14 bg-slate-900 rounded border border-slate-800 flex items-center justify-center text-[10px] text-slate-500 mx-auto">
+                                <div className="w-16 h-22 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-[10px] text-slate-500">
                                   なし
                                 </div>
                               )}
-                            </td>
-                            <td className="p-3 text-center">
-                              <span className={`px-2 py-0.5 rounded text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
-                                {c.rank}
-                              </span>
-                            </td>
-                            <td className="p-3 text-center">
-                              <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold whitespace-nowrap">
-                                ⚽ {c.cardType || c.category || 'ストライカー'}
-                              </span>
-                            </td>
-                            <td className="p-3 font-black text-white text-sm">
-                              {c.name}
-                            </td>
-                            <td className="p-3">
-                              {!cardSkill && !cardEffect ? (
-                                <span className="text-slate-500 text-[10px]">-</span>
-                              ) : (
-                                <div className="space-y-1.5">
-                                  {cardSkill && (
-                                    <div className="space-y-0.5">
-                                      <div className="flex items-center gap-1.5 flex-wrap">
-                                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
-                                          {cardSkill.rank === '特殊効果' || cardSkill.type === '特殊効果' || cardSkill.rank === cardSkill.type ? (cardSkill.rank || cardSkill.type) : (cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
-                                        </span>
-                                        <span className={`text-[11px] font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
-                                          {cardSkill.name}
-                                        </span>
-                                      </div>
-                                      <p className="text-[10px] text-slate-400 line-clamp-1">{cardSkill.description}</p>
-                                    </div>
-                                  )}
-                                  {cardEffect && (
-                                    <div className="space-y-0.5">
-                                      <div className="flex items-center gap-1.5 flex-wrap">
-                                        <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
-                                          ⚡ 特殊効果
-                                        </span>
-                                        <span className="text-[11px] font-black text-cyan-300">
-                                          {cardEffect.name}
-                                        </span>
-                                      </div>
-                                      <p className="text-[10px] text-cyan-200/70 line-clamp-1">{cardEffect.description}</p>
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-                            </td>
-                            <td className="p-3">
-                              {c.playstyleBonus ? (
-                                <div className="flex flex-wrap gap-1 items-center">
+                            </div>
+
+                            <div className="min-w-0 flex-1 space-y-1.5">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className={`px-2 py-0.5 rounded text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
+                                  {c.rank}
+                                </span>
+                                <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold">
+                                  ⚽ {c.cardType || c.category || 'ストライカー'}
+                                </span>
+                              </div>
+
+                              <div className="font-black text-sm text-white leading-snug">{c.name}</div>
+
+                              {c.playstyleBonus && (
+                                <div className="flex flex-wrap gap-1">
                                   {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
                                     c.playstyleBonus.bonuses.map(b => (
-                                      <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
-                                        <span>🎯</span>
-                                        <span>{b.style} +{b.percent}%</span>
+                                      <span key={b.style} className="text-[10px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                                        🎯 {b.style} +{b.percent}%
                                       </span>
                                     ))
                                   ) : (
-                                    <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
-                                      <span>🎯</span>
-                                      <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
+                                    <span className="text-[10px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                                      🎯 {c.playstyleBonus.style} +{c.playstyleBonus.percent}%
                                     </span>
                                   )}
                                 </div>
-                              ) : (
-                                <span className="text-slate-500 text-[10px]">-</span>
                               )}
-                            </td>
-                            <td className="p-3 text-center font-num font-bold text-slate-300 text-sm">
-                              +{baseSum}
-                            </td>
-                            <td className="p-3 text-center font-num font-black text-amber-400 text-sm bg-amber-500/5">
-                              +{maxSum}
-                            </td>
-                            <td className="p-3 text-center">
-                              <div className="flex items-center justify-center gap-1.5">
-                                <button
-                                  onClick={() => setDetailModalCard(c)}
-                                  className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer whitespace-nowrap"
-                                >
-                                  📄 詳細
-                                </button>
+
+                              {(cardSkill || cardEffect) && (
+                                <div className="space-y-1 pt-1 border-t border-slate-800/60">
+                                  {cardSkill && (
+                                    <div className="text-[11px] leading-tight">
+                                      <span className={`font-black mr-1 ${getRankTextStyle(cardSkill.rank || '金')}`}>{cardSkill.name}</span>
+                                      <span className="text-[10px] text-slate-400">{cardSkill.description}</span>
+                                    </div>
+                                  )}
+                                  {cardEffect && (
+                                    <div className="text-[11px] leading-tight">
+                                      <span className="font-black text-cyan-300 mr-1">⚡ {cardEffect.name}</span>
+                                      <span className="text-[10px] text-cyan-200/70">{cardEffect.description}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
+                            <div className="flex items-center gap-3">
+                              <div className="text-center">
+                                <span className="text-[9px] text-slate-400 block font-bold">無凸</span>
+                                <span className="text-xs font-num font-bold text-slate-300">+{baseSum}</span>
+                              </div>
+                              <div className="text-center bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                                <span className="text-[9px] text-amber-400 block font-black">完凸</span>
+                                <span className="text-sm font-num font-black text-amber-400">+{maxSum}</span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setDetailModalCard(c);
+                                }}
+                                className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700"
+                              >
+                                📄 詳細
+                              </button>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleCompareCard(c.id);
+                                }}
+                                className={`px-3 py-1 rounded-lg text-xs font-black transition-all ${
+                                  isCompared
+                                    ? 'bg-amber-500 text-slate-950 shadow'
+                                    : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                                }`}
+                              >
+                                {isCompared ? '✓ 選択中' : '+ 比較'}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+
+                {/* PC/大画面専用: フル10列 テーブル表示 */}
+                <div className="hidden lg:block overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-xl">
+                  <table className="w-full text-left text-xs border-collapse font-sans">
+                    <thead>
+                      <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold select-none">
+                        <th className="p-3 text-center w-12">比較</th>
+                        <th className="p-3 text-center w-20">画像</th>
+                        <th className="p-3 text-center w-20 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('rank')}>
+                          ランク {renderCardSortIcon('rank')}
+                        </th>
+                        <th className="p-3 text-center w-28">特練種別</th>
+                        <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('name')}>
+                          カード名称 {renderCardSortIcon('name')}
+                        </th>
+                        <th className="p-3">スキル / アビリティ / 特殊効果</th>
+                        <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('bonus')}>
+                          対象ボーナス {renderCardSortIcon('bonus')}
+                        </th>
+                        <th className="p-3 text-center cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('baseSum')}>
+                          無凸合計 {renderCardSortIcon('baseSum')}
+                        </th>
+                        <th className="p-3 text-center text-amber-400 cursor-pointer hover:text-amber-300 transition-colors" onClick={() => handleCardSort('maxSum')}>
+                          完凸合計 {renderCardSortIcon('maxSum')}
+                        </th>
+                        <th className="p-3 text-center w-36">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/60">
+                      {filteredCards.length === 0 ? (
+                        <tr>
+                          <td colSpan="10" className="p-8 text-center text-slate-500">
+                            該当する特練カードが見つかりません
+                          </td>
+                        </tr>
+                      ) : (
+                        filteredCards.map(c => {
+                          const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+                          const isCompared = selectedCompareCardIds.includes(c.id);
+                          const cardSkill = getSpecialCardSkill(c);
+                          const cardEffect = getSpecialCardEffect(c);
+                          const baseSum = Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+                          const maxSum = Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+
+                          return (
+                            <tr key={c.id} className={`hover:bg-slate-900/60 transition-colors ${isCompared ? 'bg-amber-500/10' : ''}`}>
+                              <td className="p-3 text-center">
                                 <button
                                   onClick={() => toggleCompareCard(c.id)}
-                                  className={`px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
-                                    isCompared
-                                      ? 'bg-amber-500 text-slate-950 shadow'
-                                      : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                                  className={`w-6 h-6 rounded flex items-center justify-center mx-auto transition-all cursor-pointer ${
+                                    isCompared ? 'bg-amber-500 text-slate-950 font-black shadow' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                                   }`}
                                 >
-                                  {isCompared ? '解除' : '比較'}
+                                  {isCompared ? '✓' : '+'}
                                 </button>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })
-                    )}
-                  </tbody>
-                </table>
-              </div>
+                              </td>
+                              <td className="p-3 text-center">
+                                {imgUrl ? (
+                                  <img src={imgUrl} alt={c.name} className="w-14 h-20 object-cover rounded-md border border-slate-700 mx-auto" />
+                                ) : (
+                                  <div className="w-14 h-20 bg-slate-950 rounded border border-slate-800 flex items-center justify-center text-[10px] text-slate-500 mx-auto">
+                                    なし
+                                  </div>
+                                )}
+                              </td>
+                              <td className="p-3 text-center">
+                                <span className={`px-2 py-0.5 rounded text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
+                                  {c.rank}
+                                </span>
+                              </td>
+                              <td className="p-3 text-center">
+                                <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold whitespace-nowrap">
+                                  ⚽ {c.cardType || c.category || 'ストライカー'}
+                                </span>
+                              </td>
+                              <td className="p-3 font-black text-white text-sm">
+                                {c.name}
+                              </td>
+                              <td className="p-3">
+                                {!cardSkill && !cardEffect ? (
+                                  <span className="text-slate-500 text-[10px]">-</span>
+                                ) : (
+                                  <div className="space-y-1.5">
+                                    {cardSkill && (
+                                      <div className="space-y-0.5">
+                                        <div className="flex items-center gap-1.5 flex-wrap">
+                                          <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
+                                            {cardSkill.rank === '特殊効果' || cardSkill.type === '特殊効果' || cardSkill.rank === cardSkill.type ? (cardSkill.rank || cardSkill.type) : (cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
+                                          </span>
+                                          <span className={`text-[11px] font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
+                                            {cardSkill.name}
+                                          </span>
+                                        </div>
+                                        <p className="text-[10px] text-slate-400 line-clamp-1">{cardSkill.description}</p>
+                                      </div>
+                                    )}
+                                    {cardEffect && (
+                                      <div className="space-y-0.5">
+                                        <div className="flex items-center gap-1.5 flex-wrap">
+                                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
+                                            ⚡ 特殊効果
+                                          </span>
+                                          <span className="text-[11px] font-black text-cyan-300">
+                                            {cardEffect.name}
+                                          </span>
+                                        </div>
+                                        <p className="text-[10px] text-cyan-200/70 line-clamp-1">{cardEffect.description}</p>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+                              </td>
+                              <td className="p-3">
+                                {c.playstyleBonus ? (
+                                  <div className="flex flex-wrap gap-1 items-center">
+                                    {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
+                                      c.playstyleBonus.bonuses.map(b => (
+                                        <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
+                                          <span>🎯</span>
+                                          <span>{b.style} +{b.percent}%</span>
+                                        </span>
+                                      ))
+                                    ) : (
+                                      <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
+                                        <span>🎯</span>
+                                        <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
+                                      </span>
+                                    )}
+                                  </div>
+                                ) : (
+                                  <span className="text-slate-500 text-[10px]">-</span>
+                                )}
+                              </td>
+                              <td className="p-3 text-center font-num font-bold text-slate-300 text-sm">
+                                +{baseSum}
+                              </td>
+                              <td className="p-3 text-center font-num font-black text-amber-400 text-sm bg-amber-500/5">
+                                +{maxSum}
+                              </td>
+                              <td className="p-3 text-center">
+                                <div className="flex items-center justify-center gap-1.5">
+                                  <button
+                                    onClick={() => setDetailModalCard(c)}
+                                    className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer whitespace-nowrap"
+                                  >
+                                    📄 詳細
+                                  </button>
+                                  <button
+                                    onClick={() => toggleCompareCard(c.id)}
+                                    className={`px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+                                      isCompared
+                                        ? 'bg-amber-500 text-slate-950 shadow'
+                                        : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                                    }`}
+                                  >
+                                    {isCompared ? '解除' : '比較'}
+                                  </button>
+                                </div>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             ) : (
               /* Card Grid List */
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -9445,8 +9577,8 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
 
                         {/* Card Image Frame */}
                         {imgUrl ? (
-                          <div className="w-full max-w-[200px] mx-auto rounded-xl overflow-hidden border border-amber-500/30 bg-slate-950 p-1.5 group-hover:scale-105 transition-transform duration-300">
-                            <img src={imgUrl} alt={c.name} className="w-full h-auto max-h-[220px] object-contain rounded-lg" />
+                          <div className="w-full max-w-[200px] mx-auto rounded-xl overflow-hidden border border-amber-500/30 p-1.5 group-hover:scale-105 transition-transform duration-300">
+                            <img src={imgUrl} alt={c.name} className="w-full h-auto max-h-[220px] object-cover rounded-lg" />
                           </div>
                         ) : (
                           <div className="w-full h-40 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-500 text-xs">
@@ -9840,8 +9972,8 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
             </div>
             
             {detailModalCard.getImageUrl && detailModalCard.getImageUrl() && (
-              <div className="w-40 mx-auto rounded-xl overflow-hidden border border-amber-500/30 bg-slate-950 p-2 shadow-inner">
-                <img src={detailModalCard.getImageUrl()} alt={detailModalCard.name} className="w-full h-auto object-contain rounded-lg" />
+              <div className="w-40 mx-auto rounded-xl overflow-hidden border border-amber-500/30 p-2 shadow-inner">
+                <img src={detailModalCard.getImageUrl()} alt={detailModalCard.name} className="w-full h-auto object-cover rounded-lg" />
               </div>
             )}
 
@@ -9862,6 +9994,195 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
               <button onClick={() => setDetailModalCard(null)} className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs cursor-pointer">
                 閉じる
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 条件指定自動最適編成ダイアログ (AutoSelectModal) */}
+      {isAutoSelectModalOpen && (
+        <AutoSelectModal
+          isOpen={isAutoSelectModalOpen}
+          onClose={() => setIsAutoSelectModalOpen(false)}
+          onApply={(newSlots) => {
+            setSlots(newSlots);
+            setIsAutoSelectModalOpen(false);
+            setAutoSelectToast('✨ 条件指定に基づく最適編成を適用しました！');
+            setTimeout(() => setAutoSelectToast(null), 3500);
+          }}
+          currentPlayer={currentPlayer}
+          officialCards={officialCards}
+          calculateBoostedPlayer={calculateBoostedPlayer}
+          initialStrategy={autoSelectInitialMode}
+          setAutoSelectToast={setAutoSelectToast}
+        />
+      )}
+
+      {/* 6スロット特練カード選択モーダル */}
+      {activeSlotForCardModal !== null && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+          <div className="bg-slate-900 border border-amber-500/40 rounded-3xl p-5 max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl space-y-4">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/40 font-black text-xs">
+                  SLOT {activeSlotForCardModal + 1}
+                </span>
+                <h3 className="text-base font-black text-white">装着特練カードを選択</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveSlotForCardModal(null)}
+                className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-all text-sm font-bold cursor-pointer"
+              >
+                ✕ 閉じる
+              </button>
+            </div>
+
+            {/* Filter Bar */}
+            <div className="flex items-center gap-2 flex-wrap bg-slate-950 p-3 rounded-2xl border border-slate-800">
+              {/* Search Input */}
+              <div className="flex-1 min-w-[200px]">
+                <input
+                  type="text"
+                  value={slotCardSearchText}
+                  onChange={(e) => setSlotCardSearchText(e.target.value)}
+                  placeholder="カード名・スキル名で検索..."
+                  className="w-full bg-slate-900 text-white text-xs px-3 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
+                />
+              </div>
+              {/* Rank Filter */}
+              <div className="flex items-center gap-1">
+                <span className="text-xs font-bold text-slate-400">ランク:</span>
+                <select
+                  value={slotCardRankFilter}
+                  onChange={(e) => setSlotCardRankFilter(e.target.value)}
+                  className="bg-slate-900 text-white text-xs font-bold px-2.5 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none cursor-pointer"
+                >
+                  <option value="ALL">すべて (SSR/SR)</option>
+                  <option value="SSR">SSR ランク</option>
+                  <option value="SR">SR ランク</option>
+                </select>
+              </div>
+              {/* Category Filter */}
+              <div className="flex items-center gap-1">
+                <span className="text-xs font-bold text-slate-400">カテゴリ:</span>
+                <select
+                  value={slotCardCatFilter}
+                  onChange={(e) => setSlotCardCatFilter(e.target.value)}
+                  className="bg-slate-900 text-white text-xs font-bold px-2.5 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none cursor-pointer"
+                >
+                  <option value="ALL">すべてのカテゴリ</option>
+                  {cardCategoriesList.map(cat => (
+                    <option key={cat} value={cat}>{cat}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* Card List / Grid */}
+            <div className="flex-1 overflow-y-auto pr-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              {filteredSlotCards.map(card => {
+                const isCurrentSelected = slots[activeSlotForCardModal]?.cardId === card.id;
+                const isPlaystyleMatch = card.playstyleBonus && currentPlayer?.playStyle && currentPlayer.playStyle.includes(card.playstyleBonus.style);
+
+                return (
+                  <div
+                    key={card.id}
+                    onClick={() => {
+                      updateSlot(activeSlotForCardModal, 'cardId', card.id);
+                      updateSlot(activeSlotForCardModal, 'active', true);
+                      setActiveSlotForCardModal(null);
+                    }}
+                    className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-3 ${
+                      isCurrentSelected
+                        ? 'bg-amber-950/40 border-amber-400 shadow-lg shadow-amber-500/10 scale-[1.02]'
+                        : 'bg-slate-950/80 border-slate-800 hover:border-amber-500/50 hover:bg-slate-900'
+                    }`}
+                  >
+                    {/* Header Area: Card Image, Rank, Category, Name, Bonus */}
+                    <div className="space-y-2">
+                      <div className="flex items-start gap-3">
+                        {card.getImageUrl && card.getImageUrl() ? (
+                          <img
+                            src={card.getImageUrl()}
+                            alt={card.name}
+                            className="w-12 h-16 object-cover rounded-xl border border-slate-700 flex-shrink-0 shadow-md"
+                          />
+                        ) : (
+                          <div className="w-12 h-16 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-xs font-black text-amber-300 flex-shrink-0">
+                            {card.rank}
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1 space-y-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className={`text-[9px] px-1.5 py-0.2 rounded font-black ${getCardRankBadgeStyle(card.rank)}`}>
+                              {card.rank}
+                            </span>
+                            <span className="text-[10px] text-slate-400 font-bold truncate">
+                              {card.cardType || card.category}
+                            </span>
+                          </div>
+                          <h4 className="text-xs font-black text-white truncate leading-tight">{card.name}</h4>
+                          
+                          {/* ボーナス表示（上部・カテゴリ付近へ配置） */}
+                          {card.playstyleBonus ? (
+                            <div className={`text-[10px] font-bold px-2 py-0.5 rounded-md border flex items-center justify-between ${
+                              isPlaystyleMatch
+                                ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40'
+                                : 'bg-slate-900 text-slate-400 border-slate-800'
+                            }`}>
+                              <span>🎯 {card.playstyleBonus.style} +{card.playstyleBonus.percent}%</span>
+                              {isPlaystyleMatch && <span className="text-[9px] text-emerald-400 font-black">適合</span>}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+
+                      {/* メインボディ: スキル・アビリティ情報を大きく際立たせて下部に配置 */}
+                      {card.skill ? (
+                        <div className="bg-slate-950/90 p-2.5 rounded-xl border border-amber-500/40 space-y-1">
+                          <div className="flex items-center justify-between gap-1">
+                            <span className="text-[10px] font-black text-amber-400 flex items-center gap-1">
+                              ✨ {card.skill.type || 'スキル/アビリティ'}: {card.skill.name}
+                            </span>
+                            {card.skill.rank && (
+                              <span className={`text-[9px] px-1.5 py-0.2 rounded font-black ${
+                                card.skill.rank === '金' ? 'bg-amber-500/20 text-amber-300 border border-amber-400/40' :
+                                card.skill.rank === '銀' ? 'bg-slate-400/20 text-slate-200 border border-slate-400/40' :
+                                'bg-orange-950/40 text-orange-300 border border-orange-600/40'
+                              }`}>
+                                {card.skill.rank}
+                              </span>
+                            )}
+                          </div>
+                          {card.skill.description && (
+                            <p className="text-[10px] text-slate-300 leading-normal font-medium">
+                              {card.skill.description}
+                            </p>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="bg-slate-950/40 p-2 rounded-xl border border-slate-800 text-[10px] text-slate-500 italic">
+                          特殊スキルなし
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Footer: 装着ボタン */}
+                    <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                      <span className="text-[10px] text-slate-500">クリックでスロットに装着</span>
+                      <span className={`text-xs font-black px-3 py-1 rounded-xl transition-all ${
+                        isCurrentSelected
+                          ? 'bg-amber-500 text-slate-950 shadow-md'
+                          : 'bg-slate-800 text-amber-400 hover:bg-amber-500 hover:text-slate-950'
+                      }`}>
+                        {isCurrentSelected ? '装着中 ✓' : '選択する'}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -9965,12 +10286,20 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
     return { val, rawVal: parseFloat(rawVal.toFixed(1)), isBoosted: bonusMult > 1.0 };
   };
 
+  const renderRankBadge = (val, allVals) => {
+    return null;
+  };
+
   const getRankCellBg = (val, allVals) => {
-    if (!allVals || allVals.length === 0 || val <= 0) return '';
-    const sorted = [...allVals].sort((a, b) => b - a);
-    if (val === sorted[0]) return 'bg-red-950/40 text-red-300 font-black border-red-500/30';
-    if (sorted.length > 1 && val === sorted[1]) return 'bg-amber-950/40 text-amber-300 font-black border-amber-500/30';
-    if (sorted.length > 2 && val === sorted[2]) return 'bg-cyan-950/40 text-cyan-300 font-black border-cyan-500/30';
+    if (!val || val === 0 || !allVals || allVals.length < 2) return '';
+    const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
+    const rank = sortedUnique.indexOf(val) + 1;
+    const maxRank = Math.min(3, allVals.length - 1);
+    if (rank > maxRank) return '';
+
+    if (rank === 1) return 'bg-red-600/35 text-red-100 font-black border-b border-red-400/50 shadow-[inset_0_0_15px_rgba(239,68,68,0.3)]';
+    if (rank === 2) return 'bg-amber-500/35 text-amber-100 font-black border-b border-amber-300/50 shadow-[inset_0_0_15px_rgba(245,158,11,0.3)]';
+    if (rank === 3) return 'bg-cyan-500/35 text-cyan-100 font-black border-b border-cyan-300/50 shadow-[inset_0_0_15px_rgba(6,182,212,0.3)]';
     return '';
   };
 
@@ -10036,14 +10365,14 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                   className="px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-extrabold bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 border border-amber-500/40 transition-all cursor-pointer"
                   title="すべてのカードの対象ボーナスを有効(ON)にします"
                 >
-                  🎯 ボーナス全適用 (ON)
+                  🎯 ボーナス全適用
                 </button>
                 <button
                   onClick={handleDisableAllBonuses}
                   className="px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer"
                   title="すべてのカードの対象ボーナスを解除(OFF)し、素の数値で比較します"
                 >
-                  🚫 ボーナス非適用 (OFF)
+                  🚫 ボーナス非適用
                 </button>
               </div>
 
@@ -10057,7 +10386,7 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
-                  🌱 初期値 (無凸)
+                  🌱 無凸
                 </button>
                 <button
                   onClick={() => handleGlobalStageChange('完凸')}
@@ -10067,15 +10396,15 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
-                  ⚡ 最大強化 (完凸)
+                  ⚡ 完凸
                 </button>
               </div>
 
               {/* Ranking Legend */}
-              <div className="hidden md:flex items-center gap-1.5 text-[10px] text-slate-400 bg-slate-900/60 px-2 py-0.5 rounded-lg border border-slate-800">
-                <span className="text-red-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>1位 ★BEST</span>
-                <span className="text-amber-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>2位 2ND</span>
-                <span className="text-cyan-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>3RD</span>
+              <div className="flex items-center gap-1.5 text-[9px] sm:text-xs text-slate-400 bg-slate-900/60 px-2 py-0.5 rounded-lg border border-slate-800">
+                <span className="text-red-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>1位</span>
+                <span className="text-amber-400 font-extrabold flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>2位</span>
+                <span className="text-cyan-400 font-extrabold hidden sm:flex items-center gap-0.5"><span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>3位</span>
               </div>
 
               <button
@@ -10093,57 +10422,66 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
             </div>
           </div>
 
-          {/* Matrix Comparison Table Area */}
-          <div className="flex-1 overflow-x-auto overflow-y-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-inner">
-            <table className="w-full text-left text-xs border-collapse font-sans">
-              <thead>
+          {/* Table Area (table-fixed w-full min-w-full, NO horizontal scroll on mobile) */}
+          <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner max-h-[calc(96vh-90px)]">
+            <table className="w-full table-fixed min-w-full border-collapse text-left text-xs sm:text-sm font-sans">
+              <thead className="sticky top-0 z-30 shadow-md">
                 <tr className="bg-slate-900 border-b border-slate-800 text-slate-300">
-                  <th className="p-1.5 sm:p-2.5 sticky left-0 z-20 bg-slate-900 w-24 sm:w-32 min-w-[95px] sm:min-w-[125px] border-r border-slate-800 font-black text-xs sm:text-sm">
-                    比較項目
+                  <th className="p-1 sm:p-2.5 sticky left-0 top-0 z-40 bg-slate-900 w-16 sm:w-32 md:w-40 border-r border-slate-800 font-black text-[9px] sm:text-sm text-slate-200 uppercase tracking-wider shadow-md">
+                    <div className="truncate font-black">比較項目</div>
                   </th>
                   {selectedCards.map(c => {
                     const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
                     const currentStage = getCardStage(c.id);
 
                     return (
-                      <th key={c.id} className="p-1.5 sm:p-2 text-center min-w-[105px] sm:min-w-[125px] md:min-w-[140px] border-r border-slate-800/60 relative group bg-slate-900/90">
+                      <th key={c.id} className="p-1 sm:p-2 text-center border-r border-slate-800/80 last:border-r-0 relative group bg-slate-900 sticky top-0 z-30 shadow-md align-top">
                         <button
                           onClick={() => onRemoveCard(c.id)}
-                          className="absolute top-1 right-1 text-slate-400 hover:text-red-400 p-0.5 cursor-pointer transition-colors z-10 bg-slate-900/80 rounded-full"
+                          className="absolute top-1 right-1 text-slate-400 hover:text-red-400 p-0.5 cursor-pointer transition-colors z-10 bg-slate-900/80 rounded-full border border-slate-700"
                           title="比較表から削除"
                         >
                           <Icon name="x" className="w-3.5 h-3.5" />
                         </button>
 
-                        <div className="space-y-1 sm:space-y-1.5">
+                        <div className="space-y-1 sm:space-y-1.5 flex flex-col items-center">
+                          {/* 🔥 大幅に拡大したカード画像 (w-16 h-22 sm:w-24 sm:h-36) */}
                           {imgUrl ? (
-                            <img src={imgUrl} alt={c.name} className="w-10 h-14 sm:w-12 sm:h-16 object-contain rounded-lg bg-slate-950 border border-amber-500/30 mx-auto shadow-md" />
+                            <img
+                              src={imgUrl}
+                              alt={c.name}
+                              className="w-14 h-20 sm:w-24 sm:h-36 object-cover rounded-xl border border-amber-500/40 mx-auto shadow-lg"
+                            />
                           ) : (
-                            <div className="w-10 h-14 sm:w-12 sm:h-16 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-center text-[10px] text-amber-400 font-bold mx-auto">
+                            <div className="w-14 h-20 sm:w-24 sm:h-36 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-amber-400 font-black mx-auto">
                               {c.rank}
                             </div>
                           )}
 
-                          <div>
-                            <span className={`px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
-                              {c.rank}
-                            </span>
-                            <span className="ml-0.5 sm:ml-1 px-1 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[8px] sm:text-[9px] font-extrabold inline-block truncate max-w-[75px] sm:max-w-[95px]">
-                              ⚽ {c.cardType || c.category || 'ストライカー'}
-                            </span>
-                            <h4 className="text-[11px] sm:text-xs font-black text-white mt-1 leading-tight line-clamp-2" title={c.name}>{c.name}</h4>
+                          <div className="w-full text-center px-0.5">
+                            <div className="flex items-center justify-center gap-0.5 sm:gap-1 flex-wrap">
+                              <span className={`px-1 py-0.2 rounded text-[8px] sm:text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
+                                {c.rank}
+                              </span>
+                              <span className="px-1 py-0.2 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[7px] sm:text-[9px] font-extrabold truncate max-w-[65px] sm:max-w-[95px]">
+                                ⚽ {c.cardType || c.category || 'ストライカー'}
+                              </span>
+                            </div>
+                            <h4 className="text-[10px] sm:text-xs font-black text-white mt-0.5 sm:mt-1 leading-tight truncate w-full" title={c.name}>
+                              {c.name}
+                            </h4>
                           </div>
 
                           {/* Individual Stage Selector */}
-                          <div className="pt-0.5">
+                          <div className="w-full pt-0.5">
                             <select
                               value={currentStage}
                               onChange={(e) => handleIndividualStageChange(c.id, e.target.value)}
-                              className="bg-slate-950 text-amber-300 border border-amber-500/40 rounded-lg px-1 py-0.5 text-[10px] sm:text-[11px] font-black focus:outline-none cursor-pointer w-full text-center max-w-[110px]"
+                              className="bg-slate-950 text-amber-300 border border-amber-500/40 rounded-lg px-1 py-0.5 text-[9px] sm:text-[11px] font-black focus:outline-none cursor-pointer w-full text-center"
                             >
                               {LIMIT_BREAK_STAGES.map(st => (
                                 <option key={st} value={st}>
-                                  段階: {st}
+                                  {st}
                                 </option>
                               ))}
                             </select>
@@ -10338,62 +10676,6 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                   })}
                 </tr>
 
-                {/* Section 1: 主要能力カテゴリ別 上昇量 Matrix */}
-                <tr className="bg-slate-900/50">
-                  <td colSpan={selectedCards.length + 1} className="px-2 py-1.5 text-[11px] sm:text-xs font-black text-amber-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-amber-500/30">
-                    ⚽ 主要能力カテゴリ別 上昇量 Matrix
-                  </td>
-                </tr>
-
-                {CATEGORY_STATS.map(stName => {
-                  const statDataList = selectedCards.map(c => {
-                    const stage = getCardStage(c.id);
-                    return getCardStatData(c, stage, stName);
-                  });
-
-                  const allStatVals = statDataList.map(d => d.val);
-                  const hasValue = statDataList.some(d => d.rawVal > 0 || d.val > 0);
-                  if (!hasValue) return null;
-
-                  return (
-                    <tr key={stName} className="hover:bg-slate-900/40 transition-colors bg-slate-900/20">
-                      <td className="p-1.5 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-xs sm:text-sm text-amber-300 border-r border-slate-800 font-sans">
-                        {stName} (カテゴリ合計)
-                      </td>
-                      {selectedCards.map((c, i) => {
-                        const statData = statDataList[i];
-                        const val = statData.val;
-                        const bgClass = getRankCellBg(val, allStatVals);
-                        const badge = renderRankBadge(val, allStatVals);
-
-                        return (
-                          <td key={c.id} className={`p-1.5 sm:p-2 text-center border-r border-slate-800/60 font-bold ${bgClass}`}>
-                            {val > 0 || statData.rawVal > 0 ? (
-                              <div className="flex flex-col items-center justify-center">
-                                <div className="flex items-center justify-center gap-0.5">
-                                  {badge}
-                                  <span className="text-amber-300 font-black text-sm sm:text-xl">+{val}</span>
-                                </div>
-                                {statData.isBoosted ? (
-                                  <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block">
-                                    (素: +{statData.rawVal})
-                                  </span>
-                                ) : (
-                                  <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block">
-                                    (加味なし)
-                                  </span>
-                                )}
-                              </div>
-                            ) : (
-                              <span className="text-slate-600 text-xs font-bold">-</span>
-                            )}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-
                 {/* Section 2: 詳細能力項目別 上昇量 Matrix */}
                 <tr className="bg-slate-900/50">
                   <td colSpan={selectedCards.length + 1} className="px-2 py-1.5 text-[11px] sm:text-xs font-black text-cyan-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-slate-800">
@@ -10554,6 +10836,9 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
   const [showAbilityDropdown, setShowAbilityDropdown] = useState(false);
   const [showSkillDropdown, setShowSkillDropdown] = useState(false);
 
+  const [isAbilityPickerOpen, setIsAbilityPickerOpen] = useState(false);
+  const [isSkillPickerOpen, setIsSkillPickerOpen] = useState(false);
+
   // 全カードから構造化アビリティ/スキル一覧を抽出＆ランク順ソート
   const { availableAbilities, availableSkills } = useMemo(() => {
     const abilityMap = new Map();
@@ -10569,13 +10854,15 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
           skillMap.set(s.name, {
             name: s.name,
             rank: rank,
-            type: 'スキル',
-            cardNames: [c.name],
+            type: s.type || 'スキル',
+            cards: [c],
             desc: s.description || ''
           });
         } else if (s.name) {
           const item = skillMap.get(s.name);
-          if (!item.cardNames.includes(c.name)) item.cardNames.push(c.name);
+          if (!item.cards.some(existCard => existCard.id === c.id)) {
+            item.cards.push(c);
+          }
         }
       } else {
         // アビリティ
@@ -10587,12 +10874,14 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
             name: name,
             rank: rank,
             type: 'アビリティ',
-            cardNames: [c.name],
+            cards: [c],
             desc: s.description || ''
           });
         } else {
           const item = abilityMap.get(key);
-          if (!item.cardNames.includes(c.name)) item.cardNames.push(c.name);
+          if (!item.cards.some(existCard => existCard.id === c.id)) {
+            item.cards.push(c);
+          }
         }
       }
     });
@@ -10661,14 +10950,14 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
     if (selectedAbilities.includes(ab.key)) return false;
     if (!abilitySearchText) return true;
     const q = abilitySearchText.toLowerCase();
-    return ab.key.toLowerCase().includes(q) || ab.name.toLowerCase().includes(q) || ab.cardNames.some(c => c.toLowerCase().includes(q));
+    return ab.key.toLowerCase().includes(q) || ab.name.toLowerCase().includes(q) || ab.cards.some(c => c.name.toLowerCase().includes(q));
   });
 
   const filteredSkills = availableSkills.filter(sk => {
     if (selectedSkills.includes(sk.name)) return false;
     if (!skillSearchText) return true;
     const q = skillSearchText.toLowerCase();
-    return sk.name.toLowerCase().includes(q) || sk.cardNames.some(c => c.toLowerCase().includes(q));
+    return sk.name.toLowerCase().includes(q) || sk.cards.some(c => c.name.toLowerCase().includes(q));
   });
 
   return (
@@ -10808,10 +11097,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
             </div>
 
             {/* 3. 必須アビリティ指定 */}
-            <div className="relative">
+            <div>
               <label className="block text-xs font-black text-amber-400 mb-1.5 flex items-center gap-1">
                 <Icon name="shield" className="w-3.5 h-3.5" />
-                必須アビリティの選択 (ランク視覚化対応)
+                必須アビリティの選択 (カード画像一覧参照対応)
               </label>
 
               {/* Chips */}
@@ -10822,58 +11111,34 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   const name = item ? item.name : abKey;
 
                   return (
-                    <span key={abKey} className="bg-slate-950 border border-slate-700 text-white text-xs font-black px-2.5 py-1 rounded-xl flex items-center gap-1.5 shadow-md">
+                    <span key={abKey} className="bg-slate-950 border border-amber-500/40 text-amber-300 text-xs font-black px-2.5 py-1 rounded-xl flex items-center gap-1.5 shadow-md">
                       {renderAutoSelectRankBadge(rank)}
                       <span>{name}</span>
-                      <button onClick={() => removeAbility(abKey)} className="hover:text-red-400 font-black text-slate-400 ml-1">✕</button>
+                      <button onClick={() => removeAbility(abKey)} className="hover:text-red-400 font-black text-slate-400 ml-1 cursor-pointer">✕</button>
                     </span>
                   );
                 })}
               </div>
 
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="アビリティ名 / カード名で検索..."
-                  value={abilitySearchText}
-                  onFocus={() => setShowAbilityDropdown(true)}
-                  onChange={e => { setAbilitySearchText(e.target.value); setShowAbilityDropdown(true); }}
-                  className="w-full bg-slate-900 text-white text-xs font-bold p-2.5 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
-                />
-                {showAbilityDropdown && filteredAbilities.length > 0 && (
-                  <div className="absolute z-30 left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-h-56 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 divide-y divide-slate-800">
-                    {filteredAbilities.map(ab => (
-                      <div
-                        key={ab.key}
-                        onClick={() => addAbility(ab.key)}
-                        className="p-2.5 hover:bg-amber-500/15 cursor-pointer transition-all space-y-1"
-                      >
-                        <div className="flex items-center gap-2">
-                          {renderAutoSelectRankBadge(ab.rank)}
-                          <span className="font-black text-white text-xs">{ab.name}</span>
-                        </div>
-                        {ab.desc && (
-                          <div className="text-[11px] text-amber-300/90 font-bold truncate">
-                            {ab.desc}
-                          </div>
-                        )}
-                        {ab.cardNames && ab.cardNames.length > 0 && (
-                          <div className="text-[10px] text-slate-400 font-semibold truncate">
-                            カード: {ab.cardNames.join(', ')}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <button
+                type="button"
+                onClick={() => { setAbilitySearchText(''); setIsAbilityPickerOpen(true); }}
+                className="w-full py-2.5 px-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400/60 hover:bg-slate-900 text-amber-400 font-black text-xs flex items-center justify-between transition-all cursor-pointer shadow-inner"
+              >
+                <span className="flex items-center gap-1.5">
+                  🖼️ カード画像一覧から必須アビリティを選択...
+                </span>
+                <span className="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300 border border-amber-500/30">
+                  全{availableAbilities.length}件
+                </span>
+              </button>
             </div>
 
             {/* 4. 必須スキル指定 */}
-            <div className="relative">
+            <div>
               <label className="block text-xs font-black text-amber-400 mb-1.5 flex items-center gap-1">
                 <Icon name="zap" className="w-3.5 h-3.5" />
-                必須スキルの選択 (ランク視覚化対応)
+                必須スキルの選択 (カード画像一覧参照対応)
               </label>
 
               {/* Chips */}
@@ -10883,51 +11148,27 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   const rank = item ? item.rank : '金';
 
                   return (
-                    <span key={skName} className="bg-slate-950 border border-slate-700 text-white text-xs font-black px-2.5 py-1 rounded-xl flex items-center gap-1.5 shadow-md">
+                    <span key={skName} className="bg-slate-950 border border-cyan-500/40 text-cyan-300 text-xs font-black px-2.5 py-1 rounded-xl flex items-center gap-1.5 shadow-md">
                       {renderAutoSelectSkillBadge(rank)}
                       <span>{skName}</span>
-                      <button onClick={() => removeSkill(skName)} className="hover:text-red-400 font-black text-slate-400 ml-1">✕</button>
+                      <button onClick={() => removeSkill(skName)} className="hover:text-red-400 font-black text-slate-400 ml-1 cursor-pointer">✕</button>
                     </span>
                   );
                 })}
               </div>
 
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="スキル名 / カード名で検索..."
-                  value={skillSearchText}
-                  onFocus={() => setShowSkillDropdown(true)}
-                  onChange={e => { setSkillSearchText(e.target.value); setShowSkillDropdown(true); }}
-                  className="w-full bg-slate-900 text-white text-xs font-bold p-2.5 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
-                />
-                {showSkillDropdown && filteredSkills.length > 0 && (
-                  <div className="absolute z-30 left-0 right-0 top-full mt-1 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl max-h-56 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 divide-y divide-slate-800">
-                    {filteredSkills.map(sk => (
-                      <div
-                        key={sk.name}
-                        onClick={() => addSkill(sk.name)}
-                        className="p-2.5 hover:bg-emerald-500/15 cursor-pointer transition-all space-y-1"
-                      >
-                        <div className="flex items-center gap-2">
-                          {renderAutoSelectSkillBadge(sk.rank)}
-                          <span className="font-black text-white text-xs">{sk.name}</span>
-                        </div>
-                        {sk.desc && (
-                          <div className="text-[11px] text-emerald-300/90 font-bold truncate">
-                            {sk.desc}
-                          </div>
-                        )}
-                        {sk.cardNames && sk.cardNames.length > 0 && (
-                          <div className="text-[10px] text-slate-400 font-semibold truncate">
-                            カード: {sk.cardNames.join(', ')}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <button
+                type="button"
+                onClick={() => { setSkillSearchText(''); setIsSkillPickerOpen(true); }}
+                className="w-full py-2.5 px-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400/60 hover:bg-slate-900 text-cyan-400 font-black text-xs flex items-center justify-between transition-all cursor-pointer shadow-inner"
+              >
+                <span className="flex items-center gap-1.5">
+                  🖼️ カード画像一覧から必須スキルを選択...
+                </span>
+                <span className="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded text-cyan-300 border border-cyan-500/30">
+                  全{availableSkills.length}件
+                </span>
+              </button>
             </div>
           </div>
 
@@ -11013,6 +11254,168 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
             ⚡ この6枚をスロットに適用する
           </button>
         </div>
+
+        {/* 🖼️ 必須アビリティ 画像付き選択モーダル */}
+        {isAbilityPickerOpen && (
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+            <div className="bg-slate-900 border border-amber-500/40 rounded-3xl p-5 max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center font-black text-base">
+                    🛡️
+                  </span>
+                  <h3 className="text-base font-black text-white">必須アビリティを選択 (カード画像表示)</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsAbilityPickerOpen(false)}
+                  className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-all text-sm font-bold cursor-pointer"
+                >
+                  ✕ 閉じる
+                </button>
+              </div>
+
+              <div className="bg-slate-950 p-2.5 rounded-2xl border border-slate-800">
+                <input
+                  type="text"
+                  value={abilitySearchText}
+                  onChange={(e) => setAbilitySearchText(e.target.value)}
+                  placeholder="アビリティ名・説明・カード名で検索..."
+                  className="w-full bg-slate-900 text-white text-xs px-3 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
+                />
+              </div>
+
+              <div className="flex-1 overflow-y-auto pr-1 space-y-3 scrollbar-thin scrollbar-thumb-slate-700">
+                {filteredAbilities.map(ab => (
+                  <div
+                    key={ab.key}
+                    onClick={() => {
+                      addAbility(ab.key);
+                      setIsAbilityPickerOpen(false);
+                    }}
+                    className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-400/60 hover:bg-slate-900/90 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 group"
+                  >
+                    <div className="space-y-1.5 flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {renderAutoSelectRankBadge(ab.rank)}
+                        <span className="font-black text-white text-sm group-hover:text-amber-300 transition-colors">{ab.name}</span>
+                      </div>
+                      {ab.desc && (
+                        <p className="text-xs text-slate-300 font-medium leading-relaxed">
+                          {ab.desc}
+                        </p>
+                      )}
+                      {/* カード画像一覧表示 */}
+                      <div className="flex items-center gap-2 pt-1 flex-wrap">
+                        <span className="text-[10px] text-slate-400 font-bold">所持カード:</span>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {ab.cards.map(c => (
+                            <div key={c.id} className="flex items-center gap-1.5 bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
+                              {c.getImageUrl && c.getImageUrl() ? (
+                                <img src={c.getImageUrl()} alt={c.name} className="w-5 h-7 object-contain rounded bg-slate-950 border border-slate-700" />
+                              ) : (
+                                <span className="text-[9px] font-bold text-amber-300">{c.rank}</span>
+                              )}
+                              <span className="text-[10px] text-slate-200 font-bold truncate max-w-[130px]">{c.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="px-4 py-2 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 group-hover:bg-amber-500 group-hover:text-slate-950 font-black text-xs transition-all whitespace-nowrap self-end md:self-center"
+                    >
+                      選択する ➕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 🖼️ 必須スキル 画像付き選択モーダル */}
+        {isSkillPickerOpen && (
+          <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+            <div className="bg-slate-900 border border-cyan-500/40 rounded-3xl p-5 max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 flex items-center justify-center font-black text-base">
+                    ⚡
+                  </span>
+                  <h3 className="text-base font-black text-white">必須スキルを選択 (カード画像表示)</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSkillPickerOpen(false)}
+                  className="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-all text-sm font-bold cursor-pointer"
+                >
+                  ✕ 閉じる
+                </button>
+              </div>
+
+              <div className="bg-slate-950 p-2.5 rounded-2xl border border-slate-800">
+                <input
+                  type="text"
+                  value={skillSearchText}
+                  onChange={(e) => setSkillSearchText(e.target.value)}
+                  placeholder="スキル名・説明・カード名で検索..."
+                  className="w-full bg-slate-900 text-white text-xs px-3 py-2 rounded-xl border border-slate-700 focus:border-cyan-400 outline-none"
+                />
+              </div>
+
+              <div className="flex-1 overflow-y-auto pr-1 space-y-3 scrollbar-thin scrollbar-thumb-slate-700">
+                {filteredSkills.map(sk => (
+                  <div
+                    key={sk.name}
+                    onClick={() => {
+                      addSkill(sk.name);
+                      setIsSkillPickerOpen(false);
+                    }}
+                    className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-400/60 hover:bg-slate-900/90 transition-all cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 group"
+                  >
+                    <div className="space-y-1.5 flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {renderAutoSelectSkillBadge(sk.rank)}
+                        <span className="font-black text-white text-sm group-hover:text-cyan-300 transition-colors">{sk.name}</span>
+                      </div>
+                      {sk.desc && (
+                        <p className="text-xs text-slate-300 font-medium leading-relaxed">
+                          {sk.desc}
+                        </p>
+                      )}
+                      {/* カード画像一覧表示 */}
+                      <div className="flex items-center gap-2 pt-1 flex-wrap">
+                        <span className="text-[10px] text-slate-400 font-bold">所持カード:</span>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {sk.cards.map(c => (
+                            <div key={c.id} className="flex items-center gap-1.5 bg-slate-900 px-2 py-1 rounded-lg border border-slate-800">
+                              {c.getImageUrl && c.getImageUrl() ? (
+                                <img src={c.getImageUrl()} alt={c.name} className="w-5 h-7 object-contain rounded bg-slate-950 border border-slate-700" />
+                              ) : (
+                                <span className="text-[9px] font-bold text-cyan-300">{c.rank}</span>
+                              )}
+                              <span className="text-[10px] text-slate-200 font-bold truncate max-w-[130px]">{c.name}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      className="px-4 py-2 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 group-hover:bg-cyan-500 group-hover:text-slate-950 font-black text-xs transition-all whitespace-nowrap self-end md:self-center"
+                    >
+                      選択する ➕
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

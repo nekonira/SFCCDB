@@ -67,10 +67,57 @@ const htmlContent = `<!DOCTYPE html>
     body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
     .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
     .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); }
+
+    @keyframes app-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes app-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .app-loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #070a10;
+      color: #f1f5f9;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .app-loading-spinner {
+      width: 56px;
+      height: 56px;
+      border: 4px solid rgba(56, 189, 248, 0.15);
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      animation: app-spin 0.8s linear infinite;
+      margin-bottom: 24px;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.25);
+    }
+    .app-loading-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      animation: app-pulse 2s infinite ease-in-out;
+    }
+    .app-loading-subtext {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
   </style>
 </head>
 <body class="bg-[#070a10] text-slate-100 min-h-screen">
-  <div id="root"></div>
+  <div id="root">
+    <div class="app-loading-container">
+      <div class="app-loading-spinner"></div>
+      <div class="app-loading-title">サカつく2026 データベース ＆ チームビルダー</div>
+      <div class="app-loading-subtext">選手データ・特練カードデータを読み込み中... しばらくお待ちください</div>
+    </div>
+  </div>
 
   <!-- 1. Player Photos (${imageFiles.length} Image Files) -->
 ${imageScriptTags}
