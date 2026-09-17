@@ -3200,7 +3200,7 @@ function PlayerDBTab({
                       {p.playStyle}{p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{p.playStyleLevel}</span>
                     </td>
                     <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00FF66] whitespace-nowrap">{p.overall}</td>
-                    <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00E5FF] whitespace-nowrap">{getPlayerTotalStats18(p).toLocaleString()}</td>
+                    <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00E5FF] whitespace-nowrap">{getPlayerTotalStats18(p)}</td>
                     <td className="py-3 px-3 text-center whitespace-nowrap">
                       <span className={`${getPolicyTextColor(p.policy)} font-bold whitespace-nowrap`}>{p.policy}</span>
                     </td>
@@ -3340,7 +3340,7 @@ function PlayerCard({ player, onClick, onCompareToggle, isCompared }) {
           <div>
             <div className="text-[10px] text-slate-400 font-bold uppercase">能力合計実数値</div>
             <div className="text-xl md:text-2xl font-num font-black text-[#00E5FF] mt-0.5">
-              {totalStats18.toLocaleString()}
+              {totalStats18}
             </div>
           </div>
         </div>
@@ -5970,7 +5970,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               {builderMaxEnhanced ? '基本総合力 (加算前)' : '基本総合力 (加算前)'}
             </div>
             <div className="text-xl sm:text-2xl font-black font-num text-slate-200 mt-0.5">
-              {rawBaseOverall.toLocaleString()}
+              {rawBaseOverall}
             </div>
           </div>
           <div className="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 text-center">
@@ -5978,10 +5978,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               ポリシー一致後
             </div>
             <div className="text-xl sm:text-2xl font-black font-num text-[#00FF66] mt-0.5">
-              {policyAdjustedOverall.toLocaleString()}
+              {policyAdjustedOverall}
             </div>
             <div className="text-[9px] font-bold text-[#00FF66]/80 mt-0.5">
-              +{policyBonusGained.toLocaleString()} ({policyMatchCount}名一致)
+              +{policyBonusGained} ({policyMatchCount}名一致)
             </div>
           </div>
           <div className="bg-slate-950/80 p-3 rounded-xl border border-amber-400/40 text-center">
@@ -5989,10 +5989,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               最終チーム総合力
             </div>
             <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
-              {(comboValidation?.finalTeamOverall || policyAdjustedOverall).toLocaleString()}
+              {(comboValidation?.finalTeamOverall || policyAdjustedOverall)}
             </div>
             <div className="text-[9px] font-bold text-amber-300/80 mt-0.5">
-              +{((comboValidation?.totalGainedOverall) || policyBonusGained).toLocaleString()} UP
+              +{((comboValidation?.totalGainedOverall) || policyBonusGained)} UP
             </div>
           </div>
           <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
@@ -6240,7 +6240,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                     </div>
                     {isComboActive && comboValidation.totalComboStatBonus > 0 && (
                       <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-emerald-400 text-slate-950">
-                        +{comboValidation.totalComboStatBonus.toLocaleString()} UP
+                        +{comboValidation.totalComboStatBonus} UP
                       </span>
                     )}
                   </div>
@@ -6274,7 +6274,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                   <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow">
                     <span className="text-xs text-slate-400 font-bold block">① 素のチーム総合力</span>
                     <strong className="text-xl sm:text-2xl font-num font-black text-slate-200 block mt-1">
-                      {rawBaseOverall.toLocaleString()}
+                      {rawBaseOverall}
                     </strong>
                   </div>
 
@@ -6282,7 +6282,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                   <div className="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/40 shadow">
                     <span className="text-xs text-emerald-400 font-bold block">② ポリシー一致ボーナス</span>
                     <strong className="text-xl sm:text-2xl font-num font-black text-[#00FF66] block mt-1">
-                      +{comboValidation.totalPolicyBonus.toLocaleString()}
+                      +{comboValidation.totalPolicyBonus}
                     </strong>
                     <span className="text-[10px] text-emerald-400/80 font-bold block mt-0.5">
                       ({policyMatchCount}名一致)
@@ -6299,7 +6299,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                     <strong className={`text-xl sm:text-2xl font-num font-black block mt-1 ${
                       isComboActive ? 'text-amber-400' : 'text-slate-500'
                     }`}>
-                      +{comboValidation.totalComboStatBonus.toLocaleString()}
+                      +{comboValidation.totalComboStatBonus}
                     </strong>
                   </div>
 
@@ -6307,10 +6307,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                   <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/25 via-slate-900 to-slate-950 border-2 border-amber-400 shadow-lg ring-2 ring-amber-400/20">
                     <span className="text-xs text-amber-300 font-black block">④ 最終チーム総合力</span>
                     <strong className="text-2xl sm:text-3xl font-num font-black text-amber-300 block mt-1 drop-shadow-md">
-                      {comboValidation.finalTeamOverall.toLocaleString()}
+                      {comboValidation.finalTeamOverall}
                     </strong>
                     <span className="text-[10px] text-amber-300/90 font-bold block mt-0.5">
-                      (+{comboValidation.totalGainedOverall.toLocaleString()} UP)
+                      (+{comboValidation.totalGainedOverall} UP)
                     </span>
                   </div>
                 </div>
@@ -6343,7 +6343,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                             <span className="text-amber-400 font-num font-black">+{sb.effectivePct}%</span>
                           </div>
                           <strong className="text-lg sm:text-xl font-num font-black text-[#00FF66] block">
-                            +{sb.gainedOverall.toLocaleString()}
+                            +{sb.gainedOverall}
                           </strong>
                         </div>
                       ))}
@@ -7204,7 +7204,7 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
               <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
                 <span className="text-xs font-bold text-slate-400">能力合計実数値 ({selectedRarity})</span>
                 <span className="text-3xl md:text-4xl font-num font-black text-[#00E5FF] mt-1">
-                  {totalStats18.toLocaleString()} <span className="text-xs font-normal text-slate-400 font-sans">(18項目合計)</span>
+                  {totalStats18} <span className="text-xs font-normal text-slate-400 font-sans">(18項目合計)</span>
                 </span>
               </div>
             </div>
@@ -7778,7 +7778,7 @@ function PlayerCompareModal({ compareList, onClose, onRemove, onClearAll }) {
                         <div className="hidden sm:flex absolute left-1 items-center justify-start w-10">
                           {renderRankBadge(allTotalStats18[idx], allTotalStats18)}
                         </div>
-                        <span className="text-base sm:text-xl md:text-2xl text-[#00E5FF]">{allTotalStats18[idx].toLocaleString()}</span>
+                        <span className="text-base sm:text-xl md:text-2xl text-[#00E5FF]">{allTotalStats18[idx]}</span>
                       </div>
                     </td>
                   ))}
@@ -7940,12 +7940,19 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     }
   }, [selectedPlayer, simPlayerRarity, simPlayerMaxEnhanced]);
 
-  const getStatLimitInfo = useCallback((player, statName, gainVal = 0) => {
-    if (!player) return { baseVal: 100, gainVal: 0, boostedVal: 100, maxLimit: 2000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, addition: 0 };
-    const baseStats = player.baseDetailStats || {};
-    const baseVal = baseStats[statName] || 100;
+  const getDetailStatLimitInfo = useCallback((player, statName, gainVal = 0) => {
+    if (!player) return { baseVal: 0, gainVal: 0, boostedVal: 0, maxLimit: 1000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, addition: 0 };
+
+    const map = STAT_NAME_KEY_MAP[statName];
+    let baseVal = 400;
+
+    if (map && player.detailStats && player.detailStats[map.cat] && player.detailStats[map.cat][map.key] !== undefined) {
+      baseVal = player.detailStats[map.cat][map.key];
+    }
+
     const addition = getPositionStatAddition(player.mainPosition, statName);
     const maxLimit = baseVal + addition;
+
     const cleanGainVal = floor1Decimal(gainVal);
     const boostedVal = floor1Decimal(baseVal + cleanGainVal);
     const basePct = Math.min(100, Math.round((baseVal / maxLimit) * 100));
@@ -7954,7 +7961,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     const isCapped = boostedVal >= maxLimit;
 
     return { baseVal, gainVal: cleanGainVal, boostedVal, maxLimit, basePct, gainPct, pct, isCapped, addition };
-  }, [STAT_NAME_KEY_MAP]);
+  }, []);
 
   const getCategoryStatLimitInfo = useCallback((player, catKey, gainVal = 0) => {
     const catNames = {
@@ -9015,12 +9022,12 @@ function getPositionStatAddition(position, statName) {
                               return isPlaystyleMatch ? (
                                 <span key={stName} className="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 font-num text-[10px] border border-emerald-500/50 font-black shadow-xs flex items-center gap-1" title={`素上昇値: +${rawVal} × ボーナス${cardBonusMult}倍 = +${boostedVal}`}>
                                   <span>{stName}</span>
-                                  <span className="text-emerald-200">+{boostedVal}</span>
-                                  <span className="text-[9px] text-emerald-400/80 font-normal">(素+{rawVal})</span>
+                                  <span className="text-emerald-200">{boostedVal}</span>
+                                  <span className="text-[9px] text-emerald-400/80 font-normal">(素: {rawVal})</span>
                                 </span>
                               ) : (
                                 <span key={stName} className="px-2 py-0.5 rounded bg-slate-800 text-amber-300 font-num text-[10px] border border-slate-700 font-bold">
-                                  {stName} +{rawVal}
+                                  {stName} {rawVal}
                                 </span>
                               );
                             })}
@@ -9105,10 +9112,10 @@ function getPositionStatAddition(position, statName) {
                   <span className="text-xs font-bold text-slate-400 block">特練カード適用後 合計能力値 (実数値)</span>
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl sm:text-4xl font-num font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-white">
-                      {boostedTotalStats.toLocaleString()}
+                      {boostedTotalStats}
                     </span>
                     <span className="text-xs font-bold text-slate-400">
-                      (素: {baseTotalStats.toLocaleString()} + 特練: <span className="text-[#00FF66] font-black">+{slotCalcResult.totalGain}</span>)
+                      (素: {baseTotalStats} + 特練: <span className="text-[#00FF66] font-black">{slotCalcResult.totalGain}</span>)
                     </span>
                   </div>
                 </div>
@@ -9116,7 +9123,7 @@ function getPositionStatAddition(position, statName) {
                 <div className="text-right">
                   <span className="text-[10px] text-slate-400 font-bold block">特練ステータス上昇合計</span>
                   <span className="text-xl font-num font-black text-[#00FF66]">
-                    +{slotCalcResult.totalGain} <span className="text-xs font-normal text-slate-400">(+{slotCalcResult.percentGain}%)</span>
+                    {slotCalcResult.totalGain} <span className="text-xs font-normal text-slate-400">({slotCalcResult.percentGain}%)</span>
                   </span>
                 </div>
               </div>
@@ -9183,7 +9190,7 @@ function getPositionStatAddition(position, statName) {
                               <span className="text-slate-400">基礎 {info.baseVal}</span>
                               {info.gainVal > 0 && (
                                 <span className="text-[#00FF66] font-black bg-[#00FF66]/10 px-1.5 py-0.2 rounded border border-[#00FF66]/30">
-                                  +{info.gainVal}
+                                  {info.gainVal}
                                 </span>
                               )}
                               <span className="text-slate-400">/ 限界 <span className="text-amber-400 font-extrabold">{info.maxLimit}</span></span>
@@ -9249,7 +9256,7 @@ function getPositionStatAddition(position, statName) {
                               </span>
                               {info.gainVal > 0 && (
                                 <span className="text-[#00FF66] font-black bg-[#00FF66]/10 px-1.5 py-0.2 rounded border border-[#00FF66]/30">
-                                  特練 +{info.gainVal}
+                                  特練 {info.gainVal}
                                 </span>
                               )}
                               <span className="text-slate-400">/ 限界 <span className="text-amber-400 font-extrabold">{info.maxLimit}</span></span>
@@ -9507,11 +9514,11 @@ function getPositionStatAddition(position, statName) {
                             <div className="flex items-center gap-3">
                               <div className="text-center">
                                 <span className="text-[9px] text-slate-400 block font-bold">無凸</span>
-                                <span className="text-xs font-num font-bold text-slate-300">+{baseSum}</span>
+                                <span className="text-xs font-num font-bold text-slate-300">{baseSum}</span>
                               </div>
                               <div className="text-center bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
                                 <span className="text-[9px] text-amber-400 block font-black">完凸</span>
-                                <span className="text-sm font-num font-black text-amber-400">+{maxSum}</span>
+                                <span className="text-sm font-num font-black text-amber-400">{maxSum}</span>
                               </div>
                             </div>
 
@@ -9679,10 +9686,10 @@ function getPositionStatAddition(position, statName) {
                                 )}
                               </td>
                               <td className="p-3 text-center font-num font-bold text-slate-300 text-sm">
-                                +{baseSum}
+                                {baseSum}
                               </td>
                               <td className="p-3 text-center font-num font-black text-amber-400 text-sm bg-amber-500/5">
-                                +{maxSum}
+                                {maxSum}
                               </td>
                               <td className="p-3 text-center">
                                 <div className="flex items-center justify-center gap-1.5">
@@ -9899,7 +9906,7 @@ function getPositionStatAddition(position, statName) {
                   </div>
                   <div className="text-right">
                     <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
-                    <div className="text-base font-black font-num text-[#00FF66]">+{calcA.totalGain} UP</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">{calcA.totalGain} UP</div>
                   </div>
                 </div>
 
@@ -9968,7 +9975,7 @@ function getPositionStatAddition(position, statName) {
                   </div>
                   <div className="text-right">
                     <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
-                    <div className="text-base font-black font-num text-[#00FF66]">+{calcB.totalGain} UP</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">{calcB.totalGain} UP</div>
                   </div>
                 </div>
 
@@ -10035,16 +10042,16 @@ function getPositionStatAddition(position, statName) {
                     return (
                       <tr key={stName} className="hover:bg-slate-900/40 transition-colors">
                         <td className="p-3 font-black text-slate-100 text-sm sm:text-base font-sans">{stName}</td>
-                        <td className="p-3 text-center font-black text-amber-300 bg-amber-500/5 text-base sm:text-2xl">+{valA}</td>
-                        <td className="p-3 text-center font-black text-cyan-300 bg-cyan-500/5 text-base sm:text-2xl">+{valB}</td>
+                        <td className="p-3 text-center font-black text-amber-300 bg-amber-500/5 text-base sm:text-2xl">{valA}</td>
+                        <td className="p-3 text-center font-black text-cyan-300 bg-cyan-500/5 text-base sm:text-2xl">{valB}</td>
                         <td className="p-3 text-center">
                           {diff > 0 ? (
                             <span className="px-3 py-1 rounded-lg font-black text-xs sm:text-sm bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                              ビルドA +{diff}
+                              ビルドA {diff}
                             </span>
                           ) : diff < 0 ? (
                             <span className="px-3 py-1 rounded-lg font-black text-xs sm:text-sm bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                              ビルドB +{Math.abs(diff)}
+                              ビルドB {Math.abs(diff)}
                             </span>
                           ) : (
                             <span className="text-slate-400 font-bold text-xs sm:text-sm">同等</span>
@@ -10787,6 +10794,19 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
   };
 
   const renderRankBadge = (val, allVals) => {
+    if (!val || val === 0 || !allVals || allVals.length < 2) return null;
+    const sortedUnique = [...new Set(allVals)].sort((a, b) => b - a);
+    const rank = sortedUnique.indexOf(val) + 1;
+    const maxRank = Math.min(3, allVals.length - 1);
+    if (rank > maxRank) return null;
+
+    if (rank === 1) {
+      return <span className="hidden sm:inline-flex text-[8px] sm:text-[8.5px] font-black text-red-200 bg-red-600/50 px-1 py-0.5 rounded border border-red-400/70 shadow-xs leading-none whitespace-nowrap">★BEST</span>;
+    } else if (rank === 2) {
+      return <span className="hidden sm:inline-flex text-[8px] sm:text-[8.5px] font-extrabold text-amber-100 bg-amber-500/50 px-1 py-0.5 rounded border border-amber-300/70 shadow-xs leading-none whitespace-nowrap">2ND</span>;
+    } else if (rank === 3) {
+      return <span className="hidden sm:inline-flex text-[8px] sm:text-[8.5px] font-bold text-cyan-100 bg-cyan-500/50 px-1 py-0.5 rounded border border-cyan-300/70 shadow-xs leading-none whitespace-nowrap">3RD</span>;
+    }
     return null;
   };
 
@@ -10936,27 +10956,30 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
 
                     return (
                       <th key={c.id} className="p-1 sm:p-2 text-center border-r border-slate-800/80 last:border-r-0 relative group bg-slate-900 sticky top-0 z-30 shadow-md align-top">
-                        <button
-                          onClick={() => onRemoveCard(c.id)}
-                          className="absolute top-1 right-1 text-slate-400 hover:text-red-400 p-0.5 cursor-pointer transition-colors z-10 bg-slate-900/80 rounded-full border border-slate-700"
-                          title="比較表から削除"
-                        >
-                          <Icon name="x" className="w-3.5 h-3.5" />
-                        </button>
-
                         <div className="space-y-1 sm:space-y-1.5 flex flex-col items-center">
-                          {/* 🔥 大幅に拡大したカード画像 (w-16 h-22 sm:w-24 sm:h-36) */}
-                          {imgUrl ? (
-                            <img
-                              src={imgUrl}
-                              alt={c.name}
-                              className="w-14 h-20 sm:w-24 sm:h-36 object-cover rounded-xl border border-amber-500/40 mx-auto shadow-lg"
-                            />
-                          ) : (
-                            <div className="w-14 h-20 sm:w-24 sm:h-36 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-amber-400 font-black mx-auto">
-                              {c.rank}
-                            </div>
-                          )}
+                          {/* Card Image Container with relative positioning */}
+                          <div className="relative mx-auto flex-shrink-0">
+                            {imgUrl ? (
+                              <img
+                                src={imgUrl}
+                                alt={c.name}
+                                className="w-14 h-20 sm:w-24 sm:h-36 object-cover rounded-xl border border-amber-500/40 mx-auto shadow-lg"
+                              />
+                            ) : (
+                              <div className="w-14 h-20 sm:w-24 sm:h-36 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-center text-xs text-amber-400 font-black mx-auto">
+                                {c.rank}
+                              </div>
+                            )}
+
+                            {/* Remove button at bottom-right of card image */}
+                            <button
+                              onClick={() => onRemoveCard(c.id)}
+                              className="absolute bottom-1 right-1 text-slate-300 hover:text-white bg-slate-900/90 hover:bg-red-600/90 p-1 rounded-full border border-slate-700 hover:border-red-400/80 shadow-md cursor-pointer transition-all z-20"
+                              title="比較表から削除"
+                            >
+                              <Icon name="x" className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                            </button>
+                          </div>
 
                           <div className="w-full text-center px-0.5">
                             <div className="flex items-center justify-center gap-0.5 sm:gap-1 flex-wrap">
@@ -11114,24 +11137,15 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                                 <button
                                   key={b.style}
                                   onClick={() => toggleCardBonus(c.id, b.style)}
-                                  className={`w-full max-w-[135px] px-1 sm:px-1.5 py-0.5 rounded-lg text-[10px] sm:text-xs font-extrabold transition-all border cursor-pointer flex items-center justify-between gap-0.5 ${
+                                  className={`w-full max-w-[135px] px-1 sm:px-1.5 py-0.5 rounded-lg text-[9px] sm:text-[11px] font-extrabold transition-all border cursor-pointer flex items-center justify-center gap-1 ${
                                     active
                                       ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm hover:bg-amber-500/30'
                                       : 'bg-slate-900/80 text-slate-500 border-slate-800 hover:text-slate-300 hover:border-slate-700 opacity-60'
                                   }`}
                                   title={`${b.style} ${b.percent}% UP の適用/非適用を切り替え`}
                                 >
-                                  <span className="flex items-center gap-0.5 truncate">
-                                    <span>🎯 {b.style}</span>
-                                  </span>
-                                  <div className="flex items-center gap-0.5 flex-shrink-0">
-                                    <span className="text-[10px] sm:text-[11px] font-black">+{b.percent}%</span>
-                                    <span className={`w-3.5 h-3.5 rounded flex items-center justify-center text-[9px] font-black ${
-                                      active ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-500'
-                                    }`}>
-                                      {active ? '✓' : '✕'}
-                                    </span>
-                                  </div>
+                                  <span className="truncate">🎯 {b.style}</span>
+                                  <span className="font-black flex-shrink-0">{b.percent}%</span>
                                 </button>
                               );
                             })}
@@ -11157,13 +11171,17 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                     return (
                       <td key={c.id} className={`p-1.5 sm:p-2 text-center border-r border-slate-800/60 font-black ${bgClass}`}>
                         <div className="flex flex-col items-center justify-center">
-                          <div className="flex items-center justify-center gap-0.5">
-                            {badge}
-                            <span className="text-amber-300 font-black text-base sm:text-2xl tracking-tight">+{totalInfo.sum.toFixed(1)}</span>
+                          <div className="relative flex items-center justify-center w-full min-h-[22px] sm:min-h-[26px]">
+                            {badge && (
+                              <div className="hidden sm:flex absolute left-0.5 sm:left-1 items-center justify-start">
+                                {badge}
+                              </div>
+                            )}
+                            <span className="text-amber-300 font-black text-base sm:text-2xl tracking-tight">{totalInfo.sum}</span>
                           </div>
                           {totalInfo.isBoosted ? (
                             <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block mt-0.5">
-                              (素: +{totalInfo.rawSum.toFixed(1)})
+                              (素: {totalInfo.rawSum})
                             </span>
                           ) : (
                             <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block mt-0.5">
@@ -11208,13 +11226,17 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                           <td key={c.id} className={`p-1.5 sm:p-2 text-center border-r border-slate-800/60 font-bold ${bgClass}`}>
                             {val > 0 || statData.rawVal > 0 ? (
                               <div className="flex flex-col items-center justify-center">
-                                <div className="flex items-center justify-center gap-0.5">
-                                  {badge}
-                                  <span className="text-amber-300 font-black text-sm sm:text-xl">+{val}</span>
+                                <div className="relative flex items-center justify-center w-full min-h-[20px] sm:min-h-[24px]">
+                                  {badge && (
+                                    <div className="hidden sm:flex absolute left-0.5 sm:left-1 items-center justify-start">
+                                      {badge}
+                                    </div>
+                                  )}
+                                  <span className="text-amber-300 font-black text-sm sm:text-xl">{val}</span>
                                 </div>
                                 {statData.isBoosted ? (
                                   <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block">
-                                    (素: +{statData.rawVal})
+                                    (素: {statData.rawVal})
                                   </span>
                                 ) : (
                                   <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block">

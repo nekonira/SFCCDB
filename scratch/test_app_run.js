@@ -2,7 +2,12 @@ const fs = require('fs');
 const code = fs.readFileSync('src/app.js', 'utf8');
 
 global.React = {
-  useState: (init) => [typeof init === 'function' ? init() : init, () => {}],
+  useState: (init) => {
+    let val = typeof init === 'function' ? init() : init;
+    if (init === 'singleCompare') val = 'slots';
+    if (init === 'category') val = 'detail';
+    return [val, () => {}];
+  },
   useEffect: (cb) => { cb(); },
   useMemo: (cb) => cb(),
   useRef: (init) => ({ current: init }),
@@ -25,13 +30,13 @@ global.document = {
 
 try {
   eval(code);
-  console.log("SUCCESS: app.js evaluated without top-level errors!");
+  console.log("SUCCESS: app.js evaluated!");
   
   if (typeof TrainingSimulatorTab === 'function') {
-    console.log("Testing TrainingSimulatorTab execution...");
+    console.log("Testing TrainingSimulatorTab with subTab='slots' and limitGaugeMode='detail'...");
     TrainingSimulatorTab({ players: [{ name: 'Yamal', mainPosition: 'CF' }], selectedPlayer: null, setSelectedPlayer: () => {}, onGoToDB: () => {} });
-    console.log("SUCCESS: TrainingSimulatorTab rendered completely without errors!");
+    console.log("SUCCESS: 18-detail-stat mode rendered cleanly!");
   }
 } catch (e) {
-  console.error("RUNTIME ERROR DETECTED:", e);
+  console.error("EMPIRICAL RUNTIME ERROR TRACE:", e);
 }
