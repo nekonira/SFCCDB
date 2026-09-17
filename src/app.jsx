@@ -3872,9 +3872,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       policy: 'ムービング',
       formationId: '361b_blueGaru',
       buffs: [
-        { name: 'ストッパー', val: '+80%' },
-        { name: '組立CB', val: '+80%' },
-        { name: 'セントラルMF', val: '+80%' }
+        { name: 'コンタクト', val: '+80%' },
+        { name: 'パスカット', val: '+80%' },
+        { name: 'キック精度', val: '+80%' }
       ]
     },
     {
