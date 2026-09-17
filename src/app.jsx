@@ -1499,7 +1499,7 @@ function UnderAdjustmentNotice({ title, description, onGoToDB }) {
 // ─────────────────────────────────────────────────────────────
 function normalizeStyle(str) {
   if (!str) return '';
-  return str
+  return String(str)
     .replace(/\d+%/g, '')
     .replace(/up/gi, '')
     .replace(/ブレーカー/g, 'ブレイカー')
@@ -1514,19 +1514,19 @@ function checkSingleBonusMatch(player, rawStyle) {
   if (!s) return false;
 
   const pStyle = normalizeStyle(player.playStyle);
-  const pPos = normalizeStyle(player.mainPosition);
+  const pPos = normalizeStyle(player.mainPosition || player.position);
   const pCat = normalizeStyle(player.category);
   const pNation = normalizeStyle(player.nationality);
 
-  // Axis 1: Nationality Match
+  // 1. Nationality Match (e.g. 日本, スペイン, ブラジル, etc.)
   if (pNation && (pNation === s || pNation.includes(s) || s.includes(pNation))) return true;
 
-  // Axis 2: Category Match (FW, MF, DF, GK)
+  // 2. Category Match (FW, MF, DF, GK)
   if (s === 'fw' || s === 'mf' || s === 'df' || s === 'gk') {
     return pCat === s;
   }
 
-  // Axis 3: Exact Position Match
+  // 3. Position Match (CF, ST, LW, RW, LM, RM, AM, DM, LFB, RFB, CB, GK)
   const posMap = {
     'cf': ['cf', 'st'],
     'st': ['cf', 'st'],
@@ -1544,85 +1544,31 @@ function checkSingleBonusMatch(player, rawStyle) {
 
   if (posMap[s]) {
     return posMap[s].includes(pPos);
-  } else if (pPos === s) {
-    return true;
   }
 
-  // Axis 4: PlayStyle Specific Match ONLY (No position/category fallback!)
+  // 4. PlayStyle Match ONLY (Strict & Exact matching - No cross-playstyle fallback!)
   if (!pStyle) return false;
 
-  // Crucial distinction: 'サイドアタッカー' and 'アタッカー' are distinct playstyles!
-  // Prevents cross-matching caused by 'サイドアタッカー'.includes('アタッカー') == true in JS
-  const isReqSideAttacker = s.includes('サイドアタッカー');
-  const isReqAttacker = !isReqSideAttacker && s.includes('アタッカー');
+  if (s === 'ストライカー') return pStyle === 'ストライカー';
+  if (s === 'ラインブレイカー') return pStyle === 'ラインブレイカー';
+  if (s === 'ポストプレイヤー') return pStyle === 'ポストプレイヤー';
+  if (s === 'アタッカー') return pStyle === 'アタッカー';
+  if (s === 'ハードマーカー') return pStyle === 'ハードマーカー';
+  if (s === 'ストッパー') return pStyle === 'ストッパー';
+  if (s === 'スプリントcb') return pStyle === 'スプリントcb';
+  if (s === '組立cb') return pStyle === '組立cb';
+  if (s === 'オーソドックスgk') return pStyle === 'オーソドックスgk';
+  if (s === 'スイーパーgk') return pStyle === 'スイーパーgk';
 
-  const isPlayerSideAttacker = pStyle.includes('サイドアタッカー');
-  const isPlayerAttacker = !isPlayerSideAttacker && (pStyle === 'アタッカー' || pStyle.startsWith('アタッカー'));
+  if (s.startsWith('サイドアタッカー')) return pStyle.startsWith('サイドアタッカー');
+  if (s.startsWith('ワイドストライカー')) return pStyle.startsWith('ワイドストライカー');
+  if (s.startsWith('ドリブラー')) return pStyle.startsWith('ドリブラー');
+  if (s.startsWith('パサー')) return pStyle.startsWith('パサー');
+  if (s.startsWith('セントラル')) return pStyle.startsWith('セントラル');
+  if (s.startsWith('攻撃的')) return pStyle.startsWith('攻撃的');
+  if (s.startsWith('守備的')) return pStyle.startsWith('守備的');
 
-  if (isReqAttacker && isPlayerSideAttacker) return false;
-  if (isReqSideAttacker && isPlayerAttacker) return false;
-
-  if (pStyle === s) return true;
-
-  if (s === 'ストライカー') {
-    return pStyle.includes('ストライカー') || pStyle.includes('ラインブレイカー') || pStyle.includes('ポストプレーヤー') || pStyle.includes('ターゲットマン') || pStyle.includes('ワイドストライカー');
-  }
-  if (s.includes('ラインブレイカー')) {
-    return pStyle.includes('ラインブレイカー');
-  }
-  if (s.includes('ポストプレーヤー')) {
-    return pStyle.includes('ポストプレーヤー') || pStyle.includes('ターゲットマン');
-  }
-  if (s.includes('ワイドストライカー')) {
-    return pStyle.includes('ワイドストライカー');
-  }
-  if (s.includes('サイドアタッカー')) {
-    return pStyle.includes('サイドアタッカー') || pStyle.includes('ウイングバック') || pStyle.includes('ウインガー');
-  }
-  if (s.includes('ドリブラー')) {
-    return pStyle.includes('ドリブラー') || pStyle.includes('テクニシャン');
-  }
-  if (s.includes('アタッカー')) {
-    return isPlayerAttacker;
-  }
-  if (s.includes('パサー')) {
-    return pStyle.includes('パサー') || pStyle.includes('司令塔') || pStyle.includes('ゲームメーカー');
-  }
-  if (s.includes('セントラル')) {
-    return pStyle.includes('セントラル') || pStyle.includes('インサイドハーフ') || pStyle.includes('ボックス');
-  }
-  if (s.includes('ハードマーカー')) {
-    return pStyle.includes('ハードマーカー') || pStyle.includes('ハードプレス') || pStyle.includes('クラッシャー') || pStyle.includes('ハードタッカー');
-  }
-  if (s.includes('攻撃的fb') || s.includes('攻撃的sb')) {
-    return pStyle.includes('攻撃的');
-  }
-  if (s.includes('守備的fb') || s.includes('守備的sb')) {
-    return pStyle.includes('守備的');
-  }
-  if (s.includes('ストッパー')) {
-    return pStyle.includes('ストッパー');
-  }
-  if (s.includes('組立cb') || s.includes('ビルドアップ')) {
-    return pStyle.includes('組立') || pStyle.includes('ビルドアップ');
-  }
-  if (s.includes('スプリントcb')) {
-    return pStyle.includes('スプリント');
-  }
-  if (s.includes('オーソドックスgk')) {
-    return pStyle.includes('オーソドックス');
-  }
-  if (s.includes('スイーパーgk')) {
-    return pStyle.includes('スイーパー');
-  }
-
-  if (s.length >= 3 && pStyle.length >= 3) {
-    if (s.includes('アタッカー') && pStyle.includes('サイドアタッカー')) return false;
-    if (pStyle.includes('アタッカー') && s.includes('サイドアタッカー')) return false;
-    if (pStyle.includes(s) || s.includes(pStyle)) return true;
-  }
-
-  return false;
+  return pStyle === s;
 }
 
 function checkBonusMatch(player, rawStyle) {
@@ -10899,7 +10845,9 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
     let bonusMult = 1.0;
     const bonuses = getCardBonuses(c);
     bonuses.forEach(b => {
-      if (isBonusActive(c.id, b.style)) {
+      const matchesPlayer = currentPlayer ? checkSingleBonusMatch(currentPlayer, b.style) : false;
+      const isUserToggledOn = isBonusActive(c.id, b.style);
+      if (matchesPlayer && isUserToggledOn) {
         bonusMult += (Number(b.percent) || 0) / 100;
       }
     });
@@ -11245,7 +11193,9 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
                         {bonuses.length > 0 ? (
                           <div className="flex flex-col items-center justify-center gap-1">
                             {bonuses.map(b => {
-                              const active = isBonusActive(c.id, b.style);
+                              const matchesPlayer = currentPlayer ? checkSingleBonusMatch(currentPlayer, b.style) : false;
+                              const userToggledOn = isBonusActive(c.id, b.style);
+                              const active = matchesPlayer && userToggledOn;
 
                               return (
                                 <button
