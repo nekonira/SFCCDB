@@ -1551,6 +1551,17 @@ function checkSingleBonusMatch(player, rawStyle) {
   // Axis 4: PlayStyle Specific Match ONLY (No position/category fallback!)
   if (!pStyle) return false;
 
+  // Crucial distinction: 'サイドアタッカー' and 'アタッカー' are distinct playstyles!
+  // Prevents cross-matching caused by 'サイドアタッカー'.includes('アタッカー') == true in JS
+  const isReqSideAttacker = s.includes('サイドアタッカー');
+  const isReqAttacker = !isReqSideAttacker && s.includes('アタッカー');
+
+  const isPlayerSideAttacker = pStyle.includes('サイドアタッカー');
+  const isPlayerAttacker = !isPlayerSideAttacker && (pStyle === 'アタッカー' || pStyle.startsWith('アタッカー'));
+
+  if (isReqAttacker && isPlayerSideAttacker) return false;
+  if (isReqSideAttacker && isPlayerAttacker) return false;
+
   if (pStyle === s) return true;
 
   if (s === 'ストライカー') {
@@ -1572,7 +1583,7 @@ function checkSingleBonusMatch(player, rawStyle) {
     return pStyle.includes('ドリブラー') || pStyle.includes('テクニシャン');
   }
   if (s.includes('アタッカー')) {
-    return pStyle.includes('アタッカー') || pStyle.includes('サイドアタッカー') || pStyle.includes('ストライカー') || pStyle.includes('チャンスメーカー');
+    return isPlayerAttacker;
   }
   if (s.includes('パサー')) {
     return pStyle.includes('パサー') || pStyle.includes('司令塔') || pStyle.includes('ゲームメーカー');
@@ -1606,6 +1617,8 @@ function checkSingleBonusMatch(player, rawStyle) {
   }
 
   if (s.length >= 3 && pStyle.length >= 3) {
+    if (s.includes('アタッカー') && pStyle.includes('サイドアタッカー')) return false;
+    if (pStyle.includes('アタッカー') && s.includes('サイドアタッカー')) return false;
     if (pStyle.includes(s) || s.includes(pStyle)) return true;
   }
 
@@ -8644,8 +8657,16 @@ function getPositionStatAddition(position, statName) {
       const matchBonus = cardBonusFilter === 'ALL' || (
         cardBonusFilter === 'NONE' ? !c.playstyleBonus : (
           c.playstyleBonus && (
-            (c.playstyleBonus.style && c.playstyleBonus.style.includes(cardBonusFilter)) ||
-            (c.playstyleBonus.bonuses && c.playstyleBonus.bonuses.some(b => b.style.includes(cardBonusFilter)))
+            (c.playstyleBonus.style && (
+              cardBonusFilter === 'アタッカー'
+                ? (c.playstyleBonus.style.includes('アタッカー') && !c.playstyleBonus.style.includes('サイドアタッカー'))
+                : c.playstyleBonus.style.includes(cardBonusFilter)
+            )) ||
+            (c.playstyleBonus.bonuses && c.playstyleBonus.bonuses.some(b => 
+              cardBonusFilter === 'アタッカー'
+                ? (b.style.includes('アタッカー') && !b.style.includes('サイドアタッカー'))
+                : b.style.includes(cardBonusFilter)
+            ))
           )
         )
       );
