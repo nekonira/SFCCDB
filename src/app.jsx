@@ -1507,70 +1507,163 @@ function normalizeStyle(str) {
     .toLowerCase();
 }
 
-function checkBonusMatch(player, rawStyle) {
+function checkSingleBonusMatch(player, rawStyle) {
   if (!player || !rawStyle) return false;
-  const parts = rawStyle.split('/');
+  
+  const s = normalizeStyle(rawStyle);
+  if (!s) return false;
 
-  for (const part of parts) {
-    const s = normalizeStyle(part);
-    if (!s) continue;
+  const pStyle = normalizeStyle(player.playStyle);
+  const pPos = normalizeStyle(player.mainPosition);
+  const pCat = normalizeStyle(player.category);
+  const pNation = normalizeStyle(player.nationality);
 
-    const pStyle = normalizeStyle(player.playStyle);
-    const pPos = normalizeStyle(player.mainPosition);
-    const pCat = normalizeStyle(player.category);
-    const pNation = normalizeStyle(player.nationality);
+  // Axis 1: Nationality Match
+  if (pNation && (pNation === s || pNation.includes(s) || s.includes(pNation))) return true;
 
-    if (pPos && (pPos === s || (s.length >= 2 && pPos.includes(s)) || (pPos.length >= 2 && s.includes(pPos)))) return true;
-    if (pCat && (pCat === s || pCat.includes(s) || s.includes(pCat))) return true;
-    if (pNation && (pNation === s || pNation.includes(s) || s.includes(pNation))) return true;
+  // Axis 2: Category Match (FW, MF, DF, GK)
+  if (s === 'fw' || s === 'mf' || s === 'df' || s === 'gk') {
+    return pCat === s;
+  }
 
-    if (pStyle) {
-      if (pStyle === s || pStyle.includes(s) || s.includes(pStyle)) return true;
+  // Axis 3: Exact Position Match
+  const posMap = {
+    'cf': ['cf', 'st'],
+    'st': ['cf', 'st'],
+    'lw': ['lw', 'lwg', 'lwf'],
+    'rw': ['rw', 'rwg', 'rwf'],
+    'lm': ['lm', 'lmf'],
+    'rm': ['rm', 'rmf'],
+    'am': ['am', 'omf', 'amf', 'cam', 'om'],
+    'dm': ['dm', 'dmf', 'dh', 'cmf', 'cm'],
+    'lfb': ['lfb', 'lsb', 'lb', 'wb'],
+    'rfb': ['rfb', 'rsb', 'rb', 'wb'],
+    'cb': ['cb'],
+    'gk': ['gk']
+  };
 
-      if ((s === 'cf' || s === 'st' || s === 'ストライカー') && (pPos === 'cf' || pStyle.includes('ストライカー') || pStyle.includes('ラインブレイカー') || pStyle.includes('ポストプレーヤー') || pStyle.includes('ワイドストライカー'))) return true;
-      if (s.includes('ラインブレイカー') && (pStyle.includes('ラインブレイカー') || pStyle.includes('ストライカー') || pPos === 'cf')) return true;
-      if (s.includes('ポストプレーヤー') && (pStyle.includes('ポストプレーヤー') || pStyle.includes('ストライカー') || pPos === 'cf')) return true;
-      if (s.includes('ワイドストライカー') && (pStyle.includes('ワイドストライカー') || pPos === 'lw' || pPos === 'rw')) return true;
+  if (posMap[s]) {
+    return posMap[s].includes(pPos);
+  } else if (pPos === s) {
+    return true;
+  }
 
-      if (s.includes('サイドアタッカー') && (pStyle.includes('サイドアタッカー') || pPos === 'lm' || pPos === 'rm' || pPos === 'lw' || pPos === 'rw')) return true;
-      if (s.includes('ドリブラー') && (pStyle.includes('ドリブラー') || pPos === 'lw' || pPos === 'rw' || pPos === 'lm' || pPos === 'rm')) return true;
-      if (s.includes('アタッカー') && (pStyle.includes('アタッカー') || pStyle.includes('サイドアタッカー') || pCat === 'fw' || pCat === 'mf')) return true;
+  // Axis 4: PlayStyle Specific Match ONLY (No position/category fallback!)
+  if (!pStyle) return false;
 
-      if (s.includes('パサー') && (pStyle.includes('パサー') || pCat === 'mf')) return true;
-      if ((s.includes('セントラル') || s.includes('セントラルmf')) && (pStyle.includes('セントラル') || pPos === 'am' || pPos === 'dm' || pCat === 'mf')) return true;
-      if (s.includes('ハードマーカー') && (pStyle.includes('ハードマーカー') || pStyle.includes('ハードタッカー') || pPos === 'dm' || pPos === 'cb')) return true;
+  if (pStyle === s) return true;
 
-      if (s.includes('攻撃的fb') && (pStyle.includes('攻撃的') || pPos === 'lfb' || pPos === 'rfb')) return true;
-      if (s.includes('守備的fb') && (pStyle.includes('守備的') || pPos === 'lfb' || pPos === 'rfb')) return true;
-      if ((s === 'fb' || s === 'lfb' || s === 'rfb' || s.includes('サイドバック')) && (pPos === 'lfb' || pPos === 'rfb' || pStyle.includes('lfb') || pStyle.includes('rfb'))) return true;
+  if (s === 'ストライカー') {
+    return pStyle.includes('ストライカー') || pStyle.includes('ラインブレイカー') || pStyle.includes('ポストプレーヤー') || pStyle.includes('ターゲットマン') || pStyle.includes('ワイドストライカー');
+  }
+  if (s.includes('ラインブレイカー')) {
+    return pStyle.includes('ラインブレイカー');
+  }
+  if (s.includes('ポストプレーヤー')) {
+    return pStyle.includes('ポストプレーヤー') || pStyle.includes('ターゲットマン');
+  }
+  if (s.includes('ワイドストライカー')) {
+    return pStyle.includes('ワイドストライカー');
+  }
+  if (s.includes('サイドアタッカー')) {
+    return pStyle.includes('サイドアタッカー') || pStyle.includes('ウイングバック') || pStyle.includes('ウインガー');
+  }
+  if (s.includes('ドリブラー')) {
+    return pStyle.includes('ドリブラー') || pStyle.includes('テクニシャン');
+  }
+  if (s.includes('アタッカー')) {
+    return pStyle.includes('アタッカー') || pStyle.includes('サイドアタッカー') || pStyle.includes('ストライカー') || pStyle.includes('チャンスメーカー');
+  }
+  if (s.includes('パサー')) {
+    return pStyle.includes('パサー') || pStyle.includes('司令塔') || pStyle.includes('ゲームメーカー');
+  }
+  if (s.includes('セントラル')) {
+    return pStyle.includes('セントラル') || pStyle.includes('インサイドハーフ') || pStyle.includes('ボックス');
+  }
+  if (s.includes('ハードマーカー')) {
+    return pStyle.includes('ハードマーカー') || pStyle.includes('ハードプレス') || pStyle.includes('クラッシャー') || pStyle.includes('ハードタッカー');
+  }
+  if (s.includes('攻撃的fb') || s.includes('攻撃的sb')) {
+    return pStyle.includes('攻撃的');
+  }
+  if (s.includes('守備的fb') || s.includes('守備的sb')) {
+    return pStyle.includes('守備的');
+  }
+  if (s.includes('ストッパー')) {
+    return pStyle.includes('ストッパー');
+  }
+  if (s.includes('組立cb') || s.includes('ビルドアップ')) {
+    return pStyle.includes('組立') || pStyle.includes('ビルドアップ');
+  }
+  if (s.includes('スプリントcb')) {
+    return pStyle.includes('スプリント');
+  }
+  if (s.includes('オーソドックスgk')) {
+    return pStyle.includes('オーソドックス');
+  }
+  if (s.includes('スイーパーgk')) {
+    return pStyle.includes('スイーパー');
+  }
 
-      if (s.includes('ストッパー') && (pStyle.includes('ストッパー') || pPos === 'cb')) return true;
-      if (s.includes('組立cb') && (pStyle.includes('組立') || pPos === 'cb')) return true;
-      if (s.includes('スプリントcb') && (pStyle.includes('スプリント') || pPos === 'cb')) return true;
-      if (s === 'cb' && (pPos === 'cb' || pStyle.includes('cb') || pCat === 'df')) return true;
-
-      if ((s.includes('オーソドックスgk') || s.includes('スイーパーgk') || s === 'gk') && (pPos === 'gk' || pCat === 'gk' || pStyle.includes('gk'))) return true;
-    }
+  if (s.length >= 3 && pStyle.length >= 3) {
+    if (pStyle.includes(s) || s.includes(pStyle)) return true;
   }
 
   return false;
 }
 
+function checkBonusMatch(player, rawStyle) {
+  if (!player || !rawStyle) return false;
+  const parts = rawStyle.split('/');
+  return parts.some(part => checkSingleBonusMatch(player, part));
+}
+
+function getCardBonusList(card) {
+  if (!card || !card.playstyleBonus) return [];
+
+  if (card.playstyleBonus.bonuses && Array.isArray(card.playstyleBonus.bonuses) && card.playstyleBonus.bonuses.length > 0) {
+    return card.playstyleBonus.bonuses;
+  }
+
+  const rawStyle = card.playstyleBonus.style || '';
+  const totalPercent = card.playstyleBonus.percent || 0;
+  
+  if (!rawStyle) return [];
+
+  const parts = rawStyle.split('/');
+  const result = [];
+
+  parts.forEach(part => {
+    const match = part.match(/([^\d%]+)\s*(\d+)%/);
+    if (match) {
+      result.push({
+        style: match[1].trim(),
+        percent: Number(match[2])
+      });
+    } else {
+      result.push({
+        style: part.trim(),
+        percent: totalPercent
+      });
+    }
+  });
+
+  return result;
+}
+
 function calculateCardBonusMult(player, card) {
   if (!player || !card || !card.playstyleBonus) return 1.0;
+
+  const bonusList = getCardBonusList(card);
+  if (!bonusList.length) return 1.0;
+
   let mult = 1.0;
 
-  if (card.playstyleBonus.bonuses && Array.isArray(card.playstyleBonus.bonuses)) {
-    card.playstyleBonus.bonuses.forEach(b => {
-      if (checkBonusMatch(player, b.style)) {
-        mult += (Number(b.percent) || 0) / 100;
-      }
-    });
-  } else if (card.playstyleBonus.style) {
-    if (checkBonusMatch(player, card.playstyleBonus.style)) {
-      mult += (Number(card.playstyleBonus.percent) || 0) / 100;
+  bonusList.forEach(b => {
+    if (checkSingleBonusMatch(player, b.style)) {
+      mult += (Number(b.percent) || 0) / 100;
     }
-  }
+  });
 
   return parseFloat(mult.toFixed(2));
 }
@@ -10406,7 +10499,7 @@ function getPositionStatAddition(position, statName) {
             <div className="flex-1 overflow-y-auto pr-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {filteredSlotCards.map(card => {
                 const isCurrentSelected = slots[activeSlotForCardModal]?.cardId === card.id;
-                const isPlaystyleMatch = card.playstyleBonus && currentPlayer?.playStyle && currentPlayer.playStyle.includes(card.playstyleBonus.style);
+                const isPlaystyleMatch = card && calculateCardBonusMult(currentPlayer, card) > 1.0;
 
                 return (
                   <div
@@ -11711,10 +11804,7 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
               {optimizedSlots.map((s, idx) => {
                 const card = officialCards.find(c => c.id === s.cardId) || officialCards[0];
-                const isBonusMatch = card && card.playstyleBonus && (
-                  (currentPlayer.playStyle && currentPlayer.playStyle.includes(card.playstyleBonus.style)) ||
-                  (currentPlayer.nationality && currentPlayer.nationality.includes(card.playstyleBonus.style))
-                );
+                const isBonusMatch = card && calculateCardBonusMult(currentPlayer, card) > 1.0;
 
                 return (
                   <div key={idx} className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2 relative overflow-hidden shadow-lg">

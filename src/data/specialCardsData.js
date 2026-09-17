@@ -1876,8 +1876,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：好調　/　決定力・突破力UP'
     },
     playstyleBonus: {
-      style: 'ドリブラー',
-      percent: 30,
+      displayText: 'ドリブラー 30% UP / CF 10% UP / LW 10% UP / RW 10% UP',
+      style: 'ドリブラー 30% / CF 10% / LW 10% / RW 10%',
+      percent: 60,
       bonuses: [
         { style: 'ドリブラー', percent: 30 },
         { style: 'CF', percent: 10 },
@@ -2204,8 +2205,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動エリア：前左右・中左右　/　発動条件：トラップ時　/　ボールタッチ・突破力UP'
     },
     playstyleBonus: {
-      style: 'LW',
-      percent: 10,
+      displayText: 'LW 10% UP / RW 10% UP',
+      style: 'LW 10% / RW 10%',
+      percent: 20,
       bonuses: [
         { style: 'LW', percent: 10 },
         { style: 'RW', percent: 10 }
@@ -2268,8 +2270,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動エリア：前左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にシュート発生確率UP'
     },
     playstyleBonus: {
-      style: 'LW',
-      percent: 10,
+      displayText: 'LW 10% UP / RW 10% UP',
+      style: 'LW 10% / RW 10%',
+      percent: 20,
       bonuses: [
         { style: 'LW', percent: 10 },
         { style: 'RW', percent: 10 }
@@ -2342,8 +2345,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：絶好調　/　決定力・走力UP'
     },
     playstyleBonus: {
-      style: 'サイドアタッカー',
-      percent: 25,
+      displayText: 'サイドアタッカー 25% UP / LW 10% UP / RW 10% UP / LM 10% UP / RM 10% UP',
+      style: 'サイドアタッカー 25% / LW 10% / RW 10% / LM 10% / RM 10%',
+      percent: 65,
       bonuses: [
         { style: 'サイドアタッカー', percent: 25 },
         { style: 'LW', percent: 10 },
@@ -2691,8 +2695,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：途中出場　/　冷静さ・突破力UP'
     },
     playstyleBonus: {
-      style: 'LM',
-      percent: 10,
+      displayText: 'LM 10% UP / RM 10% UP',
+      style: 'LM 10% / RM 10%',
+      percent: 20,
       bonuses: [
         { style: 'LM', percent: 10 },
         { style: 'RM', percent: 10 }
@@ -2818,8 +2823,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：途中出場　/　冷静さ・突破力UP'
     },
     playstyleBonus: {
-      style: 'アタッカー',
-      percent: 20,
+      displayText: 'アタッカー 20% UP / AM 10% UP',
+      style: 'アタッカー 20% / AM 10%',
+      percent: 30,
       bonuses: [
         { style: 'アタッカー', percent: 20 },
         { style: 'AM', percent: 10 }
@@ -3150,8 +3156,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動エリア：前中・中中　/　発動条件：シュート・ロングシュート時　/　決定力・キック力UP'
     },
     playstyleBonus: {
-      style: 'アタッカー',
-      percent: 40,
+      displayText: 'アタッカー 40% UP / AM 10% UP',
+      style: 'アタッカー 40% / AM 10%',
+      percent: 50,
       bonuses: [
         { style: 'アタッカー', percent: 40 },
         { style: 'AM', percent: 10 }
@@ -3511,11 +3518,12 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動エリア：前中・中中　/　発動条件：直接FK時　/　キック精度・キック力・決定力UP'
     },
     playstyleBonus: {
-      style: 'パサー',
-      percent: 20,
+      style: 'パサー 20% / DM 20%',
+      displayText: 'パサー 20% UP / DM 20% UP',
+      percent: 40,
       bonuses: [
-        { style: 'DM', percent: 20 },
-        { style: 'パサー', percent: 20 }
+        { style: 'パサー', percent: 20 },
+        { style: 'DM', percent: 20 }
       ]
     },
     stages: {
@@ -3769,10 +3777,18 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：絶好調　/　ショートパス・キック精度UP'
     },
     playstyleBonus: {
-      style: 'パサー',
-      percent: 0,
+      style: 'パサー 10% / AM 10%',
+      displayText: 'パサー 10% UP / AM 10% UP',
+      percent: 20,
       bonuses: [
-        { style: 'AM', percent: 10 }
+        {
+                "style": "パサー",
+                "percent": 10
+        },
+        {
+                "style": "AM",
+                "percent": 10
+        }
       ]
     },
     stages: {
@@ -4021,11 +4037,12 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：途中出場　/　ショートパス・スタミナUP'
     },
     playstyleBonus: {
-      style: 'セントラルMF',
-      percent: 10,
+      style: 'セントラルMF 10% / DM 10%',
+      displayText: 'セントラルMF 10% UP / DM 10% UP',
+      percent: 20,
       bonuses: [
-        { style: 'DM', percent: 10 },
-        { style: 'セントラルMF', percent: 10 }
+        { style: 'セントラルMF', percent: 10 },
+        { style: 'DM', percent: 10 }
       ]
     },
     stages: {
@@ -4206,12 +4223,13 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動エリア：中中・後左中右　/　発動条件：前中に居る選手へのロングパス時　/　ロングパス・キック精度UP　/　成功時に受け手のトラップ発生確率UP'
     },
     playstyleBonus: {
-      style: 'セントラルMF',
-      percent: 10,
+      style: 'セントラルMF 10% / DM 20% / AM 20%',
+      displayText: 'セントラルMF 10% UP / DM 20% UP / AM 20% UP',
+      percent: 50,
       bonuses: [
+        { style: 'セントラルMF', percent: 10 },
         { style: 'DM', percent: 20 },
-        { style: 'AM', percent: 20 },
-        { style: 'セントラルMF', percent: 10 }
+        { style: 'AM', percent: 20 }
       ]
     },
     stages: {
@@ -4563,8 +4581,9 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: 'ホットラインを断つ動き'
     },
     playstyleBonus: {
-      style: 'ハードマーカー',
-      percent: 20,
+      displayText: 'ハードマーカー 20% UP / DM 25% UP',
+      style: 'ハードマーカー 20% / DM 25%',
+      percent: 45,
       bonuses: [
         { style: 'DM', percent: 25 },
         { style: 'ハードマーカー', percent: 20 }
