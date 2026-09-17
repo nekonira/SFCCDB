@@ -1501,6 +1501,7 @@ function normalizeStyle(str) {
   if (!str) return '';
   return str
     .replace(/\d+%/g, '')
+    .replace(/up/gi, '')
     .replace(/ブレーカー/g, 'ブレイカー')
     .replace(/\s+/g, '')
     .toLowerCase();
@@ -1519,25 +1520,37 @@ function checkBonusMatch(player, rawStyle) {
     const pCat = normalizeStyle(player.category);
     const pNation = normalizeStyle(player.nationality);
 
-    if (pStyle && (pStyle.includes(s) || s.includes(pStyle))) return true;
-    if (pPos && (pPos.includes(s) || s.includes(pPos))) return true;
-    if (pCat && (pCat.includes(s) || s.includes(pCat))) return true;
-    if (pNation && (pNation.includes(s) || s.includes(pNation))) return true;
+    if (pPos && (pPos === s || (s.length >= 2 && pPos.includes(s)) || (pPos.length >= 2 && s.includes(pPos)))) return true;
+    if (pCat && (pCat === s || pCat.includes(s) || s.includes(pCat))) return true;
+    if (pNation && (pNation === s || pNation.includes(s) || s.includes(pNation))) return true;
 
-    if (pStyle.includes('サイドアタッカー') && s.includes('サイドアタッカー')) return true;
-    if (pStyle.includes('ワイドストライカー') && s.includes('ワイドストライカー')) return true;
-    if (pStyle.includes('ドリブラー') && s.includes('ドリブラー')) return true;
-    if (pStyle.includes('ストライカー') && s.includes('ストライカー')) return true;
-    if (pStyle.includes('ポストプレーヤー') && s.includes('ポストプレーヤー')) return true;
-    if (pStyle.includes('アタッカー') && s.includes('アタッカー')) return true;
-    if (pStyle.includes('パサー') && s.includes('パサー')) return true;
-    if (pStyle.includes('セントラル') && (s.includes('セントラル') || s.includes('セントラルmf'))) return true;
-    if (pStyle.includes('ハードマーカー') && s.includes('ハードマーカー')) return true;
-    if (pStyle.includes('攻撃的') && (s.includes('攻撃的fb') || s.includes('攻撃的'))) return true;
-    if (pStyle.includes('守備的') && (s.includes('守備的fb') || s.includes('守備的'))) return true;
-    if (pStyle.includes('ストッパー') && s.includes('ストッパー')) return true;
-    if (pStyle.includes('組立') && s.includes('組立')) return true;
-    if (pStyle.includes('スプリント') && s.includes('スプリント')) return true;
+    if (pStyle) {
+      if (pStyle === s || pStyle.includes(s) || s.includes(pStyle)) return true;
+
+      if ((s === 'cf' || s === 'st' || s === 'ストライカー') && (pPos === 'cf' || pStyle.includes('ストライカー') || pStyle.includes('ラインブレイカー') || pStyle.includes('ポストプレーヤー') || pStyle.includes('ワイドストライカー'))) return true;
+      if (s.includes('ラインブレイカー') && (pStyle.includes('ラインブレイカー') || pStyle.includes('ストライカー') || pPos === 'cf')) return true;
+      if (s.includes('ポストプレーヤー') && (pStyle.includes('ポストプレーヤー') || pStyle.includes('ストライカー') || pPos === 'cf')) return true;
+      if (s.includes('ワイドストライカー') && (pStyle.includes('ワイドストライカー') || pPos === 'lw' || pPos === 'rw')) return true;
+
+      if (s.includes('サイドアタッカー') && (pStyle.includes('サイドアタッカー') || pPos === 'lm' || pPos === 'rm' || pPos === 'lw' || pPos === 'rw')) return true;
+      if (s.includes('ドリブラー') && (pStyle.includes('ドリブラー') || pPos === 'lw' || pPos === 'rw' || pPos === 'lm' || pPos === 'rm')) return true;
+      if (s.includes('アタッカー') && (pStyle.includes('アタッカー') || pStyle.includes('サイドアタッカー') || pCat === 'fw' || pCat === 'mf')) return true;
+
+      if (s.includes('パサー') && (pStyle.includes('パサー') || pCat === 'mf')) return true;
+      if ((s.includes('セントラル') || s.includes('セントラルmf')) && (pStyle.includes('セントラル') || pPos === 'am' || pPos === 'dm' || pCat === 'mf')) return true;
+      if (s.includes('ハードマーカー') && (pStyle.includes('ハードマーカー') || pStyle.includes('ハードタッカー') || pPos === 'dm' || pPos === 'cb')) return true;
+
+      if (s.includes('攻撃的fb') && (pStyle.includes('攻撃的') || pPos === 'lfb' || pPos === 'rfb')) return true;
+      if (s.includes('守備的fb') && (pStyle.includes('守備的') || pPos === 'lfb' || pPos === 'rfb')) return true;
+      if ((s === 'fb' || s === 'lfb' || s === 'rfb' || s.includes('サイドバック')) && (pPos === 'lfb' || pPos === 'rfb' || pStyle.includes('lfb') || pStyle.includes('rfb'))) return true;
+
+      if (s.includes('ストッパー') && (pStyle.includes('ストッパー') || pPos === 'cb')) return true;
+      if (s.includes('組立cb') && (pStyle.includes('組立') || pPos === 'cb')) return true;
+      if (s.includes('スプリントcb') && (pStyle.includes('スプリント') || pPos === 'cb')) return true;
+      if (s === 'cb' && (pPos === 'cb' || pStyle.includes('cb') || pCat === 'df')) return true;
+
+      if ((s.includes('オーソドックスgk') || s.includes('スイーパーgk') || s === 'gk') && (pPos === 'gk' || pCat === 'gk' || pStyle.includes('gk'))) return true;
+    }
   }
 
   return false;
@@ -1559,8 +1572,15 @@ function calculateCardBonusMult(player, card) {
     }
   }
 
-  return mult;
+  return parseFloat(mult.toFixed(2));
 }
+
+const floor1Decimal = (num) => {
+  const n = Number(num) || 0;
+  const sign = n < 0 ? -1 : 1;
+  const abs = Math.abs(n);
+  return (Math.floor((abs + 0.0000001) * 10) / 10) * sign;
+};
 
 
 
@@ -1599,6 +1619,27 @@ const STAT_MAP = {
   'セービング': ['defense', 'save'], '反応速度': ['defense', 'interception'], '1VS1': ['defense', 'marking'],
   'ジャンプ': ['physical', 'jumping'], 'コンタクト': ['physical', 'contact'], 'スタミナ': ['physical', 'stamina'],
   '走力': ['speed', 'running'], '敏捷性': ['speed', 'agility']
+};
+
+const STAT_NAME_KEY_MAP = {
+  '決定力': { cat: 'shoot', key: 'finishing' },
+  'キック力': { cat: 'shoot', key: 'power' },
+  '冷静さ': { cat: 'shoot', key: 'composure' },
+  'ショートパス': { cat: 'pass', key: 'shortPass' },
+  'ロングパス': { cat: 'pass', key: 'longPass' },
+  'キック精度': { cat: 'pass', key: 'accuracy' },
+  '突破力': { cat: 'dribble', key: 'breakout' },
+  'キープ力': { cat: 'dribble', key: 'keeping' },
+  'ボールタッチ': { cat: 'dribble', key: 'ballTouch' },
+  'タックル': { cat: 'defense', key: 'tackle' },
+  'パスカット': { cat: 'defense', key: 'interception' },
+  'マーク': { cat: 'defense', key: 'marking' },
+  'ジャンプ': { cat: 'physical', key: 'jumping' },
+  'コンタクト': { cat: 'physical', key: 'contact' },
+  'スタミナ': { cat: 'physical', key: 'stamina' },
+  '走力': { cat: 'speed', key: 'running' },
+  '敏捷性': { cat: 'speed', key: 'agility' },
+  'セービング': { cat: 'saving', key: 'save' }
 };
 
 function getPlayerBaseStat(player, stName) {
@@ -1715,11 +1756,21 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
         overflowPenalty += (rawVal - lim.maxLimit) * 5.0;
       }
 
-      // Safe 150 boundary constraint: rawVal must not exceed (maxLimit - 150)
-      if (optimizationStrategy === 'SAFE_150') {
-        const safeLimit = lim.maxLimit - 150;
-        if (rawVal > safeLimit) {
-          safeViolationPenalty += (rawVal - safeLimit) * 50.0;
+      // Safe -155 ~ -135 boundary constraint: rawVal should land in (maxLimit - 155) ~ (maxLimit - 135) with max positive total
+      if (optimizationStrategy === 'SAFE_150' || optimizationStrategy === 'SAFE_RANGE') {
+        const safeMaxLimit = lim.maxLimit - 135;
+        const safeMinLimit = lim.maxLimit - 155;
+
+        // Hard cap at maxLimit - 135 for safe optimal scoring
+        const safeVal = Math.min(safeMaxLimit, rawVal);
+        const safeGain = Math.max(0, safeVal - lim.base);
+        effectiveScore += safeGain * weight * 0.5;
+
+        if (rawVal > safeMaxLimit) {
+          safeViolationPenalty += (rawVal - safeMaxLimit) * 50.0;
+        } else if (rawVal >= safeMinLimit && rawVal <= safeMaxLimit) {
+          // Sweet spot reward for maximizing stat values right inside the -155 to -135 target window
+          effectiveScore += 25.0 * weight;
         }
       }
     });
@@ -7889,6 +7940,176 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     }
   }, [selectedPlayer, simPlayerRarity, simPlayerMaxEnhanced]);
 
+  const getStatLimitInfo = useCallback((player, statName, gainVal = 0) => {
+    if (!player) return { baseVal: 100, gainVal: 0, boostedVal: 100, maxLimit: 2000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, addition: 0 };
+    const baseStats = player.baseDetailStats || {};
+    const baseVal = baseStats[statName] || 100;
+    const addition = getPositionStatAddition(player.mainPosition, statName);
+    const maxLimit = baseVal + addition;
+    const cleanGainVal = floor1Decimal(gainVal);
+    const boostedVal = floor1Decimal(baseVal + cleanGainVal);
+    const basePct = Math.min(100, Math.round((baseVal / maxLimit) * 100));
+    const gainPct = Math.min(100 - basePct, Math.round((cleanGainVal / maxLimit) * 100));
+    const pct = Math.min(100, Math.round((boostedVal / maxLimit) * 100));
+    const isCapped = boostedVal >= maxLimit;
+
+    return { baseVal, gainVal: cleanGainVal, boostedVal, maxLimit, basePct, gainPct, pct, isCapped, addition };
+  }, [STAT_NAME_KEY_MAP]);
+
+  const getCategoryStatLimitInfo = useCallback((player, catKey, gainVal = 0) => {
+    const catNames = {
+      shoot: 'シュート',
+      pass: 'パス',
+      dribble: 'ドリブル',
+      defense: 'ディフェンス',
+      physical: 'フィジカル',
+      speed: 'スピード'
+    };
+
+    const subItemMap = {
+      shoot: ['決定力', 'キック力', '冷静さ'],
+      pass: ['ショートパス', 'ロングパス', 'キック精度'],
+      dribble: ['突破力', 'キープ力', 'ボールタッチ'],
+      defense: (player && (player.mainPosition === 'GK' || player.category === 'GK'))
+        ? ['セービング', '反応速度', '1VS1']
+        : ['タックル', 'パスカット', 'マーク'],
+      physical: ['ジャンプ', 'コンタクト', 'スタミナ'],
+      speed: ['走力', '敏捷性']
+    };
+
+    if (!player) return { name: catNames[catKey], baseVal: 0, gainVal: 0, boostedVal: 0, maxLimit: 2000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, additionSum: 0 };
+
+    const baseVal = player.baseStats ? (player.baseStats[catKey] || 1000) : 1000;
+    
+    const subItems = subItemMap[catKey] || [];
+    let additionSum = 0;
+    subItems.forEach(stName => {
+      additionSum += getPositionStatAddition(player.mainPosition, stName);
+    });
+
+    const maxLimit = baseVal + additionSum;
+
+    const cleanGainVal = floor1Decimal(gainVal);
+    const boostedVal = floor1Decimal(baseVal + cleanGainVal);
+    const basePct = Math.min(100, Math.round((baseVal / maxLimit) * 100));
+    const gainPct = Math.min(100 - basePct, Math.round((cleanGainVal / maxLimit) * 100));
+    const pct = Math.min(100, Math.round((boostedVal / maxLimit) * 100));
+    const isCapped = boostedVal >= maxLimit;
+
+    return { name: catNames[catKey] || catKey, baseVal, gainVal: cleanGainVal, boostedVal, maxLimit, basePct, gainPct, pct, isCapped, additionSum };
+  }, []);
+
+  const detailStatList = useMemo(() => {
+    if (!currentPlayer) return [];
+    const isGK = currentPlayer.mainPosition === 'GK' || currentPlayer.category === 'GK';
+    return isGK
+      ? ['決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'セービング', '反応速度', '1VS1', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性']
+      : ['決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'タックル', 'パスカット', 'マーク', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性'];
+  }, [currentPlayer]);
+
+  // ─────────────────────────────────────────────────────────────
+  // 補正計算ロジック (公式カード詳細ステータス対応)
+  // ─────────────────────────────────────────────────────────────
+  const calculateBoostedPlayer = useCallback((p, currentSlots) => {
+    if (!p) return { boostedPlayer: null, totalGain: 0, percentGain: 0, catGainMap: {}, catBaseMap: {}, statDetailGains: {}, boostedOverall: 80 };
+
+    const categories = ['shoot', 'pass', 'dribble', 'defense', 'physical', 'speed'];
+    const catBaseMap = {};
+    categories.forEach(cat => {
+      catBaseMap[cat] = getCategoryTotal(p, cat) || 100;
+    });
+
+    const statDetailGains = {};
+    const catGainMap = { shoot: 0, pass: 0, dribble: 0, defense: 0, physical: 0, speed: 0 };
+
+    // 各アクティブスロットのカード効果を加算
+    currentSlots.forEach(s => {
+      if (!s.active) return;
+      const card = officialCards.find(c => c.id === s.cardId) || officialCards[0];
+      if (!card) return;
+
+      const stageStats = card.stages[s.stage] || card.stages['完凸'] || {};
+      
+      // プレイスタイル / 国籍ボーナスチェック
+      const bonusMultiplier = calculateCardBonusMult(p, card);
+
+      Object.entries(stageStats).forEach(([statName, val]) => {
+        const boostedVal = floor1Decimal(val * bonusMultiplier);
+        statDetailGains[statName] = floor1Decimal((statDetailGains[statName] || 0) + boostedVal);
+
+        // カテゴリマッピング
+        if (['決定力', 'キック力', '冷静さ'].includes(statName)) {
+          catGainMap.shoot = floor1Decimal(catGainMap.shoot + boostedVal);
+        } else if (['ショートパス', 'ロングパス', 'パス精度', 'キック精度'].includes(statName)) {
+          catGainMap.pass = floor1Decimal(catGainMap.pass + boostedVal);
+        } else if (['突破力', 'キープ力', 'キープ', 'ボールタッチ'].includes(statName)) {
+          catGainMap.dribble = floor1Decimal(catGainMap.dribble + boostedVal);
+        } else if (['タックル', 'パスカット', 'マーク', 'セービング', '反応速度', '1VS1'].includes(statName)) {
+          catGainMap.defense = floor1Decimal(catGainMap.defense + boostedVal);
+        } else if (['ジャンプ', 'コンタクト', 'スタミナ'].includes(statName)) {
+          catGainMap.physical = floor1Decimal(catGainMap.physical + boostedVal);
+        } else if (['走力', '敏捷性'].includes(statName)) {
+          catGainMap.speed = floor1Decimal(catGainMap.speed + boostedVal);
+        } else {
+          catGainMap.shoot = floor1Decimal(catGainMap.shoot + boostedVal * 0.5);
+          catGainMap.physical = floor1Decimal(catGainMap.physical + boostedVal * 0.5);
+        }
+      });
+    });
+
+    let totalGain = 0;
+    Object.values(statDetailGains).forEach(v => { totalGain += v; });
+    totalGain = floor1Decimal(totalGain);
+
+    const baseSum = Object.values(catBaseMap).reduce((a, b) => a + b, 0);
+    const percentGain = baseSum > 0 ? floor1Decimal((totalGain / baseSum) * 100) : 0;
+
+    const boostedCatMap = {};
+    categories.forEach(cat => {
+      boostedCatMap[cat] = floor1Decimal(catBaseMap[cat] + (catGainMap[cat] || 0));
+    });
+
+    const boostedOverall = floor1Decimal(p.overall + (percentGain * 0.1));
+
+    const boostedPlayer = {
+      ...p,
+      overall: boostedOverall,
+      detailStats: {
+        shoot: {
+          決定力: floor1Decimal((p.detailStats?.shoot?.決定力 || 100) + (statDetailGains['決定力'] || 0)),
+          キック力: floor1Decimal((p.detailStats?.shoot?.キック力 || 100) + (statDetailGains['キック力'] || 0)),
+          冷静さ: floor1Decimal((p.detailStats?.shoot?.冷静さ || 100) + (statDetailGains['冷静さ'] || 0))
+        },
+        pass: {
+          ショートパス: floor1Decimal((p.detailStats?.pass?.ショートパス || 100) + (statDetailGains['ショートパス'] || 0)),
+          ロングパス: floor1Decimal((p.detailStats?.pass?.ロングパス || 100) + (statDetailGains['ロングパス'] || 0)),
+          キック精度: floor1Decimal((p.detailStats?.pass?.キック精度 || p.detailStats?.pass?.パス精度 || 100) + (statDetailGains['キック精度'] || statDetailGains['パス精度'] || 0))
+        },
+        dribble: {
+          突破力: floor1Decimal((p.detailStats?.dribble?.突破力 || 100) + (statDetailGains['突破力'] || 0)),
+          キープ力: floor1Decimal((p.detailStats?.dribble?.キープ力 || p.detailStats?.dribble?.キープ || 100) + (statDetailGains['キープ力'] || statDetailGains['キープ'] || 0)),
+          ボールタッチ: floor1Decimal((p.detailStats?.dribble?.ボールタッチ || 100) + (statDetailGains['ボールタッチ'] || 0))
+        },
+        defense: {
+          [p.mainPosition === 'GK' || p.category === 'GK' ? 'セービング' : 'タックル']: floor1Decimal((p.detailStats?.defense?.[p.mainPosition === 'GK' || p.category === 'GK' ? 'セービング' : 'タックル'] || 100) + (statDetailGains[p.mainPosition === 'GK' || p.category === 'GK' ? 'セービング' : 'タックル'] || 0)),
+          [p.mainPosition === 'GK' || p.category === 'GK' ? '反応速度' : 'パスカット']: floor1Decimal((p.detailStats?.defense?.[p.mainPosition === 'GK' || p.category === 'GK' ? '反応速度' : 'パスカット'] || 100) + (statDetailGains[p.mainPosition === 'GK' || p.category === 'GK' ? '反応速度' : 'パスカット'] || 0)),
+          [p.mainPosition === 'GK' || p.category === 'GK' ? '1VS1' : 'マーク']: floor1Decimal((p.detailStats?.defense?.[p.mainPosition === 'GK' || p.category === 'GK' ? '1VS1' : 'マーク'] || 100) + (statDetailGains[p.mainPosition === 'GK' || p.category === 'GK' ? '1VS1' : 'マーク'] || 0))
+        },
+        physical: {
+          ジャンプ: floor1Decimal((p.detailStats?.physical?.ジャンプ || 100) + (statDetailGains['ジャンプ'] || 0)),
+          コンタクト: floor1Decimal((p.detailStats?.physical?.コンタクト || 100) + (statDetailGains['コンタクト'] || 0)),
+          スタミナ: floor1Decimal((p.detailStats?.physical?.スタミナ || 100) + (statDetailGains['スタミナ'] || 0))
+        },
+        speed: {
+          走力: floor1Decimal((p.detailStats?.speed?.走力 || 100) + (statDetailGains['走力'] || 0)),
+          敏捷性: floor1Decimal((p.detailStats?.speed?.敏捷性 || 100) + (statDetailGains['敏捷性'] || 0))
+        }
+      }
+    };
+
+    return { boostedPlayer, totalGain, percentGain, catGainMap, catBaseMap, statDetailGains, boostedOverall };
+  }, [officialCards, currentPlayer]);
+
   // フィルタリング後の選手リスト
   const filteredPlayers = useMemo(() => {
     if (!players) return [];
@@ -8053,6 +8274,84 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
   const [autoSelectInitialMode, setAutoSelectInitialMode] = useState('EFFECTIVE_MAX');
   const [autoSelectToast, setAutoSelectToast] = useState(null);
 
+  // ─────────────────────────────────────────────────────────────
+  // 保存済みマイ編成 (Saved Builds) State & Handler
+  // ─────────────────────────────────────────────────────────────
+  const [savedBuilds, setSavedBuilds] = useState(() => {
+    try {
+      const json = localStorage.getItem('sfcc_saved_builds');
+      return json ? JSON.parse(json) : [];
+    } catch (e) {
+      return [];
+    }
+  });
+
+  const [isSavedBuildsModalOpen, setIsSavedBuildsModalOpen] = useState(false);
+  const [isSaveBuildModalOpen, setIsSaveBuildModalOpen] = useState(false);
+  const [saveBuildNameInput, setSaveBuildNameInput] = useState('');
+
+  const handleOpenSaveBuildModal = () => {
+    if (!currentPlayer) return;
+    const defaultName = `${currentPlayer.name} ${currentPlayer.mainPosition}編成 (${new Date().toLocaleDateString('ja-JP')})`;
+    setSaveBuildNameInput(defaultName);
+    setIsSaveBuildModalOpen(true);
+  };
+
+  const handleSaveBuildConfirm = () => {
+    if (!currentPlayer) return;
+    const nameToSave = saveBuildNameInput.trim() || `${currentPlayer.name} ${currentPlayer.mainPosition}編成`;
+    const newBuild = {
+      id: `build_${Date.now()}`,
+      name: nameToSave,
+      createdAt: new Date().toISOString(),
+      playerName: currentPlayer.name,
+      playerPosition: currentPlayer.mainPosition,
+      playerPlayStyle: currentPlayer.playStyle || '',
+      slots: JSON.parse(JSON.stringify(slots))
+    };
+
+    const updated = [newBuild, ...savedBuilds];
+    setSavedBuilds(updated);
+    try {
+      localStorage.setItem('sfcc_saved_builds', JSON.stringify(updated));
+    } catch (e) {}
+
+    setIsSaveBuildModalOpen(false);
+    setAutoSelectToast(`💾 マイ編成「${nameToSave}」を保存しました！`);
+    setTimeout(() => setAutoSelectToast(null), 3500);
+  };
+
+  const handleDeleteSavedBuild = (buildId) => {
+    const updated = savedBuilds.filter(b => b.id !== buildId);
+    setSavedBuilds(updated);
+    try {
+      localStorage.setItem('sfcc_saved_builds', JSON.stringify(updated));
+    } catch (e) {}
+  };
+
+  const handleLoadBuildToA = (build) => {
+    if (!build || !build.slots) return;
+    setSlots(JSON.parse(JSON.stringify(build.slots)));
+    setAutoSelectToast(`📥 「${build.name}」をビルドA (メイン6スロット) に読み込みました！`);
+    setTimeout(() => setAutoSelectToast(null), 3000);
+  };
+
+  const handleLoadBuildToB = (build) => {
+    if (!build || !build.slots) return;
+    setBuildB_slots(JSON.parse(JSON.stringify(build.slots)));
+    setAutoSelectToast(`📥 「${build.name}」をビルドBに読み込みました！`);
+    setTimeout(() => setAutoSelectToast(null), 3000);
+  };
+
+  const handleSwapBuilds = () => {
+    const tempA = JSON.parse(JSON.stringify(slots));
+    const tempB = JSON.parse(JSON.stringify(buildB_slots));
+    setSlots(tempB);
+    setBuildB_slots(tempA);
+    setAutoSelectToast('🔄 ビルドAとビルドBの編成を入れ替えました！');
+    setTimeout(() => setAutoSelectToast(null), 3000);
+  };
+
   const handleDirectAutoSelect = (strategy) => {
     if (!currentPlayer) return;
     const newSlots = optimizeSpecialCardSlots(currentPlayer, officialCards, {
@@ -8065,8 +8364,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
       optimizationStrategy: strategy
     });
     setSlots(newSlots);
-    if (strategy === 'SAFE_150') {
-      setAutoSelectToast('🛡️ 全18能力が限界値-150以下に収まる【無難最適編成】を直接適用しました！');
+    if (strategy === 'SAFE_150' || strategy === 'SAFE_RANGE') {
+      setAutoSelectToast('🛡️ 全18能力が限界値の -155〜-135 範囲で最大化される【無難最適編成】を適用しました！');
     } else {
       setAutoSelectToast('⚡ 有効上昇量を最大化する【自動最適編成】を直接適用しました！');
     }
@@ -8163,105 +8462,7 @@ function getPositionStatAddition(position, statName) {
   return addTable[statName] || 331;
 }
 
-const STAT_NAME_KEY_MAP = useMemo(() => ({
-    '決定力': { cat: 'shoot', key: 'finishing' },
-    'キック力': { cat: 'shoot', key: 'power' },
-    '冷静さ': { cat: 'shoot', key: 'composure' },
-    'ショートパス': { cat: 'pass', key: 'shortPass' },
-    'ロングパス': { cat: 'pass', key: 'longPass' },
-    'パス精度': { cat: 'pass', key: 'accuracy' },
-    '突破力': { cat: 'dribble', key: 'breakout' },
-    'キープ力': { cat: 'dribble', key: 'keeping' },
-    'ボールタッチ': { cat: 'dribble', key: 'ballTouch' },
-    'タックル': { cat: 'defense', key: 'tackle' },
-    'パスカット': { cat: 'defense', key: 'interception' },
-    'マーク': { cat: 'defense', key: 'marking' },
-    'ジャンプ': { cat: 'physical', key: 'jumping' },
-    'コンタクト': { cat: 'physical', key: 'contact' },
-    'スタミナ': { cat: 'physical', key: 'stamina' },
-    '走力': { cat: 'speed', key: 'running' },
-    '敏捷性': { cat: 'speed', key: 'agility' },
-    'セービング': { cat: 'saving', key: 'save' }
-  }), []);
 
-    const getDetailStatLimitInfo = useCallback((player, statName, gainVal = 0) => {
-    if (!player) return { baseVal: 0, gainVal: 0, boostedVal: 0, maxLimit: 1000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, addition: 0 };
-
-    const map = STAT_NAME_KEY_MAP[statName];
-    let baseVal = 400;
-
-    if (map && player.detailStats && player.detailStats[map.cat] && player.detailStats[map.cat][map.key] !== undefined) {
-      baseVal = player.detailStats[map.cat][map.key];
-    }
-
-    const addition = getPositionStatAddition(player.mainPosition, statName);
-    const maxLimit = baseVal + addition;
-
-    const boostedVal = parseFloat((baseVal + gainVal).toFixed(1));
-    const basePct = Math.min(100, Math.round((baseVal / maxLimit) * 100));
-    const gainPct = Math.min(100 - basePct, Math.round((gainVal / maxLimit) * 100));
-    const pct = Math.min(100, Math.round((boostedVal / maxLimit) * 100));
-    const isCapped = boostedVal >= maxLimit;
-
-    return { baseVal, gainVal, boostedVal, maxLimit, basePct, gainPct, pct, isCapped, addition };
-  }, [STAT_NAME_KEY_MAP]);
-
-  const getCategoryStatLimitInfo = useCallback((player, catKey, gainVal = 0) => {
-    const catNames = {
-      shoot: 'シュート',
-      pass: 'パス',
-      dribble: 'ドリブル',
-      defense: 'ディフェンス',
-      physical: 'フィジカル',
-      speed: 'スピード'
-    };
-
-    const subItemMap = {
-      shoot: ['決定力', 'キック力', '冷静さ'],
-      pass: ['ショートパス', 'ロングパス', 'キック精度'],
-      dribble: ['突破力', 'キープ力', 'ボールタッチ'],
-      defense: (player && (player.mainPosition === 'GK' || player.category === 'GK'))
-        ? ['セービング', '反応速度', '1VS1']
-        : ['タックル', 'パスカット', 'マーク'],
-      physical: ['ジャンプ', 'コンタクト', 'スタミナ'],
-      speed: ['走力', '敏捷性']
-    };
-
-    if (!player) return { name: catNames[catKey], baseVal: 0, gainVal: 0, boostedVal: 0, maxLimit: 2000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, additionSum: 0 };
-
-    const baseVal = player.baseStats ? (player.baseStats[catKey] || 1000) : 1000;
-    
-    const subItems = subItemMap[catKey] || [];
-    let additionSum = 0;
-    subItems.forEach(stName => {
-      additionSum += getPositionStatAddition(player.mainPosition, stName);
-    });
-
-    const maxLimit = baseVal + additionSum;
-
-    const boostedVal = parseFloat((baseVal + gainVal).toFixed(1));
-    const basePct = Math.min(100, Math.round((baseVal / maxLimit) * 100));
-    const gainPct = Math.min(100 - basePct, Math.round((gainVal / maxLimit) * 100));
-    const pct = Math.min(100, Math.round((boostedVal / maxLimit) * 100));
-    const isCapped = boostedVal >= maxLimit;
-
-    return { name: catNames[catKey] || catKey, baseVal, gainVal, boostedVal, maxLimit, basePct, gainPct, pct, isCapped, additionSum };
-  }, []);
-
-  const detailStatList = useMemo(() => {
-    if (!currentPlayer) return [];
-    const isGK = currentPlayer.mainPosition === 'GK' || currentPlayer.category === 'GK';
-    return [
-      '決定力', 'キック力', '冷静さ',
-      'ショートパス', 'ロングパス', 'キック精度',
-      '突破力', 'キープ力', 'ボールタッチ',
-      isGK ? 'セービング' : 'タックル',
-      isGK ? '反応速度' : 'パスカット',
-      isGK ? '1VS1' : 'マーク',
-      'ジャンプ', 'コンタクト', 'スタミナ',
-      '走力', '敏捷性'
-    ];
-  }, [currentPlayer]);
 
   const filteredSlotCards = useMemo(() => {
     if (!officialCards) return [];
@@ -8422,78 +8623,7 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
     { id: 6, active: false, cardId: officialCards[0]?.id || 'card_haaland_demon_ssr', stage: '無凸' }
   ]);
 
-  // ─────────────────────────────────────────────────────────────
-  // 補正計算ロジック (公式カード詳細ステータス対応)
-  // ─────────────────────────────────────────────────────────────
-  const calculateBoostedPlayer = useCallback((p, currentSlots) => {
-    if (!p) return { boostedPlayer: null, totalGain: 0, percentGain: 0, catGainMap: {}, catBaseMap: {}, statDetailGains: {}, boostedOverall: 80 };
 
-    const categories = ['shoot', 'pass', 'dribble', 'defense', 'physical', 'speed'];
-    const catBaseMap = {};
-    categories.forEach(cat => {
-      catBaseMap[cat] = getCategoryTotal(p, cat) || 100;
-    });
-
-    const statDetailGains = {};
-    const catGainMap = { shoot: 0, pass: 0, dribble: 0, defense: 0, physical: 0, speed: 0 };
-
-    // 各アクティブスロットのカード効果を加算
-    currentSlots.forEach(s => {
-      if (!s.active) return;
-      const card = officialCards.find(c => c.id === s.cardId) || officialCards[0];
-      if (!card) return;
-
-      const stageStats = card.stages[s.stage] || card.stages['完凸'] || {};
-      
-      // プレイスタイル / 国籍ボーナスチェック
-      const bonusMultiplier = calculateCardBonusMult(p, card);
-
-      Object.entries(stageStats).forEach(([statName, val]) => {
-        const boostedVal = parseFloat((val * bonusMultiplier).toFixed(1));
-        statDetailGains[statName] = (statDetailGains[statName] || 0) + boostedVal;
-
-        // カテゴリマッピング
-        if (['決定力', 'キック力', '冷静さ'].includes(statName)) {
-          catGainMap.shoot += boostedVal;
-        } else if (['ショートパス', 'ロングパス', 'パス精度'].includes(statName)) {
-          catGainMap.pass += boostedVal;
-        } else if (['突破力', 'キープ', 'ボールタッチ'].includes(statName)) {
-          catGainMap.dribble += boostedVal;
-        } else if (['タックル', 'パスカット', 'マーク', 'セービング'].includes(statName)) {
-          catGainMap.defense += boostedVal;
-        } else if (['ジャンプ', 'コンタクト', 'スタミナ'].includes(statName)) {
-          catGainMap.physical += boostedVal;
-        } else if (['走力', '敏捷性'].includes(statName)) {
-          catGainMap.speed += boostedVal;
-        } else {
-          catGainMap.shoot += boostedVal * 0.5;
-          catGainMap.physical += boostedVal * 0.5;
-        }
-      });
-    });
-
-    let totalGain = 0;
-    Object.values(statDetailGains).forEach(v => { totalGain += v; });
-    totalGain = parseFloat(totalGain.toFixed(1));
-
-    const baseSum = Object.values(catBaseMap).reduce((a, b) => a + b, 0);
-    const percentGain = baseSum > 0 ? ((totalGain / baseSum) * 100).toFixed(1) : 0;
-
-    const boostedOverall = (p.overall || 80) + Math.round(totalGain / 12);
-
-    return {
-      boostedPlayer: {
-        ...p,
-        overall: boostedOverall
-      },
-      catBaseMap,
-      catGainMap,
-      statDetailGains,
-      totalGain,
-      percentGain,
-      boostedOverall
-    };
-  }, [officialCards]);
 
   const slotCalcResult = useMemo(() => {
     return calculateBoostedPlayer(currentPlayer, slots);
@@ -8688,14 +8818,30 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
                     onClick={() => handleDirectAutoSelect('SAFE_150')}
                     className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-black text-xs shadow-md cursor-pointer flex items-center gap-1 transition-all active:scale-95"
                   >
-                    🛡️ 無難最適編成 (限界値-150以下)
+                    🛡️ 無難最適編成 (限界値 -155〜-135)
                   </button>
                   <button
                     type="button"
                     onClick={() => { setAutoSelectInitialMode('EFFECTIVE_MAX'); setIsAutoSelectModalOpen(true); }}
                     className="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-amber-500/40 text-amber-300 font-extrabold text-xs cursor-pointer flex items-center gap-1 transition-all"
                   >
-                    ⚙️ 条件指定編成...
+                    ⚙️ 条件指定...
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleOpenSaveBuildModal}
+                    className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-black text-xs cursor-pointer flex items-center gap-1 transition-all shadow-sm"
+                    title="現在の6スロットカード編成をマイビルドとして保存"
+                  >
+                    💾 編成を保存
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsSavedBuildsModalOpen(true)}
+                    className="px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-black text-xs cursor-pointer flex items-center gap-1 transition-all"
+                    title="保存済み編成ライブラリを開く"
+                  >
+                    📂 マイ編成 ({savedBuilds.length})
                   </button>
                   <button
                     type="button"
@@ -8730,7 +8876,9 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
               {slots.map((s, idx) => {
                 const card = officialCards.find(c => c.id === s.cardId) || officialCards[0];
                 const stageStats = card ? (card.stages[s.stage] || card.stages['完凸']) : {};
-                const isPlaystyleMatch = card && card.playstyleBonus && currentPlayer.playStyle && currentPlayer.playStyle.includes(card.playstyleBonus.style);
+                const cardBonusMult = card ? calculateCardBonusMult(currentPlayer, card) : 1.0;
+                const isPlaystyleMatch = cardBonusMult > 1.0;
+                const bonusPercentGain = Math.round((cardBonusMult - 1.0) * 100);
 
                 return (
                   <div
@@ -8846,19 +8994,36 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
 
                           {/* Bonus */}
                           {card.playstyleBonus && (
-                            <div className={`p-1.5 rounded-lg border text-[10px] font-bold flex items-center justify-between ${isPlaystyleMatch ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500/50' : 'bg-slate-950 text-slate-400 border-slate-800'}`}>
-                              <span>ボーナス: {card.playstyleBonus.style} {card.playstyleBonus.percent}% UP</span>
-                              {isPlaystyleMatch && <span className="text-emerald-400 font-black">適用中 ✨</span>}
+                            <div className={`p-2 rounded-xl border text-[10px] font-bold flex items-center justify-between transition-all ${isPlaystyleMatch ? 'bg-emerald-950/90 text-emerald-300 border-emerald-500/50 shadow-md shadow-emerald-500/10' : 'bg-slate-950 text-slate-400 border-slate-800'}`}>
+                              <div className="flex items-center gap-1.5 min-w-0">
+                                <span>ボーナス: {card.playstyleBonus.displayText || (card.playstyleBonus.style + ' ' + (card.playstyleBonus.percent || 0) + '% UP')}</span>
+                              </div>
+                              {isPlaystyleMatch ? (
+                                <span className="text-emerald-400 font-black bg-emerald-500/20 px-2 py-0.5 rounded-lg border border-emerald-500/40 flex-shrink-0 animate-pulse">
+                                  適用中 ✨ (+{bonusPercentGain}%)
+                                </span>
+                              ) : (
+                                <span className="text-slate-500 text-[10px] flex-shrink-0">条件不一致</span>
+                              )}
                             </div>
                           )}
 
                           {/* Stat Tags */}
                           <div className="flex flex-wrap gap-1 pt-1">
-                            {Object.entries(stageStats).map(([stName, val]) => (
-                              <span key={stName} className="px-2 py-0.5 rounded bg-slate-800 text-amber-300 font-num text-[10px] border border-slate-700 font-bold">
-                                {stName} +{val}
-                              </span>
-                            ))}
+                            {Object.entries(stageStats).map(([stName, rawVal]) => {
+                              const boostedVal = floor1Decimal(rawVal * cardBonusMult);
+                              return isPlaystyleMatch ? (
+                                <span key={stName} className="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-300 font-num text-[10px] border border-emerald-500/50 font-black shadow-xs flex items-center gap-1" title={`素上昇値: +${rawVal} × ボーナス${cardBonusMult}倍 = +${boostedVal}`}>
+                                  <span>{stName}</span>
+                                  <span className="text-emerald-200">+{boostedVal}</span>
+                                  <span className="text-[9px] text-emerald-400/80 font-normal">(素+{rawVal})</span>
+                                </span>
+                              ) : (
+                                <span key={stName} className="px-2 py-0.5 rounded bg-slate-800 text-amber-300 font-num text-[10px] border border-slate-700 font-bold">
+                                  {stName} +{rawVal}
+                                </span>
+                              );
+                            })}
                           </div>
                         </div>
                       )}
@@ -9068,7 +9233,7 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
                     {detailStatList.map(stName => {
                       const gainVal = (slotCalcResult && slotCalcResult.statDetailGains && slotCalcResult.statDetailGains[stName]) || 0;
                       const info = getDetailStatLimitInfo(currentPlayer, stName, gainVal);
-                      const remainingGrowth = parseFloat(Math.max(0, info.maxLimit - info.boostedVal).toFixed(1));
+                      const remainingGrowth = floor1Decimal(Math.max(0, info.maxLimit - info.boostedVal));
 
                       return (
                         <div key={stName} className="bg-slate-950/90 p-2.5 rounded-2xl border border-slate-800 space-y-1.5">
@@ -9672,22 +9837,172 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
          ───────────────────────────────────────────────────────────── */}
       {subTab === 'buildCompare' && (
         <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* ビルドA 設定 */}
-            <div className="glass-panel p-4 rounded-2xl border border-amber-500/30 space-y-2">
-              <span className="text-xs font-black text-amber-400 uppercase tracking-wider block">育成ビルド A (6スロット完凸構成)</span>
-              <div className="text-xs text-slate-300 font-bold">
-                推定総合値: <span className="text-amber-400 font-num text-lg font-black">{calcA.boostedOverall}</span>
-                <span className="text-[#00FF66] font-num text-xs ml-2">(+{calcA.totalGain} 実数値UP)</span>
+          {/* マイ編成選択・スワップ ヘッダーコントロール */}
+          <div className="glass-panel p-4 rounded-3xl border border-slate-800 bg-slate-900/90 shadow-xl space-y-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <Icon name="compare" className="w-5 h-5 text-amber-400" />
+                <h3 className="text-sm font-extrabold text-white">育成ビルド A vs B 比較</h3>
+                <span className="text-[10px] text-slate-400 font-bold bg-slate-800 px-2 py-0.5 rounded-full">
+                  {savedBuilds.length} 件のマイ編成保存済み
+                </span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleSwapBuilds}
+                  className="px-3.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
+                  title="ビルドAとビルドBの編成内容を入れ替えます"
+                >
+                  <span>🔄</span> A ⇄ B 入れ替え
+                </button>
+                <button
+                  onClick={() => setIsSavedBuildsModalOpen(true)}
+                  className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  📂 マイ編成一覧 ({savedBuilds.length})
+                </button>
               </div>
             </div>
 
-            {/* ビルドB 設定 */}
-            <div className="glass-panel p-4 rounded-2xl border border-cyan-500/30 space-y-2">
-              <span className="text-xs font-black text-cyan-400 uppercase tracking-wider block">育成ビルド B (6スロット無凸構成)</span>
-              <div className="text-xs text-slate-300 font-bold">
-                推定総合値: <span className="text-cyan-400 font-num text-lg font-black">{calcB.boostedOverall}</span>
-                <span className="text-[#00FF66] font-num text-xs ml-2">(+{calcB.totalGain} 実数値UP)</span>
+            {/* A vs B 概要 & 6カードミニプレビュー Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+              {/* ビルド A */}
+              <div className="glass-panel p-4 rounded-2xl border border-amber-500/40 bg-amber-500/5 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    育成ビルド A (現在セット中)
+                  </span>
+                  {savedBuilds.length > 0 && (
+                    <select
+                      onChange={(e) => {
+                        const selected = savedBuilds.find(b => b.id === e.target.value);
+                        if (selected) handleLoadBuildToA(selected);
+                        e.target.value = '';
+                      }}
+                      defaultValue=""
+                      className="bg-slate-950 border border-amber-500/40 text-amber-300 text-[11px] font-bold rounded-lg px-2 py-1 focus:outline-none cursor-pointer max-w-[180px]"
+                    >
+                      <option value="" disabled>📂 マイ編成から読み込み...</option>
+                      {savedBuilds.map(b => (
+                        <option key={b.id} value={b.id}>{b.name}</option>
+                      ))}
+                    </select>
+                  )}
+                </div>
+
+                <div className="flex items-baseline justify-between bg-slate-950/80 p-3 rounded-xl border border-amber-500/20">
+                  <div>
+                    <div className="text-[10px] text-slate-400 font-bold">推定総合値 (補正後)</div>
+                    <div className="text-2xl font-black font-num text-amber-400">{calcA.boostedOverall}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">+{calcA.totalGain} UP</div>
+                  </div>
+                </div>
+
+                {/* 6スロット Mini Previews */}
+                <div className="space-y-1">
+                  <div className="text-[10px] text-slate-400 font-bold">装着カード (6スロット):</div>
+                  <div className="grid grid-cols-6 gap-1.5">
+                    {slots.map((s, idx) => {
+                      if (!s.active || !s.cardId) {
+                        return (
+                          <div key={idx} className="aspect-[3/4] rounded-lg bg-slate-950/60 border border-dashed border-slate-800 flex items-center justify-center text-[9px] text-slate-600 font-bold">
+                            空き
+                          </div>
+                        );
+                      }
+                      const card = officialCards.find(c => c.id === s.cardId);
+                      const img = card?.getImageUrl ? card.getImageUrl() : '';
+                      return (
+                        <div key={idx} className="relative aspect-[3/4] rounded-lg bg-slate-950 border border-amber-500/40 overflow-hidden flex flex-col justify-between p-1 group" title={card?.name || '特練カード'}>
+                          {img ? (
+                            <img src={img} alt={card?.name} className="w-full h-full object-cover rounded" />
+                          ) : (
+                            <div className="text-[9px] text-amber-300 font-black truncate text-center my-auto leading-tight">
+                              {card?.name?.substring(0, 6) || 'カード'}
+                            </div>
+                          )}
+                          <span className="absolute bottom-0 right-0 text-[8px] font-black bg-amber-500 text-slate-950 px-1 rounded-tl">
+                            {s.stage}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* ビルド B */}
+              <div className="glass-panel p-4 rounded-2xl border border-cyan-500/40 bg-cyan-500/5 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-black text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    育成ビルド B (比較対象)
+                  </span>
+                  {savedBuilds.length > 0 && (
+                    <select
+                      onChange={(e) => {
+                        const selected = savedBuilds.find(b => b.id === e.target.value);
+                        if (selected) handleLoadBuildToB(selected);
+                        e.target.value = '';
+                      }}
+                      defaultValue=""
+                      className="bg-slate-950 border border-cyan-500/40 text-cyan-300 text-[11px] font-bold rounded-lg px-2 py-1 focus:outline-none cursor-pointer max-w-[180px]"
+                    >
+                      <option value="" disabled>📂 マイ編成から読み込み...</option>
+                      {savedBuilds.map(b => (
+                        <option key={b.id} value={b.id}>{b.name}</option>
+                      ))}
+                    </select>
+                  )}
+                </div>
+
+                <div className="flex items-baseline justify-between bg-slate-950/80 p-3 rounded-xl border border-cyan-500/20">
+                  <div>
+                    <div className="text-[10px] text-slate-400 font-bold">推定総合値 (補正後)</div>
+                    <div className="text-2xl font-black font-num text-cyan-400">{calcB.boostedOverall}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">+{calcB.totalGain} UP</div>
+                  </div>
+                </div>
+
+                {/* 6スロット Mini Previews for B */}
+                <div className="space-y-1">
+                  <div className="text-[10px] text-slate-400 font-bold">装着カード (6スロット):</div>
+                  <div className="grid grid-cols-6 gap-1.5">
+                    {buildB_slots.map((s, idx) => {
+                      if (!s.active || !s.cardId) {
+                        return (
+                          <div key={idx} className="aspect-[3/4] rounded-lg bg-slate-950/60 border border-dashed border-slate-800 flex items-center justify-center text-[9px] text-slate-600 font-bold">
+                            空き
+                          </div>
+                        );
+                      }
+                      const card = officialCards.find(c => c.id === s.cardId);
+                      const img = card?.getImageUrl ? card.getImageUrl() : '';
+                      return (
+                        <div key={idx} className="relative aspect-[3/4] rounded-lg bg-slate-950 border border-cyan-500/40 overflow-hidden flex flex-col justify-between p-1 group" title={card?.name || '特練カード'}>
+                          {img ? (
+                            <img src={img} alt={card?.name} className="w-full h-full object-cover rounded" />
+                          ) : (
+                            <div className="text-[9px] text-cyan-300 font-black truncate text-center my-auto leading-tight">
+                              {card?.name?.substring(0, 6) || 'カード'}
+                            </div>
+                          )}
+                          <span className="absolute bottom-0 right-0 text-[8px] font-black bg-cyan-500 text-slate-950 px-1 rounded-tl">
+                            {s.stage}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -9715,7 +10030,7 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
                   {Object.keys(calcA.statDetailGains).map(stName => {
                     const valA = calcA.statDetailGains[stName] || 0;
                     const valB = calcB.statDetailGains[stName] || 0;
-                    const diff = parseFloat((valA - valB).toFixed(1));
+                    const diff = floor1Decimal(valA - valB);
 
                     return (
                       <tr key={stName} className="hover:bg-slate-900/40 transition-colors">
@@ -10187,6 +10502,191 @@ const STAT_NAME_KEY_MAP = useMemo(() => ({
           </div>
         </div>
       )}
+
+      {/* 編成保存モーダル (SaveBuildModal) */}
+      {isSaveBuildModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 animate-fadeIn">
+          <div className="glass-panel max-w-md w-full rounded-3xl border border-amber-500/50 bg-slate-900 p-6 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xl">💾</span>
+                <h3 className="font-black text-lg text-white">現在の編成を保存</h3>
+              </div>
+              <button
+                onClick={() => setIsSaveBuildModalOpen(false)}
+                className="p-1 rounded-full text-slate-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              <label className="text-xs font-bold text-slate-300 block">マイ編成名:</label>
+              <input
+                type="text"
+                value={saveBuildNameInput}
+                onChange={(e) => setSaveBuildNameInput(e.target.value)}
+                placeholder="例: ヤマルCF決定力重視編成"
+                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none transition-colors"
+              />
+            </div>
+
+            {/* 装着カード6枚のミニプレビュー */}
+            <div className="space-y-1.5">
+              <span className="text-[11px] font-bold text-slate-400 block">保存対象カード (6スロット):</span>
+              <div className="grid grid-cols-6 gap-1.5 bg-slate-950 p-2 rounded-xl border border-slate-800">
+                {slots.map((s, i) => {
+                  if (!s.active || !s.cardId) {
+                    return <div key={i} className="aspect-[3/4] rounded bg-slate-900 border border-dashed border-slate-800 flex items-center justify-center text-[8px] text-slate-600 font-bold">空</div>;
+                  }
+                  const card = officialCards.find(c => c.id === s.cardId);
+                  const img = card?.getImageUrl ? card.getImageUrl() : '';
+                  return (
+                    <div key={i} className="aspect-[3/4] rounded bg-slate-900 border border-amber-500/30 overflow-hidden relative flex flex-col justify-between p-0.5">
+                      {img ? <img src={img} alt={card?.name} className="w-full h-full object-cover rounded" /> : <div className="text-[8px] text-amber-300 font-black truncate text-center my-auto">{card?.name?.substring(0,5)}</div>}
+                      <span className="absolute bottom-0 right-0 text-[7px] font-black bg-amber-500 text-slate-950 px-0.5">{s.stage}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+              <button
+                onClick={() => setIsSaveBuildModalOpen(false)}
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition-all cursor-pointer"
+              >
+                キャンセル
+              </button>
+              <button
+                onClick={handleSaveBuildConfirm}
+                className="px-5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black text-xs shadow-lg hover:brightness-110 transition-all cursor-pointer"
+              >
+                💾 保存する
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* マイ編成一覧・管理モーダル (SavedBuildsModal) */}
+      {isSavedBuildsModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 md:p-4 animate-fadeIn">
+          <div className="glass-panel max-w-2xl w-full rounded-3xl border border-amber-500/40 bg-slate-900 p-5 md:p-6 shadow-2xl flex flex-col max-h-[85vh] space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-black text-lg">
+                  📂
+                </div>
+                <div>
+                  <h3 className="font-black text-base sm:text-lg text-white">マイ編成一覧 (保存済み育成ビルド)</h3>
+                  <p className="text-[11px] text-slate-400">保存した6スロット構成をビルドA・ビルドBにワンタップで呼び出せます</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsSavedBuildsModalOpen(false)}
+                className="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              >
+                <Icon name="x" className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Saved Builds List */}
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1 scrollbar-thin scrollbar-thumb-slate-700">
+              {savedBuilds.length > 0 ? (
+                savedBuilds.map((b) => (
+                  <div key={b.id} className="p-4 rounded-2xl bg-slate-950 border border-slate-800 hover:border-amber-500/40 transition-all space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
+                      <div>
+                        <h4 className="font-black text-sm text-amber-300 flex items-center gap-2">
+                          <span>⚽</span> {b.name}
+                        </h4>
+                        <div className="text-[10px] text-slate-400 font-bold flex items-center gap-2 mt-0.5">
+                          <span>対象選手: {b.playerName} ({b.playerPosition})</span>
+                          <span>•</span>
+                          <span>作成日: {new Date(b.createdAt).toLocaleDateString('ja-JP')}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          onClick={() => {
+                            handleLoadBuildToA(b);
+                            setIsSavedBuildsModalOpen(false);
+                          }}
+                          className="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 hover:bg-amber-500 hover:text-slate-950 border border-amber-500/40 text-xs font-black transition-all cursor-pointer"
+                        >
+                          📥 ビルドAに適用
+                        </button>
+                        <button
+                          onClick={() => {
+                            handleLoadBuildToB(b);
+                            setIsSavedBuildsModalOpen(false);
+                          }}
+                          className="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 hover:bg-cyan-500 hover:text-slate-950 border border-cyan-500/40 text-xs font-black transition-all cursor-pointer"
+                        >
+                          📥 ビルドBに適用
+                        </button>
+                        <button
+                          onClick={() => handleDeleteSavedBuild(b.id)}
+                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-red-500/20 text-slate-400 hover:text-red-400 border border-slate-700 hover:border-red-500/40 text-xs transition-all cursor-pointer"
+                          title="削除"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* 6 mini cards preview */}
+                    <div className="grid grid-cols-6 gap-1.5">
+                      {b.slots.map((s, idx) => {
+                        if (!s.active || !s.cardId) {
+                          return (
+                            <div key={idx} className="aspect-[3/4] rounded bg-slate-900/60 border border-dashed border-slate-800 flex items-center justify-center text-[8px] text-slate-600 font-bold">
+                              空
+                            </div>
+                          );
+                        }
+                        const card = officialCards.find(c => c.id === s.cardId);
+                        const img = card?.getImageUrl ? card.getImageUrl() : '';
+                        return (
+                          <div key={idx} className="relative aspect-[3/4] rounded bg-slate-900 border border-slate-700 overflow-hidden flex flex-col justify-between p-0.5">
+                            {img ? (
+                              <img src={img} alt={card?.name} className="w-full h-full object-cover rounded" />
+                            ) : (
+                              <div className="text-[8px] text-amber-300 font-black truncate text-center my-auto leading-tight">
+                                {card?.name?.substring(0, 5)}
+                              </div>
+                            )}
+                            <span className="absolute bottom-0 right-0 text-[7px] font-black bg-slate-800 text-slate-300 px-0.5">
+                              {s.stage}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="p-12 text-center text-slate-500 text-xs font-bold space-y-2">
+                  <div className="text-3xl">📭</div>
+                  <div>保存されたマイ編成がありません。</div>
+                  <div className="text-[11px] text-slate-600">6スロット特練シミュレーターでセット後、「💾 編成を保存」ボタンを押してください。</div>
+                </div>
+              )}
+            </div>
+
+            <div className="pt-2 border-t border-slate-800 flex justify-end">
+              <button
+                onClick={() => setIsSavedBuildsModalOpen(false)}
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs cursor-pointer"
+              >
+                閉じる
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
   </div>
   );
 }
@@ -10282,8 +10782,8 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
         bonusMult += (Number(b.percent) || 0) / 100;
       }
     });
-    const val = parseFloat((rawVal * bonusMult).toFixed(1));
-    return { val, rawVal: parseFloat(rawVal.toFixed(1)), isBoosted: bonusMult > 1.0 };
+    const val = floor1Decimal(rawVal * bonusMult);
+    return { val, rawVal: floor1Decimal(rawVal), isBoosted: bonusMult > 1.0 };
   };
 
   const renderRankBadge = (val, allVals) => {
@@ -10333,8 +10833,8 @@ function CardCompareModal({ compareCardIds, officialCards, onClose, onRemoveCard
     });
 
     return {
-      sum: parseFloat(currentSum.toFixed(1)),
-      rawSum: parseFloat(rawSum.toFixed(1)),
+      sum: floor1Decimal(currentSum),
+      rawSum: floor1Decimal(rawSum),
       isBoosted: anyBoosted
     };
   });
@@ -11024,10 +11524,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   }`}
                 >
                   <span className="text-white flex items-center gap-1">
-                    🛡️ 無難最適編成 (限界値-150以下安全枠)
+                    🛡️ 無難最適編成 (限界値 -155〜-135 安全枠)
                   </span>
                   <span className="text-[10px] text-slate-400 font-normal">
-                    全18能力が限界値より-150以下にギリギリ収まる安全範囲内で能力上昇を最大化
+                    全18能力が限界値より -155〜-135 の安全範囲に収まる中で数値上昇が最大となる編成を探索
                   </span>
                 </button>
               </div>
