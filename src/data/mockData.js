@@ -20256,7 +20256,23 @@ window.INITIAL_PLAYERS = [
     playStyle: 'サイドアタッカーLW',
     playStyleLevel: 'Ⅱ',
     overall: 7187,
-        maxOverall: 15399,
+    maxOverall: 15399,
+    baseStats: {
+      shoot: 1312,
+      pass: 1251,
+      dribble: 1410,
+      defense: 866,
+      physical: 1218,
+      speed: 919
+    },
+    detailStats: {
+      shoot: { finishing: 450, power: 428, composure: 434 },
+      pass: { shortPass: 422, longPass: 414, accuracy: 415 },
+      dribble: { breakout: 467, keeping: 467, ballTouch: 476 },
+      defense: { tackle: 266, interception: 307, marking: 293 },
+      physical: { jumping: 402, contact: 411, stamina: 405 },
+      speed: { running: 446, agility: 473 }
+    },
     maxEnhanced: {
       overall: 15399,
       baseStats: {
@@ -20314,8 +20330,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：絶好調　/　キック力・走力UP'
       }
     ],
-    avatarUrl: ''
-  },
+    avatarUrl: ''},
   {
     id: 'p392',
     name: 'レアンドロ・トロサール',
