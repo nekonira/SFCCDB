@@ -1755,7 +1755,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '安定したパスワーク', rank: '銅', description: '発動エリア：前左中右・中左中右　/　発動条件：AM・RW・LW・CFの選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
-      { name: 'シルクタッチ', rank: '銀', description: '発動条件：好調　/　ショートパス・ボールタッチUP' },
+      { name: 'シルクタッチ', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ボールタッチUP' },
       { name: '懐の深いロングパサー', rank: '銀', description: '発動条件：好調　/　ロングパス・キープ力UP' }
     ],
     avatarUrl: ''
@@ -10242,7 +10242,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '楔のパス', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：AM・CFの選手へのショートパス・ロングパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
-      { name: 'シルクタッチ', rank: '銀', description: '発動条件：好調　/　ショートパス・ボールタッチUP' },
+      { name: 'シルクタッチ', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ボールタッチUP' },
       { name: '切り開くキッカー', rank: '銀', description: '発動条件：好調　/　キック精度・突破力UP' }
     ],
     avatarUrl: ''
@@ -10386,7 +10386,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '楔のパス', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：AM・CFの選手へのショートパス・ロングパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
-      { name: 'シルクタッチ', rank: '銀', description: '発動条件：好調　/　ショートパス・ボールタッチUP' },
+      { name: 'シルクタッチ', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ボールタッチUP' },
       { name: '高性能ロングパサー', rank: '銀', description: '発動条件：途中出場　/　ロングパス・キック精度UP' }
     ],
     avatarUrl: ''
@@ -10434,7 +10434,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '意外性のあるミドルパス', rank: '銅', description: '発動エリア：中中・後左中右　/　発動条件：CF・AMの選手へのショートパス・ロングパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
-      { name: 'シルクタッチ', rank: '銀', description: '発動条件：好調　/　ショートパス・ボールタッチUP' },
+      { name: 'シルクタッチ', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ボールタッチUP' },
       { name: 'ハードスティール', rank: '銀', description: '発動条件：絶好調　/　キープ力・タックルUP' }
     ],
     avatarUrl: ''
@@ -10962,7 +10962,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '操舵のパス', rank: '銅', description: '発動エリア：前中・中中　/　発動条件：前中・中中に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　ダイレクトショートパス成功時に受け手のシュート発生確率UP' },
     abilities: [
-      { name: 'シルクタッチ', rank: '銀', description: '発動条件：好調　/　ショートパス・ボールタッチUP' },
+      { name: 'シルクタッチ', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ボールタッチUP' },
       { name: 'アジャイルターゲット', rank: '銀', description: '発動条件：途中出場　/　キープ力・敏捷性UP' }
     ],
     avatarUrl: ''
@@ -20149,6 +20149,435 @@ window.INITIAL_PLAYERS = [
       { name: '守りの哲学', rank: '金', description: '発動条件：好調　/　タックル・パスカット・マークUP' },
       { name: 'パワフルジャンパー', rank: '銀', description: '発動条件：好調　/　ジャンプ・コンタクトUP' },
       { name: 'マラソンマン', rank: '銅', description: '発動条件：絶好調　/　スタミナ・走力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p390',
+    name: 'ラウル・ヒメネス',
+    readingName: 'らうるひめねす',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'メキシコ',
+    policy: 'ムービング',
+    playStyle: 'ストライカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 7101,
+    maxOverall: 15348,
+    baseStats: {
+      shoot: 1402,
+      pass: 1176,
+      dribble: 1266,
+      defense: 905,
+      physical: 1265,
+      speed: 771
+    },
+    detailStats: {
+      shoot: { finishing: 462, power: 458, composure: 482 },
+      pass: { shortPass: 404, longPass: 392, accuracy: 380 },
+      dribble: { breakout: 410, keeping: 434, ballTouch: 422 },
+      defense: { tackle: 315, interception: 303, marking: 287 },
+      physical: { jumping: 465, contact: 424, stamina: 376 },
+      speed: { running: 395, agility: 376 }
+    },
+    maxEnhanced: {
+      overall: 15348,
+      baseStats: {
+        shoot: 3007,
+        pass: 2709,
+        dribble: 2847,
+        defense: 2402,
+        physical: 2846,
+        speed: 1817
+      },
+      detailStats: {
+        shoot: { finishing: 997, power: 993, composure: 1017 },
+        pass: { shortPass: 915, longPass: 903, accuracy: 891 },
+        dribble: { breakout: 933, keeping: 957, ballTouch: 957 },
+        defense: { tackle: 814, interception: 802, marking: 786 },
+        physical: { jumping: 988, contact: 959, stamina: 899 },
+        speed: { running: 918, agility: 899 }
+      }
+    },
+    playTendencies: {
+      attack: 1,
+      defense: -1,
+      dribble: 0,
+      shoot: 1,
+      longShoot: 0,
+      shortPass: 0,
+      longPass: 0,
+      throughPass: 0,
+      cutIn: 0,
+      keep: 0,
+      delay: -1,
+      rushOut: 0,
+      feint: 0,
+      press: -1
+    },
+    skill: {
+      name: 'コントロールショット',
+      rank: '銀',
+      description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP'
+    },
+    abilities: [
+      {
+        name: '狙いすました強振',
+        rank: '銀',
+        description: '発動条件：好調　/　キック力・冷静さUP'
+      },
+      {
+        name: '力強いフィニッシュ',
+        rank: '銀',
+        description: '発動条件：好調　/　決定力・コンタクトUP'
+      },
+      {
+        name: '俊敏なタッチ',
+        rank: '銅',
+        description: '発動条件：絶好調　　ボールタッチ・敏捷性UP'
+      }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p391',
+    name: 'コーディ・ガクポ',
+    readingName: 'こーでぃがくぽ',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'オランダ',
+    policy: 'ムービング',
+    playStyle: 'サイドアタッカーLW',
+    playStyleLevel: 'Ⅱ',
+    overall: 7187,
+        maxOverall: 15399,
+    maxEnhanced: {
+      overall: 15399,
+      baseStats: {
+        shoot: 2869,
+        pass: 2820,
+        dribble: 3003,
+        defense: 2375,
+        physical: 2763,
+        speed: 1989
+      },
+      detailStats: {
+        shoot: { finishing: 973, power: 939, composure: 957 },
+        pass: { shortPass: 945, longPass: 937, accuracy: 938 },
+        dribble: { breakout: 1002, keeping: 1002, ballTouch: 999 },
+        defense: { tackle: 777, interception: 806, marking: 792 },
+        physical: { jumping: 913, contact: 922, stamina: 928 },
+        speed: { running: 981, agility: 1008 }
+      }
+    },
+    playTendencies: {
+      attack: 1,
+      defense: -1,
+      dribble: 1,
+      shoot: 0,
+      longShoot: 0,
+      shortPass: 0,
+      longPass: 0,
+      throughPass: 0,
+      cutIn: -1,
+      keep: 0,
+      delay: -1,
+      rushOut: 2,
+      feint: 1,
+      press: 0
+    },
+    skill: {
+      name: 'スリップビート',
+      rank: '銀',
+      description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP'
+    },
+    abilities: [
+      {
+        name: '俊敏なドリブラー',
+        rank: '銀',
+        description: '発動条件：好調　/　突破力・敏捷性UP'
+      },
+      {
+        name: '懐の深いボールタッチ',
+        rank: '銀',
+        description: '発動条件：絶好調　/　キープ力・ボールタッチUP'
+      },
+      {
+        name: 'ランニングキッカー',
+        rank: '銅',
+        description: '発動条件：絶好調　/　キック力・走力UP'
+      }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p392',
+    name: 'レアンドロ・トロサール',
+    readingName: 'れあんどろとろさーる',
+    category: 'MF',
+    mainPosition: 'LM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ベルギー',
+    policy: 'カウンター',
+    playStyle: 'ドリブラーLM',
+    playStyleLevel: 'Ⅲ',
+    overall: 7216,
+    maxOverall: 15459,
+    baseStats: {
+      shoot: 1357,
+      pass: 1383,
+      dribble: 1400,
+      defense: 901,
+      physical: 1115,
+      speed: 891
+    },
+    detailStats: {
+      shoot: { finishing: 458, power: 433, composure: 466 },
+      pass: { shortPass: 474, longPass: 465, accuracy: 444 },
+      dribble: { breakout: 466, keeping: 461, ballTouch: 473 },
+      defense: { tackle: 266, interception: 330, marking: 305 },
+      physical: { jumping: 338, contact: 352, stamina: 425 },
+      speed: { running: 435, agility: 456 }
+    },
+    maxEnhanced: {
+      overall: 15459,
+      baseStats: {
+        shoot: 2914,
+        pass: 2952,
+        dribble: 2993,
+        defense: 2410,
+        physical: 2660,
+        speed: 1961
+      },
+      detailStats: {
+        shoot: { finishing: 981, power: 944, composure: 989 },
+        pass: { shortPass: 997, longPass: 988, accuracy: 967 },
+        dribble: { breakout: 1001, keeping: 996, ballTouch: 996 },
+        defense: { tackle: 777, interception: 829, marking: 804 },
+        physical: { jumping: 849, contact: 863, stamina: 948 },
+        speed: { running: 970, agility: 991 }
+      }
+    },
+    playTendencies: {
+      attack: 2,
+      defense: -1,
+      dribble: 2,
+      shoot: 1,
+      longShoot: 0,
+      shortPass: 0,
+      longPass: -1,
+      throughPass: 0,
+      cutIn: 1,
+      keep: 1,
+      delay: -1,
+      rushOut: 1,
+      feint: 2,
+      press: 0
+    },
+    skill: {
+      name: 'ジャックナイフ',
+      rank: '銀',
+      description: '発動エリア：前左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のシュート発生確率UP'
+    },
+    abilities: [
+      {
+        name: '俊敏なドリブラー',
+        rank: '銀',
+        description: '発動条件：好調　/　突破力・敏捷性UP'
+      },
+      {
+        name: '懐の深いパサー',
+        rank: '銀',
+        description: '発動条件：絶好調　/　ショートパス・キープ力UP'
+      },
+      {
+        name: '冷静なゲームメイク',
+        rank: '銅',
+        description: '発動条件：途中出場　/　冷静さ・ロングパスUP'
+      }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p393',
+    name: 'コビー・メイヌー',
+    readingName: 'こびーめいぬー',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'イングランド',
+    policy: 'ムービング',
+    playStyle: 'セントラルDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 6954,
+    maxOverall: 15114,
+    baseStats: {
+      shoot: 1053,
+      pass: 1204,
+      dribble: 1354,
+      defense: 1303,
+      physical: 1256,
+      speed: 841
+    },
+    detailStats: {
+      shoot: { finishing: 351, power: 362, composure: 340 },
+      pass: { shortPass: 396, longPass: 393, accuracy: 415 },
+      dribble: { breakout: 451, keeping: 443, ballTouch: 460 },
+      defense: { tackle: 432, interception: 463, marking: 408 },
+      physical: { jumping: 356, contact: 438, stamina: 462 },
+      speed: { running: 407, agility: 434 }
+    },
+    maxEnhanced: {
+      overall: 15114,
+      baseStats: {
+        shoot: 2598,
+        pass: 2809,
+        dribble: 2887,
+        defense: 2884,
+        physical: 2825,
+        speed: 1863
+      },
+      detailStats: {
+        shoot: { finishing: 862, power: 873, composure: 863 },
+        pass: { shortPass: 931, longPass: 928, accuracy: 950 },
+        dribble: { breakout: 962, keeping: 954, ballTouch: 971 },
+        defense: { tackle: 967, interception: 986, marking: 931 },
+        physical: { jumping: 867, contact: 961, stamina: 997 },
+        speed: { running: 918, agility: 945 }
+      }
+    },
+    playTendencies: {
+      attack: 0,
+      defense: 0,
+      dribble: 0,
+      shoot: 0,
+      longShoot: 0,
+      shortPass: 1,
+      longPass: 0,
+      throughPass: 0,
+      cutIn: 0,
+      keep: 0,
+      delay: 0,
+      rushOut: -1,
+      feint: 0,
+      press: 0
+    },
+    skill: {
+      name: 'チェーンカッター',
+      rank: '銀',
+      description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP'
+    },
+    abilities: [
+      {
+        name: 'ピッチの分断者',
+        rank: '銀',
+        description: '発動条件：絶好調　/　パスカット・スタミナUP'
+      },
+      {
+        name: '華麗なボール奪取',
+        rank: '銀',
+        description: '発動条件：途中出場　/　ボールタッチ・タックルUP'
+      }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p394',
+    name: 'アダム・ウォートン',
+    readingName: 'あだむうぉーとん',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'イングランド',
+    policy: 'カウンター',
+    playStyle: 'パサーDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 7166,
+    maxOverall: 15343,
+    baseStats: {
+      shoot: 1003,
+      pass: 1432,
+      dribble: 1430,
+      defense: 1298,
+      physical: 1215,
+      speed: 872
+    },
+    detailStats: {
+      shoot: { finishing: 327, power: 330, composure: 346 },
+      pass: { shortPass: 482, longPass: 482, accuracy: 468 },
+      dribble: { breakout: 466, keeping: 467, ballTouch: 497 },
+      defense: { tackle: 415, interception: 445, marking: 438 },
+      physical: { jumping: 376, contact: 410, stamina: 429 },
+      speed: { running: 418, agility: 454 }
+    },
+    maxEnhanced: {
+      overall: 15343,
+      baseStats: {
+        shoot: 2548,
+        pass: 3037,
+        dribble: 2963,
+        defense: 2879,
+        physical: 2784,
+        speed: 1894
+      },
+      detailStats: {
+        shoot: { finishing: 838, power: 841, composure: 869 },
+        pass: { shortPass: 1017, longPass: 1017, accuracy: 1003 },
+        dribble: { breakout: 977, keeping: 978, ballTouch: 1008 },
+        defense: { tackle: 950, interception: 968, marking: 961 },
+        physical: { jumping: 887, contact: 933, stamina: 964 },
+        speed: { running: 929, agility: 965 }
+      }
+    },
+    playTendencies: {
+      attack: 1,
+      defense: 0,
+      dribble: 0,
+      shoot: 0,
+      longShoot: 0,
+      shortPass: 2,
+      longPass: -1,
+      throughPass: 0,
+      cutIn: 0,
+      keep: 0,
+      delay: 0,
+      rushOut: -1,
+      feint: 0,
+      press: 0
+    },
+    skill: {
+      name: 'ドリブンパス',
+      rank: '銀',
+      description: '発動エリア：後左中右　/　発動条件：LFB・RFB・LM・RMへのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のドリブル発生確率UP'
+    },
+    abilities: [
+      {
+        name: '懐の深いロングパサー',
+        rank: '銀',
+        description: '発動条件：好調　/　ロングパス・キープ力UP'
+      },
+      {
+        name: 'シルクタッチ',
+        rank: '銀',
+        description: '発動条件：途中出場　/　ショートパス・ボールタッチUP'
+      },
+      {
+        name: 'ワイドカッター',
+        rank: '銅',
+        description: '発動条件：好調　/　突破力・パスカットUP'
+      }
     ],
     avatarUrl: ''
   }

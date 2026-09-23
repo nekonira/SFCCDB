@@ -51,7 +51,9 @@ const COUNTRY_CODE_MAP = {
   'UAE': 'ae',
   '中国': 'cn',
   '南アフリカ': 'za',
-  '香港': 'hk'
+  '香港': 'hk',
+  'メキシコ': 'mx',
+  'メキシコ': 'mx'
 };
 
 const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover rounded-xs border border-slate-700/60 shadow-xs" }) => {

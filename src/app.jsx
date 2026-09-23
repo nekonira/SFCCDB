@@ -114,7 +114,8 @@ const COUNTRY_CODE_MAP = {
   'UAE': 'ae',
   '中国': 'cn',
   '南アフリカ': 'za',
-  '香港': 'hk'
+  '香港': 'hk',
+  'メキシコ': 'mx'
 };
 
 const getCountryFlag = (nationality) => {

@@ -11,9 +11,9 @@ vm.createContext(sandbox);
 vm.runInContext(code, sandbox);
 
 const players = sandbox.window.INITIAL_PLAYERS;
-const skillNames = ['コントロールショット', '狙いすました強振', '力強いフィニッシュ', '俊敏なタッチ'];
+const names = ['スリップビート', '俊敏なドリブラー', '懐の深いボールタッチ', 'ランニングキッカー'];
 
-skillNames.forEach(name => {
+names.forEach(name => {
   console.log(`=== Searching for: ${name} ===`);
   players.forEach(p => {
     if (p.skill && p.skill.name === name) {
@@ -22,7 +22,7 @@ skillNames.forEach(name => {
     if (p.abilities) {
       p.abilities.forEach(a => {
         if (a.name === name) {
-          console.log(`Ability in ${p.name}:`, a);
+          console.log(`Ability in ${p.name} (${a.rank}):`, a);
         }
       });
     }

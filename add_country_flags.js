@@ -51,7 +51,8 @@ const COUNTRY_FLAG_MAP = {
   'UAE': '🇦🇪',
   '中国': '🇨🇳',
   '南アフリカ': '🇿🇦',
-  '香港': '🇭🇰'
+  '香港': '🇭🇰',
+  'メキシコ': '🇲🇽'
 };
 
 const getCountryFlag = (nationality) => {
