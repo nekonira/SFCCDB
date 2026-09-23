@@ -2042,9 +2042,20 @@ window.INITIAL_PLAYERS = [
       }
     },
     playTendencies: {
-      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
-      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
-      delay: 0, rushOut: -1, feint: 0, press: 0
+      attack: 0,
+      defense: 0,
+      dribble: 0,
+      shoot: 0,
+      longShoot: 0,
+      shortPass: 1,
+      longPass: 0,
+      throughPass: 0,
+      cutIn: 0,
+      keep: 0,
+      delay: 0,
+      rushOut: -1,
+      feint: 0,
+      press: 0
     },
     skill: { name: '奪還', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
