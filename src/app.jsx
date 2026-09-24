@@ -1715,7 +1715,9 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
     requiredSkills = [],
     matchPlaystyleBonusOnly = false,
     allowDuplicates = true,
-    optimizationStrategy = 'EFFECTIVE_MAX' // 'EFFECTIVE_MAX' | 'SAFE_150'
+    optimizationStrategy = 'EFFECTIVE_MAX', // 'EFFECTIVE_MAX' | 'SAFE_150'
+    useOwnedCardsOnly = false,
+    ownedCards = {}
   } = options;
 
   if (!player || !officialCards || !officialCards.length) return Array.from({ length: 6 }, (_, i) => ({ id: i + 1, active: false, cardId: '', stage: targetStage }));
@@ -1732,7 +1734,14 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
 
   // Candidate filtering
   let candidates = officialCards.filter(c => {
-    if (!c || !c.stages || !c.stages[targetStage]) return false;
+    if (!c || !c.stages) return false;
+    if (useOwnedCardsOnly) {
+      const ownedInfo = ownedCards[c.id];
+      if (!ownedInfo || !ownedInfo.owned) return false;
+    } else {
+      if (!c.stages[targetStage]) return false;
+    }
+
     if (matchPlaystyleBonusOnly && c.playstyleBonus) {
       let isMatch = false;
       if (c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses)) {
@@ -1770,7 +1779,8 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
   // Pre-calculate card stat boost map
   const cardBoostMaps = new Map();
   candidates.forEach(card => {
-    const stageStats = card.stages[targetStage] || card.stages['完凸'] || {};
+    const cardStage = useOwnedCardsOnly && ownedCards[card.id] ? (ownedCards[card.id].stage || '完凸') : targetStage;
+    const stageStats = card.stages[cardStage] || card.stages['完凸'] || {};
     const bonusMult = calculateCardBonusMult(player, card);
     const boostMap = {};
     Object.entries(stageStats).forEach(([stName, val]) => {
@@ -1889,11 +1899,12 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
 
   return Array.from({ length: 6 }, (_, i) => {
     const card = bestSet[i] || candidates[i] || officialCards[0];
+    const cardStage = card && useOwnedCardsOnly && ownedCards[card.id] ? (ownedCards[card.id].stage || '完凸') : targetStage;
     return {
       id: i + 1,
-      active: true,
+      active: !!card,
       cardId: card ? card.id : officialCards[0].id,
-      stage: targetStage
+      stage: cardStage
     };
   });
 }
@@ -8341,6 +8352,27 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
   const [autoSelectInitialMode, setAutoSelectInitialMode] = useState('EFFECTIVE_MAX');
   const [autoSelectToast, setAutoSelectToast] = useState(null);
 
+  // 所持カード・凸数管理 State
+  const [ownedCards, setOwnedCards] = useState(() => {
+    try {
+      const json = localStorage.getItem('sfcc_owned_cards');
+      return json ? JSON.parse(json) : {};
+    } catch (e) {
+      return {};
+    }
+  });
+
+  const saveOwnedCards = (newOwnedCards) => {
+    setOwnedCards(newOwnedCards);
+    try {
+      localStorage.setItem('sfcc_owned_cards', JSON.stringify(newOwnedCards));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const [isOwnedCardsModalOpen, setIsOwnedCardsModalOpen] = useState(false);
+
   // ─────────────────────────────────────────────────────────────
   // 保存済みマイ編成 (Saved Builds) State & Handler
   // ─────────────────────────────────────────────────────────────
@@ -8904,6 +8936,14 @@ function getPositionStatAddition(position, statName) {
                   </button>
                   <button
                     type="button"
+                    onClick={() => setIsOwnedCardsModalOpen(true)}
+                    className="px-2.5 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/40 text-amber-300 font-black text-xs cursor-pointer flex items-center gap-1 transition-all"
+                    title="所持カードおよび凸数を設定・保存"
+                  >
+                    🎴 所持カード管理 ({Object.values(ownedCards || {}).filter(v => v && v.owned).length}枚)
+                  </button>
+                  <button
+                    type="button"
                     onClick={handleOpenSaveBuildModal}
                     className="px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 font-black text-xs cursor-pointer flex items-center gap-1 transition-all shadow-sm"
                     title="現在の6スロットカード編成をマイビルドとして保存"
@@ -9102,6 +9142,161 @@ function getPositionStatAddition(position, statName) {
               })}
             </div>
           </div>
+
+          {/* 右側: 装着カードによる能力値合計・補正結果サマリー */}
+          <div className="lg:col-span-5 space-y-4">
+            {/* 統合カード: 特練カード装着 合計能力補正 ＆ ポジション別成長限界メーター */}
+            <div className="glass-panel p-4 rounded-3xl border border-amber-500/40 bg-slate-900/90 shadow-xl space-y-4">
+              {/* 統合ヘッダー */}
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <span className="text-xs font-black text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                  <Icon name="activity" className="w-4 h-4 text-amber-400" />
+                  📊 特練カード装着 合計能力補正 ＆ ポジション別成長限界メーター
+                </span>
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                  有効スロット: {slots.filter(s => s.active).length} / 6
+                </span>
+              </div>
+
+              {/* 数値スコアカード: 上昇値合計 & カード使用後 能力合計実数値 */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-slate-950 p-3 rounded-2xl border border-amber-500/30 text-center shadow-inner">
+                  <div className="text-[10px] text-slate-400 font-bold mb-0.5">能力値上昇合計 (実数値)</div>
+                  <div className="text-2xl font-black font-num text-[#00FF66] drop-shadow-sm">
+                    +{slotCalcResult ? slotCalcResult.totalGain : 0}
+                  </div>
+                  <div className="text-[9px] text-slate-400 mt-0.5">
+                    装着カード補正分
+                  </div>
+                </div>
+                <div className="bg-slate-950 p-3 rounded-2xl border border-amber-500/30 text-center shadow-inner">
+                  <div className="text-[10px] text-slate-400 font-bold mb-0.5">カード使用後 能力合計実数値</div>
+                  <div className="text-2xl font-black font-num text-amber-400 drop-shadow-sm">
+                    {boostedTotalStats}
+                  </div>
+                  <div className="text-[9px] text-slate-400 mt-0.5">
+                    (素合計: <span className="text-slate-300 font-bold">{baseTotalStats}</span> + 上昇: <span className="text-emerald-400 font-bold">+{slotCalcResult ? slotCalcResult.totalGain : 0}</span>)
+                  </div>
+                </div>
+              </div>
+
+              {/* 能力項目別 上昇値内訳 */}
+              <div className="space-y-2 pt-1 border-t border-slate-800/80">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold text-slate-200">能力項目別 上昇値内訳</span>
+                  <span className="text-[10px] text-amber-400/80 font-bold">全{Object.keys(slotCalcResult?.statDetailGains || {}).length}項目</span>
+                </div>
+                {slotCalcResult && Object.keys(slotCalcResult.statDetailGains).length > 0 ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                    {Object.entries(slotCalcResult.statDetailGains).map(([stName, val]) => (
+                      <div key={stName} className="bg-slate-950 p-2 rounded-xl border border-slate-800 flex items-center justify-between text-xs">
+                        <span className="text-slate-300 text-[11px] font-bold">{stName}</span>
+                        <span className="text-emerald-400 font-black font-num">+{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-center text-slate-500 text-xs">
+                    アクティブな特練カードがありません
+                  </div>
+                )}
+              </div>
+
+              {/* ポジション別 成長限界(Cap) ＆ 差分メーター (詳細能力項目のみ) */}
+              <div className="space-y-3 pt-2 border-t border-slate-800/80">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold text-cyan-300 flex items-center gap-1.5">
+                    <Icon name="compare" className="w-3.5 h-3.5 text-cyan-400" />
+                    ポジション別 成長限界(Cap) ＆ 差分メーター
+                  </span>
+                  <span className="text-[10px] text-slate-400 font-bold">
+                    詳細能力項目
+                  </span>
+                </div>
+
+                {/* Detail Stat View Only */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[420px] overflow-y-auto pr-1">
+                  {(currentPlayer ? (
+                    (currentPlayer.mainPosition === 'GK' || currentPlayer.category === 'GK')
+                      ? ['セービング', '反応速度', '1VS1', 'ポジショニング', 'ハイボール', '飛び出し', 'ショートパス', 'ロングパス', 'キック精度', 'コンタクト', 'ジャンプ', 'スタミナ', '走力', '敏捷性']
+                      : ['決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'タックル', 'パスカット', 'マーク', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性']
+                  ) : [
+                    '決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'タックル', 'パスカット', 'マーク', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性'
+                  ]).map(stName => {
+                    const gainVal = slotCalcResult?.statDetailGains ? (slotCalcResult.statDetailGains[stName] || 0) : 0;
+                    const info = getDetailStatLimitInfo(currentPlayer, stName, gainVal);
+                    const diffFromLimit = floor1Decimal(info.maxLimit - info.boostedVal);
+                    const isOverflow = info.isCapped;
+
+                    return (
+                      <div key={stName} className="bg-slate-950/80 p-2 rounded-xl border border-slate-800 space-y-1">
+                        <div className="flex items-center justify-between text-[11px] font-bold">
+                          <span className="text-slate-200">{stName}</span>
+                          <div className="flex items-center gap-1.5 font-num">
+                            <span className="font-black text-amber-300">{info.boostedVal}</span>
+                            <span className="text-[9px] text-slate-400">/ {info.maxLimit}</span>
+                            {isOverflow ? (
+                              <span className="text-[9px] font-black text-red-300 bg-red-500/20 px-1 rounded border border-red-500/30">限界</span>
+                            ) : (
+                              <span className="text-[9px] font-black text-cyan-300 bg-cyan-500/10 px-1 rounded border border-cyan-500/20">差: -{diffFromLimit}</span>
+                            )}
+                          </div>
+                        </div>
+                        {/* mini gauge */}
+                        <div className="relative w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800 flex">
+                          <div className="h-full bg-blue-500" style={{ width: `${info.basePct}%` }} />
+                          <div className={`h-full ${isOverflow ? 'bg-red-500' : 'bg-emerald-400'}`} style={{ width: `${info.gainPct}%` }} />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* 獲得アビリティ ＆ 金スキル一覧 */}
+            <div className="glass-panel p-4 rounded-3xl border border-slate-800 bg-slate-900/90 shadow-xl space-y-3">
+              <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                <span className="text-xs font-black text-amber-400 flex items-center gap-1.5">
+                  <Icon name="award" className="w-4 h-4 text-amber-400" />
+                  発動アビリティ ＆ 金スキル一覧
+                </span>
+                <span className="text-[10px] text-slate-400 font-bold">
+                  {acquiredItems.length} 個
+                </span>
+              </div>
+
+              {acquiredItems.length > 0 ? (
+                <div className="space-y-2 max-h-[350px] overflow-y-auto pr-1">
+                  {acquiredItems.map((item, i) => (
+                    <div key={i} className="p-2.5 rounded-2xl bg-slate-950 border border-amber-500/30 space-y-1">
+                      <div className="flex items-center justify-between flex-wrap gap-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-slate-800 text-amber-400 border border-slate-700">
+                            SLOT {item.slotId}
+                          </span>
+                          <span className={`text-[10px] px-2 py-0.5 rounded font-black ${getRankBadgeStyle(item.rank)}`}>
+                            {item.rank}{item.isSkill ? 'スキル' : 'アビ'}
+                          </span>
+                          <span className="text-xs font-black text-white">{item.name}</span>
+                        </div>
+                        <span className="text-[10px] text-slate-400 truncate max-w-[120px]">{item.cardName}</span>
+                      </div>
+                      {item.desc && (
+                        <p className="text-[11px] text-slate-300 leading-snug pl-1 pt-0.5 border-t border-slate-900">
+                          {item.desc}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-center text-slate-500 text-xs">
+                  スキル・アビリティを持つカードが装着されていません
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
@@ -9112,13 +9307,13 @@ function getPositionStatAddition(position, statName) {
         <div className="space-y-4">
           {/* カードデータベース 検索＆比較アクションヘッダー */}
           <div className="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 shadow-lg">
-            <div className="flex items-center gap-2 w-full md:w-auto flex-1">
+            <div className="flex flex-wrap items-center gap-2 w-full md:w-auto flex-1">
               <input
                 type="text"
                 value={cardSearchQuery}
                 onChange={(e) => setCardSearchQuery(e.target.value)}
                 placeholder="特練カード名・スキル名で検索..."
-                className="w-full md:max-w-xs bg-slate-950 text-white text-xs px-3.5 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
+                className="w-full sm:w-auto md:max-w-xs bg-slate-950 text-white text-xs px-3.5 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
               />
               <select
                 value={cardRankFilter}
@@ -9129,6 +9324,27 @@ function getPositionStatAddition(position, statName) {
                 <option value="SSR">SSR</option>
                 <option value="SR">SR</option>
                 <option value="R">R</option>
+              </select>
+              <select
+                value={cardCategoryFilter}
+                onChange={(e) => setCardCategoryFilter(e.target.value)}
+                className="bg-slate-950 text-amber-300 text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 outline-none cursor-pointer"
+              >
+                <option value="ALL">全特練種別</option>
+                {cardCategoriesList.map(cat => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+              <select
+                value={cardBonusFilter}
+                onChange={(e) => setCardBonusFilter(e.target.value)}
+                className="bg-slate-950 text-amber-300 text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 outline-none cursor-pointer"
+              >
+                <option value="ALL">全対象ボーナス</option>
+                <option value="NONE">ボーナスなし</option>
+                {cardBonusesList.map(b => (
+                  <option key={b} value={b}>{b}</option>
+                ))}
               </select>
             </div>
 
@@ -9168,7 +9384,9 @@ function getPositionStatAddition(position, statName) {
                         <th className="p-3 text-center w-20 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('rank')}>
                           ランク {renderCardSortIcon('rank')}
                         </th>
-                        <th className="p-3 text-center w-28">特練種別</th>
+                        <th className="p-3 text-center w-28 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('category')}>
+                          特練種別 {renderCardSortIcon('category')}
+                        </th>
                         <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('name')}>
                           カード名称 {renderCardSortIcon('name')}
                         </th>
@@ -9512,12 +9730,14 @@ function getPositionStatAddition(position, statName) {
 
                 <div className="flex items-baseline justify-between bg-slate-950/80 p-3 rounded-xl border border-amber-500/20">
                   <div>
-                    <div className="text-[10px] text-slate-400 font-bold">推定総合値 (補正後)</div>
-                    <div className="text-2xl font-black font-num text-amber-400">{calcA.boostedOverall}</div>
+                    <div className="text-[10px] text-slate-400 font-bold">カード使用後 能力合計実数値</div>
+                    <div className="text-2xl font-black font-num text-amber-400">
+                      {floor1Decimal((calcA.catBaseMap ? Object.values(calcA.catBaseMap).reduce((a,b)=>a+b,0) : 0) + calcA.totalGain)}
+                    </div>
                   </div>
                   <div className="text-right">
                     <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
-                    <div className="text-base font-black font-num text-[#00FF66]">{calcA.totalGain} UP</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">+{calcA.totalGain}</div>
                   </div>
                 </div>
 
@@ -9581,12 +9801,14 @@ function getPositionStatAddition(position, statName) {
 
                 <div className="flex items-baseline justify-between bg-slate-950/80 p-3 rounded-xl border border-cyan-500/20">
                   <div>
-                    <div className="text-[10px] text-slate-400 font-bold">推定総合値 (補正後)</div>
-                    <div className="text-2xl font-black font-num text-cyan-400">{calcB.boostedOverall}</div>
+                    <div className="text-[10px] text-slate-400 font-bold">カード使用後 能力合計実数値</div>
+                    <div className="text-2xl font-black font-num text-cyan-400">
+                      {floor1Decimal((calcB.catBaseMap ? Object.values(calcB.catBaseMap).reduce((a,b)=>a+b,0) : 0) + calcB.totalGain)}
+                    </div>
                   </div>
                   <div className="text-right">
                     <div className="text-[10px] text-slate-400 font-bold">実数値合計上昇</div>
-                    <div className="text-base font-black font-num text-[#00FF66]">{calcB.totalGain} UP</div>
+                    <div className="text-base font-black font-num text-[#00FF66]">+{calcB.totalGain}</div>
                   </div>
                 </div>
 
@@ -9835,6 +10057,19 @@ function getPositionStatAddition(position, statName) {
           calculateBoostedPlayer={calculateBoostedPlayer}
           initialStrategy={autoSelectInitialMode}
           setAutoSelectToast={setAutoSelectToast}
+          ownedCards={ownedCards}
+          saveOwnedCards={saveOwnedCards}
+        />
+      )}
+
+      {/* 2.5 所持カード＆凸数管理モーダル */}
+      {isOwnedCardsModalOpen && (
+        <OwnedCardsManagerModal
+          isOpen={isOwnedCardsModalOpen}
+          onClose={() => setIsOwnedCardsModalOpen(false)}
+          officialCards={officialCards}
+          ownedCards={ownedCards}
+          onSave={saveOwnedCards}
         />
       )}
 
@@ -10082,7 +10317,260 @@ function renderAutoSelectSkillBadge(rank) {
   );
 }
 
-function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCards, calculateBoostedPlayer, initialStrategy = 'EFFECTIVE_MAX', setAutoSelectToast }) {
+// COMPONENT: 所持カード ＆ 凸数 管理ダイアログ (OwnedCardsManagerModal)
+function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, saveOwnedCards }) {
+  if (!isOpen) return null;
+
+  const [tempOwned, setTempOwned] = useState(() => ({ ...(ownedCards || {}) }));
+  const [searchQuery, setSearchQuery] = useState('');
+  const [rankFilter, setRankFilter] = useState('ALL');
+  const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL' | 'OWNED' | 'NOT_OWNED'
+
+  const ownedCount = Object.values(tempOwned).filter(v => v && v.owned).length;
+
+  const filteredCards = useMemo(() => {
+    if (!officialCards) return [];
+    return officialCards.filter(c => {
+      const q = searchQuery.toLowerCase();
+      const matchSearch = !searchQuery || (c.name && c.name.toLowerCase().includes(q)) || (c.skill && c.skill.name && c.skill.name.toLowerCase().includes(q));
+      const matchRank = rankFilter === 'ALL' || c.rank === rankFilter;
+      const isOwned = tempOwned[c.id] && tempOwned[c.id].owned;
+      const matchStatus = statusFilter === 'ALL' || (statusFilter === 'OWNED' && isOwned) || (statusFilter === 'NOT_OWNED' && !isOwned);
+      return matchSearch && matchRank && matchStatus;
+    });
+  }, [officialCards, tempOwned, searchQuery, rankFilter, statusFilter]);
+
+  const toggleOwned = (cardId) => {
+    setTempOwned(prev => {
+      const current = prev[cardId] || { owned: false, stage: '完凸' };
+      return {
+        ...prev,
+        [cardId]: { ...current, owned: !current.owned }
+      };
+    });
+  };
+
+  const changeStage = (cardId, stage) => {
+    setTempOwned(prev => {
+      const current = prev[cardId] || { owned: true, stage: '完凸' };
+      return {
+        ...prev,
+        [cardId]: { ...current, owned: true, stage }
+      };
+    });
+  };
+
+  const bulkSetSsr = (stage = '完凸') => {
+    setTempOwned(prev => {
+      const updated = { ...prev };
+      (officialCards || []).forEach(c => {
+        if (c.rank === 'SSR') {
+          updated[c.id] = { owned: true, stage };
+        }
+      });
+      return updated;
+    });
+  };
+
+  const bulkSetAll = (stage = '完凸') => {
+    setTempOwned(prev => {
+      const updated = { ...prev };
+      (officialCards || []).forEach(c => {
+        updated[c.id] = { owned: true, stage };
+      });
+      return updated;
+    });
+  };
+
+  const clearAll = () => {
+    setTempOwned({});
+  };
+
+  const handleSave = () => {
+    if (saveOwnedCards) {
+      saveOwnedCards(tempOwned);
+    }
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-fadeIn">
+      <div className="bg-slate-900 border border-amber-500/40 w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+        {/* Header */}
+        <div className="p-4 sm:p-5 bg-gradient-to-r from-amber-950/80 via-slate-900 to-slate-900 border-b border-amber-500/30 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-black text-xl shadow-inner">
+              🎴
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h2 className="text-lg sm:text-xl font-black text-white">
+                  所持特練カード ＆ 凸数 設定
+                </h2>
+                <span className="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 font-num">
+                  所持数: {ownedCount} / {officialCards?.length || 0} 枚
+                </span>
+              </div>
+              <p className="text-xs text-slate-400 mt-0.5">
+                所持中のカードと凸数(限界突破段階)を登録しておくと、所持カードのみから自動最適編成を行えます。
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold flex items-center justify-center cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Toolbar & Filters */}
+        <div className="p-4 bg-slate-950 border-b border-slate-800 space-y-3">
+          {/* 一括登録ボタン群 */}
+          <div className="flex items-center gap-2 flex-wrap text-xs">
+            <span className="font-extrabold text-slate-400">一括登録:</span>
+            <button
+              onClick={() => bulkSetSsr('完凸')}
+              className="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 font-bold transition-all cursor-pointer"
+            >
+              ⚡ 全SSRを所持(完凸)に登録
+            </button>
+            <button
+              onClick={() => bulkSetSsr('無凸')}
+              className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-bold transition-all cursor-pointer"
+            >
+              🌱 全SSRを所持(無凸)に登録
+            </button>
+            <button
+              onClick={() => bulkSetAll('完凸')}
+              className="px-2.5 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 font-bold transition-all cursor-pointer"
+            >
+              👑 全カードを所持(完凸)に登録
+            </button>
+            <button
+              onClick={clearAll}
+              className="px-2.5 py-1 rounded-lg bg-red-500/15 hover:bg-red-500/30 text-red-400 border border-red-500/40 font-bold transition-all cursor-pointer ml-auto"
+            >
+              🗑️ 全解除
+            </button>
+          </div>
+
+          {/* 検索・絞り込み */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="カード名・スキル名で検索..."
+              className="bg-slate-900 text-white text-xs px-3 py-1.5 rounded-xl border border-slate-700 outline-none focus:border-amber-400 min-w-[200px]"
+            />
+            <select
+              value={rankFilter}
+              onChange={e => setRankFilter(e.target.value)}
+              className="bg-slate-900 text-amber-300 text-xs font-bold px-2.5 py-1.5 rounded-xl border border-slate-700 outline-none cursor-pointer"
+            >
+              <option value="ALL">全ランク</option>
+              <option value="SSR">SSR</option>
+              <option value="SR">SR</option>
+              <option value="R">R</option>
+            </select>
+            <select
+              value={statusFilter}
+              onChange={e => setStatusFilter(e.target.value)}
+              className="bg-slate-900 text-amber-300 text-xs font-bold px-2.5 py-1.5 rounded-xl border border-slate-700 outline-none cursor-pointer"
+            >
+              <option value="ALL">全所持状況</option>
+              <option value="OWNED">所持中のみ ({ownedCount}枚)</option>
+              <option value="NOT_OWNED">未所持のみ</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Card Grid List */}
+        <div className="p-4 flex-1 overflow-y-auto max-h-[55vh] scrollbar-thin scrollbar-thumb-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {filteredCards.map(c => {
+              const info = tempOwned[c.id] || { owned: false, stage: '完凸' };
+              const isOwned = info.owned;
+              const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+
+              return (
+                <div
+                  key={c.id}
+                  className={`p-3 rounded-2xl border transition-all flex items-center justify-between gap-2.5 ${
+                    isOwned
+                      ? 'bg-amber-500/10 border-amber-500/50 shadow-md'
+                      : 'bg-slate-950/60 border-slate-800 opacity-60 hover:opacity-80'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer" onClick={() => toggleOwned(c.id)}>
+                    <input
+                      type="checkbox"
+                      checked={isOwned}
+                      onChange={() => toggleOwned(c.id)}
+                      className="w-4 h-4 accent-amber-500 rounded cursor-pointer flex-shrink-0"
+                    />
+                    {imgUrl ? (
+                      <img src={imgUrl} alt={c.name} className="w-10 h-14 object-cover rounded-lg border border-slate-700 flex-shrink-0" />
+                    ) : (
+                      <div className="w-10 h-14 bg-slate-900 rounded-lg border border-slate-800 flex items-center justify-center text-[10px] text-amber-300 font-bold flex-shrink-0">
+                        {c.rank}
+                      </div>
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1">
+                        <span className={`text-[9px] px-1.5 py-0.2 rounded font-black ${getCardRankBadgeStyle(c.rank)}`}>
+                          {c.rank}
+                        </span>
+                        <span className="text-[9px] text-slate-400 truncate max-w-[80px]">
+                          {c.cardType || c.category}
+                        </span>
+                      </div>
+                      <div className="text-xs font-black text-white truncate mt-0.5" title={c.name}>
+                        {c.name}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Stage selector */}
+                  {isOwned && (
+                    <select
+                      value={info.stage || '完凸'}
+                      onChange={e => changeStage(c.id, e.target.value)}
+                      className="bg-slate-900 text-amber-300 text-[11px] font-black px-2 py-1 rounded-lg border border-amber-500/40 outline-none cursor-pointer flex-shrink-0"
+                    >
+                      {LIMIT_BREAK_STAGES.map(st => (
+                        <option key={st} value={st}>{st}</option>
+                      ))}
+                    </select>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="p-4 bg-slate-950 border-t border-slate-800 flex items-center justify-between gap-3">
+          <button
+            onClick={onClose}
+            className="px-5 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
+          >
+            キャンセル
+          </button>
+          <button
+            onClick={handleSave}
+            className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:brightness-110 text-slate-950 font-black text-xs shadow-lg shadow-amber-500/20 transition-all cursor-pointer flex items-center gap-2"
+          >
+            💾 設定を保存して反映する ({ownedCount}枚所持)
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCards, calculateBoostedPlayer, initialStrategy = 'EFFECTIVE_MAX', setAutoSelectToast, ownedCards, saveOwnedCards }) {
   if (!isOpen || !currentPlayer) return null;
 
   const [targetGoal, setTargetGoal] = useState('TOTAL');
@@ -10096,6 +10584,9 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
   const [targetStage, setTargetStage] = useState('完凸');
   const [matchPlaystyleBonusOnly, setMatchPlaystyleBonusOnly] = useState(false);
   const [allowDuplicates, setAllowDuplicates] = useState(true);
+  const [useOwnedCardsOnly, setUseOwnedCardsOnly] = useState(false);
+  const [isOwnedManagerOpen, setIsOwnedManagerOpen] = useState(false);
+
   const [selectedAbilities, setSelectedAbilities] = useState([]);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [abilitySearchText, setAbilitySearchText] = useState('');
@@ -10105,6 +10596,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
 
   const [isAbilityPickerOpen, setIsAbilityPickerOpen] = useState(false);
   const [isSkillPickerOpen, setIsSkillPickerOpen] = useState(false);
+
+  const ownedCount = useMemo(() => {
+    return Object.values(ownedCards || {}).filter(v => v && v.owned).length;
+  }, [ownedCards]);
 
   // 全カードから構造化アビリティ/スキル一覧を抽出＆ランク順ソート
   const { availableAbilities, availableSkills } = useMemo(() => {
@@ -10180,9 +10675,11 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
       requiredSkills: selectedSkills,
       matchPlaystyleBonusOnly,
       allowDuplicates,
-      optimizationStrategy
+      optimizationStrategy,
+      useOwnedCardsOnly,
+      ownedCards
     });
-  }, [currentPlayer, officialCards, targetGoal, targetStage, selectedAbilities, selectedSkills, matchPlaystyleBonusOnly, allowDuplicates, optimizationStrategy]);
+  }, [currentPlayer, officialCards, targetGoal, targetStage, selectedAbilities, selectedSkills, matchPlaystyleBonusOnly, allowDuplicates, optimizationStrategy, useOwnedCardsOnly, ownedCards]);
 
   const previewCalc = useMemo(() => {
     if (!optimizedSlots || !calculateBoostedPlayer) return null;
@@ -10360,6 +10857,32 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   />
                   <span>ボーナス対象カードのみに限定 (プレイスタイル/国籍)</span>
                 </label>
+
+                <div className="mt-2.5 p-2.5 bg-amber-950/40 border border-amber-500/40 rounded-xl space-y-1">
+                  <div className="flex items-center justify-between gap-2 flex-wrap">
+                    <label className="flex items-center gap-2 text-xs font-black text-amber-300 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={useOwnedCardsOnly}
+                        onChange={e => setUseOwnedCardsOnly(e.target.checked)}
+                        className="w-4 h-4 accent-amber-500 rounded cursor-pointer"
+                      />
+                      <span>🎴 所持カード・所持凸数のみで自動編成 ({ownedCount}枚登録中)</span>
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setIsOwnedManagerOpen(true)}
+                      className="px-2 py-0.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/50 text-amber-300 text-[11px] font-black transition-colors cursor-pointer flex items-center gap-1"
+                    >
+                      ⚙️ 所持カードを編集
+                    </button>
+                  </div>
+                  {useOwnedCardsOnly && ownedCount === 0 && (
+                    <p className="text-[11px] text-red-400 font-bold">
+                      ⚠️ 所持カードが未登録です。「所持カードを編集」ボタンから所持カードを設定してください。
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -10679,6 +11202,20 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
               </div>
             </div>
           </div>
+        )}
+
+        {/* 🎴 所持カード管理モーダル */}
+        {isOwnedManagerOpen && (
+          <OwnedCardsManagerModal
+            isOpen={isOwnedManagerOpen}
+            onClose={() => setIsOwnedManagerOpen(false)}
+            officialCards={officialCards}
+            ownedCards={ownedCards}
+            onSave={(newOwnedCards) => {
+              if (saveOwnedCards) saveOwnedCards(newOwnedCards);
+              setIsOwnedManagerOpen(false);
+            }}
+          />
         )}
       </div>
     </div>
@@ -11051,11 +11588,11 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
     if (rank > maxRank) return null;
 
     if (rank === 1) {
-      return <span className="inline-flex text-[8px] sm:text-[8.5px] font-black text-red-200 bg-red-600/60 px-1 py-0.5 rounded border border-red-400/80 shadow-xs leading-none whitespace-nowrap">★BEST</span>;
+      return <span className="inline-flex text-[9px] sm:text-[11px] font-black text-red-100 bg-red-600/80 px-1.5 py-0.5 rounded border border-red-300 shadow-sm leading-none whitespace-nowrap">★BEST</span>;
     } else if (rank === 2) {
-      return <span className="inline-flex text-[8px] sm:text-[8.5px] font-extrabold text-amber-100 bg-amber-500/60 px-1 py-0.5 rounded border border-amber-300/80 shadow-xs leading-none whitespace-nowrap">2ND</span>;
+      return <span className="inline-flex text-[9px] sm:text-[11px] font-black text-amber-100 bg-amber-500/80 px-1.5 py-0.5 rounded border border-amber-300 shadow-sm leading-none whitespace-nowrap">2ND</span>;
     } else if (rank === 3) {
-      return <span className="inline-flex text-[8px] sm:text-[8.5px] font-bold text-cyan-100 bg-cyan-500/60 px-1 py-0.5 rounded border border-cyan-300/80 shadow-xs leading-none whitespace-nowrap">3RD</span>;
+      return <span className="inline-flex text-[9px] sm:text-[11px] font-black text-cyan-100 bg-cyan-500/80 px-1.5 py-0.5 rounded border border-cyan-300 shadow-sm leading-none whitespace-nowrap">3RD</span>;
     }
     return null;
   };
@@ -11464,7 +12001,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
 
                   {/* Row 5: Total Stat Gain Sum */}
                   <tr className="bg-slate-900/90 border-y border-amber-500/30">
-                    <td className="p-2 sm:p-2.5 sticky left-0 z-10 bg-slate-900 font-black text-xs sm:text-sm text-amber-400 border-r border-slate-800 font-sans">
+                    <td className="p-2 sm:p-2.5 sticky left-0 z-10 bg-slate-900 font-black text-sm sm:text-base md:text-lg text-amber-400 border-r border-slate-800 font-sans">
                       📊 合計上昇値
                     </td>
                     {selectedCards.map((c, i) => {
@@ -11476,20 +12013,18 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                       const diffFromMax = floor1Decimal(totalInfo.sum - maxVal);
 
                       return (
-                        <td key={c.id} className={`p-2 text-center border-r border-slate-800/60 font-black ${bgClass}`}>
-                          <div className="flex flex-col items-center justify-center">
-                            <div className="relative flex items-center justify-center w-full gap-1 min-h-[24px]">
-                              {badge && (
-                                <div className="inline-flex items-center justify-start">
-                                  {badge}
-                                </div>
-                              )}
-                              {diffMode && diffFromMax < 0 ? (
-                                <span className="text-red-300 font-black text-sm sm:text-xl font-num">{diffFromMax}</span>
-                              ) : (
-                                <span className="text-amber-300 font-black text-base sm:text-2xl tracking-tight font-num">{totalInfo.sum}</span>
-                              )}
+                        <td key={c.id} className={`relative p-1.5 sm:p-3 text-center border-r border-slate-800/60 font-black ${bgClass}`}>
+                          {badge && (
+                            <div className="absolute top-1 left-1 sm:top-1.5 sm:left-2 z-10 pointer-events-none">
+                              {badge}
                             </div>
+                          )}
+                          <div className="flex flex-col items-center justify-center pt-3.5 sm:pt-4 pb-0.5">
+                            {diffMode && diffFromMax < 0 ? (
+                              <span className="text-red-300 font-black text-2xl sm:text-3xl md:text-4xl font-num leading-tight">{diffFromMax}</span>
+                            ) : (
+                              <span className="text-amber-300 font-black text-2xl sm:text-3xl md:text-4xl tracking-tight font-num leading-tight">{totalInfo.sum}</span>
+                            )}
                             {totalInfo.isBoosted ? (
                               <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block mt-0.5">
                                 (素: {totalInfo.rawSum})
@@ -11505,75 +12040,10 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                     })}
                   </tr>
 
-                  {/* Section 1: 6大カテゴリ別 上昇量 Matrix */}
-                  <tr className="bg-slate-900/80">
-                    <td colSpan={selectedCards.length + 1} className="px-3 py-1.5 text-[11px] sm:text-xs font-black text-amber-400 font-sans uppercase tracking-wider bg-slate-950 border-y border-amber-500/30">
-                      🏆 6大カテゴリ ＆ GK能力 上昇量 Matrix
-                    </td>
-                  </tr>
-
-                  {CATEGORY_STATS.map(catName => {
-                    const statDataList = selectedCards.map(c => {
-                      const stage = getCardStage(c.id);
-                      return getCardStatData(c, stage, catName);
-                    });
-
-                    const allCatVals = statDataList.map(d => d.val);
-                    const maxCatVal = Math.max(...allCatVals);
-                    const hasValue = statDataList.some(d => d.rawVal > 0 || d.val > 0);
-                    if (!hasValue) return null;
-
-                    return (
-                      <tr key={catName} className="hover:bg-slate-900/40 transition-colors">
-                        <td className="p-2 sm:p-2.5 sticky left-0 z-10 bg-slate-950 font-black text-xs sm:text-sm text-amber-300 border-r border-slate-800 font-sans">
-                          ⚽ {catName}
-                        </td>
-                        {selectedCards.map((c, i) => {
-                          const statData = statDataList[i];
-                          const val = statData.val;
-                          const bgClass = getRankCellBg(val, allCatVals);
-                          const badge = renderRankBadge(val, allCatVals);
-                          const diffFromMax = floor1Decimal(val - maxCatVal);
-
-                          return (
-                            <td key={c.id} className={`p-2 text-center border-r border-slate-800/60 font-bold ${bgClass}`}>
-                              {val > 0 || statData.rawVal > 0 ? (
-                                <div className="flex flex-col items-center justify-center">
-                                  <div className="relative flex items-center justify-center w-full gap-1 min-h-[22px]">
-                                    {badge && (
-                                      <div className="inline-flex items-center justify-start">
-                                        {badge}
-                                      </div>
-                                    )}
-                                    {diffMode && diffFromMax < 0 ? (
-                                      <span className="text-red-300 font-black text-sm sm:text-lg font-num">{diffFromMax}</span>
-                                    ) : (
-                                      <span className="text-amber-300 font-black text-sm sm:text-xl font-num">{val}</span>
-                                    )}
-                                  </div>
-                                  {statData.isBoosted ? (
-                                    <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block">
-                                      (素: {statData.rawVal})
-                                    </span>
-                                  ) : (
-                                    <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block">
-                                      (加味なし)
-                                    </span>
-                                  )}
-                                </div>
-                              ) : (
-                                <span className="text-slate-600 text-xs font-bold">-</span>
-                              )}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
 
                   {/* Section 2: 詳細能力項目別 上昇量 Matrix */}
                   <tr className="bg-slate-900/50">
-                    <td colSpan={selectedCards.length + 1} className="px-3 py-1.5 text-[11px] sm:text-xs font-black text-cyan-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-slate-800">
+                    <td colSpan={selectedCards.length + 1} className="px-3 py-1.5 text-xs sm:text-sm font-black text-cyan-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-slate-800">
                       ⚡ 詳細能力項目別 上昇量 Matrix
                     </td>
                   </tr>
@@ -11591,7 +12061,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
 
                     return (
                       <tr key={stName} className="hover:bg-slate-900/40 transition-colors">
-                        <td className="p-2 sm:p-2.5 sticky left-0 z-10 bg-slate-950 font-black text-xs sm:text-sm text-slate-100 border-r border-slate-800 font-sans">
+                        <td className="p-2 sm:p-2.5 sticky left-0 z-10 bg-slate-950 font-black text-sm sm:text-base md:text-lg text-slate-100 border-r border-slate-800 font-sans">
                           {stName}
                         </td>
                         {selectedCards.map((c, i) => {
@@ -11602,31 +12072,31 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                           const diffFromMax = floor1Decimal(val - maxStatVal);
 
                           return (
-                            <td key={c.id} className={`p-2 text-center border-r border-slate-800/60 font-bold ${bgClass}`}>
+                            <td key={c.id} className={`relative p-1 sm:p-2.5 text-center border-r border-slate-800/60 font-bold ${bgClass}`}>
                               {val > 0 || statData.rawVal > 0 ? (
-                                <div className="flex flex-col items-center justify-center">
-                                  <div className="relative flex items-center justify-center w-full gap-1 min-h-[20px] sm:min-h-[24px]">
-                                    {badge && (
-                                      <div className="inline-flex items-center justify-start">
-                                        {badge}
-                                      </div>
-                                    )}
+                                <>
+                                  {badge && (
+                                    <div className="absolute top-1 left-1 sm:top-1.5 sm:left-1.5 z-10 pointer-events-none">
+                                      {badge}
+                                    </div>
+                                  )}
+                                  <div className="flex flex-col items-center justify-center pt-3 sm:pt-3.5 pb-0.5">
                                     {diffMode && diffFromMax < 0 ? (
-                                      <span className="text-red-300 font-black text-xs sm:text-base font-num">{diffFromMax}</span>
+                                      <span className="text-red-300 font-black text-lg sm:text-2xl md:text-3xl font-num leading-tight">{diffFromMax}</span>
                                     ) : (
-                                      <span className="text-amber-300 font-black text-sm sm:text-xl font-num">{val}</span>
+                                      <span className="text-amber-300 font-black text-lg sm:text-2xl md:text-3xl font-num leading-tight">{val}</span>
+                                    )}
+                                    {statData.isBoosted ? (
+                                      <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block">
+                                        (素: {statData.rawVal})
+                                      </span>
+                                    ) : (
+                                      <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block">
+                                        (加味なし)
+                                      </span>
                                     )}
                                   </div>
-                                  {statData.isBoosted ? (
-                                    <span className="text-[10px] sm:text-xs font-extrabold text-amber-200/90 block">
-                                      (素: {statData.rawVal})
-                                    </span>
-                                  ) : (
-                                    <span className="text-[10px] sm:text-xs font-extrabold text-slate-400 block">
-                                      (加味なし)
-                                    </span>
-                                  )}
-                                </div>
+                                </>
                               ) : (
                                 <span className="text-slate-600 text-xs font-bold">-</span>
                               )}
