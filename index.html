@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>サカつく2026 データベース & チームビルダー</title>
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7254824656295291"
@@ -16,13 +16,49 @@
   <script src="./src/lib/tailwind.js"></script>
 
   <style>
-    body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; }
+    html { font-size: 100%; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    body { background-color: #070a10; color: #f1f5f9; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; width: 100%; max-width: 100vw; }
     .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08); }
     .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(8px); }
+
+    /* 横画面スマートフォン (Height 540px以下) の比較モーダルレイアウト最適化 */
+    @media (max-height: 540px) {
+      .landscape-short-hide { display: none !important; }
+      .landscape-short-compact-modal { padding: 4px !important; margin: 0 !important; max-height: 99vh !important; }
+      .landscape-short-compact-py { padding-top: 2px !important; padding-bottom: 2px !important; margin-bottom: 2px !important; }
+      .landscape-short-compact-container { max-height: calc(98vh - 42px) !important; }
+      .landscape-short-inline { display: inline-block !important; }
+      .landscape-short-compact-row { padding-top: 1px !important; padding-bottom: 1px !important; }
+    }
   </style>
 </head>
-<body class="bg-[#070a10] text-slate-100 min-h-screen">
-  <div id="root"></div>
+<body class="bg-[#070a10] text-slate-100 min-h-screen overflow-x-hidden max-w-[100vw]">
+  <div id="root">
+    <!-- アプリ起動時 初期ロード画面 (Initial Splash Loading Screen) -->
+    <div style="position: fixed; inset: 0; background: #070a10; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; font-family: system-ui, -apple-system, sans-serif; color: #f1f5f9;">
+      <style>
+        @keyframes pulse-glow { 0%, 100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 25px rgba(0,255,102,0.6)); } }
+        @keyframes shimmer-bar { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+      </style>
+      <div style="width: 80px; height: 80px; border-radius: 24px; background: linear-gradient(135deg, #00FF66, #00E5FF); padding: 2px; box-shadow: 0 0 35px rgba(0, 255, 102, 0.4); animation: pulse-glow 2s ease-in-out infinite; margin-bottom: 24px;">
+        <div style="width: 100%; height: 100%; background: #070a10; border-radius: 22px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-size: 38px;">⚽</span>
+        </div>
+      </div>
+      <div style="font-size: 26px; font-weight: 900; letter-spacing: -0.5px; background: linear-gradient(to right, #00FF66, #00E5FF, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px;">
+        サカつく2026
+      </div>
+      <div style="font-size: 11px; font-weight: 800; color: #00FF66; letter-spacing: 2px; text-transform: uppercase; background: rgba(0, 255, 102, 0.1); border: 1px solid rgba(0, 255, 102, 0.3); padding: 4px 14px; border-radius: 9999px; margin-bottom: 28px;">
+        DATABASE & TEAM BUILDER
+      </div>
+      <div style="width: 220px; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 9999px; overflow: hidden; position: relative; margin-bottom: 14px;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, #00FF66, #00E5FF, #00FF66); background-size: 200% 100%; animation: shimmer-bar 1.5s linear infinite;"></div>
+      </div>
+      <div style="font-size: 12px; font-weight: 700; color: #94a3b8; display: flex; items-center; gap: 6px;">
+        <span>データベース＆システム読み込み中...</span>
+      </div>
+    </div>
+  </div>
 
   <!-- 1. Player Photos (145 Image Files) -->
   <script src="./src/data/adamWharton2026Image.js"></script>

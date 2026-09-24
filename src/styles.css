@@ -14,7 +14,9 @@
 }
 
 html {
-  font-size: 112.5%; /* ベースフォントサイズを拡大 (16px → 18px) */
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
