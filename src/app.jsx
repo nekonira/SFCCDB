@@ -9374,9 +9374,12 @@ function getPositionStatAddition(position, statName) {
           </div>
           {cardViewMode === 'table' ? (
             <>
-              {/* PC/大画面専用: フル10列 テーブル表示 */}
-              <div className="hidden lg:block overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-xl">
-                  <table className="w-full text-left text-xs border-collapse font-sans">
+              {/* 特練カード一覧 テーブル表示 (スマホ・全画面スクロール対応) */}
+              <div className="lg:hidden text-[11px] text-amber-300/80 font-bold mb-1 flex items-center gap-1">
+                <span>💡 スマホ表示：表を左右にスワイプして詳細をご確認いただけます</span>
+              </div>
+              <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-xl scrollbar-thin scrollbar-thumb-slate-700">
+                  <table className="w-full min-w-[760px] text-left text-xs border-collapse font-sans">
                     <thead>
                       <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold select-none">
                         <th className="p-3 text-center w-12">比較</th>
