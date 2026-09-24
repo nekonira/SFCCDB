@@ -11414,6 +11414,243 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
 }
 
 // ─────────────────────────────────────────────────────────────
+// COMPONENT: 特練カード 詳細モーダル (SpecialCardDetailModal)
+// ─────────────────────────────────────────────────────────────
+function SpecialCardDetailModal({ card, onClose, onCompareToggle, isCompared }) {
+  if (!card) return null;
+
+  const [selectedStage, setSelectedStage] = useState('完凸');
+
+  const imgUrl = card.getImageUrl ? card.getImageUrl() : '';
+  const cardSkill = getSpecialCardSkill(card);
+  const cardEffect = getSpecialCardEffect(card);
+
+  const currentStats = (card.stages && (card.stages[selectedStage] || card.stages['完凸'])) || {};
+  const baseStats = (card.stages && card.stages['無凸']) || {};
+  const maxStats = (card.stages && card.stages['完凸']) || {};
+
+  const currentSum = Object.values(currentStats).reduce((a, b) => a + (Number(b) || 0), 0).toFixed(1);
+  const baseSum = Object.values(baseStats).reduce((a, b) => a + (Number(b) || 0), 0).toFixed(1);
+  const maxSum = Object.values(maxStats).reduce((a, b) => a + (Number(b) || 0), 0).toFixed(1);
+
+  const playstyleBonuses = useMemo(() => {
+    if (!card.playstyleBonus) return [];
+    if (card.playstyleBonus.bonuses && Array.isArray(card.playstyleBonus.bonuses)) {
+      return card.playstyleBonus.bonuses;
+    }
+    if (card.playstyleBonus.style) {
+      return [{ style: card.playstyleBonus.style, percent: card.playstyleBonus.percent }];
+    }
+    return [];
+  }, [card]);
+
+  const statEntries = Object.entries(currentStats);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-4 animate-fadeIn"
+      onClick={onClose}
+    >
+      <div
+        className="glass-panel max-w-2xl w-full rounded-3xl border border-amber-500/40 bg-slate-900 p-4 sm:p-6 flex flex-col shadow-2xl max-h-[90vh] space-y-4 overflow-y-auto scrollbar-thin scrollbar-thumb-amber-500/30"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-start justify-between pb-3 border-b border-slate-800 gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-black text-xl shadow-inner flex-shrink-0">
+              🎴
+            </div>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className={`px-2 py-0.5 rounded text-[10px] font-black ${getCardRankBadgeStyle(card.rank)}`}>
+                  {card.rank}
+                </span>
+                <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold">
+                  ⚽ {card.cardType || card.category || 'ストライカー'}
+                </span>
+              </div>
+              <h2 className="text-base sm:text-xl font-black text-white truncate mt-1" title={card.name}>
+                {card.name}
+              </h2>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold flex items-center justify-center cursor-pointer flex-shrink-0 transition-colors"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* 凸数（限界突破段階）タブ切り替え */}
+        <div className="space-y-1.5">
+          <label className="text-xs font-extrabold text-amber-400 flex items-center gap-1">
+            <span>⚡ 限界突破段階 (凸数切り替え)</span>
+          </label>
+          <div className="grid grid-cols-6 gap-1 bg-slate-950 p-1.5 rounded-2xl border border-slate-800">
+            {LIMIT_BREAK_STAGES.map((st) => (
+              <button
+                key={st}
+                onClick={() => setSelectedStage(st)}
+                className={`py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  selectedStage === st
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/20'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                }`}
+              >
+                {st}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Card Main Info: Image + Stat Summary + Bonuses */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/70 p-4 rounded-2xl border border-slate-800">
+          {/* Card Image */}
+          <div className="flex flex-col items-center justify-center">
+            {imgUrl ? (
+              <img
+                src={imgUrl}
+                alt={card.name}
+                className="w-28 h-40 object-cover rounded-xl border border-amber-500/40 shadow-xl"
+              />
+            ) : (
+              <div className="w-28 h-40 bg-slate-900 rounded-xl border border-slate-800 flex items-center justify-center text-slate-500 text-xs font-bold">
+                画像準備中
+              </div>
+            )}
+          </div>
+
+          {/* Stat Summary & Playstyle Bonus */}
+          <div className="sm:col-span-2 space-y-3 flex flex-col justify-between">
+            {/* Real Stats Sum Box */}
+            <div className="bg-slate-900 p-3 rounded-xl border border-amber-500/30 space-y-1">
+              <div className="text-[11px] font-extrabold text-slate-400 flex items-center justify-between">
+                <span>能力値上昇合計 ({selectedStage}):</span>
+                <span className="text-xs text-slate-500">無凸: {baseSum} → 完凸: {maxSum}</span>
+              </div>
+              <div className="text-2xl font-black font-num text-amber-400">
+                +{currentSum}
+              </div>
+            </div>
+
+            {/* Playstyle Bonus */}
+            <div>
+              <div className="text-xs font-bold text-slate-400 mb-1 flex items-center gap-1">
+                <span>🎯 対象プレイスタイルボーナス</span>
+              </div>
+              {playstyleBonuses.length > 0 ? (
+                <div className="flex flex-wrap gap-1.5">
+                  {playstyleBonuses.map((b) => (
+                    <span
+                      key={b.style}
+                      className="text-xs font-extrabold text-amber-300 bg-amber-500/10 px-3 py-1 rounded-xl border border-amber-500/30 flex items-center gap-1 shadow-sm"
+                    >
+                      <span>🎯 {b.style}</span>
+                      <span className="text-amber-400 font-black">+{b.percent}%</span>
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <span className="text-xs text-slate-500">対象ボーナスなし</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Skill / Ability / Special Effect Details */}
+        {(cardSkill || cardEffect) && (
+          <div className="space-y-2">
+            <h4 className="text-xs font-black text-white flex items-center gap-1">
+              <span>✨ スキル / アビリティ / 特殊効果</span>
+            </h4>
+
+            {cardSkill && (
+              <div className="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-1.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-black ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
+                    {cardSkill.rank === '特殊効果' || cardSkill.type === '特殊効果'
+                      ? (cardSkill.rank || cardSkill.type)
+                      : (cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
+                  </span>
+                  <span className={`text-sm font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
+                    {cardSkill.name}
+                  </span>
+                </div>
+                {cardSkill.description && (
+                  <p className="text-xs text-slate-300 leading-relaxed pt-1 border-t border-slate-900">
+                    {cardSkill.description}
+                  </p>
+                )}
+              </div>
+            )}
+
+            {cardEffect && (
+              <div className="bg-cyan-950/40 p-3.5 rounded-2xl border border-cyan-500/30 space-y-1.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
+                    ⚡ 特殊効果
+                  </span>
+                  <span className="text-sm font-black text-cyan-300">
+                    {cardEffect.name}
+                  </span>
+                </div>
+                {cardEffect.description && (
+                  <p className="text-xs text-cyan-200/90 leading-relaxed pt-1 border-t border-cyan-900/50">
+                    {cardEffect.description}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Detailed Stat Grid */}
+        <div className="space-y-2">
+          <h4 className="text-xs font-black text-white flex items-center justify-between">
+            <span>📊 詳細能力項目別 上昇量 ({selectedStage})</span>
+            <span className="text-[10px] font-normal text-slate-400">項目数: {statEntries.length}</span>
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 bg-slate-950 p-3 rounded-2xl border border-slate-800 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-800">
+            {statEntries.map(([stName, val]) => (
+              <div key={stName} className="flex items-center justify-between bg-slate-900/80 px-2.5 py-1.5 rounded-xl border border-slate-800/80">
+                <span className="text-xs font-bold text-slate-300">{stName}</span>
+                <span className="text-xs font-black font-num text-amber-400">+{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Actions Footer */}
+        <div className="pt-3 border-t border-slate-800 flex items-center justify-between gap-3">
+          <button
+            onClick={() => {
+              if (onCompareToggle) onCompareToggle(card.id);
+            }}
+            className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              isCompared
+                ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
+                : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+            }`}
+          >
+            <span>⚖️</span>
+            <span>{isCompared ? '✅ 比較表から解除' : '比較表に追加する'}</span>
+          </button>
+
+          <button
+            onClick={onClose}
+            className="px-6 py-2.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition-all cursor-pointer"
+          >
+            閉じる
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
 // COMPONENT: 特練カード 比較モーダル (CardCompareModal)
 // ─────────────────────────────────────────────────────────────
 function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlayer, onClose, onRemoveCard, onClearAll, onAddCard }) {
