@@ -11434,8 +11434,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
     setCardStages(newStages);
   };
 
-  const [diffMode, setDiffMode] = useState(false); // 差分表示モード (1位比較)
-
+  // ボーナス選択状態
   const [activeBonuses, setActiveBonuses] = useState({});
   const getCardBonuses = (c) => {
     if (!c || !c.playstyleBonus) return [];
@@ -11617,27 +11616,6 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
             </div>
 
             <div className="flex items-center gap-1.5 flex-wrap ml-auto">
-              {/* Diff mode toggle */}
-              <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-cyan-500/40">
-                <button
-                  onClick={() => setDiffMode(false)}
-                  className={`px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    !diffMode ? 'bg-cyan-500 text-slate-950 font-black shadow' : 'text-slate-400 hover:text-slate-200'
-                  }`}
-                >
-                  📊 実数値
-                </button>
-                <button
-                  onClick={() => setDiffMode(true)}
-                  className={`px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    diffMode ? 'bg-cyan-500 text-slate-950 font-black shadow' : 'text-slate-400 hover:text-slate-200'
-                  }`}
-                  title="各項目の最高値(1位)との差分を表示します"
-                >
-                  ⚖️ 差分表示
-                </button>
-              </div>
-
               {/* Batch Bonus Toggle Control */}
               <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-slate-700">
                 <button
@@ -11963,11 +11941,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                             </div>
                           )}
                           <div className="flex flex-col items-center justify-center pt-2 sm:pt-3.5 pb-0.5">
-                            {diffMode && diffFromMax < 0 ? (
-                              <span className="text-red-300 font-black text-xs sm:text-2xl md:text-3xl font-num leading-tight truncate max-w-full">{diffFromMax}</span>
-                            ) : (
-                              <span className="text-amber-300 font-black text-xs sm:text-2xl md:text-3xl tracking-tight font-num leading-tight truncate max-w-full">{totalInfo.sum}</span>
-                            )}
+                            <span className="text-amber-300 font-black text-xs sm:text-2xl md:text-3xl tracking-tight font-num leading-tight truncate max-w-full">{totalInfo.sum}</span>
                             {totalInfo.isBoosted ? (
                               <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block mt-0.5 truncate max-w-full">
                                 (素:{totalInfo.rawSum})
@@ -11998,7 +11972,6 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                     });
 
                     const allStatVals = statDataList.map(d => d.val);
-                    const maxStatVal = Math.max(...allStatVals);
                     const hasValue = statDataList.some(d => d.rawVal > 0 || d.val > 0);
                     if (!hasValue) return null;
 
@@ -12012,7 +11985,6 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                           const val = statData.val;
                           const bgClass = getRankCellBg(val, allStatVals);
                           const badge = renderRankBadge(val, allStatVals);
-                          const diffFromMax = floor1Decimal(val - maxStatVal);
 
                           return (
                             <td key={c.id} className={`relative p-0.5 sm:p-1.5 text-center border-r border-slate-800/60 font-bold overflow-hidden ${bgClass}`}>
@@ -12024,11 +11996,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                                     </div>
                                   )}
                                   <div className="flex flex-col items-center justify-center pt-2 sm:pt-3 pb-0.5">
-                                    {diffMode && diffFromMax < 0 ? (
-                                      <span className="text-red-300 font-black text-xs sm:text-xl md:text-2xl font-num leading-tight truncate max-w-full">{diffFromMax}</span>
-                                    ) : (
-                                      <span className="text-amber-300 font-black text-xs sm:text-xl md:text-2xl font-num leading-tight truncate max-w-full">{val}</span>
-                                    )}
+                                    <span className="text-amber-300 font-black text-xs sm:text-xl md:text-2xl font-num leading-tight truncate max-w-full">{val}</span>
                                     {statData.isBoosted ? (
                                       <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block truncate max-w-full">
                                         (素:{statData.rawVal})
