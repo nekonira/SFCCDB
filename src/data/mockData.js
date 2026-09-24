@@ -20251,7 +20251,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：絶好調　　ボールタッチ・敏捷性UP'
       }
     ],
-    avatarUrl: ''
+    avatarUrl: window.RAUL_JIMENEZ_2026_IMAGE || ''
   },
   {
     id: 'p391',
@@ -20341,7 +20341,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：絶好調　/　キック力・走力UP'
       }
     ],
-    avatarUrl: ''},
+    avatarUrl: window.CODY_GAKPO_2026_IMAGE || ''},
   {
     id: 'p392',
     name: 'レアンドロ・トロサール',
@@ -20430,7 +20430,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：途中出場　/　冷静さ・ロングパスUP'
       }
     ],
-    avatarUrl: ''
+    avatarUrl: window.LEANDRO_TROSSARD_2026_IMAGE || ''
   },
   {
     id: 'p393',
@@ -20515,7 +20515,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：途中出場　/　ボールタッチ・タックルUP'
       }
     ],
-    avatarUrl: ''
+    avatarUrl: window.KOBBIE_MAINOO_2026_IMAGE || ''
   },
   {
     id: 'p394',
@@ -20586,7 +20586,7 @@ window.INITIAL_PLAYERS = [
     skill: {
       name: 'ドリブンパス',
       rank: '銀',
-      description: '発動エリア：後左中右　/　発動条件：LFB・RFB・LM・RMへのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のドリブル発生確率UP'
+      description: '発動エリア：後左中右　/　発動条件：LFB・RFB・LM・RMの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のドリブル発生確率UP'
     },
     abilities: [
       {
@@ -20605,7 +20605,7 @@ window.INITIAL_PLAYERS = [
         description: '発動条件：好調　/　突破力・パスカットUP'
       }
     ],
-    avatarUrl: ''
+    avatarUrl: window.ADAM_WHARTON_2026_IMAGE || ''
   }
 ];
 

@@ -96,7 +96,7 @@ const p394Obj = `  {
     skill: {
       name: 'ドリブンパス',
       rank: '銀',
-      description: '発動エリア：後左中右　/　発動条件：LFB・RFB・LM・RMへのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のドリブル発生確率UP'
+      description: '発動エリア：後左中右　/　発動条件：LFB・RFB・LM・RMの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のドリブル発生確率UP'
     },
     abilities: [
       {

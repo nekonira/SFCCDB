@@ -12,5 +12,10 @@ const getPlayerAvatarUrl = (player) => {
   if (player.id === 'p261' || player.name === '平塚浪馬(配布)') return window.HIRATSUKA_GIFT_2026_IMAGE || player.avatarUrl || '';
   if (player.id === 'p262' || player.name === '河本龍将(パック)') return window.KAWAMOTO_PACK_2026_IMAGE || player.avatarUrl || '';
   if (player.id === 'p263' || player.name === 'レオ・セアラ(2026TS)') return window.LEO_CEARA_2026_IMAGE || player.avatarUrl || '';
+  if (player.id === 'p390' || player.name === 'ラウル・ヒメネス') return window.RAUL_JIMENEZ_2026_IMAGE || player.avatarUrl || '';
+  if (player.id === 'p391' || player.name === 'コーディ・ガクポ') return window.CODY_GAKPO_2026_IMAGE || player.avatarUrl || '';
+  if (player.id === 'p392' || player.name === 'レアンドロ・トロサール') return window.LEANDRO_TROSSARD_2026_IMAGE || player.avatarUrl || '';
+  if (player.id === 'p393' || player.name === 'コビー・メイヌー') return window.KOBBIE_MAINOO_2026_IMAGE || player.avatarUrl || '';
+  if (player.id === 'p394' || player.name === 'アダム・ウォートン') return window.ADAM_WHARTON_2026_IMAGE || player.avatarUrl || '';
   return player.avatarUrl || '';
 };
