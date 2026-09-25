@@ -8694,7 +8694,31 @@ function getPositionStatAddition(position, statName) {
       return matchSearch && matchRank && matchCategory && matchBonus;
     });
 
-    if (cardSortConfig.key === 'DEFAULT') return filtered;
+    const CATEGORY_DEFAULT_ORDER = [
+      'ストライカー',
+      'ラインブレーカー',
+      'ポストプレーヤー',
+      'ドリブラー',
+      'サイドアタッカー',
+      'ワイドストライカー',
+      'アタッカー',
+      'パサー',
+      'セントラルMF',
+      'ハードマーカー',
+      '攻撃的FB',
+      '守備的FB',
+      'ストッパー',
+      '組立CB',
+      'スプリントCB',
+      'オーソドックスGK',
+      'スイーパーGK'
+    ];
+
+    const getCategoryOrderIndex = (c) => {
+      const cat = c.category || c.cardType || 'ストライカー';
+      const idx = CATEGORY_DEFAULT_ORDER.indexOf(cat);
+      return idx !== -1 ? idx : 999;
+    };
 
     const parseStatVal = (val) => {
       if (typeof val === 'number') return val;
@@ -8719,6 +8743,20 @@ function getPositionStatAddition(position, statName) {
       return 0;
     };
 
+    if (cardSortConfig.key === 'DEFAULT') {
+      return [...filtered].sort((a, b) => {
+        const catIdxA = getCategoryOrderIndex(a);
+        const catIdxB = getCategoryOrderIndex(b);
+        if (catIdxA !== catIdxB) return catIdxA - catIdxB;
+
+        const maxA = getCardMaxSum(a);
+        const maxB = getCardMaxSum(b);
+        if (maxA !== maxB) return maxB - maxA;
+
+        return a.name.localeCompare(b.name, 'ja');
+      });
+    }
+
     const mult = cardSortConfig.direction === 'asc' ? 1 : -1;
 
     return [...filtered].sort((a, b) => {
@@ -8728,9 +8766,13 @@ function getPositionStatAddition(position, statName) {
           diff = getRankWeight(a.rank) - getRankWeight(b.rank);
           break;
         case 'category':
-          const catA = a.category || a.cardType || 'ストライカー';
-          const catB = b.category || b.cardType || 'ストライカー';
-          diff = catA.localeCompare(catB, 'ja');
+          const catIdxA = getCategoryOrderIndex(a);
+          const catIdxB = getCategoryOrderIndex(b);
+          if (catIdxA !== catIdxB) {
+            diff = catIdxA - catIdxB;
+          } else {
+            diff = getCardMaxSum(b) - getCardMaxSum(a);
+          }
           break;
         case 'name':
           diff = a.name.localeCompare(b.name, 'ja');
