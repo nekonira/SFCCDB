@@ -117,7 +117,7 @@ const p398ObjStr = `,
     abilities: [
       { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
       { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
-      { name: 'パワーアジリティ', rank: '銅', description: '発動条件：好調　/　コンタクト・敏捷性UP' }
+      { name: 'パワーアジリティ', rank: '銅', description: '発動条件：途中出場　/　コンタクト・敏捷性UP' }
     ],
     avatarUrl: ''
   }

@@ -5922,7 +5922,7 @@ window.OFFICIAL_SPECIAL_CARDS = [
       type: 'アビリティ',
       name: 'パワーアジリティ',
       rank: '銅',
-      description: '発動条件：好調　/　コンタクト・敏捷性UP'
+      description: '発動条件：途中出場　/　コンタクト・敏捷性UP'
     },
     playstyleBonus: {
       style: 'LFB 10% / RFB 10%',

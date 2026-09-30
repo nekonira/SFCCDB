@@ -3566,7 +3566,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '鋭角的なタックル', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP' },
     abilities: [
-      { name: 'パワーアジリティ', rank: '銀', description: '発動条件：好調　/　コンタクト・敏捷性UP' },
+      { name: 'パワーアジリティ', rank: '銀', description: '発動条件：途中出場　/　コンタクト・敏捷性UP' },
       { name: 'ボールスティーラー', rank: '銀', description: '発動条件：途中出場　/　タックル・パスカットUP' }
     ],
     avatarUrl: ''
@@ -5045,25 +5045,25 @@ window.INITIAL_PLAYERS = [
     playStyleLevel: 'Ⅱ',
     overall: 6931,
     maxOverall: 15251,
-    baseStats: { shoot: 1318, pass: 1062, dribble: 1251, defense: 853, physical: 1160, speed: 861 },
+    baseStats: { shoot: 903, pass: 1097, dribble: 1034, defense: 1364, physical: 1158, speed: 775 },
     detailStats: {
-      shoot: { finishing: 459, power: 406, composure: 453 },
-      pass: { shortPass: 366, longPass: 348, accuracy: 348 },
-      dribble: { breakout: 409, keeping: 423, ballTouch: 419 },
-      defense: { tackle: 258, interception: 281, marking: 314 },
-      physical: { jumping: 383, contact: 382, stamina: 395 },
-      speed: { running: 418, agility: 443 }
+      shoot: { finishing: 291, power: 294, composure: 318 },
+      pass: { shortPass: 355, longPass: 373, accuracy: 369 },
+      dribble: { breakout: 364, keeping: 329, ballTouch: 341 },
+      defense: { tackle: 442, interception: 468, marking: 454 },
+      physical: { jumping: 420, contact: 386, stamina: 352 },
+      speed: { running: 349, agility: 426 }
     },
     maxEnhanced: {
       overall: 15251,
-      baseStats: { shoot: 2923, pass: 2595, dribble: 2832, defense: 2350, physical: 2741, speed: 1907 },
+      baseStats: { shoot: 2364, pass: 2702, dribble: 2495, defense: 2969, physical: 2751, speed: 1797 },
       detailStats: {
-        shoot: { finishing: 994, power: 941, composure: 988 },
-        pass: { shortPass: 877, longPass: 859, accuracy: 859 },
-        dribble: { breakout: 932, keeping: 946, ballTouch: 954 },
-        defense: { tackle: 757, interception: 780, marking: 813 },
-        physical: { jumping: 906, contact: 917, stamina: 918 },
-        speed: { running: 941, agility: 966 }
+        shoot: { finishing: 778, power: 781, composure: 805 },
+        pass: { shortPass: 890, longPass: 908, accuracy: 904 },
+        dribble: { breakout: 851, keeping: 816, ballTouch: 828 },
+        defense: { tackle: 977, interception: 1003, marking: 989 },
+        physical: { jumping: 955, contact: 921, stamina: 875 },
+        speed: { running: 860, agility: 937 }
       }
     },
     playTendencies: {
@@ -7251,7 +7251,7 @@ window.INITIAL_PLAYERS = [
     "skill": { name: '驚異的なセービング', rank: '銅', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
     "abilities": [
       { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
-      { name: 'パワーアジリティ', rank: '銀', description: '発動条件：好調　/　コンタクト・敏捷性UP' }
+      { name: 'パワーアジリティ', rank: '銀', description: '発動条件：途中出場　/　コンタクト・敏捷性UP' }
     ],
     "avatarUrl": ""
   },
@@ -20799,7 +20799,7 @@ window.INITIAL_PLAYERS = [
     abilities: [
       { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
       { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
-      { name: 'パワーアジリティ', rank: '銅', description: '発動条件：好調　/　コンタクト・敏捷性UP' }
+      { name: 'パワーアジリティ', rank: '銅', description: '発動条件：途中出場　/　コンタクト・敏捷性UP' }
     ],
     avatarUrl: ''
   }
