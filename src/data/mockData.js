@@ -20606,7 +20606,203 @@ window.INITIAL_PLAYERS = [
       }
     ],
     avatarUrl: window.ADAM_WHARTON_2026_IMAGE || ''
+  },
+  {
+    id: 'p395',
+    name: 'キリアン・エンバペ',
+    readingName: 'きりあんえんばぺ',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'ストライカー',
+    playStyleLevel: 'Ⅲ',
+    overall: 7760,
+    maxOverall: 15958,
+    baseStats: { shoot: 1488, pass: 1369, dribble: 1495, defense: 764, physical: 1385, speed: 1010 },
+    detailStats: {
+      shoot: { finishing: 499, power: 488, composure: 501 },
+      pass: { shortPass: 442, longPass: 439, accuracy: 488 },
+      dribble: { breakout: 504, keeping: 500, ballTouch: 491 },
+      defense: { tackle: 234, interception: 275, marking: 255 },
+      physical: { jumping: 455, contact: 478, stamina: 452 },
+      speed: { running: 509, agility: 501 }
+    },
+    maxEnhanced: {
+      overall: 15958,
+      baseStats: { shoot: 3093, pass: 2902, dribble: 3076, defense: 2261, physical: 2966, speed: 2056 },
+      detailStats: {
+        shoot: { finishing: 1034, power: 1023, composure: 1036 },
+        pass: { shortPass: 953, longPass: 950, accuracy: 999 },
+        dribble: { breakout: 1027, keeping: 1023, ballTouch: 1026 },
+        defense: { tackle: 733, interception: 774, marking: 754 },
+        physical: { jumping: 978, contact: 1013, stamina: 975 },
+        speed: { running: 1032, agility: 1024 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 0, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: -1, rushOut: 0, feint: 0, press: -1
+    },
+    skill: { name: 'ショックウェーブ', rank: '金', description: '発動エリア：前中・中中　/　発動条件：ドリブル時　/　突破力・キープ力UP' },
+    abilities: [
+      { name: 'フェノメーヌ・キャピテーヌ', rank: '金', description: '発動条件：キャプテンに指定　/　CF・LW・RWのムービング選手が突破力・走力UP' },
+      { name: '速射砲', rank: '金', description: '発動条件：好調　/　決定力・冷静さ・敏捷性UP' },
+      { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p396',
+    name: 'ウスマン・デンベレ(フランスユニ)',
+    readingName: 'うすまん・でんべれ',
+    category: 'MF',
+    mainPosition: 'AM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'アタッカー',
+    playStyleLevel: 'Ⅲ',
+    overall: 7610,
+    maxOverall: 15760,
+    baseStats: { shoot: 1340, pass: 1336, dribble: 1472, defense: 1126, physical: 1274, speed: 996 },
+    detailStats: {
+      shoot: { finishing: 455, power: 433, composure: 452 },
+      pass: { shortPass: 438, longPass: 450, accuracy: 448 },
+      dribble: { breakout: 497, keeping: 495, ballTouch: 480 },
+      defense: { tackle: 359, interception: 375, marking: 392 },
+      physical: { jumping: 411, contact: 426, stamina: 437 },
+      speed: { running: 507, agility: 489 }
+    },
+    maxEnhanced: {
+      overall: 15760,
+      baseStats: { shoot: 2885, pass: 2917, dribble: 3041, defense: 2671, physical: 2843, speed: 2030 },
+      detailStats: {
+        shoot: { finishing: 966, power: 944, composure: 975 },
+        pass: { shortPass: 973, longPass: 973, accuracy: 971 },
+        dribble: { breakout: 1020, keeping: 1018, ballTouch: 1003 },
+        defense: { tackle: 882, interception: 886, marking: 903 },
+        physical: { jumping: 922, contact: 949, stamina: 972 },
+        speed: { running: 1018, agility: 1012 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 1, longShoot: 2,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '驚異の弾道', rank: '金', description: '発動エリア：前中・中中　/　発動条件：シュート・ロングシュート時　/　決定力・キック力UP' },
+    abilities: [
+      { name: '多彩な足技', rank: '金', description: '発動条件：好調　/　突破力・キープ力・敏捷性UP' },
+      { name: '冷静なランナー', rank: '銀', description: '発動条件：好調　/　冷静さ・走力UP' },
+      { name: 'シルクタッチ', rank: '銅', description: '発動条件：好調　/　ショートパス・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p397',
+    name: 'アドリアン・ラビオ',
+    readingName: 'あどりあん・らびお',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'セントラルDM',
+    playStyleLevel: 'Ⅲ',
+    overall: 7487,
+    maxOverall: 15685,
+    baseStats: { shoot: 1232, pass: 1307, dribble: 1335, defense: 1341, physical: 1393, speed: 794 },
+    detailStats: {
+      shoot: { finishing: 397, power: 443, composure: 392 },
+      pass: { shortPass: 438, longPass: 429, accuracy: 440 },
+      dribble: { breakout: 419, keeping: 439, ballTouch: 477 },
+      defense: { tackle: 457, interception: 473, marking: 411 },
+      physical: { jumping: 431, contact: 488, stamina: 474 },
+      speed: { running: 411, agility: 383 }
+    },
+    maxEnhanced: {
+      overall: 15685,
+      baseStats: { shoot: 2777, pass: 2912, dribble: 2868, defense: 2922, physical: 2962, speed: 1816 },
+      detailStats: {
+        shoot: { finishing: 908, power: 954, composure: 915 },
+        pass: { shortPass: 973, longPass: 964, accuracy: 975 },
+        dribble: { breakout: 930, keeping: 950, ballTouch: 988 },
+        defense: { tackle: 992, interception: 996, marking: 934 },
+        physical: { jumping: 942, contact: 1011, stamina: 1009 },
+        speed: { running: 922, agility: 894 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '迎撃のインターセプト', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・ロングパスUP　/　成功時に自身のロングパス発生確率UP' },
+    abilities: [
+      { name: 'ホットラインを断つ動き', rank: '金', description: '発動条件：好調　/　タックル・パスカット・スタミナUP' },
+      { name: '剛柔のタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・コンタクトUP' },
+      { name: '精緻なパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・キック精度UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p398',
+    name: 'リュカ・シュヴァリエ',
+    readingName: 'りゅか・しゅゔぁりえ',
+    category: 'GK',
+    mainPosition: 'GK',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'オーソドックスGK',
+    playStyleLevel: 'Ⅱ',
+    overall: 7258,
+    maxOverall: 15598,
+    baseStats: { shoot: 918, pass: 1158, dribble: 1036, defense: 1392, physical: 1273, speed: 828 },
+    detailStats: {
+      shoot: { finishing: 306, power: 285, composure: 327 },
+      pass: { shortPass: 404, longPass: 382, accuracy: 372 },
+      dribble: { breakout: 349, keeping: 337, ballTouch: 350 },
+      defense: { tackle: 454, interception: 456, marking: 482 },
+      physical: { jumping: 451, contact: 416, stamina: 406 },
+      speed: { running: 372, agility: 456 }
+    },
+    maxEnhanced: {
+      overall: 15598,
+      baseStats: { shoot: 2379, pass: 2763, dribble: 2497, defense: 2997, physical: 2866, speed: 1850 },
+      detailStats: {
+        shoot: { finishing: 793, power: 772, composure: 814 },
+        pass: { shortPass: 939, longPass: 917, accuracy: 907 },
+        dribble: { breakout: 836, keeping: 824, ballTouch: 837 },
+        defense: { tackle: 989, interception: 991, marking: 1017 },
+        physical: { jumping: 986, contact: 951, stamina: 929 },
+        speed: { running: 883, agility: 967 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -2, shoot: -1, longShoot: -1,
+      shortPass: -1, longPass: 1, throughPass: -1, cutIn: -1, keep: -1,
+      delay: -1, rushOut: -1, feint: -1, press: -1
+    },
+    skill: { name: 'エレガントセーブ', rank: '銀', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
+    abilities: [
+      { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
+      { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
+      { name: 'パワーアジリティ', rank: '銅', description: '発動条件：好調　/　コンタクト・敏捷性UP' }
+    ],
+    avatarUrl: ''
   }
 ];
 
-window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'AM', 'CMF', 'DM', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
+window.SAKATSUKU_DATA = { INITIAL_PLAYERS: window.INITIAL_PLAYERS, POSITIONS: ['CF', 'ST', 'LW', 'RW', 'OMF', 'CMF', 'DMF', 'LFB', 'RFB', 'CB', 'GK'], POLICIES: ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'], RARITIES: ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'], PLAY_STYLE_LEVELS: ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ'], PLAY_STYLES: ['ストライカー', 'ラインブレーカー', 'サイドアタッカー', 'ターゲットマン', 'チャンスメーカー', 'アタッカー', '司令塔', 'ハードタッカー', 'セントラルMF', 'パサーDM', '潰し屋', 'クロサー', '攻撃的SB', '守備的SB', 'オーソドックスGK', 'スイーパーGK'] };
