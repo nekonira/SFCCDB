@@ -558,7 +558,7 @@ window.INITIAL_PLAYERS = [
     policy: 'カウンター',
     playStyle: '組立CB',
     playStyleLevel: 'Ⅱ',
-    overall: 7008,
+    overall: 7468,
     maxOverall: 15770,
     baseStats: { shoot: 1035, pass: 1323, dribble: 1172, defense: 1428, physical: 1353, speed: 871 },
     detailStats: {
