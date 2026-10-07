@@ -1223,7 +1223,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: 0, cutIn: -1, keep: 0,
       delay: -1, rushOut: 2, feint: 1, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なタッチ', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' },
       { name: '強引なフィニッシュ', rank: '銀', description: '発動条件：途中出場　/　決定力・突破力UP' }
@@ -1415,7 +1415,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: 0, cutIn: -1, keep: 0,
       delay: -1, rushOut: 2, feint: 1, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' },
       { name: 'スピードランナー', rank: '銀', description: '発動条件：好調　/　走力・敏捷性UP' }
@@ -3905,7 +3905,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
       { name: 'スピードクラッシャー', rank: '銀', description: '発動条件：好調　/　タックル・走力UP' }
@@ -4049,7 +4049,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: 'インターセプター', rank: '銀', description: '発動条件：好調　/　パスカット・マークUP' },
       { name: '剛柔のタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・コンタクトUP' }
@@ -4388,7 +4388,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: 'マラソンマン', rank: '銀', description: '発動条件：途中出場　/　スタミナ・走力UP' },
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' }
@@ -8327,7 +8327,7 @@ window.INITIAL_PLAYERS = [
       "feint": 0,
       "press": 1
     },
-    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     "abilities": [
       { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },
       { name: '無限のアジリティ', rank: '銀', description: '発動条件：好調　/　スタミナ・敏捷性UP' }
@@ -11499,7 +11499,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 2, keep: 0,
       delay: -1, rushOut: 1, feint: 1, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
       { name: '冷静な破壊者', rank: '銀', description: '発動条件：好調　/　冷静さ・コンタクトUP' }
@@ -11787,7 +11787,7 @@ window.INITIAL_PLAYERS = [
       "shortPass": 0, "longPass": -1, "throughPass": 0, "cutIn": 1, "keep": 1,
       "delay": -1, "rushOut": 1, "feint": 2, "press": 0
     },
-    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     "abilities": [
       { name: 'マラソンマン', rank: '銀', description: '発動条件：途中出場　/　スタミナ・走力UP' },
       { name: '長短のキック', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ロングパスUP' }
@@ -12075,7 +12075,7 @@ window.INITIAL_PLAYERS = [
       "shortPass": 0, "longPass": -1, "throughPass": 0, "cutIn": 1, "keep": 1,
       "delay": -1, "rushOut": 1, "feint": 2, "press": 0
     },
-    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    "skill": { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     "abilities": [
       { name: '失わないドリブラー', rank: '銀', description: '発動条件：絶好調　/　突破力・キープ力UP' },
       { "name": "スピードランナー", "rank": "銀", "description": "発動条件：好調　/　走力・敏捷性UP" }
@@ -12219,7 +12219,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なパサー', rank: '銀', description: '発動条件：好調　/　ショートパス・敏捷性UP' },
       { name: '不屈のドリブル突破', rank: '銀', description: '発動条件：絶好調　/　突破力・スタミナUP' }
@@ -12267,7 +12267,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: 'ランニングキッカー', rank: '銀', description: '発動条件：絶好調　/　キック力・走力UP' },
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' }
@@ -12315,7 +12315,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' },
       { name: '精緻なパサー', rank: '銀', description: '発動条件：絶好調　/　ショートパス・キック精度UP' }
@@ -12363,7 +12363,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
       { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' }
@@ -12411,7 +12411,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: 'スピードランナー', rank: '銀', description: '発動条件：好調　/　走力・敏捷性UP' },
       { name: 'すり抜けるロングパサー', rank: '銀', description: '発動条件：絶好調　/　ロングパス・突破力UP' }
@@ -12459,7 +12459,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
       { name: '剛柔のタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・コンタクトUP' }
@@ -15296,7 +15296,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
       { name: '懐の深いパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・キープ力UP' }
@@ -17360,7 +17360,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '失わないドリブラー', rank: '銀', description: '発動条件：絶好調　/　突破力・キープ力UP' },
       { name: '俊敏なタッチ', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' }
@@ -17456,7 +17456,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },
       { name: '無限のアジリティ', rank: '銀', description: '発動条件：好調　/　スタミナ・敏捷性UP' }
@@ -17552,7 +17552,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
       delay: 0, rushOut: -1, feint: -1, press: 1
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' },
       { name: '無限のアジリティ', rank: '銀', description: '発動条件：好調　/　スタミナ・敏捷性UP' }
@@ -18464,7 +18464,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・ボールタッチUP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: 'スピードドリブラー', rank: '銀', description: '発動条件：途中出場　/　突破力・走力UP' },
       { name: '不屈の魂', rank: '銀', description: '発動条件：好調　/　キープ力・スタミナUP' }
@@ -18656,7 +18656,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・ボールタッチUP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なタッチ', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' },
       { name: '失わないドリブラー', rank: '銀', description: '発動条件：絶好調　/　突破力・キープ力UP' }
@@ -18896,7 +18896,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
       delay: -1, rushOut: 1, feint: 2, press: 0
     },
-    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・ボールタッチUP' },
+    skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '切り裂くパサー', rank: '銀', description: '発動条件：途中出場　/　ショートパス・突破力UP' },
       { name: '俊敏なタッチ', rank: '銅', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' }

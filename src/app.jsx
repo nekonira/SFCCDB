@@ -1209,7 +1209,6 @@ const getSpecialCardSkill = (c) => {
   }
   return sk;
 };
-
 const getSpecialCardEffect = (c) => {
   if (!c) return null;
   if (c.effect) return c.effect;
