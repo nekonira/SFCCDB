@@ -81,7 +81,7 @@ const newCardObjStr = `,
       type: 'スキル',
       name: '上空の覇者',
       rank: '金',
-      description: '上空の覇者'
+      description: '発動エリア：前中　/　発動条件：ヘディングシュート時　/　決定力・ジャンプUP'
     },
     playstyleBonus: {
       style: 'ストライカー',

@@ -81,7 +81,7 @@ const newCardObjStr = `,
       type: 'スキル',
       name: '予測不能',
       rank: '金',
-      description: '予測不能'
+      description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP'
     },
     playstyleBonus: {
       style: 'ドリブラー',

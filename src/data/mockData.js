@@ -19766,7 +19766,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
-    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
+    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前中・中中　/　発動条件：CFの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のシュート発生確率UP' },
     abilities: [
       { name: '正確無比なキック', rank: '金', description: '発動条件：好調　/　タックル・パスカット・スタミナUP' },
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' },
@@ -20058,7 +20058,7 @@ window.INITIAL_PLAYERS = [
       shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
-    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
+    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前中・中中　/　発動条件：CFの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のシュート発生確率UP' },
     abilities: [
       { name: '失わないドリブラー', rank: '銀', description: '発動条件：絶好調　/　突破力・キープ力UP' },
       { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },

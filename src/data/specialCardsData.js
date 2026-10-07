@@ -3149,7 +3149,7 @@ window.OFFICIAL_SPECIAL_CARDS = [
       type: 'スキル',
       name: 'ベルベットパス',
       rank: '金',
-      description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP'
+      description: '発動エリア：前中・中中　/　発動条件：CFの位置に居る選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のシュート発生確率UP'
     },
     effect: {
       type: '特殊効果',
@@ -8034,7 +8034,7 @@ window.OFFICIAL_SPECIAL_CARDS = [
       type: 'スキル',
       name: '上空の覇者',
       rank: '金',
-      description: '上空の覇者'
+      description: '発動エリア：前中　/　発動条件：ヘディングシュート時　/　決定力・ジャンプUP'
     },
     playstyleBonus: {
       style: 'ストライカー',
@@ -8108,7 +8108,7 @@ window.OFFICIAL_SPECIAL_CARDS = [
       type: 'スキル',
       name: '予測不能',
       rank: '金',
-      description: '予測不能'
+      description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP'
     },
     playstyleBonus: {
       style: 'ドリブラー',

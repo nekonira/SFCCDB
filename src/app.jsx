@@ -1,3 +1,41 @@
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null, errorInfo: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    this.setState({ errorInfo });
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-6 bg-slate-950 border-2 border-red-500 rounded-2xl text-left space-y-3 my-4 max-w-4xl mx-auto shadow-2xl">
+          <div className="flex items-center justify-between border-b border-red-500/30 pb-2">
+            <h3 className="text-base font-black text-red-400 flex items-center gap-2">⚠️ エラー詳細検出ログ</h3>
+            <button
+              onClick={() => { this.setState({ hasError: false, error: null }); window.location.reload(); }}
+              className="px-3 py-1 bg-amber-500 text-slate-950 font-black text-xs rounded-lg shadow hover:bg-amber-400 cursor-pointer"
+            >
+              🔄 画面をリロード
+            </button>
+          </div>
+          <div className="bg-slate-900 p-3 rounded-xl border border-red-500/30 text-red-300 font-mono text-xs overflow-x-auto">
+            <div className="font-bold text-red-400 mb-1">エラー内容: {this.state.error && this.state.error.toString()}</div>
+            <pre className="text-[10px] text-slate-300 whitespace-pre-wrap leading-relaxed mt-2 pt-2 border-t border-slate-800">
+              {this.state.error && this.state.error.stack}
+            </pre>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 const LIMIT_BREAK_STAGES = ['無凸', '1凸', '2凸', '3凸', '完凸'];
 const { useState, useEffect, useMemo, useRef, useCallback } = React;
 const POSITIONS = ["GK","CB","LFB","RFB","DM","LM","RM","AM","LW","RW","CF"];
@@ -1155,9 +1193,21 @@ function renderSkillBadge(rank) {
 
 // 特練カードのスキル/アビリティ vs 特殊効果の識別ヘルパー
 const getSpecialCardSkill = (c) => {
-  if (!c || !c.skill) return null;
-  if (c.skill.type === '特殊効果' || c.skill.rank === '特殊効果') return null;
-  return c.skill;
+  if (!c) return null;
+  const sk = c.skill || null;
+  if (!sk) return null;
+
+  // Sync skill description with player DB if description is missing or equal to skill name
+  if (!sk.description || sk.description === sk.name) {
+    if (window.INITIAL_PLAYERS && Array.isArray(window.INITIAL_PLAYERS)) {
+      for (const p of window.INITIAL_PLAYERS) {
+        if (p.skill && p.skill.name === sk.name && p.skill.description && p.skill.description !== sk.name) {
+          return { ...sk, description: p.skill.description };
+        }
+      }
+    }
+  }
+  return sk;
 };
 
 const getSpecialCardEffect = (c) => {
@@ -2179,12 +2229,14 @@ function App() {
             />
           )}
           {activeTab === 'training' && (
-            <TrainingSimulatorTab
-              players={players}
-              selectedPlayer={selectedTrainingPlayer}
-              setSelectedPlayer={setSelectedTrainingPlayer}
-              onGoToDB={() => setActiveTab('players')}
-            />
+            <ErrorBoundary>
+              <TrainingSimulatorTab
+                players={players}
+                selectedPlayer={selectedTrainingPlayer}
+                setSelectedPlayer={setSelectedTrainingPlayer}
+                onGoToDB={() => setActiveTab('players')}
+              />
+            </ErrorBoundary>
           )}
         </main>
 
@@ -8204,7 +8256,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     // 各アクティブスロットのカード効果を加算
     currentSlots.forEach(s => {
       if (!s.active) return;
-      const card = officialCards.find(c => c.id === s.cardId) || officialCards[0];
+      const card = (officialCards && officialCards.find(c => c && c.id === s.cardId)) || (officialCards && officialCards[0]) || null;
+                if (!card) return null;
       if (!card) return;
 
       const stageStats = card.stages[s.stage] || card.stages['完凸'] || {};
@@ -8445,6 +8498,26 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
   const [isPlayerModalOpen, setIsPlayerModalOpen] = useState(false);
   const [modalSearchText, setModalSearchText] = useState('');
   const [modalPosFilter, setModalPosFilter] = useState('ALL');
+  const filteredModalPlayers = useMemo(() => {
+    if (!players || !Array.isArray(players)) return [];
+    return players.filter(p => {
+      if (!p) return false;
+      const q = (modalSearchText || '').toLowerCase();
+      const matchSearch = !modalSearchText ||
+        (p.name && String(p.name).toLowerCase().includes(q)) ||
+        (p.team && String(p.team).toLowerCase().includes(q)) ||
+        (p.playStyle && String(p.playStyle).toLowerCase().includes(q));
+      
+      const pos = p.mainPosition || p.position || '';
+      let matchPos = modalPosFilter === 'ALL';
+      if (modalPosFilter === 'FW') matchPos = ['CF', 'ST', 'LW', 'RW', 'LWG', 'RWG', 'LWF', 'RWF', 'FW'].includes(pos);
+      if (modalPosFilter === 'MF') matchPos = ['AM', 'OMF', 'AMF', 'DM', 'DMF', 'LM', 'LMF', 'RM', 'RMF', 'CMF', 'CM', 'MF'].includes(pos);
+      if (modalPosFilter === 'DF') matchPos = ['CB', 'LFB', 'RFB', 'LSB', 'RSB', 'LB', 'RB', 'DF'].includes(pos);
+      if (modalPosFilter === 'GK') matchPos = (pos === 'GK' || p.category === 'GK');
+      
+      return matchSearch && matchPos;
+    });
+  }, [players, modalSearchText, modalPosFilter]);
   const [activeSlotForCardModal, setActiveSlotForCardModal] = useState(null);
   const [slotCardSearchText, setSlotCardSearchText] = useState('');
   const [slotCardRankFilter, setSlotCardRankFilter] = useState('ALL');
@@ -8672,7 +8745,7 @@ function getPositionStatAddition(position, statName) {
     const q = slotCardSearchText.toLowerCase();
     return officialCards.filter(c => {
       const matchSearch = !slotCardSearchText ||
-        (c.name && c.name.toLowerCase().includes(q)) ||
+        (c.name && (c.name ? String(c.name).toLowerCase() : "").includes(q)) ||
         (c.skill && c.skill.name && c.skill.name.toLowerCase().includes(q)) ||
         (c.playstyleBonus && c.playstyleBonus.style && c.playstyleBonus.style.toLowerCase().includes(q));
       const matchRank = slotCardRankFilter === 'ALL' || c.rank === slotCardRankFilter;
@@ -8739,9 +8812,9 @@ function getPositionStatAddition(position, statName) {
       const sk = getSpecialCardSkill(c);
       const ef = getSpecialCardEffect(c);
       const matchSearch = !cardSearchQuery || 
-        c.name.toLowerCase().includes(q) || 
-        (sk && (sk.name.toLowerCase().includes(q) || sk.description.toLowerCase().includes(q))) ||
-        (ef && (ef.name.toLowerCase().includes(q) || ef.description.toLowerCase().includes(q)));
+        (c.name ? String(c.name).toLowerCase() : "").includes(q) || 
+        (sk && ((sk.name ? String(sk.name).toLowerCase() : "").includes(q) || (sk.description ? String(sk.description).toLowerCase() : "").includes(q))) ||
+        (ef && ((ef.name ? String(ef.name).toLowerCase() : "").includes(q) || (ef.description ? String(ef.description).toLowerCase() : "").includes(q)));
       const matchRank = cardRankFilter === 'ALL' || c.rank === cardRankFilter;
       const matchCategory = cardCategoryFilter === 'ALL' || (c.category || c.cardType || 'ストライカー') === cardCategoryFilter;
       const matchBonus = cardBonusFilter === 'ALL' || (
@@ -10290,9 +10363,9 @@ function getPositionStatAddition(position, statName) {
                   const sk = getSpecialCardSkill(c);
                   const ef = getSpecialCardEffect(c);
                   const matchSearch = !slotCardSearchText ||
-                    c.name.toLowerCase().includes(q) ||
-                    (sk && (sk.name.toLowerCase().includes(q) || sk.description.toLowerCase().includes(q))) ||
-                    (ef && (ef.name.toLowerCase().includes(q) || ef.description.toLowerCase().includes(q)));
+                    (c.name && String(c.name).toLowerCase().includes(q)) ||
+                    (sk && ((sk.name && String(sk.name).toLowerCase().includes(q)) || (sk.description && String(sk.description).toLowerCase().includes(q)))) ||
+                    (ef && ((ef.name && String(ef.name).toLowerCase().includes(q)) || (ef.description && String(ef.description).toLowerCase().includes(q))));
                   const matchRank = slotCardRankFilter === 'ALL' || c.rank === slotCardRankFilter;
                   const matchCat = slotCardCatFilter === 'ALL' || (c.cardType || c.category) === slotCardCatFilter;
                   return matchSearch && matchRank && matchCat;
@@ -10782,7 +10855,7 @@ function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, sa
     if (!officialCards) return [];
     return officialCards.filter(c => {
       const q = searchQuery.toLowerCase();
-      const matchSearch = !searchQuery || (c.name && c.name.toLowerCase().includes(q)) || (c.skill && c.skill.name && c.skill.name.toLowerCase().includes(q));
+      const matchSearch = !searchQuery || (c.name && (c.name ? String(c.name).toLowerCase() : "").includes(q)) || (c.skill && c.skill.name && c.skill.name.toLowerCase().includes(q));
       const matchRank = rankFilter === 'ALL' || c.rank === rankFilter;
       const isOwned = tempOwned[c.id] && tempOwned[c.id].owned;
       const matchStatus = statusFilter === 'ALL' || (statusFilter === 'OWNED' && isOwned) || (statusFilter === 'NOT_OWNED' && !isOwned);
@@ -11165,14 +11238,14 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
     if (selectedAbilities.includes(ab.key)) return false;
     if (!abilitySearchText) return true;
     const q = abilitySearchText.toLowerCase();
-    return ab.key.toLowerCase().includes(q) || ab.name.toLowerCase().includes(q) || ab.cards.some(c => c.name.toLowerCase().includes(q));
+    return ab.key.toLowerCase().includes(q) || ab.name.toLowerCase().includes(q) || ab.cards.some(c => (c.name ? String(c.name).toLowerCase() : "").includes(q));
   });
 
   const filteredSkills = availableSkills.filter(sk => {
     if (selectedSkills.includes(sk.name)) return false;
     if (!skillSearchText) return true;
     const q = skillSearchText.toLowerCase();
-    return sk.name.toLowerCase().includes(q) || sk.cards.some(c => c.name.toLowerCase().includes(q));
+    return (sk.name ? String(sk.name).toLowerCase() : "").includes(q) || sk.cards.some(c => (c.name ? String(c.name).toLowerCase() : "").includes(q));
   });
 
   return (
