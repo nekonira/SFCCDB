@@ -73,7 +73,7 @@ const pedri2026Obj = `,
       shortPass: 2, longPass: 1, throughPass: 0, cutIn: 0, keep: 0,
       delay: 0, rushOut: -1, feint: 0, press: 0
     },
-    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：ショートパス・ロングパス時　/　ショートパス・ロングパス・キック精度UP　/成功時に受け手のシュート発生確率UP' },
+    skill: { name: 'ベルベットパス', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '正確無比なキック', rank: '金', description: '発動条件：好調　/　ショートパス・ロングパス・キック精度UP' },
       { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' },
