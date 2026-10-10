@@ -10459,6 +10459,7 @@ function getPositionStatAddition(position, statName) {
           onClose={() => setIsOwnedCardsModalOpen(false)}
           officialCards={officialCards}
           ownedCards={ownedCards}
+          saveOwnedCards={saveOwnedCards}
           onSave={saveOwnedCards}
         />
       )}
@@ -10840,10 +10841,17 @@ function renderAutoSelectSkillBadge(rank) {
 }
 
 // COMPONENT: 所持カード ＆ 凸数 管理ダイアログ (OwnedCardsManagerModal)
-function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, saveOwnedCards }) {
+function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, saveOwnedCards, onSave }) {
   if (!isOpen) return null;
 
   const [tempOwned, setTempOwned] = useState(() => ({ ...(ownedCards || {}) }));
+
+  useEffect(() => {
+    if (isOpen) {
+      setTempOwned({ ...(ownedCards || {}) });
+    }
+  }, [isOpen, ownedCards]);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [rankFilter, setRankFilter] = useState('ALL');
   const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL' | 'OWNED' | 'NOT_OWNED'
@@ -10909,8 +10917,9 @@ function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, sa
   };
 
   const handleSave = () => {
-    if (saveOwnedCards) {
-      saveOwnedCards(tempOwned);
+    const saveFn = saveOwnedCards || onSave;
+    if (saveFn) {
+      saveFn(tempOwned);
     }
     onClose();
   };
@@ -11770,6 +11779,7 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
             officialCards={officialCards}
             ownedCards={ownedCards}
             saveOwnedCards={saveOwnedCards}
+            onSave={saveOwnedCards}
           />
         )}
       </div>
