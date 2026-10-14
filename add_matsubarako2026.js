@@ -75,7 +75,7 @@ const matsubaraObj = `,
     },
     skill: { name: '反撃のパスカット', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・ロングパスUP　/　成功時に自身のロングパス発生確率UP' },
     abilities: [
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
       { name: '密着するターゲットマン', rank: '銀', description: '発動条件：途中出場　/　キープ力・マークUP' }
     ],
     avatarUrl: ''

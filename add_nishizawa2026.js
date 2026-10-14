@@ -76,7 +76,7 @@ const nishizawa2026Obj = `,
     skill: { name: '安定したパスワーク', rank: '銅', description: '発動エリア：前左中右・中左中右　/　発動条件：AM・RW・LW・CFの選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
       { name: '絶え間ないボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・スタミナUP' },
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' }
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' }
     ],
     avatarUrl: ''
   }

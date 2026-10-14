@@ -76,7 +76,7 @@ const nakamaObj = `,
     skill: { name: '切り裂くドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・敏捷性UP' },
     abilities: [
       { name: '技巧派ドリブラー', rank: '銀', description: '発動条件：途中出場　/　突破力・ボールタッチUP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' }
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' }
     ],
     avatarUrl: ''
   }

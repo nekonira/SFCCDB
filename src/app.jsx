@@ -1038,7 +1038,11 @@ const PLAYER_IMAGE_MAP = {
     "p395": "KYLIAN_MBAPPE_2026_IMAGE",
     "p396": "OUSMANE_DEMBELE_FRANCE_2026_IMAGE",
     "p397": "ADRIEN_RABIOT_2026_IMAGE",
-    "p398": "LUCAS_CHEVALIER_2026_IMAGE"
+    "p398": "LUCAS_CHEVALIER_2026_IMAGE",
+    "p399": "IBRAHIMA_KONATE_2026_IMAGE",
+    "p400": "THEO_HERNANDEZ_2026_IMAGE",
+    "p401": "MALO_GUSTO_2026_IMAGE",
+    "p402": "BRADLEY_BARCOLA_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -5352,7 +5356,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
     const NATIONAL_TEAM_BONUS_COMBOS = {
       'selecao70': 'ブラジル',
-      'laRoja26': 'スペイン'
+      'laRoja26': 'スペイン',
+      'lesBleus26': 'フランス'
     };
 
     const buildSquadForPolicy = (pol, forceCombo) => {
@@ -5579,7 +5584,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
     const NATIONAL_TEAM_BONUS_COMBOS = {
       'selecao70': 'ブラジル',
-      'laRoja26': 'スペイン'
+      'laRoja26': 'スペイン',
+      'lesBleus26': 'フランス'
     };
 
     const buildUnifiedSquadForPolicy = (pol) => {

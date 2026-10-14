@@ -491,7 +491,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: '変速ギア', rank: '銀', description: '発動エリア：前中・中中　/　発動条件：ドリブル時　/　突破力・キープ力UP' },
     abilities: [
       { name: '流氷の一撃', rank: '金', description: '発動条件：好調　/　決定力・冷静さ・突破力UP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' },
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' },
       { name: '俊敏なタッチ', rank: '銅', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' }
     ],
     avatarUrl: ''
@@ -2351,7 +2351,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'チェーンカッター', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP' },
     abilities: [
       { name: 'ピッチの掃除屋', rank: '銀', description: '発動条件：好調　/　タックル・スタミナUP' },
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
       { name: '奪取のターゲットマン', rank: '銅', description: '発動条件：好調　/　キープ力・パスカットUP' }
     ],
     avatarUrl: ''
@@ -3517,7 +3517,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '迎撃のインターセプト', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・ロングパスUP　/　成功時に自身のロングパス発生確率UP' },
     abilities: [
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
       { name: 'スピードクラッシャー', rank: '銀', description: '発動条件：好調　/　タックル・走力UP' },
       { name: 'ノンストップジャンパー', rank: '銅', description: '発動条件：途中出場　/　ジャンプ・スタミナUP' }
     ],
@@ -4099,7 +4099,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '遮断のアクション', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカットUP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
       { name: 'ランニングマーカー', rank: '銀', description: '発動条件：絶好調　/　マーク・走力UP' }
     ],
     avatarUrl: ''
@@ -4439,7 +4439,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'スリップビート', rank: '銀', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' },
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' },
       { name: '冷静なボールタッチ', rank: '銅', description: '発動条件：絶好調　/　冷静さ・ボールタッチUP' }
     ],
     avatarUrl: ''
@@ -4732,7 +4732,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'スリップビート', rank: '銀', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
       { name: '技巧派ドリブラー', rank: '銀', description: '発動条件：途中出場　/　突破力・ボールタッチUP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' },
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' },
       { name: '柔と剛のタッチ', rank: '銅', description: '発動条件：好調　/　キック力・ボールタッチUP' }
     ],
     avatarUrl: ''
@@ -5219,7 +5219,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'ルミナストラップ', rank: '銀', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力UP　/　成功時に自身のシュート発生確率UP' },
     abilities: [
       { name: 'ゴールに導くターン', rank: '金', description: '発動条件：好調　/　決定力・突破力・ボールタッチUP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' },
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' },
       { name: 'マラソンマン', rank: '銅', description: '発動条件：絶好調　/　スタミナ・走力UP' }
     ],
     avatarUrl: ''
@@ -9726,7 +9726,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'ダイナミックタックル', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・突破力UP　/　成功時に自身のドリブル発生確率UP' },
     abilities: [
       { name: 'ピッチの掃除屋', rank: '銀', description: '発動条件：好調　/　タックル・スタミナUP' },
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' }
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' }
     ],
     avatarUrl: ''
   },
@@ -10158,7 +10158,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: '安定したパスワーク', rank: '銅', description: '発動エリア：前左中右・中左中右　/　発動条件：AM・RW・LW・CFの選手へのショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のショートパス発生確率UP' },
     abilities: [
       { name: '絶え間ないボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・スタミナUP' },
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' }
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' }
     ],
     avatarUrl: ''
   },
@@ -12366,7 +12366,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: 'テクニカルドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
     abilities: [
       { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' }
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' }
     ],
     avatarUrl: ''
   },
@@ -12606,7 +12606,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: '狙いすましたシュート', rank: '銅', description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP' },
     abilities: [
       { name: '強靭な脚力', rank: '銀', description: '発動条件：絶好調　/　キック力・ジャンプUP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' }
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' }
     ],
     avatarUrl: ''
   },
@@ -17602,7 +17602,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: '反撃のパスカット', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・ロングパスUP　/　成功時に自身のロングパス発生確率UP' },
     abilities: [
-      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：絶好調　/　パスカット・敏捷性UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
       { name: '密着するターゲットマン', rank: '銀', description: '発動条件：途中出場　/　キープ力・マークUP' }
     ],
     avatarUrl: ''
@@ -18851,7 +18851,7 @@ window.INITIAL_PLAYERS = [
     skill: { name: '切り裂くドリブル', rank: '銅', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル時　/　突破力・敏捷性UP' },
     abilities: [
       { name: '技巧派ドリブラー', rank: '銀', description: '発動条件：途中出場　/　突破力・ボールタッチUP' },
-      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：絶好調　/　キープ力・走力UP' }
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' }
     ],
     avatarUrl: ''
   },
@@ -20800,6 +20800,218 @@ window.INITIAL_PLAYERS = [
       { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
       { name: '全方向の守護', rank: '銀', description: '発動条件：絶好調　/　反応速度・ジャンプUP' },
       { name: 'パワーアジリティ', rank: '銅', description: '発動条件：途中出場　/　コンタクト・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p399',
+    name: 'イブラヒマ・コナテ',
+    readingName: 'いぶらひま・こなて',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'スプリントCB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7478,
+    maxOverall: 15775,
+    baseStats: { shoot: 985, pass: 1143, dribble: 1328, defense: 1437, physical: 1357, speed: 907 },
+    detailStats: {
+      shoot: { finishing: 301, power: 356, composure: 328 },
+      pass: { shortPass: 410, longPass: 389, accuracy: 344 },
+      dribble: { breakout: 432, keeping: 442, ballTouch: 454 },
+      defense: { tackle: 474, interception: 480, marking: 483 },
+      physical: { jumping: 465, contact: 483, stamina: 409 },
+      speed: { running: 460, agility: 447 }
+    },
+    maxEnhanced: {
+      overall: 15775,
+      baseStats: { shoot: 2482, pass: 2712, dribble: 2861, defense: 3042, physical: 2950, speed: 1953 },
+      detailStats: {
+        shoot: { finishing: 800, power: 855, composure: 827 },
+        pass: { shortPass: 933, longPass: 912, accuracy: 867 },
+        dribble: { breakout: 943, keeping: 953, ballTouch: 965 },
+        defense: { tackle: 1009, interception: 1015, marking: 1018 },
+        physical: { jumping: 1000, contact: 1018, stamina: 932 },
+        speed: { running: 983, agility: 970 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: {
+      name: 'エリアの格闘家',
+      rank: '銀',
+      description: '発動エリア：中左中右・後左中右　/　発動条件：コンタクト時　/　コンタクト・タックル・マークUP'
+    },
+    abilities: [
+      { name: 'パワークラッシャー', rank: '金', description: '発動条件：好調　/　パスカット・マーク・コンタクトUP' },
+      { name: 'エアバトラー', rank: '銀', description: '発動条件：絶好調　/　タックル・ジャンプUP' },
+      { name: 'マラソンマン', rank: '銅', description: '発動条件：絶好調　/　スタミナ・走力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p400',
+    name: 'テオ・エルナンデス',
+    readingName: 'てお・えるなんです',
+    category: 'DF',
+    mainPosition: 'LFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: '攻撃的LFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7358,
+    maxOverall: 15649,
+    baseStats: { shoot: 1206, pass: 1272, dribble: 1336, defense: 1338, physical: 1334, speed: 937 },
+    detailStats: {
+      shoot: { finishing: 398, power: 405, composure: 403 },
+      pass: { shortPass: 425, longPass: 420, accuracy: 427 },
+      dribble: { breakout: 449, keeping: 449, ballTouch: 438 },
+      defense: { tackle: 455, interception: 446, marking: 437 },
+      physical: { jumping: 434, contact: 446, stamina: 454 },
+      speed: { running: 477, agility: 460 }
+    },
+    maxEnhanced: {
+      overall: 15649,
+      baseStats: { shoot: 2703, pass: 2841, dribble: 2869, defense: 2943, physical: 2903, speed: 2007 },
+      detailStats: {
+        shoot: { finishing: 897, power: 904, composure: 902 },
+        pass: { shortPass: 948, longPass: 943, accuracy: 950 },
+        dribble: { breakout: 960, keeping: 960, ballTouch: 949 },
+        defense: { tackle: 990, interception: 981, marking: 972 },
+        physical: { jumping: 945, contact: 969, stamina: 989 },
+        speed: { running: 1012, agility: 995 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: {
+      name: 'チェーンカッター',
+      rank: '銀',
+      description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・コンタクト・マークUP'
+    },
+    abilities: [
+      { name: 'ハイスピードスティール', rank: '金', description: '発動条件：好調　/　タックル・走力・敏捷性UP' },
+      { name: 'エンドレスマーカー', rank: '銀', description: '発動条件：好調　/　マーク・スタミナUP' },
+      { name: '瞬間の球際力', rank: '銅', description: '発動条件：好調　/　パスカット・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p401',
+    name: 'マロ・ギュスト',
+    readingName: 'まろ・ぎゅすと',
+    category: 'DF',
+    mainPosition: 'RFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: '守備的RFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7162,
+    maxOverall: 15422,
+    baseStats: { shoot: 1228, pass: 1206, dribble: 1315, defense: 1330, physical: 1239, speed: 936 },
+    detailStats: {
+      shoot: { finishing: 423, power: 385, composure: 420 },
+      pass: { shortPass: 398, longPass: 416, accuracy: 392 },
+      dribble: { breakout: 449, keeping: 421, ballTouch: 445 },
+      defense: { tackle: 457, interception: 436, marking: 437 },
+      physical: { jumping: 372, contact: 413, stamina: 454 },
+      speed: { running: 474, agility: 462 }
+    },
+    maxEnhanced: {
+      overall: 15422,
+      baseStats: { shoot: 2725, pass: 2775, dribble: 2848, defense: 2935, physical: 2808, speed: 2006 },
+      detailStats: {
+        shoot: { finishing: 922, power: 884, composure: 919 },
+        pass: { shortPass: 921, longPass: 939, accuracy: 915 },
+        dribble: { breakout: 960, keeping: 932, ballTouch: 956 },
+        defense: { tackle: 992, interception: 971, marking: 972 },
+        physical: { jumping: 883, contact: 936, stamina: 989 },
+        speed: { running: 1009, agility: 997 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: {
+      name: '熟練のインターセプト',
+      rank: '銀',
+      description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・敏捷性UP'
+    },
+    abilities: [
+      { name: 'スピードクラッシャー', rank: '銀', description: '発動条件：好調　/　タックル・走力UP' },
+      { name: '俊敏なマーカー', rank: '銀', description: '発動条件：好調　/　パスカット・敏捷性UP' },
+      { name: 'ピッチの分断者', rank: '銅', description: '発動条件：絶好調　/　パスカット・スタミナUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p402',
+    name: 'ブラッドリー・バルコラ',
+    readingName: 'ぶらっどりー・ばるこら',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'ムービング',
+    playStyle: 'ドリブラーLW',
+    playStyleLevel: 'Ⅱ',
+    overall: 7294,
+    maxOverall: 15550,
+    baseStats: { shoot: 1334, pass: 1230, dribble: 1395, defense: 988, physical: 1162, speed: 946 },
+    detailStats: {
+      shoot: { finishing: 452, power: 439, composure: 443 },
+      pass: { shortPass: 416, longPass: 411, accuracy: 403 },
+      dribble: { breakout: 475, keeping: 461, ballTouch: 459 },
+      defense: { tackle: 312, interception: 347, marking: 329 },
+      physical: { jumping: 415, contact: 379, stamina: 368 },
+      speed: { running: 473, agility: 473 }
+    },
+    maxEnhanced: {
+      overall: 15550,
+      baseStats: { shoot: 2891, pass: 2799, dribble: 2988, defense: 2497, physical: 2707, speed: 2016 },
+      detailStats: {
+        shoot: { finishing: 975, power: 950, composure: 966 },
+        pass: { shortPass: 939, longPass: 934, accuracy: 926 },
+        dribble: { breakout: 1010, keeping: 996, ballTouch: 982 },
+        defense: { tackle: 823, interception: 846, marking: 828 },
+        physical: { jumping: 926, contact: 890, stamina: 891 },
+        speed: { running: 1008, agility: 1008 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: {
+      name: 'ジャックナイフ',
+      rank: '銀',
+      description: '発動エリア：前左右　/　発動条件：ドリブル時　/　突破力・キープ力UP　/　成功時に自身のシュート発生確率UP'
+    },
+    abilities: [
+      { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
+      { name: 'ムービングターゲット', rank: '銀', description: '発動条件：好調　/　キープ力・走力UP' },
+      { name: 'ゴール前の落ち着き', rank: '銅', description: '発動条件：途中出場　/　決定力・ボールタッチUP' }
     ],
     avatarUrl: ''
   }
