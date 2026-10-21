@@ -1042,7 +1042,12 @@ const PLAYER_IMAGE_MAP = {
     "p399": "IBRAHIMA_KONATE_2026_IMAGE",
     "p400": "THEO_HERNANDEZ_2026_IMAGE",
     "p401": "MALO_GUSTO_2026_IMAGE",
-    "p402": "BRADLEY_BARCOLA_2026_IMAGE"
+    "p402": "BRADLEY_BARCOLA_2026_IMAGE",
+    "p403": "DESABI_HAIFU_IMAGE",
+    "p404": "DESIRE_DOUE_2026_IMAGE",
+    "p405": "KANTE_2026_IMAGE",
+    "p406": "MAXENCE_LACROIX_2026_IMAGE",
+    "p407": "GRANIT_XHAKA_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -5399,20 +5404,22 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
       const isPosEligible = (p, slotPos) => {
         if (!p) return false;
-        return p.mainPosition === slotPos || (p.subPositions && p.subPositions.includes(slotPos));
+        return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
       };
 
       const evaluateCandidateForSlot = (slot, candidate) => {
-        const isMainMatch = candidate.mainPosition === slot.pos;
-        const posScore = isMainMatch ? 2000 : 1000;
         const isTargetNation = targetNation && candidate.nationality === targetNation;
-        const nationScore = isTargetNation ? 500 : 0;
+        const nationScore = isTargetNation ? 50 : 0;
+        const isPolicyMatch = candidate.policy === pol;
+        const policyScore = isPolicyMatch ? 100 : 0;
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 5 : 0;
 
         newSquad[slot.id] = candidate;
         const teamOverall = calcExactOverall(newSquad);
         delete newSquad[slot.id];
 
-        return teamOverall * 10 + posScore + nationScore;
+        return teamOverall * 100 + policyScore + nationScore + posScore;
       };
 
       if (activeCombo) {
@@ -5534,6 +5541,49 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             }
           });
         });
+
+        // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+
+            targetFmt.slots.forEach(slotC => {
+              if (slotC.id === slotA.id || slotC.id === slotB.id) return;
+              const pC = newSquad[slotC.id];
+              if (!pC) return;
+              const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
+              if (!pBEligibleC) return;
+
+              const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+              for (const cand of unusedCandidates) {
+                const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+                if (!candEligibleA) continue;
+
+                newSquad[slotA.id] = cand;
+                newSquad[slotB.id] = pA;
+                newSquad[slotC.id] = pB;
+                const testOverall = calcExactOverall(newSquad);
+                if (testOverall > bestSquadOverall) {
+                  bestSquadOverall = testOverall;
+                  usedIds.delete(pC.id);
+                  usedIds.add(cand.id);
+                  improved = true;
+                  break;
+                } else {
+                  newSquad[slotA.id] = pA;
+                  newSquad[slotB.id] = pB;
+                  newSquad[slotC.id] = pC;
+                }
+              }
+            });
+          });
+        });
       }
 
       const getEffVal = p => {
@@ -5627,22 +5677,22 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
       const isPosEligible = (p, slotPos) => {
         if (!p) return false;
-        return p.mainPosition === slotPos || (p.subPositions && p.subPositions.includes(slotPos));
+        return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
       };
 
       const evaluateCandidateForSlot = (slot, candidate) => {
-        const isMainMatch = candidate.mainPosition === slot.pos;
-        const posScore = isMainMatch ? 2000 : 1000;
         const isTargetNation = targetNation && candidate.nationality === targetNation;
-        const nationScore = isTargetNation ? 500 : 0;
+        const nationScore = isTargetNation ? 50 : 0;
         const isPolicyMatch = candidate.policy === pol;
-        const policyScore = isPolicyMatch ? 10000 : 0;
+        const policyScore = isPolicyMatch ? 100000 : 0;
+        const isMainMatch = candidate.mainPosition === slot.pos;
+        const posScore = isMainMatch ? 5 : 0;
 
         newSquad[slot.id] = candidate;
         const teamOverall = calcExactOverall(newSquad);
         delete newSquad[slot.id];
 
-        return teamOverall * 10 + policyScore + posScore + nationScore;
+        return teamOverall * 100 + policyScore + nationScore + posScore;
       };
 
       if (activeCombo) {
@@ -5767,6 +5817,49 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                 newSquad[slotB.id] = pB;
               }
             }
+          });
+        });
+
+        // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
+        targetFmt.slots.forEach(slotA => {
+          const pA = newSquad[slotA.id];
+          if (!pA) return;
+          targetFmt.slots.forEach(slotB => {
+            if (slotA.id === slotB.id) return;
+            const pB = newSquad[slotB.id];
+            if (!pB) return;
+            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+            if (!pAEligibleB) return;
+
+            targetFmt.slots.forEach(slotC => {
+              if (slotC.id === slotA.id || slotC.id === slotB.id) return;
+              const pC = newSquad[slotC.id];
+              if (!pC) return;
+              const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
+              if (!pBEligibleC) return;
+
+              const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+              for (const cand of unusedCandidates) {
+                const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+                if (!candEligibleA) continue;
+
+                newSquad[slotA.id] = cand;
+                newSquad[slotB.id] = pA;
+                newSquad[slotC.id] = pB;
+                const testOverall = calcExactOverall(newSquad);
+                if (testOverall > bestSquadOverall) {
+                  bestSquadOverall = testOverall;
+                  usedIds.delete(pC.id);
+                  usedIds.add(cand.id);
+                  improved = true;
+                  break;
+                } else {
+                  newSquad[slotA.id] = pA;
+                  newSquad[slotB.id] = pB;
+                  newSquad[slotC.id] = pC;
+                }
+              }
+            });
           });
         });
       }
@@ -5999,7 +6092,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         const policyMatch = p.policy && p.policy.toLowerCase().includes(q);
         const natMatch = p.nationality && p.nationality.toLowerCase().includes(q);
         const teamMatch = p.team && p.team.toLowerCase().includes(q);
-        const posMatch = (p.mainPosition && p.mainPosition.toLowerCase().includes(q)) || (p.subPositions && p.subPositions.some(sp => sp.toLowerCase().includes(q)));
+        const posMatch = isPositionMatch(p.mainPosition, q) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, q))) || (p.mainPosition && p.mainPosition.toLowerCase().includes(q)) || (p.subPositions && p.subPositions.some(sp => sp.toLowerCase().includes(q)));
 
         if (!nameMatch && !styleMatch && !subStyleMatch && !policyMatch && !natMatch && !teamMatch && !posMatch) {
           return false;
@@ -6781,7 +6874,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
                   <div className="mt-1 bg-slate-950/90 px-1.5 py-0.5 rounded-md border border-slate-800 text-center max-w-[70px] sm:max-w-[100px] shadow">
                     <div className="text-[7px] sm:text-[9px] font-black text-white truncate">{player.name}</div>
-                    <div className="text-[6px] sm:text-[8px] font-bold text-[#00FF66] truncate">{slot.label}</div>
+                    <div className="text-[6px] sm:text-[8px] font-bold text-[#00FF66] truncate">{slot.label}{!isPositionMatch(player.mainPosition, slot.pos) && <span className="text-amber-300 ml-0.5 text-[6px] font-bold">(サブ)</span>}</div>
                   </div>
                 </div>
               ) : (
@@ -6952,6 +7045,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                               <span className="px-1.5 py-0.2 rounded text-[10px] font-black bg-slate-800 text-[#00FF66]">
                                 {p.mainPosition}
                               </span>
+                              {p.subPositions && p.subPositions.length > 0 && (
+                                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">
+                                  サブ: {p.subPositions.join(', ')}
+                                </span>
+                              )}
                               <span className="text-[10px] font-bold text-amber-400">
                                 {p.rarity}
                               </span>
