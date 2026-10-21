@@ -45,8 +45,8 @@ const xhakaObj = `,
     policy: 'リアクション',
     playStyle: 'ハードマーカー',
     playStyleLevel: 'Ⅱ',
-    overall: 7362,
-    maxOverall: 15653,
+    overall: 6844,
+    maxOverall: 14990,
     baseStats: { shoot: 1150, pass: 1362, dribble: 1262, defense: 1319, physical: 1306, speed: 670 },
     detailStats: {
       shoot: { finishing: 354, power: 410, composure: 386 },
@@ -57,7 +57,7 @@ const xhakaObj = `,
       speed: { running: 340, agility: 330 }
     },
     maxEnhanced: {
-      overall: 15653,
+      overall: 14990,
       baseStats: { shoot: 2695, pass: 2967, dribble: 2795, defense: 2900, physical: 2875, speed: 1692 },
       detailStats: {
         shoot: { finishing: 865, power: 921, composure: 909 },

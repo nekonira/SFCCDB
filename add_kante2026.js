@@ -45,8 +45,8 @@ const kanteObj = `,
     policy: 'ムービング',
     playStyle: 'ハードマーカー',
     playStyleLevel: 'Ⅱ',
-    overall: 7360,
-    maxOverall: 15651,
+    overall: 7471,
+    maxOverall: 15681,
     baseStats: { shoot: 1125, pass: 1354, dribble: 1379, defense: 1454, physical: 1302, speed: 854 },
     detailStats: {
       shoot: { finishing: 378, power: 368, composure: 379 },
@@ -57,7 +57,7 @@ const kanteObj = `,
       speed: { running: 370, agility: 484 }
     },
     maxEnhanced: {
-      overall: 15651,
+      overall: 15681,
       baseStats: { shoot: 2670, pass: 2959, dribble: 2912, defense: 3035, physical: 2871, speed: 1876 },
       detailStats: {
         shoot: { finishing: 889, power: 879, composure: 902 },

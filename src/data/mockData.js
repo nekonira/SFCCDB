@@ -21076,8 +21076,8 @@ window.INITIAL_PLAYERS = [
     policy: 'ムービング',
     playStyle: 'アタッカー',
     playStyleLevel: 'Ⅲ',
-    overall: 7359,
-    maxOverall: 15650,
+    overall: 7486,
+    maxOverall: 15616,
     baseStats: { shoot: 1330, pass: 1344, dribble: 1478, defense: 1105, physical: 1263, speed: 965 },
     detailStats: {
       shoot: { finishing: 455, power: 431, composure: 444 },
@@ -21088,7 +21088,7 @@ window.INITIAL_PLAYERS = [
       speed: { running: 476, agility: 489 }
     },
     maxEnhanced: {
-      overall: 15650,
+      overall: 15616,
       baseStats: { shoot: 2875, pass: 2925, dribble: 3047, defense: 2650, physical: 2832, speed: 1999 },
       detailStats: {
         shoot: { finishing: 966, power: 942, composure: 967 },
@@ -21125,8 +21125,8 @@ window.INITIAL_PLAYERS = [
     policy: 'ムービング',
     playStyle: 'ハードマーカー',
     playStyleLevel: 'Ⅱ',
-    overall: 7360,
-    maxOverall: 15651,
+    overall: 7471,
+    maxOverall: 15681,
     baseStats: { shoot: 1125, pass: 1354, dribble: 1379, defense: 1454, physical: 1302, speed: 854 },
     detailStats: {
       shoot: { finishing: 378, power: 368, composure: 379 },
@@ -21137,7 +21137,7 @@ window.INITIAL_PLAYERS = [
       speed: { running: 370, agility: 484 }
     },
     maxEnhanced: {
-      overall: 15651,
+      overall: 15681,
       baseStats: { shoot: 2670, pass: 2959, dribble: 2912, defense: 3035, physical: 2871, speed: 1876 },
       detailStats: {
         shoot: { finishing: 889, power: 879, composure: 902 },
@@ -21174,8 +21174,8 @@ window.INITIAL_PLAYERS = [
     policy: 'ムービング',
     playStyle: 'ストッパー',
     playStyleLevel: 'Ⅱ',
-    overall: 7361,
-    maxOverall: 15652,
+    overall: 7170,
+    maxOverall: 15458,
     baseStats: { shoot: 1002, pass: 1108, dribble: 1237, defense: 1394, physical: 1276, speed: 918 },
     detailStats: {
       shoot: { finishing: 308, power: 367, composure: 327 },
@@ -21186,7 +21186,7 @@ window.INITIAL_PLAYERS = [
       speed: { running: 489, agility: 429 }
     },
     maxEnhanced: {
-      overall: 15652,
+      overall: 15458,
       baseStats: { shoot: 2499, pass: 2677, dribble: 2770, defense: 2999, physical: 2869, speed: 1964 },
       detailStats: {
         shoot: { finishing: 807, power: 866, composure: 826 },
@@ -21223,8 +21223,8 @@ window.INITIAL_PLAYERS = [
     policy: 'リアクション',
     playStyle: 'ハードマーカー',
     playStyleLevel: 'Ⅱ',
-    overall: 7362,
-    maxOverall: 15653,
+    overall: 6844,
+    maxOverall: 14990,
     baseStats: { shoot: 1150, pass: 1362, dribble: 1262, defense: 1319, physical: 1306, speed: 670 },
     detailStats: {
       shoot: { finishing: 354, power: 410, composure: 386 },
@@ -21235,7 +21235,7 @@ window.INITIAL_PLAYERS = [
       speed: { running: 340, agility: 330 }
     },
     maxEnhanced: {
-      overall: 15653,
+      overall: 14990,
       baseStats: { shoot: 2695, pass: 2967, dribble: 2795, defense: 2900, physical: 2875, speed: 1692 },
       detailStats: {
         shoot: { finishing: 865, power: 921, composure: 909 },

@@ -45,8 +45,8 @@ const lacroixObj = `,
     policy: 'ムービング',
     playStyle: 'ストッパー',
     playStyleLevel: 'Ⅱ',
-    overall: 7361,
-    maxOverall: 15652,
+    overall: 7170,
+    maxOverall: 15458,
     baseStats: { shoot: 1002, pass: 1108, dribble: 1237, defense: 1394, physical: 1276, speed: 918 },
     detailStats: {
       shoot: { finishing: 308, power: 367, composure: 327 },
@@ -57,7 +57,7 @@ const lacroixObj = `,
       speed: { running: 489, agility: 429 }
     },
     maxEnhanced: {
-      overall: 15652,
+      overall: 15458,
       baseStats: { shoot: 2499, pass: 2677, dribble: 2770, defense: 2999, physical: 2869, speed: 1964 },
       detailStats: {
         shoot: { finishing: 807, power: 866, composure: 826 },
