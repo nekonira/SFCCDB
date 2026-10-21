@@ -6828,6 +6828,26 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
           const isReqSlot = !!slot.requiredStyle;
           const isReqFulfilled = isReqSlot && checkPlayStyleRequirement(rawP, slot.requiredStyle, slot.minLevel);
 
+          // 能力合計実数値の算出 (カタログ総合力 + ポリシー一致加算 + フォメコン能力バフ加算)
+          let effectiveOverall = player ? player.overall : 0;
+          let policyGain = 0;
+          let comboGain = 0;
+          if (player) {
+            if (isPolicyMatched) {
+              policyGain = Math.floor(player.overall * 1.05) - player.overall;
+            }
+            if (comboValidation.allReqsFulfilled && activeComboData?.buffs) {
+              const nBonusPct = comboValidation.isSelecao ? comboValidation.brazilBonusPct : (comboValidation.isLaRoja ? comboValidation.spainBonusPct : (comboValidation.isLesBleus ? comboValidation.franceBonusPct : 0));
+              activeComboData.buffs.forEach(b => {
+                const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+                const effectivePct = basePct + nBonusPct;
+                const statVal = getPlayerStatValue(player, b.name);
+                comboGain += Math.floor(statVal * (effectivePct / 100));
+              });
+            }
+            effectiveOverall = player.overall + policyGain + comboGain;
+          }
+
           return (
             <div
               key={slot.id}
@@ -6867,8 +6887,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                       : 'border-slate-700'
                     }`}>
                     <PlayerAvatar player={player} className="w-full h-full object-cover" />
-                    <span className={`absolute bottom-0 left-0 right-0 py-0.2 text-center text-[7px] sm:text-[9px] font-black font-num ${getRarityBadgeStyle(player.rarity)}`}>
-                      {player.overall}
+                    <span
+                      title={player ? `能力合計実数値: ${effectiveOverall} (カタログ: ${player.overall}${policyGain > 0 ? `, ポリシー:+${policyGain}` : ''}${comboGain > 0 ? `, コンボ:+${comboGain}` : ''})` : ''}
+                      className={`absolute bottom-0 left-0 right-0 py-0.2 text-center text-[7px] sm:text-[9px] font-black font-num ${getRarityBadgeStyle(player.rarity)}`}
+                    >
+                      {effectiveOverall}
                     </span>
                   </div>
 
