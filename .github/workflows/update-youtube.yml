@@ -1,0 +1,35 @@
+name: Auto-Update YouTube Playlist Videos
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-youtube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest YouTube playlist videos and update app files
+        run: node update_youtube_videos.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet src/app.jsx src/app.js; then
+            git add src/app.jsx src/app.js
+            git commit -m "chore: auto-update latest YouTube playlist videos"
+            git push
+          fi
+

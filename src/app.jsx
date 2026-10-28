@@ -38,7 +38,7 @@ class ErrorBoundary extends React.Component {
 
 const LIMIT_BREAK_STAGES = ['無凸', '1凸', '2凸', '3凸', '完凸'];
 const { useState, useEffect, useMemo, useRef, useCallback } = React;
-const POSITIONS = ["GK","CB","LFB","RFB","DM","LM","RM","AM","LW","RW","CF"];
+const POSITIONS = ["GK", "CB", "LFB", "RFB", "DM", "LM", "RM", "AM", "LW", "RW", "CF"];
 const POLICIES = ['カウンター', 'ムービング', 'ポゼッション', 'リアクション'];
 const getPlayerRarities = (player) => {
   if (!player) return ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
@@ -50,7 +50,7 @@ const getPlayerRarities = (player) => {
 };
 
 const RARITIES = ['☆3', '☆3+', '☆3++', '☆4', '☆4+', '☆4++', '☆5'];
-const PLAY_STYLE_LEVELS = ["Ⅰ","Ⅱ","Ⅲ"];
+const PLAY_STYLE_LEVELS = ["Ⅰ", "Ⅱ", "Ⅲ"];
 const PLAY_STYLES = [
   "オーソドックスGK",
   "スイーパーGK",
@@ -94,9 +94,9 @@ const SPECIAL_CARD_TYPES = [
   { id: 'saving', name: 'セービング特練', category: 'GK', stats: ['saving'], icon: 'hand', color: 'from-emerald-500 to-green-600' },
   { id: 'physical', name: 'フィジカル特練', category: 'PHY', stats: ['physical'], icon: 'activity', color: 'from-orange-500 to-amber-600' },
   { id: 'mental', name: 'メンタル特練', category: 'MEN', stats: ['mental'], icon: 'brain', color: 'from-fuchsia-500 to-purple-600' },
-  { id: 'all', name: '総合特練 (万能)', category: 'ALL', stats: ['shoot','pass','dribble','trap','tackle','passcut','mark','saving','physical','mental'], icon: 'star', color: 'from-yellow-400 to-amber-500' },
-  { id: 'spain_special', name: 'スペイン代表限定特練', category: 'LIMITED', stats: ['shoot','pass','dribble','trap'], icon: 'award', color: 'from-[#FF0033] to-[#FFCC00]', specialNote: '攻撃系+20% & プレイスタイルLv+1' },
-  { id: 'samurai_special', name: '日本代表限定特練', category: 'LIMITED', stats: ['pass','dribble','tackle','passcut'], icon: 'flag', color: 'from-blue-600 to-blue-800', specialNote: 'スピード・スタミナ系+20% & プレイスタイルLv+1' }
+  { id: 'all', name: '総合特練 (万能)', category: 'ALL', stats: ['shoot', 'pass', 'dribble', 'trap', 'tackle', 'passcut', 'mark', 'saving', 'physical', 'mental'], icon: 'star', color: 'from-yellow-400 to-amber-500' },
+  { id: 'spain_special', name: 'スペイン代表限定特練', category: 'LIMITED', stats: ['shoot', 'pass', 'dribble', 'trap'], icon: 'award', color: 'from-[#FF0033] to-[#FFCC00]', specialNote: '攻撃系+20% & プレイスタイルLv+1' },
+  { id: 'samurai_special', name: '日本代表限定特練', category: 'LIMITED', stats: ['pass', 'dribble', 'tackle', 'passcut'], icon: 'flag', color: 'from-blue-600 to-blue-800', specialNote: 'スピード・スタミナ系+20% & プレイスタイルLv+1' }
 ];
 
 const CARD_RANKS = [
@@ -183,64 +183,64 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
-    "id": "gq08QLFPiF8",
-    "title": "【まさかの結果】ポリシー別フォメコン使用率ランキング【サカつく2026】フォーメーションコンボ使用比率大調査",
-    "thumbnail": "https://i.ytimg.com/vi/gq08QLFPiF8/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=gq08QLFPiF8"
+    "id": "dUVvYpkfBW8",
+    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.4【サカつく2026】新フォメコン追加、新サカつくモード最新情報、WPS仕様変更、ポルトガルガチャ、限定特練カード、スカウト選手選抜登録など",
+    "thumbnail": "https://i.ytimg.com/vi/dUVvYpkfBW8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=dUVvYpkfBW8"
   },
   {
-    "id": "tinj05LdBj8",
-    "title": "【超絶性能】新フォメコン『ラ・ロハ’26』徹底人選解説【サカつく2026】理論値最強メンバー、スキル構成解説、ポジション別適性選手など",
-    "thumbnail": "https://i.ytimg.com/vi/tinj05LdBj8/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=tinj05LdBj8"
+    "id": "X2SiYM8HWWo",
+    "title": "【引く前に見て】大荒れフランスガチャ第三弾、徹底解説！正直、意味不明です【サカつく2026】ドゥエ、カンテ、ラクロワ、ジャカ",
+    "thumbnail": "https://i.ytimg.com/vi/X2SiYM8HWWo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=X2SiYM8HWWo"
   },
   {
-    "id": "wbuRTGvbpYk",
-    "title": "【引く前に見て】限定スペインガチャ徹底解説！ヤマルが超ぶっ壊れ性能【サカつく2026】クバルシ、ガビ、ウナイ・シモン",
-    "thumbnail": "https://i.ytimg.com/vi/wbuRTGvbpYk/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=wbuRTGvbpYk"
+    "id": "RlUJORIGmp8",
+    "title": "【環境最高数値】『レ・ブルー’26』最強人選&育成論 徹底解説【サカつく2026】フォメコン理論値、ネラッズーロとの比較、お勧めスキル構成、お勧め配置など",
+    "thumbnail": "https://i.ytimg.com/vi/RlUJORIGmp8/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=RlUJORIGmp8"
   },
   {
-    "id": "EFmaOGfDggw",
-    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.2【サカつく2026】アクセサリ機能実装、新フォメコン追加、スカウト&継承緩和、スペインガチャ、限定特練カード、日本代表など",
-    "thumbnail": "https://i.ytimg.com/vi/EFmaOGfDggw/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=EFmaOGfDggw"
+    "id": "E7QVmpiyxeU",
+    "title": "【引く前に見て】フランスガチャ徹底解説！現環境、最強CBはコナテです【サカつく2026】テオ・エルナンデス、ギュスト、バルコラ",
+    "thumbnail": "https://i.ytimg.com/vi/E7QVmpiyxeU/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=E7QVmpiyxeU"
   },
   {
-    "id": "YxToi7zTO4I",
-    "title": "【無料】サカつく2026攻略アプリが完成。複数選手比較&チームビルダー機能搭載【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/YxToi7zTO4I/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=YxToi7zTO4I"
+    "id": "K7d5iyUdJTA",
+    "title": "【引く前に見て】新ガチャ徹底解説！ヤバすぎるスキルが登場。インフレを感じる新特練【サカつく2026】ロナウド、マルキーニョス、フラーフェンベルフ、マルティネッリ",
+    "thumbnail": "https://i.ytimg.com/vi/K7d5iyUdJTA/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=K7d5iyUdJTA"
   },
   {
-    "id": "9OwLKGom0IU",
-    "title": "【引く前に見て】新ガチャ徹底解説！アリソンめっちゃ強いですけど、他は正直微妙です【サカつく2026】エンドリッキ、グリーンウッド、アカンジ",
-    "thumbnail": "https://i.ytimg.com/vi/9OwLKGom0IU/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=9OwLKGom0IU"
+    "id": "xq1xGdXRPIM",
+    "title": "【引く前に見て】限定フランスガチャ徹底解説！エンバペが超ぶっ壊れ性能【サカつく2026】デンベレ、ラビオ、シュバリエ",
+    "thumbnail": "https://i.ytimg.com/vi/xq1xGdXRPIM/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=xq1xGdXRPIM"
   },
   {
-    "id": "3cWmdX7SO9g",
-    "title": "【私は引きません】ポリシーガチャ襲来！スルーか引くべきか徹底的に解説します【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/3cWmdX7SO9g/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=3cWmdX7SO9g"
+    "id": "gRxHaR7-CVQ",
+    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.3【サカつく2026】新フォメコン追加、レジェンド帯追加、1VS1仕様変更、フランスガチャ、限定特練カード、新サカつくモード、☆4スカウト選手",
+    "thumbnail": "https://i.ytimg.com/vi/gRxHaR7-CVQ/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=gRxHaR7-CVQ"
   },
   {
-    "id": "TW5ffHOwVho",
-    "title": "【みんなは買う?】新特練SSR佐藤寿人、徹底解説！これは本当に必要なカードですか？【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/TW5ffHOwVho/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=TW5ffHOwVho"
+    "id": "6YZtpt1w6O4",
+    "title": "【ピザーラ】コラボメニューが始まったので注文して食べてカードを開封して数値を見て解説します【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/6YZtpt1w6O4/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=6YZtpt1w6O4"
   },
   {
-    "id": "-ML6aziQT8A",
-    "title": "【引く前に見て】新ガチャ徹底解説！得点王が勢揃いしたJリーグガチャ。あなたは引きますか？【サカつく2026】レオ・セアラ、山岸祐也、山田寛人、泉柊椰、山本桜大、田村翔太、土信田悠生",
-    "thumbnail": "https://i.ytimg.com/vi/-ML6aziQT8A/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=-ML6aziQT8A"
+    "id": "Ni-R5Asjm4c",
+    "title": "【引く前に見て】5ピックアップガチャ徹底解説！これは完全にムービング救済ガチャ【サカつく2026】ラウル・ヒメネス、コーディ・ガクポ、レアンドロ・トロサール、コビー・メイヌー、アダム・ウォートン",
+    "thumbnail": "https://i.ytimg.com/vi/Ni-R5Asjm4c/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=Ni-R5Asjm4c"
   },
   {
-    "id": "Nk9fShVZ1sI",
-    "title": "【引く前に見て】新ガチャ徹底解説！虹アビリティ登場。新特練SSRがすごい【サカつく2026】ペレ、アラウホ、ジョーダン・ヘンダーソン、カンセロ",
-    "thumbnail": "https://i.ytimg.com/vi/Nk9fShVZ1sI/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=Nk9fShVZ1sI"
+    "id": "PgM41g9GWPc",
+    "title": "【引く前に見て】日本代表ガチャ第二弾徹底解説！久保&冨安以外微妙すぎて、誰が引くん？【サカつく2026】小川航基、塩貝健人、前田大然、久保建英、菅原由勢、冨安健洋",
+    "thumbnail": "https://i.ytimg.com/vi/PgM41g9GWPc/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=PgM41g9GWPc"
   }
 ];
 
@@ -1019,39 +1019,39 @@ const PLAYER_IMAGE_MAP = {
   "p376": "SIMON_IMAGE",
   "p377": "SONG_MIN_KYU_2025_IMAGE",
   "p378": "FLORIAN_THAUVIN_2026_IMAGE",
-    "p379": "MIKEL_OYARZABAL_2026_IMAGE",
-    "p380": "DANI_OLMO_2026_IMAGE",
-    "p381": "PEDRI_2026_IMAGE",
-    "p382": "MARCOS_LLORENTE_2026_IMAGE",
-    "p383": "PUJON_HAIFU_2026_IMAGE",
-    "p384": "KOKI_OGAWA_2026_IMAGE",
-    "p385": "KENTO_SHIOGAI_2026_IMAGE",
-    "p386": "DAIZEN_MAEDA_2026_IMAGE",
-    "p387": "TAKEFUSA_KUBO_2026_IMAGE",
-    "p388": "YUKINARI_SUGAWARA_2026_IMAGE",
-    "p389": "TAKEHIRO_TOMIYASU_2026_IMAGE",
-    "p390": "RAUL_JIMENEZ_2026_IMAGE",
-    "p391": "CODY_GAKPO_2026_IMAGE",
-    "p392": "LEANDRO_TROSSARD_2026_IMAGE",
-    "p393": "KOBBIE_MAINOO_2026_IMAGE",
-    "p394": "ADAM_WHARTON_2026_IMAGE",
-    "p395": "KYLIAN_MBAPPE_2026_IMAGE",
-    "p396": "OUSMANE_DEMBELE_FRANCE_2026_IMAGE",
-    "p397": "ADRIEN_RABIOT_2026_IMAGE",
-    "p398": "LUCAS_CHEVALIER_2026_IMAGE",
-    "p399": "IBRAHIMA_KONATE_2026_IMAGE",
-    "p400": "THEO_HERNANDEZ_2026_IMAGE",
-    "p401": "MALO_GUSTO_2026_IMAGE",
-    "p402": "BRADLEY_BARCOLA_2026_IMAGE",
-    "p403": "DESABI_HAIFU_IMAGE",
-    "p404": "DESIRE_DOUE_2026_IMAGE",
-    "p405": "KANTE_2026_IMAGE",
-    "p406": "MAXENCE_LACROIX_2026_IMAGE",
-    "p407": "GRANIT_XHAKA_2026_IMAGE",
-    "p408": "CRISTIANO_RONALDO_2026_IMAGE",
-    "p409": "VITINHA_2026_IMAGE",
-    "p410": "NELSON_SEMEDO_2026_IMAGE",
-    "p411": "RENATO_VEIGA_2026_IMAGE"
+  "p379": "MIKEL_OYARZABAL_2026_IMAGE",
+  "p380": "DANI_OLMO_2026_IMAGE",
+  "p381": "PEDRI_2026_IMAGE",
+  "p382": "MARCOS_LLORENTE_2026_IMAGE",
+  "p383": "PUJON_HAIFU_2026_IMAGE",
+  "p384": "KOKI_OGAWA_2026_IMAGE",
+  "p385": "KENTO_SHIOGAI_2026_IMAGE",
+  "p386": "DAIZEN_MAEDA_2026_IMAGE",
+  "p387": "TAKEFUSA_KUBO_2026_IMAGE",
+  "p388": "YUKINARI_SUGAWARA_2026_IMAGE",
+  "p389": "TAKEHIRO_TOMIYASU_2026_IMAGE",
+  "p390": "RAUL_JIMENEZ_2026_IMAGE",
+  "p391": "CODY_GAKPO_2026_IMAGE",
+  "p392": "LEANDRO_TROSSARD_2026_IMAGE",
+  "p393": "KOBBIE_MAINOO_2026_IMAGE",
+  "p394": "ADAM_WHARTON_2026_IMAGE",
+  "p395": "KYLIAN_MBAPPE_2026_IMAGE",
+  "p396": "OUSMANE_DEMBELE_FRANCE_2026_IMAGE",
+  "p397": "ADRIEN_RABIOT_2026_IMAGE",
+  "p398": "LUCAS_CHEVALIER_2026_IMAGE",
+  "p399": "IBRAHIMA_KONATE_2026_IMAGE",
+  "p400": "THEO_HERNANDEZ_2026_IMAGE",
+  "p401": "MALO_GUSTO_2026_IMAGE",
+  "p402": "BRADLEY_BARCOLA_2026_IMAGE",
+  "p403": "DESABI_HAIFU_IMAGE",
+  "p404": "DESIRE_DOUE_2026_IMAGE",
+  "p405": "KANTE_2026_IMAGE",
+  "p406": "MAXENCE_LACROIX_2026_IMAGE",
+  "p407": "GRANIT_XHAKA_2026_IMAGE",
+  "p408": "CRISTIANO_RONALDO_2026_IMAGE",
+  "p409": "VITINHA_2026_IMAGE",
+  "p410": "NELSON_SEMEDO_2026_IMAGE",
+  "p411": "RENATO_VEIGA_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -1066,7 +1066,7 @@ window.getPlayerAvatarUrl = getPlayerAvatarUrl;
 const PlayerAvatar = ({ player, className = "", alt = "" }) => {
   const [imgError, setImgError] = React.useState(false);
   const avatarUrl = getPlayerAvatarUrl(player);
-  
+
   React.useEffect(() => {
     setImgError(false);
   }, [avatarUrl, player?.id]);
@@ -1075,7 +1075,7 @@ const PlayerAvatar = ({ player, className = "", alt = "" }) => {
   const pos = player?.mainPosition || player?.category || 'FW';
   const name = player?.name || '';
   const rarity = player?.rarity || '☆3';
-  
+
   const categoryThemes = {
     FW: { bg: 'from-rose-950/90 via-slate-900 to-rose-900/40', border: 'border-rose-500/50', text: 'text-rose-400', badge: 'bg-rose-500/20 text-rose-300 border-rose-500/30' },
     MF: { bg: 'from-emerald-950/90 via-slate-900 to-emerald-900/40', border: 'border-emerald-500/50', text: 'text-emerald-400', badge: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' },
@@ -1587,7 +1587,7 @@ function normalizeStyle(str) {
 
 function checkSingleBonusMatch(player, rawStyle) {
   if (!player || !rawStyle) return false;
-  
+
   const s = normalizeStyle(rawStyle);
   if (!s) return false;
 
@@ -1664,7 +1664,7 @@ function getCardBonusList(card) {
 
   const rawStyle = card.playstyleBonus.style || '';
   const totalPercent = card.playstyleBonus.percent || 0;
-  
+
   if (!rawStyle) return [];
 
   const parts = rawStyle.split('/');
@@ -2005,7 +2005,7 @@ function App() {
     setActiveTab(tab);
     try {
       localStorage.setItem('sfcc_active_tab', tab);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const getLatestPlayers = () => {
@@ -2027,9 +2027,9 @@ function App() {
     }
   }, []);
 
-          const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
+  const [youtubeVideos, setYoutubeVideos] = useState(YOUTUBE_VIDEOS);
   useEffect(() => {
-    // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得 (RSS json API + CORS proxy fallback)
+    // 再生リスト(PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4)のリアルタイム自動最新取得
     const rssFeedUrl = 'https://www.youtube.com/feeds/videos.xml?playlist_id=PLBdUXfR7TQh42i6ZLl4GZQnTIuCgFV6F4';
     const rss2jsonUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssFeedUrl);
 
@@ -2043,50 +2043,38 @@ function App() {
         .replace(/&#39;/g, "'");
     };
 
-    fetch(rss2jsonUrl)
-      .then(res => res.json())
+    fetch('/api/youtube')
+      .then(res => {
+        if (!res.ok) throw new Error('local api unavailable');
+        return res.json();
+      })
       .then(data => {
-        if (data && data.status === 'ok' && data.items && data.items.length > 0) {
-          const fetched = data.items.map(item => {
-            const match = (item.link || '').match(/v=([a-zA-Z0-9_-]{11})/);
-            const id = match ? match[1] : '';
-            return {
-              id: id,
-              title: decodeEntities(item.title),
-              thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
-              url: `https://www.youtube.com/watch?v=${id}`
-            };
-          }).filter(v => v.id);
-          if (fetched.length > 0) {
-            setYoutubeVideos(fetched);
-          }
+        if (data && data.status === 'ok' && Array.isArray(data.videos) && data.videos.length > 0) {
+          setYoutubeVideos(data.videos);
         } else {
-          throw new Error('rss2json returned non-ok status');
+          throw new Error('empty local api response');
         }
       })
       .catch(() => {
-        const proxyUrl = 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(rssFeedUrl);
-        fetch(proxyUrl)
-          .then(res => res.text())
-          .then(xmlText => {
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(xmlText, 'text/xml');
-            const entries = xml.querySelectorAll('entry');
-            const fetched = [];
-            entries.forEach(entry => {
-              const id = entry.querySelector('videoId')?.textContent || (entry.getElementsByTagName('yt:videoId')[0] ? entry.getElementsByTagName('yt:videoId')[0].textContent : null);
-              const title = entry.querySelector('title')?.textContent;
-              if (id && title) {
-                fetched.push({
+        fetch(rss2jsonUrl)
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.status === 'ok' && data.items && data.items.length > 0) {
+              const fetched = data.items.map(item => {
+                const match = (item.link || '').match(/v=([a-zA-Z0-9_-]{11})/);
+                const id = match ? match[1] : '';
+                return {
                   id: id,
-                  title: decodeEntities(title),
+                  title: decodeEntities(item.title),
                   thumbnail: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
                   url: `https://www.youtube.com/watch?v=${id}`
-                });
+                };
+              }).filter(v => v.id);
+              if (fetched.length > 0) {
+                setYoutubeVideos(fetched);
               }
-            });
-            if (fetched.length > 0) {
-              setYoutubeVideos(fetched);
+            } else {
+              throw new Error('rss2json returned non-ok status');
             }
           })
           .catch(() => {});
@@ -2627,7 +2615,7 @@ function PlayerDBTab({
         const allPos = [pMain, ...pSubs];
         const hasPos = allPos.some(pos => {
           if (!pos) return false;
-                    if (pos === posFilter) return true;
+          if (pos === posFilter) return true;
           if ((posFilter === 'DM') && (pos === 'DM' || pos === 'DM' || pos === 'CMF')) return true;
           if ((posFilter === 'AM') && (pos === 'AM' || pos === 'AM')) return true;
           if ((posFilter === 'LM') && (pos === 'LM' || pos === 'LMF' || (pos === 'SMF' && p.category === 'MF'))) return true;
@@ -3273,135 +3261,135 @@ function PlayerDBTab({
           {/* PC/大画面専用: フル15列 ソート可能テーブル */}
           <div className="hidden lg:block glass-panel rounded-2xl overflow-x-auto border border-slate-800 shadow-xl w-full">
             <table className="w-full text-left text-xs">
-            <thead className="bg-slate-900/90 text-slate-400 border-b border-slate-800 font-bold uppercase select-none">
-              <tr>
-                <th className="py-3 px-2 text-center w-10 whitespace-nowrap">比較</th>
-                <th onClick={() => handleSort('name')} className="py-3 px-3 cursor-pointer hover:text-white transition-colors whitespace-nowrap">
-                  選手名 {renderSortIndicator('name')}
-                </th>
-                <th onClick={() => handleSort('pos')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
-                  POS {renderSortIndicator('pos')}
-                </th>
-                <th onClick={() => handleSort('nationality')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
-                  国籍 {renderSortIndicator('nationality')}
-                </th>
-                <th onClick={() => handleSort('playStyle')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors whitespace-nowrap">
-                  プレースタイル & LV {renderSortIndicator('playStyle')}
-                </th>
-                <th onClick={() => handleSort('overall')} className="py-3 px-2 cursor-pointer hover:text-[#00FF66] transition-colors text-center text-sm whitespace-nowrap">
-                  カタログ {renderSortIndicator('overall')}
-                </th>
-                <th onClick={() => handleSort('totalStats18')} className="py-3 px-2 cursor-pointer hover:text-[#00E5FF] transition-colors text-center text-sm whitespace-nowrap">
-                  合計実数値 {renderSortIndicator('totalStats18')}
-                </th>
-                <th onClick={() => handleSort('policy')} className="py-3 px-3 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
-                  ポリシー {renderSortIndicator('policy')}
-                </th>
-                <th onClick={() => handleSort('shoot')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
-                  SHO {renderSortIndicator('shoot')}
-                </th>
-                <th onClick={() => handleSort('pass')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
-                  PAS {renderSortIndicator('pass')}
-                </th>
-                <th onClick={() => handleSort('dribble')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
-                  DRB {renderSortIndicator('dribble')}
-                </th>
-                <th onClick={() => handleSort('defense')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
-                  DEF {renderSortIndicator('defense')}
-                </th>
-                <th onClick={() => handleSort('physical')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
-                  PHY {renderSortIndicator('physical')}
-                </th>
-                <th onClick={() => handleSort('speed')} className="py-3 px-1.5 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
-                  SPD {renderSortIndicator('speed')}
-                </th>
-                <th className="py-3 px-3 text-right whitespace-nowrap">詳細</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60 font-medium">
-              {filteredPlayers.map((p, idx) => {
-                const isCompared = compareList.some(item => item.id === p.id);
-                const skill = getPlayerSkill(p);
-                const avatar = getPlayerAvatarUrl(p);
+              <thead className="bg-slate-900/90 text-slate-400 border-b border-slate-800 font-bold uppercase select-none">
+                <tr>
+                  <th className="py-3 px-2 text-center w-10 whitespace-nowrap">比較</th>
+                  <th onClick={() => handleSort('name')} className="py-3 px-3 cursor-pointer hover:text-white transition-colors whitespace-nowrap">
+                    選手名 {renderSortIndicator('name')}
+                  </th>
+                  <th onClick={() => handleSort('pos')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
+                    POS {renderSortIndicator('pos')}
+                  </th>
+                  <th onClick={() => handleSort('nationality')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
+                    国籍 {renderSortIndicator('nationality')}
+                  </th>
+                  <th onClick={() => handleSort('playStyle')} className="py-3 px-2 cursor-pointer hover:text-white transition-colors whitespace-nowrap">
+                    プレースタイル & LV {renderSortIndicator('playStyle')}
+                  </th>
+                  <th onClick={() => handleSort('overall')} className="py-3 px-2 cursor-pointer hover:text-[#00FF66] transition-colors text-center text-sm whitespace-nowrap">
+                    カタログ {renderSortIndicator('overall')}
+                  </th>
+                  <th onClick={() => handleSort('totalStats18')} className="py-3 px-2 cursor-pointer hover:text-[#00E5FF] transition-colors text-center text-sm whitespace-nowrap">
+                    合計実数値 {renderSortIndicator('totalStats18')}
+                  </th>
+                  <th onClick={() => handleSort('policy')} className="py-3 px-3 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
+                    ポリシー {renderSortIndicator('policy')}
+                  </th>
+                  <th onClick={() => handleSort('shoot')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
+                    SHO {renderSortIndicator('shoot')}
+                  </th>
+                  <th onClick={() => handleSort('pass')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
+                    PAS {renderSortIndicator('pass')}
+                  </th>
+                  <th onClick={() => handleSort('dribble')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
+                    DRB {renderSortIndicator('dribble')}
+                  </th>
+                  <th onClick={() => handleSort('defense')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
+                    DEF {renderSortIndicator('defense')}
+                  </th>
+                  <th onClick={() => handleSort('physical')} className="py-3 px-1.5 cursor-pointer hover:text-[#00FF66] transition-colors text-center whitespace-nowrap">
+                    PHY {renderSortIndicator('physical')}
+                  </th>
+                  <th onClick={() => handleSort('speed')} className="py-3 px-1.5 cursor-pointer hover:text-white transition-colors text-center whitespace-nowrap">
+                    SPD {renderSortIndicator('speed')}
+                  </th>
+                  <th className="py-3 px-3 text-right whitespace-nowrap">詳細</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-800/60 font-medium">
+                {filteredPlayers.map((p, idx) => {
+                  const isCompared = compareList.some(item => item.id === p.id);
+                  const skill = getPlayerSkill(p);
+                  const avatar = getPlayerAvatarUrl(p);
 
-                return (
-                  <tr
-                    key={`${p.id}_${idx}`}
-                    className={`transition-colors cursor-pointer ${isCompared
-                      ? 'bg-[#00FF66]/10 border-l-4 border-l-[#00FF66] hover:bg-[#00FF66]/15'
-                      : 'hover:bg-slate-800/40'
-                      }`}
-                    onClick={() => toggleCompare(p)}
-                  >
-                    <td className="py-3 px-2 text-center" onClick={(e) => e.stopPropagation()}>
-                      <button
-                        onClick={() => toggleCompare(p)}
-                        className={`w-6 h-6 rounded mx-auto flex items-center justify-center transition-all ${isCompared
-                          ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/30'
-                          : 'bg-slate-800 text-slate-400 hover:bg-slate-700 border border-slate-700'
-                          }`}
-                        title="比較対象に追加/解除"
-                      >
-                        {isCompared ? <Icon name="check" className="w-4 h-4" /> : <Icon name="plus" className="w-3.5 h-3.5" />}
-                      </button>
-                    </td>
-                    <td className="py-3 px-3">
-                      <div className="flex items-center gap-2.5">
-                        <PlayerAvatar player={p} className="w-10 h-14 rounded-lg object-contain bg-slate-950/90 border border-slate-700 flex-shrink-0" />
-                        <div>
-                          <div className="font-bold text-white text-sm flex items-center gap-1.5">
-                            <span>{p.name}</span>
-                            <span className="text-xs text-amber-400 font-num font-bold bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30">
-                              {p.rarity}
-                            </span>
-                          </div>
-                          {skill && (
-                            <div className="text-[10px] mt-0.5">
-                              <span className={`px-1 py-0.2 rounded text-[9px] ${getRankBadgeStyle(skill.rank)}`}>
-                                {skill.name}
+                  return (
+                    <tr
+                      key={`${p.id}_${idx}`}
+                      className={`transition-colors cursor-pointer ${isCompared
+                        ? 'bg-[#00FF66]/10 border-l-4 border-l-[#00FF66] hover:bg-[#00FF66]/15'
+                        : 'hover:bg-slate-800/40'
+                        }`}
+                      onClick={() => toggleCompare(p)}
+                    >
+                      <td className="py-3 px-2 text-center" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          onClick={() => toggleCompare(p)}
+                          className={`w-6 h-6 rounded mx-auto flex items-center justify-center transition-all ${isCompared
+                            ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/30'
+                            : 'bg-slate-800 text-slate-400 hover:bg-slate-700 border border-slate-700'
+                            }`}
+                          title="比較対象に追加/解除"
+                        >
+                          {isCompared ? <Icon name="check" className="w-4 h-4" /> : <Icon name="plus" className="w-3.5 h-3.5" />}
+                        </button>
+                      </td>
+                      <td className="py-3 px-3">
+                        <div className="flex items-center gap-2.5">
+                          <PlayerAvatar player={p} className="w-10 h-14 rounded-lg object-contain bg-slate-950/90 border border-slate-700 flex-shrink-0" />
+                          <div>
+                            <div className="font-bold text-white text-sm flex items-center gap-1.5">
+                              <span>{p.name}</span>
+                              <span className="text-xs text-amber-400 font-num font-bold bg-amber-400/10 px-1 py-0.2 rounded border border-amber-400/30">
+                                {p.rarity}
                               </span>
                             </div>
-                          )}
+                            {skill && (
+                              <div className="text-[10px] mt-0.5">
+                                <span className={`px-1 py-0.2 rounded text-[9px] ${getRankBadgeStyle(skill.rank)}`}>
+                                  {skill.name}
+                                </span>
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="py-3 px-2 text-center whitespace-nowrap">
-                      <span className="px-2 py-0.5 rounded font-black text-xs bg-slate-800 text-[#00FF66] font-num">
-                        {p.mainPosition}{p.subPositions && p.subPositions.length > 0 ? ` / ${p.subPositions.join(' / ')}` : ''}
-                      </span>
-                    </td>
-                    <td className="py-3 px-2 text-center text-xs font-semibold text-slate-300 whitespace-nowrap">
-                      {p.nationality ? <div className="flex items-center justify-center gap-1.5"><FlagIcon nationality={p.nationality} /><span className="font-bold">{p.nationality}</span></div> : '-'}
-                    </td>
-                    <td className="py-3 px-2 text-slate-300 text-xs whitespace-nowrap">
-                      {p.playStyle}{p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{p.playStyleLevel}</span>
-                    </td>
-                    <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00FF66] whitespace-nowrap">{p.overall}</td>
-                    <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00E5FF] whitespace-nowrap">{getPlayerTotalStats18(p)}</td>
-                    <td className="py-3 px-3 text-center whitespace-nowrap">
-                      <span className={`${getPolicyTextColor(p.policy)} font-bold whitespace-nowrap`}>{p.policy}</span>
-                    </td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'shoot')}</td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'pass')}</td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'dribble')}</td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'defense')}</td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'physical')}</td>
-                    <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'speed')}</td>
-                    <td className="py-3 px-3 text-right" onClick={(e) => e.stopPropagation()}>
-                      <button
-                        onClick={() => setSelectedPlayer(p)}
-                        className="px-2.5 py-1.5 rounded text-xs font-bold bg-[#00E5FF]/20 text-[#00E5FF] hover:bg-[#00E5FF]/30 border border-[#00E5FF]/30"
-                      >
-                        詳細
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </>
+                      </td>
+                      <td className="py-3 px-2 text-center whitespace-nowrap">
+                        <span className="px-2 py-0.5 rounded font-black text-xs bg-slate-800 text-[#00FF66] font-num">
+                          {p.mainPosition}{p.subPositions && p.subPositions.length > 0 ? ` / ${p.subPositions.join(' / ')}` : ''}
+                        </span>
+                      </td>
+                      <td className="py-3 px-2 text-center text-xs font-semibold text-slate-300 whitespace-nowrap">
+                        {p.nationality ? <div className="flex items-center justify-center gap-1.5"><FlagIcon nationality={p.nationality} /><span className="font-bold">{p.nationality}</span></div> : '-'}
+                      </td>
+                      <td className="py-3 px-2 text-slate-300 text-xs whitespace-nowrap">
+                        {p.playStyle}{p.subPlayStyles && p.subPlayStyles.length > 0 ? ` / ${p.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{p.playStyleLevel}</span>
+                      </td>
+                      <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00FF66] whitespace-nowrap">{p.overall}</td>
+                      <td className="py-3 px-2 text-center font-num font-black text-lg md:text-xl text-[#00E5FF] whitespace-nowrap">{getPlayerTotalStats18(p)}</td>
+                      <td className="py-3 px-3 text-center whitespace-nowrap">
+                        <span className={`${getPolicyTextColor(p.policy)} font-bold whitespace-nowrap`}>{p.policy}</span>
+                      </td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'shoot')}</td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'pass')}</td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'dribble')}</td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'defense')}</td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'physical')}</td>
+                      <td className="py-3 px-1.5 text-center font-num font-extrabold text-sm md:text-base text-white">{getCategoryTotal(p, 'speed')}</td>
+                      <td className="py-3 px-3 text-right" onClick={(e) => e.stopPropagation()}>
+                        <button
+                          onClick={() => setSelectedPlayer(p)}
+                          className="px-2.5 py-1.5 rounded text-xs font-bold bg-[#00E5FF]/20 text-[#00E5FF] hover:bg-[#00E5FF]/30 border border-[#00E5FF]/30"
+                        >
+                          詳細
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {filteredPlayers.map((player, idx) => (
@@ -5183,7 +5171,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         const parsed = JSON.parse(active);
         if (parsed && typeof parsed === 'object') return parsed;
       }
-    } catch (e) {}
+    } catch (e) { }
     return null;
   };
   const activePayload = useMemo(() => getInitialActiveTeam(), []);
@@ -6076,15 +6064,15 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       reqResults,
       allReqsFulfilled,
       isSelecao,
-        isLaRoja,
-        isLesBleus,
-        isQuinas,
-        portugalPlayerCount,
-        portugalBonusPct,
-        francePlayerCount,
-        franceBonusPct,
-        spainPlayerCount,
-        spainBonusPct,
+      isLaRoja,
+      isLesBleus,
+      isQuinas,
+      portugalPlayerCount,
+      portugalBonusPct,
+      francePlayerCount,
+      franceBonusPct,
+      spainPlayerCount,
+      spainBonusPct,
       brazilPlayerCount,
       brazilBonusPct,
       statBuffBreakdown,
@@ -6255,7 +6243,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     }
   };
 
-    const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
+  const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
 
   return (
     <div className="space-y-6 animate-fadeIn pb-12">
@@ -6526,37 +6514,33 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
           const fulfilledCount = comboValidation.reqResults.filter(r => r.isFulfilled).length;
 
           return (
-            <div className={`p-4 rounded-2xl border transition-all space-y-3.5 shadow-2xl ${
-              isComboActive
+            <div className={`p-4 rounded-2xl border transition-all space-y-3.5 shadow-2xl ${isComboActive
                 ? isSilver
                   ? 'bg-gradient-to-br from-slate-800/90 via-slate-900 to-slate-950 border-cyan-400/60 shadow-cyan-500/10'
                   : 'bg-gradient-to-br from-amber-950/60 via-slate-900 to-slate-950 border-amber-400/80 shadow-amber-500/20 ring-1 ring-amber-400/30'
                 : 'bg-gradient-to-br from-slate-900/90 via-slate-950 to-slate-950 border-slate-700/80'
-            }`}>
+              }`}>
               {/* Header row */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
                 <div className="flex items-center gap-3">
-                  <span className={`p-2.5 rounded-2xl text-2xl shadow-lg flex items-center justify-center ${
-                    isSilver ? 'bg-gradient-to-br from-slate-200 to-slate-400 text-slate-950 font-black' : 'bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 font-black'
-                  }`}>
+                  <span className={`p-2.5 rounded-2xl text-2xl shadow-lg flex items-center justify-center ${isSilver ? 'bg-gradient-to-br from-slate-200 to-slate-400 text-slate-950 font-black' : 'bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 font-black'
+                    }`}>
                     {isSilver ? '🥈' : '🏆'}
                   </span>
                   <div>
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm ${
-                        isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'
-                      }`}>
+                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'
+                        }`}>
                         {isSilver ? '銀コンボ' : '金コンボ'}
                       </span>
 
                       {/* コンボ発動ステータスバッジ */}
-                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow ${
-                        isComboActive
+                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow ${isComboActive
                           ? 'bg-emerald-500 text-slate-950 animate-pulse'
                           : fulfilledCount > 0
                             ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
                             : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                      }`}>
+                        }`}>
                         {isComboActive ? (
                           <>⚡ コンボ発動中！ (能力大アップ)</>
                         ) : (
@@ -6574,11 +6558,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                       <span>
                         推奨ポリシー: <strong className={getPolicyTextColor(activeComboData.policy)}>{activeComboData.policy}</strong>
                       </span>
-                      <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${
-                        comboValidation.isPolicyMatch
+                      <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${comboValidation.isPolicyMatch
                           ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                           : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                      }`}>
+                        }`}>
                         {comboValidation.isPolicyMatch ? '✓ ポリシー一致 (1.05倍)' : `✕ 不一致 (現在: ${teamPolicy})`}
                       </span>
                     </div>
@@ -6586,13 +6569,12 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                 </div>
 
                 {/* 対象能力ボーナス項目まとめ */}
-                <div className={`p-3 rounded-xl space-y-1.5 border min-w-[200px] ${
-                  isComboActive
+                <div className={`p-3 rounded-xl space-y-1.5 border min-w-[200px] ${isComboActive
                     ? isSilver
                       ? 'bg-slate-900/90 border-cyan-500/40'
                       : 'bg-slate-900/90 border-amber-500/50'
                     : 'bg-slate-950/80 border-slate-800'
-                }`}>
+                  }`}>
                   <div className="flex items-center justify-between gap-2">
                     <div className={`text-[10px] font-black uppercase tracking-wider ${isSilver ? 'text-cyan-300' : 'text-amber-300'}`}>
                       対象能力バフ項目
@@ -6606,11 +6588,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
                   <div className="flex items-center gap-1.5 flex-wrap">
                     {activeComboData.buffs.map((b, i) => (
-                      <span key={i} className={`px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${
-                        isComboActive
+                      <span key={i} className={`px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${isComboActive
                           ? isSilver ? 'bg-cyan-400 text-slate-950' : 'bg-amber-400 text-slate-950'
                           : 'bg-slate-800 text-slate-400 border border-slate-700'
-                      }`}>
+                        }`}>
                         {b.name} {b.val}
                       </span>
                     ))}
@@ -6649,15 +6630,13 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                   </div>
 
                   {/* 3. コンボ詳細能力ボーナス */}
-                  <div className={`p-3 rounded-xl bg-slate-900/90 border shadow ${
-                    isComboActive ? 'border-amber-400/60' : 'border-slate-800 opacity-60'
-                  }`}>
+                  <div className={`p-3 rounded-xl bg-slate-900/90 border shadow ${isComboActive ? 'border-amber-400/60' : 'border-slate-800 opacity-60'
+                    }`}>
                     <span className={`text-xs font-bold block ${isComboActive ? 'text-amber-300' : 'text-slate-400'}`}>
                       ③ コンボ能力加算
                     </span>
-                    <strong className={`text-xl sm:text-2xl font-num font-black block mt-1 ${
-                      isComboActive ? 'text-amber-400' : 'text-slate-500'
-                    }`}>
+                    <strong className={`text-xl sm:text-2xl font-num font-black block mt-1 ${isComboActive ? 'text-amber-400' : 'text-slate-500'
+                      }`}>
                       +{comboValidation.totalComboStatBonus}
                     </strong>
                   </div>
@@ -6723,11 +6702,10 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 
               {/* Special Nation Note if present */}
               {activeComboData.specialNote && (
-                <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${
-                  (comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0) || (comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0)
+                <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${(comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0) || (comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0)
                     ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
                     : 'bg-slate-950 border-slate-800 text-slate-300'
-                }`}>
+                  }`}>
                   <div className="flex items-center gap-2">
                     <FlagIcon nationality={comboValidation.isQuinas ? 'ポルトガル' : (comboValidation.isLesBleus ? 'フランス' : (comboValidation.isLaRoja ? 'スペイン' : 'ブラジル'))} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
                     <span className="font-bold">{activeComboData.specialNote}</span>
@@ -6778,25 +6756,23 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                       return (
                         <div
                           key={req.slotId}
-                          className={`p-2 rounded-xl border text-xs transition-all ${
-                            isOk
+                          className={`p-2 rounded-xl border text-xs transition-all ${isOk
                               ? 'bg-emerald-500/10 border-emerald-500/40 text-slate-100 shadow'
                               : player
                                 ? 'bg-rose-500/10 border-rose-500/40 text-slate-200'
                                 : 'bg-slate-900/60 border-slate-800 text-slate-400'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center justify-between gap-1 mb-1">
                             <span className="font-black px-1.5 py-0.2 rounded bg-slate-950 text-amber-400 border border-amber-500/30 text-[10px]">
                               {req.posLabel} 位置
                             </span>
-                            <span className={`px-1.5 py-0.2 rounded text-[9px] font-black ${
-                              isOk
+                            <span className={`px-1.5 py-0.2 rounded text-[9px] font-black ${isOk
                                 ? 'bg-emerald-400 text-slate-950'
                                 : player
                                   ? 'bg-rose-500 text-white'
                                   : 'bg-slate-800 text-slate-400'
-                            }`}>
+                              }`}>
                               {isOk ? '✓ 達成' : player ? '✕ 条件不一致' : '✕ 未配置'}
                             </span>
                           </div>
@@ -7461,323 +7437,323 @@ function PlayerDetailModal({ player, onClose, onCompareToggle, isCompared }) {
         <SideAdBanner position="left" isModal={true} showModalAd={showModalAd} />
 
         <div className="glass-panel max-w-2xl w-full mx-auto rounded-3xl border border-slate-700 p-4 md:p-6 space-y-5 max-h-[90vh] overflow-y-auto animate-fadeIn flex-shrink-0">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-4">
-            <PlayerAvatar player={adjustedPlayer} className="w-24 h-32 md:w-28 md:h-36 rounded-2xl object-contain bg-slate-950/90 border-2 border-[#00FF66] shadow-2xl" />
-            <div>
-              <div className="text-xs font-extrabold text-amber-400 flex items-center gap-2 font-num">
-                <span className="bg-amber-400/20 px-2 py-0.5 rounded border border-amber-400/40 text-amber-300">
-                  {adjustedPlayer.rarity}
-                </span>
-                <span>•</span>
-                <span>{adjustedPlayer.mainPosition}{adjustedPlayer.subPositions && adjustedPlayer.subPositions.length > 0 ? ` / ${adjustedPlayer.subPositions.join(' / ')}` : ''}</span>
+          <div className="flex items-start justify-between">
+            <div className="flex items-center gap-4">
+              <PlayerAvatar player={adjustedPlayer} className="w-24 h-32 md:w-28 md:h-36 rounded-2xl object-contain bg-slate-950/90 border-2 border-[#00FF66] shadow-2xl" />
+              <div>
+                <div className="text-xs font-extrabold text-amber-400 flex items-center gap-2 font-num">
+                  <span className="bg-amber-400/20 px-2 py-0.5 rounded border border-amber-400/40 text-amber-300">
+                    {adjustedPlayer.rarity}
+                  </span>
+                  <span>•</span>
+                  <span>{adjustedPlayer.mainPosition}{adjustedPlayer.subPositions && adjustedPlayer.subPositions.length > 0 ? ` / ${adjustedPlayer.subPositions.join(' / ')}` : ''}</span>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-black text-white">{adjustedPlayer.name}</h2>
+                <div className="text-xs text-slate-300 font-bold flex items-center justify-center gap-1"><FlagIcon nationality={adjustedPlayer.nationality} className="w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm" /><span>{adjustedPlayer.nationality}</span></div>
               </div>
-              <h2 className="text-2xl md:text-3xl font-black text-white">{adjustedPlayer.name}</h2>
-              <div className="text-xs text-slate-300 font-bold flex items-center justify-center gap-1"><FlagIcon nationality={adjustedPlayer.nationality} className="w-5 h-3.5 object-cover rounded-xs border border-slate-700 shadow-sm" /><span>{adjustedPlayer.nationality}</span></div>
             </div>
+            <button onClick={onClose} className="p-1 text-slate-400 hover:text-white">
+              <Icon name="x" className="w-6 h-6" />
+            </button>
           </div>
-          <button onClick={onClose} className="p-1 text-slate-400 hover:text-white">
-            <Icon name="x" className="w-6 h-6" />
-          </button>
-        </div>
 
-        {/* 育成状態切替（初期値 / 最大強化） */}
-        {player.maxEnhanced && (
-          <div className="flex items-center justify-between bg-slate-900/90 p-3 rounded-2xl border border-orange-500/40">
-            <span className="text-xs font-extrabold text-orange-400 flex items-center gap-1.5">
-              <Icon name="sparkles" className="w-4 h-4 text-orange-400" />
-              育成レベル表示切り替え
-            </span>
-            <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
-              <button
-                onClick={() => setIsMaxEnhanced(false)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isMaxEnhanced
-                  ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
-                  : 'text-slate-400 hover:text-slate-200'
-                  }`}
-              >
-                🌱 無育成 (初期値)
-              </button>
-              <button
-                onClick={() => setIsMaxEnhanced(true)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isMaxEnhanced
-                  ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20'
-                  : 'text-orange-400 hover:text-orange-300'
-                  }`}
-              >
-                🔥 最大強化
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* 🌟 成長・レアリティ段階切替シミュレーター (※配布選手は非表示) */}
-        {!isHaifuPlayer(player) && (
-        <div className={`bg-slate-900/90 p-3.5 rounded-2xl border space-y-2 transition-all ${isMaxEnhanced ? 'border-orange-500/40' : 'border-amber-500/40'
-          }`}>
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-extrabold text-amber-400 flex items-center gap-1.5">
-              <Icon name="star" className="w-4 h-4 text-amber-400" />
-              成長・レアリティ段階シミュレーター
-            </span>
-            {isMaxEnhanced ? (
-              <span className="text-xs font-num font-black text-orange-400 bg-orange-500/20 px-2 py-0.5 rounded border border-orange-500/40">
-                ☆5 (最大強化固定)
+          {/* 育成状態切替（初期値 / 最大強化） */}
+          {player.maxEnhanced && (
+            <div className="flex items-center justify-between bg-slate-900/90 p-3 rounded-2xl border border-orange-500/40">
+              <span className="text-xs font-extrabold text-orange-400 flex items-center gap-1.5">
+                <Icon name="sparkles" className="w-4 h-4 text-orange-400" />
+                育成レベル表示切り替え
               </span>
-            ) : adjustedPlayer.addedOffset > 0 && (
-              <span className="text-xs font-num font-black text-[#00FF66] bg-[#00FF66]/10 px-2 py-0.5 rounded border border-[#00FF66]/30">
-                18項目 各能力 +{adjustedPlayer.addedOffset}
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1">
-            {getPlayerRarities(adjustedPlayer || player).map(r => {
-              const isActive = isMaxEnhanced ? r === '☆5' : selectedRarity === r;
-              const isDisabled = isMaxEnhanced && r !== '☆5';
-              return (
+              <div className="flex items-center gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800">
                 <button
-                  key={r}
-                  disabled={isDisabled}
-                  onClick={() => !isDisabled && setSelectedRarity(r)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-num font-black transition-all flex-shrink-0 ${isActive
-                    ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md shadow-amber-500/20 scale-105'
-                    : isDisabled
-                      ? 'bg-slate-900/80 text-slate-600 border border-slate-800/80 opacity-30 cursor-not-allowed pointer-events-none select-none'
-                      : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                  onClick={() => setIsMaxEnhanced(false)}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${!isMaxEnhanced
+                    ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
+                    : 'text-slate-400 hover:text-slate-200'
                     }`}
-                  title={isDisabled ? "最大強化時は☆5固定です" : ""}
                 >
-                  {r}
+                  🌱 無育成 (初期値)
                 </button>
-              );
-            })}
-          </div>
-
-          <div className="text-[10px] text-slate-400 font-medium pt-1 border-t border-slate-800">
-            {isMaxEnhanced
-              ? "※ 最大強化データはレアリティ☆5育成完了時の最終能力値のため、☆5固定（他レアリティはロック）となります。"
-              : "昇格上昇値: ☆3→☆3+(+16), ☆3+→☆3++(+17), ☆3++→☆4(+32), ☆4→☆4+(+16), ☆4+→☆4++(+17), ☆4++→☆5(+32)"
-            }
-          </div>
-        </div>
-
-        )}
-
-        <div className="grid grid-cols-2 gap-3 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
-          <div>
-            <span className="text-[10px] text-slate-400 font-bold block">プレースタイル & LV</span>
-            <span className="text-sm font-extrabold text-purple-300">
-              {adjustedPlayer.playStyle}{adjustedPlayer.subPlayStyles && adjustedPlayer.subPlayStyles.length > 0 ? ` / ${adjustedPlayer.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{adjustedPlayer.playStyleLevel}</span>
-            </span>
-          </div>
-          <div>
-            <span className="text-[10px] text-slate-400 font-bold block">ポリシー</span>
-            <span className={`text-sm ${getPolicyTextColor(adjustedPlayer.policy)}`}>{adjustedPlayer.policy}</span>
-          </div>
-        </div>
-
-        <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
-          <button
-            onClick={() => setActiveTab('summary')}
-            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'summary' ? 'bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400'
-              }`}
-          >
-            概要 & 主要能力
-          </button>
-          <button
-            onClick={() => setActiveTab('details')}
-            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'details' ? 'bg-[#00E5FF]/20 text-[#00E5FF] border border-[#00E5FF]/40' : 'text-slate-400'
-              }`}
-          >
-            18項目 詳細能力値
-          </button>
-          <button
-            onClick={() => setActiveTab('tendencies')}
-            className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'tendencies' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40' : 'text-slate-400'
-              }`}
-          >
-            🧠 プレー意識 (14項目)
-          </button>
-        </div>
-
-        {activeTab === 'summary' && (
-          <div className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
-                <span className="text-xs font-bold text-slate-400">カタログ総合力</span>
-                <span className="text-3xl md:text-4xl font-num font-black text-[#00FF66] mt-1">
-                  {adjustedPlayer.overall} <span className="text-xs font-normal text-slate-400 font-sans">(MAX {adjustedPlayer.maxOverall})</span>
-                </span>
+                <button
+                  onClick={() => setIsMaxEnhanced(true)}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${isMaxEnhanced
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-500 text-slate-950 font-black shadow-md shadow-orange-500/20'
+                    : 'text-orange-400 hover:text-orange-300'
+                    }`}
+                >
+                  🔥 最大強化
+                </button>
               </div>
-              <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
-                <span className="text-xs font-bold text-slate-400">能力合計実数値 ({selectedRarity})</span>
-                <span className="text-3xl md:text-4xl font-num font-black text-[#00E5FF] mt-1">
-                  {totalStats18} <span className="text-xs font-normal text-slate-400 font-sans">(18項目合計)</span>
+            </div>
+          )}
+
+          {/* 🌟 成長・レアリティ段階切替シミュレーター (※配布選手は非表示) */}
+          {!isHaifuPlayer(player) && (
+            <div className={`bg-slate-900/90 p-3.5 rounded-2xl border space-y-2 transition-all ${isMaxEnhanced ? 'border-orange-500/40' : 'border-amber-500/40'
+              }`}>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-extrabold text-amber-400 flex items-center gap-1.5">
+                  <Icon name="star" className="w-4 h-4 text-amber-400" />
+                  成長・レアリティ段階シミュレーター
                 </span>
+                {isMaxEnhanced ? (
+                  <span className="text-xs font-num font-black text-orange-400 bg-orange-500/20 px-2 py-0.5 rounded border border-orange-500/40">
+                    ☆5 (最大強化固定)
+                  </span>
+                ) : adjustedPlayer.addedOffset > 0 && (
+                  <span className="text-xs font-num font-black text-[#00FF66] bg-[#00FF66]/10 px-2 py-0.5 rounded border border-[#00FF66]/30">
+                    18項目 各能力 +{adjustedPlayer.addedOffset}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1">
+                {getPlayerRarities(adjustedPlayer || player).map(r => {
+                  const isActive = isMaxEnhanced ? r === '☆5' : selectedRarity === r;
+                  const isDisabled = isMaxEnhanced && r !== '☆5';
+                  return (
+                    <button
+                      key={r}
+                      disabled={isDisabled}
+                      onClick={() => !isDisabled && setSelectedRarity(r)}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-num font-black transition-all flex-shrink-0 ${isActive
+                        ? 'bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 shadow-md shadow-amber-500/20 scale-105'
+                        : isDisabled
+                          ? 'bg-slate-900/80 text-slate-600 border border-slate-800/80 opacity-30 cursor-not-allowed pointer-events-none select-none'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                        }`}
+                      title={isDisabled ? "最大強化時は☆5固定です" : ""}
+                    >
+                      {r}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="text-[10px] text-slate-400 font-medium pt-1 border-t border-slate-800">
+                {isMaxEnhanced
+                  ? "※ 最大強化データはレアリティ☆5育成完了時の最終能力値のため、☆5固定（他レアリティはロック）となります。"
+                  : "昇格上昇値: ☆3→☆3+(+16), ☆3+→☆3++(+17), ☆3++→☆4(+32), ☆4→☆4+(+16), ☆4+→☆4++(+17), ☆4++→☆5(+32)"
+                }
               </div>
             </div>
 
-            <div className="space-y-2">
-              <div className="text-xs font-extrabold text-slate-300">主要6能力実数値（それぞれの詳細能力値の合計）</div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-bold">
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">SHO (シュート)</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'shoot')}</span>
+          )}
+
+          <div className="grid grid-cols-2 gap-3 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
+            <div>
+              <span className="text-[10px] text-slate-400 font-bold block">プレースタイル & LV</span>
+              <span className="text-sm font-extrabold text-purple-300">
+                {adjustedPlayer.playStyle}{adjustedPlayer.subPlayStyles && adjustedPlayer.subPlayStyles.length > 0 ? ` / ${adjustedPlayer.subPlayStyles.join(' / ')}` : ''} <span className="text-[#00FF66] font-num font-bold">LV.{adjustedPlayer.playStyleLevel}</span>
+              </span>
+            </div>
+            <div>
+              <span className="text-[10px] text-slate-400 font-bold block">ポリシー</span>
+              <span className={`text-sm ${getPolicyTextColor(adjustedPlayer.policy)}`}>{adjustedPlayer.policy}</span>
+            </div>
+          </div>
+
+          <div className="flex bg-slate-900 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => setActiveTab('summary')}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'summary' ? 'bg-[#00FF66]/20 text-[#00FF66] border border-[#00FF66]/40' : 'text-slate-400'
+                }`}
+            >
+              概要 & 主要能力
+            </button>
+            <button
+              onClick={() => setActiveTab('details')}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'details' ? 'bg-[#00E5FF]/20 text-[#00E5FF] border border-[#00E5FF]/40' : 'text-slate-400'
+                }`}
+            >
+              18項目 詳細能力値
+            </button>
+            <button
+              onClick={() => setActiveTab('tendencies')}
+              className={`flex-1 py-2 rounded-lg text-xs font-bold transition-all ${activeTab === 'tendencies' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40' : 'text-slate-400'
+                }`}
+            >
+              🧠 プレー意識 (14項目)
+            </button>
+          </div>
+
+          {activeTab === 'summary' && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                  <span className="text-xs font-bold text-slate-400">カタログ総合力</span>
+                  <span className="text-3xl md:text-4xl font-num font-black text-[#00FF66] mt-1">
+                    {adjustedPlayer.overall} <span className="text-xs font-normal text-slate-400 font-sans">(MAX {adjustedPlayer.maxOverall})</span>
+                  </span>
                 </div>
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">PAS (パス)</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'pass')}</span>
-                </div>
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">DRB (ドリブル)</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'dribble')}</span>
-                </div>
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">{isGK ? 'DEF (GK能力)' : 'DEF (守備)'}</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'defense')}</span>
-                </div>
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">PHY (フィジカル)</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'physical')}</span>
-                </div>
-                <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                  <span className="text-slate-400">SPD (スピード)</span>
-                  <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'speed')}</span>
+                <div className="bg-slate-900/80 p-4 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                  <span className="text-xs font-bold text-slate-400">能力合計実数値 ({selectedRarity})</span>
+                  <span className="text-3xl md:text-4xl font-num font-black text-[#00E5FF] mt-1">
+                    {totalStats18} <span className="text-xs font-normal text-slate-400 font-sans">(18項目合計)</span>
+                  </span>
                 </div>
               </div>
-            </div>
 
-            {/* スキル（1種類）& アビリティ（2〜3種類）専用セクション */}
-            <div className="space-y-3 pt-2 border-t border-slate-800">
-              <div>
-                <h3 className="text-xs font-extrabold text-slate-400 uppercase mb-2 flex items-center gap-1.5">
-                  <Icon name="sparkles" className="w-4 h-4 text-amber-400" />
-                  所持スキル (1種類)
-                </h3>
-                <div className="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className={`px-2 py-0.5 rounded text-xs ${getRankBadgeStyle(skill.rank)}`}>
-                      {skill.rank}スキル
-                    </span>
-                    <span className={`text-base ${getRankTextStyle(skill.rank)}`}>
-                      {skill.name}
-                    </span>
+              <div className="space-y-2">
+                <div className="text-xs font-extrabold text-slate-300">主要6能力実数値（それぞれの詳細能力値の合計）</div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs font-bold">
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">SHO (シュート)</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'shoot')}</span>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed pl-1">{skill.description}</p>
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">PAS (パス)</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'pass')}</span>
+                  </div>
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">DRB (ドリブル)</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'dribble')}</span>
+                  </div>
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">{isGK ? 'DEF (GK能力)' : 'DEF (守備)'}</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'defense')}</span>
+                  </div>
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">PHY (フィジカル)</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'physical')}</span>
+                  </div>
+                  <div className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
+                    <span className="text-slate-400">SPD (スピード)</span>
+                    <span className="text-white font-num font-black text-lg md:text-xl">{getCategoryTotal(adjustedPlayer, 'speed')}</span>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <h3 className="text-xs font-extrabold text-slate-400 uppercase mb-2 flex items-center gap-1.5">
-                  <Icon name="award" className="w-4 h-4 text-[#00E5FF]" />
-                  所持アビリティ ({abilities.length}種類)
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {abilities.map((ab, idx) => (
-                    <div key={idx} className="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`px-2 py-0.5 rounded text-[10px] ${getRankBadgeStyle(ab.rank)}`}>
-                          {ab.rank}
-                        </span>
-                        <span className={`text-xs ${getRankTextStyle(ab.rank)}`}>
-                          {ab.name}
-                        </span>
-                      </div>
-                      <p className="text-[11px] text-slate-400">{ab.description}</p>
+              {/* スキル（1種類）& アビリティ（2〜3種類）専用セクション */}
+              <div className="space-y-3 pt-2 border-t border-slate-800">
+                <div>
+                  <h3 className="text-xs font-extrabold text-slate-400 uppercase mb-2 flex items-center gap-1.5">
+                    <Icon name="sparkles" className="w-4 h-4 text-amber-400" />
+                    所持スキル (1種類)
+                  </h3>
+                  <div className="bg-slate-900/90 p-3.5 rounded-2xl border border-slate-800">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className={`px-2 py-0.5 rounded text-xs ${getRankBadgeStyle(skill.rank)}`}>
+                        {skill.rank}スキル
+                      </span>
+                      <span className={`text-base ${getRankTextStyle(skill.rank)}`}>
+                        {skill.name}
+                      </span>
                     </div>
-                  ))}
+                    <p className="text-xs text-slate-300 leading-relaxed pl-1">{skill.description}</p>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        )}
 
-        {activeTab === 'details' && (
-          <div className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {detailBreakdown.map(cat => {
-                const catTot = getCategoryTotal(adjustedPlayer, cat.key);
-
-                return (
-                  <div key={cat.key} className="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <div className="text-xs font-extrabold text-[#00FF66]">{cat.label}</div>
-                      <div className="text-xs font-num font-black text-[#00FF66] bg-[#00FF66]/10 px-2 py-0.5 rounded border border-[#00FF66]/30">
-                        合計 {catTot}
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      {cat.items.map(item => (
-                        <div key={item.name} className="flex justify-between items-center text-xs">
-                          <span className="text-slate-300 font-medium">{item.name}</span>
-                          <div className="flex items-center gap-2">
-                            <div className="w-24 bg-slate-800 rounded-full h-2 overflow-hidden">
-                              <div className="bg-[#00FF66] h-full rounded-full" style={{ width: `${Math.min(100, item.val)}%` }}></div>
-                            </div>
-                            <span className="font-num font-extrabold text-[#00E5FF] text-base w-7 text-right">{item.val}</span>
-                          </div>
+                <div>
+                  <h3 className="text-xs font-extrabold text-slate-400 uppercase mb-2 flex items-center gap-1.5">
+                    <Icon name="award" className="w-4 h-4 text-[#00E5FF]" />
+                    所持アビリティ ({abilities.length}種類)
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {abilities.map((ab, idx) => (
+                      <div key={idx} className="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className={`px-2 py-0.5 rounded text-[10px] ${getRankBadgeStyle(ab.rank)}`}>
+                            {ab.rank}
+                          </span>
+                          <span className={`text-xs ${getRankTextStyle(ab.rank)}`}>
+                            {ab.name}
+                          </span>
                         </div>
-                      ))}
-                    </div>
+                        <p className="text-[11px] text-slate-400">{ab.description}</p>
+                      </div>
+                    ))}
                   </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* 🧠 プレー意識 14項目表示エリア */}
-        {activeTab === 'tendencies' && (
-          <div className="space-y-4 animate-fadeIn">
-            <div className="bg-slate-900/90 p-4 rounded-2xl border border-amber-500/30">
-              <div className="text-xs font-extrabold text-amber-400 mb-1 flex items-center gap-1.5">
-                <Icon name="brain" className="w-4 h-4 text-amber-400" />
-                プレー意識 14項目5段階評価 (-2 〜 +2)
+                </div>
               </div>
-              <p className="text-[11px] text-slate-400">
-                選手のピッチ上でのAI行動優先度・判断傾向を指標化しています。
-              </p>
             </div>
+          )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              {PLAY_TENDENCY_ITEMS.map(item => {
-                const val = getPlayerPlayTendency(adjustedPlayer, item.key);
+          {activeTab === 'details' && (
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {detailBreakdown.map(cat => {
+                  const catTot = getCategoryTotal(adjustedPlayer, cat.key);
 
-                return (
-                  <div key={item.key} className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex items-center justify-between">
-                    <span className="text-xs font-bold text-slate-200">{item.label}</span>
-                    <span className={`px-3 py-1 rounded-lg text-sm font-num ${getTendencyBadgeStyle(val)}`}>
-                      {formatTendencyVal(val)}
-                    </span>
-                  </div>
-                );
-              })}
+                  return (
+                    <div key={cat.key} className="bg-slate-900/80 p-3.5 rounded-2xl border border-slate-800 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs font-extrabold text-[#00FF66]">{cat.label}</div>
+                        <div className="text-xs font-num font-black text-[#00FF66] bg-[#00FF66]/10 px-2 py-0.5 rounded border border-[#00FF66]/30">
+                          合計 {catTot}
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {cat.items.map(item => (
+                          <div key={item.name} className="flex justify-between items-center text-xs">
+                            <span className="text-slate-300 font-medium">{item.name}</span>
+                            <div className="flex items-center gap-2">
+                              <div className="w-24 bg-slate-800 rounded-full h-2 overflow-hidden">
+                                <div className="bg-[#00FF66] h-full rounded-full" style={{ width: `${Math.min(100, item.val)}%` }}></div>
+                              </div>
+                              <span className="font-num font-extrabold text-[#00E5FF] text-base w-7 text-right">{item.val}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+          )}
+
+          {/* 🧠 プレー意識 14項目表示エリア */}
+          {activeTab === 'tendencies' && (
+            <div className="space-y-4 animate-fadeIn">
+              <div className="bg-slate-900/90 p-4 rounded-2xl border border-amber-500/30">
+                <div className="text-xs font-extrabold text-amber-400 mb-1 flex items-center gap-1.5">
+                  <Icon name="brain" className="w-4 h-4 text-amber-400" />
+                  プレー意識 14項目5段階評価 (-2 〜 +2)
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  選手のピッチ上でのAI行動優先度・判断傾向を指標化しています。
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {PLAY_TENDENCY_ITEMS.map(item => {
+                  const val = getPlayerPlayTendency(adjustedPlayer, item.key);
+
+                  return (
+                    <div key={item.key} className="bg-slate-900/80 p-3 rounded-xl border border-slate-800 flex items-center justify-between">
+                      <span className="text-xs font-bold text-slate-200">{item.label}</span>
+                      <span className={`px-3 py-1 rounded-lg text-sm font-num ${getTendencyBadgeStyle(val)}`}>
+                        {formatTendencyVal(val)}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          <div className="flex items-center gap-3 pt-2 flex-col sm:flex-row">
+            <button
+              onClick={() => onCompareToggle(adjustedPlayer)}
+              className={`flex-1 w-full py-3 rounded-xl font-extrabold text-xs transition-all flex items-center justify-center gap-2 ${isCompared ? 'bg-[#00FF66] text-slate-950 shadow-lg shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-200 border border-slate-700'}`}
+            >
+              <Icon name="compare" className="w-4 h-4" />
+              {isCompared ? '比較リストから外す' : `比較表に追加 (${selectedRarity} 状態)`}
+            </button>
+            <button
+              onClick={() => {
+                if (onOpenTrainingSimulator) {
+                  onOpenTrainingSimulator(adjustedPlayer);
+                }
+              }}
+              className="flex-1 w-full py-3 rounded-xl font-black text-xs bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-lg shadow-orange-500/20 hover:brightness-110 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <Icon name="sparkles" className="w-4 h-4 text-slate-950" />
+              🎴 特練シミュレーターで試す
+            </button>
           </div>
-        )}
-
-        <div className="flex items-center gap-3 pt-2 flex-col sm:flex-row">
-          <button
-            onClick={() => onCompareToggle(adjustedPlayer)}
-            className={`flex-1 w-full py-3 rounded-xl font-extrabold text-xs transition-all flex items-center justify-center gap-2 ${isCompared ? 'bg-[#00FF66] text-slate-950 shadow-lg shadow-[#00FF66]/20' : 'bg-slate-800 text-slate-200 border border-slate-700'}`}
-          >
-            <Icon name="compare" className="w-4 h-4" />
-            {isCompared ? '比較リストから外す' : `比較表に追加 (${selectedRarity} 状態)`}
-          </button>
-          <button
-            onClick={() => {
-              if (onOpenTrainingSimulator) {
-                onOpenTrainingSimulator(adjustedPlayer);
-              }
-            }}
-            className="flex-1 w-full py-3 rounded-xl font-black text-xs bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-lg shadow-orange-500/20 hover:brightness-110 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
-          >
-            <Icon name="sparkles" className="w-4 h-4 text-slate-950" />
-            🎴 特練シミュレーターで試す
-          </button>
         </div>
-      </div>
 
         <SideAdBanner position="right" isModal={true} showModalAd={showModalAd} />
       </div>
@@ -8400,7 +8376,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     if (!player) return { name: catNames[catKey], baseVal: 0, gainVal: 0, boostedVal: 0, maxLimit: 2000, basePct: 0, gainPct: 0, pct: 0, isCapped: false, additionSum: 0 };
 
     const baseVal = player.baseStats ? (player.baseStats[catKey] || 1000) : 1000;
-    
+
     const subItems = subItemMap[catKey] || [];
     let additionSum = 0;
     subItems.forEach(stName => {
@@ -8449,11 +8425,11 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     currentSlots.forEach(s => {
       if (!s.active) return;
       const card = (officialCards && officialCards.find(c => c && c.id === s.cardId)) || (officialCards && officialCards[0]) || null;
-                if (!card) return null;
+      if (!card) return null;
       if (!card) return;
 
       const stageStats = card.stages[s.stage] || card.stages['完凸'] || {};
-      
+
       // プレイスタイル / 国籍ボーナスチェック
       const bonusMultiplier = calculateCardBonusMult(p, card);
       const effectiveCardMult = bonusMultiplier * conditionMultiplier;
@@ -8699,14 +8675,14 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
         (p.name && String(p.name).toLowerCase().includes(q)) ||
         (p.team && String(p.team).toLowerCase().includes(q)) ||
         (p.playStyle && String(p.playStyle).toLowerCase().includes(q));
-      
+
       const pos = p.mainPosition || p.position || '';
       let matchPos = modalPosFilter === 'ALL';
       if (modalPosFilter === 'FW') matchPos = ['CF', 'ST', 'LW', 'RW', 'LWG', 'RWG', 'LWF', 'RWF', 'FW'].includes(pos);
       if (modalPosFilter === 'MF') matchPos = ['AM', 'OMF', 'AMF', 'DM', 'DMF', 'LM', 'LMF', 'RM', 'RMF', 'CMF', 'CM', 'MF'].includes(pos);
       if (modalPosFilter === 'DF') matchPos = ['CB', 'LFB', 'RFB', 'LSB', 'RSB', 'LB', 'RB', 'DF'].includes(pos);
       if (modalPosFilter === 'GK') matchPos = (pos === 'GK' || p.category === 'GK');
-      
+
       return matchSearch && matchPos;
     });
   }, [players, modalSearchText, modalPosFilter]);
@@ -8780,7 +8756,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     setSavedBuilds(updated);
     try {
       localStorage.setItem('sfcc_saved_builds', JSON.stringify(updated));
-    } catch (e) {}
+    } catch (e) { }
 
     setIsSaveBuildModalOpen(false);
     setAutoSelectToast(`💾 マイ編成「${nameToSave}」を保存しました！`);
@@ -8792,7 +8768,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     setSavedBuilds(updated);
     try {
       localStorage.setItem('sfcc_saved_builds', JSON.stringify(updated));
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const handleLoadBuildToA = (build) => {
@@ -8850,85 +8826,85 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     });
   }, []);
 
-  
-// 6スロットシミュレーター用 ポジション別能力加算限界テーブル
-const POSITION_LIMIT_ADDITIONS = {
-  CF: {
-    '決定力': 355, 'キック力': 355, '冷静さ': 355,
-    'ショートパス': 331, 'ロングパス': 311, 'キック精度': 311,
-    '突破力': 343, 'キープ力': 343, 'ボールタッチ': 355,
-    'タックル': 319, 'パスカット': 319, 'マーク': 319,
-    'ジャンプ': 343, 'コンタクト': 355, 'スタミナ': 343,
-    '走力': 343, '敏捷性': 343
-  },
-  WING_SIDE: { // LW, RW, LM, RM
-    '決定力': 343, 'キック力': 331, '冷静さ': 343,
-    'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
-    '突破力': 355, 'キープ力': 355, 'ボールタッチ': 343,
-    'タックル': 311, 'パスカット': 319, 'マーク': 319,
-    'ジャンプ': 331, 'コンタクト': 331, 'スタミナ': 343,
-    '走力': 355, '敏捷性': 355
-  },
-  AM: {
-    '決定力': 331, 'キック力': 331, '冷静さ': 343,
-    'ショートパス': 355, 'ロングパス': 343, 'キック精度': 343,
-    '突破力': 343, 'キープ力': 343, 'ボールタッチ': 343,
-    'タックル': 343, 'パスカット': 331, 'マーク': 331,
-    'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
-    '走力': 331, '敏捷性': 343
-  },
-  DM: {
-    '決定力': 331, 'キック力': 331, '冷静さ': 343,
-    'ショートパス': 355, 'ロングパス': 355, 'キック精度': 355,
-    '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
-    'タックル': 355, 'パスカット': 343, 'マーク': 343,
-    'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
-    '走力': 331, '敏捷性': 331
-  },
-  FULLBACK: { // LFB, RFB
-    '決定力': 319, 'キック力': 319, '冷静さ': 319,
-    'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
-    '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
-    'タックル': 355, 'パスカット': 355, 'マーク': 355,
-    'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
-    '走力': 355, '敏捷性': 355
-  },
-  CB: {
-    '決定力': 319, 'キック力': 319, '冷静さ': 319,
-    'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
-    '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
-    'タックル': 355, 'パスカット': 355, 'マーク': 355,
-    'ジャンプ': 355, 'コンタクト': 355, 'スタミナ': 343,
-    '走力': 343, '敏捷性': 343
-  },
-  GK: {
-    '決定力': 307, 'キック力': 307, '冷静さ': 307,
-    'ショートパス': 355, 'ロングパス': 355, 'キック精度': 355,
-    '突破力': 307, 'キープ力': 307, 'ボールタッチ': 307,
-    'セービング': 355, '反応速度': 355, '1VS1': 355,
-    'ジャンプ': 355, 'コンタクト': 355, 'スタミナ': 343,
-    '走力': 331, '敏捷性': 331
+
+  // 6スロットシミュレーター用 ポジション別能力加算限界テーブル
+  const POSITION_LIMIT_ADDITIONS = {
+    CF: {
+      '決定力': 355, 'キック力': 355, '冷静さ': 355,
+      'ショートパス': 331, 'ロングパス': 311, 'キック精度': 311,
+      '突破力': 343, 'キープ力': 343, 'ボールタッチ': 355,
+      'タックル': 319, 'パスカット': 319, 'マーク': 319,
+      'ジャンプ': 343, 'コンタクト': 355, 'スタミナ': 343,
+      '走力': 343, '敏捷性': 343
+    },
+    WING_SIDE: { // LW, RW, LM, RM
+      '決定力': 343, 'キック力': 331, '冷静さ': 343,
+      'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
+      '突破力': 355, 'キープ力': 355, 'ボールタッチ': 343,
+      'タックル': 311, 'パスカット': 319, 'マーク': 319,
+      'ジャンプ': 331, 'コンタクト': 331, 'スタミナ': 343,
+      '走力': 355, '敏捷性': 355
+    },
+    AM: {
+      '決定力': 331, 'キック力': 331, '冷静さ': 343,
+      'ショートパス': 355, 'ロングパス': 343, 'キック精度': 343,
+      '突破力': 343, 'キープ力': 343, 'ボールタッチ': 343,
+      'タックル': 343, 'パスカット': 331, 'マーク': 331,
+      'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
+      '走力': 331, '敏捷性': 343
+    },
+    DM: {
+      '決定力': 331, 'キック力': 331, '冷静さ': 343,
+      'ショートパス': 355, 'ロングパス': 355, 'キック精度': 355,
+      '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
+      'タックル': 355, 'パスカット': 343, 'マーク': 343,
+      'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
+      '走力': 331, '敏捷性': 331
+    },
+    FULLBACK: { // LFB, RFB
+      '決定力': 319, 'キック力': 319, '冷静さ': 319,
+      'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
+      '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
+      'タックル': 355, 'パスカット': 355, 'マーク': 355,
+      'ジャンプ': 331, 'コンタクト': 343, 'スタミナ': 355,
+      '走力': 355, '敏捷性': 355
+    },
+    CB: {
+      '決定力': 319, 'キック力': 319, '冷静さ': 319,
+      'ショートパス': 343, 'ロングパス': 343, 'キック精度': 343,
+      '突破力': 331, 'キープ力': 331, 'ボールタッチ': 331,
+      'タックル': 355, 'パスカット': 355, 'マーク': 355,
+      'ジャンプ': 355, 'コンタクト': 355, 'スタミナ': 343,
+      '走力': 343, '敏捷性': 343
+    },
+    GK: {
+      '決定力': 307, 'キック力': 307, '冷静さ': 307,
+      'ショートパス': 355, 'ロングパス': 355, 'キック精度': 355,
+      '突破力': 307, 'キープ力': 307, 'ボールタッチ': 307,
+      'セービング': 355, '反応速度': 355, '1VS1': 355,
+      'ジャンプ': 355, 'コンタクト': 355, 'スタミナ': 343,
+      '走力': 331, '敏捷性': 331
+    }
+  };
+
+  function getPositionLimitGroup(pos) {
+    if (!pos) return 'CF';
+    const p = pos.toUpperCase();
+    if (p === 'CF') return 'CF';
+    if (['LW', 'RW', 'LM', 'RM'].includes(p)) return 'WING_SIDE';
+    if (p === 'AM') return 'AM';
+    if (p === 'DM') return 'DM';
+    if (['LFB', 'RFB'].includes(p)) return 'FULLBACK';
+    if (p === 'CB') return 'CB';
+    if (p === 'GK') return 'GK';
+    return 'CF';
   }
-};
 
-function getPositionLimitGroup(pos) {
-  if (!pos) return 'CF';
-  const p = pos.toUpperCase();
-  if (p === 'CF') return 'CF';
-  if (['LW', 'RW', 'LM', 'RM'].includes(p)) return 'WING_SIDE';
-  if (p === 'AM') return 'AM';
-  if (p === 'DM') return 'DM';
-  if (['LFB', 'RFB'].includes(p)) return 'FULLBACK';
-  if (p === 'CB') return 'CB';
-  if (p === 'GK') return 'GK';
-  return 'CF';
-}
-
-function getPositionStatAddition(position, statName) {
-  const grp = getPositionLimitGroup(position);
-  const addTable = POSITION_LIMIT_ADDITIONS[grp] || POSITION_LIMIT_ADDITIONS.CF;
-  return addTable[statName] || 331;
-}
+  function getPositionStatAddition(position, statName) {
+    const grp = getPositionLimitGroup(position);
+    const addTable = POSITION_LIMIT_ADDITIONS[grp] || POSITION_LIMIT_ADDITIONS.CF;
+    return addTable[statName] || 331;
+  }
 
 
 
@@ -8950,7 +8926,7 @@ function getPositionStatAddition(position, statName) {
     if (!players) return [];
     const q = modalSearchText.toLowerCase();
     return players.filter(p => {
-      const matchSearch = !modalSearchText || 
+      const matchSearch = !modalSearchText ||
         (p.name && p.name.toLowerCase().includes(q)) ||
         (p.kana && p.kana.toLowerCase().includes(q)) ||
         (p.playStyle && p.playStyle.toLowerCase().includes(q)) ||
@@ -9003,8 +8979,8 @@ function getPositionStatAddition(position, statName) {
       const q = cardSearchQuery.toLowerCase();
       const sk = getSpecialCardSkill(c);
       const ef = getSpecialCardEffect(c);
-      const matchSearch = !cardSearchQuery || 
-        (c.name ? String(c.name).toLowerCase() : "").includes(q) || 
+      const matchSearch = !cardSearchQuery ||
+        (c.name ? String(c.name).toLowerCase() : "").includes(q) ||
         (sk && ((sk.name ? String(sk.name).toLowerCase() : "").includes(q) || (sk.description ? String(sk.description).toLowerCase() : "").includes(q))) ||
         (ef && ((ef.name ? String(ef.name).toLowerCase() : "").includes(q) || (ef.description ? String(ef.description).toLowerCase() : "").includes(q)));
       const matchRank = cardRankFilter === 'ALL' || c.rank === cardRankFilter;
@@ -9017,7 +8993,7 @@ function getPositionStatAddition(position, statName) {
                 ? (c.playstyleBonus.style.includes('アタッカー') && !c.playstyleBonus.style.includes('サイドアタッカー'))
                 : c.playstyleBonus.style.includes(cardBonusFilter)
             )) ||
-            (c.playstyleBonus.bonuses && c.playstyleBonus.bonuses.some(b => 
+            (c.playstyleBonus.bonuses && c.playstyleBonus.bonuses.some(b =>
               cardBonusFilter === 'アタッカー'
                 ? (b.style.includes('アタッカー') && !b.style.includes('サイドアタッカー'))
                 : b.style.includes(cardBonusFilter)
@@ -9254,7 +9230,7 @@ function getPositionStatAddition(position, statName) {
             ⚔️ 育成ビルドA vs B 比較
           </button>
         </div>
-        </div>
+      </div>
       {/* 2. 選手選択バー (6スロットシミュレーター ＆ 育成ビルド比較時のみ表示) */}
       {subTab !== 'singleCompare' && (
         <div className="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center gap-4 justify-between shadow-lg">
@@ -9488,11 +9464,10 @@ function getPositionStatAddition(position, statName) {
                             setSlotCardRankFilter('ALL');
                             setSlotCardCatFilter('ALL');
                           }}
-                          className={`w-full p-2 rounded-xl border flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${
-                            s.active
+                          className={`w-full p-2 rounded-xl border flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${s.active
                               ? 'bg-slate-950 border-amber-500/40 hover:border-amber-400 hover:bg-slate-900 shadow-sm'
                               : 'bg-slate-950/40 border-slate-800 opacity-50 cursor-not-allowed'
-                          }`}
+                            }`}
                         >
                           <div className="flex items-center gap-2 min-w-0">
                             {card && card.getImageUrl && card.getImageUrl() ? (
@@ -9848,9 +9823,8 @@ function getPositionStatAddition(position, statName) {
                     return (
                       <div
                         key={`${c.id}_mb`}
-                        className={`p-3.5 rounded-2xl border transition-all flex flex-col gap-3 glass-panel ${
-                          isCompared ? 'bg-amber-500/10 border-amber-500/50 shadow-lg' : 'bg-slate-950 border-slate-800'
-                        }`}
+                        className={`p-3.5 rounded-2xl border transition-all flex flex-col gap-3 glass-panel ${isCompared ? 'bg-amber-500/10 border-amber-500/50 shadow-lg' : 'bg-slate-950 border-slate-800'
+                          }`}
                       >
                         {/* Header Row: Thumbnail + Info */}
                         <div className="flex items-start gap-3">
@@ -9939,11 +9913,10 @@ function getPositionStatAddition(position, statName) {
                           </button>
                           <button
                             onClick={() => toggleCompareCard(c.id)}
-                            className={`flex-1 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer text-center ${
-                              isCompared
+                            className={`flex-1 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer text-center ${isCompared
                                 ? 'bg-amber-500 text-slate-950 shadow'
                                 : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
-                            }`}
+                              }`}
                           >
                             {isCompared ? '✓ 比較中 (解除)' : '⚖️ 比較に追加'}
                           </button>
@@ -9956,296 +9929,293 @@ function getPositionStatAddition(position, statName) {
 
               {/* PC/大画面専用: フル10列 テーブル表示 */}
               <div className="hidden lg:block overflow-x-auto rounded-2xl border border-slate-800 bg-slate-950 shadow-xl">
-                  <table className="w-full text-left text-xs border-collapse font-sans">
-                    <thead>
-                      <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold select-none">
-                        <th className="p-3 text-center w-12">比較</th>
-                        <th className="p-3 text-center w-20">画像</th>
-                        <th className="p-3 text-center w-20 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('rank')}>
-                          ランク {renderCardSortIcon('rank')}
-                        </th>
-                        <th className="p-3 text-center w-28 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('category')}>
-                          特練種別 {renderCardSortIcon('category')}
-                        </th>
-                        <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('name')}>
-                          カード名称 {renderCardSortIcon('name')}
-                        </th>
-                        <th className="p-3">スキル / アビリティ / 特殊効果</th>
-                        <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('bonus')}>
-                          対象ボーナス {renderCardSortIcon('bonus')}
-                        </th>
-                        <th className="p-3 text-center cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('baseSum')}>
-                          無凸合計 {renderCardSortIcon('baseSum')}
-                        </th>
-                        <th className="p-3 text-center text-amber-400 cursor-pointer hover:text-amber-300 transition-colors" onClick={() => handleCardSort('maxSum')}>
-                          完凸合計 {renderCardSortIcon('maxSum')}
-                        </th>
-                        <th className="p-3 text-center w-36">操作</th>
+                <table className="w-full text-left text-xs border-collapse font-sans">
+                  <thead>
+                    <tr className="bg-slate-900 border-b border-slate-800 text-slate-400 font-extrabold select-none">
+                      <th className="p-3 text-center w-12">比較</th>
+                      <th className="p-3 text-center w-20">画像</th>
+                      <th className="p-3 text-center w-20 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('rank')}>
+                        ランク {renderCardSortIcon('rank')}
+                      </th>
+                      <th className="p-3 text-center w-28 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('category')}>
+                        特練種別 {renderCardSortIcon('category')}
+                      </th>
+                      <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('name')}>
+                        カード名称 {renderCardSortIcon('name')}
+                      </th>
+                      <th className="p-3">スキル / アビリティ / 特殊効果</th>
+                      <th className="p-3 cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('bonus')}>
+                        対象ボーナス {renderCardSortIcon('bonus')}
+                      </th>
+                      <th className="p-3 text-center cursor-pointer hover:text-amber-400 transition-colors" onClick={() => handleCardSort('baseSum')}>
+                        無凸合計 {renderCardSortIcon('baseSum')}
+                      </th>
+                      <th className="p-3 text-center text-amber-400 cursor-pointer hover:text-amber-300 transition-colors" onClick={() => handleCardSort('maxSum')}>
+                        完凸合計 {renderCardSortIcon('maxSum')}
+                      </th>
+                      <th className="p-3 text-center w-36">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800/60">
+                    {filteredCards.length === 0 ? (
+                      <tr>
+                        <td colSpan="10" className="p-8 text-center text-slate-500">
+                          該当する特練カードが見つかりません
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800/60">
-                      {filteredCards.length === 0 ? (
-                        <tr>
-                          <td colSpan="10" className="p-8 text-center text-slate-500">
-                            該当する特練カードが見つかりません
-                          </td>
-                        </tr>
-                      ) : (
-                        filteredCards.map(c => {
-                          const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
-                          const isCompared = selectedCompareCardIds.includes(c.id);
-                          const cardSkill = getSpecialCardSkill(c);
-                          const cardEffect = getSpecialCardEffect(c);
-                          const baseSum = Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
-                          const maxSum = Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+                    ) : (
+                      filteredCards.map(c => {
+                        const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+                        const isCompared = selectedCompareCardIds.includes(c.id);
+                        const cardSkill = getSpecialCardSkill(c);
+                        const cardEffect = getSpecialCardEffect(c);
+                        const baseSum = Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
+                        const maxSum = Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1);
 
-                          return (
-                            <tr key={c.id} className={`hover:bg-slate-900/60 transition-colors ${isCompared ? 'bg-amber-500/10' : ''}`}>
-                              <td className="p-3 text-center">
+                        return (
+                          <tr key={c.id} className={`hover:bg-slate-900/60 transition-colors ${isCompared ? 'bg-amber-500/10' : ''}`}>
+                            <td className="p-3 text-center">
+                              <button
+                                onClick={() => toggleCompareCard(c.id)}
+                                className={`w-6 h-6 rounded flex items-center justify-center mx-auto transition-all cursor-pointer ${isCompared ? 'bg-amber-500 text-slate-950 font-black shadow' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
+                                  }`}
+                              >
+                                {isCompared ? '✓' : '+'}
+                              </button>
+                            </td>
+                            <td className="p-3 text-center">
+                              {imgUrl ? (
+                                <img src={imgUrl} alt={c.name} className="w-14 h-20 object-cover rounded-md border border-slate-700 mx-auto" />
+                              ) : (
+                                <div className="w-14 h-20 bg-slate-950 rounded border border-slate-800 flex items-center justify-center text-[10px] text-slate-500 mx-auto">
+                                  なし
+                                </div>
+                              )}
+                            </td>
+                            <td className="p-3 text-center">
+                              <span className={`px-2 py-0.5 rounded text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
+                                {c.rank}
+                              </span>
+                            </td>
+                            <td className="p-3 text-center">
+                              <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold whitespace-nowrap">
+                                ⚽ {c.cardType || c.category || 'ストライカー'}
+                              </span>
+                            </td>
+                            <td className="p-3 font-black text-white text-sm">
+                              {c.name}
+                            </td>
+                            <td className="p-3">
+                              {!cardSkill && !cardEffect ? (
+                                <span className="text-slate-500 text-[10px]">-</span>
+                              ) : (
+                                <div className="space-y-1.5">
+                                  {cardSkill && (
+                                    <div className="space-y-0.5">
+                                      <div className="flex items-center gap-1.5 flex-wrap">
+                                        <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
+                                          {cardSkill.rank === '特殊効果' || cardSkill.type === '特殊効果' || cardSkill.rank === cardSkill.type ? (cardSkill.rank || cardSkill.type) : (cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
+                                        </span>
+                                        <span className={`text-[11px] font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
+                                          {cardSkill.name}
+                                        </span>
+                                      </div>
+                                      <p className="text-[10px] text-slate-400 line-clamp-1">{cardSkill.description}</p>
+                                    </div>
+                                  )}
+                                  {cardEffect && (
+                                    <div className="space-y-0.5">
+                                      <div className="flex items-center gap-1.5 flex-wrap">
+                                        <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
+                                          ⚡ 特殊効果
+                                        </span>
+                                        <span className="text-[11px] font-black text-cyan-300">
+                                          {cardEffect.name}
+                                        </span>
+                                      </div>
+                                      <p className="text-[10px] text-cyan-200/70 line-clamp-1">{cardEffect.description}</p>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </td>
+                            <td className="p-3">
+                              {c.playstyleBonus ? (
+                                <div className="flex flex-wrap gap-1 items-center">
+                                  {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
+                                    c.playstyleBonus.bonuses.map(b => (
+                                      <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
+                                        <span>🎯</span>
+                                        <span>{b.style} +{b.percent}%</span>
+                                      </span>
+                                    ))
+                                  ) : (
+                                    <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
+                                      <span>🎯</span>
+                                      <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
+                                    </span>
+                                  )}
+                                </div>
+                              ) : (
+                                <span className="text-slate-500 text-[10px]">-</span>
+                              )}
+                            </td>
+                            <td className="p-3 text-center font-num font-bold text-slate-300 text-sm">
+                              {baseSum}
+                            </td>
+                            <td className="p-3 text-center font-num font-black text-amber-400 text-sm bg-amber-500/5">
+                              {maxSum}
+                            </td>
+                            <td className="p-3 text-center">
+                              <div className="flex items-center justify-center gap-1.5">
+                                <button
+                                  onClick={() => setDetailModalCard(c)}
+                                  className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer whitespace-nowrap"
+                                >
+                                  📄 詳細
+                                </button>
                                 <button
                                   onClick={() => toggleCompareCard(c.id)}
-                                  className={`w-6 h-6 rounded flex items-center justify-center mx-auto transition-all cursor-pointer ${
-                                    isCompared ? 'bg-amber-500 text-slate-950 font-black shadow' : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
-                                  }`}
-                                >
-                                  {isCompared ? '✓' : '+'}
-                                </button>
-                              </td>
-                              <td className="p-3 text-center">
-                                {imgUrl ? (
-                                  <img src={imgUrl} alt={c.name} className="w-14 h-20 object-cover rounded-md border border-slate-700 mx-auto" />
-                                ) : (
-                                  <div className="w-14 h-20 bg-slate-950 rounded border border-slate-800 flex items-center justify-center text-[10px] text-slate-500 mx-auto">
-                                    なし
-                                  </div>
-                                )}
-                              </td>
-                              <td className="p-3 text-center">
-                                <span className={`px-2 py-0.5 rounded text-[10px] ${getCardRankBadgeStyle(c.rank)}`}>
-                                  {c.rank}
-                                </span>
-                              </td>
-                              <td className="p-3 text-center">
-                                <span className="px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold whitespace-nowrap">
-                                  ⚽ {c.cardType || c.category || 'ストライカー'}
-                                </span>
-                              </td>
-                              <td className="p-3 font-black text-white text-sm">
-                                {c.name}
-                              </td>
-                              <td className="p-3">
-                                {!cardSkill && !cardEffect ? (
-                                  <span className="text-slate-500 text-[10px]">-</span>
-                                ) : (
-                                  <div className="space-y-1.5">
-                                    {cardSkill && (
-                                      <div className="space-y-0.5">
-                                        <div className="flex items-center gap-1.5 flex-wrap">
-                                          <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
-                                            {cardSkill.rank === '特殊効果' || cardSkill.type === '特殊効果' || cardSkill.rank === cardSkill.type ? (cardSkill.rank || cardSkill.type) : (cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
-                                          </span>
-                                          <span className={`text-[11px] font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
-                                            {cardSkill.name}
-                                          </span>
-                                        </div>
-                                        <p className="text-[10px] text-slate-400 line-clamp-1">{cardSkill.description}</p>
-                                      </div>
-                                    )}
-                                    {cardEffect && (
-                                      <div className="space-y-0.5">
-                                        <div className="flex items-center gap-1.5 flex-wrap">
-                                          <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
-                                            ⚡ 特殊効果
-                                          </span>
-                                          <span className="text-[11px] font-black text-cyan-300">
-                                            {cardEffect.name}
-                                          </span>
-                                        </div>
-                                        <p className="text-[10px] text-cyan-200/70 line-clamp-1">{cardEffect.description}</p>
-                                      </div>
-                                    )}
-                                  </div>
-                                )}
-                              </td>
-                              <td className="p-3">
-                                {c.playstyleBonus ? (
-                                  <div className="flex flex-wrap gap-1 items-center">
-                                    {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
-                                      c.playstyleBonus.bonuses.map(b => (
-                                        <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
-                                          <span>🎯</span>
-                                          <span>{b.style} +{b.percent}%</span>
-                                        </span>
-                                      ))
-                                    ) : (
-                                      <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2 py-0.5 rounded-lg border border-amber-500/20 flex items-center gap-1 whitespace-nowrap shadow-sm">
-                                        <span>🎯</span>
-                                        <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
-                                      </span>
-                                    )}
-                                  </div>
-                                ) : (
-                                  <span className="text-slate-500 text-[10px]">-</span>
-                                )}
-                              </td>
-                              <td className="p-3 text-center font-num font-bold text-slate-300 text-sm">
-                                {baseSum}
-                              </td>
-                              <td className="p-3 text-center font-num font-black text-amber-400 text-sm bg-amber-500/5">
-                                {maxSum}
-                              </td>
-                              <td className="p-3 text-center">
-                                <div className="flex items-center justify-center gap-1.5">
-                                  <button
-                                    onClick={() => setDetailModalCard(c)}
-                                    className="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all cursor-pointer whitespace-nowrap"
-                                  >
-                                    📄 詳細
-                                  </button>
-                                  <button
-                                    onClick={() => toggleCompareCard(c.id)}
-                                    className={`px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
-                                      isCompared
-                                        ? 'bg-amber-500 text-slate-950 shadow'
-                                        : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                                  className={`px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer whitespace-nowrap ${isCompared
+                                      ? 'bg-amber-500 text-slate-950 shadow'
+                                      : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
                                     }`}
-                                  >
-                                    {isCompared ? '解除' : '比較'}
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </>
-            ) : (
-              /* Card Grid List */
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {filteredCards.map(c => {
-                  const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
-                  const isCompared = selectedCompareCardIds.includes(c.id);
-                  const cardSkill = getSpecialCardSkill(c);
-                  const cardEffect = getSpecialCardEffect(c);
+                                >
+                                  {isCompared ? '解除' : '比較'}
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          ) : (
+            /* Card Grid List */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filteredCards.map(c => {
+                const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+                const isCompared = selectedCompareCardIds.includes(c.id);
+                const cardSkill = getSpecialCardSkill(c);
+                const cardEffect = getSpecialCardEffect(c);
 
-                  return (
-                    <div
-                      key={c.id}
-                      className="bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-amber-500/40 p-4 space-y-3.5 shadow-xl transition-all flex flex-col justify-between group"
-                    >
-                      <div className="space-y-3">
-                        {/* Top Header */}
-                        <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
-                          <div className="flex items-center gap-1.5">
-                            <span className={`px-2.5 py-0.5 rounded-md text-xs ${getCardRankBadgeStyle(c.rank)}`}>
-                              {c.rank}
-                            </span>
-                            <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold">
-                              ⚽ {c.cardType || c.category || 'ストライカー'}
-                            </span>
-                          </div>
-                          <h4 className="text-sm font-black text-white truncate flex-1 ml-2">{c.name}</h4>
+                return (
+                  <div
+                    key={c.id}
+                    className="bg-slate-900/90 rounded-2xl border border-slate-800 hover:border-amber-500/40 p-4 space-y-3.5 shadow-xl transition-all flex flex-col justify-between group"
+                  >
+                    <div className="space-y-3">
+                      {/* Top Header */}
+                      <div className="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
+                        <div className="flex items-center gap-1.5">
+                          <span className={`px-2.5 py-0.5 rounded-md text-xs ${getCardRankBadgeStyle(c.rank)}`}>
+                            {c.rank}
+                          </span>
+                          <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-extrabold">
+                            ⚽ {c.cardType || c.category || 'ストライカー'}
+                          </span>
                         </div>
-
-                        {/* Card Image Frame */}
-                        {imgUrl ? (
-                          <div className="w-full max-w-[200px] mx-auto rounded-xl overflow-hidden border border-amber-500/30 p-1.5 group-hover:scale-105 transition-transform duration-300">
-                            <img src={imgUrl} alt={c.name} className="w-full h-auto max-h-[220px] object-cover rounded-lg" />
-                          </div>
-                        ) : (
-                          <div className="w-full h-40 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-500 text-xs">
-                            画像準備中
-                          </div>
-                        )}
-
-                        {/* Playstyle Bonus */}
-                        {c.playstyleBonus && (
-                          <div className="flex flex-wrap justify-center gap-1.5">
-                            {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
-                              c.playstyleBonus.bonuses.map(b => (
-                                <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-xl border border-amber-500/20 flex items-center gap-1 text-center shadow-sm">
-                                  <span>🎯</span>
-                                  <span>{b.style} +{b.percent}%</span>
-                                </span>
-                              ))
-                            ) : (
-                              <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-xl border border-amber-500/20 flex items-center gap-1 text-center shadow-sm">
-                                <span>🎯</span>
-                                <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
-                              </span>
-                            )}
-                          </div>
-                        )}
-
-                        {/* Skill / Ability Preview */}
-                        {cardSkill && (
-                          <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800 space-y-1">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
-                                ✨ {(cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
-                              </span>
-                              <span className={`text-xs font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
-                                {cardSkill.name}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-slate-300 leading-snug line-clamp-2">{cardSkill.description}</p>
-                          </div>
-                        )}
-
-                        {cardEffect && (
-                          <div className="bg-cyan-950/40 p-2.5 rounded-xl border border-cyan-500/30 space-y-1">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
-                                ⚡ 特殊効果
-                              </span>
-                              <span className="text-xs font-black text-cyan-300">
-                                {cardEffect.name}
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-cyan-200/80 leading-snug line-clamp-2">{cardEffect.description}</p>
-                          </div>
-                        )}
-
-                        {/* Limit Break Stat Table */}
-                        <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800 space-y-1">
-                          <div className="text-[10px] font-bold text-slate-400 flex items-center justify-between">
-                            <span>能力値上昇合計 (無凸 → 完凸):</span>
-                            <span className="text-amber-400 font-num font-black">{Object.values(c.stages['無凸']||{}).reduce((a,b)=>a+b,0).toFixed(1)} → {Object.values(c.stages['完凸']||{}).reduce((a,b)=>a+b,0).toFixed(1)}</span>
-                          </div>
-                        </div>
+                        <h4 className="text-sm font-black text-white truncate flex-1 ml-2">{c.name}</h4>
                       </div>
 
-                      {/* Action Buttons */}
-                      <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/80">
-                        <button
-                          onClick={() => setDetailModalCard(c)}
-                          className="w-full py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center justify-center gap-1 cursor-pointer"
-                        >
-                          <Icon name="info" className="w-3.5 h-3.5 text-amber-400" />
-                          詳細表示
-                        </button>
+                      {/* Card Image Frame */}
+                      {imgUrl ? (
+                        <div className="w-full max-w-[200px] mx-auto rounded-xl overflow-hidden border border-amber-500/30 p-1.5 group-hover:scale-105 transition-transform duration-300">
+                          <img src={imgUrl} alt={c.name} className="w-full h-auto max-h-[220px] object-cover rounded-lg" />
+                        </div>
+                      ) : (
+                        <div className="w-full h-40 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-500 text-xs">
+                          画像準備中
+                        </div>
+                      )}
 
-                        <button
-                          onClick={() => toggleCompareCard(c.id)}
-                          className={`w-full py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer ${
-                            isCompared
-                              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                              : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
-                          }`}
-                        >
-                          <Icon name="compare" className="w-3.5 h-3.5" />
-                          {isCompared ? '✅ 選択中' : '⚖️ 比較'}
-                        </button>
+                      {/* Playstyle Bonus */}
+                      {c.playstyleBonus && (
+                        <div className="flex flex-wrap justify-center gap-1.5">
+                          {c.playstyleBonus.bonuses && Array.isArray(c.playstyleBonus.bonuses) ? (
+                            c.playstyleBonus.bonuses.map(b => (
+                              <span key={b.style} className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-xl border border-amber-500/20 flex items-center gap-1 text-center shadow-sm">
+                                <span>🎯</span>
+                                <span>{b.style} +{b.percent}%</span>
+                              </span>
+                            ))
+                          ) : (
+                            <span className="text-[11px] font-extrabold text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-xl border border-amber-500/20 flex items-center gap-1 text-center shadow-sm">
+                              <span>🎯</span>
+                              <span>{c.playstyleBonus.style} +{c.playstyleBonus.percent}%</span>
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Skill / Ability Preview */}
+                      {cardSkill && (
+                        <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800 space-y-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className={`px-1.5 py-0.5 rounded text-[10px] ${getRankBadgeStyle(cardSkill.rank || '金')}`}>
+                              ✨ {(cardSkill.rank || '金') + (cardSkill.type || 'スキル')}
+                            </span>
+                            <span className={`text-xs font-black ${getRankTextStyle(cardSkill.rank || '金')}`}>
+                              {cardSkill.name}
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-300 leading-snug line-clamp-2">{cardSkill.description}</p>
+                        </div>
+                      )}
+
+                      {cardEffect && (
+                        <div className="bg-cyan-950/40 p-2.5 rounded-xl border border-cyan-500/30 space-y-1">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
+                              ⚡ 特殊効果
+                            </span>
+                            <span className="text-xs font-black text-cyan-300">
+                              {cardEffect.name}
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-cyan-200/80 leading-snug line-clamp-2">{cardEffect.description}</p>
+                        </div>
+                      )}
+
+                      {/* Limit Break Stat Table */}
+                      <div className="bg-slate-950 p-2.5 rounded-xl border border-slate-800 space-y-1">
+                        <div className="text-[10px] font-bold text-slate-400 flex items-center justify-between">
+                          <span>能力値上昇合計 (無凸 → 完凸):</span>
+                          <span className="text-amber-400 font-num font-black">{Object.values(c.stages['無凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1)} → {Object.values(c.stages['完凸'] || {}).reduce((a, b) => a + b, 0).toFixed(1)}</span>
+                        </div>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+
+                    {/* Action Buttons */}
+                    <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800/80">
+                      <button
+                        onClick={() => setDetailModalCard(c)}
+                        className="w-full py-2 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                      >
+                        <Icon name="info" className="w-3.5 h-3.5 text-amber-400" />
+                        詳細表示
+                      </button>
+
+                      <button
+                        onClick={() => toggleCompareCard(c.id)}
+                        className={`w-full py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer ${isCompared
+                            ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                            : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                          }`}
+                      >
+                        <Icon name="compare" className="w-3.5 h-3.5" />
+                        {isCompared ? '✅ 選択中' : '⚖️ 比較'}
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
       )}
 
       {/* ─────────────────────────────────────────────────────────────
@@ -10263,7 +10233,7 @@ function getPositionStatAddition(position, statName) {
                   {savedBuilds.length} 件のマイ編成保存済み
                 </span>
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleSwapBuilds}
@@ -10312,7 +10282,7 @@ function getPositionStatAddition(position, statName) {
                   <div>
                     <div className="text-[10px] text-slate-400 font-bold">カード使用後 能力合計実数値</div>
                     <div className="text-2xl font-black font-num text-amber-400">
-                      {floor1Decimal((calcA.catBaseMap ? Object.values(calcA.catBaseMap).reduce((a,b)=>a+b,0) : 0) + calcA.totalGain)}
+                      {floor1Decimal((calcA.catBaseMap ? Object.values(calcA.catBaseMap).reduce((a, b) => a + b, 0) : 0) + calcA.totalGain)}
                     </div>
                   </div>
                   <div className="text-right">
@@ -10383,7 +10353,7 @@ function getPositionStatAddition(position, statName) {
                   <div>
                     <div className="text-[10px] text-slate-400 font-bold">カード使用後 能力合計実数値</div>
                     <div className="text-2xl font-black font-num text-cyan-400">
-                      {floor1Decimal((calcB.catBaseMap ? Object.values(calcB.catBaseMap).reduce((a,b)=>a+b,0) : 0) + calcB.totalGain)}
+                      {floor1Decimal((calcB.catBaseMap ? Object.values(calcB.catBaseMap).reduce((a, b) => a + b, 0) : 0) + calcB.totalGain)}
                     </div>
                   </div>
                   <div className="text-right">
@@ -10480,7 +10450,7 @@ function getPositionStatAddition(position, statName) {
         </div>
       )}
 
-            {/* 1. スロット装着カード変更ポップアップモーダル */}
+      {/* 1. スロット装着カード変更ポップアップモーダル */}
       {activeSlotForCardModal !== null && (
         <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-3 md:p-4 pb-16 md:pb-4 animate-fadeIn">
           <div className="glass-panel max-w-3xl w-full rounded-2xl border border-amber-500/40 bg-slate-900 p-4 sm:p-6 flex flex-col shadow-2xl max-h-[80vh] sm:max-h-[85vh] space-y-4">
@@ -10575,11 +10545,10 @@ function getPositionStatAddition(position, statName) {
                         updateSlot(activeSlotForCardModal, 'cardId', c.id);
                         setActiveSlotForCardModal(null);
                       }}
-                      className={`p-3 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${
-                        isCurrent
+                      className={`p-3 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${isCurrent
                           ? 'border-amber-400 bg-amber-500/10 shadow-md'
                           : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/80'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         {imgUrl ? (
@@ -10928,9 +10897,8 @@ function getPositionStatAddition(position, statName) {
                 <div
                   key={p.id || p.name}
                   onClick={() => handleSelectPlayerFromModal(p)}
-                  className={`p-2.5 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${
-                    currentPlayer?.name === p.name ? 'border-amber-400/80 bg-amber-500/10' : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
-                  }`}
+                  className={`p-2.5 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${currentPlayer?.name === p.name ? 'border-amber-400/80 bg-amber-500/10' : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
+                    }`}
                 >
                   <div className="flex items-center gap-3">
                     <PlayerAvatar player={p} className="w-10 h-14 rounded-lg object-contain bg-slate-900 border border-slate-800 flex-shrink-0" />
@@ -11221,11 +11189,10 @@ function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, sa
               return (
                 <div
                   key={c.id}
-                  className={`p-3 rounded-2xl border transition-all flex items-center justify-between gap-2.5 ${
-                    isOwned
+                  className={`p-3 rounded-2xl border transition-all flex items-center justify-between gap-2.5 ${isOwned
                       ? 'bg-amber-500/10 border-amber-500/50 shadow-md'
                       : 'bg-slate-950/60 border-slate-800 opacity-60 hover:opacity-80'
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer" onClick={() => toggleOwned(c.id)}>
                     <input
@@ -11489,11 +11456,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                 <button
                   type="button"
                   onClick={() => setOptimizationStrategy('EFFECTIVE_MAX')}
-                  className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${
-                    optimizationStrategy === 'EFFECTIVE_MAX'
+                  className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${optimizationStrategy === 'EFFECTIVE_MAX'
                       ? 'bg-amber-500/20 text-amber-300 border-amber-400 shadow-md'
                       : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
-                  }`}
+                    }`}
                 >
                   <span className="text-white flex items-center gap-1">
                     🔥 最大数値編成 (限界値溢れ無効化)
@@ -11506,11 +11472,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                 <button
                   type="button"
                   onClick={() => setOptimizationStrategy('SAFE_150')}
-                  className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${
-                    optimizationStrategy === 'SAFE_150'
+                  className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${optimizationStrategy === 'SAFE_150'
                       ? 'bg-blue-500/20 text-blue-300 border-blue-400 shadow-md'
                       : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
-                  }`}
+                    }`}
                 >
                   <span className="text-white flex items-center gap-1">
                     🛡️ 無難最適編成 (限界値 -155〜-135 安全枠)
@@ -11813,11 +11778,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                           if (isSelected) removeAbility(ab.key);
                           else addAbility(ab.key);
                         }}
-                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                          isSelected
+                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected
                             ? 'bg-amber-500/15 border-amber-500/50 text-amber-200'
                             : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
                           {imgUrl ? (
@@ -11840,11 +11804,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                         </div>
 
                         <button
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${
-                            isSelected
+                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${isSelected
                               ? 'bg-amber-500 text-slate-950'
                               : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                          }`}
+                            }`}
                         >
                           {isSelected ? '✓ 選択中' : '+ 追加'}
                         </button>
@@ -11911,11 +11874,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                           if (isSelected) removeSkill(sk.name);
                           else addSkill(sk.name);
                         }}
-                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
-                          isSelected
+                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected
                             ? 'bg-cyan-500/15 border-cyan-500/50 text-cyan-200'
                             : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
                           {imgUrl ? (
@@ -11938,11 +11900,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                         </div>
 
                         <button
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${
-                            isSelected
+                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${isSelected
                               ? 'bg-cyan-500 text-slate-950'
                               : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                          }`}
+                            }`}
                         >
                           {isSelected ? '✓ 選択中' : '+ 追加'}
                         </button>
@@ -12060,11 +12021,10 @@ function SpecialCardDetailModal({ card, onClose, onCompareToggle, isCompared }) 
               <button
                 key={st}
                 onClick={() => setSelectedStage(st)}
-                className={`py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
-                  selectedStage === st
+                className={`py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${selectedStage === st
                     ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/20'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
-                }`}
+                  }`}
               >
                 {st}
               </button>
@@ -12195,11 +12155,10 @@ function SpecialCardDetailModal({ card, onClose, onCompareToggle, isCompared }) 
             onClick={() => {
               if (onCompareToggle) onCompareToggle(card.id);
             }}
-            className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-              isCompared
+            className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${isCompared
                 ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
                 : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
-            }`}
+              }`}
           >
             <span>⚖️</span>
             <span>{isCompared ? '✅ 比較表から解除' : '比較表に追加する'}</span>
@@ -12302,13 +12261,13 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
     }
 
     if (rawVal === 0) {
-      if (statName === 'シュート') rawVal = (Number(stageStats['決定力'])||0) + (Number(stageStats['キック力'])||0) + (Number(stageStats['冷静さ'])||0);
-      else if (statName === 'パス') rawVal = (Number(stageStats['ショートパス'])||0) + (Number(stageStats['ロングパス'])||0) + (Number(stageStats['キック精度'])||0) + (Number(stageStats['パス精度'])||0);
-      else if (statName === 'ドリブル') rawVal = (Number(stageStats['突破力'])||0) + (Number(stageStats['キープ力'])||0) + (Number(stageStats['キープ'])||0) + (Number(stageStats['ボールタッチ'])||0);
-      else if (statName === 'ディフェンス') rawVal = (Number(stageStats['タックル'])||0) + (Number(stageStats['パスカット'])||0) + (Number(stageStats['マーク'])||0);
-      else if (statName === 'フィジカル') rawVal = (Number(stageStats['ジャンプ'])||0) + (Number(stageStats['コンタクト'])||0) + (Number(stageStats['スタミナ'])||0) + (Number(stageStats['メンタル'])||0);
-      else if (statName === 'スピード') rawVal = (Number(stageStats['走力'])||0) + (Number(stageStats['敏捷性'])||0);
-      else if (statName === 'GK能力') rawVal = (Number(stageStats['セービング'])||0) + (Number(stageStats['反応速度'])||0) + (Number(stageStats['1対1'])||0) + (Number(stageStats['1VS1'])||0) + (Number(stageStats['ポジショニング'])||0) + (Number(stageStats['ハイボール'])||0) + (Number(stageStats['飛び出し'])||0);
+      if (statName === 'シュート') rawVal = (Number(stageStats['決定力']) || 0) + (Number(stageStats['キック力']) || 0) + (Number(stageStats['冷静さ']) || 0);
+      else if (statName === 'パス') rawVal = (Number(stageStats['ショートパス']) || 0) + (Number(stageStats['ロングパス']) || 0) + (Number(stageStats['キック精度']) || 0) + (Number(stageStats['パス精度']) || 0);
+      else if (statName === 'ドリブル') rawVal = (Number(stageStats['突破力']) || 0) + (Number(stageStats['キープ力']) || 0) + (Number(stageStats['キープ']) || 0) + (Number(stageStats['ボールタッチ']) || 0);
+      else if (statName === 'ディフェンス') rawVal = (Number(stageStats['タックル']) || 0) + (Number(stageStats['パスカット']) || 0) + (Number(stageStats['マーク']) || 0);
+      else if (statName === 'フィジカル') rawVal = (Number(stageStats['ジャンプ']) || 0) + (Number(stageStats['コンタクト']) || 0) + (Number(stageStats['スタミナ']) || 0) + (Number(stageStats['メンタル']) || 0);
+      else if (statName === 'スピード') rawVal = (Number(stageStats['走力']) || 0) + (Number(stageStats['敏捷性']) || 0);
+      else if (statName === 'GK能力') rawVal = (Number(stageStats['セービング']) || 0) + (Number(stageStats['反応速度']) || 0) + (Number(stageStats['1対1']) || 0) + (Number(stageStats['1VS1']) || 0) + (Number(stageStats['ポジショニング']) || 0) + (Number(stageStats['ハイボール']) || 0) + (Number(stageStats['飛び出し']) || 0);
     }
 
     if (rawVal === 0) return { val: 0, rawVal: 0, isBoosted: false };
@@ -12398,7 +12357,7 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
       <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-1 sm:px-2 my-auto">
         <SideAdBanner position="left" isModal={true} showModalAd={showModalAd} />
         <div className="glass-panel max-w-[98vw] xl:max-w-[96vw] w-full mx-auto rounded-2xl sm:rounded-3xl border border-amber-500/40 p-2 sm:p-4 landscape-short-compact-modal flex flex-col max-h-[98vh] overflow-hidden shadow-2xl space-y-2.5">
-          
+
           {/* Modal Header */}
           <div className="flex-shrink-0 border-b border-slate-800 pb-2.5 landscape-short-compact-py flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
@@ -12442,21 +12401,19 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
               <div className="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-amber-500/40">
                 <button
                   onClick={() => handleGlobalStageChange('無凸')}
-                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${
-                    globalStage === '無凸'
+                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${globalStage === '無凸'
                       ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
                       : 'text-slate-400 hover:text-slate-200'
-                  }`}
+                    }`}
                 >
                   🌱 無凸
                 </button>
                 <button
                   onClick={() => handleGlobalStageChange('完凸')}
-                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all flex items-center gap-0.5 cursor-pointer ${
-                    globalStage === '完凸'
+                  className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all flex items-center gap-0.5 cursor-pointer ${globalStage === '完凸'
                       ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black shadow-md'
                       : 'text-slate-400 hover:text-slate-200'
-                  }`}
+                    }`}
                 >
                   ⚡ 完凸
                 </button>
@@ -12508,324 +12465,323 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
               {/* PC・スマホ共通 統一1画面フィット比較テーブル (横スクロール完全無し) */}
               <div className="flex-1 overflow-y-auto overflow-x-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-inner max-h-[calc(96vh-90px)] landscape-short-compact-container scrollbar-thin scrollbar-thumb-amber-500/30">
                 <table className="w-full table-fixed min-w-full border-collapse text-left text-xs sm:text-sm font-sans">
-                <thead className="sticky top-0 z-30 shadow-md">
-                  <tr className="bg-slate-900 border-b border-slate-800 text-slate-300">
-                    <th className="p-1 sm:p-2 sticky left-0 top-0 z-40 bg-slate-900 w-20 sm:w-28 md:w-36 min-w-[70px] sm:min-w-[110px] border-r border-slate-800 font-black text-[9px] sm:text-xs text-slate-200 uppercase tracking-wider shadow-md overflow-hidden">
-                      <div className="truncate font-black">比較項目</div>
-                    </th>
-                    {selectedCards.map(c => {
-                      const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
-                      const currentStage = getCardStage(c.id);
+                  <thead className="sticky top-0 z-30 shadow-md">
+                    <tr className="bg-slate-900 border-b border-slate-800 text-slate-300">
+                      <th className="p-1 sm:p-2 sticky left-0 top-0 z-40 bg-slate-900 w-20 sm:w-28 md:w-36 min-w-[70px] sm:min-w-[110px] border-r border-slate-800 font-black text-[9px] sm:text-xs text-slate-200 uppercase tracking-wider shadow-md overflow-hidden">
+                        <div className="truncate font-black">比較項目</div>
+                      </th>
+                      {selectedCards.map(c => {
+                        const imgUrl = c.getImageUrl ? c.getImageUrl() : '';
+                        const currentStage = getCardStage(c.id);
 
-                      return (
-                        <th key={c.id} className="p-0.5 sm:p-2 text-center border-r border-slate-800/80 last:border-r-0 relative group bg-slate-900 sticky top-0 z-30 shadow-md align-top overflow-hidden">
-                          <div className="space-y-1 flex flex-col items-center w-full overflow-hidden">
-                            {/* Card Image Container */}
-                            <div className="relative mx-auto flex-shrink-0 landscape-short-hide">
-                              {imgUrl ? (
-                                <img
-                                  src={imgUrl}
-                                  alt={c.name}
-                                  className="w-8 h-11 sm:w-14 sm:h-20 md:w-16 md:h-24 object-cover rounded-lg border border-amber-500/40 mx-auto shadow-md"
-                                />
-                              ) : (
-                                <div className="w-8 h-11 sm:w-14 sm:h-20 md:w-16 md:h-24 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-center text-[9px] sm:text-xs text-amber-400 font-black mx-auto">
-                                  {c.rank}
-                                </div>
-                              )}
-
-                              {/* Remove button */}
-                              <button
-                                onClick={() => onRemoveCard(c.id)}
-                                className="absolute -bottom-1 -right-1 text-slate-300 hover:text-white bg-slate-900/90 hover:bg-red-600/90 p-0.5 sm:p-1 rounded-full border border-slate-700 hover:border-red-400/80 shadow-md cursor-pointer transition-all z-20"
-                                title="比較表から削除"
-                              >
-                                <Icon name="x" className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
-                              </button>
-                            </div>
-
-                            <div className="w-full text-center px-0.5 overflow-hidden">
-                              <div className="flex items-center justify-center gap-0.5 flex-wrap">
-                                <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getCardRankBadgeStyle(c.rank)}`}>
-                                  {c.rank}
-                                </span>
-                                <span className="px-0.5 py-0.2 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[6px] sm:text-[9px] font-extrabold truncate max-w-full">
-                                  {c.cardType || c.category || 'ストライカー'}
-                                </span>
-                              </div>
-                              <h4 className="text-[9px] sm:text-xs font-black text-white mt-0.5 leading-tight truncate w-full" title={c.name}>
-                                {c.name}
-                              </h4>
-                            </div>
-
-                            {/* Individual Stage Selector */}
-                            <div className="w-full pt-0.5">
-                              <select
-                                value={currentStage}
-                                onChange={(e) => handleIndividualStageChange(c.id, e.target.value)}
-                                className="bg-slate-950 text-amber-300 border border-amber-500/40 rounded-lg px-1 py-0.5 text-[9px] sm:text-[11px] font-black focus:outline-none cursor-pointer w-full text-center"
-                              >
-                                {LIMIT_BREAK_STAGES.map(st => (
-                                  <option key={st} value={st}>
-                                    {st}
-                                  </option>
-                                ))}
-                              </select>
-                            </div>
-                          </div>
-                        </th>
-                      );
-                    })}
-                  </tr>
-                </thead>
-
-                <tbody className="divide-y divide-slate-800/60 font-num">
-                  {/* Row 1: 所持スキル */}
-                  <tr className="bg-slate-950/80 border-b border-slate-800/60">
-                    <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-amber-400 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
-                      ✨ 所持スキル
-                    </td>
-                    {selectedCards.map(c => {
-                      const sk = getSpecialCardSkill(c);
-                      const isSkill = sk && sk.type !== 'アビリティ';
-                      const displaySk = isSkill ? sk : null;
-
-                      return (
-                        <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
-                          {displaySk ? (
-                            <div className="bg-slate-900 p-1 sm:p-1.5 rounded-md border border-slate-800 space-y-0.5 overflow-hidden">
-                              <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getRankBadgeStyle(displaySk.rank || '金')}`}>
-                                  {displaySk.rank || '金'}
-                                </span>
-                                <span className={`text-[8px] sm:text-xs font-black truncate max-w-full ${getRankTextStyle(displaySk.rank || '金')}`}>
-                                  {displaySk.name}
-                                </span>
-                              </div>
-                              {displaySk.description && (
-                                <p className="text-[7px] sm:text-[10px] text-slate-300 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={displaySk.description}>{displaySk.description}</p>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-
-                  {/* Row 2: 所持アビリティ */}
-                  <tr className="bg-slate-950/80 border-b border-slate-800/60">
-                    <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-purple-300 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
-                      ⚡ 所持アビリティ
-                    </td>
-                    {selectedCards.map(c => {
-                      const sk = getSpecialCardSkill(c);
-                      const isAbility = sk && sk.type === 'アビリティ';
-                      const displayAb = isAbility ? sk : null;
-
-                      return (
-                        <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
-                          {displayAb ? (
-                            <div className="bg-slate-900 p-1 sm:p-1.5 rounded-md border border-slate-800 space-y-0.5 overflow-hidden">
-                              <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getRankBadgeStyle(displayAb.rank || '金')}`}>
-                                  {displayAb.rank || '金'}
-                                </span>
-                                <span className={`text-[8px] sm:text-xs font-black truncate max-w-full ${getRankTextStyle(displayAb.rank || '金')}`}>
-                                  {displayAb.name}
-                                </span>
-                              </div>
-                              {displayAb.description && (
-                                <p className="text-[7px] sm:text-[10px] text-slate-300 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={displayAb.description}>{displayAb.description}</p>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-
-                  {/* Row 3: 特殊効果 */}
-                  <tr className="bg-slate-950/80 border-b border-slate-800/60">
-                    <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-cyan-300 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
-                      ⚡ 特殊効果
-                    </td>
-                    {selectedCards.map(c => {
-                      const ef = getSpecialCardEffect(c);
-
-                      return (
-                        <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
-                          {ef ? (
-                            <div className="bg-cyan-950/40 p-1 sm:p-1.5 rounded-md border border-cyan-500/30 space-y-0.5 overflow-hidden">
-                              <div className="flex items-center gap-0.5 flex-wrap">
-                                <span className="px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
-                                  効果
-                                </span>
-                                <span className="text-[8px] sm:text-xs font-black text-cyan-300 truncate max-w-full">
-                                  {ef.name}
-                                </span>
-                              </div>
-                              {ef.description && (
-                                <p className="text-[7px] sm:text-[10px] text-cyan-200/80 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={ef.description}>{ef.description}</p>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-
-                  {/* Row 4: 対象ボーナス (個別トグルボタン) */}
-                  <tr className="bg-slate-950/80">
-                    <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-extrabold text-amber-400 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
-                      🎯 対象ボーナス<br />
-                      <span className="text-[7px] sm:text-[9px] font-normal text-slate-400">（タップ切替）</span>
-                    </td>
-                    {selectedCards.map(c => {
-                      const bonuses = getCardBonuses(c);
-
-                      return (
-                        <td key={c.id} className="p-0.5 sm:p-1 text-center border-r border-slate-800/60 font-sans align-middle overflow-hidden">
-                          {bonuses.length > 0 ? (
-                            <div className="flex flex-col items-center justify-center gap-0.5">
-                              {bonuses.map(b => {
-                                const matchesPlayer = currentPlayer ? checkSingleBonusMatch(currentPlayer, b.style) : false;
-                                const userToggledOn = isBonusActive(c.id, b.style);
-                                const active = userToggledOn;
-
-                                return (
-                                  <button
-                                    key={b.style}
-                                    onClick={() => toggleCardBonus(c.id, b.style)}
-                                    className={`w-full max-w-[140px] px-0.5 sm:px-1 py-0.5 rounded text-[7px] sm:text-[10px] font-extrabold transition-all border cursor-pointer flex items-center justify-center gap-0.5 ${
-                                      active
-                                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm hover:bg-amber-500/30'
-                                        : 'bg-slate-900/80 text-slate-500 border-slate-800 hover:text-slate-300 hover:border-slate-700 opacity-60'
-                                    }`}
-                                    title={`${b.style} ${b.percent}% UP の適用/非適用を切り替え`}
-                                  >
-                                    <span className="truncate max-w-full">🎯 {b.style}</span>
-                                    <span className="font-black flex-shrink-0">+{b.percent}%</span>
-                                    {matchesPlayer && <span className="text-[7px] text-emerald-400 font-extrabold" title="選択中の選手と一致">✨</span>}
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          ) : (
-                            <span className="text-slate-500 text-[8px] sm:text-xs">-</span>
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-
-                  {/* Row 5: Total Stat Gain Sum */}
-                  <tr className="bg-slate-900/90 border-y border-amber-500/30">
-                    <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-900 font-black text-[10px] sm:text-sm md:text-base text-amber-400 border-r border-slate-800 font-sans leading-tight">
-                      📊 合計上昇値
-                    </td>
-                    {selectedCards.map((c, i) => {
-                      const totalInfo = cardCalculatedTotals[i];
-                      const bgClass = getRankCellBg(totalInfo.sum, allSumsVal);
-                      const badge = renderRankBadge(totalInfo.sum, allSumsVal);
-
-                      const maxVal = Math.max(...allSumsVal);
-                      const diffFromMax = floor1Decimal(totalInfo.sum - maxVal);
-
-                      return (
-                        <td key={c.id} className={`relative p-0.5 sm:p-2 text-center border-r border-slate-800/60 font-black overflow-hidden ${bgClass}`}>
-                          {badge && (
-                            <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 z-10 pointer-events-none">
-                              {badge}
-                            </div>
-                          )}
-                          <div className="flex flex-col items-center justify-center pt-2 sm:pt-3.5 pb-0.5">
-                            <span className="text-amber-300 font-black text-xs sm:text-2xl md:text-3xl tracking-tight font-num leading-tight truncate max-w-full">{totalInfo.sum}</span>
-                            {totalInfo.isBoosted ? (
-                              <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block mt-0.5 truncate max-w-full">
-                                (素:{totalInfo.rawSum})
-                              </span>
-                            ) : (
-                              <span className="text-[6px] sm:text-[10px] font-extrabold text-slate-400 block mt-0.5 truncate max-w-full">
-                                (素)
-                              </span>
-                            )}
-                          </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-
-
-                  {/* Section 2: 詳細能力項目別 上昇量 Matrix */}
-                  <tr className="bg-slate-900/50">
-                    <td colSpan={selectedCards.length + 1} className="px-2 py-1 text-[9px] sm:text-xs md:text-sm font-black text-cyan-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-slate-800">
-                      ⚡ 詳細能力項目別 上昇量 Matrix
-                    </td>
-                  </tr>
-
-                  {DETAIL_STATS.map(stName => {
-                    const statDataList = selectedCards.map(c => {
-                      const stage = getCardStage(c.id);
-                      return getCardStatData(c, stage, stName);
-                    });
-
-                    const allStatVals = statDataList.map(d => d.val);
-                    const hasValue = statDataList.some(d => d.rawVal > 0 || d.val > 0);
-                    if (!hasValue) return null;
-
-                    return (
-                      <tr key={stName} className="hover:bg-slate-900/40 transition-colors">
-                        <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-[9px] sm:text-xs md:text-sm text-slate-100 border-r border-slate-800 font-sans leading-tight truncate">
-                          {stName}
-                        </td>
-                        {selectedCards.map((c, i) => {
-                          const statData = statDataList[i];
-                          const val = statData.val;
-                          const bgClass = getRankCellBg(val, allStatVals);
-                          const badge = renderRankBadge(val, allStatVals);
-
-                          return (
-                            <td key={c.id} className={`relative p-0.5 sm:p-1.5 text-center border-r border-slate-800/60 font-bold overflow-hidden ${bgClass}`}>
-                              {val > 0 || statData.rawVal > 0 ? (
-                                <>
-                                  {badge && (
-                                    <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 z-10 pointer-events-none">
-                                      {badge}
-                                    </div>
-                                  )}
-                                  <div className="flex flex-col items-center justify-center pt-2 sm:pt-3 pb-0.5">
-                                    <span className="text-amber-300 font-black text-xs sm:text-xl md:text-2xl font-num leading-tight truncate max-w-full">{val}</span>
-                                    {statData.isBoosted ? (
-                                      <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block truncate max-w-full">
-                                        (素:{statData.rawVal})
-                                      </span>
-                                    ) : (
-                                      <span className="text-[6px] sm:text-[10px] font-extrabold text-slate-400 block truncate max-w-full">
-                                        (素)
-                                      </span>
-                                    )}
+                        return (
+                          <th key={c.id} className="p-0.5 sm:p-2 text-center border-r border-slate-800/80 last:border-r-0 relative group bg-slate-900 sticky top-0 z-30 shadow-md align-top overflow-hidden">
+                            <div className="space-y-1 flex flex-col items-center w-full overflow-hidden">
+                              {/* Card Image Container */}
+                              <div className="relative mx-auto flex-shrink-0 landscape-short-hide">
+                                {imgUrl ? (
+                                  <img
+                                    src={imgUrl}
+                                    alt={c.name}
+                                    className="w-8 h-11 sm:w-14 sm:h-20 md:w-16 md:h-24 object-cover rounded-lg border border-amber-500/40 mx-auto shadow-md"
+                                  />
+                                ) : (
+                                  <div className="w-8 h-11 sm:w-14 sm:h-20 md:w-16 md:h-24 bg-slate-950 rounded-lg border border-slate-800 flex items-center justify-center text-[9px] sm:text-xs text-amber-400 font-black mx-auto">
+                                    {c.rank}
                                   </div>
-                                </>
+                                )}
+
+                                {/* Remove button */}
+                                <button
+                                  onClick={() => onRemoveCard(c.id)}
+                                  className="absolute -bottom-1 -right-1 text-slate-300 hover:text-white bg-slate-900/90 hover:bg-red-600/90 p-0.5 sm:p-1 rounded-full border border-slate-700 hover:border-red-400/80 shadow-md cursor-pointer transition-all z-20"
+                                  title="比較表から削除"
+                                >
+                                  <Icon name="x" className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" />
+                                </button>
+                              </div>
+
+                              <div className="w-full text-center px-0.5 overflow-hidden">
+                                <div className="flex items-center justify-center gap-0.5 flex-wrap">
+                                  <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getCardRankBadgeStyle(c.rank)}`}>
+                                    {c.rank}
+                                  </span>
+                                  <span className="px-0.5 py-0.2 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[6px] sm:text-[9px] font-extrabold truncate max-w-full">
+                                    {c.cardType || c.category || 'ストライカー'}
+                                  </span>
+                                </div>
+                                <h4 className="text-[9px] sm:text-xs font-black text-white mt-0.5 leading-tight truncate w-full" title={c.name}>
+                                  {c.name}
+                                </h4>
+                              </div>
+
+                              {/* Individual Stage Selector */}
+                              <div className="w-full pt-0.5">
+                                <select
+                                  value={currentStage}
+                                  onChange={(e) => handleIndividualStageChange(c.id, e.target.value)}
+                                  className="bg-slate-950 text-amber-300 border border-amber-500/40 rounded-lg px-1 py-0.5 text-[9px] sm:text-[11px] font-black focus:outline-none cursor-pointer w-full text-center"
+                                >
+                                  {LIMIT_BREAK_STAGES.map(st => (
+                                    <option key={st} value={st}>
+                                      {st}
+                                    </option>
+                                  ))}
+                                </select>
+                              </div>
+                            </div>
+                          </th>
+                        );
+                      })}
+                    </tr>
+                  </thead>
+
+                  <tbody className="divide-y divide-slate-800/60 font-num">
+                    {/* Row 1: 所持スキル */}
+                    <tr className="bg-slate-950/80 border-b border-slate-800/60">
+                      <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-amber-400 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
+                        ✨ 所持スキル
+                      </td>
+                      {selectedCards.map(c => {
+                        const sk = getSpecialCardSkill(c);
+                        const isSkill = sk && sk.type !== 'アビリティ';
+                        const displaySk = isSkill ? sk : null;
+
+                        return (
+                          <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
+                            {displaySk ? (
+                              <div className="bg-slate-900 p-1 sm:p-1.5 rounded-md border border-slate-800 space-y-0.5 overflow-hidden">
+                                <div className="flex items-center gap-0.5 flex-wrap">
+                                  <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getRankBadgeStyle(displaySk.rank || '金')}`}>
+                                    {displaySk.rank || '金'}
+                                  </span>
+                                  <span className={`text-[8px] sm:text-xs font-black truncate max-w-full ${getRankTextStyle(displaySk.rank || '金')}`}>
+                                    {displaySk.name}
+                                  </span>
+                                </div>
+                                {displaySk.description && (
+                                  <p className="text-[7px] sm:text-[10px] text-slate-300 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={displaySk.description}>{displaySk.description}</p>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Row 2: 所持アビリティ */}
+                    <tr className="bg-slate-950/80 border-b border-slate-800/60">
+                      <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-purple-300 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
+                        ⚡ 所持アビリティ
+                      </td>
+                      {selectedCards.map(c => {
+                        const sk = getSpecialCardSkill(c);
+                        const isAbility = sk && sk.type === 'アビリティ';
+                        const displayAb = isAbility ? sk : null;
+
+                        return (
+                          <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
+                            {displayAb ? (
+                              <div className="bg-slate-900 p-1 sm:p-1.5 rounded-md border border-slate-800 space-y-0.5 overflow-hidden">
+                                <div className="flex items-center gap-0.5 flex-wrap">
+                                  <span className={`px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] ${getRankBadgeStyle(displayAb.rank || '金')}`}>
+                                    {displayAb.rank || '金'}
+                                  </span>
+                                  <span className={`text-[8px] sm:text-xs font-black truncate max-w-full ${getRankTextStyle(displayAb.rank || '金')}`}>
+                                    {displayAb.name}
+                                  </span>
+                                </div>
+                                {displayAb.description && (
+                                  <p className="text-[7px] sm:text-[10px] text-slate-300 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={displayAb.description}>{displayAb.description}</p>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Row 3: 特殊効果 */}
+                    <tr className="bg-slate-950/80 border-b border-slate-800/60">
+                      <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-cyan-300 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
+                        ⚡ 特殊効果
+                      </td>
+                      {selectedCards.map(c => {
+                        const ef = getSpecialCardEffect(c);
+
+                        return (
+                          <td key={c.id} className="p-0.5 sm:p-1 border-r border-slate-800/60 font-sans align-top text-left overflow-hidden">
+                            {ef ? (
+                              <div className="bg-cyan-950/40 p-1 sm:p-1.5 rounded-md border border-cyan-500/30 space-y-0.5 overflow-hidden">
+                                <div className="flex items-center gap-0.5 flex-wrap">
+                                  <span className="px-0.5 py-0.2 rounded text-[7px] sm:text-[9px] bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold">
+                                    効果
+                                  </span>
+                                  <span className="text-[8px] sm:text-xs font-black text-cyan-300 truncate max-w-full">
+                                    {ef.name}
+                                  </span>
+                                </div>
+                                {ef.description && (
+                                  <p className="text-[7px] sm:text-[10px] text-cyan-200/80 leading-tight pt-0.5 line-clamp-2 sm:line-clamp-4" title={ef.description}>{ef.description}</p>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-slate-500 text-[9px] sm:text-xs text-center block pt-1">-</span>
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Row 4: 対象ボーナス (個別トグルボタン) */}
+                    <tr className="bg-slate-950/80">
+                      <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-extrabold text-amber-400 border-r border-slate-800 font-sans text-[9px] sm:text-xs md:text-sm leading-tight">
+                        🎯 対象ボーナス<br />
+                        <span className="text-[7px] sm:text-[9px] font-normal text-slate-400">（タップ切替）</span>
+                      </td>
+                      {selectedCards.map(c => {
+                        const bonuses = getCardBonuses(c);
+
+                        return (
+                          <td key={c.id} className="p-0.5 sm:p-1 text-center border-r border-slate-800/60 font-sans align-middle overflow-hidden">
+                            {bonuses.length > 0 ? (
+                              <div className="flex flex-col items-center justify-center gap-0.5">
+                                {bonuses.map(b => {
+                                  const matchesPlayer = currentPlayer ? checkSingleBonusMatch(currentPlayer, b.style) : false;
+                                  const userToggledOn = isBonusActive(c.id, b.style);
+                                  const active = userToggledOn;
+
+                                  return (
+                                    <button
+                                      key={b.style}
+                                      onClick={() => toggleCardBonus(c.id, b.style)}
+                                      className={`w-full max-w-[140px] px-0.5 sm:px-1 py-0.5 rounded text-[7px] sm:text-[10px] font-extrabold transition-all border cursor-pointer flex items-center justify-center gap-0.5 ${active
+                                          ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm hover:bg-amber-500/30'
+                                          : 'bg-slate-900/80 text-slate-500 border-slate-800 hover:text-slate-300 hover:border-slate-700 opacity-60'
+                                        }`}
+                                      title={`${b.style} ${b.percent}% UP の適用/非適用を切り替え`}
+                                    >
+                                      <span className="truncate max-w-full">🎯 {b.style}</span>
+                                      <span className="font-black flex-shrink-0">+{b.percent}%</span>
+                                      {matchesPlayer && <span className="text-[7px] text-emerald-400 font-extrabold" title="選択中の選手と一致">✨</span>}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              <span className="text-slate-500 text-[8px] sm:text-xs">-</span>
+                            )}
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+                    {/* Row 5: Total Stat Gain Sum */}
+                    <tr className="bg-slate-900/90 border-y border-amber-500/30">
+                      <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-900 font-black text-[10px] sm:text-sm md:text-base text-amber-400 border-r border-slate-800 font-sans leading-tight">
+                        📊 合計上昇値
+                      </td>
+                      {selectedCards.map((c, i) => {
+                        const totalInfo = cardCalculatedTotals[i];
+                        const bgClass = getRankCellBg(totalInfo.sum, allSumsVal);
+                        const badge = renderRankBadge(totalInfo.sum, allSumsVal);
+
+                        const maxVal = Math.max(...allSumsVal);
+                        const diffFromMax = floor1Decimal(totalInfo.sum - maxVal);
+
+                        return (
+                          <td key={c.id} className={`relative p-0.5 sm:p-2 text-center border-r border-slate-800/60 font-black overflow-hidden ${bgClass}`}>
+                            {badge && (
+                              <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 z-10 pointer-events-none">
+                                {badge}
+                              </div>
+                            )}
+                            <div className="flex flex-col items-center justify-center pt-2 sm:pt-3.5 pb-0.5">
+                              <span className="text-amber-300 font-black text-xs sm:text-2xl md:text-3xl tracking-tight font-num leading-tight truncate max-w-full">{totalInfo.sum}</span>
+                              {totalInfo.isBoosted ? (
+                                <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block mt-0.5 truncate max-w-full">
+                                  (素:{totalInfo.rawSum})
+                                </span>
                               ) : (
-                                <span className="text-slate-600 text-[9px] sm:text-xs font-bold">-</span>
+                                <span className="text-[6px] sm:text-[10px] font-extrabold text-slate-400 block mt-0.5 truncate max-w-full">
+                                  (素)
+                                </span>
                               )}
-                            </td>
-                          );
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+
+
+                    {/* Section 2: 詳細能力項目別 上昇量 Matrix */}
+                    <tr className="bg-slate-900/50">
+                      <td colSpan={selectedCards.length + 1} className="px-2 py-1 text-[9px] sm:text-xs md:text-sm font-black text-cyan-300 font-sans uppercase tracking-wider bg-slate-950 border-y border-slate-800">
+                        ⚡ 詳細能力項目別 上昇量 Matrix
+                      </td>
+                    </tr>
+
+                    {DETAIL_STATS.map(stName => {
+                      const statDataList = selectedCards.map(c => {
+                        const stage = getCardStage(c.id);
+                        return getCardStatData(c, stage, stName);
+                      });
+
+                      const allStatVals = statDataList.map(d => d.val);
+                      const hasValue = statDataList.some(d => d.rawVal > 0 || d.val > 0);
+                      if (!hasValue) return null;
+
+                      return (
+                        <tr key={stName} className="hover:bg-slate-900/40 transition-colors">
+                          <td className="p-1 sm:p-2 sticky left-0 z-10 bg-slate-950 font-black text-[9px] sm:text-xs md:text-sm text-slate-100 border-r border-slate-800 font-sans leading-tight truncate">
+                            {stName}
+                          </td>
+                          {selectedCards.map((c, i) => {
+                            const statData = statDataList[i];
+                            const val = statData.val;
+                            const bgClass = getRankCellBg(val, allStatVals);
+                            const badge = renderRankBadge(val, allStatVals);
+
+                            return (
+                              <td key={c.id} className={`relative p-0.5 sm:p-1.5 text-center border-r border-slate-800/60 font-bold overflow-hidden ${bgClass}`}>
+                                {val > 0 || statData.rawVal > 0 ? (
+                                  <>
+                                    {badge && (
+                                      <div className="absolute top-0.5 left-0.5 sm:top-1 sm:left-1 z-10 pointer-events-none">
+                                        {badge}
+                                      </div>
+                                    )}
+                                    <div className="flex flex-col items-center justify-center pt-2 sm:pt-3 pb-0.5">
+                                      <span className="text-amber-300 font-black text-xs sm:text-xl md:text-2xl font-num leading-tight truncate max-w-full">{val}</span>
+                                      {statData.isBoosted ? (
+                                        <span className="text-[6px] sm:text-[10px] font-extrabold text-amber-200/90 block truncate max-w-full">
+                                          (素:{statData.rawVal})
+                                        </span>
+                                      ) : (
+                                        <span className="text-[6px] sm:text-[10px] font-extrabold text-slate-400 block truncate max-w-full">
+                                          (素)
+                                        </span>
+                                      )}
+                                    </div>
+                                  </>
+                                ) : (
+                                  <span className="text-slate-600 text-[9px] sm:text-xs font-bold">-</span>
+                                )}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </>
+          )}
         </div>
         <SideAdBanner position="right" isModal={true} showModalAd={showModalAd} />
       </div>
