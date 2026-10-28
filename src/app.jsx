@@ -1047,7 +1047,11 @@ const PLAYER_IMAGE_MAP = {
     "p404": "DESIRE_DOUE_2026_IMAGE",
     "p405": "KANTE_2026_IMAGE",
     "p406": "MAXENCE_LACROIX_2026_IMAGE",
-    "p407": "GRANIT_XHAKA_2026_IMAGE"
+    "p407": "GRANIT_XHAKA_2026_IMAGE",
+    "p408": "CRISTIANO_RONALDO_2026_IMAGE",
+    "p409": "VITINHA_2026_IMAGE",
+    "p410": "NELSON_SEMEDO_2026_IMAGE",
+    "p411": "RENATO_VEIGA_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -3647,6 +3651,21 @@ const getPlayerStatValue = (player, statName) => {
 function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const FORMATION_COMBOS = [
     {
+      id: 'selecaoDasQuinas26',
+      name: "セレソン・ダス・キナス’26",
+      rank: '金',
+      policy: 'カウンター',
+      formationId: '433b_selecaoDasQuinas26',
+      buffs: [
+        { name: '突破力', val: '+80%' },
+        { name: 'タックル', val: '+80%' },
+        { name: 'マーク', val: '+80%' },
+        { name: 'コンタクト', val: '+80%' }
+      ],
+      specialNote: 'フィールド上のポルトガル選手1人につき、上記4能力（突破力・タックル・マーク・コンタクト）が追加で2%強化！'
+    },
+
+    {
       id: 'lesBleus26',
       name: "レ・ブルー’26",
       rank: '金',
@@ -4250,6 +4269,25 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   ];
 
   const FORMATIONS = [
+    {
+      id: '433b_selecaoDasQuinas26',
+      name: '4-3-3B (セレソン・ダス・キナス’26)',
+      comboId: 'selecaoDasQuinas26',
+      slots: [
+        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 3 },
+        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 3 },
+        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' }
+      ]
+    },
+
     {
       id: '433b_lesBleus26',
       name: '4-3-3B (レ・ブルー’26)',
@@ -5362,7 +5400,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     const NATIONAL_TEAM_BONUS_COMBOS = {
       'selecao70': 'ブラジル',
       'laRoja26': 'スペイン',
-      'lesBleus26': 'フランス'
+      'lesBleus26': 'フランス',
+      'selecaoDasQuinas26': 'ポルトガル'
     };
 
     const buildSquadForPolicy = (pol, forceCombo) => {
@@ -5635,7 +5674,8 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     const NATIONAL_TEAM_BONUS_COMBOS = {
       'selecao70': 'ブラジル',
       'laRoja26': 'スペイン',
-      'lesBleus26': 'フランス'
+      'lesBleus26': 'フランス',
+      'selecaoDasQuinas26': 'ポルトガル'
     };
 
     const buildUnifiedSquadForPolicy = (pol) => {
@@ -5938,6 +5978,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
         isSelecao: false,
         isLaRoja: false,
         isLesBleus: false,
+        isQuinas: false,
+        portugalPlayerCount: 0,
+        portugalBonusPct: 0,
         francePlayerCount: 0,
         franceBonusPct: 0,
         spainPlayerCount: 0,
@@ -5977,13 +6020,16 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
     const isSelecao = activeComboData.id === 'selecao70';
     const isLaRoja = activeComboData.id === 'laRoja26';
     const isLesBleus = activeComboData.id === 'lesBleus26';
+    const isQuinas = activeComboData.id === 'selecaoDasQuinas26';
     const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
     const brazilBonusPct = brazilPlayerCount * 2;
     const spainPlayerCount = isLaRoja ? starterPlayers.filter(p => p.nationality === 'スペイン').length : 0;
     const spainBonusPct = spainPlayerCount * 2;
     const francePlayerCount = isLesBleus ? starterPlayers.filter(p => p.nationality === 'フランス').length : 0;
     const franceBonusPct = francePlayerCount * 2;
-    const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : (isLesBleus ? franceBonusPct : 0));
+    const portugalPlayerCount = isQuinas ? starterPlayers.filter(p => p.nationality === 'ポルトガル').length : 0;
+    const portugalBonusPct = portugalPlayerCount * 2;
+    const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : (isLesBleus ? franceBonusPct : (isQuinas ? portugalBonusPct : 0)));
 
     // 各能力ボーナスごとの加算量（各選手・各能力ごとに %UP 後に Math.floor で端数切捨て）計算
     const statBuffBreakdown = [];
@@ -6025,6 +6071,9 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
       isSelecao,
         isLaRoja,
         isLesBleus,
+        isQuinas,
+        portugalPlayerCount,
+        portugalBonusPct,
         francePlayerCount,
         franceBonusPct,
         spainPlayerCount,
@@ -6641,6 +6690,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                           <FlagIcon nationality="フランス" /> フランス選手 {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
                         </span>
                       )}
+                      {comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0 && (
+                        <span className="text-xs text-red-400 font-bold flex items-center gap-1">
+                          <FlagIcon nationality="ポルトガル" /> ポルトガル選手 {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
+                        </span>
+                      )}
                     </div>
 
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -6663,12 +6717,12 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               {/* Special Nation Note if present */}
               {activeComboData.specialNote && (
                 <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${
-                  (comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0)
+                  (comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0) || (comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0)
                     ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
                     : 'bg-slate-950 border-slate-800 text-slate-300'
                 }`}>
                   <div className="flex items-center gap-2">
-                    <FlagIcon nationality={comboValidation.isLesBleus ? 'フランス' : (comboValidation.isLaRoja ? 'スペイン' : 'ブラジル')} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
+                    <FlagIcon nationality={comboValidation.isQuinas ? 'ポルトガル' : (comboValidation.isLesBleus ? 'フランス' : (comboValidation.isLaRoja ? 'スペイン' : 'ブラジル'))} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
                     <span className="font-bold">{activeComboData.specialNote}</span>
                   </div>
                   {comboValidation.isSelecao && (
@@ -6684,6 +6738,11 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
                   {comboValidation.isLesBleus && (
                     <span className="px-2 py-0.5 rounded bg-blue-500 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
                       スタメン {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
+                    </span>
+                  )}
+                  {comboValidation.isQuinas && (
+                    <span className="px-2 py-0.5 rounded bg-red-600 text-white font-black text-[11px] whitespace-nowrap shadow">
+                      スタメン {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
                     </span>
                   )}
                 </div>
@@ -6837,7 +6896,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
               policyGain = Math.floor(player.overall * 1.05) - player.overall;
             }
             if (comboValidation.allReqsFulfilled && activeComboData?.buffs) {
-              const nBonusPct = comboValidation.isSelecao ? comboValidation.brazilBonusPct : (comboValidation.isLaRoja ? comboValidation.spainBonusPct : (comboValidation.isLesBleus ? comboValidation.franceBonusPct : 0));
+              const nBonusPct = comboValidation.isSelecao ? comboValidation.brazilBonusPct : (comboValidation.isLaRoja ? comboValidation.spainBonusPct : (comboValidation.isLesBleus ? comboValidation.franceBonusPct : (comboValidation.isQuinas ? comboValidation.portugalBonusPct : 0)));
               activeComboData.buffs.forEach(b => {
                 const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
                 const effectivePct = basePct + nBonusPct;

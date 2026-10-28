@@ -3127,7 +3127,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: 'ゴールへ導くトラップ', rank: '銀', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力・コンタクトUP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
-      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' },
+      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' },
       { name: 'ゴール前の嗅覚', rank: '銀', description: '発動条件：絶好調　/　決定力・敏捷性UP' },
       { name: '狙いすました強振', rank: '銅', description: '発動条件：絶好調　/　キック力・冷静さUP' }
     ],
@@ -8568,7 +8568,7 @@ window.INITIAL_PLAYERS = [
     "skill": { name: '冴え渡るインターセプト', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・敏捷性UP' },
     "abilities": [
       { name: 'エレガントスティール', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・パスカットUP' },
-      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' }
+      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' }
     ],
     "avatarUrl": ""
   }
@@ -21255,6 +21255,202 @@ window.INITIAL_PLAYERS = [
     abilities: [
       { name: '不屈のキッカー', rank: '銀', description: '発動条件：好調　/　キック精度・スタミナUP' },
       { name: '長短のキック', rank: '銀', description: '発動条件：途中出場　/　ショートパス・ロングパスUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p408',
+    name: 'クリスティアーノ・ロナウド(2026)',
+    readingName: 'くりすてぃあーの・ろなうど',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'ストライカー',
+    playStyleLevel: 'Ⅲ',
+    overall: 7778,
+    maxOverall: 15972,
+    baseStats: { shoot: 1487, pass: 1403, dribble: 1470, defense: 792, physical: 1417, speed: 963 },
+    detailStats: {
+      shoot: { finishing: 502, power: 487, composure: 498 },
+      pass: { shortPass: 452, longPass: 444, accuracy: 507 },
+      dribble: { breakout: 501, keeping: 487, ballTouch: 482 },
+      defense: { tackle: 264, interception: 264, marking: 264 },
+      physical: { jumping: 509, contact: 476, stamina: 432 },
+      speed: { running: 488, agility: 475 }
+    },
+    maxEnhanced: {
+      overall: 15972,
+      baseStats: { shoot: 3092, pass: 2936, dribble: 3051, defense: 2289, physical: 2998, speed: 2009 },
+      detailStats: {
+        shoot: { finishing: 1037, power: 1022, composure: 1033 },
+        pass: { shortPass: 963, longPass: 955, accuracy: 1018 },
+        dribble: { breakout: 1024, keeping: 1010, ballTouch: 1017 },
+        defense: { tackle: 763, interception: 763, marking: 763 },
+        physical: { jumping: 1032, contact: 1011, stamina: 955 },
+        speed: { running: 1011, agility: 998 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 0, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: -1, rushOut: 0, feint: 0, press: -1
+    },
+    skill: { name: 'アンストッパブルショット', rank: '金', description: '発動エリア：前中　/　発動条件：シュート時　/　決定力・キック力・冷静さUP' },
+    abilities: [
+      { name: 'カピタォン・アルティリェイロ', rank: '金', description: '発動条件：キャプテンに指定　/　CF・LW・RWのカウンター選手が冷静さ・突破力UP' },
+      { name: '冷静なフィニッシュ', rank: '銀', description: '発動条件：好調　/　決定力・冷静さUP' },
+      { name: '跳躍のステップ', rank: '銀', description: '発動条件：好調　/　ジャンプ・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p409',
+    name: 'ヴィティーニャ',
+    readingName: 'ゔぃてぃーにゃ',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'パサーDM',
+    playStyleLevel: 'Ⅲ',
+    overall: 7525,
+    maxOverall: 15753,
+    baseStats: { shoot: 1184, pass: 1446, dribble: 1506, defense: 1333, physical: 1138, speed: 904 },
+    detailStats: {
+      shoot: { finishing: 409, power: 366, composure: 409 },
+      pass: { shortPass: 488, longPass: 485, accuracy: 473 },
+      dribble: { breakout: 501, keeping: 504, ballTouch: 501 },
+      defense: { tackle: 409, interception: 464, marking: 460 },
+      physical: { jumping: 283, contact: 368, stamina: 487 },
+      speed: { running: 399, agility: 505 }
+    },
+    maxEnhanced: {
+      overall: 15753,
+      baseStats: { shoot: 2729, pass: 3051, dribble: 3039, defense: 2914, physical: 2707, speed: 1926 },
+      detailStats: {
+        shoot: { finishing: 920, power: 877, composure: 932 },
+        pass: { shortPass: 1023, longPass: 1020, accuracy: 1008 },
+        dribble: { breakout: 1012, keeping: 1015, ballTouch: 1012 },
+        defense: { tackle: 944, interception: 987, marking: 983 },
+        physical: { jumping: 794, contact: 891, stamina: 1022 },
+        speed: { running: 910, agility: 1016 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: 'クリティカルウェッジ', rank: '金', description: '発動エリア：中左中右・後左中右　/　発動条件：CF・AMの選手へのパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP　/　ドリブル・ショートパススキル所持者優先' },
+    abilities: [
+      { name: '変幻のパサー', rank: '金', description: '発動条件：好調　/　ショートパス・ロングパス・ボールタッチUP' },
+      { name: '無限のアジリティ', rank: '銀', description: '発動条件：好調　/　スタミナ・敏捷性UP' },
+      { name: '懐の深いロングパサー', rank: '銅', description: '発動条件：絶好調　/　ロングパス・キープ力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p410',
+    name: 'ネルソン・セメド',
+    readingName: 'ねるそん・せめど',
+    category: 'DF',
+    mainPosition: 'RFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: '攻撃的RFB',
+    playStyleLevel: 'Ⅲ',
+    overall: 7130,
+    maxOverall: 15390,
+    baseStats: { shoot: 1189, pass: 1244, dribble: 1371, defense: 1290, physical: 1259, speed: 919 },
+    detailStats: {
+      shoot: { finishing: 396, power: 393, composure: 400 },
+      pass: { shortPass: 418, longPass: 410, accuracy: 416 },
+      dribble: { breakout: 459, keeping: 462, ballTouch: 450 },
+      defense: { tackle: 446, interception: 425, marking: 419 },
+      physical: { jumping: 395, contact: 422, stamina: 442 },
+      speed: { running: 459, agility: 460 }
+    },
+    maxEnhanced: {
+      overall: 15390,
+      baseStats: { shoot: 2686, pass: 2813, dribble: 2904, defense: 2895, physical: 2828, speed: 1989 },
+      detailStats: {
+        shoot: { finishing: 895, power: 892, composure: 899 },
+        pass: { shortPass: 941, longPass: 933, accuracy: 939 },
+        dribble: { breakout: 970, keeping: 973, ballTouch: 961 },
+        defense: { tackle: 981, interception: 960, marking: 954 },
+        physical: { jumping: 906, contact: 945, stamina: 977 },
+        speed: { running: 994, agility: 995 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '演出のアーティスト', rank: '金', description: '発動エリア：中左右・後左右　/　発動条件：ドリブル時　/　突破力・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: 'スピードランナー', rank: '銀', description: '発動条件：好調　/　走力・敏捷性UP' },
+      { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
+      { name: '奪取のターゲットマン', rank: '銅', description: '発動条件：好調　/　キープ力・パスカットUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p411',
+    name: 'レナト・ベイガ',
+    readingName: 'れなと・べいが',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 7214,
+    maxOverall: 15501,
+    baseStats: { shoot: 984, pass: 1206, dribble: 1257, defense: 1414, physical: 1284, speed: 830 },
+    detailStats: {
+      shoot: { finishing: 304, power: 352, composure: 328 },
+      pass: { shortPass: 412, longPass: 401, accuracy: 393 },
+      dribble: { breakout: 414, keeping: 414, ballTouch: 429 },
+      defense: { tackle: 469, interception: 470, marking: 475 },
+      physical: { jumping: 434, contact: 450, stamina: 400 },
+      speed: { running: 425, agility: 405 }
+    },
+    maxEnhanced: {
+      overall: 15501,
+      baseStats: { shoot: 2481, pass: 2775, dribble: 2790, defense: 3019, physical: 2877, speed: 1876 },
+      detailStats: {
+        shoot: { finishing: 803, power: 851, composure: 827 },
+        pass: { shortPass: 935, longPass: 924, accuracy: 916 },
+        dribble: { breakout: 925, keeping: 925, ballTouch: 940 },
+        defense: { tackle: 1004, interception: 1005, marking: 1010 },
+        physical: { jumping: 969, contact: 985, stamina: 923 },
+        speed: { running: 948, agility: 928 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: 'エリアの格闘家', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：コンタクト時　/　コンタクト・タックル・マークUP' },
+    abilities: [
+      { name: '瞬間の球際力', rank: '銀', description: '発動条件：好調　/　パスカット・コンタクトUP' },
+      { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
+      { name: '制空のボールタッチ', rank: '銅', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' }
     ],
     avatarUrl: ''
   }
