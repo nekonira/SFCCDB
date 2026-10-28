@@ -82,7 +82,7 @@ const veigaObj = `,
     abilities: [
       { name: '瞬間の球際力', rank: '銀', description: '発動条件：好調　/　パスカット・コンタクトUP' },
       { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
-      { name: '制空のボールタッチ', rank: '銅', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' }
+      { name: '制空のボールタッチ', rank: '銅', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' }
     ],
     avatarUrl: ''
   }

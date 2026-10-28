@@ -1247,7 +1247,13 @@ const getPlayerSkill = (player) => {
 // アビリティ（2〜3種類）データ安全取得
 const getPlayerAbilities = (player) => {
   if (player?.abilities && player.abilities.length > 0) {
-    return player.abilities;
+    return player.abilities.map(ab => {
+      if (ab && ab.name === '制空のボールタッチ') {
+        if (ab.rank === '銀') return { ...ab, description: '発動条件：好調　/　ボールタッチ・ジャンプUP' };
+        if (ab.rank === '銅') return { ...ab, description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' };
+      }
+      return ab;
+    });
   }
   if (player?.traits && player.traits.length > 0) {
     const defaultRanks = ['金', '銀', '銅'];
@@ -5194,6 +5200,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             restored[key] = {
               ...storedP,
               ...freshP,
+              rawPlayer: freshP,
               avatarUrl: getPlayerAvatarUrl(freshP)
             };
           } else if (storedP.baseStats) {

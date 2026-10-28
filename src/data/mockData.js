@@ -3127,7 +3127,7 @@ window.INITIAL_PLAYERS = [
     },
     skill: { name: 'ゴールへ導くトラップ', rank: '銀', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力・コンタクトUP　/　成功時に自身のショートパス発生確率UP' },
     abilities: [
-      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' },
+      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' },
       { name: 'ゴール前の嗅覚', rank: '銀', description: '発動条件：絶好調　/　決定力・敏捷性UP' },
       { name: '狙いすました強振', rank: '銅', description: '発動条件：絶好調　/　キック力・冷静さUP' }
     ],
@@ -8568,7 +8568,7 @@ window.INITIAL_PLAYERS = [
     "skill": { name: '冴え渡るインターセプト', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・敏捷性UP' },
     "abilities": [
       { name: 'エレガントスティール', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・パスカットUP' },
-      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' }
+      { name: '制空のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' }
     ],
     "avatarUrl": ""
   }
@@ -21450,7 +21450,7 @@ window.INITIAL_PLAYERS = [
     abilities: [
       { name: '瞬間の球際力', rank: '銀', description: '発動条件：好調　/　パスカット・コンタクトUP' },
       { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
-      { name: '制空のボールタッチ', rank: '銅', description: '発動条件：好調　/　ボールタッチ・ジャンプUP' }
+      { name: '制空のボールタッチ', rank: '銅', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' }
     ],
     avatarUrl: ''
   }
