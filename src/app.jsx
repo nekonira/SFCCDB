@@ -1795,13 +1795,18 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
 
   if (!player || !officialCards || !officialCards.length) return Array.from({ length: 6 }, (_, i) => ({ id: i + 1, active: false, cardId: '', stage: targetStage }));
 
-  // Helper for position limit calculation
+  // Helper for position limit calculation (canonical 17 detail stats without duplicate alias keys)
   const group = getPositionGroup(player.mainPosition);
   const additions = POSITION_LIMIT_ADDITIONS[group] || POSITION_LIMIT_ADDITIONS['CF'];
+  const isGK = group === 'GK' || player.category === 'GK';
+  const canonicalStats = isGK
+    ? ['決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'セービング', '反応速度', '1VS1', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性']
+    : ['決定力', 'キック力', '冷静さ', 'ショートパス', 'ロングパス', 'キック精度', '突破力', 'キープ力', 'ボールタッチ', 'タックル', 'パスカット', 'マーク', 'ジャンプ', 'コンタクト', 'スタミナ', '走力', '敏捷性'];
+
   const playerLimits = {};
-  Object.keys(additions).forEach(stName => {
+  canonicalStats.forEach(stName => {
     const base = getPlayerBaseStat(player, stName);
-    const addition = additions[stName];
+    const addition = additions[stName] || 331;
     playerLimits[stName] = { base, addition, maxLimit: base + addition };
   });
 
@@ -1849,75 +1854,79 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
     return null;
   }
 
-  // Pre-calculate card stat boost map
+  // Pre-calculate card stat boost map using floor1Decimal to match calculateBoostedPlayer exactly
   const cardBoostMaps = new Map();
   candidates.forEach(card => {
     const cardStage = useOwnedCardsOnly && ownedCards[card.id] ? (ownedCards[card.id].stage || '完凸') : targetStage;
     const stageStats = card.stages[cardStage] || card.stages['完凸'] || {};
     const bonusMult = calculateCardBonusMult(player, card);
+    const effectiveCardMult = bonusMult * conditionMultiplier;
     const boostMap = {};
     Object.entries(stageStats).forEach(([stName, val]) => {
-      boostMap[stName] = val * bonusMult * conditionMultiplier;
+      const canonicalName = stName === 'パス精度' ? 'キック精度' : (stName === 'キープ' ? 'キープ力' : stName);
+      boostMap[canonicalName] = floor1Decimal(val * effectiveCardMult);
     });
     cardBoostMaps.set(card.id, boostMap);
   });
 
-  // Evaluate set of 6 cards considering growth limit ceilings and safety bounds
-  function evaluateSetScore(cardSet) {
+  // Evaluate set of cards considering growth limit ceilings and [-155, -120] safety bounds
+  function evaluateSetScore(cardSet, isPartial = false) {
     const totalGains = {};
     cardSet.forEach(card => {
       const boostMap = cardBoostMaps.get(card.id) || {};
       Object.entries(boostMap).forEach(([stName, val]) => {
-        totalGains[stName] = (totalGains[stName] || 0) + val;
+        totalGains[stName] = floor1Decimal((totalGains[stName] || 0) + val);
       });
     });
 
     let effectiveScore = 0;
     let overflowPenalty = 0;
     let safeViolationPenalty = 0;
+    let inWindowBonus = 0;
 
     Object.entries(playerLimits).forEach(([stName, lim]) => {
       const gainVal = totalGains[stName] || 0;
-      const rawVal = lim.base + gainVal;
-      const effectiveVal = Math.min(lim.maxLimit, rawVal);
-      const effectiveGain = effectiveVal - lim.base;
+      const rawVal = floor1Decimal(lim.base + gainVal);
 
       let weight = 1.0;
       if (targetGoal === 'shoot' && ['決定力', 'キック力', '冷静さ'].includes(stName)) weight = 3.0;
-      else if (targetGoal === 'pass' && ['ショートパス', 'ロングパス', 'パス精度', 'キック精度'].includes(stName)) weight = 3.0;
+      else if (targetGoal === 'pass' && ['ショートパス', 'ロングパス', 'キック精度'].includes(stName)) weight = 3.0;
       else if (targetGoal === 'dribble' && ['突破力', 'キープ力', 'ボールタッチ'].includes(stName)) weight = 3.0;
       else if (targetGoal === 'defense' && ['タックル', 'パスカット', 'マーク', 'セービング', '反応速度', '1VS1'].includes(stName)) weight = 3.0;
       else if (targetGoal === 'physical' && ['ジャンプ', 'コンタクト', 'スタミナ'].includes(stName)) weight = 3.0;
       else if (targetGoal === 'speed' && ['走力', '敏捷性'].includes(stName)) weight = 3.0;
 
-      effectiveScore += effectiveGain * weight;
-
-      // Overflow penalty: slight tie-breaker penalty for wasted stats past limit ceiling (0.001 instead of 5.0)
-      // to ensure higher condition multipliers (1.25x, 1.5x) never penalize higher stat cards below weaker ones.
-      if (rawVal > lim.maxLimit) {
-        overflowPenalty += (rawVal - lim.maxLimit) * 0.001;
-      }
-
-      // Safe -155 ~ -135 boundary constraint: rawVal should land in (maxLimit - 155) ~ (maxLimit - 135) with max positive total
+      // Safe -155 ~ -120 boundary constraint:
+      // Each stat must not exceed (maxLimit - 120), while maximizing total stat gain and landing stats in [maxLimit - 155, maxLimit - 120]
       if (optimizationStrategy === 'SAFE_150' || optimizationStrategy === 'SAFE_RANGE') {
-        const safeMaxLimit = lim.maxLimit - 135;
+        const safeMaxLimit = lim.maxLimit - 120;
         const safeMinLimit = lim.maxLimit - 155;
 
-        // Hard cap at maxLimit - 135 for safe optimal scoring
         const safeVal = Math.min(safeMaxLimit, rawVal);
-        const safeGain = Math.max(0, safeVal - lim.base);
-        effectiveScore += safeGain * weight * 0.5;
+        const safeGain = Math.max(0, floor1Decimal(safeVal - lim.base));
+        effectiveScore += safeGain * weight;
 
         if (rawVal > safeMaxLimit) {
-          safeViolationPenalty += (rawVal - safeMaxLimit) * 50.0;
-        } else if (rawVal >= safeMinLimit && rawVal <= safeMaxLimit) {
-          // Sweet spot reward for maximizing stat values right inside the -155 to -135 target window
-          effectiveScore += 25.0 * weight;
+          // Strict penalty so sets that stay within <= (maxLimit - 120) always beat overflowing sets
+          safeViolationPenalty += (rawVal - safeMaxLimit) * 1000.0 + 5000.0;
+        } else if (!isPartial && rawVal >= safeMinLimit && rawVal <= safeMaxLimit) {
+          // Tie-breaker reward for stats landing inside the [-155, -120] target window
+          inWindowBonus += 0.5 * weight;
+        } else if (isPartial && rawVal >= safeMinLimit && rawVal <= safeMaxLimit) {
+          inWindowBonus += 0.2 * weight;
+        }
+      } else {
+        const effectiveVal = Math.min(lim.maxLimit, rawVal);
+        const effectiveGain = floor1Decimal(effectiveVal - lim.base);
+        effectiveScore += effectiveGain * weight;
+
+        if (rawVal > lim.maxLimit) {
+          overflowPenalty += (rawVal - lim.maxLimit) * 0.001;
         }
       }
     });
 
-    return effectiveScore - overflowPenalty - safeViolationPenalty;
+    return effectiveScore + inWindowBonus - overflowPenalty - safeViolationPenalty;
   }
 
   // Pre-selected required cards
@@ -1927,7 +1936,7 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
   for (const reqAbs of requiredAbilities) {
     const matching = candidates.filter(c => (allowDuplicates || !usedCardIds.has(c.id)) && getCardAbilities(c).some(a => a.includes(reqAbs) || reqAbs.includes(a)));
     if (matching.length > 0) {
-      const best = matching.sort((a, b) => evaluateSetScore([b]) - evaluateSetScore([a]))[0];
+      const best = matching.sort((a, b) => evaluateSetScore([b], true) - evaluateSetScore([a], true))[0];
       requiredCards.push(best);
       usedCardIds.add(best.id);
     }
@@ -1936,40 +1945,93 @@ function optimizeSpecialCardSlots(player, officialCards, options = {}) {
   for (const reqSkill of requiredSkills) {
     const matching = candidates.filter(c => (allowDuplicates || !usedCardIds.has(c.id)) && getCardSkillName(c) === reqSkill);
     if (matching.length > 0) {
-      const best = matching.sort((a, b) => evaluateSetScore([b]) - evaluateSetScore([a]))[0];
+      const best = matching.sort((a, b) => evaluateSetScore([b], true) - evaluateSetScore([a], true))[0];
       requiredCards.push(best);
       usedCardIds.add(best.id);
     }
   }
 
-  // Top candidate cards pool
-  const pool = [...candidates].sort((a, b) => evaluateSetScore([b]) - evaluateSetScore([a])).slice(0, 14);
+  const fixedCount = Math.min(6, requiredCards.length);
+  const initialCards = requiredCards.slice(0, 6);
 
-  let bestSet = [...requiredCards];
-  let bestScore = -Infinity;
+  // Beam Search across ALL candidate cards + 1-opt & 2-opt Local Swap Refinement
+  const BEAM_WIDTH = 60;
+  let beam = [{ cards: initialCards, score: evaluateSetScore(initialCards, fixedCount < 6) }];
 
-  function fillSlots(currentSet) {
-    if (currentSet.length === 6) {
-      const score = evaluateSetScore(currentSet);
-      if (score > bestScore) {
-        bestScore = score;
-        bestSet = [...currentSet];
+  for (let slotIdx = fixedCount; slotIdx < 6; slotIdx++) {
+    const isLastSlot = slotIdx === 5;
+    const nextBeam = [];
+    const seenKeys = new Set();
+
+    for (const state of beam) {
+      for (const cand of candidates) {
+        if (!allowDuplicates && state.cards.some(c => c.id === cand.id)) continue;
+        const nextCards = [...state.cards, cand];
+        const key = nextCards.map(c => c.id).sort().join('|');
+        if (seenKeys.has(key)) continue;
+        seenKeys.add(key);
+
+        const sc = evaluateSetScore(nextCards, !isLastSlot);
+        nextBeam.push({ cards: nextCards, score: sc });
       }
-      return;
     }
 
-    const available = allowDuplicates ? pool : pool.filter(c => !currentSet.some(existing => existing.id === c.id));
-    if (!available.length) {
-      fillSlots([...currentSet, officialCards[0]]);
-      return;
-    }
-
-    for (let i = 0; i < Math.min(6, available.length); i++) {
-      fillSlots([...currentSet, available[i]]);
+    if (nextBeam.length > 0) {
+      nextBeam.sort((a, b) => b.score - a.score);
+      beam = nextBeam.slice(0, BEAM_WIDTH);
     }
   }
 
-  fillSlots(requiredCards);
+  let bestSet = (beam[0] && beam[0].cards.length === 6) ? beam[0].cards : [...initialCards];
+  while (bestSet.length < 6) {
+    const fallback = candidates.find(c => allowDuplicates || !bestSet.some(x => x.id === c.id)) || candidates[0] || officialCards[0];
+    bestSet.push(fallback);
+  }
+  let bestScore = evaluateSetScore(bestSet, false);
+
+  // 1-card swap local search until convergence
+  let improved = true;
+  let iter = 0;
+  while (improved && iter < 10) {
+    improved = false;
+    iter++;
+    for (let s = fixedCount; s < 6; s++) {
+      for (const cand of candidates) {
+        if (!allowDuplicates && bestSet.some((c, idx) => idx !== s && c.id === cand.id)) continue;
+        const trial = [...bestSet];
+        trial[s] = cand;
+        const sc = evaluateSetScore(trial, false);
+        if (sc > bestScore + 1e-6) {
+          bestScore = sc;
+          bestSet = trial;
+          improved = true;
+        }
+      }
+    }
+  }
+
+  // 2-card simultaneous swap refinement over top 30 candidates
+  const topPool = [...candidates].sort((a, b) => evaluateSetScore([b], true) - evaluateSetScore([a], true)).slice(0, 30);
+  for (let s1 = fixedCount; s1 < 6; s1++) {
+    for (let s2 = s1 + 1; s2 < 6; s2++) {
+      for (const c1 of topPool) {
+        for (const c2 of topPool) {
+          if (!allowDuplicates) {
+            if (c1.id === c2.id) continue;
+            if (bestSet.some((c, idx) => idx !== s1 && idx !== s2 && (c.id === c1.id || c.id === c2.id))) continue;
+          }
+          const trial = [...bestSet];
+          trial[s1] = c1;
+          trial[s2] = c2;
+          const sc = evaluateSetScore(trial, false);
+          if (sc > bestScore + 1e-6) {
+            bestScore = sc;
+            bestSet = trial;
+          }
+        }
+      }
+    }
+  }
 
   return Array.from({ length: 6 }, (_, i) => {
     const card = bestSet[i] || candidates[i] || officialCards[0];
@@ -8881,7 +8943,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
     setSlots(newSlots);
     setSubTab('slots');
     if (strategy === 'SAFE_150' || strategy === 'SAFE_RANGE') {
-      setAutoSelectToast('🛡️ 全18能力が限界値の -155〜-135 範囲で最大化される【無難最適編成】を適用しました！');
+      setAutoSelectToast('🛡️ 全18能力が限界値の -155〜-120 範囲で最大化される【無難最適編成】を適用しました！');
     } else {
       setAutoSelectToast('⚡ 【最大数値編成】を直接適用しました！');
     }
@@ -9385,7 +9447,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                 type="button"
                 onClick={() => handleDirectAutoSelect('SAFE_150')}
                 className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-black text-xs shadow-md cursor-pointer flex items-center gap-1 transition-all active:scale-95 whitespace-nowrap"
-                title="全能力が限界値の -155〜-135 範囲に収まる最適編成を適用"
+                title="全能力が限界値の -155〜-120 範囲に収まる最適編成を適用"
               >
                 🛡️ 無難最適編成
               </button>
@@ -9429,7 +9491,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                     onClick={() => handleDirectAutoSelect('SAFE_150')}
                     className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-black text-xs shadow-md cursor-pointer flex items-center gap-1 transition-all active:scale-95"
                   >
-                    🛡️ 無難最適編成 (限界値 -155〜-135)
+                    🛡️ 無難最適編成 (限界値 -155〜-120)
                   </button>
                   <button
                     type="button"
@@ -11663,10 +11725,10 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                     }`}
                 >
                   <span className="text-white flex items-center gap-1">
-                    🛡️ 無難最適編成 (限界値 -155〜-135 安全枠)
+                    🛡️ 無難最適編成 (限界値 -155〜-120 安全枠)
                   </span>
                   <span className="text-[10px] text-slate-400 font-normal">
-                    全18能力が限界値より -155〜-135 の安全範囲に収まる中で数値上昇が最大となる編成を探索
+                    全18能力が限界値より -155〜-120 の安全範囲に収まる中で数値上昇が最大となる編成を探索
                   </span>
                 </button>
               </div>
