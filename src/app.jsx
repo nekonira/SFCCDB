@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "iERcssnuF-A",
+    "title": "【引く前に見て】限定ポルトガルガチャ徹底解説！ロナウドが超ぶっ壊れ性能【サカつく2026】ヴィティーニャ、セメド、ベイガ",
+    "thumbnail": "https://i.ytimg.com/vi/iERcssnuF-A/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=iERcssnuF-A"
+  },
+  {
     "id": "dUVvYpkfBW8",
     "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.4【サカつく2026】新フォメコン追加、新サカつくモード最新情報、WPS仕様変更、ポルトガルガチャ、限定特練カード、スカウト選手選抜登録など",
     "thumbnail": "https://i.ytimg.com/vi/dUVvYpkfBW8/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】5ピックアップガチャ徹底解説！これは完全にムービング救済ガチャ【サカつく2026】ラウル・ヒメネス、コーディ・ガクポ、レアンドロ・トロサール、コビー・メイヌー、アダム・ウォートン",
     "thumbnail": "https://i.ytimg.com/vi/Ni-R5Asjm4c/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=Ni-R5Asjm4c"
-  },
-  {
-    "id": "PgM41g9GWPc",
-    "title": "【引く前に見て】日本代表ガチャ第二弾徹底解説！久保&冨安以外微妙すぎて、誰が引くん？【サカつく2026】小川航基、塩貝健人、前田大然、久保建英、菅原由勢、冨安健洋",
-    "thumbnail": "https://i.ytimg.com/vi/PgM41g9GWPc/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=PgM41g9GWPc"
   }
 ];
 
