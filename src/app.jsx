@@ -8666,26 +8666,98 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
   const [isPlayerModalOpen, setIsPlayerModalOpen] = useState(false);
   const [modalSearchText, setModalSearchText] = useState('');
   const [modalPosFilter, setModalPosFilter] = useState('ALL');
+  const [modalNatFilter, setModalNatFilter] = useState('ALL');
+  const [modalSortConfig, setModalSortConfig] = useState({ key: 'overall', direction: 'desc' });
+
+  const handleModalSort = (key) => {
+    setModalSortConfig(prev => {
+      if (prev.key === key) {
+        return { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' };
+      }
+      return { key, direction: key === 'overall' ? 'desc' : 'asc' };
+    });
+  };
+
+  const modalNationalities = useMemo(() => {
+    if (!players || !Array.isArray(players)) return [];
+    const counts = {};
+    players.forEach(p => {
+      if (p && p.nationality && String(p.nationality).trim()) {
+        const nat = String(p.nationality).trim();
+        counts[nat] = (counts[nat] || 0) + 1;
+      }
+    });
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1] || getNationalityReading(a[0]).localeCompare(getNationalityReading(b[0]), 'ja'))
+      .map(([nat, count]) => ({ nat, count }));
+  }, [players]);
+
   const filteredModalPlayers = useMemo(() => {
     if (!players || !Array.isArray(players)) return [];
-    return players.filter(p => {
+    const SIM_MODAL_POS_ORDER = {
+      'CF': 1, 'ST': 2, 'LW': 3, 'LWG': 3, 'RW': 4, 'RWG': 4, 'FW': 5,
+      'AM': 6, 'OMF': 6, 'AMF': 6, 'LM': 7, 'LMF': 7, 'RM': 8, 'RMF': 8, 'CMF': 9, 'CM': 9, 'DM': 10, 'DMF': 10, 'MF': 11,
+      'LFB': 12, 'LSB': 12, 'LB': 12, 'RFB': 13, 'RSB': 13, 'RB': 13, 'CB': 14, 'DF': 15,
+      'GK': 16
+    };
+
+    const filtered = players.filter(p => {
       if (!p) return false;
-      const q = (modalSearchText || '').toLowerCase();
-      const matchSearch = !modalSearchText ||
+      const q = (modalSearchText || '').toLowerCase().trim();
+      const matchSearch = !q ||
         (p.name && String(p.name).toLowerCase().includes(q)) ||
+        (p.readingName && String(p.readingName).toLowerCase().includes(q)) ||
+        (p.kana && String(p.kana).toLowerCase().includes(q)) ||
         (p.team && String(p.team).toLowerCase().includes(q)) ||
-        (p.playStyle && String(p.playStyle).toLowerCase().includes(q));
+        (p.playStyle && String(p.playStyle).toLowerCase().includes(q)) ||
+        (p.nationality && String(p.nationality).toLowerCase().includes(q)) ||
+        (p.policy && String(p.policy).toLowerCase().includes(q));
 
       const pos = p.mainPosition || p.position || '';
+      const subPos = Array.isArray(p.subPositions) ? p.subPositions : [];
       let matchPos = modalPosFilter === 'ALL';
-      if (modalPosFilter === 'FW') matchPos = ['CF', 'ST', 'LW', 'RW', 'LWG', 'RWG', 'LWF', 'RWF', 'FW'].includes(pos);
-      if (modalPosFilter === 'MF') matchPos = ['AM', 'OMF', 'AMF', 'DM', 'DMF', 'LM', 'LMF', 'RM', 'RMF', 'CMF', 'CM', 'MF'].includes(pos);
-      if (modalPosFilter === 'DF') matchPos = ['CB', 'LFB', 'RFB', 'LSB', 'RSB', 'LB', 'RB', 'DF'].includes(pos);
-      if (modalPosFilter === 'GK') matchPos = (pos === 'GK' || p.category === 'GK');
+      if (modalPosFilter === 'FW') {
+        matchPos = ['CF', 'ST', 'LW', 'RW', 'LWG', 'RWG', 'LWF', 'RWF', 'FW'].includes(pos) || p.category === 'FW';
+      } else if (modalPosFilter === 'MF') {
+        matchPos = ['AM', 'OMF', 'AMF', 'DM', 'DMF', 'LM', 'LMF', 'RM', 'RMF', 'CMF', 'CM', 'MF'].includes(pos) || p.category === 'MF';
+      } else if (modalPosFilter === 'DF') {
+        matchPos = ['CB', 'LFB', 'RFB', 'LSB', 'RSB', 'LB', 'RB', 'DF'].includes(pos) || p.category === 'DF';
+      } else if (modalPosFilter === 'GK') {
+        matchPos = (pos === 'GK' || p.category === 'GK');
+      } else if (modalPosFilter !== 'ALL') {
+        matchPos = (pos === modalPosFilter || subPos.includes(modalPosFilter));
+      }
 
-      return matchSearch && matchPos;
+      const pNat = (p.nationality || '').trim();
+      const matchNat = modalNatFilter === 'ALL' || pNat === modalNatFilter;
+
+      return matchSearch && matchPos && matchNat;
     });
-  }, [players, modalSearchText, modalPosFilter]);
+
+    const mult = modalSortConfig.direction === 'asc' ? 1 : -1;
+    return [...filtered].sort((a, b) => {
+      let cmp = 0;
+      if (modalSortConfig.key === 'pos') {
+        const posA = SIM_MODAL_POS_ORDER[a.mainPosition || a.position] || 99;
+        const posB = SIM_MODAL_POS_ORDER[b.mainPosition || b.position] || 99;
+        cmp = (posA - posB) * mult;
+      } else if (modalSortConfig.key === 'nationality') {
+        const natA = (a.nationality || 'その他').trim();
+        const natB = (b.nationality || 'その他').trim();
+        if (natA !== natB) {
+          cmp = getNationalityReading(natA).localeCompare(getNationalityReading(natB), 'ja') * mult;
+        }
+      } else if (modalSortConfig.key === 'name') {
+        const nameA = a.readingName || a.name || '';
+        const nameB = b.readingName || b.name || '';
+        cmp = nameA.localeCompare(nameB, 'ja') * mult;
+      } else {
+        cmp = ((a.overall || 0) - (b.overall || 0)) * mult;
+      }
+      if (cmp !== 0) return cmp;
+      return (b.overall || 0) - (a.overall || 0);
+    });
+  }, [players, modalSearchText, modalPosFilter, modalNatFilter, modalSortConfig]);
   const [activeSlotForCardModal, setActiveSlotForCardModal] = useState(null);
   const [slotCardSearchText, setSlotCardSearchText] = useState('');
   const [slotCardRankFilter, setSlotCardRankFilter] = useState('ALL');
@@ -10870,25 +10942,120 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
             </div>
 
             {/* Filter and Search */}
-            <div className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="text"
-                value={modalSearchText}
-                onChange={(e) => setModalSearchText(e.target.value)}
-                placeholder="選手名・チーム名で検索..."
-                className="flex-1 bg-slate-950 text-white text-xs px-3 py-2 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
-              />
-              <select
-                value={modalPosFilter}
-                onChange={(e) => setModalPosFilter(e.target.value)}
-                className="bg-slate-950 text-amber-300 text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 outline-none cursor-pointer"
-              >
-                <option value="ALL">全ポジション</option>
-                <option value="FW">FW</option>
-                <option value="MF">MF</option>
-                <option value="DF">DF</option>
-                <option value="GK">GK</option>
-              </select>
+            <div className="space-y-2.5">
+              {/* 1. 検索ボックス ＆ 並び替え(ソート)ボタン */}
+              <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
+                <div className="relative flex-1">
+                  <input
+                    type="text"
+                    value={modalSearchText}
+                    onChange={(e) => setModalSearchText(e.target.value)}
+                    placeholder="選手名・プレイスタイル・国籍・ポリシーで検索..."
+                    className="w-full bg-slate-950 text-white text-xs px-3 py-2 pr-8 rounded-xl border border-slate-700 focus:border-amber-400 outline-none"
+                  />
+                  {modalSearchText && (
+                    <button
+                      onClick={() => setModalSearchText('')}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  )}
+                </div>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="text-[10px] text-slate-400 font-bold whitespace-nowrap">並び替え:</span>
+                  {[
+                    { key: 'pos', label: '📍 ポジション順' },
+                    { key: 'nationality', label: '🌐 国籍順' },
+                    { key: 'overall', label: '⚡ 総合力順' },
+                    { key: 'name', label: '🔤 名前順' }
+                  ].map(item => {
+                    const isActive = modalSortConfig.key === item.key;
+                    const arrow = isActive ? (modalSortConfig.direction === 'asc' ? ' ▲' : ' ▼') : '';
+                    return (
+                      <button
+                        key={item.key}
+                        onClick={() => handleModalSort(item.key)}
+                        className={`px-2.5 py-1.5 rounded-lg text-[11px] font-extrabold whitespace-nowrap cursor-pointer border transition-all ${isActive
+                          ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm shadow-amber-400/20'
+                          : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-amber-400/50 hover:text-white'
+                        }`}
+                      >
+                        {item.label}{arrow}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* 2. ポジション別ボタン */}
+              <div className="flex items-center gap-1 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+                <span className="text-[10px] text-slate-400 font-bold whitespace-nowrap mr-1">ポジション:</span>
+                {['ALL', 'FW', 'MF', 'DF', 'GK', 'CF', 'LW', 'RW', 'AM', 'LM', 'RM', 'DM', 'LFB', 'RFB', 'CB'].map(pos => (
+                  <button
+                    key={pos}
+                    onClick={() => setModalPosFilter(pos)}
+                    className={`px-2 py-1 rounded-lg text-[11px] font-black whitespace-nowrap cursor-pointer border transition-all ${modalPosFilter === pos
+                      ? 'bg-emerald-400 text-slate-950 border-emerald-300 shadow-sm'
+                      : ['FW', 'MF', 'DF', 'GK'].includes(pos)
+                        ? 'bg-slate-800/90 text-amber-300 border-slate-700 hover:border-amber-400/50'
+                        : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
+                    }`}
+                  >
+                    {pos === 'ALL' ? 'ALL' : pos}
+                  </button>
+                ))}
+              </div>
+
+              {/* 3. 国籍別ボタン */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-700">
+                <span className="text-[10px] text-slate-400 font-bold whitespace-nowrap mr-0.5">国籍:</span>
+                <button
+                  onClick={() => setModalNatFilter('ALL')}
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-black whitespace-nowrap cursor-pointer border transition-all ${modalNatFilter === 'ALL'
+                    ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm'
+                    : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
+                  }`}
+                >
+                  ALL ({players ? players.length : 0})
+                </button>
+                {modalNationalities.map(({ nat, count }) => (
+                  <button
+                    key={nat}
+                    onClick={() => setModalNatFilter(modalNatFilter === nat ? 'ALL' : nat)}
+                    className={`px-2 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap cursor-pointer border transition-all flex items-center gap-1 flex-shrink-0 ${modalNatFilter === nat
+                      ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm font-black'
+                      : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
+                    }`}
+                  >
+                    <FlagIcon nationality={nat} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" />
+                    <span>{nat}</span>
+                    <span className={`text-[9px] ${modalNatFilter === nat ? 'text-slate-900 font-black' : 'text-slate-500'}`}>({count})</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* 4. 絞り込みステータス & リセット */}
+              <div className="flex items-center justify-between text-[11px] text-slate-400 px-1">
+                <span>
+                  表示中: <strong className="text-amber-300 font-black">{filteredModalPlayers.length}</strong> 名
+                  {modalPosFilter !== 'ALL' && <span className="ml-2 text-emerald-400 font-bold">[ポジション: {modalPosFilter}]</span>}
+                  {modalNatFilter !== 'ALL' && <span className="ml-2 text-amber-300 font-bold">[国籍: {modalNatFilter}]</span>}
+                </span>
+                {(modalSearchText || modalPosFilter !== 'ALL' || modalNatFilter !== 'ALL' || modalSortConfig.key !== 'overall' || modalSortConfig.direction !== 'desc') && (
+                  <button
+                    onClick={() => {
+                      setModalSearchText('');
+                      setModalPosFilter('ALL');
+                      setModalNatFilter('ALL');
+                      setModalSortConfig({ key: 'overall', direction: 'desc' });
+                    }}
+                    className="text-[11px] text-rose-400 hover:text-rose-300 font-bold cursor-pointer"
+                  >
+                    ✕ 条件・ソートをリセット
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Player List */}
@@ -10900,22 +11067,40 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                   className={`p-2.5 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${currentPlayer?.name === p.name ? 'border-amber-400/80 bg-amber-500/10' : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
                     }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
                     <PlayerAvatar player={p} className="w-10 h-14 rounded-lg object-contain bg-slate-900 border border-slate-800 flex-shrink-0" />
-                    <div>
-                      <div className="flex items-center gap-2">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-slate-800 text-emerald-400 border border-slate-700">{p.mainPosition || p.position}</span>
+                        {p.subPositions && p.subPositions.length > 0 && (
+                          <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">
+                            サブ: {p.subPositions.join(', ')}
+                          </span>
+                        )}
                         <span className="text-[10px] text-amber-400 font-extrabold">{p.rarity || '☆5'}</span>
-                        <h4 className="text-sm font-black text-white group-hover:text-amber-300 transition-colors">{p.name}</h4>
+                        {p.nationality && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-900 text-slate-200 border border-slate-700/80">
+                            <FlagIcon nationality={p.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" />
+                            <span>{p.nationality}</span>
+                          </span>
+                        )}
+                        <h4 className="text-sm font-black text-white group-hover:text-amber-300 transition-colors truncate">{p.name}</h4>
                       </div>
-                      <p className="text-[11px] text-slate-400 mt-0.5">
-                        プレイスタイル: <span className="text-slate-200 font-bold">{p.playStyle || 'ストライカー'}</span>
+                      <p className="text-[11px] text-slate-400 mt-0.5 flex items-center gap-2 flex-wrap">
+                        <span>プレイスタイル: <span className="text-slate-200 font-bold">{p.playStyle || 'ストライカー'}</span> {p.playStyleLevel && <span className="text-emerald-400 font-bold">LV.{p.playStyleLevel}</span>}</span>
+                        {p.policy && <span className="text-slate-500">| ポリシー: <span className="text-slate-300 font-bold">{p.policy}</span></span>}
                       </p>
                     </div>
                   </div>
-                  <button className="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/40 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
-                    選択 ⚽
-                  </button>
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <div className="text-right hidden sm:block">
+                      <div className="text-[9px] text-slate-500 font-bold">総合力</div>
+                      <div className="text-sm font-black text-emerald-400 font-num">{p.overall}</div>
+                    </div>
+                    <button className="px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-500/20 text-amber-300 border border-amber-500/40 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+                      選択 ⚽
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
