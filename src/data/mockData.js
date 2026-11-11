@@ -796,6 +796,54 @@ window.INITIAL_PLAYERS = [].concat(
       { name: '不屈の魂', rank: '銅', description: '発動条件：好調　/　キープ力・スタミナUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p416',
+    name: 'ポポ(配布)',
+    readingName: 'ぽぽ',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'スプリントCB',
+    playStyleLevel: 'Ⅱ',
+    overall: 5460,
+    maxOverall: 12727,
+    baseStats: { shoot: 914, pass: 767, dribble: 800, defense: 1138, physical: 1121, speed: 691 },
+    detailStats: {
+      shoot: { finishing: 285, power: 351, composure: 278 },
+      pass: { shortPass: 209, longPass: 333, accuracy: 225 },
+      dribble: { breakout: 244, keeping: 283, ballTouch: 273 },
+      defense: { tackle: 374, interception: 375, marking: 389 },
+      physical: { jumping: 374, contact: 383, stamina: 364 },
+      speed: { running: 359, agility: 332 }
+    },
+    maxEnhanced: {
+      overall: 12727,
+      baseStats: { shoot: 2138, pass: 2063, dribble: 2060, defense: 2470, physical: 2441, speed: 1555 },
+      detailStats: {
+        shoot: { finishing: 693, power: 759, composure: 686 },
+        pass: { shortPass: 641, longPass: 765, accuracy: 657 },
+        dribble: { breakout: 664, keeping: 703, ballTouch: 693 },
+        defense: { tackle: 818, interception: 819, marking: 833 },
+        physical: { jumping: 818, contact: 827, stamina: 796 },
+        speed: { running: 791, agility: 764 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '反撃のパスカット', rank: '銅', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカット・ロングパスUP　/　成功時に自身のロングパス発生確率UP' },
+    abilities: [
+      { name: 'ボールハンター', rank: '銀', description: '発動条件：絶好調　/　タックル・マークUP' },
+      { name: 'ノンストップジャンパー', rank: '銅', description: '発動条件：途中出場　/　ジャンプ・スタミナUP' }
+    ],
+    avatarUrl: ''
   }
   ]
 );
