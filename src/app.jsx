@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "DnGxJ98i65c",
+    "title": "【引く前に見て】ポルトガルガチャ第二弾徹底解説！セレソン・ダス・キナス’26超強化【サカつく2026】ラファエル・レオン、ブルーノ・フェルナンデス、ベルナウド・シウバ、ヌーノ・メンデス",
+    "thumbnail": "https://i.ytimg.com/vi/DnGxJ98i65c/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=DnGxJ98i65c"
+  },
+  {
     "id": "lGOH7JKQwvk",
     "title": "【引く前に見て】新ガチャ徹底解説！新フォメコンに必須なカードが登場【サカつく2026】ヴィルツ、ハキミ、ロカテッリ、クアンサー",
     "thumbnail": "https://i.ytimg.com/vi/lGOH7JKQwvk/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.3【サカつく2026】新フォメコン追加、レジェンド帯追加、1VS1仕様変更、フランスガチャ、限定特練カード、新サカつくモード、☆4スカウト選手",
     "thumbnail": "https://i.ytimg.com/vi/gRxHaR7-CVQ/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=gRxHaR7-CVQ"
-  },
-  {
-    "id": "6YZtpt1w6O4",
-    "title": "【ピザーラ】コラボメニューが始まったので注文して食べてカードを開封して数値を見て解説します【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/6YZtpt1w6O4/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=6YZtpt1w6O4"
   }
 ];
 
