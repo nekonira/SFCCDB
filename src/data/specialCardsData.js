@@ -544,7 +544,7 @@ window.OFFICIAL_SPECIAL_CARDS = [
       type: 'アビリティ',
       name: '力強いフィニッシュ',
       rank: '銅',
-      description: '発動条件：好調　/　決定力・コンタクトUP'
+      description: '発動条件：絶好調　/　決定力・コンタクトUP'
     },
     playstyleBonus: {
       style: 'ストライカー 15% / CF 10%',

@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "lGOH7JKQwvk",
+    "title": "【引く前に見て】新ガチャ徹底解説！新フォメコンに必須なカードが登場【サカつく2026】ヴィルツ、ハキミ、ロカテッリ、クアンサー",
+    "thumbnail": "https://i.ytimg.com/vi/lGOH7JKQwvk/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=lGOH7JKQwvk"
+  },
+  {
     "id": "iERcssnuF-A",
     "title": "【引く前に見て】限定ポルトガルガチャ徹底解説！ロナウドが超ぶっ壊れ性能【サカつく2026】ヴィティーニャ、セメド、ベイガ",
     "thumbnail": "https://i.ytimg.com/vi/iERcssnuF-A/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【ピザーラ】コラボメニューが始まったので注文して食べてカードを開封して数値を見て解説します【サカつく2026】",
     "thumbnail": "https://i.ytimg.com/vi/6YZtpt1w6O4/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=6YZtpt1w6O4"
-  },
-  {
-    "id": "Ni-R5Asjm4c",
-    "title": "【引く前に見て】5ピックアップガチャ徹底解説！これは完全にムービング救済ガチャ【サカつく2026】ラウル・ヒメネス、コーディ・ガクポ、レアンドロ・トロサール、コビー・メイヌー、アダム・ウォートン",
-    "thumbnail": "https://i.ytimg.com/vi/Ni-R5Asjm4c/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=Ni-R5Asjm4c"
   }
 ];
 
@@ -1051,7 +1051,11 @@ const PLAYER_IMAGE_MAP = {
   "p408": "CRISTIANO_RONALDO_2026_IMAGE",
   "p409": "VITINHA_2026_IMAGE",
   "p410": "NELSON_SEMEDO_2026_IMAGE",
-  "p411": "RENATO_VEIGA_2026_IMAGE"
+  "p411": "RENATO_VEIGA_2026_IMAGE",
+  "p412": "RAFAEL_LEAO_2026_IMAGE",
+  "p413": "BRUNO_FERNANDES_2026_IMAGE",
+  "p414": "BERNARDO_SILVA_2026_IMAGE",
+  "p415": "NUNO_MENDES_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {

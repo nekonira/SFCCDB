@@ -600,6 +600,202 @@ window.INITIAL_PLAYERS = [].concat(
       { name: '制空のボールタッチ', rank: '銅', description: '発動条件：途中出場　/　ボールタッチ・ジャンプUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p412',
+    name: 'ラファエル・レオン',
+    readingName: 'らふぁえる・れおん',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'サイドアタッカーLW',
+    playStyleLevel: 'Ⅱ',
+    overall: 7400,
+    maxOverall: 15635,
+    baseStats: { shoot: 1351, pass: 1193, dribble: 1439, defense: 918, physical: 1274, speed: 961 },
+    detailStats: {
+      shoot: { finishing: 460, power: 443, composure: 448 },
+      pass: { shortPass: 402, longPass: 394, accuracy: 397 },
+      dribble: { breakout: 481, keeping: 478, ballTouch: 480 },
+      defense: { tackle: 286, interception: 321, marking: 311 },
+      physical: { jumping: 466, contact: 437, stamina: 371 },
+      speed: { running: 475, agility: 486 }
+    },
+    maxEnhanced: {
+      overall: 15635,
+      baseStats: { shoot: 2908, pass: 2762, dribble: 3032, defense: 2427, physical: 2819, speed: 2031 },
+      detailStats: {
+        shoot: { finishing: 983, power: 954, composure: 971 },
+        pass: { shortPass: 925, longPass: 917, accuracy: 920 },
+        dribble: { breakout: 1016, keeping: 1013, ballTouch: 1003 },
+        defense: { tackle: 797, interception: 820, marking: 810 },
+        physical: { jumping: 977, contact: 948, stamina: 894 },
+        speed: { running: 1010, agility: 1021 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 1, shoot: 0, longShoot: 0,
+      shortPass: 0, longPass: 0, throughPass: 0, cutIn: -1, keep: 0,
+      delay: -1, rushOut: 2, feint: 1, press: 0
+    },
+    skill: { name: 'カッティングエッジ', rank: '金', description: '発動エリア：前左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にシュート発生確率UP' },
+    abilities: [
+      { name: '多彩な足技', rank: '金', description: '発動条件：好調　/　突破力・キープ力・敏捷性UP' },
+      { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },
+      { name: '力強いフィニッシュ', rank: '銅', description: '発動条件：絶好調　/　決定力・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p413',
+    name: 'ブルーノ・フェルナンデス',
+    readingName: 'ぶるーの・ふぇるなんです',
+    category: 'MF',
+    mainPosition: 'AM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'パサーAM',
+    playStyleLevel: 'Ⅱ',
+    overall: 7485,
+    maxOverall: 15660,
+    baseStats: { shoot: 1406, pass: 1483, dribble: 1292, defense: 1148, physical: 1283, speed: 858 },
+    detailStats: {
+      shoot: { finishing: 489, power: 453, composure: 464 },
+      pass: { shortPass: 486, longPass: 500, accuracy: 497 },
+      dribble: { breakout: 420, keeping: 404, ballTouch: 468 },
+      defense: { tackle: 374, interception: 374, marking: 400 },
+      physical: { jumping: 372, contact: 423, stamina: 488 },
+      speed: { running: 415, agility: 443 }
+    },
+    maxEnhanced: {
+      overall: 15660,
+      baseStats: { shoot: 2951, pass: 3064, dribble: 2861, defense: 2693, physical: 2852, speed: 1892 },
+      detailStats: {
+        shoot: { finishing: 1000, power: 964, composure: 987 },
+        pass: { shortPass: 1021, longPass: 1023, accuracy: 1020 },
+        dribble: { breakout: 943, keeping: 927, ballTouch: 991 },
+        defense: { tackle: 897, interception: 885, marking: 911 },
+        physical: { jumping: 883, contact: 946, stamina: 1023 },
+        speed: { running: 926, agility: 966 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 0, longPass: 2, throughPass: 1, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '妙なる調べ', rank: '金', description: '発動エリア：前中・中中　/　発動条件：前中・中中の位置に居る選手へのダイレクトショートパス時　/　ショートパス・キック精度UP　/　成功時に受け手のシュート発生確率UP' },
+    abilities: [
+      { name: '無尽蔵のパサー', rank: '金', description: '発動条件：好調　/　ショートパス・ロングパス・スタミナUP' },
+      { name: '精密なフィニッシュ', rank: '銀', description: '発動条件：好調　/　決定力・キック精度UP' },
+      { name: '冷静なボールタッチ', rank: '銅', description: '発動条件：絶好調　/　冷静さ・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p414',
+    name: 'ベルナルド・シウバ',
+    readingName: 'べるなるど・しうば',
+    category: 'FW',
+    mainPosition: 'RW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: 'ドリブラーRW',
+    playStyleLevel: 'Ⅱ',
+    overall: 7411,
+    maxOverall: 15686,
+    baseStats: { shoot: 1277, pass: 1466, dribble: 1459, defense: 1013, physical: 1108, speed: 890 },
+    detailStats: {
+      shoot: { finishing: 417, power: 400, composure: 460 },
+      pass: { shortPass: 490, longPass: 490, accuracy: 486 },
+      dribble: { breakout: 476, keeping: 487, ballTouch: 496 },
+      defense: { tackle: 304, interception: 360, marking: 349 },
+      physical: { jumping: 297, contact: 338, stamina: 473 },
+      speed: { running: 420, agility: 470 }
+    },
+    maxEnhanced: {
+      overall: 15686,
+      baseStats: { shoot: 2834, pass: 3035, dribble: 3052, defense: 2222, physical: 2653, speed: 1960 },
+      detailStats: {
+        shoot: { finishing: 940, power: 911, composure: 983 },
+        pass: { shortPass: 1013, longPass: 1013, accuracy: 1009 },
+        dribble: { breakout: 1011, keeping: 1022, ballTouch: 1019 },
+        defense: { tackle: 815, interception: 559, marking: 848 },
+        physical: { jumping: 808, contact: 849, stamina: 996 },
+        speed: { running: 955, agility: 1005 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: { name: '予測不能', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：ドリブル中　/　突破力・キープ力UP　/　成功時にショートパス発生確率UP' },
+    abilities: [
+      { name: '誘いの遊戯', rank: '金', description: '発動条件：好調　/　ショートパス・キープ力・ボールタッチUP' },
+      { name: 'すり抜けるロングパサー', rank: '銀', description: '発動条件：絶好調　/　ロングパス・突破力UP' },
+      { name: '俊敏なキッカー', rank: '銅', description: '発動条件：好調　/　キック精度・敏捷性UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p415',
+    name: 'ヌーノ・メンデス',
+    readingName: 'ぬーの・めんです',
+    category: 'DF',
+    mainPosition: 'LFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ポルトガル',
+    policy: 'カウンター',
+    playStyle: '攻撃的LFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7206,
+    maxOverall: 15442,
+    baseStats: { shoot: 1213, pass: 1278, dribble: 1450, defense: 1269, physical: 1223, speed: 952 },
+    detailStats: {
+      shoot: { finishing: 397, power: 406, composure: 410 },
+      pass: { shortPass: 427, longPass: 422, accuracy: 429 },
+      dribble: { breakout: 485, keeping: 482, ballTouch: 483 },
+      defense: { tackle: 440, interception: 419, marking: 410 },
+      physical: { jumping: 366, contact: 425, stamina: 432 },
+      speed: { running: 482, agility: 470 }
+    },
+    maxEnhanced: {
+      overall: 15442,
+      baseStats: { shoot: 2710, pass: 2847, dribble: 2983, defense: 2874, physical: 2792, speed: 2022 },
+      detailStats: {
+        shoot: { finishing: 896, power: 905, composure: 909 },
+        pass: { shortPass: 950, longPass: 945, accuracy: 952 },
+        dribble: { breakout: 996, keeping: 993, ballTouch: 994 },
+        defense: { tackle: 975, interception: 954, marking: 945 },
+        physical: { jumping: 877, contact: 948, stamina: 967 },
+        speed: { running: 1017, agility: 1005 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: 'ビルドアップドライブ', rank: '銀', description: '発動エリア：中左右・後左右　/　発動条件：ドリブル時　/　突破力・ショートパスUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '俊敏なドリブラー', rank: '銀', description: '発動条件：好調　/　突破力・敏捷性UP' },
+      { name: '高速のボールタッチ', rank: '銀', description: '発動条件：好調　/　ボールタッチ・走力UP' },
+      { name: '不屈の魂', rank: '銅', description: '発動条件：好調　/　キープ力・スタミナUP' }
+    ],
+    avatarUrl: ''
   }
   ]
 );
