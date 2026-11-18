@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "2fP2f-jwTcg",
+    "title": "【引く前に見て】特練カードピックアップガチャ！優先順位をランキング形式で徹底解説【サカつく2026】ドク、マルティネッリ、ヴィニシウス、ダンフリース、ケイン、ジルー、ヤマル、サラー、エンバペ",
+    "thumbnail": "https://i.ytimg.com/vi/2fP2f-jwTcg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=2fP2f-jwTcg"
+  },
+  {
     "id": "DnGxJ98i65c",
     "title": "【引く前に見て】ポルトガルガチャ第二弾徹底解説！セレソン・ダス・キナス’26超強化【サカつく2026】ラファエル・レオン、ブルーノ・フェルナンデス、ベルナウド・シウバ、ヌーノ・メンデス",
     "thumbnail": "https://i.ytimg.com/vi/DnGxJ98i65c/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】限定フランスガチャ徹底解説！エンバペが超ぶっ壊れ性能【サカつく2026】デンベレ、ラビオ、シュバリエ",
     "thumbnail": "https://i.ytimg.com/vi/xq1xGdXRPIM/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=xq1xGdXRPIM"
-  },
-  {
-    "id": "gRxHaR7-CVQ",
-    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.3【サカつく2026】新フォメコン追加、レジェンド帯追加、1VS1仕様変更、フランスガチャ、限定特練カード、新サカつくモード、☆4スカウト選手",
-    "thumbnail": "https://i.ytimg.com/vi/gRxHaR7-CVQ/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=gRxHaR7-CVQ"
   }
 ];
 
