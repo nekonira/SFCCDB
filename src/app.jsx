@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "cFn1BxpEgvo",
+    "title": "【引く前に見て】カウンターピックアップガチャ解説！これを引くならポルトガルガチャを引いてください。【サカつく2026】グヴァルディオル、サラー、バレッラ、クルトワ",
+    "thumbnail": "https://i.ytimg.com/vi/cFn1BxpEgvo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=cFn1BxpEgvo"
+  },
+  {
     "id": "2fP2f-jwTcg",
     "title": "【引く前に見て】特練カードピックアップガチャ！優先順位をランキング形式で徹底解説【サカつく2026】ドク、マルティネッリ、ヴィニシウス、ダンフリース、ケイン、ジルー、ヤマル、サラー、エンバペ",
     "thumbnail": "https://i.ytimg.com/vi/2fP2f-jwTcg/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】新ガチャ徹底解説！ヤバすぎるスキルが登場。インフレを感じる新特練【サカつく2026】ロナウド、マルキーニョス、フラーフェンベルフ、マルティネッリ",
     "thumbnail": "https://i.ytimg.com/vi/K7d5iyUdJTA/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=K7d5iyUdJTA"
-  },
-  {
-    "id": "xq1xGdXRPIM",
-    "title": "【引く前に見て】限定フランスガチャ徹底解説！エンバペが超ぶっ壊れ性能【サカつく2026】デンベレ、ラビオ、シュバリエ",
-    "thumbnail": "https://i.ytimg.com/vi/xq1xGdXRPIM/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=xq1xGdXRPIM"
   }
 ];
 
