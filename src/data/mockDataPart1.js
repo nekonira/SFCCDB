@@ -1462,20 +1462,20 @@ window.INITIAL_PLAYERS_PART1 = [
       }
     },
     "playTendencies": {
-      "attack": -1,
-      "defense": 1,
-      "dribble": -1,
-      "shoot": -1,
-      "longShoot": -1,
-      "shortPass": 0,
+      "attack": 0,
+      "defense": 0,
+      "dribble": 0,
+      "shoot": 0,
+      "longShoot": 0,
+      "shortPass": 1,
       "longPass": 0,
-      "throughPass": -1,
-      "cutIn": -1,
-      "keep": -1,
+      "throughPass": 0,
+      "cutIn": 0,
+      "keep": 0,
       "delay": 0,
       "rushOut": -1,
-      "feint": -1,
-      "press": 1
+      "feint": 0,
+      "press": 0
     },
     "skill": {
       "name": "ルミナストラップ",
