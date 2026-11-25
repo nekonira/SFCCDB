@@ -9808,7 +9808,7 @@ window.INITIAL_PLAYERS_PART1 = [
       {
         "name": "パワーアジリティ",
         "rank": "銀",
-        "description": "発動条件：途中出場　/　コンタクト・敏捷性UP"
+        "description": "発動条件：好調　/　コンタクト・敏捷性UP"
       },
       {
         "name": "ボールスティーラー",
@@ -17798,7 +17798,7 @@ window.INITIAL_PLAYERS_PART1 = [
       {
         "name": "パワーアジリティ",
         "rank": "銀",
-        "description": "発動条件：途中出場　/　コンタクト・敏捷性UP"
+        "description": "発動条件：好調　/　コンタクト・敏捷性UP"
       }
     ],
     "avatarUrl": ""

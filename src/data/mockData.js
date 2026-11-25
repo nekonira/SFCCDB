@@ -844,6 +844,545 @@ window.INITIAL_PLAYERS = [].concat(
       { name: 'ノンストップジャンパー', rank: '銅', description: '発動条件：途中出場　/　ジャンプ・スタミナUP' }
     ],
     avatarUrl: ''
+  },
+  {
+    id: 'p417',
+    name: 'ハリー・ケイン(2026-2027)',
+    readingName: 'はりーけいん',
+    category: 'FW',
+    mainPosition: 'CF',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'イングランド',
+    policy: 'リアクション',
+    playStyle: 'ポストプレーヤー',
+    playStyleLevel: 'Ⅲ',
+    overall: 8028,
+    maxOverall: 16359,
+    baseStats: { shoot: 1485, pass: 1521, dribble: 1419, defense: 903, physical: 1401, speed: 751 },
+    detailStats: {
+      shoot: { finishing: 496, power: 490, composure: 499 },
+      pass: { shortPass: 513, longPass: 506, accuracy: 502 },
+      dribble: { breakout: 437, keeping: 490, ballTouch: 492 },
+      defense: { tackle: 300, interception: 309, marking: 294 },
+      physical: { jumping: 496, contact: 474, stamina: 431 },
+      speed: { running: 372, agility: 379 }
+    },
+    maxEnhanced: {
+      overall: 16359,
+      baseStats: { shoot: 3090, pass: 3054, dribble: 3000, defense: 2400, physical: 2982, speed: 1797 },
+      detailStats: {
+        shoot: { finishing: 1031, power: 1025, composure: 1034 },
+        pass: { shortPass: 1024, longPass: 1017, accuracy: 1013 },
+        dribble: { breakout: 960, keeping: 1013, ballTouch: 1027 },
+        defense: { tackle: 799, interception: 808, marking: 793 },
+        physical: { jumping: 1019, contact: 1009, stamina: 954 },
+        speed: { running: 895, agility: 902 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: -1, dribble: 0, shoot: 1, longShoot: 1,
+      shortPass: 1, longPass: -1, throughPass: 1, cutIn: 0, keep: 2,
+      delay: -1, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: 'ギフトタッチ', rank: '金', description: '発動エリア：前中・中中　/　発動条件：トラップ時　/　ボールタッチ・キープ力　/　成功時に自身のシュート発生確率UP' },
+    abilities: [
+      { name: '最優秀選手の証明', rank: '虹', description: '発動条件：常時　/　全パラメーターUP' },
+      { name: '狙いすました強振', rank: '銀', description: '発動条件：好調　/　キック力・冷静さUP' },
+      { name: '懐の深いボールタッチ', rank: '銀', description: '発動条件：絶好調　/　キープ力・ボールタッチUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p418',
+    name: 'ルイス・ディアス(2026-2027)',
+    readingName: 'るいすでぃあす',
+    category: 'FW',
+    mainPosition: 'LW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'コロンビア',
+    policy: 'リアクション',
+    playStyle: 'ドリブラー',
+    playStyleLevel: 'Ⅱ',
+    overall: 7440,
+    maxOverall: 15721,
+    baseStats: { shoot: 1307, pass: 1314, dribble: 1463, defense: 1052, physical: 1161, speed: 934 },
+    detailStats: {
+      shoot: { finishing: 455, power: 402, composure: 450 },
+      pass: { shortPass: 443, longPass: 435, accuracy: 436 },
+      dribble: { breakout: 484, keeping: 487, ballTouch: 492 },
+      defense: { tackle: 350, interception: 361, marking: 341 },
+      physical: { jumping: 395, contact: 358, stamina: 408 },
+      speed: { running: 452, agility: 482 }
+    },
+    maxEnhanced: {
+      overall: 15721,
+      baseStats: { shoot: 2864, pass: 2883, dribble: 3056, defense: 2561, physical: 2706, speed: 2004 },
+      detailStats: {
+        shoot: { finishing: 978, power: 913, composure: 973 },
+        pass: { shortPass: 966, longPass: 958, accuracy: 959 },
+        dribble: { breakout: 1019, keeping: 1022, ballTouch: 1015 },
+        defense: { tackle: 861, interception: 860, marking: 840 },
+        physical: { jumping: 906, contact: 869, stamina: 931 },
+        speed: { running: 987, agility: 1017 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 1, longShoot: 0,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 1, keep: 1,
+      delay: -1, rushOut: 1, feint: 2, press: 0
+    },
+    skill: { name: '幻惑の疾走', rank: '金', description: '発動エリア：前左右・中左右　/　発動条件：プレースタイルがドリブラーの選手のドリブル時　/　突破力・キープ力UP　/　発動時にCF・AMの選手の決定力が一定時間UP、ドリブル成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '多彩な足技', rank: '金', description: '発動条件：好調　/　突破力・キープ力・敏捷性UP' },
+      { name: 'ゴール前の落ち着き', rank: '銀', description: '発動条件：好調　/　決定力・ボールタッチUP' },
+      { name: '冷静な破壊者', rank: '銅', description: '発動条件：好調　/　冷静さ・コンタクトUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p419',
+    name: 'ミカエル・オリーズ(2026-2027)',
+    readingName: 'みかえるおりーず',
+    category: 'FW',
+    mainPosition: 'RW',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'リアクション',
+    playStyle: 'ワイドストライカー',
+    playStyleLevel: 'Ⅲ',
+    overall: 7480,
+    maxOverall: 15699,
+    baseStats: { shoot: 1415, pass: 1438, dribble: 1431, defense: 980, physical: 1111, speed: 865 },
+    detailStats: {
+      shoot: { finishing: 475, power: 453, composure: 487 },
+      pass: { shortPass: 480, longPass: 480, accuracy: 478 },
+      dribble: { breakout: 469, keeping: 475, ballTouch: 487 },
+      defense: { tackle: 310, interception: 342, marking: 328 },
+      physical: { jumping: 313, contact: 393, stamina: 405 },
+      speed: { running: 416, agility: 449 }
+    },
+    maxEnhanced: {
+      overall: 15699,
+      baseStats: { shoot: 2972, pass: 3007, dribble: 3024, defense: 2489, physical: 2656, speed: 1935 },
+      detailStats: {
+        shoot: { finishing: 998, power: 964, composure: 1010 },
+        pass: { shortPass: 1003, longPass: 1003, accuracy: 1001 },
+        dribble: { breakout: 1004, keeping: 1010, ballTouch: 1010 },
+        defense: { tackle: 821, interception: 841, marking: 827 },
+        physical: { jumping: 824, contact: 904, stamina: 928 },
+        speed: { running: 951, agility: 984 }
+      }
+    },
+    playTendencies: {
+      attack: 2, defense: -1, dribble: 2, shoot: 2, longShoot: 1,
+      shortPass: 0, longPass: -1, throughPass: 0, cutIn: 2, keep: 0,
+      delay: -1, rushOut: 1, feint: 1, press: 0
+    },
+    skill: { name: '流星の弾道', rank: '金', description: '発動エリア：前左中右　/　発動条件：シュート時　/　決定力、キック力UP' },
+    abilities: [
+      { name: '変幻自在のドリブラー', rank: '金', description: '発動条件：好調　/　突破力・キープ力・ボールタッチUP' },
+      { name: 'ムービングスナイパー', rank: '銀', description: '発動条件：好調　/　冷静さ・敏捷性UP' },
+      { name: '精緻なパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・キック精度UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p420',
+    name: 'ジャマル・ムシアラ(2026-2027)',
+    readingName: 'じゃまるむしあら',
+    category: 'MF',
+    mainPosition: 'AM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ドイツ',
+    policy: 'リアクション',
+    playStyle: 'アタッカー',
+    playStyleLevel: 'Ⅱ',
+    overall: 7589,
+    maxOverall: 15732,
+    baseStats: { shoot: 1336, pass: 1341, dribble: 1497, defense: 1195, physical: 1184, speed: 963 },
+    detailStats: {
+      shoot: { finishing: 465, power: 422, composure: 449 },
+      pass: { shortPass: 446, longPass: 456, accuracy: 439 },
+      dribble: { breakout: 500, keeping: 502, ballTouch: 495 },
+      defense: { tackle: 391, interception: 407, marking: 397 },
+      physical: { jumping: 423, contact: 382, stamina: 379 },
+      speed: { running: 465, agility: 498 }
+    },
+    maxEnhanced: {
+      overall: 15732,
+      baseStats: { shoot: 2881, pass: 2922, dribble: 3066, defense: 2740, physical: 2753, speed: 1997 },
+      detailStats: {
+        shoot: { finishing: 976, power: 933, composure: 972 },
+        pass: { shortPass: 981, longPass: 979, accuracy: 962 },
+        dribble: { breakout: 1023, keeping: 1025, ballTouch: 1018 },
+        defense: { tackle: 914, interception: 918, marking: 908 },
+        physical: { jumping: 934, contact: 905, stamina: 914 },
+        speed: { running: 976, agility: 1021 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 0, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: 'ショックウェーブ', rank: '金', description: '発動エリア：前中・中中　/　発動条件：ドリブル時　/　突破力・キープ力UP' },
+    abilities: [
+      { name: '突破からの打開', rank: '金', description: '発動条件：好調　/　ショートパス・突破力・キープ力UP' },
+      { name: '俊敏なタッチ', rank: '銀', description: '発動条件：絶好調　/　ボールタッチ・敏捷性UP' },
+      { name: '冷静なフィニッシュ', rank: '銅', description: '発動条件：絶好調　/　決定力・冷静さUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p421',
+    name: 'ヨシュア・キミッヒ(2026-2027)',
+    readingName: 'よしゅあきみっひ',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ドイツ',
+    policy: 'リアクション',
+    playStyle: 'パサーDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 7451,
+    maxOverall: 15661,
+    baseStats: { shoot: 1202, pass: 1468, dribble: 1371, defense: 1312, physical: 1302, speed: 821 },
+    detailStats: {
+      shoot: { finishing: 396, power: 389, composure: 417 },
+      pass: { shortPass: 490, longPass: 491, accuracy: 487 },
+      dribble: { breakout: 435, keeping: 448, ballTouch: 488 },
+      defense: { tackle: 431, interception: 448, marking: 433 },
+      physical: { jumping: 402, contact: 411, stamina: 489 },
+      speed: { running: 401, agility: 420 }
+    },
+    maxEnhanced: {
+      overall: 15661,
+      baseStats: { shoot: 2747, pass: 3073, dribble: 2904, defense: 2893, physical: 2871, speed: 1843 },
+      detailStats: {
+        shoot: { finishing: 907, power: 900, composure: 940 },
+        pass: { shortPass: 1025, longPass: 1026, accuracy: 1022 },
+        dribble: { breakout: 946, keeping: 959, ballTouch: 999 },
+        defense: { tackle: 966, interception: 971, marking: 956 },
+        physical: { jumping: 913, contact: 934, stamina: 1024 },
+        speed: { running: 912, agility: 931 }
+      }
+    },
+    playTendencies: {
+      attack: 1, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 2, longPass: -1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: 'テレグノシス', rank: '金', description: '発動エリア：中中・後左中右　/　発動条件：CF・AMの選手へのショートパス・ロングパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP' },
+    abilities: [
+      { name: '精緻な指揮者', rank: '金', description: '発動条件：好調　/　ロングパス・キック精度・ボールタッチUP' },
+      { name: '不屈の魂', rank: '銀', description: '発動条件：好調　/　キープ力・スタミナUP' },
+      { name: 'リスクヘッジパサー', rank: '銅', description: '発動条件：絶好調　/　ショートパス・マークUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p422',
+    name: 'アレクサンダル・パブロヴィッチ(2026-2027)',
+    readingName: 'あれくさんだるぱぶろゔぃっち',
+    category: 'MF',
+    mainPosition: 'DM',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ドイツ',
+    policy: 'リアクション',
+    playStyle: 'セントラルDM',
+    playStyleLevel: 'Ⅱ',
+    overall: 7154,
+    maxOverall: 15305,
+    baseStats: { shoot: 1059, pass: 1439, dribble: 1373, defense: 1276, physical: 1306, speed: 810 },
+    detailStats: {
+      shoot: { finishing: 336, power: 346, composure: 377 },
+      pass: { shortPass: 484, longPass: 484, accuracy: 471 },
+      dribble: { breakout: 433, keeping: 444, ballTouch: 496 },
+      defense: { tackle: 408, interception: 443, marking: 425 },
+      physical: { jumping: 424, contact: 399, stamina: 483 },
+      speed: { running: 393, agility: 417 }
+    },
+    maxEnhanced: {
+      overall: 15305,
+      baseStats: { shoot: 2604, pass: 3044, dribble: 2906, defense: 2857, physical: 2875, speed: 1832 },
+      detailStats: {
+        shoot: { finishing: 847, power: 857, composure: 900 },
+        pass: { shortPass: 1019, longPass: 1019, accuracy: 1006 },
+        dribble: { breakout: 944, keeping: 955, ballTouch: 1007 },
+        defense: { tackle: 943, interception: 966, marking: 948 },
+        physical: { jumping: 935, contact: 922, stamina: 1018 },
+        speed: { running: 904, agility: 928 }
+      }
+    },
+    playTendencies: {
+      attack: 0, defense: 0, dribble: 0, shoot: 0, longShoot: 0,
+      shortPass: 1, longPass: 1, throughPass: 0, cutIn: 0, keep: 0,
+      delay: 0, rushOut: -1, feint: 0, press: 0
+    },
+    skill: { name: '華麗なる一閃', rank: '銀', description: '発動エリア：中中・後左中右　/　発動条件：CF・AMの選手へのショートパス・ロングパス時　/　ロングパス・キック精度・ショートパスUP　/　成功時に受け手のショートパス発生確率UP' },
+    abilities: [
+      { name: '柔軟なキッカー', rank: '銀', description: '発動条件：絶好調　/　キック精度・ボールタッチUP' },
+      { name: '懐の深いロングパサー', rank: '銀', description: '発動条件：好調　/　ロングパス・キープ力UP' },
+      { name: '長短のキック', rank: '銅', description: '発動条件：好調　/　ショートパス・ロングパスUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p423',
+    name: 'ナサニエル・ブラウン(2026-2027)',
+    readingName: 'なさにえるぶらうん',
+    category: 'DF',
+    mainPosition: 'LFB',
+    subPositions: ['AM'],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ドイツ',
+    policy: 'リアクション',
+    playStyle: '攻撃的LFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7203,
+    maxOverall: 15480,
+    baseStats: { shoot: 1185, pass: 1289, dribble: 1374, defense: 1355, physical: 1193, speed: 914 },
+    detailStats: {
+      shoot: { finishing: 404, power: 383, composure: 398 },
+      pass: { shortPass: 435, longPass: 428, accuracy: 426 },
+      dribble: { breakout: 469, keeping: 437, ballTouch: 468 },
+      defense: { tackle: 480, interception: 441, marking: 434 },
+      physical: { jumping: 372, contact: 409, stamina: 412 },
+      speed: { running: 459, agility: 455 }
+    },
+    maxEnhanced: {
+      overall: 15480,
+      baseStats: { shoot: 2682, pass: 2858, dribble: 2907, defense: 2960, physical: 2762, speed: 1984 },
+      detailStats: {
+        shoot: { finishing: 903, power: 882, composure: 897 },
+        pass: { shortPass: 958, longPass: 951, accuracy: 949 },
+        dribble: { breakout: 980, keeping: 948, ballTouch: 979 },
+        defense: { tackle: 1015, interception: 976, marking: 969 },
+        physical: { jumping: 883, contact: 932, stamina: 947 },
+        speed: { running: 994, agility: 990 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '極上のショートパス', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：前中・中中のエリアに居る選手へのショートパス時　/　ショートパス・キック精度UP' },
+    abilities: [
+      { name: 'スピード溢れる突破', rank: '金', description: '発動条件：好調　/　突破力・走力・敏捷性UP' },
+      { name: 'ハードスティール', rank: '銀', description: '発動条件：絶好調　/　キープ力・タックルUP' },
+      { name: 'ムービングウォール', rank: '銅', description: '発動条件：絶好調　/　コンタクト・スタミナUP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p424',
+    name: 'コンラート・ライマー(2026-2027)',
+    readingName: 'こんらーとらいまー',
+    category: 'DF',
+    mainPosition: 'RFB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'オーストリア',
+    policy: 'リアクション',
+    playStyle: '攻撃的RFB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7089,
+    maxOverall: 15322,
+    baseStats: { shoot: 1152, pass: 1312, dribble: 1285, defense: 1330, physical: 1326, speed: 857 },
+    detailStats: {
+      shoot: { finishing: 392, power: 378, composure: 382 },
+      pass: { shortPass: 444, longPass: 440, accuracy: 428 },
+      dribble: { breakout: 445, keeping: 420, ballTouch: 420 },
+      defense: { tackle: 485, interception: 435, marking: 410 },
+      physical: { jumping: 404, contact: 437, stamina: 485 },
+      speed: { running: 440, agility: 417 }
+    },
+    maxEnhanced: {
+      overall: 15322,
+      baseStats: { shoot: 2649, pass: 2881, dribble: 2818, defense: 2935, physical: 2895, speed: 1927 },
+      detailStats: {
+        shoot: { finishing: 891, power: 877, composure: 881 },
+        pass: { shortPass: 967, longPass: 963, accuracy: 951 },
+        dribble: { breakout: 956, keeping: 931, ballTouch: 931 },
+        defense: { tackle: 1020, interception: 970, marking: 945 },
+        physical: { jumping: 915, contact: 960, stamina: 1020 },
+        speed: { running: 975, agility: 952 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '逆襲', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：タックル時　/　タックル・マーク・突破力UP　/　成功時に自身のドリブル発生確率UP' },
+    abilities: [
+      { name: 'ピッチの掃除屋', rank: '銀', description: '発動条件：好調　/　タックル・スタミナUP' },
+      { name: '疾走するパサー', rank: '銀', description: '発動条件：絶好調　/　ショートパス・走力UP' },
+      { name: 'すり抜けるロングパサー', rank: '銅', description: '発動条件：好調　/　ロングパス・突破力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p425',
+    name: 'ダヨ・ウパメカノ(2026-2027)',
+    readingName: 'だよ・うぱめかの',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'フランス',
+    policy: 'リアクション',
+    playStyle: 'スプリントCB',
+    playStyleLevel: 'Ⅱ',
+    overall: 7466,
+    maxOverall: 15765,
+    baseStats: { shoot: 995, pass: 1293, dribble: 1274, defense: 1459, physical: 1313, speed: 854 },
+    detailStats: {
+      shoot: { finishing: 292, power: 364, composure: 339 },
+      pass: { shortPass: 447, longPass: 446, accuracy: 400 },
+      dribble: { breakout: 415, keeping: 419, ballTouch: 440 },
+      defense: { tackle: 483, interception: 487, marking: 489 },
+      physical: { jumping: 450, contact: 480, stamina: 383 },
+      speed: { running: 456, agility: 398 }
+    },
+    maxEnhanced: {
+      overall: 15765,
+      baseStats: { shoot: 2492, pass: 2862, dribble: 2807, defense: 3064, physical: 2906, speed: 1900 },
+      detailStats: {
+        shoot: { finishing: 791, power: 863, composure: 838 },
+        pass: { shortPass: 970, longPass: 969, accuracy: 923 },
+        dribble: { breakout: 926, keeping: 930, ballTouch: 951 },
+        defense: { tackle: 1018, interception: 1022, marking: 1024 },
+        physical: { jumping: 985, contact: 1015, stamina: 906 },
+        speed: { running: 979, agility: 921 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: '逆襲の初動', rank: '金', description: '発動エリア：中左中右・後左中右　/　発動条件：パスカット時　/　パスカットUP　/　成功時に自身のショートパス発生確率UP' },
+    abilities: [
+      { name: '守りの哲学', rank: '金', description: '発動条件：好調　/　タックル・パスカット・マークUP' },
+      { name: 'パワーアジリティ', rank: '銀', description: '発動条件：好調　/　コンタクト・敏捷性UP' },
+      { name: '快速のロングパサー', rank: '銅', description: '発動条件：絶好調　/　ロングパス・走力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p426',
+    name: 'キム・ミンジェ(2026-2027)',
+    readingName: 'きむみんじぇ',
+    category: 'DF',
+    mainPosition: 'CB',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: '韓国',
+    policy: 'リアクション',
+    playStyle: 'ストッパー',
+    playStyleLevel: 'Ⅱ',
+    overall: 7222,
+    maxOverall: 15512,
+    baseStats: { shoot: 1034, pass: 1173, dribble: 1242, defense: 1397, physical: 1315, speed: 807 },
+    detailStats: {
+      shoot: { finishing: 340, power: 364, composure: 330 },
+      pass: { shortPass: 402, longPass: 401, accuracy: 370 },
+      dribble: { breakout: 402, keeping: 408, ballTouch: 432 },
+      defense: { tackle: 476, interception: 452, marking: 469 },
+      physical: { jumping: 455, contact: 465, stamina: 395 },
+      speed: { running: 414, agility: 393 }
+    },
+    maxEnhanced: {
+      overall: 15512,
+      baseStats: { shoot: 2531, pass: 2742, dribble: 2775, defense: 3002, physical: 2908, speed: 1853 },
+      detailStats: {
+        shoot: { finishing: 839, power: 863, composure: 829 },
+        pass: { shortPass: 925, longPass: 924, accuracy: 893 },
+        dribble: { breakout: 913, keeping: 919, ballTouch: 943 },
+        defense: { tackle: 1011, interception: 987, marking: 1004 },
+        physical: { jumping: 990, contact: 1000, stamina: 918 },
+        speed: { running: 937, agility: 916 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -1, shoot: -1, longShoot: -1,
+      shortPass: 0, longPass: 0, throughPass: -1, cutIn: -1, keep: -1,
+      delay: 0, rushOut: -1, feint: -1, press: 1
+    },
+    skill: { name: 'エリアの格闘家', rank: '銀', description: '発動エリア：中左中右・後左中右　/　発動条件：コンタクト時　/　コンタクト・タックル・マークUP' },
+    abilities: [
+      { name: '瞬間の球際力', rank: '銀', description: '発動条件：好調　/　パスカット・コンタクトUP' },
+      { name: 'ハイタワーの天敵', rank: '銀', description: '発動条件：好調　/　マーク・ジャンプUP' },
+      { name: 'スピードクラッシャー', rank: '銅', description: '発動条件：途中出場　/　タックル・走力UP' }
+    ],
+    avatarUrl: ''
+  },
+  {
+    id: 'p427',
+    name: 'マヌエル・ノイアー(2026-2027)',
+    readingName: 'まぬえるのいあー',
+    category: 'GK',
+    mainPosition: 'GK',
+    subPositions: [],
+    rarity: '☆3',
+    baseRarity: '☆3',
+    nationality: 'ドイツ',
+    policy: 'リアクション',
+    playStyle: 'スイーパーGK',
+    playStyleLevel: 'Ⅲ',
+    overall: 7682,
+    maxOverall: 15921,
+    baseStats: { shoot: 981, pass: 1457, dribble: 1087, defense: 1487, physical: 1317, speed: 848 },
+    detailStats: {
+      shoot: { finishing: 305, power: 348, composure: 328 },
+      pass: { shortPass: 482, longPass: 490, accuracy: 485 },
+      dribble: { breakout: 348, keeping: 365, ballTouch: 374 },
+      defense: { tackle: 491, interception: 497, marking: 499 },
+      physical: { jumping: 482, contact: 487, stamina: 348 },
+      speed: { running: 400, agility: 448 }
+    },
+    maxEnhanced: {
+      overall: 15921,
+      baseStats: { shoot: 2442, pass: 3062, dribble: 2548, defense: 3092, physical: 2910, speed: 1870 },
+      detailStats: {
+        shoot: { finishing: 792, power: 835, composure: 815 },
+        pass: { shortPass: 1017, longPass: 1025, accuracy: 1020 },
+        dribble: { breakout: 835, keeping: 852, ballTouch: 861 },
+        defense: { tackle: 1026, interception: 1032, marking: 1034 },
+        physical: { jumping: 1017, contact: 1022, stamina: 871 },
+        speed: { running: 911, agility: 959 }
+      }
+    },
+    playTendencies: {
+      attack: -1, defense: 1, dribble: -2, shoot: -1, longShoot: -1,
+      shortPass: -1, longPass: 1, throughPass: -1, cutIn: -1, keep: -1,
+      delay: -1, rushOut: -1, feint: -1, press: -1
+    },
+    skill: { name: '難攻不落', rank: '金', description: '発動エリア：後中　/　発動条件：セービング時　/　セービング・反応速度UP' },
+    abilities: [
+      { name: 'ヘクセラー・カピテーン', rank: '金', description: '発動条件：キャプテンに指定　/　GK・LFB・RFB・CBのリアクション選手がコンタクト・走力UP' },
+      { name: '広域の守護神', rank: '銀', description: '発動条件：好調　/　セービング・1VS1UP' },
+      { name: '反撃のロングキック', rank: '銀', description: '発動条件：絶好調　/　反応速度・ロングパスUP' }
+    ],
+    avatarUrl: ''
   }
   ]
 );

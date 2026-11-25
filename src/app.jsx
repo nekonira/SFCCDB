@@ -183,6 +183,24 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "cFn1BxpEgvo",
+    "title": "【引く前に見て】カウンターピックアップガチャ解説！これを引くならポルトガルガチャを引いてください。【サカつく2026】グヴァルディオル、サラー、バレッラ、クルトワ",
+    "thumbnail": "https://i.ytimg.com/vi/cFn1BxpEgvo/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=cFn1BxpEgvo"
+  },
+  {
+    "id": "2fP2f-jwTcg",
+    "title": "【引く前に見て】特練カードピックアップガチャ！優先順位をランキング形式で徹底解説【サカつく2026】ドク、マルティネッリ、ヴィニシウス、ダンフリース、ケイン、ジルー、ヤマル、サラー、エンバペ",
+    "thumbnail": "https://i.ytimg.com/vi/2fP2f-jwTcg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=2fP2f-jwTcg"
+  },
+  {
+    "id": "DnGxJ98i65c",
+    "title": "【引く前に見て】ポルトガルガチャ第二弾徹底解説！セレソン・ダス・キナス’26超強化【サカつく2026】ラファエル・レオン、ブルーノ・フェルナンデス、ベルナウド・シウバ、ヌーノ・メンデス",
+    "thumbnail": "https://i.ytimg.com/vi/DnGxJ98i65c/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=DnGxJ98i65c"
+  },
+  {
     "id": "lGOH7JKQwvk",
     "title": "【引く前に見て】新ガチャ徹底解説！新フォメコンに必須なカードが登場【サカつく2026】ヴィルツ、ハキミ、ロカテッリ、クアンサー",
     "thumbnail": "https://i.ytimg.com/vi/lGOH7JKQwvk/hqdefault.jpg",
@@ -223,24 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】新ガチャ徹底解説！ヤバすぎるスキルが登場。インフレを感じる新特練【サカつく2026】ロナウド、マルキーニョス、フラーフェンベルフ、マルティネッリ",
     "thumbnail": "https://i.ytimg.com/vi/K7d5iyUdJTA/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=K7d5iyUdJTA"
-  },
-  {
-    "id": "xq1xGdXRPIM",
-    "title": "【引く前に見て】限定フランスガチャ徹底解説！エンバペが超ぶっ壊れ性能【サカつく2026】デンベレ、ラビオ、シュバリエ",
-    "thumbnail": "https://i.ytimg.com/vi/xq1xGdXRPIM/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=xq1xGdXRPIM"
-  },
-  {
-    "id": "gRxHaR7-CVQ",
-    "title": "【完全網羅】最新アップデート情報を総まとめ Ver.2.3【サカつく2026】新フォメコン追加、レジェンド帯追加、1VS1仕様変更、フランスガチャ、限定特練カード、新サカつくモード、☆4スカウト選手",
-    "thumbnail": "https://i.ytimg.com/vi/gRxHaR7-CVQ/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=gRxHaR7-CVQ"
-  },
-  {
-    "id": "6YZtpt1w6O4",
-    "title": "【ピザーラ】コラボメニューが始まったので注文して食べてカードを開封して数値を見て解説します【サカつく2026】",
-    "thumbnail": "https://i.ytimg.com/vi/6YZtpt1w6O4/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=6YZtpt1w6O4"
   }
 ];
 
@@ -1056,7 +1056,18 @@ const PLAYER_IMAGE_MAP = {
   "p413": "BRUNO_FERNANDES_2026_IMAGE",
   "p414": "BERNARDO_SILVA_2026_IMAGE",
   "p415": "NUNO_MENDES_2026_IMAGE",
-  "p416": "POPO_HAIFU_2026_IMAGE"
+  "p416": "POPO_HAIFU_2026_IMAGE",
+  "p417": "HARRY_KANE_2026_IMAGE",
+  "p418": "LUIS_DIAZ_2026_IMAGE",
+  "p419": "MICHAEL_OLISE_2026_IMAGE",
+  "p420": "JAMAL_MUSIALA_2026_IMAGE",
+  "p421": "JOSHUA_KIMMICH_2026_IMAGE",
+  "p422": "ALEKSANDAR_PAVLOVIC_2026_IMAGE",
+  "p423": "NATHANIEL_BROWN_2026_IMAGE",
+  "p424": "KONRAD_LAIMER_2026_IMAGE",
+  "p425": "DAYOT_UPAMECANO_2026_IMAGE",
+  "p426": "KIM_MIN_JAE_2026_IMAGE",
+  "p427": "MANUEL_NEUER_2026_IMAGE"
 };
 
 const getPlayerAvatarUrl = (player) => {
@@ -2144,7 +2155,7 @@ function App() {
               throw new Error('rss2json returned non-ok status');
             }
           })
-          .catch(() => {});
+          .catch(() => { });
       });
   }, []);
 
@@ -3712,3250 +3723,3454 @@ const getPlayerStatValue = (player, statName) => {
 function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const FORMATION_COMBOS = [
     {
-      id: 'selecaoDasQuinas26',
-      name: "セレソン・ダス・キナス’26",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '433b_selecaoDasQuinas26',
-      buffs: [
-        { name: '突破力', val: '+80%' },
-        { name: 'タックル', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ],
-      specialNote: 'フィールド上のポルトガル選手1人につき、上記4能力（突破力・タックル・マーク・コンタクト）が追加で2%強化！'
-    },
-
-    {
-      id: 'lesBleus26',
-      name: "レ・ブルー’26",
-      rank: '金',
-      policy: 'ムービング',
-      formationId: '433b_lesBleus26',
-      buffs: [
-        { name: 'ボールタッチ', val: '+80%' },
-        { name: 'タックル', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ],
-      specialNote: 'フィールド上のフランス選手1人につき、上記4能力（ボールタッチ・タックル・マーク・コンタクト）が追加で2%強化！'
-    },
-
-    {
-      id: 'laRoja26',
-      name: "ラ・ロハ’26",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '433b_laRoja26',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'ショートパス', val: '+80%' },
-        { name: 'タックル', val: '+80%' },
-        { name: 'マーク', val: '+80%' }
-      ],
-      specialNote: 'フィールド上のスペイン選手1人につき、上記4能力（決定力・ショートパス・タックル・マーク）が追加で2%強化！'
-    },
-
-    {
-      id: 'selecao70',
-      name: "セレソン’70",
+      id: 'dieRoten26',
+      name: "ディー・ローデン'26",
       rank: '金',
       policy: 'リアクション',
-      formationId: '343c_selecao',
+      formationId: '433b_dieRoten26',
       buffs: [
-        { name: '決定力', val: '+100%' },
-        { name: 'パスカット', val: '+100%' },
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+60%' }
-      ],
-      specialNote: 'フィールド上のブラジル人選手1人につき、上記4能力（決定力・パスカット・タックル・マーク）が追加で2%強化！'
-    },
-    {
-      id: 'goldenZonen95',
-      name: "ゴーデンゾーネン'95",
-      rank: '金',
-      policy: 'リアクション',
-      formationId: '343c_golden',
-      buffs: [
-        { name: 'キック精度', val: '+80%' },
-        { name: '突破力', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'スタミナ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'selecaoDasQuinas16',
-      name: "セレソン・ダス・キナス'16",
-      rank: '金',
-      policy: 'リアクション',
-      formationId: '442a_quinas',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'alvinegroPraiano',
-      name: "アルヴィネグロ・プライアーノ’11",
-      rank: '金',
-      policy: 'リアクション',
-      formationId: '442e_alvinegro',
-      buffs: [
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+60%' },
-        { name: '決定力', val: '+100%' },
-        { name: 'キック力', val: '+100%' }
-      ]
-    },
-    {
-      id: 'encarnados23',
-      name: "エンカルナードス’23",
-      rank: '金',
-      policy: 'リアクション',
-      formationId: '433b_encarnados',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: '冷静さ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'nerazzurro10',
-      name: 'ネラッズーロ’10',
-      rank: '金',
-      policy: 'ムービング',
-      formationId: '433b_nerazzurro',
-      buffs: [
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+80%' },
-        { name: '決定力', val: '+80%' },
-        { name: 'コンタクト', val: '+100%' }
-      ]
-    },
-    {
-      id: 'canaria06',
-      name: "カナリア軍団’06",
-      rank: '金',
-      policy: 'ムービング',
-      formationId: '442c_canaria',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: '敏捷性', val: '+80%' }
-      ]
-    },
-    {
-      id: 'albiceleste01',
-      name: "アルビセレステ’01",
-      rank: '金',
-      policy: 'ムービング',
-      formationId: '343a_albiceleste',
-      buffs: [
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: '敏捷性', val: '+80%' }
-      ]
-    },
-    {
-      id: 'soberano94',
-      name: "ソベラーノ’94",
-      rank: '金',
-      policy: 'ムービング',
-      formationId: '442e_soberano',
-      buffs: [
-        { name: 'キック力', val: '+80%' },
-        { name: '突破力', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'スタミナ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'blauGrana15',
-      name: "ブラウ・グラーナ’15",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '433a_blauGrana',
-      buffs: [
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+80%' },
-        { name: '決定力', val: '+80%' },
-        { name: 'キック精度', val: '+80%' }
-      ]
-    },
-    {
-      id: 'losCafeteros94',
-      name: "ロス・カフェテロス’94",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '442d_losCafeteros',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: 'キック力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'laRoja24',
-      name: "ラ・ロハ’24",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '433b_laRoja',
-      buffs: [
-        { name: '冷静さ', val: '+80%' },
-        { name: 'キック精度', val: '+80%' },
-        { name: 'パスカット', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ]
-    },
-    {
-      id: 'laDea22',
-      name: "ラ・デア’22",
-      rank: '金',
-      policy: 'ポゼッション',
-      formationId: '352b_laDea',
-      buffs: [
-        { name: '冷静さ', val: '+80%' },
-        { name: 'パスカット', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ]
-    },
-    {
-      id: 'blueImpact26',
-      name: "ブルー・インパクト’26",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '361a_blueImpact',
-      buffs: [
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+60%' },
-        { name: '決定力', val: '+100%' },
-        { name: 'コンタクト', val: '+100%' }
-      ]
-    },
-    {
-      id: 'euskaldunak12',
-      name: "エウスカルドゥナク’12",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '343c_euskaldunak',
-      buffs: [
-        { name: 'タックル', val: '+60%' },
-        { name: 'マーク', val: '+80%' },
-        { name: '決定力', val: '+80%' },
-        { name: '冷静さ', val: '+100%' }
-      ]
-    },
-    {
-      id: 'river18',
-      name: "リーベル’18",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '433b_river',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'マーク', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'キック力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'diavolo99',
-      name: "ディアボロ・ディ・ミラノ’99",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '343b_diavolo',
-      buffs: [
-        { name: 'キック力', val: '+80%' },
-        { name: '突破力', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ]
-    },
-    {
-      id: 'lesBleus98',
-      name: "レ・ブルー’98",
-      rank: '金',
-      policy: 'カウンター',
-      formationId: '442d_lesBleus',
-      buffs: [
-        { name: 'キック力', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: '敏捷性', val: '+80%' }
-      ]
-    },
-    {
-      id: 'azzurri14',
-      name: "アズーリ’14",
-      rank: '銀',
-      policy: 'リアクション',
-      formationId: '352b_azzurri',
-      buffs: [
-        { name: '冷静さ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'friulani98',
-      name: "イ・フリウラーニ’98",
-      rank: '銀',
-      policy: 'リアクション',
-      formationId: '343b_friulani',
-      buffs: [
-        { name: 'パスカット', val: '+80%' },
-        { name: 'キープ力', val: '+80%' },
-        { name: '敏捷性', val: '+80%' }
-      ]
-    },
-    {
-      id: 'crociati99',
-      name: "クロチャーティ’99",
-      rank: '銀',
-      policy: 'リアクション',
-      formationId: '532b_crociati',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'パスカット', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'hollywood01',
-      name: "FCハリウッド’01",
-      rank: '銀',
-      policy: 'リアクション',
-      formationId: '541a_hollywood',
-      buffs: [
-        { name: 'キープ力', val: '+60%' },
-        { name: 'パスカット', val: '+60%' },
-        { name: 'コンタクト', val: '+60%' }
-      ]
-    },
-    {
-      id: 'azzurri06',
-      name: "アズーリ’06",
-      rank: '銀',
-      policy: 'リアクション',
-      formationId: '451b_azzurri',
-      buffs: [
-        { name: '突破力', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' },
+        { name: 'タックル', val: '+100%' },
+        { name: 'マーク', val: '+100%' },
+        { name: 'ショートパス', val: '+60%' },
         { name: '敏捷性', val: '+60%' }
       ]
     },
-    {
-      id: 'gulag94',
-      name: "ブロ・グルト’94",
+
+{
+  id: 'selecaoDasQuinas26',
+    name: "セレソン・ダス・キナス’26",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '433b_selecaoDasQuinas26',
+            buffs: [
+              { name: '突破力', val: '+80%' },
+              { name: 'タックル', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ],
+              specialNote: 'フィールド上のポルトガル選手1人につき、上記4能力（突破力・タックル・マーク・コンタクト）が追加で2%強化！'
+},
+
+{
+  id: 'lesBleus26',
+    name: "レ・ブルー’26",
+      rank: '金',
+        policy: 'ムービング',
+          formationId: '433b_lesBleus26',
+            buffs: [
+              { name: 'ボールタッチ', val: '+80%' },
+              { name: 'タックル', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ],
+              specialNote: 'フィールド上のフランス選手1人につき、上記4能力（ボールタッチ・タックル・マーク・コンタクト）が追加で2%強化！'
+},
+
+{
+  id: 'laRoja26',
+    name: "ラ・ロハ’26",
+      rank: '金',
+        policy: 'ポゼッション',
+          formationId: '433b_laRoja26',
+            buffs: [
+              { name: '決定力', val: '+80%' },
+              { name: 'ショートパス', val: '+80%' },
+              { name: 'タックル', val: '+80%' },
+              { name: 'マーク', val: '+80%' }
+            ],
+              specialNote: 'フィールド上のスペイン選手1人につき、上記4能力（決定力・ショートパス・タックル・マーク）が追加で2%強化！'
+},
+
+{
+  id: 'selecao70',
+    name: "セレソン’70",
+      rank: '金',
+        policy: 'リアクション',
+          formationId: '343c_selecao',
+            buffs: [
+              { name: '決定力', val: '+100%' },
+              { name: 'パスカット', val: '+100%' },
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+60%' }
+            ],
+              specialNote: 'フィールド上のブラジル人選手1人につき、上記4能力（決定力・パスカット・タックル・マーク）が追加で2%強化！'
+},
+{
+  id: 'goldenZonen95',
+    name: "ゴーデンゾーネン'95",
+      rank: '金',
+        policy: 'リアクション',
+          formationId: '343c_golden',
+            buffs: [
+              { name: 'キック精度', val: '+80%' },
+              { name: '突破力', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'スタミナ', val: '+80%' }
+            ]
+},
+{
+  id: 'selecaoDasQuinas16',
+    name: "セレソン・ダス・キナス'16",
+      rank: '金',
+        policy: 'リアクション',
+          formationId: '442a_quinas',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' }
+            ]
+},
+{
+  id: 'alvinegroPraiano',
+    name: "アルヴィネグロ・プライアーノ’11",
+      rank: '金',
+        policy: 'リアクション',
+          formationId: '442e_alvinegro',
+            buffs: [
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+60%' },
+              { name: '決定力', val: '+100%' },
+              { name: 'キック力', val: '+100%' }
+            ]
+},
+{
+  id: 'encarnados23',
+    name: "エンカルナードス’23",
+      rank: '金',
+        policy: 'リアクション',
+          formationId: '433b_encarnados',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: '冷静さ', val: '+80%' }
+            ]
+},
+{
+  id: 'nerazzurro10',
+    name: 'ネラッズーロ’10',
+      rank: '金',
+        policy: 'ムービング',
+          formationId: '433b_nerazzurro',
+            buffs: [
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+80%' },
+              { name: '決定力', val: '+80%' },
+              { name: 'コンタクト', val: '+100%' }
+            ]
+},
+{
+  id: 'canaria06',
+    name: "カナリア軍団’06",
+      rank: '金',
+        policy: 'ムービング',
+          formationId: '442c_canaria',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: '敏捷性', val: '+80%' }
+            ]
+},
+{
+  id: 'albiceleste01',
+    name: "アルビセレステ’01",
+      rank: '金',
+        policy: 'ムービング',
+          formationId: '343a_albiceleste',
+            buffs: [
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: '敏捷性', val: '+80%' }
+            ]
+},
+{
+  id: 'soberano94',
+    name: "ソベラーノ’94",
+      rank: '金',
+        policy: 'ムービング',
+          formationId: '442e_soberano',
+            buffs: [
+              { name: 'キック力', val: '+80%' },
+              { name: '突破力', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'スタミナ', val: '+80%' }
+            ]
+},
+{
+  id: 'blauGrana15',
+    name: "ブラウ・グラーナ’15",
+      rank: '金',
+        policy: 'ポゼッション',
+          formationId: '433a_blauGrana',
+            buffs: [
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+80%' },
+              { name: '決定力', val: '+80%' },
+              { name: 'キック精度', val: '+80%' }
+            ]
+},
+{
+  id: 'losCafeteros94',
+    name: "ロス・カフェテロス’94",
+      rank: '金',
+        policy: 'ポゼッション',
+          formationId: '442d_losCafeteros',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: 'キック力', val: '+80%' }
+            ]
+},
+{
+  id: 'laRoja24',
+    name: "ラ・ロハ’24",
+      rank: '金',
+        policy: 'ポゼッション',
+          formationId: '433b_laRoja',
+            buffs: [
+              { name: '冷静さ', val: '+80%' },
+              { name: 'キック精度', val: '+80%' },
+              { name: 'パスカット', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ]
+},
+{
+  id: 'laDea22',
+    name: "ラ・デア’22",
+      rank: '金',
+        policy: 'ポゼッション',
+          formationId: '352b_laDea',
+            buffs: [
+              { name: '冷静さ', val: '+80%' },
+              { name: 'パスカット', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ]
+},
+{
+  id: 'blueImpact26',
+    name: "ブルー・インパクト’26",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '361a_blueImpact',
+            buffs: [
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+60%' },
+              { name: '決定力', val: '+100%' },
+              { name: 'コンタクト', val: '+100%' }
+            ]
+},
+{
+  id: 'euskaldunak12',
+    name: "エウスカルドゥナク’12",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '343c_euskaldunak',
+            buffs: [
+              { name: 'タックル', val: '+60%' },
+              { name: 'マーク', val: '+80%' },
+              { name: '決定力', val: '+80%' },
+              { name: '冷静さ', val: '+100%' }
+            ]
+},
+{
+  id: 'river18',
+    name: "リーベル’18",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '433b_river',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'マーク', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'キック力', val: '+80%' }
+            ]
+},
+{
+  id: 'diavolo99',
+    name: "ディアボロ・ディ・ミラノ’99",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '343b_diavolo',
+            buffs: [
+              { name: 'キック力', val: '+80%' },
+              { name: '突破力', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ]
+},
+{
+  id: 'lesBleus98',
+    name: "レ・ブルー’98",
+      rank: '金',
+        policy: 'カウンター',
+          formationId: '442d_lesBleus',
+            buffs: [
+              { name: 'キック力', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: '敏捷性', val: '+80%' }
+            ]
+},
+{
+  id: 'azzurri14',
+    name: "アズーリ’14",
       rank: '銀',
-      policy: 'リアクション',
-      formationId: '523a_gulag',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: 'キック力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'grifoni99',
-      name: "グリフォーニ’99",
+        policy: 'リアクション',
+          formationId: '352b_azzurri',
+            buffs: [
+              { name: '冷静さ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+},
+{
+  id: 'friulani98',
+    name: "イ・フリウラーニ’98",
       rank: '銀',
-      policy: 'リアクション',
-      formationId: '442c_grifoni',
-      buffs: [
-        { name: 'キック力', val: '+80%' },
-        { name: 'ロングパス', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'blueGaru22',
-      name: "ブルー・ガル’22",
+        policy: 'リアクション',
+          formationId: '343b_friulani',
+            buffs: [
+              { name: 'パスカット', val: '+80%' },
+              { name: 'キープ力', val: '+80%' },
+              { name: '敏捷性', val: '+80%' }
+            ]
+},
+{
+  id: 'crociati99',
+    name: "クロチャーティ’99",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '361b_blueGaru',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'パスカット', val: '+80%' },
-        { name: 'キック精度', val: '+80%' }
-      ]
-    },
-    {
-      id: 'danishDynamite18',
-      name: "ダニッシュ・ダイナマイト’18",
+        policy: 'リアクション',
+          formationId: '532b_crociati',
+            buffs: [
+              { name: '決定力', val: '+80%' },
+              { name: 'パスカット', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+},
+{
+  id: 'hollywood01',
+    name: "FCハリウッド’01",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '451b_danish',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: 'キープ力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'monaco04',
-      name: "レ・ルージュ・エ・ブラン’04",
+        policy: 'リアクション',
+          formationId: '541a_hollywood',
+            buffs: [
+              { name: 'キープ力', val: '+60%' },
+              { name: 'パスカット', val: '+60%' },
+              { name: 'コンタクト', val: '+60%' }
+            ]
+},
+{
+  id: 'azzurri06',
+    name: "アズーリ’06",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '433b_monaco',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'キープ力', val: '+80%' },
-        { name: 'パスカット', val: '+80%' }
-      ]
-    },
-    {
-      id: 'amarela02',
-      name: "ヴァルデ・アマレーラ’02",
+        policy: 'リアクション',
+          formationId: '451b_azzurri',
+            buffs: [
+              { name: '突破力', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' },
+              { name: '敏捷性', val: '+60%' }
+            ]
+},
+{
+  id: 'gulag94',
+    name: "ブロ・グルト’94",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '532a_amarela',
-      buffs: [
-        { name: 'パスカット', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' },
-        { name: 'コンタクト', val: '+60%' }
-      ]
-    },
-    {
-      id: 'danishDynamite86',
-      name: "ダニッシュ・ダイナマイト’86",
+        policy: 'リアクション',
+          formationId: '523a_gulag',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: 'キック力', val: '+80%' }
+            ]
+},
+{
+  id: 'grifoni99',
+    name: "グリフォーニ’99",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '352b_danish86',
-      buffs: [
-        { name: '突破力', val: '+60%' },
-        { name: 'セービング', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' }
-      ]
-    },
-    {
-      id: 'amarillo06',
-      name: "サブマリーノ・アマリーリョ’06",
+        policy: 'リアクション',
+          formationId: '442c_grifoni',
+            buffs: [
+              { name: 'キック力', val: '+80%' },
+              { name: 'ロングパス', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+},
+{
+  id: 'blueGaru22',
+    name: "ブルー・ガル’22",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '442a_amarillo',
-      buffs: [
-        { name: '走力', val: '+80%' },
-        { name: 'パスカット', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'losMillonarios86',
-      name: "ロス・ミリョナリオス’86",
+        policy: 'ムービング',
+          formationId: '361b_blueGaru',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'パスカット', val: '+80%' },
+              { name: 'キック精度', val: '+80%' }
+            ]
+},
+{
+  id: 'danishDynamite18',
+    name: "ダニッシュ・ダイナマイト’18",
       rank: '銀',
-      policy: 'ムービング',
-      formationId: '442d_losMillonarios',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: '冷静さ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'hinomaru93',
-      name: "ヒノマルスタイル’93",
+        policy: 'ムービング',
+          formationId: '451b_danish',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: 'キープ力', val: '+80%' }
+            ]
+},
+{
+  id: 'monaco04',
+    name: "レ・ルージュ・エ・ブラン’04",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '433b_hinomaru',
-      buffs: [
-        { name: 'ロングパス', val: '+80%' },
-        { name: '突破力', val: '+80%' },
-        { name: '走力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'schwarzGelben16',
-      name: "シュヴァルツ・ゲルベン’16",
+        policy: 'ムービング',
+          formationId: '433b_monaco',
+            buffs: [
+              { name: '決定力', val: '+80%' },
+              { name: 'キープ力', val: '+80%' },
+              { name: 'パスカット', val: '+80%' }
+            ]
+},
+{
+  id: 'amarela02',
+    name: "ヴァルデ・アマレーラ’02",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '451a_schwarzGelben',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: 'キック精度', val: '+80%' }
-      ]
-    },
-    {
-      id: 'hinomaru68',
-      name: "ヒノマルスタイル’68",
+        policy: 'ムービング',
+          formationId: '532a_amarela',
+            buffs: [
+              { name: 'パスカット', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' },
+              { name: 'コンタクト', val: '+60%' }
+            ]
+},
+{
+  id: 'danishDynamite86',
+    name: "ダニッシュ・ダイナマイト’86",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '343c_hinomaru68',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'ショートパス', val: '+80%' },
-        { name: 'キック精度', val: '+80%' }
-      ]
-    },
-    {
-      id: 'blanquiroja82',
-      name: "ラ・ブランキロハ’82",
+        policy: 'ムービング',
+          formationId: '352b_danish86',
+            buffs: [
+              { name: '突破力', val: '+60%' },
+              { name: 'セービング', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' }
+            ]
+},
+{
+  id: 'amarillo06',
+    name: "サブマリーノ・アマリーリョ’06",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '442e_blanquiroja',
-      buffs: [
-        { name: '突破力', val: '+80%' },
-        { name: 'セービング', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' }
-      ]
-    },
-    {
-      id: 'losPuros01',
-      name: "ロス・プロス’01",
+        policy: 'ムービング',
+          formationId: '442a_amarillo',
+            buffs: [
+              { name: '走力', val: '+80%' },
+              { name: 'パスカット', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+},
+{
+  id: 'losMillonarios86',
+    name: "ロス・ミリョナリオス’86",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '442a_losPuros',
-      buffs: [
-        { name: '突破力', val: '+60%' },
-        { name: 'キープ力', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' }
-      ]
-    },
-    {
-      id: 'greenFalcons98',
-      name: "グリーン・ファルコンズ’98",
+        policy: 'ムービング',
+          formationId: '442d_losMillonarios',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: '冷静さ', val: '+80%' }
+            ]
+},
+{
+  id: 'hinomaru93',
+    name: "ヒノマルスタイル’93",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '451b_greenFalcons',
-      buffs: [
-        { name: 'ロングパス', val: '+80%' },
-        { name: '冷静さ', val: '+80%' },
-        { name: '敏捷性', val: '+80%' }
-      ]
-    },
-    {
-      id: 'orlovi24',
-      name: "オルロヴィ’24",
+        policy: 'カウンター',
+          formationId: '433b_hinomaru',
+            buffs: [
+              { name: 'ロングパス', val: '+80%' },
+              { name: '突破力', val: '+80%' },
+              { name: '走力', val: '+80%' }
+            ]
+},
+{
+  id: 'schwarzGelben16',
+    name: "シュヴァルツ・ゲルベン’16",
       rank: '銀',
-      policy: 'カウンター',
-      formationId: '442b_orlovi',
-      buffs: [
-        { name: '冷静さ', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    },
-    {
-      id: 'laRoja02',
-      name: "ラ・ロハ’02",
+        policy: 'カウンター',
+          formationId: '451a_schwarzGelben',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: 'キック精度', val: '+80%' }
+            ]
+},
+{
+  id: 'hinomaru68',
+    name: "ヒノマルスタイル’68",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '442b_laRoja02',
-      buffs: [
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' },
-        { name: 'パスカット', val: '+80%' }
-      ]
-    },
-    {
-      id: 'elLeon70',
-      name: "エル・レオン’70",
+        policy: 'カウンター',
+          formationId: '343c_hinomaru68',
+            buffs: [
+              { name: '決定力', val: '+80%' },
+              { name: 'ショートパス', val: '+80%' },
+              { name: 'キック精度', val: '+80%' }
+            ]
+},
+{
+  id: 'blanquiroja82',
+    name: "ラ・ブランキロハ’82",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '343c_elLeon70',
-      buffs: [
-        { name: 'ロングパス', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: 'キープ力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'ulcitca03',
-      name: "ウルチカ’03",
+        policy: 'カウンター',
+          formationId: '442e_blanquiroja',
+            buffs: [
+              { name: '突破力', val: '+80%' },
+              { name: 'セービング', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' }
+            ]
+},
+{
+  id: 'losPuros01',
+    name: "ロス・プロス’01",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '451a_ulcitca03',
-      buffs: [
-        { name: '決定力', val: '+80%' },
-        { name: 'ロングパス', val: '+80%' },
-        { name: 'キープ力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'diablesRouges18',
-      name: "ディアブル・ルージュ’18",
+        policy: 'カウンター',
+          formationId: '442a_losPuros',
+            buffs: [
+              { name: '突破力', val: '+60%' },
+              { name: 'キープ力', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' }
+            ]
+},
+{
+  id: 'greenFalcons98',
+    name: "グリーン・ファルコンズ’98",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '433a_diablesRouges18',
-      buffs: [
-        { name: 'キープ力', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' },
-        { name: 'スタミナ', val: '+60%' }
-      ]
-    },
-    {
-      id: 'taegukWarriors02',
-      name: "太極戦士’02",
+        policy: 'カウンター',
+          formationId: '451b_greenFalcons',
+            buffs: [
+              { name: 'ロングパス', val: '+80%' },
+              { name: '冷静さ', val: '+80%' },
+              { name: '敏捷性', val: '+80%' }
+            ]
+},
+{
+  id: 'orlovi24',
+    name: "オルロヴィ’24",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '343b_taegukWarriors02',
-      buffs: [
-        { name: 'キック精度', val: '+60%' },
-        { name: 'キープ力', val: '+60%' },
-        { name: 'ジャンプ', val: '+60%' }
-      ]
-    },
-    {
-      id: 'dieAdler24',
-      name: "ディー・アドラー’24",
+        policy: 'カウンター',
+          formationId: '442b_orlovi',
+            buffs: [
+              { name: '冷静さ', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+},
+{
+  id: 'laRoja02',
+    name: "ラ・ロハ’02",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '541a_dieAdler24',
-      buffs: [
-        { name: 'ロングパス', val: '+80%' },
-        { name: 'コンタクト', val: '+80%' },
-        { name: '走力', val: '+80%' }
-      ]
-    },
-    {
-      id: 'viola99',
-      name: "ヴィオラ’99",
+        policy: 'ポゼッション',
+          formationId: '442b_laRoja02',
+            buffs: [
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' },
+              { name: 'パスカット', val: '+80%' }
+            ]
+},
+{
+  id: 'elLeon70',
+    name: "エル・レオン’70",
       rank: '銀',
-      policy: 'ポゼッション',
-      formationId: '451b_viola99',
-      buffs: [
-        { name: 'ボールタッチ', val: '+80%' },
-        { name: '走力', val: '+80%' },
-        { name: 'ジャンプ', val: '+80%' }
-      ]
-    }
+        policy: 'ポゼッション',
+          formationId: '343c_elLeon70',
+            buffs: [
+              { name: 'ロングパス', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: 'キープ力', val: '+80%' }
+            ]
+},
+{
+  id: 'ulcitca03',
+    name: "ウルチカ’03",
+      rank: '銀',
+        policy: 'ポゼッション',
+          formationId: '451a_ulcitca03',
+            buffs: [
+              { name: '決定力', val: '+80%' },
+              { name: 'ロングパス', val: '+80%' },
+              { name: 'キープ力', val: '+80%' }
+            ]
+},
+{
+  id: 'diablesRouges18',
+    name: "ディアブル・ルージュ’18",
+      rank: '銀',
+        policy: 'ポゼッション',
+          formationId: '433a_diablesRouges18',
+            buffs: [
+              { name: 'キープ力', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' },
+              { name: 'スタミナ', val: '+60%' }
+            ]
+},
+{
+  id: 'taegukWarriors02',
+    name: "太極戦士’02",
+      rank: '銀',
+        policy: 'ポゼッション',
+          formationId: '343b_taegukWarriors02',
+            buffs: [
+              { name: 'キック精度', val: '+60%' },
+              { name: 'キープ力', val: '+60%' },
+              { name: 'ジャンプ', val: '+60%' }
+            ]
+},
+{
+  id: 'dieAdler24',
+    name: "ディー・アドラー’24",
+      rank: '銀',
+        policy: 'ポゼッション',
+          formationId: '541a_dieAdler24',
+            buffs: [
+              { name: 'ロングパス', val: '+80%' },
+              { name: 'コンタクト', val: '+80%' },
+              { name: '走力', val: '+80%' }
+            ]
+},
+{
+  id: 'viola99',
+    name: "ヴィオラ’99",
+      rank: '銀',
+        policy: 'ポゼッション',
+          formationId: '451b_viola99',
+            buffs: [
+              { name: 'ボールタッチ', val: '+80%' },
+              { name: '走力', val: '+80%' },
+              { name: 'ジャンプ', val: '+80%' }
+            ]
+}
   ];
 
-  const FORMATIONS = [
-    {
-      id: '433b_selecaoDasQuinas26',
-      name: '4-3-3B (セレソン・ダス・キナス’26)',
-      comboId: 'selecaoDasQuinas26',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 3 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 3 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' }
-      ]
-    },
+const FORMATIONS = [
+  {
+    id: '433b_dieRoten26',
+    name: "4-3-3B (ディー・ローデン'26)",
+    comboId: 'dieRoten26',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'スイーパーGK', minLevel: 3 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'パサーDM', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 }
+    ]
+  },
 
-    {
-      id: '433b_lesBleus26',
-      name: '4-3-3B (レ・ブルー’26)',
-      comboId: 'lesBleus26',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'スプリントCB', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 3 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 3 },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' }
-      ]
-    },
+  {
+    id: '433b_selecaoDasQuinas26',
+    name: '4-3-3B (セレソン・ダス・キナス’26)',
+    comboId: 'selecaoDasQuinas26',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 3 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 3 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' }
+    ]
+  },
 
-    {
-      id: '433b_laRoja26',
-      name: '4-3-3B (ラ・ロハ’26)',
-      comboId: 'laRoja26',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 3 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 }
-      ]
-    },
+  {
+    id: '433b_lesBleus26',
+    name: '4-3-3B (レ・ブルー’26)',
+    comboId: 'lesBleus26',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'スプリントCB', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 3 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 3 },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' }
+    ]
+  },
 
-    {
-      id: '343c_selecao',
-      name: '3-4-3C (セレソン’70)',
-      comboId: 'selecao70',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: 'スプリントCB', minLevel: 2 },
-        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%', requiredStyle: 'ハードマーカー', minLevel: 2 },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 3 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '343c_golden',
-      name: "3-4-3C (ゴーデンゾーネン'95)",
-      comboId: 'goldenZonen95',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%', requiredStyle: 'ハードマーカー', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%', requiredStyle: 'セントラルDM', minLevel: 3 },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '442a_quinas',
-      name: "4-4-2A (セレソン・ダス・キナス'16)",
-      comboId: 'selecaoDasQuinas16',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%', requiredStyle: 'サイドアタッカーLM', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 3 },
-      ]
-    },
-    {
-      id: '442e_alvinegro',
-      name: "4-4-2E (アルヴィネグロ・プライアーノ’11)",
-      comboId: 'alvinegroPraiano',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
-      ]
-    },
-    {
-      id: '433b_encarnados',
-      name: "4-3-3B (エンカルナードス’23)",
-      comboId: 'encarnados23',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 3 },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '433b_nerazzurro',
-      name: "4-3-3B (ネラッズーロ’10)",
-      comboId: 'nerazzurro10',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 },
-      ]
-    },
-    {
-      id: '442c_canaria',
-      name: "4-4-2C (カナリア軍団’06)",
-      comboId: 'canaria06',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'ハードマーカー', minLevel: 3 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '343a_albiceleste',
-      name: "3-4-3A (アルビセレステ’01)",
-      comboId: 'albiceleste01',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
-        { id: 6, pos: 'LM', label: 'LM', top: '38%', left: '20%', requiredStyle: 'サイドアタッカーLM', minLevel: 3 },
-        { id: 7, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '80%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '442e_soberano',
-      name: "4-4-2E (ソベラーノ’94)",
-      comboId: 'soberano94',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%', requiredStyle: 'パサーAM', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 3 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '433a_blauGrana',
-      name: "4-3-3A (ブラウ・グラーナ’15)",
-      comboId: 'blauGrana15',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%', requiredStyle: 'セントラルAM', minLevel: 2 },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 3 },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '442d_losCafeteros',
-      name: "4-4-2D (ロス・カフェテロス’94)",
-      comboId: 'losCafeteros94',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%', requiredStyle: 'セントラルDM', minLevel: 3 },
-        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '433b_laRoja',
-      name: "4-3-3B (ラ・ロハ’24)",
-      comboId: 'laRoja24',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 3 },
-      ]
-    },
-    {
-      id: '352b_laDea',
-      name: "3-5-2B (ラ・デア’22)",
-      comboId: 'laDea22',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '361a_blueImpact',
-      name: "3-6-1A (ブルー・インパクト’26)",
-      comboId: 'blueImpact26',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'パサーDM', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 3 },
-        { id: 8, pos: 'AM', label: 'LAM', top: '34%', left: '34%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '34%', left: '66%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
-    },
-    {
-      id: '343c_euskaldunak',
-      name: "3-4-3C (エウスカルドゥナク’12)",
-      comboId: 'euskaldunak12',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 3 },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '433b_river',
-      name: "4-3-3B (リーベル’18)",
-      comboId: 'river18',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'ハードマーカー', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 3 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
-      ]
-    },
-    {
-      id: '343b_diavolo',
-      name: "3-4-3B (ディアボロ・ディ・ミラノ’99)",
-      comboId: 'diavolo99',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%', requiredStyle: 'セントラルDM', minLevel: 3 },
-        { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '442d_lesBleus',
-      name: "4-4-2D (レ・ブルー’98)",
-      comboId: 'lesBleus98',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%' },
-        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'セントラルAM', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 3 },
-      ]
-    },
-    {
-      id: '352b_azzurri',
-      name: "3-5-2B (アズーリ’14)",
-      comboId: 'azzurri14',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '343b_friulani',
-      name: "3-4-3B (イ・フリウラーニ’98)",
-      comboId: 'friulani98',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'サイドアタッカーLM', minLevel: 2 },
-        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '532b_crociati',
-      name: "5-3-2B (クロチャーティ’99)",
-      comboId: 'crociati99',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
-        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
-        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
-        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
-        { id: 7, pos: 'DM', label: 'LDM', top: '52%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 8, pos: 'DM', label: 'RDM', top: '52%', left: '64%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '541a_hollywood',
-      name: "5-4-1A (FCハリウッド’01)",
-      comboId: 'hollywood01',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
-        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
-        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
-        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%', requiredStyle: '攻撃的RFB', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '451b_azzurri',
-      name: "4-5-1B (アズーリ’06)",
-      comboId: 'azzurri06',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
-    },
-    {
-      id: '523a_gulag',
-      name: "5-2-3A (ブロ・グルト’94)",
-      comboId: 'gulag94',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%', requiredStyle: '攻撃的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
-        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
-        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
-        { id: 7, pos: 'DM', label: 'LDM', top: '50%', left: '38%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '50%', left: '62%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
-      ]
-    },
-    {
-      id: '442c_grifoni',
-      name: "4-4-2C (グリフォーニ’99)",
-      comboId: 'grifoni99',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '361b_blueGaru',
-      name: "3-6-1B (ブルー・ガル’22)",
-      comboId: 'blueGaru22',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '26%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '74%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
-    },
-    {
-      id: '451b_danish',
-      name: "4-5-1B (ダニッシュ・ダイナマイト’18)",
-      comboId: 'danishDynamite18',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
-        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '433b_monaco',
-      name: "4-3-3B (レ・ルージュ・エ・ブラン’04)",
-      comboId: 'monaco04',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'パサー', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '532a_amarela',
-      name: "5-3-2A (ヴァルデ・アマレーラ’02)",
-      comboId: 'amarela02',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
-        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
-        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
-        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '352b_danish86',
-      name: "3-5-2B (ダニッシュ・ダイナマイト’86)",
-      comboId: 'danishDynamite86',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'ハードマーカー', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '442a_amarillo',
-      name: "4-4-2A (サブマリーノ・アマリーリョ’06)",
-      comboId: 'amarillo06',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%', requiredStyle: 'サイドアタッカーRM', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '442d_losMillonarios',
-      name: "4-4-2D (ロス・ミリョナリオス’86)",
-      comboId: 'losMillonarios86',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%' },
-        { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '433b_hinomaru',
-      name: "4-3-3B (ヒノマルスタイル’93)",
-      comboId: 'hinomaru93',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
-      ]
-    },
-    {
-      id: '451a_schwarzGelben',
-      name: "4-5-1A (シュヴァルツ・ゲルベン’16)",
-      comboId: 'schwarzGelben16',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
-        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
-    },
-    {
-      id: '343c_hinomaru68',
-      name: "3-4-3C (ヒノマルスタイル’68)",
-      comboId: 'hinomaru68',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '442e_blanquiroja',
-      name: "4-4-2E (ラ・ブランキロハ’82)",
-      comboId: 'blanquiroja82',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%', requiredStyle: 'パサーAM', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '442a_losPuros',
-      name: "4-4-2A (ロス・プロス’01)",
-      comboId: 'losPuros01',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'スイーパーGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
-        { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '451b_greenFalcons',
-      name: "4-5-1B (グリーン・ファルコンズ’98)",
-      comboId: 'greenFalcons98',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
-        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
-    },
-    {
-      id: '442b_orlovi',
-      name: "4-4-2B (オルロヴィ’24)",
-      comboId: 'orlovi24',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
-        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' }
-      ]
-    },
-    {
-      id: '442b_laRoja02',
-      name: "4-4-2B (ラ・ロハ’02)",
-      comboId: 'laRoja02',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
-        { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
-      ]
-    },
-    {
-      id: '343c_elLeon70',
-      name: "3-4-3C (エル・レオン’70)",
-      comboId: 'elLeon70',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '451a_ulcitca03',
-      name: "4-5-1A (ウルチカ’03)",
-      comboId: 'ulcitca03',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
-        { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
-        { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%', requiredStyle: 'アタッカー', minLevel: 2 },
-        { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '433a_diablesRouges18',
-      name: "4-3-3A (ディアブル・ルージュ’18)",
-      comboId: 'diablesRouges18',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
-        { id: 6, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
-        { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
-      ]
-    },
-    {
-      id: '343b_taegukWarriors02',
-      name: "3-4-3B (太極戦士’02)",
-      comboId: 'taegukWarriors02',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
-        { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
-        { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
-        { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
-        { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
-        { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
-        { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-        { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
-      ]
-    },
-    {
-      id: '541a_dieAdler24',
-      name: "5-4-1A (ディー・アドラー’24)",
-      comboId: 'dieAdler24',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
-        { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
-        { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
-        { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
-        { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 2 },
-        { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
-        { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
-      ]
-    },
-    {
-      id: '451b_viola99',
-      name: "4-5-1B (ヴィオラ’99)",
-      comboId: 'viola99',
-      slots: [
-        { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
-        { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
-        { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
-        { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
-        { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
-        { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
-        { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
-        { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
-        { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
-        { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
-        { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
-      ]
+  {
+    id: '433b_laRoja26',
+    name: '4-3-3B (ラ・ロハ’26)',
+    comboId: 'laRoja26',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 3 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 }
+    ]
+  },
+
+  {
+    id: '343c_selecao',
+    name: '3-4-3C (セレソン’70)',
+    comboId: 'selecao70',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: 'スプリントCB', minLevel: 2 },
+      { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%', requiredStyle: 'ハードマーカー', minLevel: 2 },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 3 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '343c_golden',
+    name: "3-4-3C (ゴーデンゾーネン'95)",
+    comboId: 'goldenZonen95',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%', requiredStyle: 'ハードマーカー', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%', requiredStyle: 'セントラルDM', minLevel: 3 },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '442a_quinas',
+    name: "4-4-2A (セレソン・ダス・キナス'16)",
+    comboId: 'selecaoDasQuinas16',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%', requiredStyle: 'サイドアタッカーLM', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 3 },
+    ]
+  },
+  {
+    id: '442e_alvinegro',
+    name: "4-4-2E (アルヴィネグロ・プライアーノ’11)",
+    comboId: 'alvinegroPraiano',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
+    ]
+  },
+  {
+    id: '433b_encarnados',
+    name: "4-3-3B (エンカルナードス’23)",
+    comboId: 'encarnados23',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 3 },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '433b_nerazzurro',
+    name: "4-3-3B (ネラッズーロ’10)",
+    comboId: 'nerazzurro10',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ワイドストライカーRW', minLevel: 3 },
+    ]
+  },
+  {
+    id: '442c_canaria',
+    name: "4-4-2C (カナリア軍団’06)",
+    comboId: 'canaria06',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'ハードマーカー', minLevel: 3 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '343a_albiceleste',
+    name: "3-4-3A (アルビセレステ’01)",
+    comboId: 'albiceleste01',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
+      { id: 6, pos: 'LM', label: 'LM', top: '38%', left: '20%', requiredStyle: 'サイドアタッカーLM', minLevel: 3 },
+      { id: 7, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '80%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '442e_soberano',
+    name: "4-4-2E (ソベラーノ’94)",
+    comboId: 'soberano94',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%', requiredStyle: 'パサーAM', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 3 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '433a_blauGrana',
+    name: "4-3-3A (ブラウ・グラーナ’15)",
+    comboId: 'blauGrana15',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%', requiredStyle: 'セントラルAM', minLevel: 2 },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 3 },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '442d_losCafeteros',
+    name: "4-4-2D (ロス・カフェテロス’94)",
+    comboId: 'losCafeteros94',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%', requiredStyle: 'セントラルDM', minLevel: 3 },
+      { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '433b_laRoja',
+    name: "4-3-3B (ラ・ロハ’24)",
+    comboId: 'laRoja24',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 3 },
+    ]
+  },
+  {
+    id: '352b_laDea',
+    name: "3-5-2B (ラ・デア’22)",
+    comboId: 'laDea22',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 3 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '361a_blueImpact',
+    name: "3-6-1A (ブルー・インパクト’26)",
+    comboId: 'blueImpact26',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'パサーDM', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 3 },
+      { id: 8, pos: 'AM', label: 'LAM', top: '34%', left: '34%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '34%', left: '66%' },
+      { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '82%', requiredStyle: 'ドリブラーRM', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  },
+  {
+    id: '343c_euskaldunak',
+    name: "3-4-3C (エウスカルドゥナク’12)",
+    comboId: 'euskaldunak12',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 3 },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '433b_river',
+    name: "4-3-3B (リーベル’18)",
+    comboId: 'river18',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'ハードマーカー', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 3 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+    ]
+  },
+  {
+    id: '343b_diavolo',
+    name: "3-4-3B (ディアボロ・ディ・ミラノ’99)",
+    comboId: 'diavolo99',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%', requiredStyle: 'セントラルDM', minLevel: 3 },
+      { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '442d_lesBleus',
+    name: "4-4-2D (レ・ブルー’98)",
+    comboId: 'lesBleus98',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%' },
+      { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'セントラルAM', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 3 },
+    ]
+  },
+  {
+    id: '352b_azzurri',
+    name: "3-5-2B (アズーリ’14)",
+    comboId: 'azzurri14',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '343b_friulani',
+    name: "3-4-3B (イ・フリウラーニ’98)",
+    comboId: 'friulani98',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'サイドアタッカーLM', minLevel: 2 },
+      { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '532b_crociati',
+    name: "5-3-2B (クロチャーティ’99)",
+    comboId: 'crociati99',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+      { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
+      { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+      { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+      { id: 7, pos: 'DM', label: 'LDM', top: '52%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 8, pos: 'DM', label: 'RDM', top: '52%', left: '64%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ストライカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '541a_hollywood',
+    name: "5-4-1A (FCハリウッド’01)",
+    comboId: 'hollywood01',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+      { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%' },
+      { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+      { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '451b_azzurri',
+    name: "4-5-1B (アズーリ’06)",
+    comboId: 'azzurri06',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  },
+  {
+    id: '523a_gulag',
+    name: "5-2-3A (ブロ・グルト’94)",
+    comboId: 'gulag94',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%', requiredStyle: '攻撃的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+      { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+      { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+      { id: 7, pos: 'DM', label: 'LDM', top: '50%', left: '38%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '50%', left: '62%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+    ]
+  },
+  {
+    id: '442c_grifoni',
+    name: "4-4-2C (グリフォーニ’99)",
+    comboId: 'grifoni99',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '361b_blueGaru',
+    name: "3-6-1B (ブルー・ガル’22)",
+    comboId: 'blueGaru22',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '26%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '74%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  },
+  {
+    id: '451b_danish',
+    name: "4-5-1B (ダニッシュ・ダイナマイト’18)",
+    comboId: 'danishDynamite18',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
+      { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '433b_monaco',
+    name: "4-3-3B (レ・ルージュ・エ・ブラン’04)",
+    comboId: 'monaco04',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'パサー', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'サイドアタッカーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '532a_amarela',
+    name: "5-3-2A (ヴァルデ・アマレーラ’02)",
+    comboId: 'amarela02',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+      { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+      { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+      { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '352b_danish86',
+    name: "3-5-2B (ダニッシュ・ダイナマイト’86)",
+    comboId: 'danishDynamite86',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%', requiredStyle: 'ハードマーカー', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '18%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '82%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '442a_amarillo',
+    name: "4-4-2A (サブマリーノ・アマリーリョ’06)",
+    comboId: 'amarillo06',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%', requiredStyle: 'サイドアタッカーRM', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '442d_losMillonarios',
+    name: "4-4-2D (ロス・ミリョナリオス’86)",
+    comboId: 'losMillonarios86',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '26%' },
+      { id: 7, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '74%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '433b_hinomaru',
+    name: "4-3-3B (ヒノマルスタイル’93)",
+    comboId: 'hinomaru93',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+    ]
+  },
+  {
+    id: '451a_schwarzGelben',
+    name: "4-5-1A (シュヴァルツ・ゲルベン’16)",
+    comboId: 'schwarzGelben16',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+      { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%' },
+      { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  },
+  {
+    id: '343c_hinomaru68',
+    name: "3-4-3C (ヒノマルスタイル’68)",
+    comboId: 'hinomaru68',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '442e_blanquiroja',
+    name: "4-4-2E (ラ・ブランキロハ’82)",
+    comboId: 'blanquiroja82',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '38%', left: '24%', requiredStyle: 'パサーAM', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'RAM', top: '38%', left: '76%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '442a_losPuros',
+    name: "4-4-2A (ロス・プロス’01)",
+    comboId: 'losPuros01',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'スイーパーGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+      { id: 8, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%' },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '451b_greenFalcons',
+    name: "4-5-1B (グリーン・ファルコンズ’98)",
+    comboId: 'greenFalcons98',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '守備的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%' },
+      { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  },
+  {
+    id: '442b_orlovi',
+    name: "4-4-2B (オルロヴィ’24)",
+    comboId: 'orlovi24',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%', requiredStyle: 'セントラルDM', minLevel: 2 },
+      { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ストライカー', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' }
+    ]
+  },
+  {
+    id: '442b_laRoja02',
+    name: "4-4-2B (ラ・ロハ’02)",
+    comboId: 'laRoja02',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'LDM', top: '56%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '56%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 9, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 10, pos: 'CF', label: 'LCF', top: '16%', left: '36%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+      { id: 11, pos: 'CF', label: 'RCF', top: '16%', left: '64%' },
+    ]
+  },
+  {
+    id: '343c_elLeon70',
+    name: "3-4-3C (エル・レオン’70)",
+    comboId: 'elLeon70',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '54%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '54%', left: '62%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%', requiredStyle: 'ドリブラーLW', minLevel: 2 },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '451a_ulcitca03',
+    name: "4-5-1A (ウルチカ’03)",
+    comboId: 'ulcitca03',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%', requiredStyle: '守備的LFB', minLevel: 2 },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '56%', left: '50%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '40%', left: '20%' },
+      { id: 8, pos: 'AM', label: 'LAM', top: '35%', left: '34%' },
+      { id: 9, pos: 'AM', label: 'RAM', top: '35%', left: '66%', requiredStyle: 'アタッカー', minLevel: 2 },
+      { id: 10, pos: 'RM', label: 'RM', top: '40%', left: '80%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ポストプレーヤー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '433a_diablesRouges18',
+    name: "4-3-3A (ディアブル・ルージュ’18)",
+    comboId: 'diablesRouges18',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%', requiredStyle: '組立CB', minLevel: 2 },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%' },
+      { id: 6, pos: 'DM', label: 'DM', top: '54%', left: '50%' },
+      { id: 7, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 8, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%', requiredStyle: 'ドリブラーRW', minLevel: 2 },
+    ]
+  },
+  {
+    id: '343b_taegukWarriors02',
+    name: "3-4-3B (太極戦士’02)",
+    comboId: 'taegukWarriors02',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'CB', label: 'LCB', top: '72%', left: '26%' },
+      { id: 3, pos: 'CB', label: 'CB', top: '74%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 4, pos: 'CB', label: 'RCB', top: '72%', left: '74%' },
+      { id: 5, pos: 'DM', label: 'LDM', top: '56%', left: '38%' },
+      { id: 6, pos: 'DM', label: 'RDM', top: '56%', left: '62%' },
+      { id: 7, pos: 'LM', label: 'LM', top: '38%', left: '18%', requiredStyle: 'ドリブラーLM', minLevel: 2 },
+      { id: 8, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 9, pos: 'LW', label: 'LW', top: '18%', left: '20%' },
+      { id: 10, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+      { id: 11, pos: 'RW', label: 'RW', top: '18%', left: '80%' },
+    ]
+  },
+  {
+    id: '541a_dieAdler24',
+    name: "5-4-1A (ディー・アドラー’24)",
+    comboId: 'dieAdler24',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%' },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '68%', left: '14%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '74%', left: '32%' },
+      { id: 4, pos: 'CB', label: 'CB', top: '76%', left: '50%', requiredStyle: 'ストッパー', minLevel: 2 },
+      { id: 5, pos: 'CB', label: 'RCB', top: '74%', left: '68%' },
+      { id: 6, pos: 'RFB', label: 'RFB', top: '68%', left: '86%' },
+      { id: 7, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 8, pos: 'DM', label: 'RDM', top: '54%', left: '64%', requiredStyle: 'パサーDM', minLevel: 2 },
+      { id: 9, pos: 'AM', label: 'LAM', top: '35%', left: '32%' },
+      { id: 10, pos: 'AM', label: 'RAM', top: '35%', left: '68%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%', requiredStyle: 'ラインブレーカー', minLevel: 2 },
+    ]
+  },
+  {
+    id: '451b_viola99',
+    name: "4-5-1B (ヴィオラ’99)",
+    comboId: 'viola99',
+    slots: [
+      { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'オーソドックスGK', minLevel: 2 },
+      { id: 2, pos: 'LFB', label: 'LFB', top: '70%', left: '16%' },
+      { id: 3, pos: 'CB', label: 'LCB', top: '73%', left: '38%' },
+      { id: 4, pos: 'CB', label: 'RCB', top: '73%', left: '62%' },
+      { id: 5, pos: 'RFB', label: 'RFB', top: '70%', left: '84%', requiredStyle: '攻撃的RFB', minLevel: 2 },
+      { id: 6, pos: 'DM', label: 'LDM', top: '54%', left: '36%' },
+      { id: 7, pos: 'DM', label: 'RDM', top: '54%', left: '64%' },
+      { id: 8, pos: 'LM', label: 'LM', top: '38%', left: '18%' },
+      { id: 9, pos: 'AM', label: 'AM', top: '34%', left: '50%', requiredStyle: 'パサーAM', minLevel: 2 },
+      { id: 10, pos: 'RM', label: 'RM', top: '38%', left: '82%' },
+      { id: 11, pos: 'CF', label: 'CF', top: '14%', left: '50%' },
+    ]
+  }
+];
+
+const sanitizeMapForStorage = (map) => {
+  if (!map) return {};
+  const sanitized = {};
+  Object.keys(map).forEach(key => {
+    const p = map[key];
+    if (p && p.id) {
+      // Strip large base64 avatarUrl strings to fit well within localStorage limits
+      const { avatarUrl, ...rest } = p;
+      sanitized[key] = rest;
     }
-  ];
+  });
+  return sanitized;
+};
 
-  const sanitizeMapForStorage = (map) => {
-    if (!map) return {};
-    const sanitized = {};
-    Object.keys(map).forEach(key => {
-      const p = map[key];
-      if (p && p.id) {
-        // Strip large base64 avatarUrl strings to fit well within localStorage limits
-        const { avatarUrl, ...rest } = p;
-        sanitized[key] = rest;
+const getInitialActiveTeam = () => {
+  try {
+    const active = localStorage.getItem('sfcc_active_team');
+    if (active) {
+      const parsed = JSON.parse(active);
+      if (parsed && typeof parsed === 'object') return parsed;
+    }
+  } catch (e) { }
+  return null;
+};
+const activePayload = useMemo(() => getInitialActiveTeam(), []);
+
+const restorePlayerMap = useCallback((mapData) => {
+  if (!mapData || typeof mapData !== 'object') return {};
+  const restored = {};
+  try {
+    Object.keys(mapData).forEach(key => {
+      const storedP = mapData[key];
+      if (storedP && typeof storedP === 'object' && storedP.id) {
+        const freshP = Array.isArray(players) ? players.find(p => p && (String(p.id) === String(storedP.id) || (p.name && storedP.name && p.name === storedP.name))) : null;
+        if (freshP) {
+          restored[key] = {
+            ...storedP,
+            ...freshP,
+            rawPlayer: freshP,
+            avatarUrl: getPlayerAvatarUrl(freshP)
+          };
+        } else if (storedP.baseStats) {
+          restored[key] = storedP;
+        }
       }
     });
-    return sanitized;
-  };
+  } catch (e) {
+    console.error('restorePlayerMap error:', e);
+  }
+  return restored;
+}, [players]);
 
-  const getInitialActiveTeam = () => {
-    try {
-      const active = localStorage.getItem('sfcc_active_team');
-      if (active) {
-        const parsed = JSON.parse(active);
-        if (parsed && typeof parsed === 'object') return parsed;
+const [selectedFormation, setSelectedFormation] = useState(() => {
+  if (activePayload?.formationId) {
+    const fmt = FORMATIONS.find(f => f.id === activePayload.formationId);
+    if (fmt) return fmt;
+  }
+  return FORMATIONS[0];
+});
+const [teamPolicy, setTeamPolicy] = useState(() => activePayload?.teamPolicy || 'リアクション');
+const [squadMap, setSquadMap] = useState(() => {
+  if (activePayload?.squadMap) {
+    return restorePlayerMap(activePayload.squadMap);
+  }
+  return {};
+});
+const [benchMap, setBenchMap] = useState(() => {
+  if (activePayload?.benchMap) {
+    return restorePlayerMap(activePayload.benchMap);
+  }
+  return {};
+});
+const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : true);
+const [activeSlotModal, setActiveSlotModal] = useState(null);
+const [filterPos, setFilterPos] = useState('ALL');
+const [modalSearchText, setModalSearchText] = useState('');
+
+const [savedSlots, setSavedSlots] = useState(() => {
+  try {
+    const data = localStorage.getItem('sfcc_saved_teams');
+    if (data) {
+      const parsed = JSON.parse(data);
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch (e) {
+    console.error('savedSlots init error:', e);
+  }
+  return [];
+});
+const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
+const [newTeamName, setNewTeamName] = useState('');
+const [toastMsg, setToastMsg] = useState(null);
+const [comboRankFilter, setComboRankFilter] = useState('ALL');
+
+const showToast = (msg) => {
+  setToastMsg(msg);
+  setTimeout(() => setToastMsg(null), 3000);
+};
+
+const isInitialMount = useRef(true);
+useEffect(() => {
+  try {
+    const active = localStorage.getItem('sfcc_active_team');
+    if (active) {
+      const parsed = JSON.parse(active);
+      if (parsed.formationId) {
+        const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
+        if (fmt) setSelectedFormation(fmt);
       }
-    } catch (e) { }
-    return null;
-  };
-  const activePayload = useMemo(() => getInitialActiveTeam(), []);
+      if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
+      if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
+      if (parsed.squadMap) setSquadMap(restorePlayerMap(parsed.squadMap));
+      if (parsed.benchMap) setBenchMap(restorePlayerMap(parsed.benchMap));
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}, [players, restorePlayerMap]);
 
-  const restorePlayerMap = useCallback((mapData) => {
-    if (!mapData || typeof mapData !== 'object') return {};
-    const restored = {};
-    try {
-      Object.keys(mapData).forEach(key => {
-        const storedP = mapData[key];
-        if (storedP && typeof storedP === 'object' && storedP.id) {
-          const freshP = Array.isArray(players) ? players.find(p => p && (String(p.id) === String(storedP.id) || (p.name && storedP.name && p.name === storedP.name))) : null;
-          if (freshP) {
-            restored[key] = {
-              ...storedP,
-              ...freshP,
-              rawPlayer: freshP,
-              avatarUrl: getPlayerAvatarUrl(freshP)
-            };
-          } else if (storedP.baseStats) {
-            restored[key] = storedP;
-          }
-        }
-      });
-    } catch (e) {
-      console.error('restorePlayerMap error:', e);
-    }
-    return restored;
-  }, [players]);
-
-  const [selectedFormation, setSelectedFormation] = useState(() => {
-    if (activePayload?.formationId) {
-      const fmt = FORMATIONS.find(f => f.id === activePayload.formationId);
-      if (fmt) return fmt;
-    }
-    return FORMATIONS[0];
-  });
-  const [teamPolicy, setTeamPolicy] = useState(() => activePayload?.teamPolicy || 'リアクション');
-  const [squadMap, setSquadMap] = useState(() => {
-    if (activePayload?.squadMap) {
-      return restorePlayerMap(activePayload.squadMap);
-    }
-    return {};
-  });
-  const [benchMap, setBenchMap] = useState(() => {
-    if (activePayload?.benchMap) {
-      return restorePlayerMap(activePayload.benchMap);
-    }
-    return {};
-  });
-  const [builderMaxEnhanced, setBuilderMaxEnhanced] = useState(() => typeof activePayload?.builderMaxEnhanced === 'boolean' ? activePayload.builderMaxEnhanced : true);
-  const [activeSlotModal, setActiveSlotModal] = useState(null);
-  const [filterPos, setFilterPos] = useState('ALL');
-  const [modalSearchText, setModalSearchText] = useState('');
-
-  const [savedSlots, setSavedSlots] = useState(() => {
-    try {
-      const data = localStorage.getItem('sfcc_saved_teams');
-      if (data) {
-        const parsed = JSON.parse(data);
-        if (Array.isArray(parsed)) return parsed;
-      }
-    } catch (e) {
-      console.error('savedSlots init error:', e);
-    }
-    return [];
-  });
-  const [isSaveModalOpen, setIsSaveModalOpen] = useState(false);
-  const [newTeamName, setNewTeamName] = useState('');
-  const [toastMsg, setToastMsg] = useState(null);
-  const [comboRankFilter, setComboRankFilter] = useState('ALL');
-
-  const showToast = (msg) => {
-    setToastMsg(msg);
-    setTimeout(() => setToastMsg(null), 3000);
-  };
-
-  const isInitialMount = useRef(true);
-  useEffect(() => {
-    try {
-      const active = localStorage.getItem('sfcc_active_team');
-      if (active) {
-        const parsed = JSON.parse(active);
-        if (parsed.formationId) {
-          const fmt = FORMATIONS.find(f => f.id === parsed.formationId);
-          if (fmt) setSelectedFormation(fmt);
-        }
-        if (parsed.teamPolicy) setTeamPolicy(parsed.teamPolicy);
-        if (typeof parsed.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(parsed.builderMaxEnhanced);
-        if (parsed.squadMap) setSquadMap(restorePlayerMap(parsed.squadMap));
-        if (parsed.benchMap) setBenchMap(restorePlayerMap(parsed.benchMap));
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, [players, restorePlayerMap]);
-
-  useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-    try {
-      const payload = {
-        formationId: selectedFormation?.id,
-        teamPolicy,
-        builderMaxEnhanced,
-        squadMap: sanitizeMapForStorage(squadMap),
-        benchMap: sanitizeMapForStorage(benchMap)
-      };
-      localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
-    } catch (e) {
-      console.error('sfcc_active_team save error:', e);
-    }
-  }, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
-
-  const handleSaveTeamSlot = (slotName, existingId = null) => {
-    const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
-    const sanitizedSquad = sanitizeMapForStorage(squadMap);
-    const sanitizedBench = sanitizeMapForStorage(benchMap);
-    const newTeam = {
-      id: existingId || ('team_' + Date.now()),
-      name: nameToUse,
-      updatedAt: new Date().toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+useEffect(() => {
+  if (isInitialMount.current) {
+    isInitialMount.current = false;
+    return;
+  }
+  try {
+    const payload = {
       formationId: selectedFormation?.id,
-      formationName: selectedFormation?.name,
       teamPolicy,
       builderMaxEnhanced,
-      squadMap: sanitizedSquad,
-      benchMap: sanitizedBench,
-      playerCount: Object.values(squadMap).filter(Boolean).length
+      squadMap: sanitizeMapForStorage(squadMap),
+      benchMap: sanitizeMapForStorage(benchMap)
     };
+    localStorage.setItem('sfcc_active_team', JSON.stringify(payload));
+  } catch (e) {
+    console.error('sfcc_active_team save error:', e);
+  }
+}, [selectedFormation, teamPolicy, builderMaxEnhanced, squadMap, benchMap]);
 
-    let updated;
-    if (existingId) {
-      updated = savedSlots.map(s => s.id === existingId ? newTeam : s);
-    } else {
-      updated = [...savedSlots, newTeam];
-    }
-    setSavedSlots(updated);
-    try {
-      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
-      showToast(`「${nameToUse}」を保存しました！`);
-    } catch (e) {
-      console.error('sfcc_saved_teams save error:', e);
-      showToast('⚠️ チーム保存に失敗しました（ストレージ容量上限の可能性があります）');
-    }
-    setNewTeamName('');
+const handleSaveTeamSlot = (slotName, existingId = null) => {
+  const nameToUse = slotName?.trim() || `チーム ${savedSlots.length + 1}`;
+  const sanitizedSquad = sanitizeMapForStorage(squadMap);
+  const sanitizedBench = sanitizeMapForStorage(benchMap);
+  const newTeam = {
+    id: existingId || ('team_' + Date.now()),
+    name: nameToUse,
+    updatedAt: new Date().toLocaleString('ja-JP', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
+    formationId: selectedFormation?.id,
+    formationName: selectedFormation?.name,
+    teamPolicy,
+    builderMaxEnhanced,
+    squadMap: sanitizedSquad,
+    benchMap: sanitizedBench,
+    playerCount: Object.values(squadMap).filter(Boolean).length
   };
 
-  const handleLoadTeamSlot = (team) => {
-    if (!team) return;
-    if (team.formationId) {
-      const fmt = FORMATIONS.find(f => f.id === team.formationId);
-      if (fmt) setSelectedFormation(fmt);
+  let updated;
+  if (existingId) {
+    updated = savedSlots.map(s => s.id === existingId ? newTeam : s);
+  } else {
+    updated = [...savedSlots, newTeam];
+  }
+  setSavedSlots(updated);
+  try {
+    localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+    showToast(`「${nameToUse}」を保存しました！`);
+  } catch (e) {
+    console.error('sfcc_saved_teams save error:', e);
+    showToast('⚠️ チーム保存に失敗しました（ストレージ容量上限の可能性があります）');
+  }
+  setNewTeamName('');
+};
+
+const handleLoadTeamSlot = (team) => {
+  if (!team) return;
+  if (team.formationId) {
+    const fmt = FORMATIONS.find(f => f.id === team.formationId);
+    if (fmt) setSelectedFormation(fmt);
+  }
+  if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
+  if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
+  if (team.squadMap) setSquadMap(restorePlayerMap(team.squadMap));
+  if (team.benchMap) setBenchMap(restorePlayerMap(team.benchMap));
+  setIsSaveModalOpen(false);
+  showToast(`「${team.name}」を読み込みました！`);
+};
+
+const handleDeleteTeamSlot = (teamId) => {
+  const updated = savedSlots.filter(s => s.id !== teamId);
+  setSavedSlots(updated);
+  try {
+    localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
+  } catch (e) {
+    console.error(e);
+  }
+  showToast('スロットを削除しました');
+};
+
+const handleClearSquad = () => {
+  if (window.confirm('配置されている選手をすべてクリアしますか？')) {
+    setSquadMap({});
+    setBenchMap({});
+    showToast('チーム配置をクリアしました');
+  }
+};
+
+// 選手選択ドロワー/モーダル表示時の3回に1回頻度広告判定
+const showSlotModalAd = useMemo(() => {
+  if (activeSlotModal) {
+    return checkModalAdFrequency();
+  }
+  return false;
+}, [activeSlotModal]);
+
+// 最大強化トグル対応の動的表示マップ
+const displaySquadMap = useMemo(() => {
+  const map = {};
+  Object.keys(squadMap).forEach(key => {
+    if (squadMap[key]) {
+      map[key] = builderMaxEnhanced ? getAdjustedPlayer(squadMap[key], '☆5', true) : squadMap[key];
     }
-    if (team.teamPolicy) setTeamPolicy(team.teamPolicy);
-    if (typeof team.builderMaxEnhanced === 'boolean') setBuilderMaxEnhanced(team.builderMaxEnhanced);
-    if (team.squadMap) setSquadMap(restorePlayerMap(team.squadMap));
-    if (team.benchMap) setBenchMap(restorePlayerMap(team.benchMap));
-    setIsSaveModalOpen(false);
-    showToast(`「${team.name}」を読み込みました！`);
+  });
+  return map;
+}, [squadMap, builderMaxEnhanced]);
+
+const displayBenchMap = useMemo(() => {
+  const map = {};
+  Object.keys(benchMap).forEach(key => {
+    if (benchMap[key]) {
+      map[key] = builderMaxEnhanced ? getAdjustedPlayer(benchMap[key], '☆5', true) : benchMap[key];
+    }
+  });
+  return map;
+}, [benchMap, builderMaxEnhanced]);
+
+// 全パターン最高総合力判定付き 自動最適編成コア関数
+const runAutoBuildForFormation = (fmtToBuild) => {
+  const targetFmt = fmtToBuild || selectedFormation;
+  if (!targetFmt) return;
+
+  const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+  const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
+
+  const NATIONAL_TEAM_BONUS_COMBOS = {
+    'selecao70': 'ブラジル',
+    'laRoja26': 'スペイン',
+    'lesBleus26': 'フランス',
+    'selecaoDasQuinas26': 'ポルトガル'
   };
 
-  const handleDeleteTeamSlot = (teamId) => {
-    const updated = savedSlots.filter(s => s.id !== teamId);
-    setSavedSlots(updated);
-    try {
-      localStorage.setItem('sfcc_saved_teams', JSON.stringify(updated));
-    } catch (e) {
-      console.error(e);
-    }
-    showToast('スロットを削除しました');
-  };
+  const buildSquadForPolicy = (pol, forceCombo) => {
+    const activeCombo = (forceCombo && targetCombo) ? targetCombo : null;
+    const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
 
-  const handleClearSquad = () => {
-    if (window.confirm('配置されている選手をすべてクリアしますか？')) {
-      setSquadMap({});
-      setBenchMap({});
-      showToast('チーム配置をクリアしました');
-    }
-  };
+    const newSquad = {};
+    const usedIds = new Set();
 
-  // 選手選択ドロワー/モーダル表示時の3回に1回頻度広告判定
-  const showSlotModalAd = useMemo(() => {
-    if (activeSlotModal) {
-      return checkModalAdFrequency();
-    }
-    return false;
-  }, [activeSlotModal]);
+    const calcExactOverall = (sq) => {
+      const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+      const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+      const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
+      const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
 
-  // 最大強化トグル対応の動的表示マップ
-  const displaySquadMap = useMemo(() => {
-    const map = {};
-    Object.keys(squadMap).forEach(key => {
-      if (squadMap[key]) {
-        map[key] = builderMaxEnhanced ? getAdjustedPlayer(squadMap[key], '☆5', true) : squadMap[key];
-      }
-    });
-    return map;
-  }, [squadMap, builderMaxEnhanced]);
+      let totalComboStatBonus = 0;
+      if (activeCombo) {
+        const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+          const pInSlot = sq[s.id];
+          return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
+        });
+        const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+        if (allFulfilled && activeCombo.buffs) {
+          const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+          const nEx = natCnt * 2;
 
-  const displayBenchMap = useMemo(() => {
-    const map = {};
-    Object.keys(benchMap).forEach(key => {
-      if (benchMap[key]) {
-        map[key] = builderMaxEnhanced ? getAdjustedPlayer(benchMap[key], '☆5', true) : benchMap[key];
-      }
-    });
-    return map;
-  }, [benchMap, builderMaxEnhanced]);
-
-  // 全パターン最高総合力判定付き 自動最適編成コア関数
-  const runAutoBuildForFormation = (fmtToBuild) => {
-    const targetFmt = fmtToBuild || selectedFormation;
-    if (!targetFmt) return;
-
-    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
-    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
-
-    const NATIONAL_TEAM_BONUS_COMBOS = {
-      'selecao70': 'ブラジル',
-      'laRoja26': 'スペイン',
-      'lesBleus26': 'フランス',
-      'selecaoDasQuinas26': 'ポルトガル'
-    };
-
-    const buildSquadForPolicy = (pol, forceCombo) => {
-      const activeCombo = (forceCombo && targetCombo) ? targetCombo : null;
-      const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
-
-      const newSquad = {};
-      const usedIds = new Set();
-
-      const calcExactOverall = (sq) => {
-        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
-        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
-        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
-        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
-
-        let totalComboStatBonus = 0;
-        if (activeCombo) {
-          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
-            const pInSlot = sq[s.id];
-            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
-          });
-          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
-          if (allFulfilled && activeCombo.buffs) {
-            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
-            const nEx = natCnt * 2;
-
-            activeCombo.buffs.forEach(b => {
-              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
-              const effectivePct = basePct + nEx;
-              starters.forEach(p => {
-                const statVal = getPlayerStatValue(p, b.name);
-                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
-              });
+          activeCombo.buffs.forEach(b => {
+            const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+            const effectivePct = basePct + nEx;
+            starters.forEach(p => {
+              const statVal = getPlayerStatValue(p, b.name);
+              totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
             });
+          });
+        }
+      }
+      return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+    };
+
+    const isPosEligible = (p, slotPos) => {
+      if (!p) return false;
+      return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
+    };
+
+    const evaluateCandidateForSlot = (slot, candidate) => {
+      const isTargetNation = targetNation && candidate.nationality === targetNation;
+      const nationScore = isTargetNation ? 50 : 0;
+      const isPolicyMatch = candidate.policy === pol;
+      const policyScore = isPolicyMatch ? 100 : 0;
+      const isMainMatch = candidate.mainPosition === slot.pos;
+      const posScore = isMainMatch ? 5 : 0;
+
+      newSquad[slot.id] = candidate;
+      const teamOverall = calcExactOverall(newSquad);
+      delete newSquad[slot.id];
+
+      return teamOverall * 100 + policyScore + nationScore + posScore;
+    };
+
+    if (activeCombo) {
+      targetFmt.slots.forEach(slot => {
+        if (slot.requiredStyle) {
+          const candidates = players.filter(p => {
+            if (usedIds.has(p.id)) return false;
+            if (!isPosEligible(p, slot.pos)) return false;
+            return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+          });
+          if (candidates.length > 0) {
+            const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+            scored.sort((a, b) => b.score - a.score);
+            const best = scored[0].player;
+            newSquad[slot.id] = best;
+            usedIds.add(best.id);
           }
         }
-        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
-      };
+      });
+    }
 
-      const isPosEligible = (p, slotPos) => {
-        if (!p) return false;
-        return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
-      };
+    targetFmt.slots.forEach(slot => {
+      if (newSquad[slot.id]) return;
+      const candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+      if (candidates.length === 0) return;
+      const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+      scored.sort((a, b) => b.score - a.score);
+      const best = scored[0].player;
+      newSquad[slot.id] = best;
+      usedIds.add(best.id);
+    });
 
-      const evaluateCandidateForSlot = (slot, candidate) => {
-        const isTargetNation = targetNation && candidate.nationality === targetNation;
-        const nationScore = isTargetNation ? 50 : 0;
-        const isPolicyMatch = candidate.policy === pol;
-        const policyScore = isPolicyMatch ? 100 : 0;
-        const isMainMatch = candidate.mainPosition === slot.pos;
-        const posScore = isMainMatch ? 5 : 0;
+    let bestSquadOverall = calcExactOverall(newSquad);
+    let improved = true;
+    let pass = 0;
 
-        newSquad[slot.id] = candidate;
-        const teamOverall = calcExactOverall(newSquad);
-        delete newSquad[slot.id];
-
-        return teamOverall * 100 + policyScore + nationScore + posScore;
-      };
-
-      if (activeCombo) {
-        targetFmt.slots.forEach(slot => {
-          if (slot.requiredStyle) {
-            const candidates = players.filter(p => {
-              if (usedIds.has(p.id)) return false;
-              if (!isPosEligible(p, slot.pos)) return false;
-              return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
-            });
-            if (candidates.length > 0) {
-              const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
-              scored.sort((a, b) => b.score - a.score);
-              const best = scored[0].player;
-              newSquad[slot.id] = best;
-              usedIds.add(best.id);
-            }
-          }
-        });
-      }
+    while (improved && pass < 10) {
+      improved = false;
+      pass++;
 
       targetFmt.slots.forEach(slot => {
-        if (newSquad[slot.id]) return;
-        const candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
-        if (candidates.length === 0) return;
-        const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
-        scored.sort((a, b) => b.score - a.score);
-        const best = scored[0].player;
-        newSquad[slot.id] = best;
-        usedIds.add(best.id);
+        let currentP = newSquad[slot.id];
+        if (!currentP) return;
+        const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+
+        unusedCandidates.forEach(candP => {
+          if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) return;
+          if (!isPosEligible(candP, slot.pos)) return;
+
+          newSquad[slot.id] = candP;
+          const testOverall = calcExactOverall(newSquad);
+          if (testOverall > bestSquadOverall) {
+            bestSquadOverall = testOverall;
+            usedIds.delete(currentP.id);
+            usedIds.add(candP.id);
+            currentP = candP;
+            improved = true;
+          } else {
+            newSquad[slot.id] = currentP;
+          }
+        });
       });
 
-      let bestSquadOverall = calcExactOverall(newSquad);
-      let improved = true;
-      let pass = 0;
+      targetFmt.slots.forEach(slotA => {
+        const pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id >= slotB.id) return;
+          const pB = newSquad[slotB.id];
+          if (!pB) return;
 
-      while (improved && pass < 10) {
-        improved = false;
-        pass++;
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
 
-        targetFmt.slots.forEach(slot => {
-          let currentP = newSquad[slot.id];
-          if (!currentP) return;
-          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
-
-          unusedCandidates.forEach(candP => {
-            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) return;
-            if (!isPosEligible(candP, slot.pos)) return;
-
-            newSquad[slot.id] = candP;
+          if (pAEligibleB && pBEligibleA) {
+            newSquad[slotA.id] = pB;
+            newSquad[slotB.id] = pA;
             const testOverall = calcExactOverall(newSquad);
             if (testOverall > bestSquadOverall) {
               bestSquadOverall = testOverall;
-              usedIds.delete(currentP.id);
-              usedIds.add(candP.id);
-              currentP = candP;
               improved = true;
             } else {
-              newSquad[slot.id] = currentP;
-            }
-          });
-        });
-
-        targetFmt.slots.forEach(slotA => {
-          const pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id >= slotB.id) return;
-            const pB = newSquad[slotB.id];
-            if (!pB) return;
-
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
-
-            if (pAEligibleB && pBEligibleA) {
-              newSquad[slotA.id] = pB;
-              newSquad[slotB.id] = pA;
-              const testOverall = calcExactOverall(newSquad);
-              if (testOverall > bestSquadOverall) {
-                bestSquadOverall = testOverall;
-                improved = true;
-              } else {
-                newSquad[slotA.id] = pA;
-                newSquad[slotB.id] = pB;
-              }
-            }
-          });
-        });
-
-        targetFmt.slots.forEach(slotA => {
-          const pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id === slotB.id) return;
-            const pB = newSquad[slotB.id];
-            if (!pB) return;
-
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            if (!pAEligibleB) return;
-
-            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
-            for (const cand of unusedCandidates) {
-              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
-              if (!candEligibleA) continue;
-
-              newSquad[slotA.id] = cand;
-              newSquad[slotB.id] = pA;
-              const testOverall = calcExactOverall(newSquad);
-              if (testOverall > bestSquadOverall) {
-                bestSquadOverall = testOverall;
-                usedIds.delete(pB.id);
-                usedIds.add(cand.id);
-                improved = true;
-                break;
-              } else {
-                newSquad[slotA.id] = pA;
-                newSquad[slotB.id] = pB;
-              }
-            }
-          });
-        });
-
-        // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
-        targetFmt.slots.forEach(slotA => {
-          const pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id === slotB.id) return;
-            const pB = newSquad[slotB.id];
-            if (!pB) return;
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            if (!pAEligibleB) return;
-
-            targetFmt.slots.forEach(slotC => {
-              if (slotC.id === slotA.id || slotC.id === slotB.id) return;
-              const pC = newSquad[slotC.id];
-              if (!pC) return;
-              const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
-              if (!pBEligibleC) return;
-
-              const unusedCandidates = players.filter(p => !usedIds.has(p.id));
-              for (const cand of unusedCandidates) {
-                const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
-                if (!candEligibleA) continue;
-
-                newSquad[slotA.id] = cand;
-                newSquad[slotB.id] = pA;
-                newSquad[slotC.id] = pB;
-                const testOverall = calcExactOverall(newSquad);
-                if (testOverall > bestSquadOverall) {
-                  bestSquadOverall = testOverall;
-                  usedIds.delete(pC.id);
-                  usedIds.add(cand.id);
-                  improved = true;
-                  break;
-                } else {
-                  newSquad[slotA.id] = pA;
-                  newSquad[slotB.id] = pB;
-                  newSquad[slotC.id] = pC;
-                }
-              }
-            });
-          });
-        });
-      }
-
-      const getEffVal = p => {
-        const adjP = getAdjustedPlayer(p, '☆5', true);
-        const base = adjP.overall || 0;
-        const isMatch = adjP.policy === pol;
-        return isMatch ? Math.floor(base * 1.05) : base;
-      };
-
-      const remaining = players
-        .filter(p => !usedIds.has(p.id))
-        .sort((a, b) => getEffVal(b) - getEffVal(a));
-
-      const newBench = {};
-      for (let i = 0; i < Math.min(12, remaining.length); i++) {
-        newBench[i] = remaining[i];
-        usedIds.add(remaining[i].id);
-      }
-
-      return {
-        policy: pol,
-        squad: newSquad,
-        bench: newBench,
-        finalTeamOverall: bestSquadOverall
-      };
-    };
-
-    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
-    const bestResult = buildSquadForPolicy(targetPolicy, true);
-
-    setBuilderMaxEnhanced(true);
-    setTeamPolicy(bestResult.policy);
-    setSquadMap(bestResult.squad);
-    setBenchMap(bestResult.bench);
-  };
-
-  const handleAutoBuild = () => {
-    runAutoBuildForFormation(selectedFormation);
-  };
-
-  // 🛡️ ポリシー統一 自動最適編成ロジック (11名全スタメンのポリシーを100%完全一致＋フォメコン発動での最高総合力選出)
-  const handleUnifiedPolicyAutoBuild = () => {
-    const targetFmt = selectedFormation;
-    if (!targetFmt) return;
-
-    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
-    const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
-
-    const NATIONAL_TEAM_BONUS_COMBOS = {
-      'selecao70': 'ブラジル',
-      'laRoja26': 'スペイン',
-      'lesBleus26': 'フランス',
-      'selecaoDasQuinas26': 'ポルトガル'
-    };
-
-    const buildUnifiedSquadForPolicy = (pol) => {
-      const activeCombo = targetCombo;
-      const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
-
-      const newSquad = {};
-      const usedIds = new Set();
-
-      const calcExactOverall = (sq) => {
-        const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
-        const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
-        const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
-        const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
-
-        let totalComboStatBonus = 0;
-        if (activeCombo) {
-          const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
-            const pInSlot = sq[s.id];
-            return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
-          });
-          const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
-          if (allFulfilled && activeCombo.buffs) {
-            const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
-            const nEx = natCnt * 2;
-
-            activeCombo.buffs.forEach(b => {
-              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
-              const effectivePct = basePct + nEx;
-              starters.forEach(p => {
-                const statVal = getPlayerStatValue(p, b.name);
-                totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
-              });
-            });
-          }
-        }
-        return rawBaseOverall + policyBonusGained + totalComboStatBonus;
-      };
-
-      const isPosEligible = (p, slotPos) => {
-        if (!p) return false;
-        return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
-      };
-
-      const evaluateCandidateForSlot = (slot, candidate) => {
-        const isTargetNation = targetNation && candidate.nationality === targetNation;
-        const nationScore = isTargetNation ? 50 : 0;
-        const isPolicyMatch = candidate.policy === pol;
-        const policyScore = isPolicyMatch ? 100000 : 0;
-        const isMainMatch = candidate.mainPosition === slot.pos;
-        const posScore = isMainMatch ? 5 : 0;
-
-        newSquad[slot.id] = candidate;
-        const teamOverall = calcExactOverall(newSquad);
-        delete newSquad[slot.id];
-
-        return teamOverall * 100 + policyScore + nationScore + posScore;
-      };
-
-      if (activeCombo) {
-        targetFmt.slots.forEach(slot => {
-          if (slot.requiredStyle) {
-            let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
-            if (candidates.length === 0) {
-              candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
-            }
-            if (candidates.length > 0) {
-              const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
-              scored.sort((a, b) => b.score - a.score);
-              const best = scored[0].player;
-              newSquad[slot.id] = best;
-              usedIds.add(best.id);
+              newSquad[slotA.id] = pA;
+              newSquad[slotB.id] = pB;
             }
           }
         });
-      }
-
-      targetFmt.slots.forEach(slot => {
-        if (newSquad[slot.id]) return;
-        let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos));
-        if (candidates.length === 0) {
-          candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
-        }
-        if (candidates.length === 0) return;
-        const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
-        scored.sort((a, b) => b.score - a.score);
-        const best = scored[0].player;
-        newSquad[slot.id] = best;
-        usedIds.add(best.id);
       });
 
-      let bestSquadOverall = calcExactOverall(newSquad);
-      let improved = true;
-      let pass = 0;
+      targetFmt.slots.forEach(slotA => {
+        const pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id === slotB.id) return;
+          const pB = newSquad[slotB.id];
+          if (!pB) return;
 
-      while (improved && pass < 10) {
-        improved = false;
-        pass++;
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          if (!pAEligibleB) return;
 
-        targetFmt.slots.forEach(slot => {
-          let currentP = newSquad[slot.id];
-          if (!currentP) return;
           const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+          for (const cand of unusedCandidates) {
+            const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+            if (!candEligibleA) continue;
 
-          for (const candP of unusedCandidates) {
-            if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) continue;
-            if (!isPosEligible(candP, slot.pos)) continue;
-            if (currentP.policy === pol && candP.policy !== pol) continue;
-
-            newSquad[slot.id] = candP;
+            newSquad[slotA.id] = cand;
+            newSquad[slotB.id] = pA;
             const testOverall = calcExactOverall(newSquad);
             if (testOverall > bestSquadOverall) {
               bestSquadOverall = testOverall;
-              usedIds.delete(currentP.id);
-              usedIds.add(candP.id);
-              currentP = candP;
+              usedIds.delete(pB.id);
+              usedIds.add(cand.id);
               improved = true;
               break;
             } else {
-              newSquad[slot.id] = currentP;
+              newSquad[slotA.id] = pA;
+              newSquad[slotB.id] = pB;
             }
           }
         });
+      });
 
-        targetFmt.slots.forEach(slotA => {
-          let pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id >= slotB.id) return;
-            let pB = newSquad[slotB.id];
-            if (!pB) return;
+      // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
+      targetFmt.slots.forEach(slotA => {
+        const pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id === slotB.id) return;
+          const pB = newSquad[slotB.id];
+          if (!pB) return;
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          if (!pAEligibleB) return;
 
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
-
-            if (pAEligibleB && pBEligibleA) {
-              newSquad[slotA.id] = pB;
-              newSquad[slotB.id] = pA;
-              const testOverall = calcExactOverall(newSquad);
-              if (testOverall > bestSquadOverall) {
-                bestSquadOverall = testOverall;
-                improved = true;
-              } else {
-                newSquad[slotA.id] = pA;
-                newSquad[slotB.id] = pB;
-              }
-            }
-          });
-        });
-
-        targetFmt.slots.forEach(slotA => {
-          let pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id === slotB.id) return;
-            let pB = newSquad[slotB.id];
-            if (!pB) return;
-
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            if (!pAEligibleB) return;
+          targetFmt.slots.forEach(slotC => {
+            if (slotC.id === slotA.id || slotC.id === slotB.id) return;
+            const pC = newSquad[slotC.id];
+            if (!pC) return;
+            const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
+            if (!pBEligibleC) return;
 
             const unusedCandidates = players.filter(p => !usedIds.has(p.id));
             for (const cand of unusedCandidates) {
               const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
               if (!candEligibleA) continue;
-              if (pB.policy === pol && cand.policy !== pol) continue;
 
               newSquad[slotA.id] = cand;
               newSquad[slotB.id] = pA;
+              newSquad[slotC.id] = pB;
               const testOverall = calcExactOverall(newSquad);
               if (testOverall > bestSquadOverall) {
                 bestSquadOverall = testOverall;
-                usedIds.delete(pB.id);
+                usedIds.delete(pC.id);
                 usedIds.add(cand.id);
                 improved = true;
                 break;
               } else {
                 newSquad[slotA.id] = pA;
                 newSquad[slotB.id] = pB;
+                newSquad[slotC.id] = pC;
               }
             }
           });
         });
+      });
+    }
 
-        // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
-        targetFmt.slots.forEach(slotA => {
-          const pA = newSquad[slotA.id];
-          if (!pA) return;
-          targetFmt.slots.forEach(slotB => {
-            if (slotA.id === slotB.id) return;
-            const pB = newSquad[slotB.id];
-            if (!pB) return;
-            const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
-            if (!pAEligibleB) return;
-
-            targetFmt.slots.forEach(slotC => {
-              if (slotC.id === slotA.id || slotC.id === slotB.id) return;
-              const pC = newSquad[slotC.id];
-              if (!pC) return;
-              const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
-              if (!pBEligibleC) return;
-
-              const unusedCandidates = players.filter(p => !usedIds.has(p.id));
-              for (const cand of unusedCandidates) {
-                const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
-                if (!candEligibleA) continue;
-
-                newSquad[slotA.id] = cand;
-                newSquad[slotB.id] = pA;
-                newSquad[slotC.id] = pB;
-                const testOverall = calcExactOverall(newSquad);
-                if (testOverall > bestSquadOverall) {
-                  bestSquadOverall = testOverall;
-                  usedIds.delete(pC.id);
-                  usedIds.add(cand.id);
-                  improved = true;
-                  break;
-                } else {
-                  newSquad[slotA.id] = pA;
-                  newSquad[slotB.id] = pB;
-                  newSquad[slotC.id] = pC;
-                }
-              }
-            });
-          });
-        });
-      }
-
-      const getEffVal = p => {
-        const adjP = getAdjustedPlayer(p, '☆5', true);
-        const base = adjP.overall || 0;
-        const isMatch = adjP.policy === pol;
-        return isMatch ? Math.floor(base * 1.05) : base;
-      };
-
-      const remaining = players
-        .filter(p => !usedIds.has(p.id))
-        .sort((a, b) => getEffVal(b) - getEffVal(a));
-
-      const newBench = {};
-      for (let i = 0; i < Math.min(12, remaining.length); i++) {
-        newBench[i] = remaining[i];
-        usedIds.add(remaining[i].id);
-      }
-
-      const startersList = Object.values(newSquad).filter(Boolean);
-      const unifiedPolicyCount = startersList.filter(p => p.policy === pol).length;
-
-      return {
-        policy: pol,
-        squad: newSquad,
-        bench: newBench,
-        unifiedPolicyCount,
-        finalTeamOverall: bestSquadOverall
-      };
+    const getEffVal = p => {
+      const adjP = getAdjustedPlayer(p, '☆5', true);
+      const base = adjP.overall || 0;
+      const isMatch = adjP.policy === pol;
+      return isMatch ? Math.floor(base * 1.05) : base;
     };
 
-    const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
-    const bestResult = buildUnifiedSquadForPolicy(targetPolicy);
+    const remaining = players
+      .filter(p => !usedIds.has(p.id))
+      .sort((a, b) => getEffVal(b) - getEffVal(a));
 
-    setBuilderMaxEnhanced(true);
-    setTeamPolicy(bestResult.policy);
-    setSquadMap(bestResult.squad);
-    setBenchMap(bestResult.bench);
-  };
-
-  const handleSelectFormation = (fmt) => {
-    setSelectedFormation(fmt);
-    const targetCombo = FORMATION_COMBOS.find(c => c.formationId === fmt.id || c.id === fmt.comboId);
-    if (targetCombo && targetCombo.policy) {
-      setTeamPolicy(targetCombo.policy);
+    const newBench = {};
+    for (let i = 0; i < Math.min(12, remaining.length); i++) {
+      newBench[i] = remaining[i];
+      usedIds.add(remaining[i].id);
     }
-  };
-
-  const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
-  const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
-
-  // ポリシー一致選手への 1.05倍 乗算（各選手ごとに Math.floor(player.overall * 1.05) で端数切捨て ➔ 合算）
-  const policyAdjustedOverall = starterPlayers.reduce((acc, p) => {
-    const isPolicyMatch = p.policy === teamPolicy;
-    const playerBonusVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0);
-    return acc + playerBonusVal;
-  }, 0);
-
-  const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
-
-  const policyMatchCount = starterPlayers.filter(p => p.policy === teamPolicy).length;
-  const policyMatchPct = starterPlayers.length > 0 ? Math.round((policyMatchCount / starterPlayers.length) * 100) : 0;
-
-  // フォーメーションコンボ達成判定 (位置指定厳格判定)
-  const activeComboData = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
-
-  const comboValidation = useMemo(() => {
-    if (!activeComboData) {
-      return {
-        combo: null,
-        isPolicyMatch: false,
-        reqResults: [],
-        allReqsFulfilled: false,
-        isSelecao: false,
-        isLaRoja: false,
-        isLesBleus: false,
-        isQuinas: false,
-        portugalPlayerCount: 0,
-        portugalBonusPct: 0,
-        francePlayerCount: 0,
-        franceBonusPct: 0,
-        spainPlayerCount: 0,
-        spainBonusPct: 0,
-        brazilPlayerCount: 0,
-        brazilBonusPct: 0,
-        statBuffBreakdown: [],
-        totalComboStatBonus: 0,
-        totalPolicyBonus: policyBonusGained,
-        finalTeamOverall: policyAdjustedOverall,
-        totalGainedOverall: policyBonusGained,
-        comboGainedOverall: 0
-      };
-    }
-
-    const isPolicyMatch = teamPolicy === activeComboData.policy;
-
-    const reqResults = selectedFormation.slots
-      .filter(slot => slot.requiredStyle)
-      .map(slot => {
-        const playerInSlot = squadMap[slot.id];
-        const isFulfilled = checkPlayStyleRequirement(playerInSlot, slot.requiredStyle, slot.minLevel);
-
-        return {
-          slotId: slot.id,
-          posLabel: slot.label,
-          requiredStyle: slot.requiredStyle,
-          minLevel: slot.minLevel,
-          label: `【${slot.label}位置】${slot.requiredStyle} (LV.${slot.minLevel}以上)`,
-          isFulfilled,
-          player: playerInSlot ? (builderMaxEnhanced ? getAdjustedPlayer(playerInSlot, '☆5', true) : playerInSlot) : null
-        };
-      });
-
-    const allReqsFulfilled = isPolicyMatch && reqResults.length > 0 && reqResults.every(r => r.isFulfilled);
-
-    const isSelecao = activeComboData.id === 'selecao70';
-    const isLaRoja = activeComboData.id === 'laRoja26';
-    const isLesBleus = activeComboData.id === 'lesBleus26';
-    const isQuinas = activeComboData.id === 'selecaoDasQuinas26';
-    const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
-    const brazilBonusPct = brazilPlayerCount * 2;
-    const spainPlayerCount = isLaRoja ? starterPlayers.filter(p => p.nationality === 'スペイン').length : 0;
-    const spainBonusPct = spainPlayerCount * 2;
-    const francePlayerCount = isLesBleus ? starterPlayers.filter(p => p.nationality === 'フランス').length : 0;
-    const franceBonusPct = francePlayerCount * 2;
-    const portugalPlayerCount = isQuinas ? starterPlayers.filter(p => p.nationality === 'ポルトガル').length : 0;
-    const portugalBonusPct = portugalPlayerCount * 2;
-    const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : (isLesBleus ? franceBonusPct : (isQuinas ? portugalBonusPct : 0)));
-
-    // 各能力ボーナスごとの加算量（各選手・各能力ごとに %UP 後に Math.floor で端数切捨て）計算
-    const statBuffBreakdown = [];
-    let totalComboStatBonus = 0;
-
-    if (allReqsFulfilled && activeComboData.buffs) {
-      activeComboData.buffs.forEach(b => {
-        const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
-        const effectivePct = basePct + nationExtraPct;
-
-        let statGainedSum = 0;
-        starterPlayers.forEach(p => {
-          const statVal = getPlayerStatValue(p, b.name);
-          const gained = Math.floor(statVal * (effectivePct / 100));
-          statGainedSum += gained;
-        });
-
-        statBuffBreakdown.push({
-          name: b.name,
-          basePct,
-          effectivePct,
-          gainedOverall: statGainedSum
-        });
-
-        totalComboStatBonus += statGainedSum;
-      });
-    }
-
-    const totalPolicyBonus = policyBonusGained;
-    const finalTeamOverall = rawBaseOverall + totalPolicyBonus + totalComboStatBonus;
-    const totalGainedOverall = totalPolicyBonus + totalComboStatBonus;
-    const comboGainedOverall = totalComboStatBonus;
 
     return {
-      combo: activeComboData,
-      isPolicyMatch,
-      reqResults,
-      allReqsFulfilled,
-      isSelecao,
-      isLaRoja,
-      isLesBleus,
-      isQuinas,
-      portugalPlayerCount,
-      portugalBonusPct,
-      francePlayerCount,
-      franceBonusPct,
-      spainPlayerCount,
-      spainBonusPct,
-      brazilPlayerCount,
-      brazilBonusPct,
-      statBuffBreakdown,
-      totalComboStatBonus,
-      totalPolicyBonus,
-      finalTeamOverall,
-      boostedOverall: finalTeamOverall,
-      totalGainedOverall,
-      comboGainedOverall
+      policy: pol,
+      squad: newSquad,
+      bench: newBench,
+      finalTeamOverall: bestSquadOverall
     };
-  }, [activeComboData, teamPolicy, selectedFormation, squadMap, starterPlayers, builderMaxEnhanced, policyBonusGained, rawBaseOverall, policyAdjustedOverall]);
-
-  const isSilverCombo = comboValidation?.combo?.rank === '銀';
-
-  const checkFormationComboActive = useCallback((fmt) => {
-    if (!fmt || !fmt.comboId) return false;
-    const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
-    if (!combo) return false;
-    if (teamPolicy !== combo.policy) return false;
-
-    const reqSlots = fmt.slots.filter(s => s.requiredStyle);
-    if (reqSlots.length === 0) return false;
-
-    return reqSlots.every(slot => {
-      const p = squadMap[slot.id];
-      return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
-    });
-  }, [FORMATION_COMBOS, squadMap, teamPolicy]);
-
-  const getAssignedLocationInfo = (playerId) => {
-    const pIdStr = String(playerId);
-    for (const [slotId, player] of Object.entries(squadMap)) {
-      if (player && String(player.id) === pIdStr) {
-        const slotObj = selectedFormation.slots.find(s => String(s.id) === String(slotId));
-        return { type: 'starter', slotId, label: `スタメン (${slotObj ? slotObj.label : '配置中'})` };
-      }
-    }
-    for (const [benchIdx, player] of Object.entries(benchMap)) {
-      if (player && String(player.id) === pIdStr) {
-        return { type: 'bench', slotId: benchIdx, label: `ベンチ (SUB${Number(benchIdx) + 1})` };
-      }
-    }
-    return null;
   };
 
-  const modalPlayers = useMemo(() => {
-    return players.filter(p => {
-      // ポジションフィルタ (LAM/RAM ➔ AM, LCF/RCF ➔ CF, LDM/RDM ➔ DM 等 完全正規化)
-      if (filterPos !== 'ALL') {
-        const isMainMatch = isPositionMatch(p.mainPosition, filterPos);
-        const isSubMatch = p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, filterPos));
-        if (!isMainMatch && !isSubMatch) return false;
-      }
+  const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+  const bestResult = buildSquadForPolicy(targetPolicy, true);
 
-      // テキストリアルタイム検索フィルタ (選手名、プレースタイル、ポリシー、国籍、チーム)
-      if (modalSearchText.trim() !== '') {
-        const q = modalSearchText.trim().toLowerCase();
-        const nameMatch = (p.name && p.name.toLowerCase().includes(q)) || (p.readingName && p.readingName.toLowerCase().includes(q));
-        const styleMatch = p.playStyle && p.playStyle.toLowerCase().includes(q);
-        const subStyleMatch = p.subPlayStyles && p.subPlayStyles.some(s => s.toLowerCase().includes(q));
-        const policyMatch = p.policy && p.policy.toLowerCase().includes(q);
-        const natMatch = p.nationality && p.nationality.toLowerCase().includes(q);
-        const teamMatch = p.team && p.team.toLowerCase().includes(q);
-        const posMatch = isPositionMatch(p.mainPosition, q) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, q))) || (p.mainPosition && p.mainPosition.toLowerCase().includes(q)) || (p.subPositions && p.subPositions.some(sp => sp.toLowerCase().includes(q)));
+  setBuilderMaxEnhanced(true);
+  setTeamPolicy(bestResult.policy);
+  setSquadMap(bestResult.squad);
+  setBenchMap(bestResult.bench);
+};
 
-        if (!nameMatch && !styleMatch && !subStyleMatch && !policyMatch && !natMatch && !teamMatch && !posMatch) {
-          return false;
+const handleAutoBuild = () => {
+  runAutoBuildForFormation(selectedFormation);
+};
+
+// 🛡️ ポリシー統一 自動最適編成ロジック (11名全スタメンのポリシーを100%完全一致＋フォメコン発動での最高総合力選出)
+const handleUnifiedPolicyAutoBuild = () => {
+  const targetFmt = selectedFormation;
+  if (!targetFmt) return;
+
+  const targetCombo = FORMATION_COMBOS.find(c => c.formationId === targetFmt.id || c.id === targetFmt.comboId);
+  const POLICIES = ['ポゼッション', 'カウンター', '中央突破', 'サイド', 'リアクション', 'ムービング'];
+
+  const NATIONAL_TEAM_BONUS_COMBOS = {
+    'selecao70': 'ブラジル',
+    'laRoja26': 'スペイン',
+    'lesBleus26': 'フランス',
+    'selecaoDasQuinas26': 'ポルトガル'
+  };
+
+  const buildUnifiedSquadForPolicy = (pol) => {
+    const activeCombo = targetCombo;
+    const targetNation = activeCombo ? (NATIONAL_TEAM_BONUS_COMBOS[activeCombo.id] || null) : null;
+
+    const newSquad = {};
+    const usedIds = new Set();
+
+    const calcExactOverall = (sq) => {
+      const starters = Object.values(sq).filter(Boolean).map(p => getAdjustedPlayer(p, '☆5', true));
+      const rawBaseOverall = starters.reduce((acc, p) => acc + (p.overall || 0), 0);
+      const policyAdjustedOverall = starters.reduce((acc, p) => acc + (p.policy === pol ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0)), 0);
+      const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+
+      let totalComboStatBonus = 0;
+      if (activeCombo) {
+        const reqResults = targetFmt.slots.filter(s => s.requiredStyle).map(s => {
+          const pInSlot = sq[s.id];
+          return checkPlayStyleRequirement(pInSlot, s.requiredStyle, s.minLevel);
+        });
+        const allFulfilled = reqResults.length > 0 && reqResults.every(Boolean);
+        if (allFulfilled && activeCombo.buffs) {
+          const natCnt = targetNation ? starters.filter(p => p.nationality === targetNation).length : 0;
+          const nEx = natCnt * 2;
+
+          activeCombo.buffs.forEach(b => {
+            const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+            const effectivePct = basePct + nEx;
+            starters.forEach(p => {
+              const statVal = getPlayerStatValue(p, b.name);
+              totalComboStatBonus += Math.floor(statVal * (effectivePct / 100));
+            });
+          });
         }
       }
+      return rawBaseOverall + policyBonusGained + totalComboStatBonus;
+    };
 
-      return true;
-    }).map(p => builderMaxEnhanced ? getAdjustedPlayer(p, '☆5', true) : p)
-      .sort((a, b) => b.overall - a.overall);
-  }, [players, filterPos, modalSearchText, builderMaxEnhanced]);
+    const isPosEligible = (p, slotPos) => {
+      if (!p) return false;
+      return isPositionMatch(p.mainPosition, slotPos) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, slotPos)));
+    };
 
-  const handleAssignPlayer = (player) => {
-    if (!activeSlotModal) return;
-    const baseP = player.rawPlayer || player;
-    const pId = String(baseP.id);
+    const evaluateCandidateForSlot = (slot, candidate) => {
+      const isTargetNation = targetNation && candidate.nationality === targetNation;
+      const nationScore = isTargetNation ? 50 : 0;
+      const isPolicyMatch = candidate.policy === pol;
+      const policyScore = isPolicyMatch ? 100000 : 0;
+      const isMainMatch = candidate.mainPosition === slot.pos;
+      const posScore = isMainMatch ? 5 : 0;
 
-    // 既に他のスロットに配置されているか探す
-    let prevType = null; // 'starter' | 'bench'
-    let prevSlotId = null;
+      newSquad[slot.id] = candidate;
+      const teamOverall = calcExactOverall(newSquad);
+      delete newSquad[slot.id];
 
-    Object.keys(squadMap).forEach(key => {
-      if (squadMap[key] && String(squadMap[key].id) === pId) {
-        prevType = 'starter';
+      return teamOverall * 100 + policyScore + nationScore + posScore;
+    };
+
+    if (activeCombo) {
+      targetFmt.slots.forEach(slot => {
+        if (slot.requiredStyle) {
+          let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+          if (candidates.length === 0) {
+            candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos) && checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel));
+          }
+          if (candidates.length > 0) {
+            const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+            scored.sort((a, b) => b.score - a.score);
+            const best = scored[0].player;
+            newSquad[slot.id] = best;
+            usedIds.add(best.id);
+          }
+        }
+      });
+    }
+
+    targetFmt.slots.forEach(slot => {
+      if (newSquad[slot.id]) return;
+      let candidates = players.filter(p => !usedIds.has(p.id) && p.policy === pol && isPosEligible(p, slot.pos));
+      if (candidates.length === 0) {
+        candidates = players.filter(p => !usedIds.has(p.id) && isPosEligible(p, slot.pos));
+      }
+      if (candidates.length === 0) return;
+      const scored = candidates.map(p => ({ player: p, score: evaluateCandidateForSlot(slot, p) }));
+      scored.sort((a, b) => b.score - a.score);
+      const best = scored[0].player;
+      newSquad[slot.id] = best;
+      usedIds.add(best.id);
+    });
+
+    let bestSquadOverall = calcExactOverall(newSquad);
+    let improved = true;
+    let pass = 0;
+
+    while (improved && pass < 10) {
+      improved = false;
+      pass++;
+
+      targetFmt.slots.forEach(slot => {
+        let currentP = newSquad[slot.id];
+        if (!currentP) return;
+        const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+
+        for (const candP of unusedCandidates) {
+          if (slot.requiredStyle && !checkPlayStyleRequirement(candP, slot.requiredStyle, slot.minLevel)) continue;
+          if (!isPosEligible(candP, slot.pos)) continue;
+          if (currentP.policy === pol && candP.policy !== pol) continue;
+
+          newSquad[slot.id] = candP;
+          const testOverall = calcExactOverall(newSquad);
+          if (testOverall > bestSquadOverall) {
+            bestSquadOverall = testOverall;
+            usedIds.delete(currentP.id);
+            usedIds.add(candP.id);
+            currentP = candP;
+            improved = true;
+            break;
+          } else {
+            newSquad[slot.id] = currentP;
+          }
+        }
+      });
+
+      targetFmt.slots.forEach(slotA => {
+        let pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id >= slotB.id) return;
+          let pB = newSquad[slotB.id];
+          if (!pB) return;
+
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          const pBEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(pB, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(pB, slotA.pos);
+
+          if (pAEligibleB && pBEligibleA) {
+            newSquad[slotA.id] = pB;
+            newSquad[slotB.id] = pA;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              improved = true;
+            } else {
+              newSquad[slotA.id] = pA;
+              newSquad[slotB.id] = pB;
+            }
+          }
+        });
+      });
+
+      targetFmt.slots.forEach(slotA => {
+        let pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id === slotB.id) return;
+          let pB = newSquad[slotB.id];
+          if (!pB) return;
+
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          if (!pAEligibleB) return;
+
+          const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+          for (const cand of unusedCandidates) {
+            const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+            if (!candEligibleA) continue;
+            if (pB.policy === pol && cand.policy !== pol) continue;
+
+            newSquad[slotA.id] = cand;
+            newSquad[slotB.id] = pA;
+            const testOverall = calcExactOverall(newSquad);
+            if (testOverall > bestSquadOverall) {
+              bestSquadOverall = testOverall;
+              usedIds.delete(pB.id);
+              usedIds.add(cand.id);
+              improved = true;
+              break;
+            } else {
+              newSquad[slotA.id] = pA;
+              newSquad[slotB.id] = pB;
+            }
+          }
+        });
+      });
+
+      // 3スロット循環シフト探索 (例: RWにデンベレ, LWにバルコラ, AMにドゥエ等の複合入れ替え)
+      targetFmt.slots.forEach(slotA => {
+        const pA = newSquad[slotA.id];
+        if (!pA) return;
+        targetFmt.slots.forEach(slotB => {
+          if (slotA.id === slotB.id) return;
+          const pB = newSquad[slotB.id];
+          if (!pB) return;
+          const pAEligibleB = (!slotB.requiredStyle || checkPlayStyleRequirement(pA, slotB.requiredStyle, slotB.minLevel)) && isPosEligible(pA, slotB.pos);
+          if (!pAEligibleB) return;
+
+          targetFmt.slots.forEach(slotC => {
+            if (slotC.id === slotA.id || slotC.id === slotB.id) return;
+            const pC = newSquad[slotC.id];
+            if (!pC) return;
+            const pBEligibleC = (!slotC.requiredStyle || checkPlayStyleRequirement(pB, slotC.requiredStyle, slotC.minLevel)) && isPosEligible(pB, slotC.pos);
+            if (!pBEligibleC) return;
+
+            const unusedCandidates = players.filter(p => !usedIds.has(p.id));
+            for (const cand of unusedCandidates) {
+              const candEligibleA = (!slotA.requiredStyle || checkPlayStyleRequirement(cand, slotA.requiredStyle, slotA.minLevel)) && isPosEligible(cand, slotA.pos);
+              if (!candEligibleA) continue;
+
+              newSquad[slotA.id] = cand;
+              newSquad[slotB.id] = pA;
+              newSquad[slotC.id] = pB;
+              const testOverall = calcExactOverall(newSquad);
+              if (testOverall > bestSquadOverall) {
+                bestSquadOverall = testOverall;
+                usedIds.delete(pC.id);
+                usedIds.add(cand.id);
+                improved = true;
+                break;
+              } else {
+                newSquad[slotA.id] = pA;
+                newSquad[slotB.id] = pB;
+                newSquad[slotC.id] = pC;
+              }
+            }
+          });
+        });
+      });
+    }
+
+    const getEffVal = p => {
+      const adjP = getAdjustedPlayer(p, '☆5', true);
+      const base = adjP.overall || 0;
+      const isMatch = adjP.policy === pol;
+      return isMatch ? Math.floor(base * 1.05) : base;
+    };
+
+    const remaining = players
+      .filter(p => !usedIds.has(p.id))
+      .sort((a, b) => getEffVal(b) - getEffVal(a));
+
+    const newBench = {};
+    for (let i = 0; i < Math.min(12, remaining.length); i++) {
+      newBench[i] = remaining[i];
+      usedIds.add(remaining[i].id);
+    }
+
+    const startersList = Object.values(newSquad).filter(Boolean);
+    const unifiedPolicyCount = startersList.filter(p => p.policy === pol).length;
+
+    return {
+      policy: pol,
+      squad: newSquad,
+      bench: newBench,
+      unifiedPolicyCount,
+      finalTeamOverall: bestSquadOverall
+    };
+  };
+
+  const targetPolicy = targetCombo ? targetCombo.policy : teamPolicy;
+  const bestResult = buildUnifiedSquadForPolicy(targetPolicy);
+
+  setBuilderMaxEnhanced(true);
+  setTeamPolicy(bestResult.policy);
+  setSquadMap(bestResult.squad);
+  setBenchMap(bestResult.bench);
+};
+
+const handleSelectFormation = (fmt) => {
+  setSelectedFormation(fmt);
+  const targetCombo = FORMATION_COMBOS.find(c => c.formationId === fmt.id || c.id === fmt.comboId);
+  if (targetCombo && targetCombo.policy) {
+    setTeamPolicy(targetCombo.policy);
+  }
+};
+
+const starterPlayers = Object.values(displaySquadMap).filter(Boolean);
+const rawBaseOverall = starterPlayers.reduce((acc, p) => acc + (p.overall || 0), 0);
+
+// ポリシー一致選手への 1.05倍 乗算（各選手ごとに Math.floor(player.overall * 1.05) で端数切捨て ➔ 合算）
+const policyAdjustedOverall = starterPlayers.reduce((acc, p) => {
+  const isPolicyMatch = p.policy === teamPolicy;
+  const playerBonusVal = isPolicyMatch ? Math.floor((p.overall || 0) * 1.05) : (p.overall || 0);
+  return acc + playerBonusVal;
+}, 0);
+
+const policyBonusGained = policyAdjustedOverall - rawBaseOverall;
+
+const policyMatchCount = starterPlayers.filter(p => p.policy === teamPolicy).length;
+const policyMatchPct = starterPlayers.length > 0 ? Math.round((policyMatchCount / starterPlayers.length) * 100) : 0;
+
+// フォーメーションコンボ達成判定 (位置指定厳格判定)
+const activeComboData = FORMATION_COMBOS.find(c => c.formationId === selectedFormation.id || c.id === selectedFormation.comboId);
+
+const comboValidation = useMemo(() => {
+  if (!activeComboData) {
+    return {
+      combo: null,
+      isPolicyMatch: false,
+      reqResults: [],
+      allReqsFulfilled: false,
+      isSelecao: false,
+      isLaRoja: false,
+      isLesBleus: false,
+      isQuinas: false,
+      isDieRoten: false,
+      isReactionCombo: false,
+      hasNeuer2026: false,
+      isMovingCombo: false,
+      hasMbappe2026: false,
+      isCounterCombo: false,
+      hasRonaldo2026: false,
+      portugalPlayerCount: 0,
+      portugalBonusPct: 0,
+      francePlayerCount: 0,
+      franceBonusPct: 0,
+      spainPlayerCount: 0,
+      spainBonusPct: 0,
+      brazilPlayerCount: 0,
+      brazilBonusPct: 0,
+      statBuffBreakdown: [],
+      totalComboStatBonus: 0,
+      totalPolicyBonus: policyBonusGained,
+      finalTeamOverall: policyAdjustedOverall,
+      totalGainedOverall: policyBonusGained,
+      comboGainedOverall: 0
+    };
+  }
+
+  const isPolicyMatch = teamPolicy === activeComboData.policy;
+
+  const reqResults = selectedFormation.slots
+    .filter(slot => slot.requiredStyle)
+    .map(slot => {
+      const playerInSlot = squadMap[slot.id];
+      const isFulfilled = checkPlayStyleRequirement(playerInSlot, slot.requiredStyle, slot.minLevel);
+
+      return {
+        slotId: slot.id,
+        posLabel: slot.label,
+        requiredStyle: slot.requiredStyle,
+        minLevel: slot.minLevel,
+        label: `【${slot.label}位置】${slot.requiredStyle} (LV.${slot.minLevel}以上)`,
+        isFulfilled,
+        player: playerInSlot ? (builderMaxEnhanced ? getAdjustedPlayer(playerInSlot, '☆5', true) : playerInSlot) : null
+      };
+    });
+
+  const allReqsFulfilled = isPolicyMatch && reqResults.length > 0 && reqResults.every(r => r.isFulfilled);
+
+  const isSelecao = activeComboData.id === 'selecao70';
+  const isLaRoja = activeComboData.id === 'laRoja26';
+  const isLesBleus = activeComboData.id === 'lesBleus26';
+  const isQuinas = activeComboData.id === 'selecaoDasQuinas26';
+  const isDieRoten = activeComboData.id === 'dieRoten26';
+  const isReactionCombo = activeComboData.policy === 'リアクション';
+  const hasNeuer2026 = isReactionCombo && starterPlayers.some(p => p.id === 'p427');
+  const isMovingCombo = activeComboData.policy === 'ムービング';
+  const hasMbappe2026 = isMovingCombo && starterPlayers.some(p => p.id === 'p395');
+  const isCounterCombo = activeComboData.policy === 'カウンター';
+  const hasRonaldo2026 = isCounterCombo && starterPlayers.some(p => p.id === 'p408');
+  const brazilPlayerCount = isSelecao ? starterPlayers.filter(p => p.nationality === 'ブラジル').length : 0;
+  const brazilBonusPct = brazilPlayerCount * 2;
+  const spainPlayerCount = isLaRoja ? starterPlayers.filter(p => p.nationality === 'スペイン').length : 0;
+  const spainBonusPct = spainPlayerCount * 2;
+  const francePlayerCount = isLesBleus ? starterPlayers.filter(p => p.nationality === 'フランス').length : 0;
+  const franceBonusPct = francePlayerCount * 2;
+  const portugalPlayerCount = isQuinas ? starterPlayers.filter(p => p.nationality === 'ポルトガル').length : 0;
+  const portugalBonusPct = portugalPlayerCount * 2;
+  const nationExtraPct = isSelecao ? brazilBonusPct : (isLaRoja ? spainBonusPct : (isLesBleus ? franceBonusPct : (isQuinas ? portugalBonusPct : 0)));
+
+  // 各能力ボーナスごとの加算量（各選手・各能力ごとに %UP 後に Math.floor で端数切捨て）計算
+  const statBuffBreakdown = [];
+  let totalComboStatBonus = 0;
+
+  if (allReqsFulfilled && activeComboData.buffs) {
+    activeComboData.buffs.forEach(b => {
+      const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+      const effectivePct = basePct + nationExtraPct;
+
+      let statGainedSum = 0;
+      starterPlayers.forEach(p => {
+        const statVal = getPlayerStatValue(p, b.name);
+        const gained = Math.floor(statVal * (effectivePct / 100));
+        statGainedSum += gained;
+      });
+
+      statBuffBreakdown.push({
+        name: b.name,
+        basePct,
+        effectivePct,
+        gainedOverall: statGainedSum
+      });
+
+      totalComboStatBonus += statGainedSum;
+    });
+
+    if (hasNeuer2026) {
+      const targetDefPos = ['GK', 'LFB', 'RFB', 'CB'];
+      const defStarters = selectedFormation.slots
+        .filter(slot => targetDefPos.includes(slot.pos) && squadMap[slot.id])
+        .map(slot => {
+          const raw = squadMap[slot.id];
+          return builderMaxEnhanced ? getAdjustedPlayer(raw, '☆5', true) : raw;
+        })
+        .filter(p => p.policy === 'リアクション');
+
+      ['コンタクト', '走力'].forEach(statName => {
+        let extraSum = 0;
+        defStarters.forEach(p => {
+          extraSum += Math.floor(getPlayerStatValue(p, statName) * 0.1);
+        });
+        statBuffBreakdown.push({
+          name: `${statName}(DF/RE)`,
+          basePct: 10,
+    effectivePct: 10,
+    gainedOverall: extraSum
+  });
+  totalComboStatBonus += extraSum;
+});
+      }
+
+if (hasMbappe2026) {
+  const targetFwPos = ['CF', 'LW', 'RW'];
+  const fwMovingStarters = selectedFormation.slots
+    .filter(slot => targetFwPos.includes(slot.pos) && squadMap[slot.id])
+    .map(slot => {
+      const raw = squadMap[slot.id];
+      return builderMaxEnhanced ? getAdjustedPlayer(raw, '☆5', true) : raw;
+    })
+    .filter(p => p.policy === 'ムービング');
+
+  ['突破力', '走力'].forEach(statName => {
+    let extraSum = 0;
+    fwMovingStarters.forEach(p => {
+      extraSum += Math.floor(getPlayerStatValue(p, statName) * 0.1);
+    });
+    statBuffBreakdown.push({
+      name: `${statName}(FW/MV)`,
+      basePct: 10,
+      effectivePct: 10,
+      gainedOverall: extraSum
+    });
+    totalComboStatBonus += extraSum;
+  });
+}
+
+if (hasRonaldo2026) {
+  const targetFwPos = ['CF', 'LW', 'RW'];
+  const fwCounterStarters = selectedFormation.slots
+    .filter(slot => targetFwPos.includes(slot.pos) && squadMap[slot.id])
+    .map(slot => {
+      const raw = squadMap[slot.id];
+      return builderMaxEnhanced ? getAdjustedPlayer(raw, '☆5', true) : raw;
+    })
+    .filter(p => p.policy === 'カウンター');
+
+  ['冷静さ', '突破力'].forEach(statName => {
+    let extraSum = 0;
+    fwCounterStarters.forEach(p => {
+      extraSum += Math.floor(getPlayerStatValue(p, statName) * 0.1);
+    });
+    statBuffBreakdown.push({
+      name: `${statName}(FW/CA)`,
+      basePct: 10,
+      effectivePct: 10,
+      gainedOverall: extraSum
+    });
+    totalComboStatBonus += extraSum;
+  });
+}
+    }
+
+const totalPolicyBonus = policyBonusGained;
+const finalTeamOverall = rawBaseOverall + totalPolicyBonus + totalComboStatBonus;
+const totalGainedOverall = totalPolicyBonus + totalComboStatBonus;
+const comboGainedOverall = totalComboStatBonus;
+
+return {
+  combo: activeComboData,
+  isPolicyMatch,
+  reqResults,
+  allReqsFulfilled,
+  isSelecao,
+  isLaRoja,
+  isLesBleus,
+  isQuinas,
+  isDieRoten,
+  isReactionCombo,
+  hasNeuer2026,
+  isMovingCombo,
+  hasMbappe2026,
+  isCounterCombo,
+  hasRonaldo2026,
+  portugalPlayerCount,
+  portugalBonusPct,
+  francePlayerCount,
+  franceBonusPct,
+  spainPlayerCount,
+  spainBonusPct,
+  brazilPlayerCount,
+  brazilBonusPct,
+  statBuffBreakdown,
+  totalComboStatBonus,
+  totalPolicyBonus,
+  finalTeamOverall,
+  boostedOverall: finalTeamOverall,
+  totalGainedOverall,
+  comboGainedOverall
+};
+  }, [activeComboData, teamPolicy, selectedFormation, squadMap, starterPlayers, builderMaxEnhanced, policyBonusGained, rawBaseOverall, policyAdjustedOverall]);
+
+const isSilverCombo = comboValidation?.combo?.rank === '銀';
+
+const checkFormationComboActive = useCallback((fmt) => {
+  if (!fmt || !fmt.comboId) return false;
+  const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+  if (!combo) return false;
+  if (teamPolicy !== combo.policy) return false;
+
+  const reqSlots = fmt.slots.filter(s => s.requiredStyle);
+  if (reqSlots.length === 0) return false;
+
+  return reqSlots.every(slot => {
+    const p = squadMap[slot.id];
+    return checkPlayStyleRequirement(p, slot.requiredStyle, slot.minLevel);
+  });
+}, [FORMATION_COMBOS, squadMap, teamPolicy]);
+
+const getAssignedLocationInfo = (playerId) => {
+  const pIdStr = String(playerId);
+  for (const [slotId, player] of Object.entries(squadMap)) {
+    if (player && String(player.id) === pIdStr) {
+      const slotObj = selectedFormation.slots.find(s => String(s.id) === String(slotId));
+      return { type: 'starter', slotId, label: `スタメン (${slotObj ? slotObj.label : '配置中'})` };
+    }
+  }
+  for (const [benchIdx, player] of Object.entries(benchMap)) {
+    if (player && String(player.id) === pIdStr) {
+      return { type: 'bench', slotId: benchIdx, label: `ベンチ (SUB${Number(benchIdx) + 1})` };
+    }
+  }
+  return null;
+};
+
+const modalPlayers = useMemo(() => {
+  return players.filter(p => {
+    // ポジションフィルタ (LAM/RAM ➔ AM, LCF/RCF ➔ CF, LDM/RDM ➔ DM 等 完全正規化)
+    if (filterPos !== 'ALL') {
+      const isMainMatch = isPositionMatch(p.mainPosition, filterPos);
+      const isSubMatch = p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, filterPos));
+      if (!isMainMatch && !isSubMatch) return false;
+    }
+
+    // テキストリアルタイム検索フィルタ (選手名、プレースタイル、ポリシー、国籍、チーム)
+    if (modalSearchText.trim() !== '') {
+      const q = modalSearchText.trim().toLowerCase();
+      const nameMatch = (p.name && p.name.toLowerCase().includes(q)) || (p.readingName && p.readingName.toLowerCase().includes(q));
+      const styleMatch = p.playStyle && p.playStyle.toLowerCase().includes(q);
+      const subStyleMatch = p.subPlayStyles && p.subPlayStyles.some(s => s.toLowerCase().includes(q));
+      const policyMatch = p.policy && p.policy.toLowerCase().includes(q);
+      const natMatch = p.nationality && p.nationality.toLowerCase().includes(q);
+      const teamMatch = p.team && p.team.toLowerCase().includes(q);
+      const posMatch = isPositionMatch(p.mainPosition, q) || (p.subPositions && p.subPositions.some(sp => isPositionMatch(sp, q))) || (p.mainPosition && p.mainPosition.toLowerCase().includes(q)) || (p.subPositions && p.subPositions.some(sp => sp.toLowerCase().includes(q)));
+
+      if (!nameMatch && !styleMatch && !subStyleMatch && !policyMatch && !natMatch && !teamMatch && !posMatch) {
+        return false;
+      }
+    }
+
+    return true;
+  }).map(p => builderMaxEnhanced ? getAdjustedPlayer(p, '☆5', true) : p)
+    .sort((a, b) => b.overall - a.overall);
+}, [players, filterPos, modalSearchText, builderMaxEnhanced]);
+
+const handleAssignPlayer = (player) => {
+  if (!activeSlotModal) return;
+  const baseP = player.rawPlayer || player;
+  const pId = String(baseP.id);
+
+  // 既に他のスロットに配置されているか探す
+  let prevType = null; // 'starter' | 'bench'
+  let prevSlotId = null;
+
+  Object.keys(squadMap).forEach(key => {
+    if (squadMap[key] && String(squadMap[key].id) === pId) {
+      prevType = 'starter';
+      prevSlotId = key;
+    }
+  });
+
+  if (!prevType) {
+    Object.keys(benchMap).forEach(key => {
+      if (benchMap[key] && String(benchMap[key].id) === pId) {
+        prevType = 'bench';
         prevSlotId = key;
       }
     });
+  }
 
-    if (!prevType) {
-      Object.keys(benchMap).forEach(key => {
-        if (benchMap[key] && String(benchMap[key].id) === pId) {
-          prevType = 'bench';
-          prevSlotId = key;
-        }
-      });
-    }
+  const currentType = activeSlotModal.type; // 'starter' | 'bench'
+  const currentSlotId = activeSlotModal.id;
 
-    const currentType = activeSlotModal.type; // 'starter' | 'bench'
-    const currentSlotId = activeSlotModal.id;
+  // 現在のスロットに入っている既存選手
+  const existingPInCurrent = currentType === 'starter' ? squadMap[currentSlotId] : benchMap[currentSlotId];
 
-    // 現在のスロットに入っている既存選手
-    const existingPInCurrent = currentType === 'starter' ? squadMap[currentSlotId] : benchMap[currentSlotId];
-
-    if (prevType && String(prevSlotId) === String(currentSlotId) && prevType === currentType) {
-      // 同じスロットの場合は閉じるだけ
-      setActiveSlotModal(null);
-      return;
-    }
-
-    if (prevType && prevSlotId !== null) {
-      // 既に他スロットにいる場合は移動/入れ替え (Move / Swap)
-      if (currentType === 'starter') {
-        setSquadMap(prev => ({ ...prev, [currentSlotId]: baseP }));
-      } else {
-        setBenchMap(prev => ({ ...prev, [currentSlotId]: baseP }));
-      }
-
-      if (prevType === 'starter') {
-        setSquadMap(prev => {
-          const next = { ...prev };
-          if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
-            next[prevSlotId] = existingPInCurrent;
-          } else {
-            delete next[prevSlotId];
-          }
-          return next;
-        });
-      } else {
-        setBenchMap(prev => {
-          const next = { ...prev };
-          if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
-            next[prevSlotId] = existingPInCurrent;
-          } else {
-            delete next[prevSlotId];
-          }
-          return next;
-        });
-      }
-    } else {
-      // 未配置の新規割り当て
-      if (currentType === 'starter') {
-        setSquadMap(prev => ({ ...prev, [currentSlotId]: baseP }));
-      } else {
-        setBenchMap(prev => ({ ...prev, [currentSlotId]: baseP }));
-      }
-    }
-
+  if (prevType && String(prevSlotId) === String(currentSlotId) && prevType === currentType) {
+    // 同じスロットの場合は閉じるだけ
     setActiveSlotModal(null);
-  };
+    return;
+  }
 
-  const handleRemoveSlot = (type, id, e) => {
-    e.stopPropagation();
-    if (type === 'starter') {
+  if (prevType && prevSlotId !== null) {
+    // 既に他スロットにいる場合は移動/入れ替え (Move / Swap)
+    if (currentType === 'starter') {
+      setSquadMap(prev => ({ ...prev, [currentSlotId]: baseP }));
+    } else {
+      setBenchMap(prev => ({ ...prev, [currentSlotId]: baseP }));
+    }
+
+    if (prevType === 'starter') {
       setSquadMap(prev => {
         const next = { ...prev };
-        delete next[id];
+        if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
+          next[prevSlotId] = existingPInCurrent;
+        } else {
+          delete next[prevSlotId];
+        }
         return next;
       });
     } else {
       setBenchMap(prev => {
         const next = { ...prev };
-        delete next[id];
+        if (existingPInCurrent && String(existingPInCurrent.id) !== pId) {
+          next[prevSlotId] = existingPInCurrent;
+        } else {
+          delete next[prevSlotId];
+        }
         return next;
       });
     }
-  };
+  } else {
+    // 未配置の新規割り当て
+    if (currentType === 'starter') {
+      setSquadMap(prev => ({ ...prev, [currentSlotId]: baseP }));
+    } else {
+      setBenchMap(prev => ({ ...prev, [currentSlotId]: baseP }));
+    }
+  }
 
-  const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
+  setActiveSlotModal(null);
+};
 
-  return (
-    <div className="space-y-6 animate-fadeIn pb-12">
-      <div className="glass-panel p-4 sm:p-6 rounded-2xl md:rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 shadow-xl">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00FF66]/10 border border-[#00FF66]/30 text-[#00FF66] text-xs font-bold mb-2">
-              <Icon name="sparkles" className="w-3.5 h-3.5" />
-              サカつく2026 チームビルダー ＆ コンボ解析
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-2">
-              ⚽ チームデッキ編成 ＆ フォーメーションコンボ
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-400 mt-1">
-              スタメン11名＋ベンチ12名編成！ポリシー一致 ＆ コンボボーナス適用後の最終総合力を即時解析。
-            </p>
+const handleRemoveSlot = (type, id, e) => {
+  e.stopPropagation();
+  if (type === 'starter') {
+    setSquadMap(prev => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
+  } else {
+    setBenchMap(prev => {
+      const next = { ...prev };
+      delete next[id];
+      return next;
+    });
+  }
+};
+
+const currentSlotInfo = activeSlotModal?.type === 'starter' ? selectedFormation.slots.find(s => s.id === activeSlotModal.id) : null;
+
+return (
+  <div className="space-y-6 animate-fadeIn pb-12">
+    <div className="glass-panel p-4 sm:p-6 rounded-2xl md:rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#00FF66]/10 border border-[#00FF66]/30 text-[#00FF66] text-xs font-bold mb-2">
+            <Icon name="sparkles" className="w-3.5 h-3.5" />
+            サカつく2026 チームビルダー ＆ コンボ解析
           </div>
-
-          <div className="flex items-center gap-2 flex-wrap">
-            {/* 最大強化トグル */}
-            <button
-              onClick={() => setBuilderMaxEnhanced(!builderMaxEnhanced)}
-              className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${builderMaxEnhanced
-                ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-slate-950 font-black shadow-lg shadow-orange-500/20'
-                : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700'
-                }`}
-            >
-              <Icon name="sparkles" className="w-4 h-4" />
-              {builderMaxEnhanced ? '⚡ 最大強化 (ON)' : '🌱 初期数値 (OFF)'}
-            </button>
-            <button
-              onClick={handleAutoBuild}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
-            >
-              <Icon name="sparkles" className="w-4 h-4" />
-              ⚡ 位置コンボ優先 自動最適編成
-            </button>
-            <button
-              onClick={handleUnifiedPolicyAutoBuild}
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs sm:text-sm shadow-lg shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
-            >
-              <Icon name="shield" className="w-4 h-4" />
-              🛡️ ポリシー統一 自動最適編成
-            </button>
-            <button
-              onClick={handleClearSquad}
-              className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-slate-700 text-xs sm:text-sm font-bold flex items-center gap-1 transition-colors cursor-pointer"
-            >
-              <Icon name="trash" className="w-4 h-4" />
-              全クリア
-            </button>
-            <button
-              onClick={() => setIsSaveModalOpen(true)}
-              className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer relative"
-            >
-              <Icon name="bookmark" className="w-4 h-4" />
-              チーム保存 / 呼出
-              {savedSlots.length > 0 && (
-                <span className="ml-1 px-1.5 py-0.2 rounded-full bg-white/20 text-white text-[10px] font-black">
-                  {savedSlots.length}
-                </span>
-              )}
-            </button>
-          </div>
+          <h1 className="text-2xl sm:text-3xl font-black text-white flex items-center gap-2">
+            ⚽ チームデッキ編成 ＆ フォーメーションコンボ
+          </h1>
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+            スタメン11名＋ベンチ12名編成！ポリシー一致 ＆ コンボボーナス適用後の最終総合力を即時解析。
+          </p>
         </div>
 
-        {/* 総合力比較ダッシュボード */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-800/80">
-          <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
-            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-              {builderMaxEnhanced ? '基本総合力 (加算前)' : '基本総合力 (加算前)'}
-            </div>
-            <div className="text-xl sm:text-2xl font-black font-num text-slate-200 mt-0.5">
-              {rawBaseOverall}
-            </div>
-          </div>
-          <div className="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 text-center">
-            <div className="text-[10px] font-bold text-[#00FF66] uppercase tracking-wider">
-              ポリシー一致後
-            </div>
-            <div className="text-xl sm:text-2xl font-black font-num text-[#00FF66] mt-0.5">
-              {policyAdjustedOverall}
-            </div>
-            <div className="text-[9px] font-bold text-[#00FF66]/80 mt-0.5">
-              +{policyBonusGained} ({policyMatchCount}名一致)
-            </div>
-          </div>
-          <div className="bg-slate-950/80 p-3 rounded-xl border border-amber-400/40 text-center">
-            <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">
-              最終チーム総合力
-            </div>
-            <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
-              {(comboValidation?.finalTeamOverall || policyAdjustedOverall)}
-            </div>
-            <div className="text-[9px] font-bold text-amber-300/80 mt-0.5">
-              +{((comboValidation?.totalGainedOverall) || policyBonusGained)} UP
-            </div>
-          </div>
-          <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
-            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">チームポリシー</div>
-            <select
-              value={teamPolicy}
-              onChange={(e) => setTeamPolicy(e.target.value)}
-              className={`mt-1 bg-slate-900 text-xs sm:text-sm font-black px-2 py-0.5 rounded border focus:outline-none cursor-pointer transition-all ${getPolicyTextColor(teamPolicy)} ${getPolicyBadgeClass(teamPolicy)}`}
-            >
-              <option value="リアクション" className="bg-slate-900 text-cyan-400 font-extrabold">リアクション</option>
-              <option value="カウンター" className="bg-slate-900 text-pink-400 font-extrabold">カウンター</option>
-              <option value="ポゼッション" className="bg-slate-900 text-orange-400 font-extrabold">ポゼッション</option>
-              <option value="ムービング" className="bg-slate-900 text-emerald-400 font-extrabold">ムービング</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* ポリシー・ランク別フォーメーション選択テーブル */}
-      <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800/90 shadow-xl space-y-3">
-        <div className="flex items-center justify-between flex-wrap gap-2 pb-2.5 border-b border-slate-800">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">📋</span>
-            <h3 className="font-black text-sm sm:text-base text-white">
-              フォーメーション選択 <span className="text-xs font-normal text-slate-400">(ポリシー・ランク別一覧)</span>
-            </h3>
-          </div>
-
-          {/* ランクフィルターボタン */}
-          <div className="flex items-center gap-1.5 flex-wrap">
-            <span className="text-[11px] font-bold text-slate-400">ランク:</span>
-            <button
-              onClick={() => setComboRankFilter('ALL')}
-              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'ALL' ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800'}`}
-            >
-              すべて
-            </button>
-            <button
-              onClick={() => setComboRankFilter('金')}
-              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '金' ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-slate-800'}`}
-            >
-              <span>🏆 金コンボ</span>
-            </button>
-            <button
-              onClick={() => setComboRankFilter('銀')}
-              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '銀' ? 'bg-slate-200 text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-600 hover:bg-slate-800'}`}
-            >
-              <span>🥈 銀コンボ</span>
-            </button>
-            <button
-              onClick={() => setComboRankFilter('BASIC')}
-              className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'BASIC' ? 'bg-slate-400 text-slate-950 shadow' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800'}`}
-            >
-              基本
-            </button>
-          </div>
-        </div>
-
-        <div className="overflow-x-auto max-h-[380px] scrollbar-thin scrollbar-thumb-slate-700">
-          <table className="w-full text-left text-xs border-collapse">
-            <thead className="sticky top-0 z-10">
-              <tr className="border-b border-slate-800 text-slate-400 font-bold bg-slate-900">
-                <th className="py-2.5 px-3 text-center whitespace-nowrap">選択</th>
-                <th className="py-2.5 px-3 w-28 whitespace-nowrap">ポリシー</th>
-                <th className="py-2.5 px-3 whitespace-nowrap">対象コンボ名</th>
-                <th className="py-2.5 px-3 whitespace-nowrap hidden md:table-cell">コンボ能力ボーナス</th>
-                <th className="py-2.5 px-3 whitespace-nowrap font-bold text-white">フォーメーション名</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60">
-              {['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
-                const matchedFormations = FORMATIONS.filter(fmt => {
-                  const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
-                  const cRank = combo ? (combo.rank || '金') : 'BASIC';
-                  if (comboRankFilter !== 'ALL' && cRank !== comboRankFilter) return false;
-                  if (policyGroup === '基本') return !combo;
-                  return combo?.policy === policyGroup;
-                });
-
-                if (matchedFormations.length === 0) return null;
-
-                return matchedFormations.map((fmt) => {
-                  const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
-                  const isSelected = selectedFormation.id === fmt.id;
-                  const isSilver = combo?.rank === '銀';
-
-                  return (
-                    <tr
-                      key={fmt.id}
-                      onClick={() => handleSelectFormation(fmt)}
-                      className={`cursor-pointer transition-colors ${isSelected
-                        ? 'bg-emerald-500/15 font-bold border-l-4 border-l-[#00FF66]'
-                        : 'hover:bg-slate-900/80'
-                        }`}
-                    >
-                      {/* 1. 選択ボタン */}
-                      <td className="py-2.5 px-3 text-center whitespace-nowrap">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleSelectFormation(fmt);
-                          }}
-                          className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected
-                            ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20'
-                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
-                            }`}
-                        >
-                          {isSelected ? '✓ 選択中' : '選択'}
-                        </button>
-                      </td>
-
-                      {/* 2. ポリシー名 */}
-                      <td className="py-2.5 px-3 whitespace-nowrap">
-                        <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(policyGroup)}`}>
-                          {policyGroup}
-                        </span>
-                      </td>
-
-                      {/* 3. 対象コンボ名 */}
-                      <td className="py-2.5 px-3 whitespace-nowrap">
-                        {combo ? (
-                          <div className="flex items-center gap-1.5">
-                            <span className={`px-1.5 py-0.5 rounded text-[9px] font-black shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`}>
-                              {isSilver ? '銀' : '金'}
-                            </span>
-                            <span className={`font-extrabold flex items-center gap-1 ${isSilver ? 'text-slate-100' : 'text-amber-400'}`}>
-                              <span>{isSilver ? '🥈' : '🏆'}</span>
-                              <span>{combo.name}</span>
-                            </span>
-                          </div>
-                        ) : (
-                          <span className="text-slate-500">-</span>
-                        )}
-                      </td>
-
-                      {/* 4. コンボ能力ボーナス */}
-                      <td className="py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap">
-                        {combo ? (
-                          <div className="flex items-center gap-1.5 flex-wrap">
-                            {combo.buffs.map((b, bIdx) => (
-                              <span key={bIdx} className={`text-[10px] font-black px-1.5 py-0.5 rounded border ${isSilver ? 'bg-slate-800 border-slate-600 text-slate-200' : 'bg-amber-400/10 border-amber-400/30 text-amber-300'}`}>
-                                {b.name} <span className={isSilver ? 'text-cyan-300' : 'text-amber-400'}>{b.val}</span>
-                              </span>
-                            ))}
-                          </div>
-                        ) : (
-                          <span className="text-slate-500 text-[11px]">基本フォーメーション (コンボなし)</span>
-                        )}
-                      </td>
-
-                      {/* 5. フォーメーション名 */}
-                      <td className="py-2.5 px-3 font-bold text-white whitespace-nowrap">
-                        {fmt.name}
-                      </td>
-                    </tr>
-                  );
-                });
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* フォーメーションコンボ情報 ＆ キーポジション達成状況・ボーナス詳細 */}
-      {(() => {
-        if (!selectedFormation) return null;
-
-        if (activeComboData && comboValidation) {
-          const isSilver = activeComboData.rank === '銀';
-          const isComboActive = comboValidation.allReqsFulfilled;
-          const reqCount = comboValidation.reqResults.length;
-          const fulfilledCount = comboValidation.reqResults.filter(r => r.isFulfilled).length;
-
-          return (
-            <div className={`p-4 rounded-2xl border transition-all space-y-3.5 shadow-2xl ${isComboActive
-                ? isSilver
-                  ? 'bg-gradient-to-br from-slate-800/90 via-slate-900 to-slate-950 border-cyan-400/60 shadow-cyan-500/10'
-                  : 'bg-gradient-to-br from-amber-950/60 via-slate-900 to-slate-950 border-amber-400/80 shadow-amber-500/20 ring-1 ring-amber-400/30'
-                : 'bg-gradient-to-br from-slate-900/90 via-slate-950 to-slate-950 border-slate-700/80'
-              }`}>
-              {/* Header row */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
-                <div className="flex items-center gap-3">
-                  <span className={`p-2.5 rounded-2xl text-2xl shadow-lg flex items-center justify-center ${isSilver ? 'bg-gradient-to-br from-slate-200 to-slate-400 text-slate-950 font-black' : 'bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 font-black'
-                    }`}>
-                    {isSilver ? '🥈' : '🏆'}
-                  </span>
-                  <div>
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'
-                        }`}>
-                        {isSilver ? '銀コンボ' : '金コンボ'}
-                      </span>
-
-                      {/* コンボ発動ステータスバッジ */}
-                      <span className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow ${isComboActive
-                          ? 'bg-emerald-500 text-slate-950 animate-pulse'
-                          : fulfilledCount > 0
-                            ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                            : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                        }`}>
-                        {isComboActive ? (
-                          <>⚡ コンボ発動中！ (能力大アップ)</>
-                        ) : (
-                          <>⚠️ コンボ未発動 (達成: {fulfilledCount}/{reqCount}枠)</>
-                        )}
-                      </span>
-                    </div>
-
-                    <h3 className="font-black text-base sm:text-lg text-white mt-1 flex items-center gap-2">
-                      フォーメーションコンボ 【{activeComboData.name}】
-                      <span className="text-xs font-normal text-slate-400">({selectedFormation.name})</span>
-                    </h3>
-
-                    <div className="flex items-center gap-3 text-xs text-slate-400 mt-1 flex-wrap">
-                      <span>
-                        推奨ポリシー: <strong className={getPolicyTextColor(activeComboData.policy)}>{activeComboData.policy}</strong>
-                      </span>
-                      <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${comboValidation.isPolicyMatch
-                          ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
-                          : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
-                        }`}>
-                        {comboValidation.isPolicyMatch ? '✓ ポリシー一致 (1.05倍)' : `✕ 不一致 (現在: ${teamPolicy})`}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 対象能力ボーナス項目まとめ */}
-                <div className={`p-3 rounded-xl space-y-1.5 border min-w-[200px] ${isComboActive
-                    ? isSilver
-                      ? 'bg-slate-900/90 border-cyan-500/40'
-                      : 'bg-slate-900/90 border-amber-500/50'
-                    : 'bg-slate-950/80 border-slate-800'
-                  }`}>
-                  <div className="flex items-center justify-between gap-2">
-                    <div className={`text-[10px] font-black uppercase tracking-wider ${isSilver ? 'text-cyan-300' : 'text-amber-300'}`}>
-                      対象能力バフ項目
-                    </div>
-                    {isComboActive && comboValidation.totalComboStatBonus > 0 && (
-                      <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-emerald-400 text-slate-950">
-                        +{comboValidation.totalComboStatBonus} UP
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    {activeComboData.buffs.map((b, i) => (
-                      <span key={i} className={`px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${isComboActive
-                          ? isSilver ? 'bg-cyan-400 text-slate-950' : 'bg-amber-400 text-slate-950'
-                          : 'bg-slate-800 text-slate-400 border border-slate-700'
-                        }`}>
-                        {b.name} {b.val}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* 🧮 チーム総合力 ＆ ボーナス詳細計算内訳 (詳細説明欄) */}
-              <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-4 shadow-xl">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
-                  <span className="font-black text-sm text-amber-400 flex items-center gap-2">
-                    <span className="text-base">📊</span>
-                    <span>チーム総合力 ＆ コンボボーナス内訳</span>
-                  </span>
-                </div>
-
-                {/* 計算結果グリッド (大型数値表示) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                  {/* 1. 素の総合力 */}
-                  <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow">
-                    <span className="text-xs text-slate-400 font-bold block">① 素のチーム総合力</span>
-                    <strong className="text-xl sm:text-2xl font-num font-black text-slate-200 block mt-1">
-                      {rawBaseOverall}
-                    </strong>
-                  </div>
-
-                  {/* 2. ポリシーボーナス */}
-                  <div className="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/40 shadow">
-                    <span className="text-xs text-emerald-400 font-bold block">② ポリシー一致ボーナス</span>
-                    <strong className="text-xl sm:text-2xl font-num font-black text-[#00FF66] block mt-1">
-                      +{comboValidation.totalPolicyBonus}
-                    </strong>
-                    <span className="text-[10px] text-emerald-400/80 font-bold block mt-0.5">
-                      ({policyMatchCount}名一致)
-                    </span>
-                  </div>
-
-                  {/* 3. コンボ詳細能力ボーナス */}
-                  <div className={`p-3 rounded-xl bg-slate-900/90 border shadow ${isComboActive ? 'border-amber-400/60' : 'border-slate-800 opacity-60'
-                    }`}>
-                    <span className={`text-xs font-bold block ${isComboActive ? 'text-amber-300' : 'text-slate-400'}`}>
-                      ③ コンボ能力加算
-                    </span>
-                    <strong className={`text-xl sm:text-2xl font-num font-black block mt-1 ${isComboActive ? 'text-amber-400' : 'text-slate-500'
-                      }`}>
-                      +{comboValidation.totalComboStatBonus}
-                    </strong>
-                  </div>
-
-                  {/* 4. 最終チーム総合力 */}
-                  <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/25 via-slate-900 to-slate-950 border-2 border-amber-400 shadow-lg ring-2 ring-amber-400/20">
-                    <span className="text-xs text-amber-300 font-black block">④ 最終チーム総合力</span>
-                    <strong className="text-2xl sm:text-3xl font-num font-black text-amber-300 block mt-1 drop-shadow-md">
-                      {comboValidation.finalTeamOverall}
-                    </strong>
-                    <span className="text-[10px] text-amber-300/90 font-bold block mt-0.5">
-                      (+{comboValidation.totalGainedOverall} UP)
-                    </span>
-                  </div>
-                </div>
-
-                {/* 対象詳細能力ごとの個別の加算内訳 (大文字表示) */}
-                {isComboActive && comboValidation.statBuffBreakdown.length > 0 && (
-                  <div className="pt-3 border-t border-slate-800">
-                    <div className="text-xs font-black text-slate-200 mb-2 flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-amber-300">
-                        <span>⚡</span>
-                        <span>対象能力別の加算ボーナス内訳</span>
-                      </span>
-                      {comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 && (
-                        <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
-                          <FlagIcon nationality="ブラジル" /> ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
-                        </span>
-                      )}
-                      {comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && (
-                        <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
-                          <FlagIcon nationality="スペイン" /> スペイン選手 {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
-                        </span>
-                      )}
-                      {comboValidation.isLesBleus && comboValidation.francePlayerCount > 0 && (
-                        <span className="text-xs text-blue-300 font-bold flex items-center gap-1">
-                          <FlagIcon nationality="フランス" /> フランス選手 {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
-                        </span>
-                      )}
-                      {comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0 && (
-                        <span className="text-xs text-red-400 font-bold flex items-center gap-1">
-                          <FlagIcon nationality="ポルトガル" /> ポルトガル選手 {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                      {comboValidation.statBuffBreakdown.map((sb, idx) => (
-                        <div key={idx} className="p-2.5 rounded-xl bg-slate-900 border border-amber-500/40 shadow text-center space-y-1">
-                          <div className="text-xs font-extrabold text-slate-300 flex items-center justify-center gap-1">
-                            <span>{sb.name}</span>
-                            <span className="text-amber-400 font-num font-black">+{sb.effectivePct}%</span>
-                          </div>
-                          <strong className="text-lg sm:text-xl font-num font-black text-[#00FF66] block">
-                            +{sb.gainedOverall}
-                          </strong>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Special Nation Note if present */}
-              {activeComboData.specialNote && (
-                <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${(comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0) || (comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0)
-                    ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
-                    : 'bg-slate-950 border-slate-800 text-slate-300'
-                  }`}>
-                  <div className="flex items-center gap-2">
-                    <FlagIcon nationality={comboValidation.isQuinas ? 'ポルトガル' : (comboValidation.isLesBleus ? 'フランス' : (comboValidation.isLaRoja ? 'スペイン' : 'ブラジル'))} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
-                    <span className="font-bold">{activeComboData.specialNote}</span>
-                  </div>
-                  {comboValidation.isSelecao && (
-                    <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
-                      スタメン {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
-                    </span>
-                  )}
-                  {comboValidation.isLaRoja && (
-                    <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
-                      スタメン {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
-                    </span>
-                  )}
-                  {comboValidation.isLesBleus && (
-                    <span className="px-2 py-0.5 rounded bg-blue-500 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
-                      スタメン {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
-                    </span>
-                  )}
-                  {comboValidation.isQuinas && (
-                    <span className="px-2 py-0.5 rounded bg-red-600 text-white font-black text-[11px] whitespace-nowrap shadow">
-                      スタメン {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {/* キーポジション指定 ＆ プレイスタイル達成状況 (明細一覧) */}
-              {comboValidation.reqResults.length > 0 && (
-                <div className="space-y-1.5 pt-1">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-extrabold text-slate-300 flex items-center gap-1.5">
-                      <span>🎯</span>
-                      <span>コンボ発動キーポジション ＆ 必要プレイスタイル達成状況</span>
-                    </span>
-                    <span className="text-[11px] font-bold text-slate-400">
-                      達成度: <strong className={isComboActive ? 'text-[#00FF66]' : 'text-amber-400'}>{fulfilledCount}/{reqCount}枠</strong>
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-                    {comboValidation.reqResults.map(req => {
-                      const player = req.player;
-                      const isOk = req.isFulfilled;
-                      const playerStyle = player ? (player.playStyle || player.style || 'スタイルなし') : null;
-                      const playerLevel = player ? (player.playStyleLevel || player.styleLevel || '1') : null;
-
-                      return (
-                        <div
-                          key={req.slotId}
-                          className={`p-2 rounded-xl border text-xs transition-all ${isOk
-                              ? 'bg-emerald-500/10 border-emerald-500/40 text-slate-100 shadow'
-                              : player
-                                ? 'bg-rose-500/10 border-rose-500/40 text-slate-200'
-                                : 'bg-slate-900/60 border-slate-800 text-slate-400'
-                            }`}
-                        >
-                          <div className="flex items-center justify-between gap-1 mb-1">
-                            <span className="font-black px-1.5 py-0.2 rounded bg-slate-950 text-amber-400 border border-amber-500/30 text-[10px]">
-                              {req.posLabel} 位置
-                            </span>
-                            <span className={`px-1.5 py-0.2 rounded text-[9px] font-black ${isOk
-                                ? 'bg-emerald-400 text-slate-950'
-                                : player
-                                  ? 'bg-rose-500 text-white'
-                                  : 'bg-slate-800 text-slate-400'
-                              }`}>
-                              {isOk ? '✓ 達成' : player ? '✕ 条件不一致' : '✕ 未配置'}
-                            </span>
-                          </div>
-
-                          <div className="text-[11px] font-bold text-slate-300 mb-0.5">
-                            要: <strong className="text-amber-300">{req.requiredStyle}</strong> (Lv.{req.minLevel}以上)
-                          </div>
-
-                          <div className="text-[10px] text-slate-400 truncate flex items-center gap-1 border-t border-slate-800/80 pt-1 mt-1">
-                            {player ? (
-                              <>
-                                <span className="font-bold text-white truncate">{player.name}</span>
-                                <span className={`text-[9px] ${isOk ? 'text-emerald-300' : 'text-rose-300'} truncate`}>
-                                  ({playerStyle} Lv.{playerLevel})
-                                </span>
-                              </>
-                            ) : (
-                              <span className="text-slate-500 italic">選手が未セットです</span>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-            </div>
-          );
-        } else {
-          // 基本フォーメーション (コンボなし)
-          return (
-            <div className="p-3.5 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900/80 via-slate-950 to-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs shadow-lg">
-              <div className="flex items-center gap-2.5">
-                <span className="p-2 rounded-xl bg-slate-800 text-slate-300 font-black text-lg">⚽</span>
-                <div>
-                  <div className="font-black text-sm text-white">
-                    基本フォーメーション 【{selectedFormation.name}】
-                  </div>
-                  <div className="text-slate-400 text-[11px] mt-0.5">
-                    コンボ指定プレースタイル制限がありません。自由な選手起用が可能です。
-                  </div>
-                </div>
-              </div>
-              <div className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-right whitespace-nowrap">
-                <span className="text-slate-400 text-[10px] block">ポリシー一致効果</span>
-                <span className="font-bold text-emerald-400">各選手 総合力 1.05倍</span>
-              </div>
-            </div>
-          );
-        }
-      })()}
-
-      {/* ピッチ直上 自動最適編成ボタンバー (位置コンボ優先 ＆ ポリシー統一) */}
-      <div className="flex items-center justify-between gap-2.5 flex-wrap p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 shadow-lg my-1">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-slate-300 flex items-center gap-1">
-            <Icon name="sparkles" className="w-3.5 h-3.5 text-amber-400" />
-            自動最適編成:
-          </span>
-        </div>
         <div className="flex items-center gap-2 flex-wrap">
+          {/* 最大強化トグル */}
+          <button
+            onClick={() => setBuilderMaxEnhanced(!builderMaxEnhanced)}
+            className={`px-3.5 py-2 rounded-xl font-bold text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer ${builderMaxEnhanced
+              ? 'bg-gradient-to-r from-orange-500 to-amber-400 text-slate-950 font-black shadow-lg shadow-orange-500/20'
+              : 'bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700'
+              }`}
+          >
+            <Icon name="sparkles" className="w-4 h-4" />
+            {builderMaxEnhanced ? '⚡ 最大強化 (ON)' : '🌱 初期数値 (OFF)'}
+          </button>
           <button
             onClick={handleAutoBuild}
-            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs shadow-md shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
           >
-            <Icon name="sparkles" className="w-3.5 h-3.5" />
+            <Icon name="sparkles" className="w-4 h-4" />
             ⚡ 位置コンボ優先 自動最適編成
           </button>
           <button
             onClick={handleUnifiedPolicyAutoBuild}
-            className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs shadow-md shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+            className="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs sm:text-sm shadow-lg shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
           >
-            <Icon name="shield" className="w-3.5 h-3.5" />
+            <Icon name="shield" className="w-4 h-4" />
             🛡️ ポリシー統一 自動最適編成
+          </button>
+          <button
+            onClick={handleClearSquad}
+            className="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-red-500/20 text-slate-300 hover:text-red-400 border border-slate-700 text-xs sm:text-sm font-bold flex items-center gap-1 transition-colors cursor-pointer"
+          >
+            <Icon name="trash" className="w-4 h-4" />
+            全クリア
+          </button>
+          <button
+            onClick={() => setIsSaveModalOpen(true)}
+            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer relative"
+          >
+            <Icon name="bookmark" className="w-4 h-4" />
+            チーム保存 / 呼出
+            {savedSlots.length > 0 && (
+              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-white/20 text-white text-[10px] font-black">
+                {savedSlots.length}
+              </span>
+            )}
           </button>
         </div>
       </div>
 
-      {/* サッカーピッチ ＆ ピッチ上スロット (CB-GK間隔ゆったり調整) */}
-      <div className="relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950">
-        <div className="absolute inset-0 pointer-events-none opacity-25">
-          <div className="absolute inset-4 border-2 border-white rounded-xl"></div>
-          <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-white -translate-y-1/2"></div>
-          <div className="absolute top-1/2 left-1/2 w-32 h-32 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute top-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-t-0 rounded-b-xl"></div>
-          <div className="absolute bottom-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-b-0 rounded-t-xl"></div>
+      {/* 総合力比較ダッシュボード */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-800/80">
+        <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+            {builderMaxEnhanced ? '基本総合力 (加算前)' : '基本総合力 (加算前)'}
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-num text-slate-200 mt-0.5">
+            {rawBaseOverall}
+          </div>
+        </div>
+        <div className="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 text-center">
+          <div className="text-[10px] font-bold text-[#00FF66] uppercase tracking-wider">
+            ポリシー一致後
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-num text-[#00FF66] mt-0.5">
+            {policyAdjustedOverall}
+          </div>
+          <div className="text-[9px] font-bold text-[#00FF66]/80 mt-0.5">
+            +{policyBonusGained} ({policyMatchCount}名一致)
+          </div>
+        </div>
+        <div className="bg-slate-950/80 p-3 rounded-xl border border-amber-400/40 text-center">
+          <div className="text-[10px] font-bold text-amber-300 uppercase tracking-wider">
+            最終チーム総合力
+          </div>
+          <div className="text-xl sm:text-2xl font-black font-num text-amber-400 mt-0.5">
+            {(comboValidation?.finalTeamOverall || policyAdjustedOverall)}
+          </div>
+          <div className="text-[9px] font-bold text-amber-300/80 mt-0.5">
+            +{((comboValidation?.totalGainedOverall) || policyBonusGained)} UP
+          </div>
+        </div>
+        <div className="bg-slate-950/80 p-3 rounded-xl border border-slate-800/80 text-center">
+          <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">チームポリシー</div>
+          <select
+            value={teamPolicy}
+            onChange={(e) => setTeamPolicy(e.target.value)}
+            className={`mt-1 bg-slate-900 text-xs sm:text-sm font-black px-2 py-0.5 rounded border focus:outline-none cursor-pointer transition-all ${getPolicyTextColor(teamPolicy)} ${getPolicyBadgeClass(teamPolicy)}`}
+          >
+            <option value="リアクション" className="bg-slate-900 text-cyan-400 font-extrabold">リアクション</option>
+            <option value="カウンター" className="bg-slate-900 text-pink-400 font-extrabold">カウンター</option>
+            <option value="ポゼッション" className="bg-slate-900 text-orange-400 font-extrabold">ポゼッション</option>
+            <option value="ムービング" className="bg-slate-900 text-emerald-400 font-extrabold">ムービング</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    {/* ポリシー・ランク別フォーメーション選択テーブル */}
+    <div className="bg-slate-950/90 p-4 rounded-2xl border border-slate-800/90 shadow-xl space-y-3">
+      <div className="flex items-center justify-between flex-wrap gap-2 pb-2.5 border-b border-slate-800">
+        <div className="flex items-center gap-2">
+          <span className="text-xl">📋</span>
+          <h3 className="font-black text-sm sm:text-base text-white">
+            フォーメーション選択 <span className="text-xs font-normal text-slate-400">(ポリシー・ランク別一覧)</span>
+          </h3>
         </div>
 
-        {selectedFormation.slots.map(slot => {
-          const rawP = squadMap[slot.id];
-          const player = displaySquadMap[slot.id];
-          const isPolicyMatched = player && player.policy === teamPolicy;
+        {/* ランクフィルターボタン */}
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-[11px] font-bold text-slate-400">ランク:</span>
+          <button
+            onClick={() => setComboRankFilter('ALL')}
+            className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'ALL' ? 'bg-[#00FF66] text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-800'}`}
+          >
+            すべて
+          </button>
+          <button
+            onClick={() => setComboRankFilter('金')}
+            className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '金' ? 'bg-amber-400 text-slate-950 shadow' : 'bg-slate-900 text-amber-400 border border-amber-500/40 hover:bg-slate-800'}`}
+          >
+            <span>🏆 金コンボ</span>
+          </button>
+          <button
+            onClick={() => setComboRankFilter('銀')}
+            className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer flex items-center gap-1 ${comboRankFilter === '銀' ? 'bg-slate-200 text-slate-950 shadow' : 'bg-slate-900 text-slate-300 border border-slate-600 hover:bg-slate-800'}`}
+          >
+            <span>🥈 銀コンボ</span>
+          </button>
+          <button
+            onClick={() => setComboRankFilter('BASIC')}
+            className={`px-2 py-0.5 rounded text-xs font-black transition-all cursor-pointer ${comboRankFilter === 'BASIC' ? 'bg-slate-400 text-slate-950 shadow' : 'bg-slate-900 text-slate-400 border border-slate-800 hover:bg-slate-800'}`}
+          >
+            基本
+          </button>
+        </div>
+      </div>
 
-          // 位置条件達成チェック
-          const isReqSlot = !!slot.requiredStyle;
-          const isReqFulfilled = isReqSlot && checkPlayStyleRequirement(rawP, slot.requiredStyle, slot.minLevel);
-
-          // 能力合計実数値の算出 (カタログ総合力 + ポリシー一致加算 + フォメコン能力バフ加算)
-          let effectiveOverall = player ? player.overall : 0;
-          let policyGain = 0;
-          let comboGain = 0;
-          if (player) {
-            if (isPolicyMatched) {
-              policyGain = Math.floor(player.overall * 1.05) - player.overall;
-            }
-            if (comboValidation.allReqsFulfilled && activeComboData?.buffs) {
-              const nBonusPct = comboValidation.isSelecao ? comboValidation.brazilBonusPct : (comboValidation.isLaRoja ? comboValidation.spainBonusPct : (comboValidation.isLesBleus ? comboValidation.franceBonusPct : (comboValidation.isQuinas ? comboValidation.portugalBonusPct : 0)));
-              activeComboData.buffs.forEach(b => {
-                const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
-                const effectivePct = basePct + nBonusPct;
-                const statVal = getPlayerStatValue(player, b.name);
-                comboGain += Math.floor(statVal * (effectivePct / 100));
+      <div className="overflow-x-auto max-h-[380px] scrollbar-thin scrollbar-thumb-slate-700">
+        <table className="w-full text-left text-xs border-collapse">
+          <thead className="sticky top-0 z-10">
+            <tr className="border-b border-slate-800 text-slate-400 font-bold bg-slate-900">
+              <th className="py-2.5 px-3 text-center whitespace-nowrap">選択</th>
+              <th className="py-2.5 px-3 w-28 whitespace-nowrap">ポリシー</th>
+              <th className="py-2.5 px-3 whitespace-nowrap">対象コンボ名</th>
+              <th className="py-2.5 px-3 whitespace-nowrap hidden md:table-cell">コンボ能力ボーナス</th>
+              <th className="py-2.5 px-3 whitespace-nowrap font-bold text-white">フォーメーション名</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-800/60">
+            {['リアクション', 'ムービング', 'ポゼッション', 'カウンター', '基本'].map(policyGroup => {
+              const matchedFormations = FORMATIONS.filter(fmt => {
+                const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+                const cRank = combo ? (combo.rank || '金') : 'BASIC';
+                if (comboRankFilter !== 'ALL' && cRank !== comboRankFilter) return false;
+                if (policyGroup === '基本') return !combo;
+                return combo?.policy === policyGroup;
               });
-            }
-            effectiveOverall = player.overall + policyGain + comboGain;
+
+              if (matchedFormations.length === 0) return null;
+
+              return matchedFormations.map((fmt) => {
+                const combo = FORMATION_COMBOS.find(c => c.id === fmt.comboId);
+                const isSelected = selectedFormation.id === fmt.id;
+                const isSilver = combo?.rank === '銀';
+
+                return (
+                  <tr
+                    key={fmt.id}
+                    onClick={() => handleSelectFormation(fmt)}
+                    className={`cursor-pointer transition-colors ${isSelected
+                      ? 'bg-emerald-500/15 font-bold border-l-4 border-l-[#00FF66]'
+                      : 'hover:bg-slate-900/80'
+                      }`}
+                  >
+                    {/* 1. 選択ボタン */}
+                    <td className="py-2.5 px-3 text-center whitespace-nowrap">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleSelectFormation(fmt);
+                        }}
+                        className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${isSelected
+                          ? 'bg-[#00FF66] text-slate-950 shadow-md shadow-[#00FF66]/20'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                          }`}
+                      >
+                        {isSelected ? '✓ 選択中' : '選択'}
+                      </button>
+                    </td>
+
+                    {/* 2. ポリシー名 */}
+                    <td className="py-2.5 px-3 whitespace-nowrap">
+                      <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(policyGroup)}`}>
+                        {policyGroup}
+                      </span>
+                    </td>
+
+                    {/* 3. 対象コンボ名 */}
+                    <td className="py-2.5 px-3 whitespace-nowrap">
+                      {combo ? (
+                        <div className="flex items-center gap-1.5">
+                          <span className={`px-1.5 py-0.5 rounded text-[9px] font-black shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'}`}>
+                            {isSilver ? '銀' : '金'}
+                          </span>
+                          <span className={`font-extrabold flex items-center gap-1 ${isSilver ? 'text-slate-100' : 'text-amber-400'}`}>
+                            <span>{isSilver ? '🥈' : '🏆'}</span>
+                            <span>{combo.name}</span>
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="text-slate-500">-</span>
+                      )}
+                    </td>
+
+                    {/* 4. コンボ能力ボーナス */}
+                    <td className="py-2.5 px-3 text-slate-300 hidden md:table-cell whitespace-nowrap">
+                      {combo ? (
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {combo.buffs.map((b, bIdx) => (
+                            <span key={bIdx} className={`text-[10px] font-black px-1.5 py-0.5 rounded border ${isSilver ? 'bg-slate-800 border-slate-600 text-slate-200' : 'bg-amber-400/10 border-amber-400/30 text-amber-300'}`}>
+                              {b.name} <span className={isSilver ? 'text-cyan-300' : 'text-amber-400'}>{b.val}</span>
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-slate-500 text-[11px]">基本フォーメーション (コンボなし)</span>
+                      )}
+                    </td>
+
+                    {/* 5. フォーメーション名 */}
+                    <td className="py-2.5 px-3 font-bold text-white whitespace-nowrap">
+                      {fmt.name}
+                    </td>
+                  </tr>
+                );
+              });
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* フォーメーションコンボ情報 ＆ キーポジション達成状況・ボーナス詳細 */}
+    {(() => {
+      if (!selectedFormation) return null;
+
+      if (activeComboData && comboValidation) {
+        const isSilver = activeComboData.rank === '銀';
+        const isComboActive = comboValidation.allReqsFulfilled;
+        const reqCount = comboValidation.reqResults.length;
+        const fulfilledCount = comboValidation.reqResults.filter(r => r.isFulfilled).length;
+
+        return (
+          <div className={`p-4 rounded-2xl border transition-all space-y-3.5 shadow-2xl ${isComboActive
+            ? isSilver
+              ? 'bg-gradient-to-br from-slate-800/90 via-slate-900 to-slate-950 border-cyan-400/60 shadow-cyan-500/10'
+              : 'bg-gradient-to-br from-amber-950/60 via-slate-900 to-slate-950 border-amber-400/80 shadow-amber-500/20 ring-1 ring-amber-400/30'
+            : 'bg-gradient-to-br from-slate-900/90 via-slate-950 to-slate-950 border-slate-700/80'
+            }`}>
+            {/* Header row */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-3">
+              <div className="flex items-center gap-3">
+                <span className={`p-2.5 rounded-2xl text-2xl shadow-lg flex items-center justify-center ${isSilver ? 'bg-gradient-to-br from-slate-200 to-slate-400 text-slate-950 font-black' : 'bg-gradient-to-br from-amber-300 to-amber-500 text-slate-950 font-black'
+                  }`}>
+                  {isSilver ? '🥈' : '🏆'}
+                </span>
+                <div>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className={`text-[10px] font-black px-2 py-0.5 rounded-full shadow-sm ${isSilver ? 'bg-slate-300 text-slate-950 border border-slate-200' : 'bg-amber-400 text-slate-950 border border-amber-300'
+                      }`}>
+                      {isSilver ? '銀コンボ' : '金コンボ'}
+                    </span>
+
+                    {/* コンボ発動ステータスバッジ */}
+                    <span className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 shadow ${isComboActive
+                      ? 'bg-emerald-500 text-slate-950 animate-pulse'
+                      : fulfilledCount > 0
+                        ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                        : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                      }`}>
+                      {isComboActive ? (
+                        <>⚡ コンボ発動中！ (能力大アップ)</>
+                      ) : (
+                        <>⚠️ コンボ未発動 (達成: {fulfilledCount}/{reqCount}枠)</>
+                      )}
+                    </span>
+                  </div>
+
+                  <h3 className="font-black text-base sm:text-lg text-white mt-1 flex items-center gap-2">
+                    フォーメーションコンボ 【{activeComboData.name}】
+                    <span className="text-xs font-normal text-slate-400">({selectedFormation.name})</span>
+                  </h3>
+
+                  <div className="flex items-center gap-3 text-xs text-slate-400 mt-1 flex-wrap">
+                    <span>
+                      推奨ポリシー: <strong className={getPolicyTextColor(activeComboData.policy)}>{activeComboData.policy}</strong>
+                    </span>
+                    <span className={`px-1.5 py-0.2 rounded text-[10px] font-bold ${comboValidation.isPolicyMatch
+                      ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
+                      : 'bg-rose-500/20 text-rose-300 border border-rose-500/40'
+                      }`}>
+                      {comboValidation.isPolicyMatch ? '✓ ポリシー一致 (1.05倍)' : `✕ 不一致 (現在: ${teamPolicy})`}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 対象能力ボーナス項目まとめ */}
+              <div className={`p-3 rounded-xl space-y-1.5 border min-w-[200px] ${isComboActive
+                ? isSilver
+                  ? 'bg-slate-900/90 border-cyan-500/40'
+                  : 'bg-slate-900/90 border-amber-500/50'
+                : 'bg-slate-950/80 border-slate-800'
+                }`}>
+                <div className="flex items-center justify-between gap-2">
+                  <div className={`text-[10px] font-black uppercase tracking-wider ${isSilver ? 'text-cyan-300' : 'text-amber-300'}`}>
+                    対象能力バフ項目
+                  </div>
+                  {isComboActive && comboValidation.totalComboStatBonus > 0 && (
+                    <span className="text-[10px] font-black px-1.5 py-0.2 rounded bg-emerald-400 text-slate-950">
+                      +{comboValidation.totalComboStatBonus} UP
+                    </span>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  {activeComboData.buffs.map((b, i) => (
+                    <span key={i} className={`px-2 py-0.5 rounded font-num font-black text-xs shadow-sm ${isComboActive
+                      ? isSilver ? 'bg-cyan-400 text-slate-950' : 'bg-amber-400 text-slate-950'
+                      : 'bg-slate-800 text-slate-400 border border-slate-700'
+                      }`}>
+                      {b.name} {b.val}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 🧮 チーム総合力 ＆ ボーナス詳細計算内訳 (詳細説明欄) */}
+            <div className="p-4 rounded-2xl bg-slate-950/90 border border-slate-800 space-y-4 shadow-xl">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+                <span className="font-black text-sm text-amber-400 flex items-center gap-2">
+                  <span className="text-base">📊</span>
+                  <span>チーム総合力 ＆ コンボボーナス内訳</span>
+                </span>
+              </div>
+
+              {/* 計算結果グリッド (大型数値表示) */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                {/* 1. 素の総合力 */}
+                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow">
+                  <span className="text-xs text-slate-400 font-bold block">① 素のチーム総合力</span>
+                  <strong className="text-xl sm:text-2xl font-num font-black text-slate-200 block mt-1">
+                    {rawBaseOverall}
+                  </strong>
+                </div>
+
+                {/* 2. ポリシーボーナス */}
+                <div className="p-3 rounded-xl bg-slate-900/90 border border-emerald-500/40 shadow">
+                  <span className="text-xs text-emerald-400 font-bold block">② ポリシー一致ボーナス</span>
+                  <strong className="text-xl sm:text-2xl font-num font-black text-[#00FF66] block mt-1">
+                    +{comboValidation.totalPolicyBonus}
+                  </strong>
+                  <span className="text-[10px] text-emerald-400/80 font-bold block mt-0.5">
+                    ({policyMatchCount}名一致)
+                  </span>
+                </div>
+
+                {/* 3. コンボ詳細能力ボーナス */}
+                <div className={`p-3 rounded-xl bg-slate-900/90 border shadow ${isComboActive ? 'border-amber-400/60' : 'border-slate-800 opacity-60'
+                  }`}>
+                  <span className={`text-xs font-bold block ${isComboActive ? 'text-amber-300' : 'text-slate-400'}`}>
+                    ③ コンボ能力加算
+                  </span>
+                  <strong className={`text-xl sm:text-2xl font-num font-black block mt-1 ${isComboActive ? 'text-amber-400' : 'text-slate-500'
+                    }`}>
+                    +{comboValidation.totalComboStatBonus}
+                  </strong>
+                </div>
+
+                {/* 4. 最終チーム総合力 */}
+                <div className="p-3 rounded-xl bg-gradient-to-br from-amber-500/25 via-slate-900 to-slate-950 border-2 border-amber-400 shadow-lg ring-2 ring-amber-400/20">
+                  <span className="text-xs text-amber-300 font-black block">④ 最終チーム総合力</span>
+                  <strong className="text-2xl sm:text-3xl font-num font-black text-amber-300 block mt-1 drop-shadow-md">
+                    {comboValidation.finalTeamOverall}
+                  </strong>
+                  <span className="text-[10px] text-amber-300/90 font-bold block mt-0.5">
+                    (+{comboValidation.totalGainedOverall} UP)
+                  </span>
+                </div>
+              </div>
+
+              {/* 対象詳細能力ごとの個別の加算内訳 (大文字表示) */}
+              {isComboActive && comboValidation.statBuffBreakdown.length > 0 && (
+                <div className="pt-3 border-t border-slate-800">
+                  <div className="text-xs font-black text-slate-200 mb-2 flex items-center justify-between">
+                    <span className="flex items-center gap-1.5 text-amber-300">
+                      <span>⚡</span>
+                      <span>対象能力別の加算ボーナス内訳</span>
+                    </span>
+                    {comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0 && (
+                      <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="ブラジル" /> ブラジル選手 {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
+                      </span>
+                    )}
+                    {comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0 && (
+                      <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="スペイン" /> スペイン選手 {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
+                      </span>
+                    )}
+                    {comboValidation.isLesBleus && comboValidation.francePlayerCount > 0 && (
+                      <span className="text-xs text-blue-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="フランス" /> フランス選手 {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
+                      </span>
+                    )}
+                    {comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0 && (
+                      <span className="text-xs text-red-400 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="ポルトガル" /> ポルトガル選手 {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
+                      </span>
+                    )}
+                    {comboValidation.isReactionCombo && comboValidation.hasNeuer2026 && (
+                      <span className="text-xs text-red-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="ドイツ" /> ノイアー(2026-2027) 発動中 (GK/DFリアクション コンタクト・走力 +10%)
+                      </span>
+                    )}
+                    {comboValidation.isMovingCombo && comboValidation.hasMbappe2026 && (
+                      <span className="text-xs text-blue-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="フランス" /> キリアン・エンバペ 発動中 (CF/LW/RWムービング 突破力・走力 +10%)
+                      </span>
+                    )}
+                    {comboValidation.isCounterCombo && comboValidation.hasRonaldo2026 && (
+                      <span className="text-xs text-amber-300 font-bold flex items-center gap-1">
+                        <FlagIcon nationality="ポルトガル" /> ロナウド(2026) 発動中 (CF/LW/RWカウンター 冷静さ・突破力 +10%)
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    {comboValidation.statBuffBreakdown.map((sb, idx) => (
+                      <div key={idx} className="p-2.5 rounded-xl bg-slate-900 border border-amber-500/40 shadow text-center space-y-1">
+                        <div className="text-xs font-extrabold text-slate-300 flex items-center justify-center gap-1">
+                          <span>{sb.name}</span>
+                          <span className="text-amber-400 font-num font-black">+{sb.effectivePct}%</span>
+                        </div>
+                        <strong className="text-lg sm:text-xl font-num font-black text-[#00FF66] block">
+                          +{sb.gainedOverall}
+                        </strong>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Special Nation Note if present */}
+            {activeComboData.specialNote && (
+              <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${(comboValidation.isSelecao && comboValidation.brazilPlayerCount > 0) || (comboValidation.isLaRoja && comboValidation.spainPlayerCount > 0) || (comboValidation.isLesBleus && comboValidation.francePlayerCount > 0) || (comboValidation.isQuinas && comboValidation.portugalPlayerCount > 0)
+                  ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
+                  : 'bg-slate-950 border-slate-800 text-slate-300'
+                }`}>
+                <div className="flex items-center gap-2">
+                  <FlagIcon nationality={comboValidation.isQuinas ? 'ポルトガル' : (comboValidation.isLesBleus ? 'フランス' : (comboValidation.isLaRoja ? 'スペイン' : 'ブラジル'))} className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
+                  <span className="font-bold">{activeComboData.specialNote}</span>
+                </div>
+                {comboValidation.isSelecao && (
+                  <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
+                    スタメン {comboValidation.brazilPlayerCount}名 (+{comboValidation.brazilBonusPct}% 適用中)
+                  </span>
+                )}
+                {comboValidation.isLaRoja && (
+                  <span className="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
+                    スタメン {comboValidation.spainPlayerCount}名 (+{comboValidation.spainBonusPct}% 適用中)
+                  </span>
+                )}
+                {comboValidation.isLesBleus && (
+                  <span className="px-2 py-0.5 rounded bg-blue-500 text-slate-950 font-black text-[11px] whitespace-nowrap shadow">
+                    スタメン {comboValidation.francePlayerCount}名 (+{comboValidation.franceBonusPct}% 適用中)
+                  </span>
+                )}
+                {comboValidation.isQuinas && (
+                  <span className="px-2 py-0.5 rounded bg-red-600 text-white font-black text-[11px] whitespace-nowrap shadow">
+                    スタメン {comboValidation.portugalPlayerCount}名 (+{comboValidation.portugalBonusPct}% 適用中)
+                  </span>
+                )}
+              </div>
+            )}
+
+            {/* Moving Combo: Kylian Mbappe bonus note */}
+            {comboValidation.isMovingCombo && (
+              <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${comboValidation.hasMbappe2026
+                ? 'bg-blue-500/10 border-blue-500/30 text-blue-200'
+                : 'bg-slate-950 border-slate-800 text-slate-300'
+                }`}>
+                <div className="flex items-center gap-2">
+                  <FlagIcon nationality="フランス" className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
+                  <span className="font-bold">キリアン・エンバペを組み込むことで、CF・LW・RWのムービング選手が突破力と走力10％UP！</span>
+                </div>
+                <span className={`px-2 py-0.5 rounded font-black text-[11px] whitespace-nowrap shadow ${comboValidation.hasMbappe2026 ? 'bg-blue-500 text-slate-950' : 'bg-slate-800 text-slate-400'}`}>
+                  {comboValidation.hasMbappe2026 ? 'エンバペ組み込み中 (+10% 適用中)' : 'エンバペ未組み込み'}
+                </span>
+              </div>
+            )}
+
+            {/* Reaction Combo: Manuel Neuer (2026-2027) bonus note */}
+            {comboValidation.isReactionCombo && (
+              <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${comboValidation.hasNeuer2026
+                ? 'bg-red-500/10 border-red-500/30 text-red-200'
+                : 'bg-slate-950 border-slate-800 text-slate-300'
+                }`}>
+                <div className="flex items-center gap-2">
+                  <FlagIcon nationality="ドイツ" className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
+                  <span className="font-bold">マヌエル・ノイアー(2026-2027)を組み込むことで、GK・LFB・RFB・CBのリアクション選手のコンタクトと走力が10％UP！</span>
+                </div>
+                <span className={`px-2 py-0.5 rounded font-black text-[11px] whitespace-nowrap shadow ${comboValidation.hasNeuer2026 ? 'bg-red-600 text-white' : 'bg-slate-800 text-slate-400'}`}>
+                  {comboValidation.hasNeuer2026 ? 'ノイアー組み込み中 (+10% 適用中)' : 'ノイアー未組み込み'}
+                </span>
+              </div>
+            )}
+
+            {/* Counter Combo: Cristiano Ronaldo (2026) bonus note */}
+            {comboValidation.isCounterCombo && (
+              <div className={`p-2.5 rounded-xl border flex items-center justify-between gap-2 text-xs ${comboValidation.hasRonaldo2026
+                ? 'bg-amber-500/10 border-amber-500/30 text-amber-200'
+                : 'bg-slate-950 border-slate-800 text-slate-300'
+                }`}>
+                <div className="flex items-center gap-2">
+                  <FlagIcon nationality="ポルトガル" className="w-5 h-3.5 object-cover rounded-xs shadow-sm" />
+                  <span className="font-bold">クリスティアーノ・ロナウド(2026)を組み込むことで、CF・LW・RWのカウンター選手が冷静さと突破力10％UP！</span>
+                </div>
+                <span className={`px-2 py-0.5 rounded font-black text-[11px] whitespace-nowrap shadow ${comboValidation.hasRonaldo2026 ? 'bg-amber-400 text-slate-950' : 'bg-slate-800 text-slate-400'}`}>
+                  {comboValidation.hasRonaldo2026 ? 'ロナウド組み込み中 (+10% 適用中)' : 'ロナウド未組み込み'}
+                </span>
+              </div>
+            )}
+
+            {/* キーポジション指定 ＆ プレイスタイル達成状況 (明細一覧) */}
+            {comboValidation.reqResults.length > 0 && (
+              <div className="space-y-1.5 pt-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-extrabold text-slate-300 flex items-center gap-1.5">
+                    <span>🎯</span>
+                    <span>コンボ発動キーポジション ＆ 必要プレイスタイル達成状況</span>
+                  </span>
+                  <span className="text-[11px] font-bold text-slate-400">
+                    達成度: <strong className={isComboActive ? 'text-[#00FF66]' : 'text-amber-400'}>{fulfilledCount}/{reqCount}枠</strong>
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
+                  {comboValidation.reqResults.map(req => {
+                    const player = req.player;
+                    const isOk = req.isFulfilled;
+                    const playerStyle = player ? (player.playStyle || player.style || 'スタイルなし') : null;
+                    const playerLevel = player ? (player.playStyleLevel || player.styleLevel || '1') : null;
+
+                    return (
+                      <div
+                        key={req.slotId}
+                        className={`p-2 rounded-xl border text-xs transition-all ${isOk
+                          ? 'bg-emerald-500/10 border-emerald-500/40 text-slate-100 shadow'
+                          : player
+                            ? 'bg-rose-500/10 border-rose-500/40 text-slate-200'
+                            : 'bg-slate-900/60 border-slate-800 text-slate-400'
+                          }`}
+                      >
+                        <div className="flex items-center justify-between gap-1 mb-1">
+                          <span className="font-black px-1.5 py-0.2 rounded bg-slate-950 text-amber-400 border border-amber-500/30 text-[10px]">
+                            {req.posLabel} 位置
+                          </span>
+                          <span className={`px-1.5 py-0.2 rounded text-[9px] font-black ${isOk
+                            ? 'bg-emerald-400 text-slate-950'
+                            : player
+                              ? 'bg-rose-500 text-white'
+                              : 'bg-slate-800 text-slate-400'
+                            }`}>
+                            {isOk ? '✓ 達成' : player ? '✕ 条件不一致' : '✕ 未配置'}
+                          </span>
+                        </div>
+
+                        <div className="text-[11px] font-bold text-slate-300 mb-0.5">
+                          要: <strong className="text-amber-300">{req.requiredStyle}</strong> (Lv.{req.minLevel}以上)
+                        </div>
+
+                        <div className="text-[10px] text-slate-400 truncate flex items-center gap-1 border-t border-slate-800/80 pt-1 mt-1">
+                          {player ? (
+                            <>
+                              <span className="font-bold text-white truncate">{player.name}</span>
+                              <span className={`text-[9px] ${isOk ? 'text-emerald-300' : 'text-rose-300'} truncate`}>
+                                ({playerStyle} Lv.{playerLevel})
+                              </span>
+                            </>
+                          ) : (
+                            <span className="text-slate-500 italic">選手が未セットです</span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      } else {
+        // 基本フォーメーション (コンボなし)
+        return (
+          <div className="p-3.5 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900/80 via-slate-950 to-slate-900 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs shadow-lg">
+            <div className="flex items-center gap-2.5">
+              <span className="p-2 rounded-xl bg-slate-800 text-slate-300 font-black text-lg">⚽</span>
+              <div>
+                <div className="font-black text-sm text-white">
+                  基本フォーメーション 【{selectedFormation.name}】
+                </div>
+                <div className="text-slate-400 text-[11px] mt-0.5">
+                  コンボ指定プレースタイル制限がありません。自由な選手起用が可能です。
+                </div>
+              </div>
+            </div>
+            <div className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-right whitespace-nowrap">
+              <span className="text-slate-400 text-[10px] block">ポリシー一致効果</span>
+              <span className="font-bold text-emerald-400">各選手 総合力 1.05倍</span>
+            </div>
+          </div>
+        );
+      }
+    })()}
+
+    {/* ピッチ直上 自動最適編成ボタンバー (位置コンボ優先 ＆ ポリシー統一) */}
+    <div className="flex items-center justify-between gap-2.5 flex-wrap p-3 rounded-2xl bg-slate-900/90 border border-slate-800/80 shadow-lg my-1">
+      <div className="flex items-center gap-2">
+        <span className="text-xs font-bold text-slate-300 flex items-center gap-1">
+          <Icon name="sparkles" className="w-3.5 h-3.5 text-amber-400" />
+          自動最適編成:
+        </span>
+      </div>
+      <div className="flex items-center gap-2 flex-wrap">
+        <button
+          onClick={handleAutoBuild}
+          className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-black text-xs shadow-md shadow-[#00FF66]/20 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+        >
+          <Icon name="sparkles" className="w-3.5 h-3.5" />
+          ⚡ 位置コンボ優先 自動最適編成
+        </button>
+        <button
+          onClick={handleUnifiedPolicyAutoBuild}
+          className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white font-black text-xs shadow-md shadow-purple-500/25 hover:brightness-110 flex items-center gap-1.5 transition-transform active:scale-95 cursor-pointer"
+        >
+          <Icon name="shield" className="w-3.5 h-3.5" />
+          🛡️ ポリシー統一 自動最適編成
+        </button>
+      </div>
+    </div>
+
+    {/* サッカーピッチ ＆ ピッチ上スロット (CB-GK間隔ゆったり調整) */}
+    <div className="relative w-full aspect-[4/5] sm:aspect-[16/11] max-w-4xl mx-auto rounded-3xl overflow-hidden border-2 border-emerald-500/40 shadow-2xl bg-gradient-to-b from-emerald-950 via-emerald-900 to-emerald-950">
+      <div className="absolute inset-0 pointer-events-none opacity-25">
+        <div className="absolute inset-4 border-2 border-white rounded-xl"></div>
+        <div className="absolute top-1/2 left-4 right-4 h-0.5 bg-white -translate-y-1/2"></div>
+        <div className="absolute top-1/2 left-1/2 w-32 h-32 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-t-0 rounded-b-xl"></div>
+        <div className="absolute bottom-4 left-1/2 w-48 h-20 border-2 border-white -translate-x-1/2 border-b-0 rounded-t-xl"></div>
+      </div>
+
+      {selectedFormation.slots.map(slot => {
+        const rawP = squadMap[slot.id];
+        const player = displaySquadMap[slot.id];
+        const isPolicyMatched = player && player.policy === teamPolicy;
+
+        // 位置条件達成チェック
+        const isReqSlot = !!slot.requiredStyle;
+        const isReqFulfilled = isReqSlot && checkPlayStyleRequirement(rawP, slot.requiredStyle, slot.minLevel);
+
+        // 能力合計実数値の算出 (カタログ総合力 + ポリシー一致加算 + フォメコン能力バフ加算)
+        let effectiveOverall = player ? player.overall : 0;
+        let policyGain = 0;
+        let comboGain = 0;
+        if (player) {
+          if (isPolicyMatched) {
+            policyGain = Math.floor(player.overall * 1.05) - player.overall;
           }
+          if (comboValidation.allReqsFulfilled && activeComboData?.buffs) {
+            const nBonusPct = comboValidation.isSelecao ? comboValidation.brazilBonusPct : (comboValidation.isLaRoja ? comboValidation.spainBonusPct : (comboValidation.isLesBleus ? comboValidation.franceBonusPct : (comboValidation.isQuinas ? comboValidation.portugalBonusPct : 0)));
+            activeComboData.buffs.forEach(b => {
+              const basePct = parseInt(String(b.val).replace(/[^0-9]/g, ''), 10) || 0;
+              const effectivePct = basePct + nBonusPct;
+              const statVal = getPlayerStatValue(player, b.name);
+              comboGain += Math.floor(statVal * (effectivePct / 100));
+            });
+            if (comboValidation.hasNeuer2026 && ['GK', 'LFB', 'RFB', 'CB'].includes(slot.pos) && player.policy === 'リアクション') {
+              comboGain += Math.floor(getPlayerStatValue(player, 'コンタクト') * 0.1);
+              comboGain += Math.floor(getPlayerStatValue(player, '走力') * 0.1);
+            }
+            if (comboValidation.hasMbappe2026 && ['CF', 'LW', 'RW'].includes(slot.pos) && player.policy === 'ムービング') {
+              comboGain += Math.floor(getPlayerStatValue(player, '突破力') * 0.1);
+              comboGain += Math.floor(getPlayerStatValue(player, '走力') * 0.1);
+            }
+            if (comboValidation.hasRonaldo2026 && ['CF', 'LW', 'RW'].includes(slot.pos) && player.policy === 'カウンター') {
+              comboGain += Math.floor(getPlayerStatValue(player, '冷静さ') * 0.1);
+              comboGain += Math.floor(getPlayerStatValue(player, '突破力') * 0.1);
+            }
+          }
+          effectiveOverall = player.overall + policyGain + comboGain;
+        }
 
           return (
             <div
@@ -7028,317 +7243,317 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
             </div>
           );
         })}
-      </div>
+    </div>
 
-      {/* ベンチ・サブメンバー (12名) */}
-      <div className="glass-panel p-4 rounded-2xl border border-slate-800 bg-slate-900/90">
-        <h3 className="text-sm font-black text-white flex items-center justify-between gap-2 mb-3">
-          <span className="flex items-center gap-2">🪑 ベンチ・サブメンバー (12名)</span>
-          <span className="text-xs font-bold text-slate-400">SUB1 〜 SUB12</span>
-        </h3>
-        <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2 sm:gap-2.5">
-          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(idx => {
-            const benchPlayer = displayBenchMap[idx];
+    {/* ベンチ・サブメンバー (12名) */}
+    <div className="glass-panel p-4 rounded-2xl border border-slate-800 bg-slate-900/90">
+      <h3 className="text-sm font-black text-white flex items-center justify-between gap-2 mb-3">
+        <span className="flex items-center gap-2">🪑 ベンチ・サブメンバー (12名)</span>
+        <span className="text-xs font-bold text-slate-400">SUB1 〜 SUB12</span>
+      </h3>
+      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-12 gap-2 sm:gap-2.5">
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(idx => {
+          const benchPlayer = displayBenchMap[idx];
 
-            return (
-              <div
-                key={idx}
-                onClick={() => {
-                  setFilterPos('ALL');
-                  setModalSearchText('');
-                  setActiveSlotModal({ type: 'bench', id: idx, targetPos: 'SUB' });
-                }}
-                className="flex flex-col items-center relative cursor-pointer group"
-              >
-                {benchPlayer ? (
-                  <div className="relative w-full flex flex-col items-center active:scale-95 transition-transform">
-                    <button
-                      onClick={(e) => handleRemoveSlot('bench', idx, e)}
-                      className="absolute -top-1 -right-1 z-30 w-4 h-4 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 text-[10px]"
-                      title="外す"
-                    >
-                      ✕
-                    </button>
-                    <div className="w-10 h-14 sm:w-12 sm:h-16 aspect-[3/4] rounded-lg border border-slate-700 bg-slate-950 overflow-hidden relative shadow">
-                      <PlayerAvatar player={benchPlayer} className="w-full h-full object-cover" />
-                      <span className="absolute bottom-0 inset-x-0 text-center text-[8px] font-black font-num bg-slate-900/90 text-[#00FF66]">
-                        {benchPlayer.overall}
-                      </span>
-                    </div>
-                    <div className="text-[8px] font-bold text-white truncate max-w-full mt-0.5">{benchPlayer.name}</div>
-                  </div>
-                ) : (
-                  <div className="w-10 h-14 sm:w-12 sm:h-16 rounded-lg border border-dashed border-slate-700 bg-slate-950/60 flex flex-col items-center justify-center text-slate-500 hover:text-white hover:border-slate-500">
-                    <Icon name="plus" className="w-3.5 h-3.5" />
-                    <span className="text-[8px] font-bold mt-0.5">SUB{idx + 1}</span>
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 選手選択ドロワー/モーダル */}
-      {activeSlotModal && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto animate-fadeIn">
-          <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto">
-            <SideAdBanner position="left" isModal={true} showModalAd={showSlotModalAd} />
-
-            <div className="glass-panel max-w-2xl w-full mx-auto rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 flex flex-col shadow-2xl max-h-[85vh] flex-shrink-0">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                <div>
-                  <h3 className="font-black text-lg text-white">
-                    選手を割り当て ({activeSlotModal.targetPos} スロット)
-                  </h3>
-                  {currentSlotInfo?.requiredStyle && (
-                    <div className="mt-0.5 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-black">
-                      ⭐ 【{currentSlotInfo.label}位置条件】 {currentSlotInfo.requiredStyle} (LV.{currentSlotInfo.minLevel}以上) を要配置
-                    </div>
-                  )}
-                </div>
-                <button
-                  onClick={() => setActiveSlotModal(null)}
-                  className="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
-                >
-                  <Icon name="x" className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* テキストリアルタイム検索バー */}
-              <div className="py-2.5 border-b border-slate-800 flex items-center gap-2">
-                <div className="relative flex-1">
-                  <Icon name="search" className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
-                  <input
-                    type="text"
-                    value={modalSearchText}
-                    onChange={(e) => setModalSearchText(e.target.value)}
-                    placeholder="選手名・プレースタイル・国籍・ポリシーでリアルタイム検索 (例: 柴崎, ラインブレーカー, ブラジル)..."
-                    className="w-full bg-slate-950 border border-slate-700 focus:border-[#00FF66] rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
-                  />
-                  {modalSearchText && (
-                    <button
-                      onClick={() => setModalSearchText('')}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 cursor-pointer"
-                    >
-                      <Icon name="x" className="w-3.5 h-3.5" />
-                    </button>
-                  )}
-                </div>
-                {modalSearchText && (
+          return (
+            <div
+              key={idx}
+              onClick={() => {
+                setFilterPos('ALL');
+                setModalSearchText('');
+                setActiveSlotModal({ type: 'bench', id: idx, targetPos: 'SUB' });
+              }}
+              className="flex flex-col items-center relative cursor-pointer group"
+            >
+              {benchPlayer ? (
+                <div className="relative w-full flex flex-col items-center active:scale-95 transition-transform">
                   <button
-                    onClick={() => setModalSearchText('')}
-                    className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold whitespace-nowrap cursor-pointer"
+                    onClick={(e) => handleRemoveSlot('bench', idx, e)}
+                    className="absolute -top-1 -right-1 z-30 w-4 h-4 rounded-full bg-slate-900 hover:bg-red-500 text-slate-400 hover:text-white flex items-center justify-center border border-slate-700 text-[10px]"
+                    title="外す"
                   >
-                    クリア
+                    ✕
                   </button>
-                )}
-              </div>
-
-              <div className="flex items-center gap-1.5 overflow-x-auto py-3 border-b border-slate-800 scrollbar-none">
-                {['ALL', 'CF', 'LW', 'RW', 'AM', 'LM', 'RM', 'DM', 'LFB', 'RFB', 'CB', 'GK'].map(pos => (
-                  <button
-                    key={pos}
-                    onClick={() => setFilterPos(pos)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap cursor-pointer ${filterPos === pos
-                      ? 'bg-[#00FF66] text-slate-950'
-                      : 'bg-slate-800 text-slate-400 hover:text-white'
-                      }`}
-                  >
-                    {pos}
-                  </button>
-                ))}
-              </div>
-
-              <div className="flex-1 overflow-y-auto space-y-2 py-3 pr-1 scrollbar-thin scrollbar-thumb-slate-700">
-                {modalPlayers.length > 0 ? (
-                  modalPlayers.map(p => {
-                    const isSlotReqMatch = currentSlotInfo?.requiredStyle
-                      ? checkPlayStyleRequirement(p, currentSlotInfo.requiredStyle, currentSlotInfo.minLevel)
-                      : false;
-
-                    const assignedInfo = getAssignedLocationInfo(p.id);
-
-                    return (
-                      <div
-                        key={p.id}
-                        onClick={() => handleAssignPlayer(p)}
-                        className={`p-2.5 rounded-xl bg-slate-950 border flex items-center justify-between gap-3 cursor-pointer transition-all hover:bg-slate-800/40 ${isSlotReqMatch
-                          ? 'border-amber-400 shadow-md shadow-amber-400/20 bg-amber-500/10'
-                          : assignedInfo
-                            ? 'border-purple-500/40 bg-purple-500/5'
-                            : 'border-slate-800 hover:border-[#00FF66]/50'
-                          }`}
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <PlayerAvatar player={p} className="w-10 h-14 aspect-[3/4] rounded-lg object-cover bg-slate-900 border border-slate-700 flex-shrink-0" />
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              <span className="px-1.5 py-0.2 rounded text-[10px] font-black bg-slate-800 text-[#00FF66]">
-                                {p.mainPosition}
-                              </span>
-                              {p.subPositions && p.subPositions.length > 0 && (
-                                <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">
-                                  サブ: {p.subPositions.join(', ')}
-                                </span>
-                              )}
-                              <span className="text-[10px] font-bold text-amber-400">
-                                {p.rarity}
-                              </span>
-                              {p.policy && (
-                                <span className={`text-[9px] font-bold px-1 py-0.2 rounded border ${getPolicyBadgeClass(p.policy)}`}>
-                                  {p.policy}
-                                </span>
-                              )}
-                              {assignedInfo && (
-                                <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 border border-purple-400/40">
-                                  📍 {assignedInfo.label}
-                                </span>
-                              )}
-                              {isSlotReqMatch && (
-                                <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 animate-pulse">
-                                  ⭐ 位置条件完全合致 ({p.playStyle} LV.{p.playStyleLevel})
-                                </span>
-                              )}
-                            </div>
-                            <div className="font-black text-sm text-white truncate mt-0.5">{p.name}</div>
-                            <div className="text-[10px] text-slate-400 truncate">
-                              <span>{p.playStyle || 'スタイル未設定'}</span> <span className="text-[#00FF66] font-bold">LV.{p.playStyleLevel}</span> {p.nationality && <span className="inline-flex items-center gap-1 font-medium text-slate-300"><span>|</span><FlagIcon nationality={p.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" /><span>{p.nationality}</span></span>}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="text-right flex-shrink-0">
-                          <div className="text-xs text-slate-400 font-bold">総合力</div>
-                          <div className="text-lg font-black font-num text-[#00FF66]">{p.overall}</div>
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div className="text-center py-10 text-slate-400 text-xs font-bold">
-                    選択可能な選手が見つかりません。
+                  <div className="w-10 h-14 sm:w-12 sm:h-16 aspect-[3/4] rounded-lg border border-slate-700 bg-slate-950 overflow-hidden relative shadow">
+                    <PlayerAvatar player={benchPlayer} className="w-full h-full object-cover" />
+                    <span className="absolute bottom-0 inset-x-0 text-center text-[8px] font-black font-num bg-slate-900/90 text-[#00FF66]">
+                      {benchPlayer.overall}
+                    </span>
                   </div>
-                )}
-              </div>
+                  <div className="text-[8px] font-bold text-white truncate max-w-full mt-0.5">{benchPlayer.name}</div>
+                </div>
+              ) : (
+                <div className="w-10 h-14 sm:w-12 sm:h-16 rounded-lg border border-dashed border-slate-700 bg-slate-950/60 flex flex-col items-center justify-center text-slate-500 hover:text-white hover:border-slate-500">
+                  <Icon name="plus" className="w-3.5 h-3.5" />
+                  <span className="text-[8px] font-bold mt-0.5">SUB{idx + 1}</span>
+                </div>
+              )}
             </div>
+          );
+        })}
+      </div>
+    </div>
 
-            <SideAdBanner position="right" isModal={true} showModalAd={showSlotModalAd} />
-          </div>
-        </div>
-      )}
+    {/* 選手選択ドロワー/モーダル */}
+    {activeSlotModal && (
+      <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-2 md:p-4 overflow-y-auto animate-fadeIn">
+        <div className="max-w-[1750px] w-full mx-auto flex justify-between items-center px-2 lg:px-4 my-auto">
+          <SideAdBanner position="left" isModal={true} showModalAd={showSlotModalAd} />
 
-      {toastMsg && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl border border-emerald-400/50 flex items-center gap-2 animate-bounce">
-          <Icon name="check" className="w-4 h-4" />
-          {toastMsg}
-        </div>
-      )}
-
-      {isSaveModalOpen && (
-        <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-5 animate-scaleIn">
-            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div className="glass-panel max-w-2xl w-full mx-auto rounded-2xl border border-slate-800 bg-slate-900 p-4 sm:p-6 flex flex-col shadow-2xl max-h-[85vh] flex-shrink-0">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div>
-                <h2 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
-                  💾 チーム編成スロット保存 ＆ 呼び出し
-                </h2>
-                <p className="text-xs text-slate-400 mt-0.5">作成したチームをブラウザに保存・切り替えできます</p>
+                <h3 className="font-black text-lg text-white">
+                  選手を割り当て ({activeSlotModal.targetPos} スロット)
+                </h3>
+                {currentSlotInfo?.requiredStyle && (
+                  <div className="mt-0.5 inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-400/20 text-amber-300 border border-amber-400/40 text-xs font-black">
+                    ⭐ 【{currentSlotInfo.label}位置条件】 {currentSlotInfo.requiredStyle} (LV.{currentSlotInfo.minLevel}以上) を要配置
+                  </div>
+                )}
               </div>
               <button
-                onClick={() => setIsSaveModalOpen(false)}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+                onClick={() => setActiveSlotModal(null)}
+                className="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
               >
                 <Icon name="x" className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
-              <div className="text-xs font-extrabold text-slate-300 flex items-center gap-1.5">
-                <Icon name="plus-circle" className="w-4 h-4 text-[#00FF66]" />
-                現在のチームをスロット保存
-              </div>
-              <div className="flex gap-2">
+            {/* テキストリアルタイム検索バー */}
+            <div className="py-2.5 border-b border-slate-800 flex items-center gap-2">
+              <div className="relative flex-1">
+                <Icon name="search" className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder={`チーム名 (例: マイチーム ${savedSlots.length + 1})`}
-                  value={newTeamName}
-                  onChange={e => setNewTeamName(e.target.value)}
-                  onKeyDown={e => { if (e.key === 'Enter') handleSaveTeamSlot(newTeamName); }}
-                  className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
+                  value={modalSearchText}
+                  onChange={(e) => setModalSearchText(e.target.value)}
+                  placeholder="選手名・プレースタイル・国籍・ポリシーでリアルタイム検索 (例: 柴崎, ラインブレーカー, ブラジル)..."
+                  className="w-full bg-slate-950 border border-slate-700 focus:border-[#00FF66] rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none transition-colors"
                 />
-                <button
-                  onClick={() => handleSaveTeamSlot(newTeamName)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs sm:text-sm shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
-                >
-                  新規保存
-                </button>
+                {modalSearchText && (
+                  <button
+                    onClick={() => setModalSearchText('')}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white p-1 cursor-pointer"
+                  >
+                    <Icon name="x" className="w-3.5 h-3.5" />
+                  </button>
+                )}
               </div>
+              {modalSearchText && (
+                <button
+                  onClick={() => setModalSearchText('')}
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-slate-300 font-bold whitespace-nowrap cursor-pointer"
+                >
+                  クリア
+                </button>
+              )}
             </div>
 
-            <div className="space-y-2">
-              <div className="text-xs font-extrabold text-slate-400 flex items-center justify-between">
-                <span>保存済みチーム一覧 ({savedSlots.length} スロット)</span>
-              </div>
-              {savedSlots.length === 0 ? (
-                <div className="text-center py-8 text-slate-500 text-xs font-semibold bg-slate-950/40 rounded-2xl border border-dashed border-slate-800">
-                  保存されたチームスロットはありません
-                </div>
-              ) : (
-                <div className="space-y-2.5 max-h-[300px] overflow-y-auto pr-1 scrollbar-thin">
-                  {savedSlots.map(team => (
-                    <div key={team.id} className="bg-slate-950/90 border border-slate-800 hover:border-slate-700 p-3.5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
-                      <div className="space-y-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="font-extrabold text-sm text-white truncate">{team.name}</span>
-                          <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(team.teamPolicy)} ${getPolicyTextColor(team.teamPolicy)}`}>
-                            {team.teamPolicy}
-                          </span>
-                          {team.builderMaxEnhanced && (
-                            <span className="px-1.5 py-0.5 rounded text-[9px] font-black bg-orange-500/20 text-orange-400 border border-orange-500/30">
-                              ⚡最大強化
+            <div className="flex items-center gap-1.5 overflow-x-auto py-3 border-b border-slate-800 scrollbar-none">
+              {['ALL', 'CF', 'LW', 'RW', 'AM', 'LM', 'RM', 'DM', 'LFB', 'RFB', 'CB', 'GK'].map(pos => (
+                <button
+                  key={pos}
+                  onClick={() => setFilterPos(pos)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-bold whitespace-nowrap cursor-pointer ${filterPos === pos
+                    ? 'bg-[#00FF66] text-slate-950'
+                    : 'bg-slate-800 text-slate-400 hover:text-white'
+                    }`}
+                >
+                  {pos}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-2 py-3 pr-1 scrollbar-thin scrollbar-thumb-slate-700">
+              {modalPlayers.length > 0 ? (
+                modalPlayers.map(p => {
+                  const isSlotReqMatch = currentSlotInfo?.requiredStyle
+                    ? checkPlayStyleRequirement(p, currentSlotInfo.requiredStyle, currentSlotInfo.minLevel)
+                    : false;
+
+                  const assignedInfo = getAssignedLocationInfo(p.id);
+
+                  return (
+                    <div
+                      key={p.id}
+                      onClick={() => handleAssignPlayer(p)}
+                      className={`p-2.5 rounded-xl bg-slate-950 border flex items-center justify-between gap-3 cursor-pointer transition-all hover:bg-slate-800/40 ${isSlotReqMatch
+                        ? 'border-amber-400 shadow-md shadow-amber-400/20 bg-amber-500/10'
+                        : assignedInfo
+                          ? 'border-purple-500/40 bg-purple-500/5'
+                          : 'border-slate-800 hover:border-[#00FF66]/50'
+                        }`}
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <PlayerAvatar player={p} className="w-10 h-14 aspect-[3/4] rounded-lg object-cover bg-slate-900 border border-slate-700 flex-shrink-0" />
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="px-1.5 py-0.2 rounded text-[10px] font-black bg-slate-800 text-[#00FF66]">
+                              {p.mainPosition}
                             </span>
-                          )}
-                        </div>
-                        <div className="text-[11px] text-slate-400 flex items-center gap-3">
-                          <span>⚽ {team.formationName}</span>
-                          <span>👤 {team.playerCount || 0}名配置</span>
-                          <span>🕒 {team.updatedAt}</span>
+                            {p.subPositions && p.subPositions.length > 0 && (
+                              <span className="px-1.5 py-0.2 rounded text-[9px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">
+                                サブ: {p.subPositions.join(', ')}
+                              </span>
+                            )}
+                            <span className="text-[10px] font-bold text-amber-400">
+                              {p.rarity}
+                            </span>
+                            {p.policy && (
+                              <span className={`text-[9px] font-bold px-1 py-0.2 rounded border ${getPolicyBadgeClass(p.policy)}`}>
+                                {p.policy}
+                              </span>
+                            )}
+                            {assignedInfo && (
+                              <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-300 border border-purple-400/40">
+                                📍 {assignedInfo.label}
+                              </span>
+                            )}
+                            {isSlotReqMatch && (
+                              <span className="text-[9px] font-black px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 animate-pulse">
+                                ⭐ 位置条件完全合致 ({p.playStyle} LV.{p.playStyleLevel})
+                              </span>
+                            )}
+                          </div>
+                          <div className="font-black text-sm text-white truncate mt-0.5">{p.name}</div>
+                          <div className="text-[10px] text-slate-400 truncate">
+                            <span>{p.playStyle || 'スタイル未設定'}</span> <span className="text-[#00FF66] font-bold">LV.{p.playStyleLevel}</span> {p.nationality && <span className="inline-flex items-center gap-1 font-medium text-slate-300"><span>|</span><FlagIcon nationality={p.nationality} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" /><span>{p.nationality}</span></span>}
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1.5 justify-end flex-shrink-0">
-                        <button
-                          onClick={() => handleLoadTeamSlot(team)}
-                          className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/40 text-xs font-bold transition-colors cursor-pointer"
-                        >
-                          呼出
-                        </button>
-                        <button
-                          onClick={() => handleSaveTeamSlot(team.name, team.id)}
-                          className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
-                        >
-                          上書き
-                        </button>
-                        <button
-                          onClick={() => handleDeleteTeamSlot(team.id)}
-                          className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold transition-colors cursor-pointer"
-                          title="削除"
-                        >
-                          <Icon name="trash" className="w-4 h-4" />
-                        </button>
+
+                      <div className="text-right flex-shrink-0">
+                        <div className="text-xs text-slate-400 font-bold">総合力</div>
+                        <div className="text-lg font-black font-num text-[#00FF66]">{p.overall}</div>
                       </div>
                     </div>
-                  ))}
+                  );
+                })
+              ) : (
+                <div className="text-center py-10 text-slate-400 text-xs font-bold">
+                  選択可能な選手が見つかりません。
                 </div>
               )}
             </div>
           </div>
+
+          <SideAdBanner position="right" isModal={true} showModalAd={showSlotModalAd} />
         </div>
-      )}
+      </div>
+    )}
+
+    {toastMsg && (
+      <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-xs sm:text-sm shadow-2xl border border-emerald-400/50 flex items-center gap-2 animate-bounce">
+        <Icon name="check" className="w-4 h-4" />
+        {toastMsg}
+      </div>
+    )}
+
+    {isSaveModalOpen && (
+      <div className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-5 animate-scaleIn">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <h2 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
+                💾 チーム編成スロット保存 ＆ 呼び出し
+              </h2>
+              <p className="text-xs text-slate-400 mt-0.5">作成したチームをブラウザに保存・切り替えできます</p>
+            </div>
+            <button
+              onClick={() => setIsSaveModalOpen(false)}
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            >
+              <Icon name="x" className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="bg-slate-950/80 p-4 rounded-2xl border border-slate-800 space-y-3">
+            <div className="text-xs font-extrabold text-slate-300 flex items-center gap-1.5">
+              <Icon name="plus-circle" className="w-4 h-4 text-[#00FF66]" />
+              現在のチームをスロット保存
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder={`チーム名 (例: マイチーム ${savedSlots.length + 1})`}
+                value={newTeamName}
+                onChange={e => setNewTeamName(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') handleSaveTeamSlot(newTeamName); }}
+                className="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-[#00FF66]"
+              />
+              <button
+                onClick={() => handleSaveTeamSlot(newTeamName)}
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00FF66] to-[#00E5FF] text-slate-950 font-extrabold text-xs sm:text-sm shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+              >
+                新規保存
+              </button>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <div className="text-xs font-extrabold text-slate-400 flex items-center justify-between">
+              <span>保存済みチーム一覧 ({savedSlots.length} スロット)</span>
+            </div>
+            {savedSlots.length === 0 ? (
+              <div className="text-center py-8 text-slate-500 text-xs font-semibold bg-slate-950/40 rounded-2xl border border-dashed border-slate-800">
+                保存されたチームスロットはありません
+              </div>
+            ) : (
+              <div className="space-y-2.5 max-h-[300px] overflow-y-auto pr-1 scrollbar-thin">
+                {savedSlots.map(team => (
+                  <div key={team.id} className="bg-slate-950/90 border border-slate-800 hover:border-slate-700 p-3.5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-colors">
+                    <div className="space-y-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-extrabold text-sm text-white truncate">{team.name}</span>
+                        <span className={`text-[10px] font-black px-2 py-0.5 rounded border ${getPolicyBadgeClass(team.teamPolicy)} ${getPolicyTextColor(team.teamPolicy)}`}>
+                          {team.teamPolicy}
+                        </span>
+                        {team.builderMaxEnhanced && (
+                          <span className="px-1.5 py-0.5 rounded text-[9px] font-black bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                            ⚡最大強化
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-[11px] text-slate-400 flex items-center gap-3">
+                        <span>⚽ {team.formationName}</span>
+                        <span>👤 {team.playerCount || 0}名配置</span>
+                        <span>🕒 {team.updatedAt}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 justify-end flex-shrink-0">
+                      <button
+                        onClick={() => handleLoadTeamSlot(team)}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/40 text-xs font-bold transition-colors cursor-pointer"
+                      >
+                        呼出
+                      </button>
+                      <button
+                        onClick={() => handleSaveTeamSlot(team.name, team.id)}
+                        className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition-colors cursor-pointer"
+                      >
+                        上書き
+                      </button>
+                      <button
+                        onClick={() => handleDeleteTeamSlot(team.id)}
+                        className="p-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-bold transition-colors cursor-pointer"
+                        title="削除"
+                      >
+                        <Icon name="trash" className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
 
 
-    </div>
-  );
+  </div>
+);
 }
 
 function DataManagerTab({ players, setPlayers, managers, setManagers, combos, setCombos }) {
@@ -9604,8 +9819,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                             setSlotCardCatFilter('ALL');
                           }}
                           className={`w-full p-2 rounded-xl border flex items-center justify-between gap-2 text-left cursor-pointer transition-all ${s.active
-                              ? 'bg-slate-950 border-amber-500/40 hover:border-amber-400 hover:bg-slate-900 shadow-sm'
-                              : 'bg-slate-950/40 border-slate-800 opacity-50 cursor-not-allowed'
+                            ? 'bg-slate-950 border-amber-500/40 hover:border-amber-400 hover:bg-slate-900 shadow-sm'
+                            : 'bg-slate-950/40 border-slate-800 opacity-50 cursor-not-allowed'
                             }`}
                         >
                           <div className="flex items-center gap-2 min-w-0">
@@ -10053,8 +10268,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                           <button
                             onClick={() => toggleCompareCard(c.id)}
                             className={`flex-1 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer text-center ${isCompared
-                                ? 'bg-amber-500 text-slate-950 shadow'
-                                : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                              ? 'bg-amber-500 text-slate-950 shadow'
+                              : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
                               }`}
                           >
                             {isCompared ? '✓ 比較中 (解除)' : '⚖️ 比較に追加'}
@@ -10216,8 +10431,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                                 <button
                                   onClick={() => toggleCompareCard(c.id)}
                                   className={`px-2.5 py-1 rounded-lg text-xs font-black transition-all cursor-pointer whitespace-nowrap ${isCompared
-                                      ? 'bg-amber-500 text-slate-950 shadow'
-                                      : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                                    ? 'bg-amber-500 text-slate-950 shadow'
+                                    : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
                                     }`}
                                 >
                                   {isCompared ? '解除' : '比較'}
@@ -10341,8 +10556,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                       <button
                         onClick={() => toggleCompareCard(c.id)}
                         className={`w-full py-2 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1 cursor-pointer ${isCompared
-                            ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                            : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+                          ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                          : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
                           }`}
                       >
                         <Icon name="compare" className="w-3.5 h-3.5" />
@@ -10685,8 +10900,8 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                         setActiveSlotForCardModal(null);
                       }}
                       className={`p-3 rounded-xl bg-slate-950 border transition-all cursor-pointer flex items-center justify-between gap-3 group ${isCurrent
-                          ? 'border-amber-400 bg-amber-500/10 shadow-md'
-                          : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/80'
+                        ? 'border-amber-400 bg-amber-500/10 shadow-md'
+                        : 'border-slate-800 hover:border-slate-700 hover:bg-slate-900/80'
                         }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
@@ -11046,7 +11261,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                         className={`px-2.5 py-1.5 rounded-lg text-[11px] font-extrabold whitespace-nowrap cursor-pointer border transition-all ${isActive
                           ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm shadow-amber-400/20'
                           : 'bg-slate-950 text-slate-300 border-slate-700 hover:border-amber-400/50 hover:text-white'
-                        }`}
+                          }`}
                       >
                         {item.label}{arrow}
                       </button>
@@ -11067,7 +11282,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                       : ['FW', 'MF', 'DF', 'GK'].includes(pos)
                         ? 'bg-slate-800/90 text-amber-300 border-slate-700 hover:border-amber-400/50'
                         : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
-                    }`}
+                      }`}
                   >
                     {pos === 'ALL' ? 'ALL' : pos}
                   </button>
@@ -11082,7 +11297,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                   className={`px-2.5 py-1 rounded-lg text-[11px] font-black whitespace-nowrap cursor-pointer border transition-all ${modalNatFilter === 'ALL'
                     ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm'
                     : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
-                  }`}
+                    }`}
                 >
                   ALL ({players ? players.length : 0})
                 </button>
@@ -11093,7 +11308,7 @@ function TrainingSimulatorTab({ players, selectedPlayer, setSelectedPlayer, onGo
                     className={`px-2 py-1 rounded-lg text-[11px] font-bold whitespace-nowrap cursor-pointer border transition-all flex items-center gap-1 flex-shrink-0 ${modalNatFilter === nat
                       ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-sm font-black'
                       : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-slate-600 hover:text-white'
-                    }`}
+                      }`}
                   >
                     <FlagIcon nationality={nat} className="w-3.5 h-2.5 object-cover rounded-xs border border-slate-700/60" />
                     <span>{nat}</span>
@@ -11442,8 +11657,8 @@ function OwnedCardsManagerModal({ isOpen, onClose, officialCards, ownedCards, sa
                 <div
                   key={c.id}
                   className={`p-3 rounded-2xl border transition-all flex items-center justify-between gap-2.5 ${isOwned
-                      ? 'bg-amber-500/10 border-amber-500/50 shadow-md'
-                      : 'bg-slate-950/60 border-slate-800 opacity-60 hover:opacity-80'
+                    ? 'bg-amber-500/10 border-amber-500/50 shadow-md'
+                    : 'bg-slate-950/60 border-slate-800 opacity-60 hover:opacity-80'
                     }`}
                 >
                   <div className="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer" onClick={() => toggleOwned(c.id)}>
@@ -11709,8 +11924,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   type="button"
                   onClick={() => setOptimizationStrategy('EFFECTIVE_MAX')}
                   className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${optimizationStrategy === 'EFFECTIVE_MAX'
-                      ? 'bg-amber-500/20 text-amber-300 border-amber-400 shadow-md'
-                      : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
+                    ? 'bg-amber-500/20 text-amber-300 border-amber-400 shadow-md'
+                    : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
                     }`}
                 >
                   <span className="text-white flex items-center gap-1">
@@ -11725,8 +11940,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                   type="button"
                   onClick={() => setOptimizationStrategy('SAFE_150')}
                   className={`p-2.5 rounded-xl border text-xs font-black transition-all flex flex-col gap-0.5 text-left cursor-pointer ${optimizationStrategy === 'SAFE_150'
-                      ? 'bg-blue-500/20 text-blue-300 border-blue-400 shadow-md'
-                      : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
+                    ? 'bg-blue-500/20 text-blue-300 border-blue-400 shadow-md'
+                    : 'bg-slate-900 text-slate-400 border-slate-800 hover:bg-slate-800'
                     }`}
                 >
                   <span className="text-white flex items-center gap-1">
@@ -12031,8 +12246,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                           else addAbility(ab.key);
                         }}
                         className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected
-                            ? 'bg-amber-500/15 border-amber-500/50 text-amber-200'
-                            : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
+                          ? 'bg-amber-500/15 border-amber-500/50 text-amber-200'
+                          : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
                           }`}
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
@@ -12057,8 +12272,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
 
                         <button
                           className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${isSelected
-                              ? 'bg-amber-500 text-slate-950'
-                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                            ? 'bg-amber-500 text-slate-950'
+                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                             }`}
                         >
                           {isSelected ? '✓ 選択中' : '+ 追加'}
@@ -12127,8 +12342,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
                           else addSkill(sk.name);
                         }}
                         className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${isSelected
-                            ? 'bg-cyan-500/15 border-cyan-500/50 text-cyan-200'
-                            : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
+                          ? 'bg-cyan-500/15 border-cyan-500/50 text-cyan-200'
+                          : 'bg-slate-950/80 border-slate-800 hover:border-slate-700 text-slate-300'
                           }`}
                       >
                         <div className="flex items-center gap-3 min-w-0 flex-1">
@@ -12153,8 +12368,8 @@ function AutoSelectModal({ isOpen, onClose, onApply, currentPlayer, officialCard
 
                         <button
                           className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all flex-shrink-0 ${isSelected
-                              ? 'bg-cyan-500 text-slate-950'
-                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                            ? 'bg-cyan-500 text-slate-950'
+                            : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                             }`}
                         >
                           {isSelected ? '✓ 選択中' : '+ 追加'}
@@ -12274,8 +12489,8 @@ function SpecialCardDetailModal({ card, onClose, onCompareToggle, isCompared }) 
                 key={st}
                 onClick={() => setSelectedStage(st)}
                 className={`py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${selectedStage === st
-                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/20'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
+                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md shadow-amber-500/20'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900'
                   }`}
               >
                 {st}
@@ -12408,8 +12623,8 @@ function SpecialCardDetailModal({ card, onClose, onCompareToggle, isCompared }) 
               if (onCompareToggle) onCompareToggle(card.id);
             }}
             className={`px-4 py-2.5 rounded-2xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${isCompared
-                ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
-                : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
+              ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20'
+              : 'bg-slate-950 hover:bg-slate-800 text-amber-300 border border-amber-500/40'
               }`}
           >
             <span>⚖️</span>
@@ -12654,8 +12869,8 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                 <button
                   onClick={() => handleGlobalStageChange('無凸')}
                   className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all cursor-pointer ${globalStage === '無凸'
-                      ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
-                      : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-slate-800 text-slate-100 shadow border border-slate-700'
+                    : 'text-slate-400 hover:text-slate-200'
                     }`}
                 >
                   🌱 無凸
@@ -12663,8 +12878,8 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                 <button
                   onClick={() => handleGlobalStageChange('完凸')}
                   className={`px-1.5 sm:px-2 py-0.5 rounded text-[10px] sm:text-xs font-bold transition-all flex items-center gap-0.5 cursor-pointer ${globalStage === '完凸'
-                      ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black shadow-md'
-                      : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black shadow-md'
+                    : 'text-slate-400 hover:text-slate-200'
                     }`}
                 >
                   ⚡ 完凸
@@ -12912,8 +13127,8 @@ function CardCompareModal({ compareCardIds = [], officialCards = [], currentPlay
                                       key={b.style}
                                       onClick={() => toggleCardBonus(c.id, b.style)}
                                       className={`w-full max-w-[140px] px-0.5 sm:px-1 py-0.5 rounded text-[7px] sm:text-[10px] font-extrabold transition-all border cursor-pointer flex items-center justify-center gap-0.5 ${active
-                                          ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm hover:bg-amber-500/30'
-                                          : 'bg-slate-900/80 text-slate-500 border-slate-800 hover:text-slate-300 hover:border-slate-700 opacity-60'
+                                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm hover:bg-amber-500/30'
+                                        : 'bg-slate-900/80 text-slate-500 border-slate-800 hover:text-slate-300 hover:border-slate-700 opacity-60'
                                         }`}
                                       title={`${b.style} ${b.percent}% UP の適用/非適用を切り替え`}
                                     >
