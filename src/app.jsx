@@ -3724,7 +3724,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
   const FORMATION_COMBOS = [
     {
       id: 'dieRoten26',
-      name: "ディー・ローデン'26",
+      name: "ディー・ローテン’26",
       rank: '金',
       policy: 'リアクション',
       formationId: '433b_dieRoten26',
@@ -4357,7 +4357,7 @@ function TeamBuilderTab({ players, setSelectedPlayer, onGoToDB }) {
 const FORMATIONS = [
   {
     id: '433b_dieRoten26',
-    name: "4-3-3B (ディー・ローデン'26)",
+    name: "4-3-3B (ディー・ローテン’26)",
     comboId: 'dieRoten26',
     slots: [
       { id: 1, pos: 'GK', label: 'GK', top: '90%', left: '50%', requiredStyle: 'スイーパーGK', minLevel: 3 },
