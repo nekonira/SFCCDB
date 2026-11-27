@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "Y_VwwFMrT-Y",
+    "title": "【引く前に見て】バイエルンガチャ徹底解説！新フォメコンとスキル構成【サカつく2026】ケイン、オリーズ、ノイアー、キミッヒ、ライマー、ディアス、ウパメカノ、キム・ミンジェ、ムシアラ",
+    "thumbnail": "https://i.ytimg.com/vi/Y_VwwFMrT-Y/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=Y_VwwFMrT-Y"
+  },
+  {
     "id": "cFn1BxpEgvo",
     "title": "【引く前に見て】カウンターピックアップガチャ解説！これを引くならポルトガルガチャを引いてください。【サカつく2026】グヴァルディオル、サラー、バレッラ、クルトワ",
     "thumbnail": "https://i.ytimg.com/vi/cFn1BxpEgvo/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【引く前に見て】フランスガチャ徹底解説！現環境、最強CBはコナテです【サカつく2026】テオ・エルナンデス、ギュスト、バルコラ",
     "thumbnail": "https://i.ytimg.com/vi/E7QVmpiyxeU/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=E7QVmpiyxeU"
-  },
-  {
-    "id": "K7d5iyUdJTA",
-    "title": "【引く前に見て】新ガチャ徹底解説！ヤバすぎるスキルが登場。インフレを感じる新特練【サカつく2026】ロナウド、マルキーニョス、フラーフェンベルフ、マルティネッリ",
-    "thumbnail": "https://i.ytimg.com/vi/K7d5iyUdJTA/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=K7d5iyUdJTA"
   }
 ];
 

@@ -3920,14 +3920,10 @@ window.OFFICIAL_SPECIAL_CARDS = [
       description: '発動条件：絶好調　/　ショートパス・キック精度UP'
     },
     playstyleBonus: {
-      style: 'パサー 10% / AM 10%',
-      displayText: 'パサー 10% UP / AM 10% UP',
-      percent: 20,
+      style: 'AM',
+      displayText: 'AM 10% UP',
+      percent: 10,
       bonuses: [
-        {
-                "style": "パサー",
-                "percent": 10
-        },
         {
                 "style": "AM",
                 "percent": 10
