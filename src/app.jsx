@@ -183,6 +183,12 @@ const FlagIcon = ({ nationality, className = "w-4 h-3 inline-block object-cover 
 
 const YOUTUBE_VIDEOS = [
   {
+    "id": "SCxvnrdutXg",
+    "title": "【緊急事態】4枚の特別練習カードが排出停止なります…【サカつく2026】",
+    "thumbnail": "https://i.ytimg.com/vi/SCxvnrdutXg/hqdefault.jpg",
+    "url": "https://www.youtube.com/watch?v=SCxvnrdutXg"
+  },
+  {
     "id": "Y_VwwFMrT-Y",
     "title": "【引く前に見て】バイエルンガチャ徹底解説！新フォメコンとスキル構成【サカつく2026】ケイン、オリーズ、ノイアー、キミッヒ、ライマー、ディアス、ウパメカノ、キム・ミンジェ、ムシアラ",
     "thumbnail": "https://i.ytimg.com/vi/Y_VwwFMrT-Y/hqdefault.jpg",
@@ -235,12 +241,6 @@ const YOUTUBE_VIDEOS = [
     "title": "【環境最高数値】『レ・ブルー’26』最強人選&育成論 徹底解説【サカつく2026】フォメコン理論値、ネラッズーロとの比較、お勧めスキル構成、お勧め配置など",
     "thumbnail": "https://i.ytimg.com/vi/RlUJORIGmp8/hqdefault.jpg",
     "url": "https://www.youtube.com/watch?v=RlUJORIGmp8"
-  },
-  {
-    "id": "E7QVmpiyxeU",
-    "title": "【引く前に見て】フランスガチャ徹底解説！現環境、最強CBはコナテです【サカつく2026】テオ・エルナンデス、ギュスト、バルコラ",
-    "thumbnail": "https://i.ytimg.com/vi/E7QVmpiyxeU/hqdefault.jpg",
-    "url": "https://www.youtube.com/watch?v=E7QVmpiyxeU"
   }
 ];
 
